@@ -1,0 +1,889 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: clanguml::common::optional_ref&lt; T &gt; Class Template Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceclanguml.html">clanguml</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1common.html">common</a></li><li class="navelem"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">optional_ref</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="classclanguml_1_1common_1_1optional__ref-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">clanguml::common::optional_ref&lt; T &gt; Class Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Simple optional reference type.  
+ <a href="classclanguml_1_1common_1_1optional__ref.html#details">More...</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
+class clanguml::common::optional_ref&lt; T &gt;</div><p>Simple optional reference type. </p>
+<p>This class template provides a convenient way around the std::optional limitation of not allowing references. This is useful for storing references to diagram elements in various <code>views</code>, and writing methods which return can return an empty value if the diagram does not contain something.</p>
+<p>This is not an owning type - it will not accept an rvalue - the actual value must be stored somewhere else as lvalue or some kind of smart pointer.</p>
+<dl class="section note"><dt>Note</dt><dd>Probably unsafe - do not use at home.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type of reference </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00060">60</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+</div>
+<p><code>#include &lt;<a class="el" href="types_8h_source.html">types.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:afc342b1ef3ad2d0d5041a408fd084a91"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#afc342b1ef3ad2d0d5041a408fd084a91">optional_type</a> = T</td></tr>
+<tr class="separator:afc342b1ef3ad2d0d5041a408fd084a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ad6c6a85fbdde3e6c488dad95a289d7da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#ad6c6a85fbdde3e6c488dad95a289d7da">optional_ref</a> ()=default</td></tr>
+<tr class="separator:ad6c6a85fbdde3e6c488dad95a289d7da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18efcf200c44ad5df689459948105f05"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#a18efcf200c44ad5df689459948105f05">optional_ref</a> (T *<a class="el" href="classclanguml_1_1common_1_1optional__ref.html#af341adb8835d84444ced1ccff65a3e9a">value</a>)</td></tr>
+<tr class="separator:a18efcf200c44ad5df689459948105f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab04fe5886b735c0bc833345c0c89e6f4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#ab04fe5886b735c0bc833345c0c89e6f4">optional_ref</a> (const T *<a class="el" href="classclanguml_1_1common_1_1optional__ref.html#af341adb8835d84444ced1ccff65a3e9a">value</a>)</td></tr>
+<tr class="separator:ab04fe5886b735c0bc833345c0c89e6f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac615f80f2e3dca98b3685e3a759ad17d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#ac615f80f2e3dca98b3685e3a759ad17d">optional_ref</a> (T &amp;<a class="el" href="classclanguml_1_1common_1_1optional__ref.html#af341adb8835d84444ced1ccff65a3e9a">value</a>)</td></tr>
+<tr class="separator:ac615f80f2e3dca98b3685e3a759ad17d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e3d52c7853192f86b1bf33f4ae736df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#a6e3d52c7853192f86b1bf33f4ae736df">optional_ref</a> (const T &amp;<a class="el" href="classclanguml_1_1common_1_1optional__ref.html#af341adb8835d84444ced1ccff65a3e9a">value</a>)</td></tr>
+<tr class="separator:a6e3d52c7853192f86b1bf33f4ae736df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab511c4522bdc8a368a1280b1ae935850"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#ab511c4522bdc8a368a1280b1ae935850">optional_ref</a> (<a class="el" href="classclanguml_1_1common_1_1optional__ref.html">optional_ref</a> &amp;right)</td></tr>
+<tr class="separator:ab511c4522bdc8a368a1280b1ae935850"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56c0114bb373dd43002cdaa6b567bfdb"><td class="memTemplParams" colspan="2">template&lt;typename V , typename  = std::enable_if&lt;            std::is_base_of_v&lt;optional_type, typename V::optional_type&gt; ||            std::is_same_v&lt;optional_type, typename V::optional_type&gt;&gt;&gt; </td></tr>
+<tr class="memitem:a56c0114bb373dd43002cdaa6b567bfdb"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#a56c0114bb373dd43002cdaa6b567bfdb">optional_ref</a> (const V &amp;t)</td></tr>
+<tr class="separator:a56c0114bb373dd43002cdaa6b567bfdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7040cbba20a088eddc39423dd2e1de6"><td class="memTemplParams" colspan="2">template&lt;typename V , typename  = std::enable_if&lt;            std::is_base_of_v&lt;optional_type, typename V::optional_type&gt; ||            std::is_same_v&lt;optional_type, typename V::optional_type&gt;&gt;&gt; </td></tr>
+<tr class="memitem:ac7040cbba20a088eddc39423dd2e1de6"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#ac7040cbba20a088eddc39423dd2e1de6">optional_ref</a> (V &amp;&amp;t)</td></tr>
+<tr class="separator:ac7040cbba20a088eddc39423dd2e1de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6df5be4a359281994b3d72e866971937"><td class="memTemplParams" colspan="2">template&lt;typename V , typename  = std::enable_if&lt;std::is_base_of_v&lt;optional_type, V&gt;&gt;&gt; </td></tr>
+<tr class="memitem:a6df5be4a359281994b3d72e866971937"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#a6df5be4a359281994b3d72e866971937">optional_ref</a> (const std::reference_wrapper&lt; V &gt; &amp;t)</td></tr>
+<tr class="separator:a6df5be4a359281994b3d72e866971937"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a579305403d7440f8cc3b571f5054ec8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">optional_ref</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#a579305403d7440f8cc3b571f5054ec8c">operator=</a> (const <a class="el" href="classclanguml_1_1common_1_1optional__ref.html">optional_ref</a> &amp;right)</td></tr>
+<tr class="separator:a579305403d7440f8cc3b571f5054ec8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ea896687e1bbee3bd930682ca88453e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">optional_ref</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#a9ea896687e1bbee3bd930682ca88453e">operator=</a> (<a class="el" href="classclanguml_1_1common_1_1optional__ref.html">optional_ref</a> &amp;&amp;right) noexcept</td></tr>
+<tr class="separator:a9ea896687e1bbee3bd930682ca88453e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0184ff7ef5d8d743917625f4da013345"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#a0184ff7ef5d8d743917625f4da013345">has_value</a> () const noexcept</td></tr>
+<tr class="separator:a0184ff7ef5d8d743917625f4da013345"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a293d6407ab5642d381cbf0f5a0467de7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#a293d6407ab5642d381cbf0f5a0467de7">operator bool</a> () const noexcept</td></tr>
+<tr class="separator:a293d6407ab5642d381cbf0f5a0467de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af341adb8835d84444ced1ccff65a3e9a"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#af341adb8835d84444ced1ccff65a3e9a">value</a> () const</td></tr>
+<tr class="separator:af341adb8835d84444ced1ccff65a3e9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a098059bc83c50ed873f70006cddef2e1"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#a098059bc83c50ed873f70006cddef2e1">value</a> ()</td></tr>
+<tr class="separator:a098059bc83c50ed873f70006cddef2e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a395c17d686677c19a11ef4077571a678"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#a395c17d686677c19a11ef4077571a678">operator*</a> ()</td></tr>
+<tr class="separator:a395c17d686677c19a11ef4077571a678"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a471874a1b4b83a99f9cc47438af1c050"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#a471874a1b4b83a99f9cc47438af1c050">operator*</a> () const</td></tr>
+<tr class="separator:a471874a1b4b83a99f9cc47438af1c050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1a70ca9427b752f7819cb23214e82b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#ad1a70ca9427b752f7819cb23214e82b2">reset</a> ()</td></tr>
+<tr class="separator:ad1a70ca9427b752f7819cb23214e82b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a056f26a04a4ca2106a1a9605ab2bcf81"><td class="memItemLeft" align="right" valign="top">T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#a056f26a04a4ca2106a1a9605ab2bcf81">get</a> () const</td></tr>
+<tr class="separator:a056f26a04a4ca2106a1a9605ab2bcf81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a3b3029ecf0ce5544f9e3fcfbcccd122f"><td class="memItemLeft" align="right" valign="top">T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a> {nullptr}</td></tr>
+<tr class="separator:a3b3029ecf0ce5544f9e3fcfbcccd122f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="afc342b1ef3ad2d0d5041a408fd084a91" name="afc342b1ef3ad2d0d5041a408fd084a91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc342b1ef3ad2d0d5041a408fd084a91">&#9670;&#160;</a></span>optional_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::optional_type =  T</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00062">62</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad6c6a85fbdde3e6c488dad95a289d7da" name="ad6c6a85fbdde3e6c488dad95a289d7da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6c6a85fbdde3e6c488dad95a289d7da">&#9670;&#160;</a></span>optional_ref() <span class="overload">[1/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::optional_ref </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18efcf200c44ad5df689459948105f05" name="a18efcf200c44ad5df689459948105f05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18efcf200c44ad5df689459948105f05">&#9670;&#160;</a></span>optional_ref() <span class="overload">[2/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::optional_ref </td>
+          <td>(</td>
+          <td class="paramtype">T *&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00066">66</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   67</span>        : <a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1optional__ref.html#af341adb8835d84444ced1ccff65a3e9a">value</a>}</div>
+<div class="line"><span class="lineno">   68</span>    {</div>
+<div class="line"><span class="lineno">   69</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab04fe5886b735c0bc833345c0c89e6f4" name="ab04fe5886b735c0bc833345c0c89e6f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab04fe5886b735c0bc833345c0c89e6f4">&#9670;&#160;</a></span>optional_ref() <span class="overload">[3/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::optional_ref </td>
+          <td>(</td>
+          <td class="paramtype">const T *&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00071">71</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   72</span>        : <a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1optional__ref.html#af341adb8835d84444ced1ccff65a3e9a">value</a>}</div>
+<div class="line"><span class="lineno">   73</span>    {</div>
+<div class="line"><span class="lineno">   74</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac615f80f2e3dca98b3685e3a759ad17d" name="ac615f80f2e3dca98b3685e3a759ad17d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac615f80f2e3dca98b3685e3a759ad17d">&#9670;&#160;</a></span>optional_ref() <span class="overload">[4/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::optional_ref </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00076">76</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   77</span>        : <a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a>{&amp;<a class="code hl_function" href="classclanguml_1_1common_1_1optional__ref.html#af341adb8835d84444ced1ccff65a3e9a">value</a>}</div>
+<div class="line"><span class="lineno">   78</span>    {</div>
+<div class="line"><span class="lineno">   79</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6e3d52c7853192f86b1bf33f4ae736df" name="a6e3d52c7853192f86b1bf33f4ae736df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e3d52c7853192f86b1bf33f4ae736df">&#9670;&#160;</a></span>optional_ref() <span class="overload">[5/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::optional_ref </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00081">81</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   82</span>        : <a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a>{&amp;<a class="code hl_function" href="classclanguml_1_1common_1_1optional__ref.html#af341adb8835d84444ced1ccff65a3e9a">value</a>}</div>
+<div class="line"><span class="lineno">   83</span>    {</div>
+<div class="line"><span class="lineno">   84</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab511c4522bdc8a368a1280b1ae935850" name="ab511c4522bdc8a368a1280b1ae935850"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab511c4522bdc8a368a1280b1ae935850">&#9670;&#160;</a></span>optional_ref() <span class="overload">[6/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::optional_ref </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">optional_ref</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>right</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00086">86</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   87</span>        : <a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a>{<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892a7c4f29407893c334a6cb7a87bf045c0d">right</a>.get()}</div>
+<div class="line"><span class="lineno">   88</span>    {</div>
+<div class="line"><span class="lineno">   89</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a56c0114bb373dd43002cdaa6b567bfdb" name="a56c0114bb373dd43002cdaa6b567bfdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56c0114bb373dd43002cdaa6b567bfdb">&#9670;&#160;</a></span>optional_ref() <span class="overload">[7/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename V , typename  = std::enable_if&lt;            std::is_base_of_v&lt;optional_type, typename V::optional_type&gt; ||            std::is_same_v&lt;optional_type, typename V::optional_type&gt;&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::optional_ref </td>
+          <td>(</td>
+          <td class="paramtype">const V &amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00095">95</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   96</span>        : <a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a>{t.get()}</div>
+<div class="line"><span class="lineno">   97</span>    {</div>
+<div class="line"><span class="lineno">   98</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac7040cbba20a088eddc39423dd2e1de6" name="ac7040cbba20a088eddc39423dd2e1de6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7040cbba20a088eddc39423dd2e1de6">&#9670;&#160;</a></span>optional_ref() <span class="overload">[8/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename V , typename  = std::enable_if&lt;            std::is_base_of_v&lt;optional_type, typename V::optional_type&gt; ||            std::is_same_v&lt;optional_type, typename V::optional_type&gt;&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::optional_ref </td>
+          <td>(</td>
+          <td class="paramtype">V &amp;&amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00104">104</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  105</span>        : <a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a>{t.get()}</div>
+<div class="line"><span class="lineno">  106</span>    {</div>
+<div class="line"><span class="lineno">  107</span>        t.reset();</div>
+<div class="line"><span class="lineno">  108</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6df5be4a359281994b3d72e866971937" name="a6df5be4a359281994b3d72e866971937"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6df5be4a359281994b3d72e866971937">&#9670;&#160;</a></span>optional_ref() <span class="overload">[9/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename V , typename  = std::enable_if&lt;std::is_base_of_v&lt;optional_type, V&gt;&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::optional_ref </td>
+          <td>(</td>
+          <td class="paramtype">const std::reference_wrapper&lt; V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00112">112</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  113</span>        : <a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a>{&amp;t.get()}</div>
+<div class="line"><span class="lineno">  114</span>    {</div>
+<div class="line"><span class="lineno">  115</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a056f26a04a4ca2106a1a9605ab2bcf81" name="a056f26a04a4ca2106a1a9605ab2bcf81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a056f26a04a4ca2106a1a9605ab2bcf81">&#9670;&#160;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T * <a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::get </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00166">166</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  166</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0184ff7ef5d8d743917625f4da013345" name="a0184ff7ef5d8d743917625f4da013345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0184ff7ef5d8d743917625f4da013345">&#9670;&#160;</a></span>has_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::has_value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00136">136</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  136</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a> != <span class="keyword">nullptr</span>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a293d6407ab5642d381cbf0f5a0467de7" name="a293d6407ab5642d381cbf0f5a0467de7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a293d6407ab5642d381cbf0f5a0467de7">&#9670;&#160;</a></span>operator bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::operator bool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00138">138</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  138</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1optional__ref.html#a0184ff7ef5d8d743917625f4da013345">has_value</a>(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a395c17d686677c19a11ef4077571a678" name="a395c17d686677c19a11ef4077571a678"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a395c17d686677c19a11ef4077571a678">&#9670;&#160;</a></span>operator*() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T &amp; <a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00152">152</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  153</span>    {</div>
+<div class="line"><span class="lineno">  154</span>        assert(<a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  155</span>        <span class="keywordflow">return</span> *<a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a>;</div>
+<div class="line"><span class="lineno">  156</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a471874a1b4b83a99f9cc47438af1c050" name="a471874a1b4b83a99f9cc47438af1c050"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a471874a1b4b83a99f9cc47438af1c050">&#9670;&#160;</a></span>operator*() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const T &amp; <a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00158">158</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  159</span>    {</div>
+<div class="line"><span class="lineno">  160</span>        assert(<a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  161</span>        <span class="keywordflow">return</span> *<a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a>;</div>
+<div class="line"><span class="lineno">  162</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a579305403d7440f8cc3b571f5054ec8c" name="a579305403d7440f8cc3b571f5054ec8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a579305403d7440f8cc3b571f5054ec8c">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">optional_ref</a> &amp; <a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1common_1_1optional__ref.html">optional_ref</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>right</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00117">117</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  118</span>    {</div>
+<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;right)</div>
+<div class="line"><span class="lineno">  120</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  121</span> </div>
+<div class="line"><span class="lineno">  122</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a> = <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892a7c4f29407893c334a6cb7a87bf045c0d">right</a>.value_;</div>
+<div class="line"><span class="lineno">  123</span>        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  124</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9ea896687e1bbee3bd930682ca88453e" name="a9ea896687e1bbee3bd930682ca88453e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ea896687e1bbee3bd930682ca88453e">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">optional_ref</a> &amp; <a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">optional_ref</a>&lt; T &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>right</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00126">126</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  127</span>    {</div>
+<div class="line"><span class="lineno">  128</span>        <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;right)</div>
+<div class="line"><span class="lineno">  129</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  130</span> </div>
+<div class="line"><span class="lineno">  131</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a> = <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892a7c4f29407893c334a6cb7a87bf045c0d">right</a>.value_;</div>
+<div class="line"><span class="lineno">  132</span>        <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892a7c4f29407893c334a6cb7a87bf045c0d">right</a>.reset();</div>
+<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  134</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad1a70ca9427b752f7819cb23214e82b2" name="ad1a70ca9427b752f7819cb23214e82b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1a70ca9427b752f7819cb23214e82b2">&#9670;&#160;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00164">164</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  164</span>{ <a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a> = <span class="keyword">nullptr</span>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a098059bc83c50ed873f70006cddef2e1" name="a098059bc83c50ed873f70006cddef2e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a098059bc83c50ed873f70006cddef2e1">&#9670;&#160;</a></span>value() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T &amp; <a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00146">146</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  147</span>    {</div>
+<div class="line"><span class="lineno">  148</span>        assert(<a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  149</span>        <span class="keywordflow">return</span> *<a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a>;</div>
+<div class="line"><span class="lineno">  150</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af341adb8835d84444ced1ccff65a3e9a" name="af341adb8835d84444ced1ccff65a3e9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af341adb8835d84444ced1ccff65a3e9a">&#9670;&#160;</a></span>value() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const T &amp; <a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00140">140</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  141</span>    {</div>
+<div class="line"><span class="lineno">  142</span>        assert(<a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  143</span>        <span class="keywordflow">return</span> *<a class="code hl_variable" href="classclanguml_1_1common_1_1optional__ref.html#a3b3029ecf0ce5544f9e3fcfbcccd122f">value_</a>;</div>
+<div class="line"><span class="lineno">  144</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a3b3029ecf0ce5544f9e3fcfbcccd122f" name="a3b3029ecf0ce5544f9e3fcfbcccd122f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b3029ecf0ce5544f9e3fcfbcccd122f">&#9670;&#160;</a></span>value_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T* <a class="el" href="classclanguml_1_1common_1_1optional__ref.html">clanguml::common::optional_ref</a>&lt; T &gt;::value_ {nullptr}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="types_8h_source.html#l00169">169</a> of file <a class="el" href="types_8h_source.html">types.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>src/common/<a class="el" href="types_8h_source.html">types.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

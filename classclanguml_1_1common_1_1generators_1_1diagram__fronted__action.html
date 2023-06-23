@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: clanguml::common::generators::diagram_fronted_action&lt; DiagramModel, DiagramConfig, DiagramVisitor &gt; Class Template Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceclanguml.html">clanguml</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1common.html">common</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1common_1_1generators.html">generators</a></li><li class="navelem"><a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html">diagram_fronted_action</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">clanguml::common::generators::diagram_fronted_action&lt; DiagramModel, DiagramConfig, DiagramVisitor &gt; Class Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Specialization of <a href="https://clang.llvm.org/doxygen/classclang_1_1ASTFrontendAction.html">clang::ASTFrontendAction</a>  
+ <a href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#details">More...</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename DiagramModel, typename DiagramConfig, typename DiagramVisitor&gt;<br />
+class clanguml::common::generators::diagram_fronted_action&lt; DiagramModel, DiagramConfig, DiagramVisitor &gt;</div><p>Specialization of <a href="https://clang.llvm.org/doxygen/classclang_1_1ASTFrontendAction.html">clang::ASTFrontendAction</a> </p>
+<p>This class overrides the <a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#ad5384181a164d51c4803e1ce4fb7a9d9">BeginSourceFileAction()</a> and <a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#ae5ba3117a7acaaea5dd874e4db06992a">CreateASTConsumer()</a> methods to create and setup an appropriate <a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__ast__consumer.html" title="Specialization of clang::ASTConsumer">diagram_ast_consumer</a> instance.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">DiagramModel</td><td>Type of diagram_model </td></tr>
+    <tr><td class="paramname">DiagramConfig</td><td>Type of diagram_config </td></tr>
+    <tr><td class="paramname">TranslationUnitVisitor</td><td>Type of translation_unit_visitor </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="generators_8h_source.html#l00227">227</a> of file <a class="el" href="generators_8h_source.html">generators.h</a>.</p>
+</div>
+<p><code>#include &lt;<a class="el" href="generators_8h_source.html">generators.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ae6de420ff3f5448bc778c55e901298ba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#ae6de420ff3f5448bc778c55e901298ba">diagram_fronted_action</a> (DiagramModel &amp;diagram, const DiagramConfig &amp;config, std::function&lt; void()&gt; progress)</td></tr>
+<tr class="separator:ae6de420ff3f5448bc778c55e901298ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5ba3117a7acaaea5dd874e4db06992a"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; clang::ASTConsumer &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#ae5ba3117a7acaaea5dd874e4db06992a">CreateASTConsumer</a> (clang::CompilerInstance &amp;CI, clang::StringRef) override</td></tr>
+<tr class="separator:ae5ba3117a7acaaea5dd874e4db06992a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:ad5384181a164d51c4803e1ce4fb7a9d9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#ad5384181a164d51c4803e1ce4fb7a9d9">BeginSourceFileAction</a> (clang::CompilerInstance &amp;ci) override</td></tr>
+<tr class="separator:ad5384181a164d51c4803e1ce4fb7a9d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aeba05691bcff27fd36f2377199b587a0"><td class="memItemLeft" align="right" valign="top">DiagramModel &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#aeba05691bcff27fd36f2377199b587a0">diagram_</a></td></tr>
+<tr class="separator:aeba05691bcff27fd36f2377199b587a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0029c065fd5eaf75b2aab82597963e0"><td class="memItemLeft" align="right" valign="top">const DiagramConfig &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#ac0029c065fd5eaf75b2aab82597963e0">config_</a></td></tr>
+<tr class="separator:ac0029c065fd5eaf75b2aab82597963e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ab26ebd99b1bcb4620cb01e4437bb98"><td class="memItemLeft" align="right" valign="top">std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#a6ab26ebd99b1bcb4620cb01e4437bb98">progress_</a></td></tr>
+<tr class="separator:a6ab26ebd99b1bcb4620cb01e4437bb98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae6de420ff3f5448bc778c55e901298ba" name="ae6de420ff3f5448bc778c55e901298ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6de420ff3f5448bc778c55e901298ba">&#9670;&#160;</a></span>diagram_fronted_action()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DiagramModel , typename DiagramConfig , typename DiagramVisitor &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html">clanguml::common::generators::diagram_fronted_action</a>&lt; DiagramModel, DiagramConfig, DiagramVisitor &gt;::diagram_fronted_action </td>
+          <td>(</td>
+          <td class="paramtype">DiagramModel &amp;&#160;</td>
+          <td class="paramname"><em>diagram</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const DiagramConfig &amp;&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void()&gt;&#160;</td>
+          <td class="paramname"><em>progress</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="generators_8h_source.html#l00229">229</a> of file <a class="el" href="generators_8h_source.html">generators.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  231</span>        : <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#aeba05691bcff27fd36f2377199b587a0">diagram_</a>{diagram}</div>
+<div class="line"><span class="lineno">  232</span>        , <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#ac0029c065fd5eaf75b2aab82597963e0">config_</a>{config}</div>
+<div class="line"><span class="lineno">  233</span>        , <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#a6ab26ebd99b1bcb4620cb01e4437bb98">progress_</a>{std::move(progress)}</div>
+<div class="line"><span class="lineno">  234</span>    {</div>
+<div class="line"><span class="lineno">  235</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad5384181a164d51c4803e1ce4fb7a9d9" name="ad5384181a164d51c4803e1ce4fb7a9d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5384181a164d51c4803e1ce4fb7a9d9">&#9670;&#160;</a></span>BeginSourceFileAction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DiagramModel , typename DiagramConfig , typename DiagramVisitor &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html">clanguml::common::generators::diagram_fronted_action</a>&lt; DiagramModel, DiagramConfig, DiagramVisitor &gt;::BeginSourceFileAction </td>
+          <td>(</td>
+          <td class="paramtype">clang::CompilerInstance &amp;&#160;</td>
+          <td class="paramname"><em>ci</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="generators_8h_source.html#l00253">253</a> of file <a class="el" href="generators_8h_source.html">generators.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  254</span>    {</div>
+<div class="line"><span class="lineno">  255</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Visiting source file: {}&quot;</span>, getCurrentFile().str());</div>
+<div class="line"><span class="lineno">  256</span> </div>
+<div class="line"><span class="lineno">  257</span>        <span class="comment">// Update progress indicators, if enabled, on each translation</span></div>
+<div class="line"><span class="lineno">  258</span>        <span class="comment">// unit</span></div>
+<div class="line"><span class="lineno">  259</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#a6ab26ebd99b1bcb4620cb01e4437bb98">progress_</a>)</div>
+<div class="line"><span class="lineno">  260</span>            <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#a6ab26ebd99b1bcb4620cb01e4437bb98">progress_</a>();</div>
+<div class="line"><span class="lineno">  261</span> </div>
+<div class="line"><span class="lineno">  262</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;DiagramModel,</div>
+<div class="line"><span class="lineno">  263</span>                          <a class="code hl_class" href="classclanguml_1_1include__diagram_1_1model_1_1diagram.html">clanguml::include_diagram::model::diagram</a>&gt;) {</div>
+<div class="line"><span class="lineno">  264</span>            <span class="keyword">auto</span> find_includes_callback =</div>
+<div class="line"><span class="lineno">  265</span>                std::make_unique&lt;typename DiagramVisitor::include_visitor&gt;(</div>
+<div class="line"><span class="lineno">  266</span>                    ci.getSourceManager(), <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#aeba05691bcff27fd36f2377199b587a0">diagram_</a>, <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#ac0029c065fd5eaf75b2aab82597963e0">config_</a>);</div>
+<div class="line"><span class="lineno">  267</span> </div>
+<div class="line"><span class="lineno">  268</span>            clang::Preprocessor &amp;pp = ci.getPreprocessor();</div>
+<div class="line"><span class="lineno">  269</span> </div>
+<div class="line"><span class="lineno">  270</span>            pp.addPPCallbacks(std::move(find_includes_callback));</div>
+<div class="line"><span class="lineno">  271</span>        }</div>
+<div class="line"><span class="lineno">  272</span> </div>
+<div class="line"><span class="lineno">  273</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  274</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae5ba3117a7acaaea5dd874e4db06992a" name="ae5ba3117a7acaaea5dd874e4db06992a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5ba3117a7acaaea5dd874e4db06992a">&#9670;&#160;</a></span>CreateASTConsumer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DiagramModel , typename DiagramConfig , typename DiagramVisitor &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; clang::ASTConsumer &gt; <a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html">clanguml::common::generators::diagram_fronted_action</a>&lt; DiagramModel, DiagramConfig, DiagramVisitor &gt;::CreateASTConsumer </td>
+          <td>(</td>
+          <td class="paramtype">clang::CompilerInstance &amp;&#160;</td>
+          <td class="paramname"><em>CI</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">clang::StringRef&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="generators_8h_source.html#l00237">237</a> of file <a class="el" href="generators_8h_source.html">generators.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  239</span>    {</div>
+<div class="line"><span class="lineno">  240</span>        <span class="keyword">auto</span> ast_consumer = std::make_unique&lt;</div>
+<div class="line"><span class="lineno">  241</span>            diagram_ast_consumer&lt;DiagramModel, DiagramConfig, DiagramVisitor&gt;&gt;(</div>
+<div class="line"><span class="lineno">  242</span>            CI, <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#aeba05691bcff27fd36f2377199b587a0">diagram_</a>, <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html#ac0029c065fd5eaf75b2aab82597963e0">config_</a>);</div>
+<div class="line"><span class="lineno">  243</span> </div>
+<div class="line"><span class="lineno">  244</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (!std::is_same_v&lt;DiagramModel,</div>
+<div class="line"><span class="lineno">  245</span>                          <a class="code hl_class" href="classclanguml_1_1include__diagram_1_1model_1_1diagram.html">clanguml::include_diagram::model::diagram</a>&gt;) {</div>
+<div class="line"><span class="lineno">  246</span>            ast_consumer-&gt;visitor().set_tu_path(getCurrentFile().str());</div>
+<div class="line"><span class="lineno">  247</span>        }</div>
+<div class="line"><span class="lineno">  248</span> </div>
+<div class="line"><span class="lineno">  249</span>        <span class="keywordflow">return</span> ast_consumer;</div>
+<div class="line"><span class="lineno">  250</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ac0029c065fd5eaf75b2aab82597963e0" name="ac0029c065fd5eaf75b2aab82597963e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0029c065fd5eaf75b2aab82597963e0">&#9670;&#160;</a></span>config_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DiagramModel , typename DiagramConfig , typename DiagramVisitor &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const DiagramConfig&amp; <a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html">clanguml::common::generators::diagram_fronted_action</a>&lt; DiagramModel, DiagramConfig, DiagramVisitor &gt;::config_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="generators_8h_source.html#l00278">278</a> of file <a class="el" href="generators_8h_source.html">generators.h</a>.</p>
+
+</div>
+</div>
+<a id="aeba05691bcff27fd36f2377199b587a0" name="aeba05691bcff27fd36f2377199b587a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeba05691bcff27fd36f2377199b587a0">&#9670;&#160;</a></span>diagram_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DiagramModel , typename DiagramConfig , typename DiagramVisitor &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DiagramModel&amp; <a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html">clanguml::common::generators::diagram_fronted_action</a>&lt; DiagramModel, DiagramConfig, DiagramVisitor &gt;::diagram_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="generators_8h_source.html#l00277">277</a> of file <a class="el" href="generators_8h_source.html">generators.h</a>.</p>
+
+</div>
+</div>
+<a id="a6ab26ebd99b1bcb4620cb01e4437bb98" name="a6ab26ebd99b1bcb4620cb01e4437bb98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ab26ebd99b1bcb4620cb01e4437bb98">&#9670;&#160;</a></span>progress_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DiagramModel , typename DiagramConfig , typename DiagramVisitor &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;void()&gt; <a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__fronted__action.html">clanguml::common::generators::diagram_fronted_action</a>&lt; DiagramModel, DiagramConfig, DiagramVisitor &gt;::progress_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="generators_8h_source.html#l00279">279</a> of file <a class="el" href="generators_8h_source.html">generators.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>src/common/generators/<a class="el" href="generators_8h_source.html">generators.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

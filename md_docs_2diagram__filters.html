@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: Diagram filters</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">Diagram filters</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="diagram-filters-1"></a></p>
+<ul>
+<li><a class="el" href="md_docs_2diagram__filters.html#namespaces">namespaces</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#elements">elements</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#element_types">element_types</a></li>
+<li><a class="el" href="md_docs_2configuration__file.html#paths">paths</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#context">context</a></li>
+<li><a class="el" href="md_docs_2class__diagrams.html#relationships">relationships</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#subclasses">subclasses</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#parents">parents</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#specializations">specializations</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#access">access</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#method_types">method_types</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#dependants-and-dependencies">dependants and dependencies</a></li>
+</ul>
+<p>Diagram filters are at the core of generating diagrams with <code>clang-uml</code>, as they allow to fine tune the scope of each diagram, and thus provide you with a several small, but readable diagrams instead of a single huge diagram that cannot be effectively browsed, printed or included in an online documentation of your project.</p>
+<p>Filters can be specified separate for each diagram, and they can be added as either <code>include</code> or <code>exclude</code> filters, depending on which is more appropriate for a given diagram.</p>
+<p>For instance to include only C++ entities from a namespace <code>ns1::ns2</code> but not <code>ns1::ns2::detail</code> add the following to your diagram configuration:</p>
+<div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  namespaces:</div>
+<div class="line">    - ns1::ns2</div>
+<div class="line">exclude:</div>
+<div class="line">  namespaces:</div>
+<div class="line">    - ns1::ns2::detail</div>
+</div><!-- fragment --><p>Some filters accept either specified exact values, some support regular expressions while some except glob patterns.</p>
+<p>For filters which accept regular expressions, the regular expression has to be provided as a map &lsquo;r: 'pattern&rsquo;<code>due to the fact the pointer (</code>*<code>) otherwise would have to be escaped in situations such as</code>mycontainer&lt;char*&gt;<code>, so for instance to specify that the diagram should exclude all classes containing the word</code>test` simply add the following filter:</p>
+<div class="fragment language-yaml"><div class="line">exclude:</div>
+<div class="line">  elements:</div>
+<div class="line">    - r: &#39;.*test.*&#39;</div>
+</div><!-- fragment --><p><code>paths</code> filter is currently the only filter which accepts <code>glob</code> like patterns.</p>
+<p>The following table specifies the values allowed in each filter:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Filter name   </th><th class="markdownTableHeadNone">Possible values   </th><th class="markdownTableHeadNone">Example values    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>namespaces</code>   </td><td class="markdownTableBodyNone">Qualified name or regex   </td><td class="markdownTableBodyNone"><code>ns1::ns2::ClassA</code>, &lsquo;r: &rsquo;.*detail.*'<code>\ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowEven"&gt; &lt;td class="markdownTableBodyNone"&gt;</code>elements<code>\ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; Qualified name or regex \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt;</code>ns1::ns2::ClassA<code>,</code>r: '.*detail.*'<code>\ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowOdd"&gt; &lt;td class="markdownTableBodyNone"&gt;</code>element_types<code>\ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; Types of diagram elements \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt;</code>class<code>,</code>enum<code>,</code>concept<code>\ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowEven"&gt; &lt;td class="markdownTableBodyNone"&gt;</code>paths<code>\ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; File or dir path or glob pattern \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt;</code>src/dir1<code>,</code>src/dir2/a.cpp<code>,</code>src/dir3/*.cpp<code>\ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowOdd"&gt; &lt;td class="markdownTableBodyNone"&gt;</code>context<code>\ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; Qualified name or regex \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt;</code>ns1::ns2::ClassA<code>,</code>r: 'ns1::ns2::ClassA.+'<code>\ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowEven"&gt; &lt;td class="markdownTableBodyNone"&gt;</code>relationships<code>\ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; Type of relationship \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt;</code>inheritance<code>,</code>composition<code>,</code>aggregation<code>,</code>ownership<code>,</code>association<code>,</code>instantiation<code>,</code>friendship<code>,</code>dependency<code>\ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowOdd"&gt; &lt;td class="markdownTableBodyNone"&gt;</code>subclasses<code>\ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; Qualified name or regex \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt;</code>ns1::ns2::ClassA<code>,</code>r: 'ns1::ns2::ClassA.+'<code>\ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowEven"&gt; &lt;td class="markdownTableBodyNone"&gt;</code>parents<code>\ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; Qualified name or regex \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt;</code>ns1::ns2::ClassA<code>,</code>r: 'ns1::ns2::ClassA.+'<code>\ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowOdd"&gt; &lt;td class="markdownTableBodyNone"&gt;</code>specializations<code>\ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; Qualified name or regex \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt;</code>ns1::ns2::ClassA<code>,</code>r: 'ns1::ns2::ClassA.+'<code>\ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowEven"&gt; &lt;td class="markdownTableBodyNone"&gt;</code>access<code>\ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; Method or member access scope \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt;</code>public<code>,</code>protected<code>,</code>private<code>\ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowOdd"&gt; &lt;td class="markdownTableBodyNone"&gt;</code>method_types<code>\ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; Type of class method \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt;</code>constructor<code>,</code>destructor<code>,</code>assignment<code>,</code>operator<code>,</code>defaulted<code>,</code>deleted<code>,</code>static<code>\ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowEven"&gt; &lt;td class="markdownTableBodyNone"&gt;</code>dependants<code>\ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; Qualified name or regex \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt;</code>ns1::ns2::ClassA<code>,</code>r: 'ns1::ns2::ClassA.+'<code>\ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowOdd"&gt; &lt;td class="markdownTableBodyNone"&gt;</code>dependencies<code>\ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; Qualified name or regex \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt;</code>ns1::ns2::ClassA<code>,</code>r: 'ns1::ns2::ClassA.+'`   </td></tr>
+</table>
+<p>The following filters are available.</p>
+<h1><a class="anchor" id="namespaces"></a>
+namespaces</h1>
+<p>Allows to include or exclude entities from specific namespaces.</p>
+<h1><a class="anchor" id="elements"></a>
+elements</h1>
+<p>Allows to directly include or exclude specific entities from the diagrams, for instance to exclude a specific class from an included namespace:</p>
+<div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  namespaces:</div>
+<div class="line">    - ns1::ns2</div>
+<div class="line">exclude:</div>
+<div class="line">  elements:</div>
+<div class="line">    - ns1::ns2::MyClass</div>
+</div><!-- fragment --><h1><a class="anchor" id="element_types"></a>
+element_types</h1>
+<p>Allows to include or exclude elements of specific type from the diagram, for instance to remove all enums from a diagram add the following:</p>
+<div class="fragment language-yaml"><div class="line">exclude:</div>
+<div class="line">  element_types:</div>
+<div class="line">    - enum</div>
+</div><!-- fragment --><h1><a class="anchor" id="paths-1"></a>
+paths</h1>
+<p>This filter allows to include or exclude from the diagram elements declared in specific files.</p>
+<div class="fragment language-yaml"><div class="line">diagrams:</div>
+<div class="line">  t00061_class:</div>
+<div class="line">    type: class</div>
+<div class="line">    relative_to: ../../tests/t00061</div>
+<div class="line">    glob: [t00061.cc]</div>
+<div class="line">    include:</div>
+<div class="line">      paths: [include/t00061_a.h]</div>
+<div class="line">    using_namespace:</div>
+<div class="line">      - clanguml::t00061</div>
+</div><!-- fragment --><p>Currently, this filter does not allow any globbing or wildcards, however paths to directories can be specified.</p>
+<h1><a class="anchor" id="context"></a>
+context</h1>
+<p>This filter allows to limit the diagram elements only to classes which are in direct relationship (of any kind) with the specified class:</p>
+<div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  context:</div>
+<div class="line">    - ns1::ns2::MyClass</div>
+</div><!-- fragment --><h1><a class="anchor" id="relationships-1"></a>
+relationships</h1>
+<p>This filter allows to include or exclude specific types of relationships from the diagram, for instance to only include inheritance and template specialization/instantiation relationships add the following to the diagram:</p>
+<div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  relationships:</div>
+<div class="line">    - inheritance</div>
+<div class="line">    - instantiation</div>
+</div><!-- fragment --><p>The following relationships can be used in this filter:</p><ul>
+<li>inheritance</li>
+<li>composition</li>
+<li>aggregation</li>
+<li>ownership</li>
+<li>association</li>
+<li>instantiation</li>
+<li>friendship</li>
+<li>dependency</li>
+</ul>
+<h1><a class="anchor" id="subclasses"></a>
+subclasses</h1>
+<p>This filter allows to include or exclude all subclasses of a given class in the diagram.</p>
+<h1><a class="anchor" id="parents"></a>
+parents</h1>
+<p>This filter allows to include or exclude all parents (base classes) of a given class in the diagram.</p>
+<h1><a class="anchor" id="specializations"></a>
+specializations</h1>
+<p>This filter allows to include or exclude specializations and instantiations of a specific template from the diagram.</p>
+<h1><a class="anchor" id="access"></a>
+access</h1>
+<p>This filter allows to include or exclude class methods and members based on their access scope, allowed values ar:</p>
+<ul>
+<li><code>public</code></li>
+<li><code>protected</code></li>
+<li><code>private</code></li>
+</ul>
+<h1><a class="anchor" id="method_types"></a>
+method_types</h1>
+<p>This filter allows to include or exclude various method types from the class diagram, allowed values ar:</p><ul>
+<li>constructor</li>
+<li>destructor</li>
+<li>assignment</li>
+<li>operator</li>
+<li>defaulted</li>
+<li>deleted</li>
+<li>static</li>
+</ul>
+<p>This filter is independent of the <code>access</code> filter, which controls which methods are included based on access scope (e.g. <code>public</code>).</p>
+<h1><a class="anchor" id="dependants-and-dependencies"></a>
+dependants and dependencies</h1>
+<p>These filters allow to specify that only dependants or dependencies of a given class should be included in the diagram. This can be useful for analyzing what classes in your project depend on some other class, which could have impact for instance on refactoring.</p>
+<p>For instance the following code: </p><div class="fragment language-cpp"><div class="line"><span class="keyword">namespace </span>dependants {</div>
+<div class="line"><span class="keyword">struct </span>A {</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>B {</div>
+<div class="line">    <span class="keywordtype">void</span> b(A *a) { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>BB {</div>
+<div class="line">    <span class="keywordtype">void</span> bb(A *a) { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>C {</div>
+<div class="line">    <span class="keywordtype">void</span> c(B *b) { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>D {</div>
+<div class="line">    <span class="keywordtype">void</span> d(C *c) { }</div>
+<div class="line">    <span class="keywordtype">void</span> dd(BB *bb) { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>E {</div>
+<div class="line">    <span class="keywordtype">void</span> e(D *d) { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>F {</div>
+<div class="line">};</div>
+<div class="line">} <span class="comment">// namespace dependants</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>dependencies {</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>G {</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>GG {</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>H {</div>
+<div class="line">    <span class="keywordtype">void</span> h(G *g) { }</div>
+<div class="line">    <span class="keywordtype">void</span> hh(GG *gg) { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>HH {</div>
+<div class="line">    <span class="keywordtype">void</span> hh(G *g) { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>I {</div>
+<div class="line">    <span class="keywordtype">void</span> i(H *h) { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>J {</div>
+<div class="line">    <span class="keywordtype">void</span> i(I *i) { }</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>and the following filter: </p><div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  dependants:</div>
+<div class="line">    - clanguml::t00043::dependants::A</div>
+<div class="line">  dependencies:</div>
+<div class="line">    - clanguml::t00043::dependencies::J</div>
+<div class="line">  relationships:</div>
+<div class="line">    - dependency</div>
+</div><!-- fragment --><p>generates the following diagram:</p>
+<div class="image">
+<embed type="image/svg+xml" src="t00043_class.svg"></embed>
+</div>
+     </div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

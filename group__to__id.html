@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: Forward template for convertions to ID from various entities</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">Forward template for convertions to ID from various entities</div></div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>These methods provide the main mechanism for generating globally unique identifiers for all elements in the diagrams. The identifiers must be unique between different translation units in order for element relationships to be properly rendered in diagrams. </p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga51179bdf5478be6d17dc8a9082e950ae"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga51179bdf5478be6d17dc8a9082e950ae"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__to__id.html#ga51179bdf5478be6d17dc8a9082e950ae">clanguml::common::to_id</a> (const T &amp;declaration)</td></tr>
+<tr class="separator:ga51179bdf5478be6d17dc8a9082e950ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga383cbc45288ba84c53a163da7c41b1cc"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:ga383cbc45288ba84c53a163da7c41b1cc"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__to__id.html#ga383cbc45288ba84c53a163da7c41b1cc">clanguml::common::to_id</a> (const std::string &amp;full_name)</td></tr>
+<tr class="separator:ga383cbc45288ba84c53a163da7c41b1cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga18a51788732ca815ae7165a61239762f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__to__id.html#ga18a51788732ca815ae7165a61239762f">clanguml::common::to_id</a> (const clang::QualType &amp;type, const clang::ASTContext &amp;ctx)</td></tr>
+<tr class="separator:ga18a51788732ca815ae7165a61239762f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga22f53e496cfba18ad4be817d827b2136"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:ga22f53e496cfba18ad4be817d827b2136"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__to__id.html#ga22f53e496cfba18ad4be817d827b2136">clanguml::common::to_id</a> (const clang::NamespaceDecl &amp;declaration)</td></tr>
+<tr class="separator:ga22f53e496cfba18ad4be817d827b2136"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga42622fb9a1e7a700def99de2b0812881"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:ga42622fb9a1e7a700def99de2b0812881"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__to__id.html#ga42622fb9a1e7a700def99de2b0812881">clanguml::common::to_id</a> (const clang::CXXRecordDecl &amp;declaration)</td></tr>
+<tr class="separator:ga42622fb9a1e7a700def99de2b0812881"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9ae6c992fdd4e70647727717a5efd877"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:ga9ae6c992fdd4e70647727717a5efd877"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__to__id.html#ga9ae6c992fdd4e70647727717a5efd877">clanguml::common::to_id</a> (const clang::RecordDecl &amp;declaration)</td></tr>
+<tr class="separator:ga9ae6c992fdd4e70647727717a5efd877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0637368c5049f6c927ee049c650bfa9c"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:ga0637368c5049f6c927ee049c650bfa9c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__to__id.html#ga0637368c5049f6c927ee049c650bfa9c">clanguml::common::to_id</a> (const clang::EnumDecl &amp;declaration)</td></tr>
+<tr class="separator:ga0637368c5049f6c927ee049c650bfa9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad50e737792823c468ef5281949036f5a"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:gad50e737792823c468ef5281949036f5a"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__to__id.html#gad50e737792823c468ef5281949036f5a">clanguml::common::to_id</a> (const clang::TagDecl &amp;declaration)</td></tr>
+<tr class="separator:gad50e737792823c468ef5281949036f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga20b01ca718b80dd30a9ac7f164ae355c"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:ga20b01ca718b80dd30a9ac7f164ae355c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__to__id.html#ga20b01ca718b80dd30a9ac7f164ae355c">clanguml::common::to_id</a> (const clang::EnumType &amp;type)</td></tr>
+<tr class="separator:ga20b01ca718b80dd30a9ac7f164ae355c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadb66f4f30b461d3ce24428755c7e9cc5"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:gadb66f4f30b461d3ce24428755c7e9cc5"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__to__id.html#gadb66f4f30b461d3ce24428755c7e9cc5">clanguml::common::to_id</a> (const clang::TemplateSpecializationType &amp;type)</td></tr>
+<tr class="separator:gadb66f4f30b461d3ce24428755c7e9cc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga693336bd4de09ebe5a0f96233cd5ae46"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:ga693336bd4de09ebe5a0f96233cd5ae46"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__to__id.html#ga693336bd4de09ebe5a0f96233cd5ae46">clanguml::common::to_id</a> (const std::filesystem::path &amp;type)</td></tr>
+<tr class="separator:ga693336bd4de09ebe5a0f96233cd5ae46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga42622fb9a1e7a700def99de2b0812881" name="ga42622fb9a1e7a700def99de2b0812881"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga42622fb9a1e7a700def99de2b0812881">&#9670;&#160;</a></span>to_id() <span class="overload">[1/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a> clanguml::common::to_id </td>
+          <td>(</td>
+          <td class="paramtype">const clang::CXXRecordDecl &amp;&#160;</td>
+          <td class="paramname"><em>declaration</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="clang__utils_8cc_source.html#l00374">374</a> of file <a class="el" href="clang__utils_8cc_source.html">clang_utils.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  375</span>{</div>
+<div class="line"><span class="lineno">  376</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="group__to__id.html#ga383cbc45288ba84c53a163da7c41b1cc">to_id</a>(<a class="code hl_function" href="namespaceclanguml_1_1common.html#a1f6b3f1cb4c3c8572404cb8e205c034e" title="Get qualified name of some Clang declaration.">get_qualified_name</a>(declaration));</div>
+<div class="line"><span class="lineno">  377</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga0637368c5049f6c927ee049c650bfa9c" name="ga0637368c5049f6c927ee049c650bfa9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0637368c5049f6c927ee049c650bfa9c">&#9670;&#160;</a></span>to_id() <span class="overload">[2/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a> clanguml::common::to_id </td>
+          <td>(</td>
+          <td class="paramtype">const clang::EnumDecl &amp;&#160;</td>
+          <td class="paramname"><em>declaration</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="clang__utils_8cc_source.html#l00364">364</a> of file <a class="el" href="clang__utils_8cc_source.html">clang_utils.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  365</span>{</div>
+<div class="line"><span class="lineno">  366</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="group__to__id.html#ga383cbc45288ba84c53a163da7c41b1cc">to_id</a>(<a class="code hl_function" href="namespaceclanguml_1_1common.html#a1f6b3f1cb4c3c8572404cb8e205c034e" title="Get qualified name of some Clang declaration.">get_qualified_name</a>(declaration));</div>
+<div class="line"><span class="lineno">  367</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga20b01ca718b80dd30a9ac7f164ae355c" name="ga20b01ca718b80dd30a9ac7f164ae355c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga20b01ca718b80dd30a9ac7f164ae355c">&#9670;&#160;</a></span>to_id() <span class="overload">[3/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a> clanguml::common::to_id </td>
+          <td>(</td>
+          <td class="paramtype">const clang::EnumType &amp;&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="clang__utils_8cc_source.html#l00379">379</a> of file <a class="el" href="clang__utils_8cc_source.html">clang_utils.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  379</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="group__to__id.html#ga383cbc45288ba84c53a163da7c41b1cc">to_id</a>(*t.getDecl()); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga22f53e496cfba18ad4be817d827b2136" name="ga22f53e496cfba18ad4be817d827b2136"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga22f53e496cfba18ad4be817d827b2136">&#9670;&#160;</a></span>to_id() <span class="overload">[4/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a> clanguml::common::to_id </td>
+          <td>(</td>
+          <td class="paramtype">const clang::NamespaceDecl &amp;&#160;</td>
+          <td class="paramname"><em>declaration</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="clang__utils_8cc_source.html#l00354">354</a> of file <a class="el" href="clang__utils_8cc_source.html">clang_utils.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  355</span>{</div>
+<div class="line"><span class="lineno">  356</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="group__to__id.html#ga383cbc45288ba84c53a163da7c41b1cc">to_id</a>(<a class="code hl_function" href="namespaceclanguml_1_1common.html#a1f6b3f1cb4c3c8572404cb8e205c034e" title="Get qualified name of some Clang declaration.">get_qualified_name</a>(declaration));</div>
+<div class="line"><span class="lineno">  357</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga18a51788732ca815ae7165a61239762f" name="ga18a51788732ca815ae7165a61239762f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga18a51788732ca815ae7165a61239762f">&#9670;&#160;</a></span>to_id() <span class="overload">[5/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a> clanguml::common::to_id </td>
+          <td>(</td>
+          <td class="paramtype">const clang::QualType &amp;&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const clang::ASTContext &amp;&#160;</td>
+          <td class="paramname"><em>ctx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="clang__utils_8cc_source.html#l00349">349</a> of file <a class="el" href="clang__utils_8cc_source.html">clang_utils.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  350</span>{</div>
+<div class="line"><span class="lineno">  351</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="group__to__id.html#ga383cbc45288ba84c53a163da7c41b1cc">to_id</a>(common::to_string(type, ctx));</div>
+<div class="line"><span class="lineno">  352</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga9ae6c992fdd4e70647727717a5efd877" name="ga9ae6c992fdd4e70647727717a5efd877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9ae6c992fdd4e70647727717a5efd877">&#9670;&#160;</a></span>to_id() <span class="overload">[6/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a> clanguml::common::to_id </td>
+          <td>(</td>
+          <td class="paramtype">const clang::RecordDecl &amp;&#160;</td>
+          <td class="paramname"><em>declaration</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="clang__utils_8cc_source.html#l00359">359</a> of file <a class="el" href="clang__utils_8cc_source.html">clang_utils.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  360</span>{</div>
+<div class="line"><span class="lineno">  361</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="group__to__id.html#ga383cbc45288ba84c53a163da7c41b1cc">to_id</a>(<a class="code hl_function" href="namespaceclanguml_1_1common.html#a1f6b3f1cb4c3c8572404cb8e205c034e" title="Get qualified name of some Clang declaration.">get_qualified_name</a>(declaration));</div>
+<div class="line"><span class="lineno">  362</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="gad50e737792823c468ef5281949036f5a" name="gad50e737792823c468ef5281949036f5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad50e737792823c468ef5281949036f5a">&#9670;&#160;</a></span>to_id() <span class="overload">[7/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a> clanguml::common::to_id </td>
+          <td>(</td>
+          <td class="paramtype">const clang::TagDecl &amp;&#160;</td>
+          <td class="paramname"><em>declaration</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="clang__utils_8cc_source.html#l00369">369</a> of file <a class="el" href="clang__utils_8cc_source.html">clang_utils.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  370</span>{</div>
+<div class="line"><span class="lineno">  371</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="group__to__id.html#ga383cbc45288ba84c53a163da7c41b1cc">to_id</a>(<a class="code hl_function" href="namespaceclanguml_1_1common.html#a1f6b3f1cb4c3c8572404cb8e205c034e" title="Get qualified name of some Clang declaration.">get_qualified_name</a>(declaration));</div>
+<div class="line"><span class="lineno">  372</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="gadb66f4f30b461d3ce24428755c7e9cc5" name="gadb66f4f30b461d3ce24428755c7e9cc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadb66f4f30b461d3ce24428755c7e9cc5">&#9670;&#160;</a></span>to_id() <span class="overload">[8/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a> clanguml::common::to_id </td>
+          <td>(</td>
+          <td class="paramtype">const clang::TemplateSpecializationType &amp;&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga693336bd4de09ebe5a0f96233cd5ae46" name="ga693336bd4de09ebe5a0f96233cd5ae46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga693336bd4de09ebe5a0f96233cd5ae46">&#9670;&#160;</a></span>to_id() <span class="overload">[9/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a> clanguml::common::to_id </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="clang__utils_8cc_source.html#l00381">381</a> of file <a class="el" href="clang__utils_8cc_source.html">clang_utils.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  382</span>{</div>
+<div class="line"><span class="lineno">  383</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="group__to__id.html#ga383cbc45288ba84c53a163da7c41b1cc">to_id</a>(file.lexically_normal().string());</div>
+<div class="line"><span class="lineno">  384</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga383cbc45288ba84c53a163da7c41b1cc" name="ga383cbc45288ba84c53a163da7c41b1cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga383cbc45288ba84c53a163da7c41b1cc">&#9670;&#160;</a></span>to_id() <span class="overload">[10/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a> clanguml::common::to_id </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>full_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="clang__utils_8cc_source.html#l00344">344</a> of file <a class="el" href="clang__utils_8cc_source.html">clang_utils.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  345</span>{</div>
+<div class="line"><span class="lineno">  346</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a><span class="keyword">&gt;</span>(std::hash&lt;std::string&gt;{}(full_name) &gt;&gt; 3U);</div>
+<div class="line"><span class="lineno">  347</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga51179bdf5478be6d17dc8a9082e950ae" name="ga51179bdf5478be6d17dc8a9082e950ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga51179bdf5478be6d17dc8a9082e950ae">&#9670;&#160;</a></span>to_id() <span class="overload">[11/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">id_t</a> clanguml::common::to_id </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>declaration</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

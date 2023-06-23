@@ -1,0 +1,1563 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: clanguml::sequence_diagram::visitor::call_expression_context Struct Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceclanguml.html">clanguml</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1sequence__diagram.html">sequence_diagram</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1sequence__diagram_1_1visitor.html">visitor</a></li><li class="navelem"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html">call_expression_context</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">clanguml::sequence_diagram::visitor::call_expression_context Struct Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00031">31</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+</div>
+<p><code>#include &lt;<a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a53f9569091cf1e61fd0924c69a5081c5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a53f9569091cf1e61fd0924c69a5081c5">call_expression_context</a> ()</td></tr>
+<tr class="separator:a53f9569091cf1e61fd0924c69a5081c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81414ba3681f021f22595590515c9521"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a81414ba3681f021f22595590515c9521">reset</a> ()</td></tr>
+<tr class="separator:a81414ba3681f021f22595590515c9521"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09ad166e0214e49365567219de1cd85a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a09ad166e0214e49365567219de1cd85a">dump</a> ()</td></tr>
+<tr class="separator:a09ad166e0214e49365567219de1cd85a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5027e8860fa882ab863508c3dcfba79d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a5027e8860fa882ab863508c3dcfba79d">valid</a> () const</td></tr>
+<tr class="separator:a5027e8860fa882ab863508c3dcfba79d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7923dcff45364275491a070d803fbb4c"><td class="memItemLeft" align="right" valign="top">clang::ASTContext *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a7923dcff45364275491a070d803fbb4c">get_ast_context</a> () const</td></tr>
+<tr class="separator:a7923dcff45364275491a070d803fbb4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a897a7f1d272dd559bc5368e10aa31047"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a897a7f1d272dd559bc5368e10aa31047">update</a> (clang::CXXRecordDecl *cls)</td></tr>
+<tr class="separator:a897a7f1d272dd559bc5368e10aa31047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfa5b78c6b5970adc38f590c517d3a39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#abfa5b78c6b5970adc38f590c517d3a39">update</a> (clang::ClassTemplateSpecializationDecl *clst)</td></tr>
+<tr class="separator:abfa5b78c6b5970adc38f590c517d3a39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8bca4396888dfcfac7666468ee6bf2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#af8bca4396888dfcfac7666468ee6bf2a">update</a> (clang::ClassTemplateDecl *clst)</td></tr>
+<tr class="separator:af8bca4396888dfcfac7666468ee6bf2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cec46987ada7fc5fabb43feb8438d12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a9cec46987ada7fc5fabb43feb8438d12">update</a> (clang::CXXMethodDecl *method)</td></tr>
+<tr class="separator:a9cec46987ada7fc5fabb43feb8438d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9c317c3a1ae64d89545a3953d164234"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#af9c317c3a1ae64d89545a3953d164234">update</a> (clang::FunctionDecl *function)</td></tr>
+<tr class="separator:af9c317c3a1ae64d89545a3953d164234"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77ee20c94b1dd015c2935ee710b4e72e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a77ee20c94b1dd015c2935ee710b4e72e">update</a> (clang::FunctionTemplateDecl *function_template)</td></tr>
+<tr class="separator:a77ee20c94b1dd015c2935ee710b4e72e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae3e5964f5bd04c48c7d746e17464838"><td class="memItemLeft" align="right" valign="top">std::int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aae3e5964f5bd04c48c7d746e17464838">caller_id</a> () const</td></tr>
+<tr class="separator:aae3e5964f5bd04c48c7d746e17464838"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78d7b046610270d774e40a33c9b04867"><td class="memItemLeft" align="right" valign="top">std::int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a78d7b046610270d774e40a33c9b04867">lambda_caller_id</a> () const</td></tr>
+<tr class="separator:a78d7b046610270d774e40a33c9b04867"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa601bf7b4f1625265a00442561a63037"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aa601bf7b4f1625265a00442561a63037">set_caller_id</a> (std::int64_t id)</td></tr>
+<tr class="separator:aa601bf7b4f1625265a00442561a63037"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abac7be057222333b69efd68fdc6fd701"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#abac7be057222333b69efd68fdc6fd701">enter_lambda_expression</a> (std::int64_t id)</td></tr>
+<tr class="separator:abac7be057222333b69efd68fdc6fd701"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6cdaba17e8ce14f01aad1a76410c2bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#af6cdaba17e8ce14f01aad1a76410c2bf">leave_lambda_expression</a> ()</td></tr>
+<tr class="separator:af6cdaba17e8ce14f01aad1a76410c2bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d4c993ce97d580c580349062dcc4936"><td class="memItemLeft" align="right" valign="top">clang::IfStmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a7d4c993ce97d580c580349062dcc4936">current_ifstmt</a> () const</td></tr>
+<tr class="separator:a7d4c993ce97d580c580349062dcc4936"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc43b8ebb9e2e181f2fca0b9ec17c789"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#acc43b8ebb9e2e181f2fca0b9ec17c789">enter_ifstmt</a> (clang::IfStmt *stmt)</td></tr>
+<tr class="separator:acc43b8ebb9e2e181f2fca0b9ec17c789"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbeadad7e22a11a6eeda332ad4539c34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#abbeadad7e22a11a6eeda332ad4539c34">leave_ifstmt</a> ()</td></tr>
+<tr class="separator:abbeadad7e22a11a6eeda332ad4539c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a009dfa987725cd1546c1bf8ade50388e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a009dfa987725cd1546c1bf8ade50388e">enter_elseifstmt</a> (clang::IfStmt *stmt)</td></tr>
+<tr class="separator:a009dfa987725cd1546c1bf8ade50388e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b1d6f6022eb8e58d2898ebf07588cba"><td class="memItemLeft" align="right" valign="top">clang::IfStmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a4b1d6f6022eb8e58d2898ebf07588cba">current_elseifstmt</a> () const</td></tr>
+<tr class="separator:a4b1d6f6022eb8e58d2898ebf07588cba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f7139641908d84f2346234bf3bb5719"><td class="memItemLeft" align="right" valign="top">clang::Stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a2f7139641908d84f2346234bf3bb5719">current_loopstmt</a> () const</td></tr>
+<tr class="separator:a2f7139641908d84f2346234bf3bb5719"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff65b93a9ec80f78179e0f880a166a9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aff65b93a9ec80f78179e0f880a166a9a">enter_loopstmt</a> (clang::Stmt *stmt)</td></tr>
+<tr class="separator:aff65b93a9ec80f78179e0f880a166a9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30fa9f0d889adb03e21b415d9e1467c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a30fa9f0d889adb03e21b415d9e1467c6">leave_loopstmt</a> ()</td></tr>
+<tr class="separator:a30fa9f0d889adb03e21b415d9e1467c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a872ae2ea2ea1c6d72f6e8a7307608146"><td class="memItemLeft" align="right" valign="top">clang::Stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a872ae2ea2ea1c6d72f6e8a7307608146">current_trystmt</a> () const</td></tr>
+<tr class="separator:a872ae2ea2ea1c6d72f6e8a7307608146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cf014f69bd0bebb256e8fb0fc89daa2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a3cf014f69bd0bebb256e8fb0fc89daa2">enter_trystmt</a> (clang::Stmt *stmt)</td></tr>
+<tr class="separator:a3cf014f69bd0bebb256e8fb0fc89daa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4892e4f52e3bdbd4928530632c38117"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aa4892e4f52e3bdbd4928530632c38117">leave_trystmt</a> ()</td></tr>
+<tr class="separator:aa4892e4f52e3bdbd4928530632c38117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdcc3c7e6b88e4f297d934801534c616"><td class="memItemLeft" align="right" valign="top">clang::SwitchStmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#afdcc3c7e6b88e4f297d934801534c616">current_switchstmt</a> () const</td></tr>
+<tr class="separator:afdcc3c7e6b88e4f297d934801534c616"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26b195b68210b5c711fedc4666ca8831"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a26b195b68210b5c711fedc4666ca8831">enter_switchstmt</a> (clang::SwitchStmt *stmt)</td></tr>
+<tr class="separator:a26b195b68210b5c711fedc4666ca8831"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af886b8f81e416beda022d52d87b8a0e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#af886b8f81e416beda022d52d87b8a0e1">leave_switchstmt</a> ()</td></tr>
+<tr class="separator:af886b8f81e416beda022d52d87b8a0e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a155a597760f369980bc5d30e4d9d0fdb"><td class="memItemLeft" align="right" valign="top">clang::ConditionalOperator *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a155a597760f369980bc5d30e4d9d0fdb">current_conditionaloperator</a> () const</td></tr>
+<tr class="separator:a155a597760f369980bc5d30e4d9d0fdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affb85916d8e9f4146208eb03ab0c0d3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#affb85916d8e9f4146208eb03ab0c0d3a">enter_conditionaloperator</a> (clang::ConditionalOperator *stmt)</td></tr>
+<tr class="separator:affb85916d8e9f4146208eb03ab0c0d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e0eb7e5751ef45da375a33ee6e673a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a8e0eb7e5751ef45da375a33ee6e673a8">leave_conditionaloperator</a> ()</td></tr>
+<tr class="separator:a8e0eb7e5751ef45da375a33ee6e673a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a638cca67a3c0063ae93096ef793ce4ab"><td class="memItemLeft" align="right" valign="top">clang::CallExpr *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a638cca67a3c0063ae93096ef793ce4ab">current_callexpr</a> () const</td></tr>
+<tr class="separator:a638cca67a3c0063ae93096ef793ce4ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e7cc7d596f2f9e4445b2279aed8d5b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a1e7cc7d596f2f9e4445b2279aed8d5b3">enter_callexpr</a> (clang::CallExpr *expr)</td></tr>
+<tr class="separator:a1e7cc7d596f2f9e4445b2279aed8d5b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2822b05c48a9a26f09c0a919184a30e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a2822b05c48a9a26f09c0a919184a30e6">leave_callexpr</a> ()</td></tr>
+<tr class="separator:a2822b05c48a9a26f09c0a919184a30e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fcb82b1c7f4a753831829732cd15b94"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a2fcb82b1c7f4a753831829732cd15b94">is_expr_in_current_control_statement_condition</a> (const clang::Stmt *stmt) const</td></tr>
+<tr class="separator:a2fcb82b1c7f4a753831829732cd15b94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a397766d27eeaf501004cc8e3c30ec3c2"><td class="memItemLeft" align="right" valign="top">clang::CXXRecordDecl *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a397766d27eeaf501004cc8e3c30ec3c2">current_class_decl_</a> {nullptr}</td></tr>
+<tr class="separator:a397766d27eeaf501004cc8e3c30ec3c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab78a8ea9795001fa88a70d353d57c219"><td class="memItemLeft" align="right" valign="top">clang::ClassTemplateDecl *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#ab78a8ea9795001fa88a70d353d57c219">current_class_template_decl_</a> {nullptr}</td></tr>
+<tr class="separator:ab78a8ea9795001fa88a70d353d57c219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abff3c3ce2ee020193379b50436f72dbe"><td class="memItemLeft" align="right" valign="top">clang::ClassTemplateSpecializationDecl *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#abff3c3ce2ee020193379b50436f72dbe">current_class_template_specialization_decl_</a> {nullptr}</td></tr>
+<tr class="separator:abff3c3ce2ee020193379b50436f72dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f68c23eebb2c89717259793bfd4f8ac"><td class="memItemLeft" align="right" valign="top">clang::CXXMethodDecl *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a8f68c23eebb2c89717259793bfd4f8ac">current_method_decl_</a> {nullptr}</td></tr>
+<tr class="separator:a8f68c23eebb2c89717259793bfd4f8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a324706eb6d6da388ab4e8110616e2c5a"><td class="memItemLeft" align="right" valign="top">clang::FunctionDecl *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a324706eb6d6da388ab4e8110616e2c5a">current_function_decl_</a> {nullptr}</td></tr>
+<tr class="separator:a324706eb6d6da388ab4e8110616e2c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a103a7184b2ab46ffe7e07ae5966bb643"><td class="memItemLeft" align="right" valign="top">clang::FunctionTemplateDecl *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a103a7184b2ab46ffe7e07ae5966bb643">current_function_template_decl_</a> {nullptr}</td></tr>
+<tr class="separator:a103a7184b2ab46ffe7e07ae5966bb643"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aa29d5ad5e05f5cd6f2931d55c86db7da"><td class="memItemLeft" align="right" valign="top">std::int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aa29d5ad5e05f5cd6f2931d55c86db7da">current_caller_id_</a> {0}</td></tr>
+<tr class="separator:aa29d5ad5e05f5cd6f2931d55c86db7da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a328e459ebd83c8c26cdab24d477ab21c"><td class="memItemLeft" align="right" valign="top">std::stack&lt; std::int64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a328e459ebd83c8c26cdab24d477ab21c">current_lambda_caller_id_</a></td></tr>
+<tr class="separator:a328e459ebd83c8c26cdab24d477ab21c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bcb302c260258c3ef3008e46f985803"><td class="memItemLeft" align="right" valign="top">std::stack&lt; clang::CallExpr * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a6bcb302c260258c3ef3008e46f985803">call_expr_stack_</a></td></tr>
+<tr class="separator:a6bcb302c260258c3ef3008e46f985803"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1746ec2c6d4179c27a9d4a1b4f370dfa"><td class="memItemLeft" align="right" valign="top">std::stack&lt; clang::IfStmt * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a1746ec2c6d4179c27a9d4a1b4f370dfa">if_stmt_stack_</a></td></tr>
+<tr class="separator:a1746ec2c6d4179c27a9d4a1b4f370dfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f0d91c8fabf915f6fcf6674e56bebba"><td class="memItemLeft" align="right" valign="top">std::stack&lt; clang::IfStmt * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a5f0d91c8fabf915f6fcf6674e56bebba">elseif_stmt_stack_</a></td></tr>
+<tr class="separator:a5f0d91c8fabf915f6fcf6674e56bebba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef593d369d48e4a9433046bd8277dc3b"><td class="memItemLeft" align="right" valign="top">std::stack&lt; clang::Stmt * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aef593d369d48e4a9433046bd8277dc3b">loop_stmt_stack_</a></td></tr>
+<tr class="separator:aef593d369d48e4a9433046bd8277dc3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a116e1d8fd4ede57c3be5b942bba98b96"><td class="memItemLeft" align="right" valign="top">std::stack&lt; clang::Stmt * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a116e1d8fd4ede57c3be5b942bba98b96">try_stmt_stack_</a></td></tr>
+<tr class="separator:a116e1d8fd4ede57c3be5b942bba98b96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a885bd82b01fdb27b6e039bfb5a0bdedb"><td class="memItemLeft" align="right" valign="top">std::stack&lt; clang::SwitchStmt * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a885bd82b01fdb27b6e039bfb5a0bdedb">switch_stmt_stack_</a></td></tr>
+<tr class="separator:a885bd82b01fdb27b6e039bfb5a0bdedb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33476bc00d65711364a7b0b02f6fd041"><td class="memItemLeft" align="right" valign="top">std::stack&lt; clang::ConditionalOperator * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a33476bc00d65711364a7b0b02f6fd041">conditional_operator_stack_</a></td></tr>
+<tr class="separator:a33476bc00d65711364a7b0b02f6fd041"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a53f9569091cf1e61fd0924c69a5081c5" name="a53f9569091cf1e61fd0924c69a5081c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53f9569091cf1e61fd0924c69a5081c5">&#9670;&#160;</a></span>call_expression_context()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">clanguml::sequence_diagram::visitor::call_expression_context::call_expression_context </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aae3e5964f5bd04c48c7d746e17464838" name="aae3e5964f5bd04c48c7d746e17464838"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae3e5964f5bd04c48c7d746e17464838">&#9670;&#160;</a></span>caller_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::int64_t clanguml::sequence_diagram::visitor::call_expression_context::caller_id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00129">129</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  130</span>{</div>
+<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aa29d5ad5e05f5cd6f2931d55c86db7da">current_caller_id_</a>;</div>
+<div class="line"><span class="lineno">  132</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a638cca67a3c0063ae93096ef793ce4ab" name="a638cca67a3c0063ae93096ef793ce4ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a638cca67a3c0063ae93096ef793ce4ab">&#9670;&#160;</a></span>current_callexpr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::CallExpr * clanguml::sequence_diagram::visitor::call_expression_context::current_callexpr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00221">221</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  222</span>{</div>
+<div class="line"><span class="lineno">  223</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a6bcb302c260258c3ef3008e46f985803">call_expr_stack_</a>.empty())</div>
+<div class="line"><span class="lineno">  224</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  225</span> </div>
+<div class="line"><span class="lineno">  226</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a6bcb302c260258c3ef3008e46f985803">call_expr_stack_</a>.top();</div>
+<div class="line"><span class="lineno">  227</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a155a597760f369980bc5d30e4d9d0fdb" name="a155a597760f369980bc5d30e4d9d0fdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a155a597760f369980bc5d30e4d9d0fdb">&#9670;&#160;</a></span>current_conditionaloperator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::ConditionalOperator * clanguml::sequence_diagram::visitor::call_expression_context::current_conditionaloperator </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00280">280</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  281</span>{</div>
+<div class="line"><span class="lineno">  282</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a33476bc00d65711364a7b0b02f6fd041">conditional_operator_stack_</a>.empty())</div>
+<div class="line"><span class="lineno">  283</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  284</span> </div>
+<div class="line"><span class="lineno">  285</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a33476bc00d65711364a7b0b02f6fd041">conditional_operator_stack_</a>.top();</div>
+<div class="line"><span class="lineno">  286</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4b1d6f6022eb8e58d2898ebf07588cba" name="a4b1d6f6022eb8e58d2898ebf07588cba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b1d6f6022eb8e58d2898ebf07588cba">&#9670;&#160;</a></span>current_elseifstmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::IfStmt * clanguml::sequence_diagram::visitor::call_expression_context::current_elseifstmt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00194">194</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  195</span>{</div>
+<div class="line"><span class="lineno">  196</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a5f0d91c8fabf915f6fcf6674e56bebba">elseif_stmt_stack_</a>.empty())</div>
+<div class="line"><span class="lineno">  197</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  198</span> </div>
+<div class="line"><span class="lineno">  199</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a5f0d91c8fabf915f6fcf6674e56bebba">elseif_stmt_stack_</a>.top();</div>
+<div class="line"><span class="lineno">  200</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7d4c993ce97d580c580349062dcc4936" name="a7d4c993ce97d580c580349062dcc4936"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d4c993ce97d580c580349062dcc4936">&#9670;&#160;</a></span>current_ifstmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::IfStmt * clanguml::sequence_diagram::visitor::call_expression_context::current_ifstmt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00168">168</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  169</span>{</div>
+<div class="line"><span class="lineno">  170</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a1746ec2c6d4179c27a9d4a1b4f370dfa">if_stmt_stack_</a>.empty())</div>
+<div class="line"><span class="lineno">  171</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  172</span> </div>
+<div class="line"><span class="lineno">  173</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a1746ec2c6d4179c27a9d4a1b4f370dfa">if_stmt_stack_</a>.top();</div>
+<div class="line"><span class="lineno">  174</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2f7139641908d84f2346234bf3bb5719" name="a2f7139641908d84f2346234bf3bb5719"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f7139641908d84f2346234bf3bb5719">&#9670;&#160;</a></span>current_loopstmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::Stmt * clanguml::sequence_diagram::visitor::call_expression_context::current_loopstmt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00202">202</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  203</span>{</div>
+<div class="line"><span class="lineno">  204</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aef593d369d48e4a9433046bd8277dc3b">loop_stmt_stack_</a>.empty())</div>
+<div class="line"><span class="lineno">  205</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  206</span> </div>
+<div class="line"><span class="lineno">  207</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aef593d369d48e4a9433046bd8277dc3b">loop_stmt_stack_</a>.top();</div>
+<div class="line"><span class="lineno">  208</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="afdcc3c7e6b88e4f297d934801534c616" name="afdcc3c7e6b88e4f297d934801534c616"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdcc3c7e6b88e4f297d934801534c616">&#9670;&#160;</a></span>current_switchstmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::SwitchStmt * clanguml::sequence_diagram::visitor::call_expression_context::current_switchstmt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00260">260</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  261</span>{</div>
+<div class="line"><span class="lineno">  262</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a885bd82b01fdb27b6e039bfb5a0bdedb">switch_stmt_stack_</a>.empty())</div>
+<div class="line"><span class="lineno">  263</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  264</span> </div>
+<div class="line"><span class="lineno">  265</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a885bd82b01fdb27b6e039bfb5a0bdedb">switch_stmt_stack_</a>.top();</div>
+<div class="line"><span class="lineno">  266</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a872ae2ea2ea1c6d72f6e8a7307608146" name="a872ae2ea2ea1c6d72f6e8a7307608146"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a872ae2ea2ea1c6d72f6e8a7307608146">&#9670;&#160;</a></span>current_trystmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::Stmt * clanguml::sequence_diagram::visitor::call_expression_context::current_trystmt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00241">241</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  242</span>{</div>
+<div class="line"><span class="lineno">  243</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a116e1d8fd4ede57c3be5b942bba98b96">try_stmt_stack_</a>.empty())</div>
+<div class="line"><span class="lineno">  244</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  245</span> </div>
+<div class="line"><span class="lineno">  246</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a116e1d8fd4ede57c3be5b942bba98b96">try_stmt_stack_</a>.top();</div>
+<div class="line"><span class="lineno">  247</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a09ad166e0214e49365567219de1cd85a" name="a09ad166e0214e49365567219de1cd85a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09ad166e0214e49365567219de1cd85a">&#9670;&#160;</a></span>dump()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::dump </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00036">36</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   37</span>{</div>
+<div class="line"><span class="lineno">   38</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;current_caller_id_ = {}&quot;</span>, <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aa29d5ad5e05f5cd6f2931d55c86db7da">current_caller_id_</a>);</div>
+<div class="line"><span class="lineno">   39</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;current_class_decl_ = {}&quot;</span>, (<span class="keywordtype">void</span> *)<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a397766d27eeaf501004cc8e3c30ec3c2">current_class_decl_</a>);</div>
+<div class="line"><span class="lineno">   40</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;current_class_template_decl_ = {}&quot;</span>,</div>
+<div class="line"><span class="lineno">   41</span>        (<span class="keywordtype">void</span> *)<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#ab78a8ea9795001fa88a70d353d57c219">current_class_template_decl_</a>);</div>
+<div class="line"><span class="lineno">   42</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;current_class_template_specialization_decl_ = {}&quot;</span>,</div>
+<div class="line"><span class="lineno">   43</span>        (<span class="keywordtype">void</span> *)<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#abff3c3ce2ee020193379b50436f72dbe">current_class_template_specialization_decl_</a>);</div>
+<div class="line"><span class="lineno">   44</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;current_method_decl_ = {}&quot;</span>, (<span class="keywordtype">void</span> *)<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a8f68c23eebb2c89717259793bfd4f8ac">current_method_decl_</a>);</div>
+<div class="line"><span class="lineno">   45</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;current_function_decl_ = {}&quot;</span>, (<span class="keywordtype">void</span> *)<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a324706eb6d6da388ab4e8110616e2c5a">current_function_decl_</a>);</div>
+<div class="line"><span class="lineno">   46</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;current_function_template_decl_ = {}&quot;</span>,</div>
+<div class="line"><span class="lineno">   47</span>        (<span class="keywordtype">void</span> *)<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a103a7184b2ab46ffe7e07ae5966bb643">current_function_template_decl_</a>);</div>
+<div class="line"><span class="lineno">   48</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1e7cc7d596f2f9e4445b2279aed8d5b3" name="a1e7cc7d596f2f9e4445b2279aed8d5b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e7cc7d596f2f9e4445b2279aed8d5b3">&#9670;&#160;</a></span>enter_callexpr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::enter_callexpr </td>
+          <td>(</td>
+          <td class="paramtype">clang::CallExpr *&#160;</td>
+          <td class="paramname"><em>expr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00229">229</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  230</span>{</div>
+<div class="line"><span class="lineno">  231</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a6bcb302c260258c3ef3008e46f985803">call_expr_stack_</a>.push(expr);</div>
+<div class="line"><span class="lineno">  232</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="affb85916d8e9f4146208eb03ab0c0d3a" name="affb85916d8e9f4146208eb03ab0c0d3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affb85916d8e9f4146208eb03ab0c0d3a">&#9670;&#160;</a></span>enter_conditionaloperator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::enter_conditionaloperator </td>
+          <td>(</td>
+          <td class="paramtype">clang::ConditionalOperator *&#160;</td>
+          <td class="paramname"><em>stmt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00288">288</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  290</span>{</div>
+<div class="line"><span class="lineno">  291</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a33476bc00d65711364a7b0b02f6fd041">conditional_operator_stack_</a>.push(stmt);</div>
+<div class="line"><span class="lineno">  292</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a009dfa987725cd1546c1bf8ade50388e" name="a009dfa987725cd1546c1bf8ade50388e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a009dfa987725cd1546c1bf8ade50388e">&#9670;&#160;</a></span>enter_elseifstmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::enter_elseifstmt </td>
+          <td>(</td>
+          <td class="paramtype">clang::IfStmt *&#160;</td>
+          <td class="paramname"><em>stmt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00189">189</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  190</span>{</div>
+<div class="line"><span class="lineno">  191</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a5f0d91c8fabf915f6fcf6674e56bebba">elseif_stmt_stack_</a>.push(stmt);</div>
+<div class="line"><span class="lineno">  192</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="acc43b8ebb9e2e181f2fca0b9ec17c789" name="acc43b8ebb9e2e181f2fca0b9ec17c789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc43b8ebb9e2e181f2fca0b9ec17c789">&#9670;&#160;</a></span>enter_ifstmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::enter_ifstmt </td>
+          <td>(</td>
+          <td class="paramtype">clang::IfStmt *&#160;</td>
+          <td class="paramname"><em>stmt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00176">176</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  177</span>{</div>
+<div class="line"><span class="lineno">  178</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a1746ec2c6d4179c27a9d4a1b4f370dfa">if_stmt_stack_</a>.push(stmt);</div>
+<div class="line"><span class="lineno">  179</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abac7be057222333b69efd68fdc6fd701" name="abac7be057222333b69efd68fdc6fd701"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abac7be057222333b69efd68fdc6fd701">&#9670;&#160;</a></span>enter_lambda_expression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::enter_lambda_expression </td>
+          <td>(</td>
+          <td class="paramtype">std::int64_t&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00148">148</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  149</span>{</div>
+<div class="line"><span class="lineno">  150</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Setting current lambda caller id to {}&quot;</span>, <span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">  151</span> </div>
+<div class="line"><span class="lineno">  152</span>    assert(<span class="keywordtype">id</span> != 0);</div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a328e459ebd83c8c26cdab24d477ab21c">current_lambda_caller_id_</a>.push(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">  155</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aff65b93a9ec80f78179e0f880a166a9a" name="aff65b93a9ec80f78179e0f880a166a9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff65b93a9ec80f78179e0f880a166a9a">&#9670;&#160;</a></span>enter_loopstmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::enter_loopstmt </td>
+          <td>(</td>
+          <td class="paramtype">clang::Stmt *&#160;</td>
+          <td class="paramname"><em>stmt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00210">210</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  211</span>{</div>
+<div class="line"><span class="lineno">  212</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aef593d369d48e4a9433046bd8277dc3b">loop_stmt_stack_</a>.push(stmt);</div>
+<div class="line"><span class="lineno">  213</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a26b195b68210b5c711fedc4666ca8831" name="a26b195b68210b5c711fedc4666ca8831"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26b195b68210b5c711fedc4666ca8831">&#9670;&#160;</a></span>enter_switchstmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::enter_switchstmt </td>
+          <td>(</td>
+          <td class="paramtype">clang::SwitchStmt *&#160;</td>
+          <td class="paramname"><em>stmt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00268">268</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  269</span>{</div>
+<div class="line"><span class="lineno">  270</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a885bd82b01fdb27b6e039bfb5a0bdedb">switch_stmt_stack_</a>.push(stmt);</div>
+<div class="line"><span class="lineno">  271</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3cf014f69bd0bebb256e8fb0fc89daa2" name="a3cf014f69bd0bebb256e8fb0fc89daa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cf014f69bd0bebb256e8fb0fc89daa2">&#9670;&#160;</a></span>enter_trystmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::enter_trystmt </td>
+          <td>(</td>
+          <td class="paramtype">clang::Stmt *&#160;</td>
+          <td class="paramname"><em>stmt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00249">249</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  250</span>{</div>
+<div class="line"><span class="lineno">  251</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a116e1d8fd4ede57c3be5b942bba98b96">try_stmt_stack_</a>.push(stmt);</div>
+<div class="line"><span class="lineno">  252</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7923dcff45364275491a070d803fbb4c" name="a7923dcff45364275491a070d803fbb4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7923dcff45364275491a070d803fbb4c">&#9670;&#160;</a></span>get_ast_context()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::ASTContext * clanguml::sequence_diagram::visitor::call_expression_context::get_ast_context </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00060">60</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   61</span>{</div>
+<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#abff3c3ce2ee020193379b50436f72dbe">current_class_template_specialization_decl_</a> != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">return</span> &amp;<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#abff3c3ce2ee020193379b50436f72dbe">current_class_template_specialization_decl_</a>-&gt;getASTContext();</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#ab78a8ea9795001fa88a70d353d57c219">current_class_template_decl_</a> != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">return</span> &amp;<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#ab78a8ea9795001fa88a70d353d57c219">current_class_template_decl_</a>-&gt;getASTContext();</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a397766d27eeaf501004cc8e3c30ec3c2">current_class_decl_</a> != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">return</span> &amp;<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a397766d27eeaf501004cc8e3c30ec3c2">current_class_decl_</a>-&gt;getASTContext();</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a103a7184b2ab46ffe7e07ae5966bb643">current_function_template_decl_</a> != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">return</span> &amp;<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a103a7184b2ab46ffe7e07ae5966bb643">current_function_template_decl_</a>-&gt;getASTContext();</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a324706eb6d6da388ab4e8110616e2c5a">current_function_decl_</a> != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">return</span> &amp;<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a324706eb6d6da388ab4e8110616e2c5a">current_function_decl_</a>-&gt;getASTContext();</div>
+<div class="line"><span class="lineno">   76</span>    }</div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   79</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2fcb82b1c7f4a753831829732cd15b94" name="a2fcb82b1c7f4a753831829732cd15b94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fcb82b1c7f4a753831829732cd15b94">&#9670;&#160;</a></span>is_expr_in_current_control_statement_condition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::sequence_diagram::visitor::call_expression_context::is_expr_in_current_control_statement_condition </td>
+          <td>(</td>
+          <td class="paramtype">const clang::Stmt *&#160;</td>
+          <td class="paramname"><em>stmt</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00300">300</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  302</span>{</div>
+<div class="line"><span class="lineno">  303</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a7d4c993ce97d580c580349062dcc4936">current_ifstmt</a>() != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  304</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a7d4c993ce97d580c580349062dcc4936">current_ifstmt</a>()-&gt;getCond(), stmt)) {</div>
+<div class="line"><span class="lineno">  305</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  306</span>        }</div>
+<div class="line"><span class="lineno">  307</span>    }</div>
+<div class="line"><span class="lineno">  308</span> </div>
+<div class="line"><span class="lineno">  309</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a4b1d6f6022eb8e58d2898ebf07588cba">current_elseifstmt</a>() != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  310</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a4b1d6f6022eb8e58d2898ebf07588cba">current_elseifstmt</a>()-&gt;getCond(), stmt)) {</div>
+<div class="line"><span class="lineno">  311</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  312</span>        }</div>
+<div class="line"><span class="lineno">  313</span>    }</div>
+<div class="line"><span class="lineno">  314</span> </div>
+<div class="line"><span class="lineno">  315</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *loop_stmt = <a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a2f7139641908d84f2346234bf3bb5719">current_loopstmt</a>(); loop_stmt != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  316</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *for_stmt = clang::dyn_cast&lt;clang::ForStmt&gt;(loop_stmt);</div>
+<div class="line"><span class="lineno">  317</span>            for_stmt != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  318</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(for_stmt-&gt;getCond(), stmt)) {</div>
+<div class="line"><span class="lineno">  319</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  320</span>            }</div>
+<div class="line"><span class="lineno">  321</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(for_stmt-&gt;getInit(), stmt)) {</div>
+<div class="line"><span class="lineno">  322</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  323</span>            }</div>
+<div class="line"><span class="lineno">  324</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(for_stmt-&gt;getInc(), stmt)) {</div>
+<div class="line"><span class="lineno">  325</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  326</span>            }</div>
+<div class="line"><span class="lineno">  327</span>        }</div>
+<div class="line"><span class="lineno">  328</span> </div>
+<div class="line"><span class="lineno">  329</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *range_for_stmt =</div>
+<div class="line"><span class="lineno">  330</span>                clang::dyn_cast&lt;clang::CXXForRangeStmt&gt;(loop_stmt);</div>
+<div class="line"><span class="lineno">  331</span>            range_for_stmt != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  332</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(range_for_stmt-&gt;getRangeInit(), stmt)) {</div>
+<div class="line"><span class="lineno">  333</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  334</span>            }</div>
+<div class="line"><span class="lineno">  335</span>        }</div>
+<div class="line"><span class="lineno">  336</span> </div>
+<div class="line"><span class="lineno">  337</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *while_stmt =</div>
+<div class="line"><span class="lineno">  338</span>                clang::dyn_cast&lt;clang::WhileStmt&gt;(loop_stmt);</div>
+<div class="line"><span class="lineno">  339</span>            while_stmt != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  340</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(while_stmt-&gt;getCond(), stmt)) {</div>
+<div class="line"><span class="lineno">  341</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  342</span>            }</div>
+<div class="line"><span class="lineno">  343</span>        }</div>
+<div class="line"><span class="lineno">  344</span> </div>
+<div class="line"><span class="lineno">  345</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *do_stmt = clang::dyn_cast&lt;clang::DoStmt&gt;(loop_stmt);</div>
+<div class="line"><span class="lineno">  346</span>            do_stmt != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  347</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(do_stmt-&gt;getCond(), stmt)) {</div>
+<div class="line"><span class="lineno">  348</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  349</span>            }</div>
+<div class="line"><span class="lineno">  350</span>        }</div>
+<div class="line"><span class="lineno">  351</span> </div>
+<div class="line"><span class="lineno">  352</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a155a597760f369980bc5d30e4d9d0fdb">current_conditionaloperator</a>() != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  353</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(</div>
+<div class="line"><span class="lineno">  354</span>                    <a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a155a597760f369980bc5d30e4d9d0fdb">current_conditionaloperator</a>()-&gt;getCond(), stmt)) {</div>
+<div class="line"><span class="lineno">  355</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  356</span>            }</div>
+<div class="line"><span class="lineno">  357</span>        }</div>
+<div class="line"><span class="lineno">  358</span>    }</div>
+<div class="line"><span class="lineno">  359</span> </div>
+<div class="line"><span class="lineno">  360</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  361</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a78d7b046610270d774e40a33c9b04867" name="a78d7b046610270d774e40a33c9b04867"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78d7b046610270d774e40a33c9b04867">&#9670;&#160;</a></span>lambda_caller_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::int64_t clanguml::sequence_diagram::visitor::call_expression_context::lambda_caller_id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00134">134</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  135</span>{</div>
+<div class="line"><span class="lineno">  136</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a328e459ebd83c8c26cdab24d477ab21c">current_lambda_caller_id_</a>.empty())</div>
+<div class="line"><span class="lineno">  137</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  138</span> </div>
+<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a328e459ebd83c8c26cdab24d477ab21c">current_lambda_caller_id_</a>.top();</div>
+<div class="line"><span class="lineno">  140</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2822b05c48a9a26f09c0a919184a30e6" name="a2822b05c48a9a26f09c0a919184a30e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2822b05c48a9a26f09c0a919184a30e6">&#9670;&#160;</a></span>leave_callexpr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::leave_callexpr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00234">234</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  235</span>{</div>
+<div class="line"><span class="lineno">  236</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a6bcb302c260258c3ef3008e46f985803">call_expr_stack_</a>.empty()) {</div>
+<div class="line"><span class="lineno">  237</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a6bcb302c260258c3ef3008e46f985803">call_expr_stack_</a>.pop();</div>
+<div class="line"><span class="lineno">  238</span>    }</div>
+<div class="line"><span class="lineno">  239</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8e0eb7e5751ef45da375a33ee6e673a8" name="a8e0eb7e5751ef45da375a33ee6e673a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e0eb7e5751ef45da375a33ee6e673a8">&#9670;&#160;</a></span>leave_conditionaloperator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::leave_conditionaloperator </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00294">294</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  295</span>{</div>
+<div class="line"><span class="lineno">  296</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a33476bc00d65711364a7b0b02f6fd041">conditional_operator_stack_</a>.empty())</div>
+<div class="line"><span class="lineno">  297</span>        <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a33476bc00d65711364a7b0b02f6fd041">conditional_operator_stack_</a>.pop();</div>
+<div class="line"><span class="lineno">  298</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abbeadad7e22a11a6eeda332ad4539c34" name="abbeadad7e22a11a6eeda332ad4539c34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbeadad7e22a11a6eeda332ad4539c34">&#9670;&#160;</a></span>leave_ifstmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::leave_ifstmt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00181">181</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  182</span>{</div>
+<div class="line"><span class="lineno">  183</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a1746ec2c6d4179c27a9d4a1b4f370dfa">if_stmt_stack_</a>.empty()) {</div>
+<div class="line"><span class="lineno">  184</span>        <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a1746ec2c6d4179c27a9d4a1b4f370dfa">if_stmt_stack_</a>.pop();</div>
+<div class="line"><span class="lineno">  185</span>        std::stack&lt;clang::IfStmt *&gt;{}.swap(<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a5f0d91c8fabf915f6fcf6674e56bebba">elseif_stmt_stack_</a>);</div>
+<div class="line"><span class="lineno">  186</span>    }</div>
+<div class="line"><span class="lineno">  187</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af6cdaba17e8ce14f01aad1a76410c2bf" name="af6cdaba17e8ce14f01aad1a76410c2bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6cdaba17e8ce14f01aad1a76410c2bf">&#9670;&#160;</a></span>leave_lambda_expression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::leave_lambda_expression </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00157">157</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  158</span>{</div>
+<div class="line"><span class="lineno">  159</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a328e459ebd83c8c26cdab24d477ab21c">current_lambda_caller_id_</a>.empty())</div>
+<div class="line"><span class="lineno">  160</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  161</span> </div>
+<div class="line"><span class="lineno">  162</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Leaving current lambda expression id to {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  163</span>        <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a328e459ebd83c8c26cdab24d477ab21c">current_lambda_caller_id_</a>.top());</div>
+<div class="line"><span class="lineno">  164</span> </div>
+<div class="line"><span class="lineno">  165</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a328e459ebd83c8c26cdab24d477ab21c">current_lambda_caller_id_</a>.pop();</div>
+<div class="line"><span class="lineno">  166</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a30fa9f0d889adb03e21b415d9e1467c6" name="a30fa9f0d889adb03e21b415d9e1467c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30fa9f0d889adb03e21b415d9e1467c6">&#9670;&#160;</a></span>leave_loopstmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::leave_loopstmt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00215">215</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  216</span>{</div>
+<div class="line"><span class="lineno">  217</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aef593d369d48e4a9433046bd8277dc3b">loop_stmt_stack_</a>.empty())</div>
+<div class="line"><span class="lineno">  218</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aef593d369d48e4a9433046bd8277dc3b">loop_stmt_stack_</a>.pop();</div>
+<div class="line"><span class="lineno">  219</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af886b8f81e416beda022d52d87b8a0e1" name="af886b8f81e416beda022d52d87b8a0e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af886b8f81e416beda022d52d87b8a0e1">&#9670;&#160;</a></span>leave_switchstmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::leave_switchstmt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00273">273</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  274</span>{</div>
+<div class="line"><span class="lineno">  275</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a885bd82b01fdb27b6e039bfb5a0bdedb">switch_stmt_stack_</a>.empty())</div>
+<div class="line"><span class="lineno">  276</span>        <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a885bd82b01fdb27b6e039bfb5a0bdedb">switch_stmt_stack_</a>.pop();</div>
+<div class="line"><span class="lineno">  277</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa4892e4f52e3bdbd4928530632c38117" name="aa4892e4f52e3bdbd4928530632c38117"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4892e4f52e3bdbd4928530632c38117">&#9670;&#160;</a></span>leave_trystmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::leave_trystmt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00254">254</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  255</span>{</div>
+<div class="line"><span class="lineno">  256</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a116e1d8fd4ede57c3be5b942bba98b96">try_stmt_stack_</a>.empty())</div>
+<div class="line"><span class="lineno">  257</span>        <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a116e1d8fd4ede57c3be5b942bba98b96">try_stmt_stack_</a>.pop();</div>
+<div class="line"><span class="lineno">  258</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a81414ba3681f021f22595590515c9521" name="a81414ba3681f021f22595590515c9521"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81414ba3681f021f22595590515c9521">&#9670;&#160;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00025">25</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   26</span>{</div>
+<div class="line"><span class="lineno">   27</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aa29d5ad5e05f5cd6f2931d55c86db7da">current_caller_id_</a> = 0;</div>
+<div class="line"><span class="lineno">   28</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a397766d27eeaf501004cc8e3c30ec3c2">current_class_decl_</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   29</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#ab78a8ea9795001fa88a70d353d57c219">current_class_template_decl_</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   30</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#abff3c3ce2ee020193379b50436f72dbe">current_class_template_specialization_decl_</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   31</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a8f68c23eebb2c89717259793bfd4f8ac">current_method_decl_</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   32</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a324706eb6d6da388ab4e8110616e2c5a">current_function_decl_</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   33</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a103a7184b2ab46ffe7e07ae5966bb643">current_function_template_decl_</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   34</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa601bf7b4f1625265a00442561a63037" name="aa601bf7b4f1625265a00442561a63037"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa601bf7b4f1625265a00442561a63037">&#9670;&#160;</a></span>set_caller_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::set_caller_id </td>
+          <td>(</td>
+          <td class="paramtype">std::int64_t&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00142">142</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  143</span>{</div>
+<div class="line"><span class="lineno">  144</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Setting current caller id to {}&quot;</span>, <span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">  145</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aa29d5ad5e05f5cd6f2931d55c86db7da">current_caller_id_</a> = id;</div>
+<div class="line"><span class="lineno">  146</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af8bca4396888dfcfac7666468ee6bf2a" name="af8bca4396888dfcfac7666468ee6bf2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8bca4396888dfcfac7666468ee6bf2a">&#9670;&#160;</a></span>update() <span class="overload">[1/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::update </td>
+          <td>(</td>
+          <td class="paramtype">clang::ClassTemplateDecl *&#160;</td>
+          <td class="paramname"><em>clst</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00092">92</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   93</span>{</div>
+<div class="line"><span class="lineno">   94</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#ab78a8ea9795001fa88a70d353d57c219">current_class_template_decl_</a> = clst;</div>
+<div class="line"><span class="lineno">   95</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abfa5b78c6b5970adc38f590c517d3a39" name="abfa5b78c6b5970adc38f590c517d3a39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfa5b78c6b5970adc38f590c517d3a39">&#9670;&#160;</a></span>update() <span class="overload">[2/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::update </td>
+          <td>(</td>
+          <td class="paramtype">clang::ClassTemplateSpecializationDecl *&#160;</td>
+          <td class="paramname"><em>clst</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00086">86</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   88</span>{</div>
+<div class="line"><span class="lineno">   89</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#abff3c3ce2ee020193379b50436f72dbe">current_class_template_specialization_decl_</a> = clst;</div>
+<div class="line"><span class="lineno">   90</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9cec46987ada7fc5fabb43feb8438d12" name="a9cec46987ada7fc5fabb43feb8438d12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cec46987ada7fc5fabb43feb8438d12">&#9670;&#160;</a></span>update() <span class="overload">[3/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::update </td>
+          <td>(</td>
+          <td class="paramtype">clang::CXXMethodDecl *&#160;</td>
+          <td class="paramname"><em>method</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00097">97</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   98</span>{</div>
+<div class="line"><span class="lineno">   99</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a8f68c23eebb2c89717259793bfd4f8ac">current_method_decl_</a> = method;</div>
+<div class="line"><span class="lineno">  100</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a897a7f1d272dd559bc5368e10aa31047" name="a897a7f1d272dd559bc5368e10aa31047"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a897a7f1d272dd559bc5368e10aa31047">&#9670;&#160;</a></span>update() <span class="overload">[4/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::update </td>
+          <td>(</td>
+          <td class="paramtype">clang::CXXRecordDecl *&#160;</td>
+          <td class="paramname"><em>cls</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00081">81</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   82</span>{</div>
+<div class="line"><span class="lineno">   83</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a397766d27eeaf501004cc8e3c30ec3c2">current_class_decl_</a> = cls;</div>
+<div class="line"><span class="lineno">   84</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af9c317c3a1ae64d89545a3953d164234" name="af9c317c3a1ae64d89545a3953d164234"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9c317c3a1ae64d89545a3953d164234">&#9670;&#160;</a></span>update() <span class="overload">[5/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::update </td>
+          <td>(</td>
+          <td class="paramtype">clang::FunctionDecl *&#160;</td>
+          <td class="paramname"><em>function</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00102">102</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  103</span>{</div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">if</span> (!<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a57deb00e6348c6dd7f32c36fc98ae091ac1c425268e68385d1ab5074c17a94f14">function</a>-&gt;isCXXClassMember())</div>
+<div class="line"><span class="lineno">  105</span>        <a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a81414ba3681f021f22595590515c9521">reset</a>();</div>
+<div class="line"><span class="lineno">  106</span> </div>
+<div class="line"><span class="lineno">  107</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a324706eb6d6da388ab4e8110616e2c5a">current_function_decl_</a> = <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a57deb00e6348c6dd7f32c36fc98ae091ac1c425268e68385d1ab5074c17a94f14">function</a>;</div>
+<div class="line"><span class="lineno">  108</span> </div>
+<div class="line"><span class="lineno">  109</span>    <span class="comment">// Check if this function is a part of template function declaration,</span></div>
+<div class="line"><span class="lineno">  110</span>    <span class="comment">// If no - reset the current_function_template_decl_</span></div>
+<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">if</span> ((<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a103a7184b2ab46ffe7e07ae5966bb643">current_function_template_decl_</a> != <span class="keyword">nullptr</span>) &amp;&amp;</div>
+<div class="line"><span class="lineno">  112</span>        <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a103a7184b2ab46ffe7e07ae5966bb643">current_function_template_decl_</a>-&gt;getQualifiedNameAsString() !=</div>
+<div class="line"><span class="lineno">  113</span>            <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a57deb00e6348c6dd7f32c36fc98ae091ac1c425268e68385d1ab5074c17a94f14">function</a>-&gt;getQualifiedNameAsString()) {</div>
+<div class="line"><span class="lineno">  114</span>        <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a103a7184b2ab46ffe7e07ae5966bb643">current_function_template_decl_</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  115</span>    }</div>
+<div class="line"><span class="lineno">  116</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a77ee20c94b1dd015c2935ee710b4e72e" name="a77ee20c94b1dd015c2935ee710b4e72e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77ee20c94b1dd015c2935ee710b4e72e">&#9670;&#160;</a></span>update() <span class="overload">[6/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::visitor::call_expression_context::update </td>
+          <td>(</td>
+          <td class="paramtype">clang::FunctionTemplateDecl *&#160;</td>
+          <td class="paramname"><em>function_template</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00118">118</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  120</span>{</div>
+<div class="line"><span class="lineno">  121</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a103a7184b2ab46ffe7e07ae5966bb643">current_function_template_decl_</a> = function_template;</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">if</span> (!function_template-&gt;isCXXClassMember())</div>
+<div class="line"><span class="lineno">  124</span>        <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a397766d27eeaf501004cc8e3c30ec3c2">current_class_decl_</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  125</span> </div>
+<div class="line"><span class="lineno">  126</span>    <a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a103a7184b2ab46ffe7e07ae5966bb643">current_function_template_decl_</a> = function_template;</div>
+<div class="line"><span class="lineno">  127</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5027e8860fa882ab863508c3dcfba79d" name="a5027e8860fa882ab863508c3dcfba79d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5027e8860fa882ab863508c3dcfba79d">&#9670;&#160;</a></span>valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::sequence_diagram::visitor::call_expression_context::valid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00050">50</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   51</span>{</div>
+<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">return</span> (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a397766d27eeaf501004cc8e3c30ec3c2">current_class_decl_</a> != <span class="keyword">nullptr</span>) ||</div>
+<div class="line"><span class="lineno">   53</span>        (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#ab78a8ea9795001fa88a70d353d57c219">current_class_template_decl_</a> != <span class="keyword">nullptr</span>) ||</div>
+<div class="line"><span class="lineno">   54</span>        (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#abff3c3ce2ee020193379b50436f72dbe">current_class_template_specialization_decl_</a> != <span class="keyword">nullptr</span>) ||</div>
+<div class="line"><span class="lineno">   55</span>        (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a8f68c23eebb2c89717259793bfd4f8ac">current_method_decl_</a> != <span class="keyword">nullptr</span>) ||</div>
+<div class="line"><span class="lineno">   56</span>        (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a324706eb6d6da388ab4e8110616e2c5a">current_function_decl_</a> != <span class="keyword">nullptr</span>) ||</div>
+<div class="line"><span class="lineno">   57</span>        (<a class="code hl_variable" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a103a7184b2ab46ffe7e07ae5966bb643">current_function_template_decl_</a> != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   58</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a6bcb302c260258c3ef3008e46f985803" name="a6bcb302c260258c3ef3008e46f985803"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bcb302c260258c3ef3008e46f985803">&#9670;&#160;</a></span>call_expr_stack_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::stack&lt;clang::CallExpr *&gt; clanguml::sequence_diagram::visitor::call_expression_context::call_expr_stack_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00107">107</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+
+</div>
+</div>
+<a id="a33476bc00d65711364a7b0b02f6fd041" name="a33476bc00d65711364a7b0b02f6fd041"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33476bc00d65711364a7b0b02f6fd041">&#9670;&#160;</a></span>conditional_operator_stack_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::stack&lt;clang::ConditionalOperator *&gt; clanguml::sequence_diagram::visitor::call_expression_context::conditional_operator_stack_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00115">115</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+
+</div>
+</div>
+<a id="aa29d5ad5e05f5cd6f2931d55c86db7da" name="aa29d5ad5e05f5cd6f2931d55c86db7da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa29d5ad5e05f5cd6f2931d55c86db7da">&#9670;&#160;</a></span>current_caller_id_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::int64_t clanguml::sequence_diagram::visitor::call_expression_context::current_caller_id_ {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00104">104</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+
+</div>
+</div>
+<a id="a397766d27eeaf501004cc8e3c30ec3c2" name="a397766d27eeaf501004cc8e3c30ec3c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a397766d27eeaf501004cc8e3c30ec3c2">&#9670;&#160;</a></span>current_class_decl_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::CXXRecordDecl* clanguml::sequence_diagram::visitor::call_expression_context::current_class_decl_ {nullptr}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00095">95</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+
+</div>
+</div>
+<a id="ab78a8ea9795001fa88a70d353d57c219" name="ab78a8ea9795001fa88a70d353d57c219"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab78a8ea9795001fa88a70d353d57c219">&#9670;&#160;</a></span>current_class_template_decl_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::ClassTemplateDecl* clanguml::sequence_diagram::visitor::call_expression_context::current_class_template_decl_ {nullptr}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00096">96</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+
+</div>
+</div>
+<a id="abff3c3ce2ee020193379b50436f72dbe" name="abff3c3ce2ee020193379b50436f72dbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abff3c3ce2ee020193379b50436f72dbe">&#9670;&#160;</a></span>current_class_template_specialization_decl_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::ClassTemplateSpecializationDecl* clanguml::sequence_diagram::visitor::call_expression_context::current_class_template_specialization_decl_ {nullptr}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00098">98</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+
+</div>
+</div>
+<a id="a324706eb6d6da388ab4e8110616e2c5a" name="a324706eb6d6da388ab4e8110616e2c5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a324706eb6d6da388ab4e8110616e2c5a">&#9670;&#160;</a></span>current_function_decl_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::FunctionDecl* clanguml::sequence_diagram::visitor::call_expression_context::current_function_decl_ {nullptr}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00100">100</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+
+</div>
+</div>
+<a id="a103a7184b2ab46ffe7e07ae5966bb643" name="a103a7184b2ab46ffe7e07ae5966bb643"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a103a7184b2ab46ffe7e07ae5966bb643">&#9670;&#160;</a></span>current_function_template_decl_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::FunctionTemplateDecl* clanguml::sequence_diagram::visitor::call_expression_context::current_function_template_decl_ {nullptr}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00101">101</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+
+</div>
+</div>
+<a id="a328e459ebd83c8c26cdab24d477ab21c" name="a328e459ebd83c8c26cdab24d477ab21c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a328e459ebd83c8c26cdab24d477ab21c">&#9670;&#160;</a></span>current_lambda_caller_id_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::stack&lt;std::int64_t&gt; clanguml::sequence_diagram::visitor::call_expression_context::current_lambda_caller_id_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00105">105</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+
+</div>
+</div>
+<a id="a8f68c23eebb2c89717259793bfd4f8ac" name="a8f68c23eebb2c89717259793bfd4f8ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f68c23eebb2c89717259793bfd4f8ac">&#9670;&#160;</a></span>current_method_decl_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::CXXMethodDecl* clanguml::sequence_diagram::visitor::call_expression_context::current_method_decl_ {nullptr}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00099">99</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+
+</div>
+</div>
+<a id="a5f0d91c8fabf915f6fcf6674e56bebba" name="a5f0d91c8fabf915f6fcf6674e56bebba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f0d91c8fabf915f6fcf6674e56bebba">&#9670;&#160;</a></span>elseif_stmt_stack_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::stack&lt;clang::IfStmt *&gt; clanguml::sequence_diagram::visitor::call_expression_context::elseif_stmt_stack_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00110">110</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+
+</div>
+</div>
+<a id="a1746ec2c6d4179c27a9d4a1b4f370dfa" name="a1746ec2c6d4179c27a9d4a1b4f370dfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1746ec2c6d4179c27a9d4a1b4f370dfa">&#9670;&#160;</a></span>if_stmt_stack_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::stack&lt;clang::IfStmt *&gt; clanguml::sequence_diagram::visitor::call_expression_context::if_stmt_stack_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00109">109</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+
+</div>
+</div>
+<a id="aef593d369d48e4a9433046bd8277dc3b" name="aef593d369d48e4a9433046bd8277dc3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef593d369d48e4a9433046bd8277dc3b">&#9670;&#160;</a></span>loop_stmt_stack_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::stack&lt;clang::Stmt *&gt; clanguml::sequence_diagram::visitor::call_expression_context::loop_stmt_stack_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00112">112</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+
+</div>
+</div>
+<a id="a885bd82b01fdb27b6e039bfb5a0bdedb" name="a885bd82b01fdb27b6e039bfb5a0bdedb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a885bd82b01fdb27b6e039bfb5a0bdedb">&#9670;&#160;</a></span>switch_stmt_stack_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::stack&lt;clang::SwitchStmt *&gt; clanguml::sequence_diagram::visitor::call_expression_context::switch_stmt_stack_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00114">114</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+
+</div>
+</div>
+<a id="a116e1d8fd4ede57c3be5b942bba98b96" name="a116e1d8fd4ede57c3be5b942bba98b96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a116e1d8fd4ede57c3be5b942bba98b96">&#9670;&#160;</a></span>try_stmt_stack_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::stack&lt;clang::Stmt *&gt; clanguml::sequence_diagram::visitor::call_expression_context::try_stmt_stack_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="call__expression__context_8h_source.html#l00113">113</a> of file <a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following files:<ul>
+<li>src/sequence_diagram/visitor/<a class="el" href="call__expression__context_8h_source.html">call_expression_context.h</a></li>
+<li>src/sequence_diagram/visitor/<a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

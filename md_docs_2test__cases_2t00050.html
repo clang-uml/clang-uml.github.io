@@ -1,0 +1,644 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: t00050 - Test case for generating notes from comments using jinja templates</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">t00050 - Test case for generating notes from comments using jinja templates</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="t00050---test-case-for-generating-notes-from-comments-using-jinja-templates"></a></p>
+<h1><a class="anchor" id="config-48"></a>
+Config</h1>
+<div class="fragment language-yaml"><div class="line">compilation_database_dir: ..</div>
+<div class="line">output_directory: puml</div>
+<div class="line">diagrams:</div>
+<div class="line">  t00050_class:</div>
+<div class="line">    type: class</div>
+<div class="line">    glob:</div>
+<div class="line">      - ../../tests/t00050/t00050.cc</div>
+<div class="line">    comment_parser: clang</div>
+<div class="line">    include:</div>
+<div class="line">      namespaces:</div>
+<div class="line">        - clanguml::t00050</div>
+<div class="line">    using_namespace: clanguml::t00050</div>
+<div class="line">    plantuml:</div>
+<div class="line">      after:</div>
+<div class="line">        - &gt;</div>
+<div class="line">          note left of {{ alias(&quot;NoSuchClass&quot;) }}</div>
+<div class="line">             {{ comment(&quot;NoSuchClass&quot;).formatted }}</div>
+<div class="line">          end note</div>
+<div class="line">        - &gt;</div>
+<div class="line">          note left of {{ alias(&quot;A&quot;) }}</div>
+<div class="line">             {{ comment(&quot;clanguml::t00050::A&quot;).formatted }}</div>
+<div class="line">          end note</div>
+<div class="line">        - &gt;</div>
+<div class="line">          note right of {{ element(&quot;clanguml::t00050::A&quot;).alias }}</div>
+<div class="line">             {% set e=element(&quot;clanguml::t00050::A&quot;) %} {{ e.comment.formatted }}          </div>
+<div class="line">          end note</div>
+<div class="line">        - &gt;</div>
+<div class="line">          note left of {{ alias(&quot;C&quot;) }} #AABBCC                 </div>
+<div class="line">             {{ trim(comment(&quot;clanguml::t00050::C&quot;).text) }}          </div>
+<div class="line">          end note</div>
+<div class="line">        - &gt;</div>
+<div class="line">          {% set cmt=comment(&quot;clanguml::t00050::G&quot;).paragraph %}</div>
+<div class="line">          note top of {{ alias(&quot;G&quot;) }}</div>
+<div class="line">             {{ trim(cmt.0) }}</div>
+<div class="line">          end note</div>
+<div class="line"> </div>
+<div class="line">          note right of {{ alias(&quot;G&quot;) }}</div>
+<div class="line">             {{ trim(cmt.1) }}</div>
+<div class="line">          end note</div>
+<div class="line"> </div>
+<div class="line">          note bottom of {{ alias(&quot;G&quot;) }}</div>
+<div class="line">             {{ trim(cmt.2) }}</div>
+<div class="line">          end note</div>
+<div class="line">        - &gt;</div>
+<div class="line">          {# Render brief comments and todos, if any were written for an element #}</div>
+<div class="line">          {% for e in diagram.elements %}</div>
+<div class="line">          {% if existsIn(e, &quot;comment&quot;) and existsIn(e.comment, &quot;brief&quot;) %}</div>
+<div class="line">  </div>
+<div class="line">          note top of {{ e.alias }} {% if e.type == &quot;class&quot; %} #22AA22 {% else %} #2222AA {% endif %}</div>
+<div class="line">             {% set c=e.comment %} {{ c.brief.0 }}</div>
+<div class="line">          end note</div>
+<div class="line">          </div>
+<div class="line">          {% endif %}</div>
+<div class="line">          {% if existsIn(e, &quot;comment&quot;) and existsIn(e.comment, &quot;todo&quot;) %}</div>
+<div class="line">          {% set c=e.comment %} </div>
+<div class="line">          {% for t in c.todo %}</div>
+<div class="line">          note top of {{ e.alias }} #882222           </div>
+<div class="line">             **TODO**</div>
+<div class="line">             {{ t }}</div>
+<div class="line">          end note</div>
+<div class="line">          </div>
+<div class="line">          {% endfor %}</div>
+<div class="line"> </div>
+<div class="line">          {% endif %}</div>
+<div class="line">          {# Render template paramete if any #}</div>
+<div class="line">          {% if existsIn(e, &quot;comment&quot;) and existsIn(e.comment, &quot;tparam&quot;) %}</div>
+<div class="line">          {% set c=e.comment %} </div>
+<div class="line"> </div>
+<div class="line">          note top of {{ e.alias }} #AAAAFF           </div>
+<div class="line">             **Template parameters**</div>
+<div class="line">             {% for tp in c.tparam %}</div>
+<div class="line">             //{{ tp.name }}// {{ trim(tp.description) }}        </div>
+<div class="line">             {% endfor %}</div>
+<div class="line">          end note</div>
+<div class="line"> </div>
+<div class="line">          {% endif %}</div>
+<div class="line">          {% endfor %}</div>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-48"></a>
+Source code</h1>
+<p>File t00050.cc </p><div class="fragment language-cpp"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">/// Vivamus integer non suscipit taciti mus</span></div>
+<div class="line"><span class="comment"></span><span class="keyword">class </span>A { };</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>t00050 {</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">/// Lorem ipsum dolor sit</span></div>
+<div class="line"><span class="comment"></span><span class="keyword">class </span>A { };</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">/**</span></div>
+<div class="line"><span class="comment"> * \brief Lorem ipsum</span></div>
+<div class="line"><span class="comment"> *</span></div>
+<div class="line"><span class="comment"> * Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis</span></div>
+<div class="line"><span class="comment"> * vehicula class ultricies mollis dictumst, aenean non a in donec nulla.</span></div>
+<div class="line"><span class="comment"> * Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam,</span></div>
+<div class="line"><span class="comment"> * integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora</span></div>
+<div class="line"><span class="comment"> * tellus ligula porttitor metus.</span></div>
+<div class="line"><span class="comment"> *</span></div>
+<div class="line"><span class="comment"> * \todo 1. Write meaningful comment</span></div>
+<div class="line"><span class="comment"> * \todo 2. Write tests</span></div>
+<div class="line"><span class="comment"> * \todo 3. Implement</span></div>
+<div class="line"><span class="comment"> */</span></div>
+<div class="line"><span class="keyword">class </span>B { };</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">/// \brief Long comment example</span></div>
+<div class="line"><span class="comment">///</span></div>
+<div class="line"><span class="comment">/// Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis</span></div>
+<div class="line"><span class="comment">/// vehicula class ultricies mollis dictumst, aenean non a in donec nulla.</span></div>
+<div class="line"><span class="comment">/// Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam,</span></div>
+<div class="line"><span class="comment">/// integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora</span></div>
+<div class="line"><span class="comment">/// tellus ligula porttitor metus.</span></div>
+<div class="line"><span class="comment">///</span></div>
+<div class="line"><span class="comment">/// Vivamus integer non suscipit taciti mus etiam at primis tempor sagittis sit,</span></div>
+<div class="line"><span class="comment">/// euismod libero facilisi aptent elementum felis blandit cursus gravida sociis</span></div>
+<div class="line"><span class="comment">/// erat ante, eleifend lectus nullam dapibus netus feugiat curae curabitur est</span></div>
+<div class="line"><span class="comment">/// ad. Massa curae fringilla porttitor quam sollicitudin iaculis aptent leo</span></div>
+<div class="line"><span class="comment">/// ligula euismod dictumst, orci penatibus mauris eros etiam praesent erat</span></div>
+<div class="line"><span class="comment">/// volutpat posuere hac. Metus fringilla nec ullamcorper odio aliquam lacinia</span></div>
+<div class="line"><span class="comment">/// conubia mauris tempor, etiam ultricies proin quisque lectus sociis id</span></div>
+<div class="line"><span class="comment">/// tristique, integer phasellus taciti pretium adipiscing tortor sagittis</span></div>
+<div class="line"><span class="comment">/// ligula.</span></div>
+<div class="line"><span class="comment">///</span></div>
+<div class="line"><span class="comment">/// Mollis pretium lorem primis senectus habitasse lectus scelerisque</span></div>
+<div class="line"><span class="comment">/// donec, ultricies tortor suspendisse adipiscing fusce morbi volutpat</span></div>
+<div class="line"><span class="comment">/// pellentesque, consectetur mi risus molestie curae malesuada cum. Dignissim</span></div>
+<div class="line"><span class="comment">/// lacus convallis massa mauris enim ad mattis magnis senectus montes, mollis</span></div>
+<div class="line"><span class="comment">/// taciti phasellus accumsan bibendum semper blandit suspendisse faucibus nibh</span></div>
+<div class="line"><span class="comment">/// est, metus lobortis morbi cras magna vivamus per risus fermentum. Dapibus</span></div>
+<div class="line"><span class="comment">/// imperdiet praesent magnis ridiculus congue gravida curabitur dictum</span></div>
+<div class="line"><span class="comment">/// sagittis, enim et magna sit inceptos sodales parturient pharetra mollis,</span></div>
+<div class="line"><span class="comment">/// aenean vel nostra tellus commodo pretium sapien sociosqu.</span></div>
+<div class="line"><span class="comment"></span><span class="keyword">class </span>C { };</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">/// Mollis pretium lorem primis</span></div>
+<div class="line"><span class="comment"></span><span class="keyword">namespace </span>utils {</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">/// Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis</span></div>
+<div class="line"><span class="comment">/// vehicula class ultricies mollis dictumst, aenean non a in donec nulla.</span></div>
+<div class="line"><span class="comment">/// Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam,</span></div>
+<div class="line"><span class="comment">/// integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora</span></div>
+<div class="line"><span class="comment">/// tellus ligula porttitor metus.</span></div>
+<div class="line"><span class="comment">///</span></div>
+<div class="line"><span class="comment">/// \todo Implement...</span></div>
+<div class="line"><span class="comment"></span><span class="keyword">class </span>D { };</div>
+<div class="line"> </div>
+<div class="line">} <span class="comment">// namespace utils</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">/// Mollis pretium lorem primis</span></div>
+<div class="line"><span class="comment"></span><span class="keyword">enum class</span> E { E1, E2, E3 };</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">/// \brief Simple array wrapper.</span></div>
+<div class="line"><span class="comment">///</span></div>
+<div class="line"><span class="comment">/// This class is just for testing tparam parsing, it serves no other</span></div>
+<div class="line"><span class="comment">/// purpose.</span></div>
+<div class="line"><span class="comment">///</span></div>
+<div class="line"><span class="comment">/// \tparam T Type of array elements.</span></div>
+<div class="line"><span class="comment">/// \tparam V Type of regular element.</span></div>
+<div class="line"><span class="comment">/// \tparam N Size of T array.</span></div>
+<div class="line"><span class="comment">///</span></div>
+<div class="line"><span class="comment"></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> V, <span class="keywordtype">int</span> N&gt; <span class="keyword">class </span>F {</div>
+<div class="line">    T t[N];</div>
+<div class="line">    V v;</div>
+<div class="line">};</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">/// This is a short description of class G.</span></div>
+<div class="line"><span class="comment">///</span></div>
+<div class="line"><span class="comment">/// This is an intermediate description of class G.</span></div>
+<div class="line"><span class="comment">///</span></div>
+<div class="line"><span class="comment">/// This is a long description of class G.</span></div>
+<div class="line"><span class="comment"></span><span class="keyword">class </span>G { };</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">class </span>NoComment { };</div>
+<div class="line"> </div>
+<div class="line">} <span class="comment">// namespace t00050</span></div>
+<div class="line">} <span class="comment">// namespace clanguml</span></div>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-uml-diagrams-48"></a>
+Generated UML diagrams</h1>
+<div class="image">
+<embed type="image/svg+xml" src="t00050_class.svg"></embed>
+</div>
+     <h1><a class="anchor" id="generated-json-models-48"></a>
+Generated JSON models</h1>
+<div class="fragment language-json"><div class="line">{</div>
+<div class="line">  &quot;diagram_type&quot;: &quot;class&quot;,</div>
+<div class="line">  &quot;elements&quot;: [</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [],</div>
+<div class="line">      &quot;comment&quot;: {</div>
+<div class="line">        &quot;formatted&quot;: &quot;Lorem ipsum dolor sit&quot;,</div>
+<div class="line">        &quot;paragraph&quot;: [</div>
+<div class="line">          &quot; Lorem ipsum dolor sit\n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;raw&quot;: &quot;/// Lorem ipsum dolor sit&quot;,</div>
+<div class="line">        &quot;text&quot;: &quot;\n Lorem ipsum dolor sit\n&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00050::A&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1885563213397742674&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: false,</div>
+<div class="line">      &quot;is_template&quot;: false,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;A&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00050&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 7,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00050/t00050.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 9,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00050/t00050.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [],</div>
+<div class="line">      &quot;comment&quot;: {</div>
+<div class="line">        &quot;brief&quot;: [</div>
+<div class="line">          &quot; Lorem ipsum\n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;formatted&quot;: &quot;\n \\brief Lorem ipsum\n\n Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis\n vehicula class ultricies mollis dictumst, aenean non a in donec nulla.\n Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam,\n integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora\n tellus ligula porttitor metus.\n\n \\todo 1. Write meaningful comment\n \\todo 2. Write tests\n \\todo 3. Implement\n &quot;,</div>
+<div class="line">        &quot;paragraph&quot;: [</div>
+<div class="line">          &quot; \n&quot;,</div>
+<div class="line">          &quot; Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis\n vehicula class ultricies mollis dictumst, aenean non a in donec nulla.\n Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam,\n integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora\n tellus ligula porttitor metus.\n&quot;,</div>
+<div class="line">          &quot; \n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;raw&quot;: &quot;/**\n * \\brief Lorem ipsum\n *\n * Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis\n * vehicula class ultricies mollis dictumst, aenean non a in donec nulla.\n * Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam,\n * integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora\n * tellus ligula porttitor metus.\n *\n * \\todo 1. Write meaningful comment\n * \\todo 2. Write tests\n * \\todo 3. Implement\n */&quot;,</div>
+<div class="line">        &quot;text&quot;: &quot;\n \n\n Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis\n vehicula class ultricies mollis dictumst, aenean non a in donec nulla.\n Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam,\n integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora\n tellus ligula porttitor metus.\n\n \n&quot;,</div>
+<div class="line">        &quot;todo&quot;: [</div>
+<div class="line">          &quot; 1. Write meaningful comment\n \n&quot;,</div>
+<div class="line">          &quot; 2. Write tests\n \n&quot;,</div>
+<div class="line">          &quot; 3. Implement\n&quot;</div>
+<div class="line">        ]</div>
+<div class="line">      },</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00050::B&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;500262098409836244&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: false,</div>
+<div class="line">      &quot;is_template&quot;: false,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;B&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00050&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 7,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00050/t00050.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 24,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00050/t00050.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [],</div>
+<div class="line">      &quot;comment&quot;: {</div>
+<div class="line">        &quot;brief&quot;: [</div>
+<div class="line">          &quot; Long comment example\n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;formatted&quot;: &quot;\\brief Long comment example\n\nLorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis\nvehicula class ultricies mollis dictumst, aenean non a in donec nulla.\nPhasellus ante pellentesque erat cum risus consequat imperdiet aliquam,\ninteger placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora\ntellus ligula porttitor metus.\n\nVivamus integer non suscipit taciti mus etiam at primis tempor sagittis sit,\neuismod libero facilisi aptent elementum felis blandit cursus gravida sociis\nerat ante, eleifend lectus nullam dapibus netus feugiat curae curabitur est\nad. Massa curae fringilla porttitor quam sollicitudin iaculis aptent leo\nligula euismod dictumst, orci penatibus mauris eros etiam praesent erat\nvolutpat posuere hac. Metus fringilla nec ullamcorper odio aliquam lacinia\nconubia mauris tempor, etiam ultricies proin quisque lectus sociis id\ntristique, integer phasellus taciti pretium adipiscing tortor sagittis\nligula.\n\nMollis pretium lorem primis senectus habitasse lectus scelerisque\ndonec, ultricies tortor suspendisse adipiscing fusce morbi volutpat\npellentesque, consectetur mi risus molestie curae malesuada cum. Dignissim\nlacus convallis massa mauris enim ad mattis magnis senectus montes, mollis\ntaciti phasellus accumsan bibendum semper blandit suspendisse faucibus nibh\nest, metus lobortis morbi cras magna vivamus per risus fermentum. Dapibus\nimperdiet praesent magnis ridiculus congue gravida curabitur dictum\nsagittis, enim et magna sit inceptos sodales parturient pharetra mollis,\naenean vel nostra tellus commodo pretium sapien sociosqu.&quot;,</div>
+<div class="line">        &quot;paragraph&quot;: [</div>
+<div class="line">          &quot; \n&quot;,</div>
+<div class="line">          &quot; Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis\n vehicula class ultricies mollis dictumst, aenean non a in donec nulla.\n Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam,\n integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora\n tellus ligula porttitor metus.\n&quot;,</div>
+<div class="line">          &quot; Vivamus integer non suscipit taciti mus etiam at primis tempor sagittis sit,\n euismod libero facilisi aptent elementum felis blandit cursus gravida sociis\n erat ante, eleifend lectus nullam dapibus netus feugiat curae curabitur est\n ad. Massa curae fringilla porttitor quam sollicitudin iaculis aptent leo\n ligula euismod dictumst, orci penatibus mauris eros etiam praesent erat\n volutpat posuere hac. Metus fringilla nec ullamcorper odio aliquam lacinia\n conubia mauris tempor, etiam ultricies proin quisque lectus sociis id\n tristique, integer phasellus taciti pretium adipiscing tortor sagittis\n ligula.\n&quot;,</div>
+<div class="line">          &quot; Mollis pretium lorem primis senectus habitasse lectus scelerisque\n donec, ultricies tortor suspendisse adipiscing fusce morbi volutpat\n pellentesque, consectetur mi risus molestie curae malesuada cum. Dignissim\n lacus convallis massa mauris enim ad mattis magnis senectus montes, mollis\n taciti phasellus accumsan bibendum semper blandit suspendisse faucibus nibh\n est, metus lobortis morbi cras magna vivamus per risus fermentum. Dapibus\n imperdiet praesent magnis ridiculus congue gravida curabitur dictum\n sagittis, enim et magna sit inceptos sodales parturient pharetra mollis,\n aenean vel nostra tellus commodo pretium sapien sociosqu.\n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;raw&quot;: &quot;/// \\brief Long comment example\n///\n/// Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis\n/// vehicula class ultricies mollis dictumst, aenean non a in donec nulla.\n/// Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam,\n/// integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora\n/// tellus ligula porttitor metus.\n///\n/// Vivamus integer non suscipit taciti mus etiam at primis tempor sagittis sit,\n/// euismod libero facilisi aptent elementum felis blandit cursus gravida sociis\n/// erat ante, eleifend lectus nullam dapibus netus feugiat curae curabitur est\n/// ad. Massa curae fringilla porttitor quam sollicitudin iaculis aptent leo\n/// ligula euismod dictumst, orci penatibus mauris eros etiam praesent erat\n/// volutpat posuere hac. Metus fringilla nec ullamcorper odio aliquam lacinia\n/// conubia mauris tempor, etiam ultricies proin quisque lectus sociis id\n/// tristique, integer phasellus taciti pretium adipiscing tortor sagittis\n/// ligula.\n///\n/// Mollis pretium lorem primis senectus habitasse lectus scelerisque\n/// donec, ultricies tortor suspendisse adipiscing fusce morbi volutpat\n/// pellentesque, consectetur mi risus molestie curae malesuada cum. Dignissim\n/// lacus convallis massa mauris enim ad mattis magnis senectus montes, mollis\n/// taciti phasellus accumsan bibendum semper blandit suspendisse faucibus nibh\n/// est, metus lobortis morbi cras magna vivamus per risus fermentum. Dapibus\n/// imperdiet praesent magnis ridiculus congue gravida curabitur dictum\n/// sagittis, enim et magna sit inceptos sodales parturient pharetra mollis,\n/// aenean vel nostra tellus commodo pretium sapien sociosqu.&quot;,</div>
+<div class="line">        &quot;text&quot;: &quot;\n \n\n Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis\n vehicula class ultricies mollis dictumst, aenean non a in donec nulla.\n Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam,\n integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora\n tellus ligula porttitor metus.\n\n Vivamus integer non suscipit taciti mus etiam at primis tempor sagittis sit,\n euismod libero facilisi aptent elementum felis blandit cursus gravida sociis\n erat ante, eleifend lectus nullam dapibus netus feugiat curae curabitur est\n ad. Massa curae fringilla porttitor quam sollicitudin iaculis aptent leo\n ligula euismod dictumst, orci penatibus mauris eros etiam praesent erat\n volutpat posuere hac. Metus fringilla nec ullamcorper odio aliquam lacinia\n conubia mauris tempor, etiam ultricies proin quisque lectus sociis id\n tristique, integer phasellus taciti pretium adipiscing tortor sagittis\n ligula.\n\n Mollis pretium lorem primis senectus habitasse lectus scelerisque\n donec, ultricies tortor suspendisse adipiscing fusce morbi volutpat\n pellentesque, consectetur mi risus molestie curae malesuada cum. Dignissim\n lacus convallis massa mauris enim ad mattis magnis senectus montes, mollis\n taciti phasellus accumsan bibendum semper blandit suspendisse faucibus nibh\n est, metus lobortis morbi cras magna vivamus per risus fermentum. Dapibus\n imperdiet praesent magnis ridiculus congue gravida curabitur dictum\n sagittis, enim et magna sit inceptos sodales parturient pharetra mollis,\n aenean vel nostra tellus commodo pretium sapien sociosqu.\n&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00050::C&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1663081653671078922&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: false,</div>
+<div class="line">      &quot;is_template&quot;: false,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;C&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00050&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 7,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00050/t00050.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 53,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00050/t00050.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [],</div>
+<div class="line">      &quot;comment&quot;: {</div>
+<div class="line">        &quot;formatted&quot;: &quot;Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis\nvehicula class ultricies mollis dictumst, aenean non a in donec nulla.\nPhasellus ante pellentesque erat cum risus consequat imperdiet aliquam,\ninteger placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora\ntellus ligula porttitor metus.\n\n\\todo Implement...&quot;,</div>
+<div class="line">        &quot;paragraph&quot;: [</div>
+<div class="line">          &quot; Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis\n vehicula class ultricies mollis dictumst, aenean non a in donec nulla.\n Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam,\n integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora\n tellus ligula porttitor metus.\n&quot;,</div>
+<div class="line">          &quot; \n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;raw&quot;: &quot;/// Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis\n/// vehicula class ultricies mollis dictumst, aenean non a in donec nulla.\n/// Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam,\n/// integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora\n/// tellus ligula porttitor metus.\n///\n/// \\todo Implement...&quot;,</div>
+<div class="line">        &quot;text&quot;: &quot;\n Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis\n vehicula class ultricies mollis dictumst, aenean non a in donec nulla.\n Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam,\n integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora\n tellus ligula porttitor metus.\n\n \n&quot;,</div>
+<div class="line">        &quot;todo&quot;: [</div>
+<div class="line">          &quot; Implement...\n&quot;</div>
+<div class="line">        ]</div>
+<div class="line">      },</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00050::utils::D&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1492514566602019299&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: false,</div>
+<div class="line">      &quot;is_template&quot;: false,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;D&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00050::utils&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 7,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00050/t00050.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 65,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00050/t00050.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;comment&quot;: {</div>
+<div class="line">        &quot;formatted&quot;: &quot;Mollis pretium lorem primis&quot;,</div>
+<div class="line">        &quot;paragraph&quot;: [</div>
+<div class="line">          &quot; Mollis pretium lorem primis\n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;raw&quot;: &quot;/// Mollis pretium lorem primis&quot;,</div>
+<div class="line">        &quot;text&quot;: &quot;\n Mollis pretium lorem primis\n&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;constants&quot;: [</div>
+<div class="line">        &quot;E1&quot;,</div>
+<div class="line">        &quot;E2&quot;,</div>
+<div class="line">        &quot;E3&quot;</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00050::E&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;2027344031570117998&quot;,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;name&quot;: &quot;E&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00050&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 12,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00050/t00050.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 70,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00050/t00050.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;enum&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [],</div>
+<div class="line">      &quot;comment&quot;: {</div>
+<div class="line">        &quot;brief&quot;: [</div>
+<div class="line">          &quot; Simple array wrapper.\n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;formatted&quot;: &quot;\\brief Simple array wrapper.\n\nThis class is just for testing tparam parsing, it serves no other\npurpose.\n\n\\tparam T Type of array elements.\n\\tparam V Type of regular element.\n\\tparam N Size of T array.&quot;,</div>
+<div class="line">        &quot;paragraph&quot;: [</div>
+<div class="line">          &quot; \n&quot;,</div>
+<div class="line">          &quot; This class is just for testing tparam parsing, it serves no other\n purpose.\n&quot;,</div>
+<div class="line">          &quot; \n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;raw&quot;: &quot;/// \\brief Simple array wrapper.\n///\n/// This class is just for testing tparam parsing, it serves no other\n/// purpose.\n///\n/// \\tparam T Type of array elements.\n/// \\tparam V Type of regular element.\n/// \\tparam N Size of T array.\n///&quot;,</div>
+<div class="line">        &quot;text&quot;: &quot;\n \n\n This class is just for testing tparam parsing, it serves no other\n purpose.\n\n \n&quot;,</div>
+<div class="line">        &quot;tparam&quot;: [</div>
+<div class="line">          {</div>
+<div class="line">            &quot;description&quot;: &quot; Type of array elements.\n \n&quot;,</div>
+<div class="line">            &quot;name&quot;: &quot;T&quot;</div>
+<div class="line">          },</div>
+<div class="line">          {</div>
+<div class="line">            &quot;description&quot;: &quot; Type of regular element.\n \n&quot;,</div>
+<div class="line">            &quot;name&quot;: &quot;V&quot;</div>
+<div class="line">          },</div>
+<div class="line">          {</div>
+<div class="line">            &quot;description&quot;: &quot; Size of T array.\n&quot;,</div>
+<div class="line">            &quot;name&quot;: &quot;N&quot;</div>
+<div class="line">          }</div>
+<div class="line">        ]</div>
+<div class="line">      },</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00050::F&lt;T,V,int N&gt;&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;793698410848959592&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: false,</div>
+<div class="line">      &quot;is_template&quot;: true,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;private&quot;,</div>
+<div class="line">          &quot;is_static&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;t&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 7,</div>
+<div class="line">            &quot;file&quot;: &quot;../../tests/t00050/t00050.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 82,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00050/t00050.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;T[N]&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;private&quot;,</div>
+<div class="line">          &quot;is_static&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;v&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 7,</div>
+<div class="line">            &quot;file&quot;: &quot;../../tests/t00050/t00050.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 83,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00050/t00050.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;V&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;F&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00050&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 48,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00050/t00050.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 81,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00050/t00050.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;is_variadic&quot;: false,</div>
+<div class="line">          &quot;kind&quot;: &quot;template_type&quot;,</div>
+<div class="line">          &quot;name&quot;: &quot;T&quot;,</div>
+<div class="line">          &quot;template_parameters&quot;: []</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;is_variadic&quot;: false,</div>
+<div class="line">          &quot;kind&quot;: &quot;template_type&quot;,</div>
+<div class="line">          &quot;name&quot;: &quot;V&quot;,</div>
+<div class="line">          &quot;template_parameters&quot;: []</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;is_variadic&quot;: false,</div>
+<div class="line">          &quot;kind&quot;: &quot;non_type_template&quot;,</div>
+<div class="line">          &quot;name&quot;: &quot;N&quot;,</div>
+<div class="line">          &quot;template_parameters&quot;: [],</div>
+<div class="line">          &quot;type&quot;: &quot;int&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [],</div>
+<div class="line">      &quot;comment&quot;: {</div>
+<div class="line">        &quot;formatted&quot;: &quot;This is a short description of class G.\n\nThis is an intermediate description of class G.\n\nThis is a long description of class G.&quot;,</div>
+<div class="line">        &quot;paragraph&quot;: [</div>
+<div class="line">          &quot; This is a short description of class G.\n&quot;,</div>
+<div class="line">          &quot; This is an intermediate description of class G.\n&quot;,</div>
+<div class="line">          &quot; This is a long description of class G.\n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;raw&quot;: &quot;/// This is a short description of class G.\n///\n/// This is an intermediate description of class G.\n///\n/// This is a long description of class G.&quot;,</div>
+<div class="line">        &quot;text&quot;: &quot;\n This is a short description of class G.\n\n This is an intermediate description of class G.\n\n This is a long description of class G.\n&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00050::G&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;449485154531299941&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: false,</div>
+<div class="line">      &quot;is_template&quot;: false,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;G&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00050&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 7,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00050/t00050.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 91,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00050/t00050.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [],</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00050::NoComment&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1832693799357996932&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: false,</div>
+<div class="line">      &quot;is_template&quot;: false,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;NoComment&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00050&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 7,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00050/t00050.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 93,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00050/t00050.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    }</div>
+<div class="line">  ],</div>
+<div class="line">  &quot;metadata&quot;: {</div>
+<div class="line">    &quot;clang_uml_version&quot;: &quot;0.3.7-4-g43cc5cb&quot;,</div>
+<div class="line">    &quot;llvm_version&quot;: &quot;Ubuntu clang version 16.0.1 (++20230328073357+42d1b276f779-1~exp1~20230328073502.65)&quot;,</div>
+<div class="line">    &quot;schema_version&quot;: 1</div>
+<div class="line">  },</div>
+<div class="line">  &quot;name&quot;: &quot;t00050_class&quot;,</div>
+<div class="line">  &quot;relationships&quot;: [],</div>
+<div class="line">  &quot;using_namespace&quot;: &quot;clanguml::t00050&quot;</div>
+<div class="line">}</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

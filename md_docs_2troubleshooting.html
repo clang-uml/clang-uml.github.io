@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: Troubleshooting</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">Troubleshooting</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="troubleshooting"></a></p>
+<ul>
+<li><a class="el" href="md_docs_2troubleshooting.html#general-issues">General issues</a><ul>
+<li><a class="el" href="md_docs_2troubleshooting.html#clang-uml-crashes-when-generating-diagram">clang-uml crashes when generating diagram</a></li>
+<li><a class="el" href="md_docs_2troubleshooting.html#diagram-generation-is-very-slow">Diagram generation is very slow</a></li>
+<li><a class="el" href="md_docs_2troubleshooting.html#diagram-generated-with-plantuml-is-cropped">Diagram generated with PlantUML is cropped</a></li>
+<li><a class="el" href="md_docs_2troubleshooting.html#clang-produces-several-warnings-during-diagram-generation">Clang produces several warnings during diagram generation</a></li>
+<li><a class="el" href="md_docs_2troubleshooting.html#cannot-generate-diagrams-from-header-only-projects">Cannot generate diagrams from header-only projects</a></li>
+<li><a class="el" href="md_docs_2troubleshooting.html#yaml-anchors-and-aliases-are-not-fully-supported">YAML anchors and aliases are not fully supported</a></li>
+</ul>
+</li>
+<li><a class="el" href="md_docs_2test__cases.html#class-diagrams">Class diagrams</a><ul>
+<li><a class="el" href="md_docs_2troubleshooting.html#fatal-error-stddefh-file-not-found">&quot;fatal error: 'stddef.h' file not found&quot;</a></li>
+<li><a class="el" href="md_docs_2troubleshooting.html#how-can-i-generate-class-diagram-of-my-entire-project">How can I generate class diagram of my entire project</a></li>
+<li><a class="el" href="md_docs_2troubleshooting.html#cannot-generate-classes-for-std-namespace">Cannot generate classes for 'std' namespace</a></li>
+</ul>
+</li>
+<li><a class="el" href="md_docs_2test__cases.html#sequence-diagrams">Sequence diagrams</a><ul>
+<li><a class="el" href="md_docs_2troubleshooting.html#generated-diagram-is-empty">Generated diagram is empty</a></li>
+<li><a class="el" href="md_docs_2troubleshooting.html#generated-diagram-contains-several-empty-control-blocks-or-calls-which-should-not-be-there">Generated diagram contains several empty control blocks or calls which should not be there</a></li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="general-issues"></a>
+General issues</h1>
+<h2><a class="anchor" id="clang-uml-crashes-when-generating-diagram"></a>
+clang-uml crashes when generating diagram</h2>
+<p>If <code>clang-uml</code> crashes with a segmentation fault, it is possible to trace the exact stack trace of the fault using the following steps:</p>
+<p>First, build <code>clang-uml</code> from source in debug mode, e.g.:</p>
+<div class="fragment language-bash"><div class="line">make debug</div>
+</div><!-- fragment --><p>Then run <code>clang-uml</code>, preferably with <code>-vvv</code> for verbose log output. If your <code>.clang-uml</code> configuration file contains more than 1 diagram, specify only a single diagram to make it easier to trace the root cause of the crash, e.g.:</p>
+<div class="fragment language-bash"><div class="line">debug/src/clang-uml -vvv -n my_diagram</div>
+</div><!-- fragment --><p>After <code>clang-uml</code> crashes again, detailed backtrace (generated using <a href="https://github.com/bombela/backward-cpp">backward-cpp</a>) should be visible on the console.</p>
+<p>If possible, <a href="https://github.com/bkryza/clang-uml/issues">create an issue</a> and paste the stack trace and few last logs from the console.</p>
+<h2><a class="anchor" id="diagram-generation-is-very-slow"></a>
+Diagram generation is very slow</h2>
+<p><code>clang-uml</code> uses Clang's <a href="https://clang.llvm.org/doxygen/classclang_1_1RecursiveASTVisitor.html">RecursiveASTVisitor</a>, to traverse the source code. By default, this visitor is invoked on every translation unit (i.e. each entry in your <code>compile_commands.json</code>), including all of their header dependencies recursively. This means, that for large code bases with hundreds or thousands of translation units, traversing all of them will be slow (think <code>clang-tidy</code> slow...).</p>
+<p>Fortunately, in most practical cases it is not necessary to traverse the entire source code for each diagram, as all the information necessary to generate a single diagram usually can be found in just a few translation units, or even a single one.</p>
+<p>This is where the <code>glob</code> configuration parameter comes in. It can be used to limit the number of translation units to visit for a given diagram, for instance:</p>
+<div class="fragment language-yaml"><div class="line">diagrams:</div>
+<div class="line">  ClassAContextDiagram:</div>
+<div class="line">    type: class</div>
+<div class="line">    # ...</div>
+<div class="line">    glob:</div>
+<div class="line">      - src/classA.cpp</div>
+<div class="line">    # ...</div>
+<div class="line">  InterfaceHierarchyDiagram:</div>
+<div class="line">    type: class</div>
+<div class="line">    # ...</div>
+<div class="line">    glob:</div>
+<div class="line">      - src/interfaces/*.cpp</div>
+<div class="line">    # ...</div>
+</div><!-- fragment --><p>This should improve the generation times for individual diagrams significantly.</p>
+<p>Furthermore, diagrams are generated in parallel if possible, by default using as many threads as virtual CPU's are available on the system, however it can be adjusted also manually using <code>-t</code> command line option.</p>
+<h2><a class="anchor" id="diagram-generated-with-plantuml-is-cropped"></a>
+Diagram generated with PlantUML is cropped</h2>
+<p>When generating diagrams with PlantUML without specifying an output file format, the default is PNG. Unfortunately PlantUML will not check if the diagram will fit in the default PNG size, and often the diagram will be incomplete in the picture. A better option is to specify SVG as output format and then convert to PNG, e.g.:</p>
+<div class="fragment language-bash"><div class="line">plantuml -tsvg mydiagram.puml</div>
+<div class="line">convert +antialias mydiagram.svg mydiagram.png</div>
+</div><!-- fragment --><h2><a class="anchor" id="clang-produces-several-warnings-during-diagram-generation"></a>
+Clang produces several warnings during diagram generation</h2>
+<p>During the generation of the diagram <code>clang</code> may report a lot of warnings, which do not occur during the compilation with other compiler (e.g. GCC). This can be fixed easily by using the <code>add_compile_flags</code> config option. For instance, assuming that the warnings are as follows:</p>
+<div class="fragment language-cpp"><div class="line">... warning: implicit conversion from &#39;int&#39; to &#39;float&#39; changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]</div>
+<div class="line">... warning: declaration shadows a variable in namespace &#39;YAML&#39; [-Wshadow]</div>
+</div><!-- fragment --><p>simply add the following to your <code>.clang-uml</code> configuration file:</p>
+<div class="fragment language-cpp"><div class="line">add_compile_flags:</div>
+<div class="line">  - -Wno-implicit-const-int-float-conversion</div>
+<div class="line">  - -Wno-shadow</div>
+</div><!-- fragment --><p>Alternatively, the same can be passed through the <code>clang-uml</code> command line, e.g.</p>
+<div class="fragment language-bash"><div class="line">clang-uml --add-compile-flag -Wno-implicit-const-int-float-conversion \</div>
+<div class="line">          --add-compile-flag -Wno-shadow ...</div>
+</div><!-- fragment --><p>Please note that if your <code>compile_commands.json</code> already contains - for instance <code>-Wshadow</code> - then you also have to remove it, i.e.:</p>
+<div class="fragment language-yaml"><div class="line">add_compile_flags:</div>
+<div class="line">  - -Wno-implicit-const-int-float-conversion</div>
+<div class="line">  - -Wno-shadow</div>
+<div class="line">remove_compile_flags:</div>
+<div class="line">  - -Wshadow</div>
+</div><!-- fragment --><h2><a class="anchor" id="cannot-generate-diagrams-from-header-only-projects"></a>
+Cannot generate diagrams from header-only projects</h2>
+<p>Currently, in order to generate UML diagrams using <code>clang-uml</code> it is necessary that at least one translation unit (e.g. one <code>cpp</code>) exists and it is included in the generated <code>compile_commands.json</code> database.</p>
+<p>However, even if your project is a header only library, first check if the generated <code>compile_commands.json</code> contains any entries - if yes you should be fine - just make sure the <code>glob</code> pattern in the configuration file matches any of them. This is due to the fact that most header only projects still have test cases, which are compiled and executed, and which include the headers. These are perfectly fine to be used as translation units to generate the diagrams.</p>
+<p>In case, the code really does not contain any translation units, you will have to create one, typically a basic <code>main.cpp</code> which includes the relevant headers should be fine. Also, it's possible to simply create a separate project, with a single translation unit, which includes the relevant headers and create diagrams from there.</p>
+<p>In the future there might be a workaround for this in <code>clang-uml</code>.</p>
+<h2><a class="anchor" id="yaml-anchors-and-aliases-are-not-fully-supported"></a>
+YAML anchors and aliases are not fully supported</h2>
+<p><code>clang-uml</code> uses <a href="https://github.com/jbeder/yaml-cpp">yaml-cpp</a> library, which currently does not support <a href="https://github.com/jbeder/yaml-cpp/issues/41">merging YAML anchor dictionaries</a>, e.g. in the following configuration file the <code>main_sequence_diagram</code> will work, but the <code>foo_sequence_diagram</code> will fail with parse error:</p>
+<div class="fragment language-yaml"><div class="line">compilation_database_dir: debug</div>
+<div class="line">output_directory: output</div>
+<div class="line"> </div>
+<div class="line">.sequence_diagram_anchor: &amp;sequence_diagram_anchor</div>
+<div class="line">  type: sequence</div>
+<div class="line">  glob: [ ]</div>
+<div class="line">  start_from:</div>
+<div class="line">    - function: &#39;main(int,const char**)&#39;</div>
+<div class="line"> </div>
+<div class="line">diagrams:</div>
+<div class="line">  main_sequence_diagram: *sequence_diagram_anchor # This will work</div>
+<div class="line">  foo_sequence_diagram:</div>
+<div class="line">    &lt;&lt;: *sequence_diagram_anchor # This will not work</div>
+<div class="line">    glob: [ src/foo.cc ]</div>
+<div class="line">    start_from:</div>
+<div class="line">      - function: &#39;foo(int,float)&#39;</div>
+</div><!-- fragment --><p>One option around this is to use some <a class="el" href="namespaceYAML.html">YAML</a> preprocessor, such as <a href="https://github.com/mikefarah/yq">yq</a> on such file and passing the configuration file to <code>clang-uml</code> using <code>stdin</code>, e.g.:</p>
+<div class="fragment language-bash"><div class="line">yq &#39;explode(.)&#39; .clang-uml | clang-uml --config -</div>
+</div><!-- fragment --><h1><a class="anchor" id="class-diagrams-1"></a>
+Class diagrams</h1>
+<h2><a class="anchor" id="fatal-error-stddefh-file-not-found"></a>
+"fatal error: 'stddef.h' file not found"</h2>
+<p>This error means that Clang cannot find some standard headers in include paths specified in the <code>compile_commands.json</code>. This typically happens on macOS and sometimes on Linux, when the code was compiled with different Clang version than <code>clang-uml</code> itself.</p>
+<p>One solution to this issue is to add the following line to your <code>CMakeLists.txt</code> file:</p>
+<div class="fragment language-cmake"><div class="line">set(CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES ${CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES})</div>
+</div><!-- fragment --><p>Another option is to provide an option (on command line or in configuration file) called <code>query_driver</code> (inspired by the <a href="https://clangd.llvm.org/">clangd</a> language server - although much less flexible), which will invoke the provider compiler command and query it for its default system paths, which then will be added to each compile command in the database. This is especially useful on macOS as well as for embedded toolchains, example usage:</p>
+<div class="fragment language-bash"><div class="line">clang-uml --query-driver arm-none-eabi-g++</div>
+</div><!-- fragment --><p>Another option is to make sure that the Clang is installed on the system (even if not used for building your project), e.g.:</p>
+<div class="fragment language-bash"><div class="line">apt install clang</div>
+</div><!-- fragment --><p>If this doesn't help to include paths can be customized using config options:</p>
+<ul>
+<li><code>add_compile_flags</code> - which adds a list of compile flags such as include paths to each entry of the compilation database</li>
+<li><code>remove_compile_flags</code> - which removes existing compile flags from each entry of the compilation database</li>
+</ul>
+<p>For instance:</p>
+<div class="fragment language-yaml"><div class="line">add_compile_flags:</div>
+<div class="line">  - -I/opt/my_toolchain/include</div>
+<div class="line">remove_compile_flags:</div>
+<div class="line">  - -I/usr/include</div>
+</div><!-- fragment --><p>These options can be also passed on the command line, for instance:</p>
+<div class="fragment language-bash"><div class="line">clang-uml --add-compile-flag -I/opt/my_toolchain/include \</div>
+<div class="line">          --remove-compile-flag -I/usr/include ...</div>
+</div><!-- fragment --><p>Also see <a href="./md_docs_2common__options.html#resolving-include-path-and-compiler-flags-issues">here</a>.</p>
+<h2><a class="anchor" id="how-can-i-generate-class-diagram-of-my-entire-project"></a>
+How can I generate class diagram of my entire project</h2>
+<p>I want to generate a diagram containing all classes and relationships in my project - I don't care how big it is going to be.</p>
+<p>Of course this is possible, the best way to do this is to specify that <code>clang-uml</code> should only include elements defined in files contained in project sources, e.g.:</p>
+<div class="fragment language-yaml"><div class="line">diagrams:</div>
+<div class="line">  all_classes:</div>
+<div class="line">    type: class</div>
+<div class="line">    include:</div>
+<div class="line">      paths: [ include, src ]</div>
+</div><!-- fragment --><p>As the diagram will be huge for even medium-sized projects, it will likely not be readable. However, this option can be useful for cases when we want to get a complete JSON model of the codebase using the JSON generator:</p>
+<div class="fragment language-bash"><div class="line">clang-uml -g json -n all_classes --progress</div>
+</div><!-- fragment --><h2><a class="anchor" id="cannot-generate-classes-for-std-namespace"></a>
+Cannot generate classes for 'std' namespace</h2>
+<p>Currently, system headers are skipped automatically by <code>clang-uml</code>, due to too many errors they produce when generating diagrams, especially when trying to process <code>GCC</code>'s or <code>MSVC</code>'s system headers by <code>Clang</code> - not yet sure why that is the case.</p>
+<p>Basically it's best to either include only specific namespaces through the inclusion filters, e.g.:</p>
+<div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  namespaces:</div>
+<div class="line">    - myns1::myns12</div>
+</div><!-- fragment --><p>or explicitly exclude <code>std</code> namespace:</p>
+<div class="fragment language-yaml"><div class="line">exclude:</div>
+<div class="line">  namespaces:</div>
+<div class="line">    - std</div>
+</div><!-- fragment --><p>Hopefully this will be eventually resolved.</p>
+<h1><a class="anchor" id="sequence-diagrams-1"></a>
+Sequence diagrams</h1>
+<h2><a class="anchor" id="generated-diagram-is-empty"></a>
+Generated diagram is empty</h2>
+<p>In order to generate sequence diagram the <code>start_from</code> configuration option must have a valid starting point for the diagram (e.g. <code>function</code>), which must match exactly the function signature in the <code>clang-uml</code> model. Look for error in the console output such as:</p>
+<div class="fragment language-bash"><div class="line">Failed to find participant mynamespace::foo(int) for start_from condition</div>
+</div><!-- fragment --><p>which means that either you have a typo in the function signature in the configuration file, or that the function was not defined in the translation units you specified in the <code>glob</code> patterns for this diagram. Run again the <code>clang-uml</code> tool with <code>-vvv</code> option and look in the console output for any mentions of the function from which the diagram should start and copy the exact signature into the configuration file.</p>
+<h2><a class="anchor" id="generated-diagram-contains-several-empty-control-blocks-or-calls-which-should-not-be-there"></a>
+Generated diagram contains several empty control blocks or calls which should not be there</h2>
+<p>Currently, the filtering of call expressions and purging empty control blocks ( e.g. loops or conditional statements), within which no interesting calls were included in the diagram is not perfect. In case the regular <code>namespaces</code> filter is not enough, it is useful to add also a <code>paths</code> filter, which will only include participants and call expressions from files in a subdirectory of your project, e.g.:</p>
+<div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  namespaces:</div>
+<div class="line">    - myproject</div>
+<div class="line">  paths:</div>
+<div class="line">    - src</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

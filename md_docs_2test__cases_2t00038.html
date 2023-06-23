@@ -1,0 +1,713 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: t00038 - Template instantiation with unexposed nested templates</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">t00038 - Template instantiation with unexposed nested templates</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="t00038---template-instantiation-with-unexposed-nested-templates"></a></p>
+<h1><a class="anchor" id="config-36"></a>
+Config</h1>
+<div class="fragment language-yaml"><div class="line">compilation_database_dir: ..</div>
+<div class="line">output_directory: puml</div>
+<div class="line">diagrams:</div>
+<div class="line">  t00038_class:</div>
+<div class="line">    type: class</div>
+<div class="line">    generate_packages: false</div>
+<div class="line">    glob:</div>
+<div class="line">      - ../../tests/t00038/t00038.cc</div>
+<div class="line">    using_namespace:</div>
+<div class="line">      - clanguml::t00038</div>
+<div class="line">    include:</div>
+<div class="line">      namespaces:</div>
+<div class="line">        - clanguml::t00038</div>
+<div class="line">        - thirdparty::ns1</div>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-36"></a>
+Source code</h1>
+<p>File t00038.cc </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>thirdparty {</div>
+<div class="line"><span class="keyword">namespace </span>ns1 {</div>
+<div class="line"><span class="keyword">enum class</span> color_t { red, green, blue };</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>E { };</div>
+<div class="line">} <span class="comment">// namespace ns1</span></div>
+<div class="line"><span class="keyword">namespace </span>ns2 {</div>
+<div class="line"><span class="keyword">struct </span>F { };</div>
+<div class="line">} <span class="comment">// namespace ns2</span></div>
+<div class="line">} <span class="comment">// namespace thirdparty</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
+<div class="line"><span class="keyword">namespace </span>t00038 {</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">enum class</span> property_t { property_a, property_b, property_c };</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>A { };</div>
+<div class="line"><span class="keyword">struct </span>B { };</div>
+<div class="line"><span class="keyword">struct </span>C { };</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>key_t {</div>
+<div class="line">    std::string key;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">struct </span>map { };</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using namespace </span>thirdparty::ns1;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;&gt; <span class="keyword">struct </span>map&lt;<a class="code hl_namespace" href="namespacestd.html" title="STL namespace.">std</a>::integral_constant&lt;color_t, color_t::red&gt;&gt; : E { };</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><span class="keyword">struct </span>map&lt;<a class="code hl_namespace" href="namespacestd.html" title="STL namespace.">std</a>::integral_constant&lt;clanguml::t00038::property_t,</div>
+<div class="line">    clanguml::t00038::property_t::property_a&gt;&gt; : A { };</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><span class="keyword">struct </span>map&lt;<a class="code hl_namespace" href="namespacestd.html" title="STL namespace.">std</a>::vector&lt;</div>
+<div class="line">    std::integral_constant&lt;t00038::property_t, t00038::property_t::property_b&gt;&gt;&gt;</div>
+<div class="line">    : B { };</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><span class="keyword">struct </span>map&lt;<a class="code hl_namespace" href="namespacestd.html" title="STL namespace.">std</a>::map&lt;key_t,</div>
+<div class="line">    std::vector&lt;std::integral_constant&lt;property_t, property_t::property_c&gt;&gt;&gt;&gt;</div>
+<div class="line">    : C { };</div>
+<div class="line"> </div>
+<div class="line">} <span class="comment">// namespace t00038</span></div>
+<div class="line">} <span class="comment">// namespace clanguml</span></div>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-uml-diagrams-36"></a>
+Generated UML diagrams</h1>
+<div class="image">
+<embed type="image/svg+xml" src="t00038_class.svg"></embed>
+</div>
+     <h1><a class="anchor" id="generated-json-models-36"></a>
+Generated JSON models</h1>
+<div class="fragment language-json"><div class="line">{</div>
+<div class="line">  &quot;diagram_type&quot;: &quot;class&quot;,</div>
+<div class="line">  &quot;elements&quot;: [</div>
+<div class="line">    {</div>
+<div class="line">      &quot;constants&quot;: [</div>
+<div class="line">        &quot;red&quot;,</div>
+<div class="line">        &quot;green&quot;,</div>
+<div class="line">        &quot;blue&quot;</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;display_name&quot;: &quot;thirdparty::ns1::color_t&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;566782399856868761&quot;,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;name&quot;: &quot;color_t&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;thirdparty::ns1&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 12,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00038/t00038.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 8,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00038/t00038.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;enum&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [],</div>
+<div class="line">      &quot;display_name&quot;: &quot;thirdparty::ns1::E&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1642222718760881014&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: true,</div>
+<div class="line">      &quot;is_template&quot;: false,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;E&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;thirdparty::ns1&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 8,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00038/t00038.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 10,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00038/t00038.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;constants&quot;: [</div>
+<div class="line">        &quot;property_a&quot;,</div>
+<div class="line">        &quot;property_b&quot;,</div>
+<div class="line">        &quot;property_c&quot;</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00038::property_t&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;7376951310260829&quot;,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;name&quot;: &quot;property_t&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00038&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 12,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00038/t00038.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 20,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00038/t00038.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;enum&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [],</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00038::A&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;790040432414172612&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: true,</div>
+<div class="line">      &quot;is_template&quot;: false,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;A&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00038&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 8,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00038/t00038.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 22,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00038/t00038.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [],</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00038::B&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1295970068907562690&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: true,</div>
+<div class="line">      &quot;is_template&quot;: false,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;B&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00038&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 8,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00038/t00038.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 23,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00038/t00038.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [],</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00038::C&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;154510361779680983&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: true,</div>
+<div class="line">      &quot;is_template&quot;: false,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;C&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00038&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 8,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00038/t00038.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 24,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00038/t00038.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [],</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00038::key_t&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;137163683637529037&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: true,</div>
+<div class="line">      &quot;is_template&quot;: false,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;is_static&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;key&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 17,</div>
+<div class="line">            &quot;file&quot;: &quot;../../tests/t00038/t00038.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 27,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00038/t00038.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;std::string&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;key_t&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00038&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 8,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00038/t00038.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 26,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00038/t00038.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [],</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00038::map&lt;T&gt;&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1917560728132448300&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: true,</div>
+<div class="line">      &quot;is_template&quot;: true,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;map&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00038&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 30,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00038/t00038.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 30,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00038/t00038.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;is_variadic&quot;: false,</div>
+<div class="line">          &quot;kind&quot;: &quot;template_type&quot;,</div>
+<div class="line">          &quot;name&quot;: &quot;T&quot;,</div>
+<div class="line">          &quot;template_parameters&quot;: []</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;1642222718760881014&quot;,</div>
+<div class="line">          &quot;is_virtual&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;thirdparty::ns1::E&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00038::map&lt;std::integral_constant&lt;thirdparty::ns1::color_t,thirdparty::ns1::color_t::red&gt;&gt;&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1664022047310891203&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: true,</div>
+<div class="line">      &quot;is_template&quot;: true,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;map&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00038&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 20,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00038/t00038.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 34,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00038/t00038.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;is_variadic&quot;: false,</div>
+<div class="line">          &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">          &quot;template_parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;is_variadic&quot;: false,</div>
+<div class="line">              &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
+<div class="line">              &quot;type&quot;: &quot;thirdparty::ns1::color_t&quot;</div>
+<div class="line">            },</div>
+<div class="line">            {</div>
+<div class="line">              &quot;is_variadic&quot;: false,</div>
+<div class="line">              &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
+<div class="line">              &quot;type&quot;: &quot;thirdparty::ns1::color_t::red&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;type&quot;: &quot;std::integral_constant&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;790040432414172612&quot;,</div>
+<div class="line">          &quot;is_virtual&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;clanguml::t00038::A&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00038::map&lt;std::integral_constant&lt;clanguml::t00038::property_t,clanguml::t00038::property_t::property_a&gt;&gt;&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;307700801045535833&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: true,</div>
+<div class="line">      &quot;is_template&quot;: true,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;map&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00038&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 8,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00038/t00038.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 37,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00038/t00038.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;is_variadic&quot;: false,</div>
+<div class="line">          &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">          &quot;template_parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;is_variadic&quot;: false,</div>
+<div class="line">              &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
+<div class="line">              &quot;type&quot;: &quot;clanguml::t00038::property_t&quot;</div>
+<div class="line">            },</div>
+<div class="line">            {</div>
+<div class="line">              &quot;is_variadic&quot;: false,</div>
+<div class="line">              &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
+<div class="line">              &quot;type&quot;: &quot;clanguml::t00038::property_t::property_a&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;type&quot;: &quot;std::integral_constant&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;1295970068907562690&quot;,</div>
+<div class="line">          &quot;is_virtual&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;clanguml::t00038::B&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00038::map&lt;std::vector&lt;std::integral_constant&lt;clanguml::t00038::property_t,clanguml::t00038::property_t::property_b&gt;&gt;&gt;&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;548231528417484191&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: true,</div>
+<div class="line">      &quot;is_template&quot;: true,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;map&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00038&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 8,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00038/t00038.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 41,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00038/t00038.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;is_variadic&quot;: false,</div>
+<div class="line">          &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">          &quot;template_parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;is_variadic&quot;: false,</div>
+<div class="line">              &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">              &quot;template_parameters&quot;: [</div>
+<div class="line">                {</div>
+<div class="line">                  &quot;is_variadic&quot;: false,</div>
+<div class="line">                  &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">                  &quot;template_parameters&quot;: [],</div>
+<div class="line">                  &quot;type&quot;: &quot;clanguml::t00038::property_t&quot;</div>
+<div class="line">                },</div>
+<div class="line">                {</div>
+<div class="line">                  &quot;is_variadic&quot;: false,</div>
+<div class="line">                  &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">                  &quot;template_parameters&quot;: [],</div>
+<div class="line">                  &quot;type&quot;: &quot;clanguml::t00038::property_t::property_b&quot;</div>
+<div class="line">                }</div>
+<div class="line">              ],</div>
+<div class="line">              &quot;type&quot;: &quot;std::integral_constant&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;type&quot;: &quot;std::vector&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;154510361779680983&quot;,</div>
+<div class="line">          &quot;is_virtual&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;clanguml::t00038::C&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00038::map&lt;std::map&lt;clanguml::t00038::key_t,std::vector&lt;std::integral_constant&lt;clanguml::t00038::property_t,clanguml::t00038::property_t::property_c&gt;&gt;&gt;&gt;&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1510200402118706005&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: true,</div>
+<div class="line">      &quot;is_template&quot;: true,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;map&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00038&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 8,</div>
+<div class="line">        &quot;file&quot;: &quot;../../tests/t00038/t00038.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 46,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00038/t00038.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;is_variadic&quot;: false,</div>
+<div class="line">          &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">          &quot;template_parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;is_variadic&quot;: false,</div>
+<div class="line">              &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
+<div class="line">              &quot;type&quot;: &quot;clanguml::t00038::key_t&quot;</div>
+<div class="line">            },</div>
+<div class="line">            {</div>
+<div class="line">              &quot;is_variadic&quot;: false,</div>
+<div class="line">              &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">              &quot;template_parameters&quot;: [</div>
+<div class="line">                {</div>
+<div class="line">                  &quot;is_variadic&quot;: false,</div>
+<div class="line">                  &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">                  &quot;template_parameters&quot;: [</div>
+<div class="line">                    {</div>
+<div class="line">                      &quot;is_variadic&quot;: false,</div>
+<div class="line">                      &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">                      &quot;template_parameters&quot;: [],</div>
+<div class="line">                      &quot;type&quot;: &quot;clanguml::t00038::property_t&quot;</div>
+<div class="line">                    },</div>
+<div class="line">                    {</div>
+<div class="line">                      &quot;is_variadic&quot;: false,</div>
+<div class="line">                      &quot;kind&quot;: &quot;argument&quot;,</div>
+<div class="line">                      &quot;template_parameters&quot;: [],</div>
+<div class="line">                      &quot;type&quot;: &quot;clanguml::t00038::property_t::property_c&quot;</div>
+<div class="line">                    }</div>
+<div class="line">                  ],</div>
+<div class="line">                  &quot;type&quot;: &quot;std::integral_constant&quot;</div>
+<div class="line">                }</div>
+<div class="line">              ],</div>
+<div class="line">              &quot;type&quot;: &quot;std::vector&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;type&quot;: &quot;std::map&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    }</div>
+<div class="line">  ],</div>
+<div class="line">  &quot;metadata&quot;: {</div>
+<div class="line">    &quot;clang_uml_version&quot;: &quot;0.3.7-4-g43cc5cb&quot;,</div>
+<div class="line">    &quot;llvm_version&quot;: &quot;Ubuntu clang version 16.0.1 (++20230328073357+42d1b276f779-1~exp1~20230328073502.65)&quot;,</div>
+<div class="line">    &quot;schema_version&quot;: 1</div>
+<div class="line">  },</div>
+<div class="line">  &quot;name&quot;: &quot;t00038_class&quot;,</div>
+<div class="line">  &quot;relationships&quot;: [</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;566782399856868761&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;1664022047310891203&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;1917560728132448300&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;1664022047310891203&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;instantiation&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;1642222718760881014&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;1664022047310891203&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;extension&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;7376951310260829&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;307700801045535833&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;1917560728132448300&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;307700801045535833&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;instantiation&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;790040432414172612&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;307700801045535833&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;extension&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;7376951310260829&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;548231528417484191&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;1917560728132448300&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;548231528417484191&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;instantiation&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;1295970068907562690&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;548231528417484191&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;extension&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;137163683637529037&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;1510200402118706005&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;7376951310260829&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;1510200402118706005&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;1917560728132448300&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;1510200402118706005&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;instantiation&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;154510361779680983&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;1510200402118706005&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;extension&quot;</div>
+<div class="line">    }</div>
+<div class="line">  ],</div>
+<div class="line">  &quot;using_namespace&quot;: &quot;clanguml::t00038&quot;</div>
+<div class="line">}</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

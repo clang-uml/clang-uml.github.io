@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: Architecture</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">Architecture</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="architecture"></a></p>
+<ul>
+<li><a class="el" href="md_docs_2architecture.html#overview">Overview</a></li>
+<li><a class="el" href="md_docs_2architecture.html#configuration-model">Configuration model</a></li>
+<li><a class="el" href="md_docs_2architecture.html#diagram-model">Diagram model</a><ul>
+<li><a class="el" href="md_docs_2architecture.html#common-model">Common model</a></li>
+<li><a class="el" href="md_docs_2architecture.html#diagram-filters">Diagram filters</a></li>
+</ul>
+</li>
+<li><a class="el" href="md_docs_2architecture.html#translation-unit-visitors">Translation unit visitors</a></li>
+<li><a class="el" href="md_docs_2architecture.html#diagram-generators">Diagram generators</a></li>
+<li><a class="el" href="md_docs_2architecture.html#command-line-handler">Command line handler</a></li>
+<li><a class="el" href="md_docs_2architecture.html#tests">Tests</a><ul>
+<li><a class="el" href="md_docs_2architecture.html#unit-tests">Unit tests</a></li>
+<li><a class="el" href="md_docs_2architecture.html#test-cases">Test cases</a></li>
+<li><a class="el" href="md_docs_2architecture.html#real-code-tests">Real code tests</a></li>
+</ul>
+</li>
+</ul>
+<p>This section presents general architecture and components of <code>clang-uml</code>.</p>
+<blockquote class="doxtable">
+<p>&zwj;All diagrams below are generated by <code>clang-uml</code> and updated automatically. </p>
+</blockquote>
+<h1><a class="anchor" id="overview"></a>
+Overview</h1>
+<p><code>clang-uml</code> is written in C++17 and uses <a href="https://releases.llvm.org/16.0.0/tools/clang/docs/LibTooling.html">Clang LibTooling API</a> to traverse the AST (Abstract Syntax Tree) of the source code and extract any information relevant for a specified diagram.</p>
+<p>The code is divided into several packages (namespaces), the main of them are:</p>
+<ul>
+<li><a href="./namespaceclanguml_1_1config.html"><code>clanguml::config</code></a> - configuration handling</li>
+<li><a href="./namespaceclanguml_1_1common.html"><code>clanguml::common</code></a> - common interfaces</li>
+<li><a href="./namespaceclanguml_1_1class__diagram.html"><code>clanguml::class_diagram</code></a> - specializations for class diagrams</li>
+<li><a href="./namespaceclanguml_1_1sequence__diagram.html"><code>clanguml::sequence_diagram</code></a> - specializations for sequence diagrams</li>
+<li><a href="./namespaceclanguml_1_1include__diagram.html"><code>clanguml::include_diagram</code></a> - specializations for include diagrams</li>
+<li><a href="./namespaceclanguml_1_1package__diagram.html"><code>clanguml::package_diagram</code></a> - specializations for package diagrams</li>
+</ul>
+<div class="image">
+<embed type="image/svg+xml" src="architecture_package.svg"></embed>
+</div>
+    <h1><a class="anchor" id="configuration-model"></a>
+Configuration model</h1>
+<p>The configuration model consists of classes representing the configuration specified in the <a class="el" href="namespaceYAML.html">YAML</a> configuration files.</p>
+<p>Depending on the option, it can either:</p>
+<ul>
+<li>be specified only at the top level of the configuration file</li>
+<li>only in the specific diagram configuration</li>
+<li>either of the above</li>
+</ul>
+<p>The first group of options are stored in the <a href="structclanguml_1_1config_1_1config.html"><code>config::config</code></a> class.</p>
+<p>The second group is stored in a specific diagram config subclass, e.g. <a href="structclanguml_1_1config_1_1sequence__diagram.html"><code>config::sequence_diagram</code></a></p>
+<p>The options in the last group are modeled in the <a href="./structclanguml_1_1config_1_1inheritable__diagram__options.html"><code>config::inheritable_diagram_options</code></a>.</p>
+<div class="image">
+<embed type="image/svg+xml" src="config_class.svg"></embed>
+</div>
+    <p>The <a class="el" href="namespaceYAML.html">YAML</a> configuration file is parsed using <a href="https://github.com/jbeder/yaml-cpp">yaml-cpp</a> library:</p>
+<div class="image">
+<embed type="image/svg+xml" src="load_config_sequence.svg"></embed>
+</div>
+    <p>For each possible option type, there must an implementation of a <a class="el" href="namespaceYAML.html">YAML</a> decoder - e.g. <a href="./structYAML_1_1convert_3_01filter_01_4.html"><code>YAML::convert&lt;filter&gt;</code></a> (for converting <a class="el" href="namespaceYAML.html">YAML</a> nodes to configuration model classes) and a <a class="el" href="namespaceYAML.html">YAML</a> emitter - e.g. <a href="./group__yaml__emitters.html#ga4c8bc075684b08daa379aef609bb6297"><code>operator&lt;&lt;</code></a> (for generating <a class="el" href="namespaceYAML.html">YAML</a> from configuration model classes).</p>
+<h1><a class="anchor" id="diagram-model"></a>
+Diagram model</h1>
+<p>The diagram model namespace is divided into the <a class="el" href="md_docs_2architecture.html#common-model">`common`</a> model namespace and 1 namespace for each supported diagram type.</p>
+<p><embed type="image/svg+xml" src="./architecture_model.svg">clang-uml packages</embed>
+/></p>
+<h2><a class="anchor" id="common-model"></a>
+Common model</h2>
+<p>The <a href="./namespaceclanguml_1_1common_1_1model.html">common diagram model namespace</a>, provides a set of classes representing typical UML and C++ concepts such as diagram elements, packages, templates, and others which are shared by more than 1 diagram type.</p>
+<div class="image">
+<embed type="image/svg+xml" src="common_model_class.svg"></embed>
+</div>
+    <p>The diagram elements are composed into a hierarchy spanning all major namespaces, depending on whether the element is specific for a single diagram type ( e.g. <a href="./structclanguml_1_1sequence__diagram_1_1model_1_1participant.html"><code>participant</code></a>), or whether it's common for several diagram types ( e.g. <a href="./classclanguml_1_1common_1_1model_1_1package.html"><code>package</code></a>).</p>
+<h2><a class="anchor" id="diagram-filters"></a>
+Diagram filters</h2>
+<p>In order to ease the generation of diagrams, <code>clang-uml</code> has a (very) simple intermediate UML model, which covers only the features necessary for generation of the supported diagram types. The model can be extended if necessary to add new features.</p>
+<div class="image">
+<embed type="image/svg+xml" src="diagram_filter_context_class.svg"></embed>
+</div>
+    <h1><a class="anchor" id="translation-unit-visitors"></a>
+Translation unit visitors</h1>
+<p>The first stage in the diagram generation involves traversing the AST of each translation unit from the <code>compile_commands.json</code> compilation database, which matched at least one pattern specified in the <code>glob</code> pattern of the configuration file.</p>
+<p>Each visitor is implemented in a subclass of <a href="./classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html"><code>translation_unit_visitor</code></a>, and must also implement relevant methods from Clang's <a href="https://clang.llvm.org/doxygen/classclang_1_1RecursiveASTVisitor.html">RecursiveASTVisitor</a>.</p>
+<div class="image">
+<embed type="image/svg+xml" src="architecture_visitors_class.svg"></embed>
+</div>
+    <p>The output of the <code>translation_unit_visitor</code> for each diagram type is an intermediate diagram model, which is then passed to the relevant diagram generator.</p>
+<h1><a class="anchor" id="diagram-generators"></a>
+Diagram generators</h1>
+<p>Diagram generators convert the <code>clang-uml</code>'s internal UML model into actual diagram in one of the supported formats:</p>
+<ul>
+<li>PlantUML</li>
+<li>JSON</li>
+</ul>
+<p>Each diagram generator extends a common interface appropriate for the selected output format, i.e.:</p>
+<ul>
+<li><a href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html">PlantUML</a></li>
+<li><a href="classclanguml_1_1common_1_1generators_1_1json_1_1generator.html">JSON</a></li>
+</ul>
+<p>and renders the output to a file. For each diagram type there is a separate generator for each supported output format.</p>
+<h1><a class="anchor" id="command-line-handler"></a>
+Command line handler</h1>
+<p>The <a href="classclanguml_1_1cli_1_1cli__handler.html">cli_handler</a> is a command line handler class is a wrapper around <a href="https://github.com/CLIUtils/CLI11">CLI11</a>, and implements handlers for various actions, validates command line parameters and reports errors.</p>
+<h1><a class="anchor" id="tests"></a>
+Tests</h1>
+<h2><a class="anchor" id="unit-tests"></a>
+Unit tests</h2>
+<p>Basic set of units tests are stored in <a href="https://github.com/bkryza/clang-uml/tree/master/tests">tests/test_*.cc</a> test files. The unit tests do not aim to cover the entire codebase, only specific algorithms or methods, which should behave as expected and if their errors can be difficult to diagnose when running the test cases on C++ code.</p>
+<h2><a class="anchor" id="test-cases"></a>
+Test cases</h2>
+<p>These tests are the main tests of <code>clang-uml</code>. Each test case tests one or more feature of a specific diagram type. Each of them has a separated directory in the <code>tests</code> directory and its own <code>.clang-uml</code> with diagram configuration as well as a <code>test_case.h</code> file which contains the tests assertions.</p>
+<p>Any other sources in that directory are compiled and then used to generate the diagrams, whose contents should be then verified within <code>test_case.h</code> for correctness. All the sources should be wrapped within a namespace: <code>clanguml::</code></p>
+<p>These test directories are numbered in consecutive numbers using the following convention:</p><ul>
+<li>Start with a letter <code>t</code></li>
+<li>The first digit of the number is the diagram type:<ul>
+<li><code>0</code> - class diagram</li>
+<li><code>2</code> - sequence diagram</li>
+<li><code>3</code> - package diagram</li>
+<li><code>4</code> - include diagram</li>
+<li><code>9</code> - other test cases</li>
+</ul>
+</li>
+<li>The rest of the name is the consecutive number of the test case</li>
+</ul>
+<p>Each test case is also referenced in <a href="https://github.com/bkryza/clang-uml/blob/master/tests/test_cases.yaml">test_cases.yaml</a> where it has assigned a title. That file is used to generate the <a href="./md_docs_2test__cases.html">test cases documentation page</a>.</p>
+<h2><a class="anchor" id="real-code-tests"></a>
+Real code tests</h2>
+<p>Each release is tested on a set of open-source C++ projects, to be sure that at least the new version does not crash or introduce some obvious regressions.</p>
+<p>The tests are stored in a separate repository: <a href="https://github.com/bkryza/clang-uml-examples">clang-uml-examples</a>. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

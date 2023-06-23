@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: Generating sequence diagrams</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">Generating sequence diagrams</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="generating-sequence-diagrams"></a></p>
+<ul>
+<li><a class="el" href="md_docs_2sequence__diagrams.html#sequence-diagram-overview">Sequence diagram overview</a></li>
+<li><a class="el" href="md_docs_2sequence__diagrams.html#specifying-diagram-entry-point">Specifying diagram entry point</a></li>
+<li><a class="el" href="md_docs_2sequence__diagrams.html#grouping-free-functions-by-file">Grouping free functions by file</a></li>
+<li><a class="el" href="md_docs_2sequence__diagrams.html#lambda-expressions-in-sequence-diagrams">Lambda expressions in sequence diagrams</a></li>
+<li><a class="el" href="md_docs_2sequence__diagrams.html#customizing-participants-order">Customizing participants order</a></li>
+</ul>
+<p>The minimal config required to generate a sequence diagram is presented below: </p><div class="fragment language-yaml"><div class="line"># Path to the directory where `compile_commands.json` can be found</div>
+<div class="line">compilation_database_dir: _build</div>
+<div class="line"># Output directory for the diagrams</div>
+<div class="line">output_directory: puml</div>
+<div class="line"># Diagrams definitions</div>
+<div class="line">diagrams:</div>
+<div class="line">  # Diagram name</div>
+<div class="line">  my_class_diagram:</div>
+<div class="line">    # Type of diagram (has to be `sequence`)</div>
+<div class="line">    type: sequence</div>
+<div class="line">    # Include only translation units matching the following patterns</div>
+<div class="line">    glob:</div>
+<div class="line">      - src/*.cc</div>
+<div class="line">    # Include only classes and functions from files in `src` directory</div>
+<div class="line">    include:</div>
+<div class="line">      paths:</div>
+<div class="line">        - src</div>
+<div class="line">    # Exclude calls to/from `std` namespace</div>
+<div class="line">    exclude:</div>
+<div class="line">      namespaces:</div>
+<div class="line">        - std</div>
+<div class="line">    start_from:</div>
+<div class="line">      - function: &quot;main(int,const char**)&quot;</div>
+</div><!-- fragment --><h1><a class="anchor" id="sequence-diagram-overview"></a>
+Sequence diagram overview</h1>
+<p>Consider the following diagram:</p>
+<div class="image">
+<embed type="image/svg+xml" src="t20029_sequence.svg"></embed>
+</div>
+    <p><code>clang-uml</code> generated sequence diagrams are not strictly speaking conforming to the UML specification. In order to make them more useful for documenting modern C++ code, the following assumptions were made:</p><ul>
+<li>Free functions are included in the sequence diagrams as standalone participants (in fact <code>clang-uml</code> can be used to generate sequence diagrams from plain old C code). Functions can also be aggregated into file participants, based on their place of declaration</li>
+<li>Call expressions in conditional expressions in block statements (e.g. <code>if</code> or <code>while</code>) are rendered inside the PlantUML <code>alt</code> or <code>loop</code> blocks but wrapped in <code>[</code>, <code>]</code> brackets</li>
+<li>Lambda expressions are generated as standalone participants, whose name comprises the parent context where they are defined and the exact source code location</li>
+</ul>
+<h1><a class="anchor" id="specifying-diagram-entry-point"></a>
+Specifying diagram entry point</h1>
+<p>Sequence diagrams require an entry point for the diagram in order to determine, at which point in the code the sequence diagram should start. Currently, the entry point can only be a method or a free function, both specified using <code>start_from</code> configuration property, for instance: </p><div class="fragment language-yaml"><div class="line">start_from:</div>
+<div class="line">  - function: &quot;main(int,char**)&quot;</div>
+</div><!-- fragment --><p> or </p><div class="fragment language-yaml"><div class="line">start_from:</div>
+<div class="line">  - function: &quot;clanguml::sequence_diagram::visitor::translation_unit_visitor::VisitCXXRecordDecl(clang::CXXRecordDecl *)&quot;</div>
+</div><!-- fragment --><p>The entrypoints must be fully qualified and they must match exactly the string representation of given function or method in the <code>clang-uml</code> model, which can be frustrating after few attempts. If not sure, the best way is to put anything in the <code>function</code> property value at first, run the <code>clang-uml</code> on the diagram with verbose set to <code>-vvv</code> and look in the logs for the relevant function signature. At the end of the diagram generation at this verbosity level, <code>clang-uml</code> will generate a textual representation of all discovered activities relevant for this diagram, for instance if you're looking <em>for exact signature of method <code>translation_unit_visitor::VisitCXXRecordDecl</code>, look for similar</em> output in the logs:</p>
+<div class="fragment language-bash"><div class="line">[trace] [tid 3842954] [diagram.cc:194] Sequence id=1875210076312968845:</div>
+<div class="line">[trace] [tid 3842954] [diagram.cc:198]    Activity id=1875210076312968845, from=clanguml::sequence_diagram::visitor::translation_unit_visitor::VisitCXXRecordDecl(clang::CXXRecordDecl *):</div>
+<div class="line">[trace] [tid 3842954] [diagram.cc:208]        Message from=clanguml::sequence_diagram::visitor::translation_unit_visitor::VisitCXXRecordDecl(clang::CXXRecordDecl *), from_id=1875210076312968845, to=__UNRESOLVABLE_ID__, to_id=0, name=, type=if</div>
+<div class="line">[trace] [tid 3842954] [diagram.cc:217]        Message from=clanguml::sequence_diagram::visitor::translation_unit_visitor::VisitCXXRecordDecl(clang::CXXRecordDecl *), from_id=1875210076312968845, to=clanguml::sequence_diagram::visitor::translation_unit_visitor::should_include(const clang::TagDecl *), to_id=664596622746486441, name=should_include, type=call</div>
+</div><!-- fragment --><p>Then you just need to copy and paste the signature exactly and rerun <code>clang-uml</code>.</p>
+<h1><a class="anchor" id="grouping-free-functions-by-file"></a>
+Grouping free functions by file</h1>
+<p>By default, <code>clang-uml</code> will generate a new participant for each call to a free function (not method), which can lead to a very large number of participants in the diagram. If it's an issue, an option can be provided in the diagram definition:</p>
+<div class="fragment language-yaml"><div class="line">combine_free_functions_into_file_participants: true</div>
+</div><!-- fragment --><p>which will aggregate free functions per source file where they were declared thus minimizing the diagram size. An example of such diagram is presented below:</p>
+<div class="image">
+<embed type="image/svg+xml" src="t20017_sequence.svg"></embed>
+</div>
+    <h1><a class="anchor" id="lambda-expressions-in-sequence-diagrams"></a>
+Lambda expressions in sequence diagrams</h1>
+<p>Lambda expressions in sequence diagrams are... tricky. There is currently tentative support, which follows the following rules:</p><ul>
+<li>If lambda expression is called within the scope of the diagram, the calls from the lambda will be placed at the lambda invocation and not declaration</li>
+<li>If lambda expression is passed to some function or method, which is outside the scope of the diagram (e.g. used in <code>std::transform</code> call) the call will be generated at the point where lambda is passed as parameter</li>
+<li>If the lambda is passed as template parameter in instantiation it will not be generated at the moment at all</li>
+</ul>
+<p>Another issue is the naming of lambda participants. Currently, each lambda is rendered in the diagram as a separate class whose name is composed of the lambda location in the code (the only unique way of identifying lambdas I was able to find). For example the following code:</p>
+<div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;functional&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;optional&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
+<div class="line"><span class="keyword">namespace </span>t20012 {</div>
+<div class="line"><span class="keyword">struct </span>A {</div>
+<div class="line">    <span class="keywordtype">void</span> a() { aa(); }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> aa() { aaa(); }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> aaa() { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>B {</div>
+<div class="line">    <span class="keywordtype">void</span> b() { bb(); }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> bb() { bbb(); }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> bbb() { }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> eb() { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>C {</div>
+<div class="line">    <span class="keywordtype">void</span> c() { cc(); }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> cc() { ccc(); }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> ccc() { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>D {</div>
+<div class="line">    <span class="keywordtype">int</span> add5(<span class="keywordtype">int</span> arg)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> arg + 5; }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">class </span>E {</div>
+<div class="line">    std::optional&lt;std::shared_ptr&lt;B&gt;&gt; maybe_b;</div>
+<div class="line">    std::shared_ptr&lt;A&gt; a;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> F&gt; <span class="keywordtype">void</span> setup(F &amp;&amp;f) { f(maybe_b); }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> F&gt; <span class="keyword">struct </span>R {</div>
+<div class="line">    R(F &amp;&amp;f)</div>
+<div class="line">        : f_{<a class="code hl_namespace" href="namespacestd.html" title="STL namespace.">std</a>::move(f)}</div>
+<div class="line">    {</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> r() { f_(); }</div>
+<div class="line"> </div>
+<div class="line">    F f_;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> tmain()</div>
+<div class="line">{</div>
+<div class="line">    A a;</div>
+<div class="line">    B b;</div>
+<div class="line">    C c;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// The activity shouldn&#39;t be marked at the lambda definition, but</span></div>
+<div class="line">    <span class="comment">// wherever it is actually called...</span></div>
+<div class="line">    <span class="keyword">auto</span> alambda = [&amp;a, &amp;b]() {</div>
+<div class="line">        a.a();</div>
+<div class="line">        b.b();</div>
+<div class="line">    };</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// ...like here</span></div>
+<div class="line">    alambda();</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// There should be no call to B in the sequence diagram as the blambda</span></div>
+<div class="line">    <span class="comment">// is never called</span></div>
+<div class="line">    [[maybe_unused]] <span class="keyword">auto</span> blambda = [&amp;b]() { b.b(); };</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Nested lambdas should also work</span></div>
+<div class="line">    <span class="keyword">auto</span> clambda = [alambda, &amp;c]() {</div>
+<div class="line">        c.c();</div>
+<div class="line">        alambda();</div>
+<div class="line">    };</div>
+<div class="line">    clambda();</div>
+<div class="line"> </div>
+<div class="line">    R r{[&amp;c]() { c.c(); }};</div>
+<div class="line"> </div>
+<div class="line">    r.r();</div>
+<div class="line"> </div>
+<div class="line">    D d;</div>
+<div class="line"> </div>
+<div class="line">    std::vector&lt;int&gt; ints{0, 1, 2, 3, 4};</div>
+<div class="line">    std::transform(ints.begin(), ints.end(), ints.begin(),</div>
+<div class="line">        [&amp;d](<span class="keyword">auto</span> i) { return d.add5(i); });</div>
+<div class="line">}</div>
+<div class="line">}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>generates the following diagram:</p>
+<div class="image">
+<embed type="image/svg+xml" src="t20012_sequence.svg"></embed>
+</div>
+    <h1><a class="anchor" id="customizing-participants-order"></a>
+Customizing participants order</h1>
+<p>The default participant order in the sequence diagram can be suboptimal in the sense that consecutive calls can go right, then left, then right again depending on the specific call chain in the code. It is however possible to override this order in the diagram definition using <code>participants_order</code> property, for instance like this test case:</p>
+<div class="fragment language-yaml"><div class="line">compilation_database_dir: ..</div>
+<div class="line">output_directory: puml</div>
+<div class="line">diagrams:</div>
+<div class="line">  t20029_sequence:</div>
+<div class="line">    type: sequence</div>
+<div class="line">    glob:</div>
+<div class="line">      - ../../tests/t20029/t20029.cc</div>
+<div class="line">    include:</div>
+<div class="line">      namespaces:</div>
+<div class="line">        - clanguml::t20029</div>
+<div class="line">    exclude:</div>
+<div class="line">      access:</div>
+<div class="line">        - private</div>
+<div class="line">    using_namespace:</div>
+<div class="line">      - clanguml::t20029</div>
+<div class="line">    start_from:</div>
+<div class="line">      - function: clanguml::t20029::tmain()</div>
+<div class="line">    participants_order:</div>
+<div class="line">      - clanguml::t20029::tmain()</div>
+<div class="line">      - clanguml::t20029::Encoder&lt;clanguml::t20029::Retrier&lt;clanguml::t20029::ConnectionPool&gt;&gt;</div>
+<div class="line">      - clanguml::t20029::Retrier&lt;clanguml::t20029::ConnectionPool&gt;</div>
+<div class="line">      - clanguml::t20029::ConnectionPool</div>
+<div class="line">      - clanguml::t20029::encode_b64(std::string &amp;&amp;)</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

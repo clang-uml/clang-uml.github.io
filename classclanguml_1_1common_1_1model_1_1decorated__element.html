@@ -1,0 +1,561 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: clanguml::common::model::decorated_element Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceclanguml.html">clanguml</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1common.html">common</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1common_1_1model.html">model</a></li><li class="navelem"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">decorated_element</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="classclanguml_1_1common_1_1model_1_1decorated__element-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">clanguml::common::model::decorated_element Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Base class for decorated diagram elements.  
+ <a href="classclanguml_1_1common_1_1model_1_1decorated__element.html#details">More...</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Base class for decorated diagram elements. </p>
+<p>Decorators in <code>clang-uml</code> mean that custom <code>{}</code> directives can be applied to them in the code comments.</p>
+<p> <embed src="decorated_element_hierarchy_class.svg"/> </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structclanguml_1_1decorators_1_1decorator.html">clanguml::decorators::decorator</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="decorated__element_8h_source.html#l00048">48</a> of file <a class="el" href="decorated__element_8h_source.html">decorated_element.h</a>.</p>
+</div>
+<p><code>#include &lt;<a class="el" href="decorated__element_8h_source.html">decorated_element.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a9b7061ca0eaafc09ba77d864dda7f079"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a9b7061ca0eaafc09ba77d864dda7f079">~decorated_element</a> ()=default</td></tr>
+<tr class="separator:a9b7061ca0eaafc09ba77d864dda7f079"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76769ab338d3fc500e8a239a13fb6007"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a76769ab338d3fc500e8a239a13fb6007">skip</a> () const</td></tr>
+<tr class="separator:a76769ab338d3fc500e8a239a13fb6007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac29274b68b39a6358766327f08f69e44"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#ac29274b68b39a6358766327f08f69e44">skip_relationship</a> () const</td></tr>
+<tr class="separator:ac29274b68b39a6358766327f08f69e44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77974a108ab93d1dc3469a72a11bd492"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">relationship_t</a>, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a77974a108ab93d1dc3469a72a11bd492">get_relationship</a> () const</td></tr>
+<tr class="separator:a77974a108ab93d1dc3469a72a11bd492"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaef772c36531d172960f5692c0dabb9f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#aaef772c36531d172960f5692c0dabb9f">style_spec</a> () const</td></tr>
+<tr class="separator:aaef772c36531d172960f5692c0dabb9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a046a87735974eb6d8f905a8656e82cbb"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structclanguml_1_1decorators_1_1decorator.html">decorators::decorator</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a046a87735974eb6d8f905a8656e82cbb">decorators</a> () const</td></tr>
+<tr class="separator:a046a87735974eb6d8f905a8656e82cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaad5a04bff30c3231764e4eb0ba9c241"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#aaad5a04bff30c3231764e4eb0ba9c241">add_decorators</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structclanguml_1_1decorators_1_1decorator.html">decorators::decorator</a> &gt; &gt; &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a046a87735974eb6d8f905a8656e82cbb">decorators</a>)</td></tr>
+<tr class="separator:aaad5a04bff30c3231764e4eb0ba9c241"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12b8a15be5d9bffe765c4beb8b6144ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a12b8a15be5d9bffe765c4beb8b6144ba">append</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">decorated_element</a> &amp;de)</td></tr>
+<tr class="separator:a12b8a15be5d9bffe765c4beb8b6144ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01d2d05924f7cc1bd3c99b73029f6c5f"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">comment_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a01d2d05924f7cc1bd3c99b73029f6c5f">comment</a> () const</td></tr>
+<tr class="separator:a01d2d05924f7cc1bd3c99b73029f6c5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1603e04dfb18d6f839da54e6e3f1e220"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a1603e04dfb18d6f839da54e6e3f1e220">set_comment</a> (const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">comment_t</a> &amp;c)</td></tr>
+<tr class="separator:a1603e04dfb18d6f839da54e6e3f1e220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f57a20612b439c2da8dc88e0d181638"><td class="memItemLeft" align="right" valign="top">virtual std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a5f57a20612b439c2da8dc88e0d181638">doxygen_link</a> () const</td></tr>
+<tr class="separator:a5f57a20612b439c2da8dc88e0d181638"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ac9b919d692ce3f46e5bc821804a60758"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="structclanguml_1_1decorators_1_1decorator.html">decorators::decorator</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#ac9b919d692ce3f46e5bc821804a60758">decorators_</a></td></tr>
+<tr class="separator:ac9b919d692ce3f46e5bc821804a60758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a387325aa4c35a9163e98b4226b74e6de"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">comment_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a387325aa4c35a9163e98b4226b74e6de">comment_</a></td></tr>
+<tr class="separator:a387325aa4c35a9163e98b4226b74e6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a9b7061ca0eaafc09ba77d864dda7f079" name="a9b7061ca0eaafc09ba77d864dda7f079"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b7061ca0eaafc09ba77d864dda7f079">&#9670;&#160;</a></span>~decorated_element()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual clanguml::common::model::decorated_element::~decorated_element </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aaad5a04bff30c3231764e4eb0ba9c241" name="aaad5a04bff30c3231764e4eb0ba9c241"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaad5a04bff30c3231764e4eb0ba9c241">&#9670;&#160;</a></span>add_decorators()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::model::decorated_element::add_decorators </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structclanguml_1_1decorators_1_1decorator.html">decorators::decorator</a> &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>decorators</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Add decorators to the element.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">decorators</td><td>List of decorator pointers. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="decorated__element_8cc_source.html#l00075">75</a> of file <a class="el" href="decorated__element_8cc_source.html">decorated_element.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   77</span>{</div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;d : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a046a87735974eb6d8f905a8656e82cbb">decorators</a>) {</div>
+<div class="line"><span class="lineno">   79</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#ac9b919d692ce3f46e5bc821804a60758">decorators_</a>.push_back(d);</div>
+<div class="line"><span class="lineno">   80</span>    }</div>
+<div class="line"><span class="lineno">   81</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a12b8a15be5d9bffe765c4beb8b6144ba" name="a12b8a15be5d9bffe765c4beb8b6144ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12b8a15be5d9bffe765c4beb8b6144ba">&#9670;&#160;</a></span>append()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::model::decorated_element::append </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">decorated_element</a> &amp;&#160;</td>
+          <td class="paramname"><em>de</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Append decorators from another element.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">de</td><td>Source element to copy decorators from. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="decorated__element_8cc_source.html#l00083">83</a> of file <a class="el" href="decorated__element_8cc_source.html">decorated_element.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   84</span>{</div>
+<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;d : de.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a046a87735974eb6d8f905a8656e82cbb">decorators</a>()) {</div>
+<div class="line"><span class="lineno">   86</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#ac9b919d692ce3f46e5bc821804a60758">decorators_</a>.push_back(d);</div>
+<div class="line"><span class="lineno">   87</span>    }</div>
+<div class="line"><span class="lineno">   88</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a01d2d05924f7cc1bd3c99b73029f6c5f" name="a01d2d05924f7cc1bd3c99b73029f6c5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01d2d05924f7cc1bd3c99b73029f6c5f">&#9670;&#160;</a></span>comment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">comment_t</a> &gt; clanguml::common::model::decorated_element::comment </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get entire comment model for this element.</p>
+<dl class="section return"><dt>Returns</dt><dd>Comment model. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="decorated__element_8cc_source.html#l00090">90</a> of file <a class="el" href="decorated__element_8cc_source.html">decorated_element.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   90</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a387325aa4c35a9163e98b4226b74e6de">comment_</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a046a87735974eb6d8f905a8656e82cbb" name="a046a87735974eb6d8f905a8656e82cbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a046a87735974eb6d8f905a8656e82cbb">&#9670;&#160;</a></span>decorators()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structclanguml_1_1decorators_1_1decorator.html">decorators::decorator</a> &gt; &gt; &amp; clanguml::common::model::decorated_element::decorators </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get all decorators for this element.</p>
+<dl class="section return"><dt>Returns</dt><dd>List of decorator pointers. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="decorated__element_8cc_source.html#l00070">70</a> of file <a class="el" href="decorated__element_8cc_source.html">decorated_element.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   71</span>{</div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#ac9b919d692ce3f46e5bc821804a60758">decorators_</a>;</div>
+<div class="line"><span class="lineno">   73</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5f57a20612b439c2da8dc88e0d181638" name="a5f57a20612b439c2da8dc88e0d181638"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f57a20612b439c2da8dc88e0d181638">&#9670;&#160;</a></span>doxygen_link()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::string &gt; clanguml::common::model::decorated_element::doxygen_link </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return Doxygen HTML documentation link for the element.</p>
+<dl class="section return"><dt>Returns</dt><dd>Element context. </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a211725c8fb8e5b09e7ceb32d3ba45a33">clanguml::class_diagram::model::class_</a>, <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1enum__.html#a811d8ad581d938c8cff25042db9274e4">clanguml::class_diagram::model::enum_</a>, and <a class="el" href="classclanguml_1_1common_1_1model_1_1package.html#aea54b1aef8e5df02cb51a380ac347246">clanguml::common::model::package</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="decorated__element_8cc_source.html#l00094">94</a> of file <a class="el" href="decorated__element_8cc_source.html">decorated_element.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   95</span>{</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><span class="lineno">   97</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a77974a108ab93d1dc3469a72a11bd492" name="a77974a108ab93d1dc3469a72a11bd492"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77974a108ab93d1dc3469a72a11bd492">&#9670;&#160;</a></span>get_relationship()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">relationship_t</a>, std::string &gt; clanguml::common::model::decorated_element::get_relationship </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>If this element is a member or a method, get relationship decorator if any.</p>
+<div class="fragment language-cpp"><div class="line"><span class="comment">/// @uml{aggregation[0..1:1..5]}</span></div>
+<div class="line">std::vector&lt;C&gt; ccc;</div>
+</div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>Relationship specified as a decorator on class member. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="decorated__element_8cc_source.html#l00041">41</a> of file <a class="el" href="decorated__element_8cc_source.html">decorated_element.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   42</span>{</div>
+<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;d : <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#ac9b919d692ce3f46e5bc821804a60758">decorators_</a>)</div>
+<div class="line"><span class="lineno">   44</span>        if (<a class="code hl_namespace" href="namespacestd.html" title="STL namespace.">std</a>::dynamic_pointer_cast&lt;<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a046a87735974eb6d8f905a8656e82cbb">decorators</a>::association&gt;(d))</div>
+<div class="line"><span class="lineno">   45</span>            return {<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">relationship_t</a>::<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086a5c3a295fa6e82b767a1d3bf5dd274d45">kAssociation</a>,</div>
+<div class="line"><span class="lineno">   46</span>                <a class="code hl_namespace" href="namespacestd.html" title="STL namespace.">std</a>::dynamic_pointer_cast&lt;<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a046a87735974eb6d8f905a8656e82cbb">decorators</a>::relationship&gt;(d)</div>
+<div class="line"><span class="lineno">   47</span>                    -&gt;multiplicity};</div>
+<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (std::dynamic_pointer_cast&lt;decorators::aggregation&gt;(d))</div>
+<div class="line"><span class="lineno">   49</span>            <span class="keywordflow">return</span> {<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086ab8b21f175222114df7f3a829c38fd82f">relationship_t::kAggregation</a>,</div>
+<div class="line"><span class="lineno">   50</span>                std::dynamic_pointer_cast&lt;decorators::relationship&gt;(d)</div>
+<div class="line"><span class="lineno">   51</span>                    -&gt;multiplicity};</div>
+<div class="line"><span class="lineno">   52</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (std::dynamic_pointer_cast&lt;decorators::composition&gt;(d))</div>
+<div class="line"><span class="lineno">   53</span>            <span class="keywordflow">return</span> {<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086a748dbef3d180b1b0a3b6f86f3b615c3a">relationship_t::kComposition</a>,</div>
+<div class="line"><span class="lineno">   54</span>                std::dynamic_pointer_cast&lt;decorators::relationship&gt;(d)</div>
+<div class="line"><span class="lineno">   55</span>                    -&gt;multiplicity};</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>    <span class="keywordflow">return</span> {<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086a35c3ace1970663a16e5c65baa5941b13">relationship_t::kNone</a>, <span class="stringliteral">&quot;&quot;</span>};</div>
+<div class="line"><span class="lineno">   58</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1603e04dfb18d6f839da54e6e3f1e220" name="a1603e04dfb18d6f839da54e6e3f1e220"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1603e04dfb18d6f839da54e6e3f1e220">&#9670;&#160;</a></span>set_comment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::model::decorated_element::set_comment </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">comment_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set comment model for this element.</p>
+<p>Comment model is currently a JSON object.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Comment model. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="decorated__element_8cc_source.html#l00092">92</a> of file <a class="el" href="decorated__element_8cc_source.html">decorated_element.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   92</span>{ <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a387325aa4c35a9163e98b4226b74e6de">comment_</a> = c; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a76769ab338d3fc500e8a239a13fb6007" name="a76769ab338d3fc500e8a239a13fb6007"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76769ab338d3fc500e8a239a13fb6007">&#9670;&#160;</a></span>skip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::common::model::decorated_element::skip </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether this element should be skipped from the diagram.</p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="decorated__element_8cc_source.html#l00023">23</a> of file <a class="el" href="decorated__element_8cc_source.html">decorated_element.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   24</span>{</div>
+<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">return</span> std::any_of(</div>
+<div class="line"><span class="lineno">   26</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#ac9b919d692ce3f46e5bc821804a60758">decorators_</a>.begin(), <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#ac9b919d692ce3f46e5bc821804a60758">decorators_</a>.end(), [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;d) {</div>
+<div class="line"><span class="lineno">   27</span>            return std::dynamic_pointer_cast&lt;decorators::skip&gt;(d) != nullptr;</div>
+<div class="line"><span class="lineno">   28</span>        });</div>
+<div class="line"><span class="lineno">   29</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac29274b68b39a6358766327f08f69e44" name="ac29274b68b39a6358766327f08f69e44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac29274b68b39a6358766327f08f69e44">&#9670;&#160;</a></span>skip_relationship()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::common::model::decorated_element::skip_relationship </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether this relationship should be skipped from the diagram.</p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="decorated__element_8cc_source.html#l00031">31</a> of file <a class="el" href="decorated__element_8cc_source.html">decorated_element.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   32</span>{</div>
+<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">return</span> std::any_of(</div>
+<div class="line"><span class="lineno">   34</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#ac9b919d692ce3f46e5bc821804a60758">decorators_</a>.begin(), <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#ac9b919d692ce3f46e5bc821804a60758">decorators_</a>.end(), [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;d) {</div>
+<div class="line"><span class="lineno">   35</span>            return std::dynamic_pointer_cast&lt;decorators::skip_relationship&gt;(</div>
+<div class="line"><span class="lineno">   36</span>                       d) != nullptr;</div>
+<div class="line"><span class="lineno">   37</span>        });</div>
+<div class="line"><span class="lineno">   38</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aaef772c36531d172960f5692c0dabb9f" name="aaef772c36531d172960f5692c0dabb9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaef772c36531d172960f5692c0dabb9f">&#9670;&#160;</a></span>style_spec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::common::model::decorated_element::style_spec </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get stype specification for this element, if any.</p>
+<div class="fragment language-cpp"><div class="line"><span class="comment">/// @uml{style[#back:lightgreen|yellow;header:blue/red]}</span></div>
+<div class="line"><span class="keyword">class </span>A { };</div>
+</div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="decorated__element_8cc_source.html#l00060">60</a> of file <a class="el" href="decorated__element_8cc_source.html">decorated_element.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   61</span>{</div>
+<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;d : <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#ac9b919d692ce3f46e5bc821804a60758">decorators_</a>)</div>
+<div class="line"><span class="lineno">   63</span>        if (<a class="code hl_namespace" href="namespacestd.html" title="STL namespace.">std</a>::dynamic_pointer_cast&lt;<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a046a87735974eb6d8f905a8656e82cbb">decorators</a>::style&gt;(d))</div>
+<div class="line"><span class="lineno">   64</span>            return <a class="code hl_namespace" href="namespacestd.html" title="STL namespace.">std</a>::dynamic_pointer_cast&lt;<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a046a87735974eb6d8f905a8656e82cbb">decorators</a>::style&gt;(d)-&gt;spec;</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">   67</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a387325aa4c35a9163e98b4226b74e6de" name="a387325aa4c35a9163e98b4226b74e6de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a387325aa4c35a9163e98b4226b74e6de">&#9670;&#160;</a></span>comment_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt;<a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">comment_t</a>&gt; clanguml::common::model::decorated_element::comment_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="decorated__element_8h_source.html#l00139">139</a> of file <a class="el" href="decorated__element_8h_source.html">decorated_element.h</a>.</p>
+
+</div>
+</div>
+<a id="ac9b919d692ce3f46e5bc821804a60758" name="ac9b919d692ce3f46e5bc821804a60758"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9b919d692ce3f46e5bc821804a60758">&#9670;&#160;</a></span>decorators_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="structclanguml_1_1decorators_1_1decorator.html">decorators::decorator</a>&gt; &gt; clanguml::common::model::decorated_element::decorators_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="decorated__element_8h_source.html#l00138">138</a> of file <a class="el" href="decorated__element_8h_source.html">decorated_element.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/common/model/<a class="el" href="decorated__element_8h_source.html">decorated_element.h</a></li>
+<li>src/common/model/<a class="el" href="decorated__element_8cc_source.html">decorated_element.cc</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

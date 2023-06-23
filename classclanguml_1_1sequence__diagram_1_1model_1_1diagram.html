@@ -1,0 +1,1293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: clanguml::sequence_diagram::model::diagram Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceclanguml.html">clanguml</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1sequence__diagram.html">sequence_diagram</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1sequence__diagram_1_1model.html">model</a></li><li class="navelem"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html">diagram</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">clanguml::sequence_diagram::model::diagram Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8h_source.html#l00030">30</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8h_source.html">diagram.h</a>.</p>
+</div>
+<p><code>#include &lt;<a class="el" href="sequence__diagram_2model_2diagram_8h_source.html">diagram.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a82e2e82fbeeab075e2539a54fc7ce064"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a82e2e82fbeeab075e2539a54fc7ce064">diagram</a> ()=default</td></tr>
+<tr class="separator:a82e2e82fbeeab075e2539a54fc7ce064"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e61f9c848c39b0165d042a9cbf4ae4a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a4e61f9c848c39b0165d042a9cbf4ae4a">diagram</a> (const <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html">diagram</a> &amp;)=delete</td></tr>
+<tr class="separator:a4e61f9c848c39b0165d042a9cbf4ae4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f12f4a0959885f72a840225a662310a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a4f12f4a0959885f72a840225a662310a">diagram</a> (<a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html">diagram</a> &amp;&amp;)=default</td></tr>
+<tr class="separator:a4f12f4a0959885f72a840225a662310a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabc7e72e2ddfe279ce5c81c13107ab0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html">diagram</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#aabc7e72e2ddfe279ce5c81c13107ab0f">operator=</a> (const <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html">diagram</a> &amp;)=delete</td></tr>
+<tr class="separator:aabc7e72e2ddfe279ce5c81c13107ab0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b8254601b9fa81c650752193e7595b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html">diagram</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a7b8254601b9fa81c650752193e7595b9">operator=</a> (<a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html">diagram</a> &amp;&amp;)=default</td></tr>
+<tr class="separator:a7b8254601b9fa81c650752193e7595b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92c6c46225b24c885a3046c3403131ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">common::model::diagram_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a92c6c46225b24c885a3046c3403131ad">type</a> () const override</td></tr>
+<tr class="memdesc:a92c6c46225b24c885a3046c3403131ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return type of the diagram.  <br /></td></tr>
+<tr class="separator:a92c6c46225b24c885a3046c3403131ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb2aa42413f1104e9719426850190939"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">common::optional_ref</a>&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html">common::model::diagram_element</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#aeb2aa42413f1104e9719426850190939">get</a> (const std::string &amp;full_name) const override</td></tr>
+<tr class="separator:aeb2aa42413f1104e9719426850190939"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7615572947481ac924af60cb37a17a78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">common::optional_ref</a>&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html">common::model::diagram_element</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a7615572947481ac924af60cb37a17a78">get</a> (<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a> id) const override</td></tr>
+<tr class="separator:a7615572947481ac924af60cb37a17a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63f579cc4a61bf555a330ca643ea6678"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a63f579cc4a61bf555a330ca643ea6678">to_alias</a> (const std::string &amp;full_name) const</td></tr>
+<tr class="separator:a63f579cc4a61bf555a330ca643ea6678"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3284c41f2126154cea1391f5cc64f0c"><td class="memItemLeft" align="right" valign="top">inja::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#ab3284c41f2126154cea1391f5cc64f0c">context</a> () const override</td></tr>
+<tr class="separator:ab3284c41f2126154cea1391f5cc64f0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b0f5faab6088e2475e16ba2f05ace56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a5b0f5faab6088e2475e16ba2f05ace56">print</a> () const</td></tr>
+<tr class="separator:a5b0f5faab6088e2475e16ba2f05ace56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a141943e1e285344d7811b531aebbc984"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a141943e1e285344d7811b531aebbc984"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">common::optional_ref</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a141943e1e285344d7811b531aebbc984">get_participant</a> (<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a> id)</td></tr>
+<tr class="separator:a141943e1e285344d7811b531aebbc984"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6edad4ed7395eb1ed9f6cd6ecc60b9f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aa6edad4ed7395eb1ed9f6cd6ecc60b9f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">common::optional_ref</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#aa6edad4ed7395eb1ed9f6cd6ecc60b9f">get_participant</a> (<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a> id) const</td></tr>
+<tr class="separator:aa6edad4ed7395eb1ed9f6cd6ecc60b9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1dc509ff8c9d2ae895713742dbb5c69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#ad1dc509ff8c9d2ae895713742dbb5c69">add_participant</a> (std::unique_ptr&lt; <a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html">participant</a> &gt; p)</td></tr>
+<tr class="separator:ad1dc509ff8c9d2ae895713742dbb5c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac81ff08072c8077cce4eddad0a48843c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#ac81ff08072c8077cce4eddad0a48843c">add_active_participant</a> (<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a> id)</td></tr>
+<tr class="separator:ac81ff08072c8077cce4eddad0a48843c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16cdf46dae71291441c7a2633ceba7f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html">activity</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a16cdf46dae71291441c7a2633ceba7f2">get_activity</a> (<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a> id)</td></tr>
+<tr class="separator:a16cdf46dae71291441c7a2633ceba7f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaace8aef0a71ee0d846bfb04496ff977"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#aaace8aef0a71ee0d846bfb04496ff977">add_message</a> (<a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html">model::message</a> &amp;&amp;<a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html">message</a>)</td></tr>
+<tr class="separator:aaace8aef0a71ee0d846bfb04496ff977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6022a691aa9d09c4daa78c380516fe4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a6022a691aa9d09c4daa78c380516fe4b">add_block_message</a> (<a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html">model::message</a> &amp;&amp;<a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html">message</a>)</td></tr>
+<tr class="separator:a6022a691aa9d09c4daa78c380516fe4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf7ec8f351797f91e29a474dc6ff29ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#acf7ec8f351797f91e29a474dc6ff29ad">end_block_message</a> (<a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html">model::message</a> &amp;&amp;<a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html">message</a>, <a class="el" href="namespaceclanguml_1_1common_1_1model.html#ab50863f913728634c047047145dd828b">common::model::message_t</a> start_type)</td></tr>
+<tr class="separator:acf7ec8f351797f91e29a474dc6ff29ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4afb5018bc49b05fc080f18065b27b81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a4afb5018bc49b05fc080f18065b27b81">add_case_stmt_message</a> (<a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html">model::message</a> &amp;&amp;m)</td></tr>
+<tr class="separator:a4afb5018bc49b05fc080f18065b27b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3257dbb2bc60a8b500c593b0ffb78f5c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a3257dbb2bc60a8b500c593b0ffb78f5c">started</a> () const</td></tr>
+<tr class="separator:a3257dbb2bc60a8b500c593b0ffb78f5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab45996521b5415f6109fd4b54b81236a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#ab45996521b5415f6109fd4b54b81236a">started</a> (bool s)</td></tr>
+<tr class="separator:ab45996521b5415f6109fd4b54b81236a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6aa44615413540a989eb92e92d7b911"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>, <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html">activity</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#ad6aa44615413540a989eb92e92d7b911">sequences</a> ()</td></tr>
+<tr class="separator:ad6aa44615413540a989eb92e92d7b911"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7070bdfb4291c2c56725d13b0fe9f5f7"><td class="memItemLeft" align="right" valign="top">const std::map&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>, <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html">activity</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a7070bdfb4291c2c56725d13b0fe9f5f7">sequences</a> () const</td></tr>
+<tr class="separator:a7070bdfb4291c2c56725d13b0fe9f5f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd0cf631a5d2c32ef94926e0ee8dacb3"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>, std::unique_ptr&lt; <a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html">participant</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afd0cf631a5d2c32ef94926e0ee8dacb3">participants</a> ()</td></tr>
+<tr class="separator:afd0cf631a5d2c32ef94926e0ee8dacb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41cbf98d8b0cb8136086ff78079b07e9"><td class="memItemLeft" align="right" valign="top">const std::map&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>, std::unique_ptr&lt; <a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html">participant</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a41cbf98d8b0cb8136086ff78079b07e9">participants</a> () const</td></tr>
+<tr class="separator:a41cbf98d8b0cb8136086ff78079b07e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68ecb0a7b417bc6187ab78618e8d7c61"><td class="memItemLeft" align="right" valign="top">std::set&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a68ecb0a7b417bc6187ab78618e8d7c61">active_participants</a> ()</td></tr>
+<tr class="separator:a68ecb0a7b417bc6187ab78618e8d7c61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeffd2ab54ccde7eaad34d538e74365be"><td class="memItemLeft" align="right" valign="top">const std::set&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#aeffd2ab54ccde7eaad34d538e74365be">active_participants</a> () const</td></tr>
+<tr class="separator:aeffd2ab54ccde7eaad34d538e74365be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1model_1_1diagram')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">clanguml::common::model::diagram</a></td></tr>
+<tr class="memitem:a85d100b56f07e5313dd20aefea448880 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a85d100b56f07e5313dd20aefea448880">diagram</a> ()</td></tr>
+<tr class="separator:a85d100b56f07e5313dd20aefea448880 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02ce3bfe10ee74b188bb71166f555730 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a02ce3bfe10ee74b188bb71166f555730">~diagram</a> ()</td></tr>
+<tr class="separator:a02ce3bfe10ee74b188bb71166f555730 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ed8e730b29e0a0038fb615f4fdd0508 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">diagram_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a7ed8e730b29e0a0038fb615f4fdd0508">type</a> () const =0</td></tr>
+<tr class="memdesc:a7ed8e730b29e0a0038fb615f4fdd0508 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return type of the diagram.  <br /></td></tr>
+<tr class="separator:a7ed8e730b29e0a0038fb615f4fdd0508 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a223c549fa6e2d54287136bbbb0834528 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceclanguml_1_1common.html#a1580b9ca61896bdf6b4c96db61f167a4">opt_ref</a>&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html">clanguml::common::model::diagram_element</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a223c549fa6e2d54287136bbbb0834528">get</a> (const std::string &amp;full_name) const =0</td></tr>
+<tr class="separator:a223c549fa6e2d54287136bbbb0834528 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c813b8e74a2c9210c477968440907e6 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classclanguml_1_1common_1_1optional__ref.html">common::optional_ref</a>&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html">clanguml::common::model::diagram_element</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a2c813b8e74a2c9210c477968440907e6">get</a> (<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">diagram_element::id_t</a> id) const =0</td></tr>
+<tr class="separator:a2c813b8e74a2c9210c477968440907e6 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97853c1befa48e05d45dc6fb515a850b inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classclanguml_1_1common_1_1optional__ref.html">common::optional_ref</a>&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html">clanguml::common::model::diagram_element</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a97853c1befa48e05d45dc6fb515a850b">get_with_namespace</a> (const std::string &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a007510b23fb0810f7720b032d0efa42e">name</a>, const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">namespace_</a> &amp;ns) const</td></tr>
+<tr class="separator:a97853c1befa48e05d45dc6fb515a850b inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a7f217ac662930c0fd96d40e3f4f8be inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a3a7f217ac662930c0fd96d40e3f4f8be">diagram</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">diagram</a> &amp;)=delete</td></tr>
+<tr class="separator:a3a7f217ac662930c0fd96d40e3f4f8be inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adea1da3eddd1ea0955895543adae5553 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#adea1da3eddd1ea0955895543adae5553">diagram</a> (<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">diagram</a> &amp;&amp;) noexcept</td></tr>
+<tr class="separator:adea1da3eddd1ea0955895543adae5553 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2085a841689484dc1723a3a96371918 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">diagram</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#ae2085a841689484dc1723a3a96371918">operator=</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">diagram</a> &amp;)=delete</td></tr>
+<tr class="separator:ae2085a841689484dc1723a3a96371918 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41043d3b03f648384986e13bd49eab5e inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">diagram</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a41043d3b03f648384986e13bd49eab5e">operator=</a> (<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">diagram</a> &amp;&amp;) noexcept</td></tr>
+<tr class="separator:a41043d3b03f648384986e13bd49eab5e inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24c3feeaac40684fd264be972eee0d60 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a24c3feeaac40684fd264be972eee0d60">set_name</a> (const std::string &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a007510b23fb0810f7720b032d0efa42e">name</a>)</td></tr>
+<tr class="separator:a24c3feeaac40684fd264be972eee0d60 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a007510b23fb0810f7720b032d0efa42e inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a007510b23fb0810f7720b032d0efa42e">name</a> () const</td></tr>
+<tr class="separator:a007510b23fb0810f7720b032d0efa42e inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4369b4ac7771cab6d5b9209b325ca71 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#af4369b4ac7771cab6d5b9209b325ca71">set_filter</a> (std::unique_ptr&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">diagram_filter</a> &gt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#aa481d90d5c8046c6de6795bd0891d66b">filter</a>)</td></tr>
+<tr class="separator:af4369b4ac7771cab6d5b9209b325ca71 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa481d90d5c8046c6de6795bd0891d66b inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">diagram_filter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#aa481d90d5c8046c6de6795bd0891d66b">filter</a> () const</td></tr>
+<tr class="separator:aa481d90d5c8046c6de6795bd0891d66b inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3d35955c73db6121add7ff6cbc40227 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#ac3d35955c73db6121add7ff6cbc40227">set_complete</a> (bool <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a5ac51e036e33af127e9aed39dae97609">complete</a>)</td></tr>
+<tr class="memdesc:ac3d35955c73db6121add7ff6cbc40227 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set diagram in a complete state.  <br /></td></tr>
+<tr class="separator:ac3d35955c73db6121add7ff6cbc40227 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ac51e036e33af127e9aed39dae97609 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a5ac51e036e33af127e9aed39dae97609">complete</a> () const</td></tr>
+<tr class="separator:a5ac51e036e33af127e9aed39dae97609 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54269f0d60c924889da64cef8812126b inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a54269f0d60c924889da64cef8812126b">should_include</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1element.html">element</a> &amp;e) const</td></tr>
+<tr class="separator:a54269f0d60c924889da64cef8812126b inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff2378371aff3a9ad342cb1f957f6b05 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#aff2378371aff3a9ad342cb1f957f6b05">should_include</a> (const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">namespace_</a> &amp;ns) const</td></tr>
+<tr class="separator:aff2378371aff3a9ad342cb1f957f6b05 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7126fef57b662197927811d1d74d531b inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a7126fef57b662197927811d1d74d531b">should_include</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1source__file.html">source_file</a> &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1path.html">path</a>) const</td></tr>
+<tr class="separator:a7126fef57b662197927811d1d74d531b inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4728d58cbaff9b8345b3dbdedf04199 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#ab4728d58cbaff9b8345b3dbdedf04199">should_include</a> (<a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">relationship</a> r) const</td></tr>
+<tr class="separator:ab4728d58cbaff9b8345b3dbdedf04199 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a900f510c223a0ec94d168f7aa3ad8769 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a900f510c223a0ec94d168f7aa3ad8769">should_include</a> (<a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">relationship_t</a> r) const</td></tr>
+<tr class="separator:a900f510c223a0ec94d168f7aa3ad8769 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00cce5bdbd2c3365b6942e8ecedf7bf8 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a00cce5bdbd2c3365b6942e8ecedf7bf8">should_include</a> (<a class="el" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6">access_t</a> s) const</td></tr>
+<tr class="separator:a00cce5bdbd2c3365b6942e8ecedf7bf8 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94b28174ce4bc5ef334328ac42cdbc21 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a94b28174ce4bc5ef334328ac42cdbc21">has_element</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">diagram_element::id_t</a>) const</td></tr>
+<tr class="separator:a94b28174ce4bc5ef334328ac42cdbc21 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06b792c73a046a39a7b624a746abc910 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a06b792c73a046a39a7b624a746abc910">should_include</a> (const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">namespace_</a> &amp;ns, const std::string &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a007510b23fb0810f7720b032d0efa42e">name</a>) const</td></tr>
+<tr class="separator:a06b792c73a046a39a7b624a746abc910 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab95c9f11e9b4c73f7714cb0c569896d5 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">virtual inja::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#ab95c9f11e9b4c73f7714cb0c569896d5">context</a> () const =0</td></tr>
+<tr class="separator:ab95c9f11e9b4c73f7714cb0c569896d5 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a6182cab1d9a44cc325d0a78598b38b4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a6182cab1d9a44cc325d0a78598b38b4d">fold_or_end_block_statement</a> (<a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html">message</a> &amp;&amp;m, <a class="el" href="namespaceclanguml_1_1common_1_1model.html#ab50863f913728634c047047145dd828b">common::model::message_t</a> statement_begin, std::vector&lt; <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html">message</a> &gt; &amp;current_messages) const</td></tr>
+<tr class="separator:a6182cab1d9a44cc325d0a78598b38b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aaf71ffe29dc31d481a9251ad49057687"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#aaf71ffe29dc31d481a9251ad49057687">started_</a> {false}</td></tr>
+<tr class="separator:aaf71ffe29dc31d481a9251ad49057687"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e7d2d66bfd742aaed94affa299f552d"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>, <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html">activity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a7e7d2d66bfd742aaed94affa299f552d">sequences_</a></td></tr>
+<tr class="separator:a7e7d2d66bfd742aaed94affa299f552d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbf008d39d28ab7347774c840e9b0af2"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>, std::unique_ptr&lt; <a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html">participant</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a></td></tr>
+<tr class="separator:afbf008d39d28ab7347774c840e9b0af2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecc4c32c232e845c5ace72f64ea6b75b"><td class="memItemLeft" align="right" valign="top">std::set&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#aecc4c32c232e845c5ace72f64ea6b75b">active_participants_</a></td></tr>
+<tr class="separator:aecc4c32c232e845c5ace72f64ea6b75b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a82e2e82fbeeab075e2539a54fc7ce064" name="a82e2e82fbeeab075e2539a54fc7ce064"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82e2e82fbeeab075e2539a54fc7ce064">&#9670;&#160;</a></span>diagram() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">clanguml::sequence_diagram::model::diagram::diagram </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4e61f9c848c39b0165d042a9cbf4ae4a" name="a4e61f9c848c39b0165d042a9cbf4ae4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e61f9c848c39b0165d042a9cbf4ae4a">&#9670;&#160;</a></span>diagram() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">clanguml::sequence_diagram::model::diagram::diagram </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html">diagram</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f12f4a0959885f72a840225a662310a" name="a4f12f4a0959885f72a840225a662310a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f12f4a0959885f72a840225a662310a">&#9670;&#160;</a></span>diagram() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">clanguml::sequence_diagram::model::diagram::diagram </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html">diagram</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a68ecb0a7b417bc6187ab78618e8d7c61" name="a68ecb0a7b417bc6187ab78618e8d7c61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68ecb0a7b417bc6187ab78618e8d7c61">&#9670;&#160;</a></span>active_participants() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::set&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a> &gt; &amp; clanguml::sequence_diagram::model::diagram::active_participants </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00173">173</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  174</span>{</div>
+<div class="line"><span class="lineno">  175</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#aecc4c32c232e845c5ace72f64ea6b75b">active_participants_</a>;</div>
+<div class="line"><span class="lineno">  176</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aeffd2ab54ccde7eaad34d538e74365be" name="aeffd2ab54ccde7eaad34d538e74365be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeffd2ab54ccde7eaad34d538e74365be">&#9670;&#160;</a></span>active_participants() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::set&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a> &gt; &amp; clanguml::sequence_diagram::model::diagram::active_participants </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00179">179</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  180</span>{</div>
+<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#aecc4c32c232e845c5ace72f64ea6b75b">active_participants_</a>;</div>
+<div class="line"><span class="lineno">  182</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac81ff08072c8077cce4eddad0a48843c" name="ac81ff08072c8077cce4eddad0a48843c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac81ff08072c8077cce4eddad0a48843c">&#9670;&#160;</a></span>add_active_participant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::model::diagram::add_active_participant </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00089">89</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   90</span>{</div>
+<div class="line"><span class="lineno">   91</span>    <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#aecc4c32c232e845c5ace72f64ea6b75b">active_participants_</a>.emplace(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">   92</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6022a691aa9d09c4daa78c380516fe4b" name="a6022a691aa9d09c4daa78c380516fe4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6022a691aa9d09c4daa78c380516fe4b">&#9670;&#160;</a></span>add_block_message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::model::diagram::add_block_message </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html">model::message</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00110">110</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  111</span>{</div>
+<div class="line"><span class="lineno">  112</span>    <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#aaace8aef0a71ee0d846bfb04496ff977">add_message</a>(std::move(message));</div>
+<div class="line"><span class="lineno">  113</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4afb5018bc49b05fc080f18065b27b81" name="a4afb5018bc49b05fc080f18065b27b81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4afb5018bc49b05fc080f18065b27b81">&#9670;&#160;</a></span>add_case_stmt_message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::model::diagram::add_case_stmt_message </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html">model::message</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00128">128</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  129</span>{</div>
+<div class="line"><span class="lineno">  130</span>    <span class="keyword">using </span><a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#ab50863f913728634c047047145dd828b" title="Types of sequence diagram activity elements.">clanguml::common::model::message_t</a>;</div>
+<div class="line"><span class="lineno">  131</span>    <span class="keyword">const</span> <span class="keyword">auto</span> caller_id = m.from();</div>
+<div class="line"><span class="lineno">  132</span> </div>
+<div class="line"><span class="lineno">  133</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a7e7d2d66bfd742aaed94affa299f552d">sequences_</a>.find(caller_id) != <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a7e7d2d66bfd742aaed94affa299f552d">sequences_</a>.end()) {</div>
+<div class="line"><span class="lineno">  134</span>        <span class="keyword">auto</span> &amp;current_messages = <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a16cdf46dae71291441c7a2633ceba7f2">get_activity</a>(caller_id).<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#ad391bef5d7b5295aa3c12bee1a73478b">messages</a>();</div>
+<div class="line"><span class="lineno">  135</span> </div>
+<div class="line"><span class="lineno">  136</span>        <span class="keywordflow">if</span> (current_messages.back().type() == message_t::kCase) {</div>
+<div class="line"><span class="lineno">  137</span>            <span class="comment">// Do nothing - fallthroughs not supported yet...</span></div>
+<div class="line"><span class="lineno">  138</span>        }</div>
+<div class="line"><span class="lineno">  139</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  140</span>            current_messages.emplace_back(std::move(m));</div>
+<div class="line"><span class="lineno">  141</span>        }</div>
+<div class="line"><span class="lineno">  142</span>    }</div>
+<div class="line"><span class="lineno">  143</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aaace8aef0a71ee0d846bfb04496ff977" name="aaace8aef0a71ee0d846bfb04496ff977"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaace8aef0a71ee0d846bfb04496ff977">&#9670;&#160;</a></span>add_message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::model::diagram::add_message </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html">model::message</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00099">99</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  100</span>{</div>
+<div class="line"><span class="lineno">  101</span>    <span class="keyword">const</span> <span class="keyword">auto</span> caller_id = message.from();</div>
+<div class="line"><span class="lineno">  102</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a7e7d2d66bfd742aaed94affa299f552d">sequences_</a>.find(caller_id) == <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a7e7d2d66bfd742aaed94affa299f552d">sequences_</a>.end()) {</div>
+<div class="line"><span class="lineno">  103</span>        activity a{caller_id};</div>
+<div class="line"><span class="lineno">  104</span>        <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a7e7d2d66bfd742aaed94affa299f552d">sequences_</a>.insert({caller_id, std::move(a)});</div>
+<div class="line"><span class="lineno">  105</span>    }</div>
+<div class="line"><span class="lineno">  106</span> </div>
+<div class="line"><span class="lineno">  107</span>    <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a16cdf46dae71291441c7a2633ceba7f2">get_activity</a>(caller_id).<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#a7967f66b4a68b5cdf22145b7aed9bdf8">add_message</a>(std::move(message));</div>
+<div class="line"><span class="lineno">  108</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad1dc509ff8c9d2ae895713742dbb5c69" name="ad1dc509ff8c9d2ae895713742dbb5c69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1dc509ff8c9d2ae895713742dbb5c69">&#9670;&#160;</a></span>add_participant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::model::diagram::add_participant </td>
+          <td>(</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html">participant</a> &gt;&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00074">74</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   75</span>{</div>
+<div class="line"><span class="lineno">   76</span>    <span class="keyword">const</span> <span class="keyword">auto</span> participant_id = p-&gt;id();</div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.find(participant_id) == <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.end()) {</div>
+<div class="line"><span class="lineno">   79</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding &#39;{}&#39; participant: {}, {} [{}]&quot;</span>, p-&gt;type_name(),</div>
+<div class="line"><span class="lineno">   80</span>            p-&gt;full_name(<span class="keyword">false</span>), p-&gt;id(),</div>
+<div class="line"><span class="lineno">   81</span>            p-&gt;type_name() == <span class="stringliteral">&quot;method&quot;</span></div>
+<div class="line"><span class="lineno">   82</span>                ? <span class="keyword">dynamic_cast&lt;</span>method *<span class="keyword">&gt;</span>(p.get())-&gt;method_name()</div>
+<div class="line"><span class="lineno">   83</span>                : <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>        <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.emplace(participant_id, std::move(p));</div>
+<div class="line"><span class="lineno">   86</span>    }</div>
+<div class="line"><span class="lineno">   87</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab3284c41f2126154cea1391f5cc64f0c" name="ab3284c41f2126154cea1391f5cc64f0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3284c41f2126154cea1391f5cc64f0c">&#9670;&#160;</a></span>context()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">inja::json clanguml::sequence_diagram::model::diagram::context </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return diagrams JSON context for inja templates.</p>
+<dl class="section return"><dt>Returns</dt><dd>JSON context. </dd></dl>
+
+<p>Implements <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#ab95c9f11e9b4c73f7714cb0c569896d5">clanguml::common::model::diagram</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00056">56</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   57</span>{</div>
+<div class="line"><span class="lineno">   58</span>    inja::json ctx;</div>
+<div class="line"><span class="lineno">   59</span>    ctx[<span class="stringliteral">&quot;name&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#a007510b23fb0810f7720b032d0efa42e">name</a>();</div>
+<div class="line"><span class="lineno">   60</span>    ctx[<span class="stringliteral">&quot;type&quot;</span>] = <span class="stringliteral">&quot;sequence&quot;</span>;</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>    inja::json::array_t elements{};</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>    <span class="comment">// Add classes</span></div>
+<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[<span class="keywordtype">id</span>, p] : <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>) {</div>
+<div class="line"><span class="lineno">   66</span>        elements.emplace_back(p-&gt;context());</div>
+<div class="line"><span class="lineno">   67</span>    }</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>    ctx[<span class="stringliteral">&quot;elements&quot;</span>] = elements;</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">return</span> ctx;</div>
+<div class="line"><span class="lineno">   72</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="acf7ec8f351797f91e29a474dc6ff29ad" name="acf7ec8f351797f91e29a474dc6ff29ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf7ec8f351797f91e29a474dc6ff29ad">&#9670;&#160;</a></span>end_block_message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::model::diagram::end_block_message </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html">model::message</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#ab50863f913728634c047047145dd828b">common::model::message_t</a>&#160;</td>
+          <td class="paramname"><em>start_type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00115">115</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  117</span>{</div>
+<div class="line"><span class="lineno">  118</span>    <span class="keyword">const</span> <span class="keyword">auto</span> caller_id = message.from();</div>
+<div class="line"><span class="lineno">  119</span> </div>
+<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a7e7d2d66bfd742aaed94affa299f552d">sequences_</a>.find(caller_id) != <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a7e7d2d66bfd742aaed94affa299f552d">sequences_</a>.end()) {</div>
+<div class="line"><span class="lineno">  121</span>        <span class="keyword">auto</span> &amp;current_messages = <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a16cdf46dae71291441c7a2633ceba7f2">get_activity</a>(caller_id).<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#ad391bef5d7b5295aa3c12bee1a73478b">messages</a>();</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>        <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a6182cab1d9a44cc325d0a78598b38b4d">fold_or_end_block_statement</a>(</div>
+<div class="line"><span class="lineno">  124</span>            std::move(message), start_type, current_messages);</div>
+<div class="line"><span class="lineno">  125</span>    }</div>
+<div class="line"><span class="lineno">  126</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6182cab1d9a44cc325d0a78598b38b4d" name="a6182cab1d9a44cc325d0a78598b38b4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6182cab1d9a44cc325d0a78598b38b4d">&#9670;&#160;</a></span>fold_or_end_block_statement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::model::diagram::fold_or_end_block_statement </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html">message</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#ab50863f913728634c047047145dd828b">common::model::message_t</a>&#160;</td>
+          <td class="paramname"><em>statement_begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html">message</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>current_messages</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This method checks the last messages in sequence (current_messages), if they represent a block sequence identified by statement_begin (e.g. if/else) and there are no actual call expressions within this block statement the entire block statement is removed from the end of the sequence.</p>
+<p>Otherwise the block statement is ended with a proper statement (e.g. endif)</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>Message to add to the sequence </td></tr>
+    <tr><td class="paramname">statement_begin</td><td>Type of message which begins this type of block statement (e.g. message_t::kIf) </td></tr>
+    <tr><td class="paramname">current_messages</td><td>Reference to the sequence messages which should be amended </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00227">227</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  230</span>{</div>
+<div class="line"><span class="lineno">  231</span>    <span class="keywordtype">bool</span> is_empty_statement{<span class="keyword">true</span>};</div>
+<div class="line"><span class="lineno">  232</span> </div>
+<div class="line"><span class="lineno">  233</span>    <span class="keyword">auto</span> rit = current_messages.rbegin();</div>
+<div class="line"><span class="lineno">  234</span>    <span class="keywordflow">for</span> (; rit != current_messages.rend(); rit++) {</div>
+<div class="line"><span class="lineno">  235</span>        <span class="keywordflow">if</span> (rit-&gt;type() == statement_begin) {</div>
+<div class="line"><span class="lineno">  236</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  237</span>        }</div>
+<div class="line"><span class="lineno">  238</span>        <span class="keywordflow">if</span> (rit-&gt;type() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#ab50863f913728634c047047145dd828ba4ff0cb81f1d2d093837e39bbf48501c8">common::model::message_t::kCall</a>) {</div>
+<div class="line"><span class="lineno">  239</span>            is_empty_statement = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  240</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  241</span>        }</div>
+<div class="line"><span class="lineno">  242</span>    }</div>
+<div class="line"><span class="lineno">  243</span> </div>
+<div class="line"><span class="lineno">  244</span>    <span class="keywordflow">if</span> (is_empty_statement) {</div>
+<div class="line"><span class="lineno">  245</span>        current_messages.erase((rit + 1).base(), current_messages.end());</div>
+<div class="line"><span class="lineno">  246</span>    }</div>
+<div class="line"><span class="lineno">  247</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  248</span>        current_messages.emplace_back(std::move(m));</div>
+<div class="line"><span class="lineno">  249</span>    }</div>
+<div class="line"><span class="lineno">  250</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7615572947481ac924af60cb37a17a78" name="a7615572947481ac924af60cb37a17a78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7615572947481ac924af60cb37a17a78">&#9670;&#160;</a></span>get() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">common::optional_ref</a>&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html">common::model::diagram_element</a> &gt; clanguml::sequence_diagram::model::diagram::get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return optional reference to a diagram_element by id.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Id of a diagram element. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Optional reference to a diagram element. </dd></dl>
+
+<p>Implements <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a2c813b8e74a2c9210c477968440907e6">clanguml::common::model::diagram</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00042">42</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   44</span>{</div>
+<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.find(<span class="keywordtype">id</span>) != <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.end())</div>
+<div class="line"><span class="lineno">   46</span>        <span class="keywordflow">return</span> {*<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.at(<span class="keywordtype">id</span>)};</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">   49</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aeb2aa42413f1104e9719426850190939" name="aeb2aa42413f1104e9719426850190939"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb2aa42413f1104e9719426850190939">&#9670;&#160;</a></span>get() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">common::optional_ref</a>&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html">common::model::diagram_element</a> &gt; clanguml::sequence_diagram::model::diagram::get </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>full_name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return optional reference to a diagram_element by name.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">full_name</td><td>Fully qualified name of a diagram element. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Optional reference to a diagram element. </dd></dl>
+
+<p>Implements <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a223c549fa6e2d54287136bbbb0834528">clanguml::common::model::diagram</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00031">31</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   33</span>{</div>
+<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[<span class="keywordtype">id</span>, participant] : <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>) {</div>
+<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">if</span> (participant-&gt;full_name(<span class="keyword">false</span>) == full_name)</div>
+<div class="line"><span class="lineno">   36</span>            <span class="keywordflow">return</span> {*participant};</div>
+<div class="line"><span class="lineno">   37</span>    }</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">   40</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a16cdf46dae71291441c7a2633ceba7f2" name="a16cdf46dae71291441c7a2633ceba7f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16cdf46dae71291441c7a2633ceba7f2">&#9670;&#160;</a></span>get_activity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html">activity</a> &amp; clanguml::sequence_diagram::model::diagram::get_activity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00094">94</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   95</span>{</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a7e7d2d66bfd742aaed94affa299f552d">sequences_</a>.at(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">   97</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a141943e1e285344d7811b531aebbc984" name="a141943e1e285344d7811b531aebbc984"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a141943e1e285344d7811b531aebbc984">&#9670;&#160;</a></span>get_participant() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">common::optional_ref</a>&lt; T &gt; clanguml::sequence_diagram::model::diagram::get_participant </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8h_source.html#l00054">54</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8h_source.html">diagram.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   56</span>    {</div>
+<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.find(<span class="keywordtype">id</span>) == <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.end()) {</div>
+<div class="line"><span class="lineno">   58</span>            <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">   59</span>        }</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">return</span> common::optional_ref&lt;T&gt;(</div>
+<div class="line"><span class="lineno">   62</span>            <span class="keyword">static_cast&lt;</span>T *<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.at(<span class="keywordtype">id</span>).get()));</div>
+<div class="line"><span class="lineno">   63</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa6edad4ed7395eb1ed9f6cd6ecc60b9f" name="aa6edad4ed7395eb1ed9f6cd6ecc60b9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6edad4ed7395eb1ed9f6cd6ecc60b9f">&#9670;&#160;</a></span>get_participant() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">common::optional_ref</a>&lt; T &gt; clanguml::sequence_diagram::model::diagram::get_participant </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8h_source.html#l00066">66</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8h_source.html">diagram.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   68</span>    {</div>
+<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.find(<span class="keywordtype">id</span>) == <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.end()) {</div>
+<div class="line"><span class="lineno">   70</span>            <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">   71</span>        }</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>        <span class="keywordflow">return</span> common::optional_ref&lt;T&gt;(</div>
+<div class="line"><span class="lineno">   74</span>            <span class="keyword">static_cast&lt;</span>T *<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.at(<span class="keywordtype">id</span>).get()));</div>
+<div class="line"><span class="lineno">   75</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aabc7e72e2ddfe279ce5c81c13107ab0f" name="aabc7e72e2ddfe279ce5c81c13107ab0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabc7e72e2ddfe279ce5c81c13107ab0f">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html">diagram</a> &amp; clanguml::sequence_diagram::model::diagram::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html">diagram</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b8254601b9fa81c650752193e7595b9" name="a7b8254601b9fa81c650752193e7595b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b8254601b9fa81c650752193e7595b9">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html">diagram</a> &amp; clanguml::sequence_diagram::model::diagram::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html">diagram</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd0cf631a5d2c32ef94926e0ee8dacb3" name="afd0cf631a5d2c32ef94926e0ee8dacb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd0cf631a5d2c32ef94926e0ee8dacb3">&#9670;&#160;</a></span>participants() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>, std::unique_ptr&lt; <a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html">participant</a> &gt; &gt; &amp; clanguml::sequence_diagram::model::diagram::participants </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00161">161</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  162</span>{</div>
+<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>;</div>
+<div class="line"><span class="lineno">  164</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a41cbf98d8b0cb8136086ff78079b07e9" name="a41cbf98d8b0cb8136086ff78079b07e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41cbf98d8b0cb8136086ff78079b07e9">&#9670;&#160;</a></span>participants() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::map&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>, std::unique_ptr&lt; <a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html">participant</a> &gt; &gt; &amp; clanguml::sequence_diagram::model::diagram::participants </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00168">168</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  169</span>{</div>
+<div class="line"><span class="lineno">  170</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>;</div>
+<div class="line"><span class="lineno">  171</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5b0f5faab6088e2475e16ba2f05ace56" name="a5b0f5faab6088e2475e16ba2f05ace56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b0f5faab6088e2475e16ba2f05ace56">&#9670;&#160;</a></span>print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::model::diagram::print </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00184">184</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  185</span>{</div>
+<div class="line"><span class="lineno">  186</span>    <a class="code hl_define" href="util_8h.html#ade9905ed13f48ef2c9c596fa7a86d7a9">LOG_TRACE</a>(<span class="stringliteral">&quot; --- Participants ---&quot;</span>);</div>
+<div class="line"><span class="lineno">  187</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[<span class="keywordtype">id</span>, participant] : <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>) {</div>
+<div class="line"><span class="lineno">  188</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;{} - {}&quot;</span>, <span class="keywordtype">id</span>, participant-&gt;to_string());</div>
+<div class="line"><span class="lineno">  189</span>    }</div>
+<div class="line"><span class="lineno">  190</span> </div>
+<div class="line"><span class="lineno">  191</span>    <a class="code hl_define" href="util_8h.html#ade9905ed13f48ef2c9c596fa7a86d7a9">LOG_TRACE</a>(<span class="stringliteral">&quot; --- Activities ---&quot;</span>);</div>
+<div class="line"><span class="lineno">  192</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[from_id, act] : <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a7e7d2d66bfd742aaed94affa299f552d">sequences_</a>) {</div>
+<div class="line"><span class="lineno">  193</span> </div>
+<div class="line"><span class="lineno">  194</span>        <a class="code hl_define" href="util_8h.html#ade9905ed13f48ef2c9c596fa7a86d7a9">LOG_TRACE</a>(<span class="stringliteral">&quot;Sequence id={}:&quot;</span>, from_id);</div>
+<div class="line"><span class="lineno">  195</span> </div>
+<div class="line"><span class="lineno">  196</span>        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;from_activity = *(<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.at(from_id));</div>
+<div class="line"><span class="lineno">  197</span> </div>
+<div class="line"><span class="lineno">  198</span>        <a class="code hl_define" href="util_8h.html#ade9905ed13f48ef2c9c596fa7a86d7a9">LOG_TRACE</a>(<span class="stringliteral">&quot;   Activity id={}, from={}:&quot;</span>, act.from(),</div>
+<div class="line"><span class="lineno">  199</span>            from_activity.full_name(<span class="keyword">false</span>));</div>
+<div class="line"><span class="lineno">  200</span> </div>
+<div class="line"><span class="lineno">  201</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;message : act.messages()) {</div>
+<div class="line"><span class="lineno">  202</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.find(message.from()) == <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.end())</div>
+<div class="line"><span class="lineno">  203</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>            <span class="keyword">const</span> <span class="keyword">auto</span> &amp;from_participant = *<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.at(message.from());</div>
+<div class="line"><span class="lineno">  206</span> </div>
+<div class="line"><span class="lineno">  207</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.find(message.to()) == <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.end()) {</div>
+<div class="line"><span class="lineno">  208</span>                <a class="code hl_define" href="util_8h.html#ade9905ed13f48ef2c9c596fa7a86d7a9">LOG_TRACE</a>(<span class="stringliteral">&quot;       Message from={}, from_id={}, &quot;</span></div>
+<div class="line"><span class="lineno">  209</span>                          <span class="stringliteral">&quot;to={}, to_id={}, name={}, type={}&quot;</span>,</div>
+<div class="line"><span class="lineno">  210</span>                    from_participant.full_name(<span class="keyword">false</span>), from_participant.id(),</div>
+<div class="line"><span class="lineno">  211</span>                    <span class="stringliteral">&quot;__UNRESOLVABLE_ID__&quot;</span>, message.to(), message.message_name(),</div>
+<div class="line"><span class="lineno">  212</span>                    <a class="code hl_function" href="namespaceclanguml_1_1common.html#a659755e7071d306be3669c69c45aed9d">to_string</a>(message.type()));</div>
+<div class="line"><span class="lineno">  213</span>            }</div>
+<div class="line"><span class="lineno">  214</span>            <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  215</span>                <span class="keyword">const</span> <span class="keyword">auto</span> &amp;to_participant = *<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#afbf008d39d28ab7347774c840e9b0af2">participants_</a>.at(message.to());</div>
+<div class="line"><span class="lineno">  216</span> </div>
+<div class="line"><span class="lineno">  217</span>                <a class="code hl_define" href="util_8h.html#ade9905ed13f48ef2c9c596fa7a86d7a9">LOG_TRACE</a>(<span class="stringliteral">&quot;       Message from={}, from_id={}, &quot;</span></div>
+<div class="line"><span class="lineno">  218</span>                          <span class="stringliteral">&quot;to={}, to_id={}, name={}, type={}&quot;</span>,</div>
+<div class="line"><span class="lineno">  219</span>                    from_participant.full_name(<span class="keyword">false</span>), from_participant.id(),</div>
+<div class="line"><span class="lineno">  220</span>                    to_participant.full_name(<span class="keyword">false</span>), to_participant.id(),</div>
+<div class="line"><span class="lineno">  221</span>                    message.message_name(), <a class="code hl_function" href="namespaceclanguml_1_1common.html#a659755e7071d306be3669c69c45aed9d">to_string</a>(message.type()));</div>
+<div class="line"><span class="lineno">  222</span>            }</div>
+<div class="line"><span class="lineno">  223</span>        }</div>
+<div class="line"><span class="lineno">  224</span>    }</div>
+<div class="line"><span class="lineno">  225</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad6aa44615413540a989eb92e92d7b911" name="ad6aa44615413540a989eb92e92d7b911"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6aa44615413540a989eb92e92d7b911">&#9670;&#160;</a></span>sequences() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>, <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html">activity</a> &gt; &amp; clanguml::sequence_diagram::model::diagram::sequences </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00149">149</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  150</span>{</div>
+<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a7e7d2d66bfd742aaed94affa299f552d">sequences_</a>;</div>
+<div class="line"><span class="lineno">  152</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7070bdfb4291c2c56725d13b0fe9f5f7" name="a7070bdfb4291c2c56725d13b0fe9f5f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7070bdfb4291c2c56725d13b0fe9f5f7">&#9670;&#160;</a></span>sequences() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::map&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>, <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html">activity</a> &gt; &amp; clanguml::sequence_diagram::model::diagram::sequences </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00155">155</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  156</span>{</div>
+<div class="line"><span class="lineno">  157</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a7e7d2d66bfd742aaed94affa299f552d">sequences_</a>;</div>
+<div class="line"><span class="lineno">  158</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3257dbb2bc60a8b500c593b0ffb78f5c" name="a3257dbb2bc60a8b500c593b0ffb78f5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3257dbb2bc60a8b500c593b0ffb78f5c">&#9670;&#160;</a></span>started() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::sequence_diagram::model::diagram::started </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00145">145</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  145</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#aaf71ffe29dc31d481a9251ad49057687">started_</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab45996521b5415f6109fd4b54b81236a" name="ab45996521b5415f6109fd4b54b81236a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab45996521b5415f6109fd4b54b81236a">&#9670;&#160;</a></span>started() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::model::diagram::started </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00147">147</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  147</span>{ <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#aaf71ffe29dc31d481a9251ad49057687">started_</a> = s; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a63f579cc4a61bf555a330ca643ea6678" name="a63f579cc4a61bf555a330ca643ea6678"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63f579cc4a61bf555a330ca643ea6678">&#9670;&#160;</a></span>to_alias()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::sequence_diagram::model::diagram::to_alias </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>full_name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00051">51</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   52</span>{</div>
+<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">return</span> full_name;</div>
+<div class="line"><span class="lineno">   54</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a92c6c46225b24c885a3046c3403131ad" name="a92c6c46225b24c885a3046c3403131ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92c6c46225b24c885a3046c3403131ad">&#9670;&#160;</a></span>type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">common::model::diagram_t</a> clanguml::sequence_diagram::model::diagram::type </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return type of the diagram. </p>
+<dl class="section return"><dt>Returns</dt><dd>Type of diagram </dd></dl>
+
+<p>Implements <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a7ed8e730b29e0a0038fb615f4fdd0508">clanguml::common::model::diagram</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00026">26</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   27</span>{</div>
+<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffaa7f5349f8e4e02001465430400a7542f">common::model::diagram_t::kSequence</a>;</div>
+<div class="line"><span class="lineno">   29</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aecc4c32c232e845c5ace72f64ea6b75b" name="aecc4c32c232e845c5ace72f64ea6b75b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecc4c32c232e845c5ace72f64ea6b75b">&#9670;&#160;</a></span>active_participants_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::set&lt;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>&gt; clanguml::sequence_diagram::model::diagram::active_participants_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8h_source.html#l00140">140</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8h_source.html">diagram.h</a>.</p>
+
+</div>
+</div>
+<a id="afbf008d39d28ab7347774c840e9b0af2" name="afbf008d39d28ab7347774c840e9b0af2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbf008d39d28ab7347774c840e9b0af2">&#9670;&#160;</a></span>participants_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>, std::unique_ptr&lt;<a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html">participant</a>&gt; &gt; clanguml::sequence_diagram::model::diagram::participants_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8h_source.html#l00138">138</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8h_source.html">diagram.h</a>.</p>
+
+</div>
+</div>
+<a id="a7e7d2d66bfd742aaed94affa299f552d" name="a7e7d2d66bfd742aaed94affa299f552d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e7d2d66bfd742aaed94affa299f552d">&#9670;&#160;</a></span>sequences_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">common::model::diagram_element::id_t</a>, <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html">activity</a>&gt; clanguml::sequence_diagram::model::diagram::sequences_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8h_source.html#l00135">135</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8h_source.html">diagram.h</a>.</p>
+
+</div>
+</div>
+<a id="aaf71ffe29dc31d481a9251ad49057687" name="aaf71ffe29dc31d481a9251ad49057687"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf71ffe29dc31d481a9251ad49057687">&#9670;&#160;</a></span>started_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::sequence_diagram::model::diagram::started_ {false}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8h_source.html#l00133">133</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8h_source.html">diagram.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/sequence_diagram/model/<a class="el" href="sequence__diagram_2model_2diagram_8h_source.html">diagram.h</a></li>
+<li>src/sequence_diagram/model/<a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

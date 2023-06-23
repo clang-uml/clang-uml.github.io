@@ -1,0 +1,712 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: clanguml::common::visitor::translation_unit_visitor Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceclanguml.html">clanguml</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1common.html">common</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1common_1_1visitor.html">visitor</a></li><li class="navelem"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html">translation_unit_visitor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">clanguml::common::visitor::translation_unit_visitor Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Diagram translation unit visitor base class.  
+ <a href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#details">More...</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Diagram translation unit visitor base class. </p>
+<p>This class provides common interface for diagram translation unit visitors. </p>
+
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00044">44</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+</div>
+<p><code>#include &lt;<a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a691aee2d08b91b643ecf7a72e28d9c3e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a691aee2d08b91b643ecf7a72e28d9c3e">translation_unit_visitor</a> (clang::SourceManager &amp;sm, const <a class="el" href="structclanguml_1_1config_1_1diagram.html">clanguml::config::diagram</a> &amp;config)</td></tr>
+<tr class="memdesc:a691aee2d08b91b643ecf7a72e28d9c3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <br /></td></tr>
+<tr class="separator:a691aee2d08b91b643ecf7a72e28d9c3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2baf4fb05d41dd69807a898402d2eb2"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#ac2baf4fb05d41dd69807a898402d2eb2">~translation_unit_visitor</a> ()=default</td></tr>
+<tr class="separator:ac2baf4fb05d41dd69807a898402d2eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7d8626c1357ef3ab72f4b4a1b42d889"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#ad7d8626c1357ef3ab72f4b4a1b42d889">set_tu_path</a> (const std::string &amp;translation_unit_path)</td></tr>
+<tr class="separator:ad7d8626c1357ef3ab72f4b4a1b42d889"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4eb6f4cd43bb361929ea0767cb99d13b"><td class="memItemLeft" align="right" valign="top">const std::filesystem::path &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4eb6f4cd43bb361929ea0767cb99d13b">tu_path</a> () const</td></tr>
+<tr class="memdesc:a4eb6f4cd43bb361929ea0767cb99d13b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return relative path to current translation unit.  <br /></td></tr>
+<tr class="separator:a4eb6f4cd43bb361929ea0767cb99d13b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08aba222e4ab1d11c942de1aac0ce255"><td class="memItemLeft" align="right" valign="top">clang::SourceManager &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a08aba222e4ab1d11c942de1aac0ce255">source_manager</a> () const</td></tr>
+<tr class="memdesc:a08aba222e4ab1d11c942de1aac0ce255"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get clang::SourceManager.  <br /></td></tr>
+<tr class="separator:a08aba222e4ab1d11c942de1aac0ce255"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fe1c667413cbce18d9aa29a95d06437"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437">set_source_location</a> (const clang::Decl &amp;decl, <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">clanguml::common::model::source_location</a> &amp;element)</td></tr>
+<tr class="memdesc:a0fe1c667413cbce18d9aa29a95d06437"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set source location in diagram element.  <br /></td></tr>
+<tr class="separator:a0fe1c667413cbce18d9aa29a95d06437"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae130c5c1864b8b0d6b450ca4653db190"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#ae130c5c1864b8b0d6b450ca4653db190">set_source_location</a> (const clang::Expr &amp;expr, <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">clanguml::common::model::source_location</a> &amp;element)</td></tr>
+<tr class="memdesc:ae130c5c1864b8b0d6b450ca4653db190"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set source location in diagram element.  <br /></td></tr>
+<tr class="separator:ae130c5c1864b8b0d6b450ca4653db190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad493da9e2a20702cc688c7dc19a7f38c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#ad493da9e2a20702cc688c7dc19a7f38c">set_source_location</a> (const clang::Stmt &amp;stmt, <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">clanguml::common::model::source_location</a> &amp;element)</td></tr>
+<tr class="separator:ad493da9e2a20702cc688c7dc19a7f38c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f50ee278d8c2edf0a80f071e3b55c11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4f50ee278d8c2edf0a80f071e3b55c11">set_source_location</a> (const clang::SourceLocation &amp;location, <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">clanguml::common::model::source_location</a> &amp;element)</td></tr>
+<tr class="memdesc:a4f50ee278d8c2edf0a80f071e3b55c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set source location in diagram element.  <br /></td></tr>
+<tr class="separator:a4f50ee278d8c2edf0a80f071e3b55c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a0b26fd2d97a4ae6d275a4b458c13878d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d">process_comment</a> (const clang::NamedDecl &amp;decl, <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">clanguml::common::model::decorated_element</a> &amp;e)</td></tr>
+<tr class="memdesc:a0b26fd2d97a4ae6d275a4b458c13878d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set source location in diagram element.  <br /></td></tr>
+<tr class="separator:a0b26fd2d97a4ae6d275a4b458c13878d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a8450ee9a2363b20ce866a8243c301d67"><td class="memItemLeft" align="right" valign="top">clang::SourceManager &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a></td></tr>
+<tr class="separator:a8450ee9a2363b20ce866a8243c301d67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ca34c3f3ef707fcc26878dd015dc898"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor.html">comment::comment_visitor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a1ca34c3f3ef707fcc26878dd015dc898">comment_visitor_</a></td></tr>
+<tr class="separator:a1ca34c3f3ef707fcc26878dd015dc898"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2823a7c198790695b9b3afcc3513a362"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a2823a7c198790695b9b3afcc3513a362">relative_to_path_</a></td></tr>
+<tr class="separator:a2823a7c198790695b9b3afcc3513a362"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58caee8c6e68a67523f8be2b5c61c259"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a58caee8c6e68a67523f8be2b5c61c259">translation_unit_path_</a></td></tr>
+<tr class="separator:a58caee8c6e68a67523f8be2b5c61c259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a691aee2d08b91b643ecf7a72e28d9c3e" name="a691aee2d08b91b643ecf7a72e28d9c3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a691aee2d08b91b643ecf7a72e28d9c3e">&#9670;&#160;</a></span>translation_unit_visitor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">clanguml::common::visitor::translation_unit_visitor::translation_unit_visitor </td>
+          <td>(</td>
+          <td class="paramtype">clang::SourceManager &amp;&#160;</td>
+          <td class="paramname"><em>sm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structclanguml_1_1config_1_1diagram.html">clanguml::config::diagram</a> &amp;&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sm</td><td>Reference to clang::SourceManager instance </td></tr>
+    <tr><td class="paramname">config</td><td>Reference to <a class="el" href="structclanguml_1_1config_1_1diagram.html">clanguml::config::diagram</a> configuration instance </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html#l00026">26</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   28</span>    : <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>{sm}</div>
+<div class="line"><span class="lineno">   29</span>    , <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a2823a7c198790695b9b3afcc3513a362">relative_to_path_</a>{config.<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#aa2bbc9923b17e697e97a4224499a2899">relative_to</a>()}</div>
+<div class="line"><span class="lineno">   30</span>{</div>
+<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">if</span> (config.<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ad75d03a8da88603f5f1941bfa44c7b69">comment_parser</a>() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a8cfc1e2c5f2ed7b26e5153eb2bce1facaac7938d40cfc2307e2bf325d28e7884e">config::comment_parser_t::plain</a>) {</div>
+<div class="line"><span class="lineno">   32</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a1ca34c3f3ef707fcc26878dd015dc898">comment_visitor_</a> =</div>
+<div class="line"><span class="lineno">   33</span>            std::make_unique&lt;comment::plain_visitor&gt;(<a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>);</div>
+<div class="line"><span class="lineno">   34</span>    }</div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (config.<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ad75d03a8da88603f5f1941bfa44c7b69">comment_parser</a>() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a8cfc1e2c5f2ed7b26e5153eb2bce1faca2c5517db7bc397f9b14ae357a7ce54ff">config::comment_parser_t::clang</a>) {</div>
+<div class="line"><span class="lineno">   36</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a1ca34c3f3ef707fcc26878dd015dc898">comment_visitor_</a> =</div>
+<div class="line"><span class="lineno">   37</span>            std::make_unique&lt;comment::clang_visitor&gt;(<a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>);</div>
+<div class="line"><span class="lineno">   38</span>    }</div>
+<div class="line"><span class="lineno">   39</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac2baf4fb05d41dd69807a898402d2eb2" name="ac2baf4fb05d41dd69807a898402d2eb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2baf4fb05d41dd69807a898402d2eb2">&#9670;&#160;</a></span>~translation_unit_visitor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual clanguml::common::visitor::translation_unit_visitor::~translation_unit_visitor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classclanguml_1_1package__diagram_1_1visitor_1_1translation__unit__visitor.html#a9773b51457e80fca7f116107d1d2955a">clanguml::package_diagram::visitor::translation_unit_visitor</a>, and <a class="el" href="classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#a3e26be761301f527c23034ffba71daf9">clanguml::sequence_diagram::visitor::translation_unit_visitor</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0b26fd2d97a4ae6d275a4b458c13878d" name="a0b26fd2d97a4ae6d275a4b458c13878d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b26fd2d97a4ae6d275a4b458c13878d">&#9670;&#160;</a></span>process_comment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::visitor::translation_unit_visitor::process_comment </td>
+          <td>(</td>
+          <td class="paramtype">const clang::NamedDecl &amp;&#160;</td>
+          <td class="paramname"><em>decl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">clanguml::common::model::decorated_element</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set source location in diagram element. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">decl</td><td>Reference to clang::NamedDecl </td></tr>
+    <tr><td class="paramname">element</td><td>Reference to element to be updated </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html#l00059">59</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   61</span>{</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>    assert(<a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a1ca34c3f3ef707fcc26878dd015dc898">comment_visitor_</a>.get() != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a1ca34c3f3ef707fcc26878dd015dc898">comment_visitor_</a>-&gt;visit(decl, e);</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>    <span class="keyword">const</span> <span class="keyword">auto</span> *comment =</div>
+<div class="line"><span class="lineno">   68</span>        decl.getASTContext().getRawCommentForDeclNoCache(&amp;decl);</div>
+<div class="line"><span class="lineno">   69</span> </div>
+<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">if</span> (comment != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">   71</span>        <span class="comment">// Process clang-uml decorators in the comments</span></div>
+<div class="line"><span class="lineno">   72</span>        <span class="comment">// TODO: Refactor to use standard block comments processable by clang</span></div>
+<div class="line"><span class="lineno">   73</span>        <span class="comment">//       comments</span></div>
+<div class="line"><span class="lineno">   74</span>        e.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#aaad5a04bff30c3231764e4eb0ba9c241">add_decorators</a>(<a class="code hl_function" href="namespaceclanguml_1_1decorators.html#affa9cca8db03c36d8ce91e29be203f8d">decorators::parse</a>(comment-&gt;getFormattedText(</div>
+<div class="line"><span class="lineno">   75</span>            <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>, decl.getASTContext().getDiagnostics())));</div>
+<div class="line"><span class="lineno">   76</span>    }</div>
+<div class="line"><span class="lineno">   77</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0fe1c667413cbce18d9aa29a95d06437" name="a0fe1c667413cbce18d9aa29a95d06437"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fe1c667413cbce18d9aa29a95d06437">&#9670;&#160;</a></span>set_source_location() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::visitor::translation_unit_visitor::set_source_location </td>
+          <td>(</td>
+          <td class="paramtype">const clang::Decl &amp;&#160;</td>
+          <td class="paramname"><em>decl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">clanguml::common::model::source_location</a> &amp;&#160;</td>
+          <td class="paramname"><em>element</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set source location in diagram element. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">decl</td><td>Reference to clang::Decl </td></tr>
+    <tr><td class="paramname">element</td><td>Reference to element to be updated </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html#l00079">79</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   81</span>{</div>
+<div class="line"><span class="lineno">   82</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437" title="Set source location in diagram element.">set_source_location</a>(decl.getLocation(), element);</div>
+<div class="line"><span class="lineno">   83</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae130c5c1864b8b0d6b450ca4653db190" name="ae130c5c1864b8b0d6b450ca4653db190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae130c5c1864b8b0d6b450ca4653db190">&#9670;&#160;</a></span>set_source_location() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::visitor::translation_unit_visitor::set_source_location </td>
+          <td>(</td>
+          <td class="paramtype">const clang::Expr &amp;&#160;</td>
+          <td class="paramname"><em>expr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">clanguml::common::model::source_location</a> &amp;&#160;</td>
+          <td class="paramname"><em>element</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set source location in diagram element. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">expr</td><td>Reference to clang::Expr </td></tr>
+    <tr><td class="paramname">element</td><td>Reference to element to be updated </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html#l00085">85</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   87</span>{</div>
+<div class="line"><span class="lineno">   88</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437" title="Set source location in diagram element.">set_source_location</a>(expr.getBeginLoc(), element);</div>
+<div class="line"><span class="lineno">   89</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4f50ee278d8c2edf0a80f071e3b55c11" name="a4f50ee278d8c2edf0a80f071e3b55c11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f50ee278d8c2edf0a80f071e3b55c11">&#9670;&#160;</a></span>set_source_location() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::visitor::translation_unit_visitor::set_source_location </td>
+          <td>(</td>
+          <td class="paramtype">const clang::SourceLocation &amp;&#160;</td>
+          <td class="paramname"><em>location</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">clanguml::common::model::source_location</a> &amp;&#160;</td>
+          <td class="paramname"><em>element</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set source location in diagram element. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">location</td><td>Reference to clang::SourceLocation </td></tr>
+    <tr><td class="paramname">element</td><td>Reference to element to be updated </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html#l00097">97</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  100</span>{</div>
+<div class="line"><span class="lineno">  101</span>    std::string file;</div>
+<div class="line"><span class="lineno">  102</span>    <span class="keywordtype">unsigned</span> line{};</div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordtype">unsigned</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892a1afd32818d1c9525f82aff4c09efd254">column</a>{};</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">if</span> (location.isValid()) {</div>
+<div class="line"><span class="lineno">  106</span>        file = <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>.getFilename(location).str();</div>
+<div class="line"><span class="lineno">  107</span>        line = <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>.getSpellingLineNumber(location);</div>
+<div class="line"><span class="lineno">  108</span>        <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892a1afd32818d1c9525f82aff4c09efd254">column</a> = <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>.getSpellingColumnNumber(location);</div>
+<div class="line"><span class="lineno">  109</span> </div>
+<div class="line"><span class="lineno">  110</span>        <span class="keywordflow">if</span> (file.empty()) {</div>
+<div class="line"><span class="lineno">  111</span>            <span class="comment">// Why do I have to do this?</span></div>
+<div class="line"><span class="lineno">  112</span>            <a class="code hl_function" href="namespaceclanguml_1_1common.html#a8d7db842880bf1063b0c8b9041b6a899">parse_source_location</a>(</div>
+<div class="line"><span class="lineno">  113</span>                location.printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a08aba222e4ab1d11c942de1aac0ce255" title="Get clang::SourceManager.">source_manager</a>()), file, line, column);</div>
+<div class="line"><span class="lineno">  114</span>        }</div>
+<div class="line"><span class="lineno">  115</span>    }</div>
+<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  117</span>        <span class="keyword">auto</span> success = <a class="code hl_function" href="namespaceclanguml_1_1common.html#a8d7db842880bf1063b0c8b9041b6a899">parse_source_location</a>(</div>
+<div class="line"><span class="lineno">  118</span>            location.printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a08aba222e4ab1d11c942de1aac0ce255" title="Get clang::SourceManager.">source_manager</a>()), file, line, column);</div>
+<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">if</span> (!success) {</div>
+<div class="line"><span class="lineno">  120</span>            <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Failed to extract source location for element from {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  121</span>                location.printToString(<a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>));</div>
+<div class="line"><span class="lineno">  122</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  123</span>        }</div>
+<div class="line"><span class="lineno">  124</span>    }</div>
+<div class="line"><span class="lineno">  125</span> </div>
+<div class="line"><span class="lineno">  126</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#aec3793735a334061998533cf24ed5e93">set_file</a>(file);</div>
+<div class="line"><span class="lineno">  127</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a41e5371c246850fa75c507069da22512">set_file_relative</a>(<a class="code hl_function" href="namespaceclanguml_1_1util.html#ac14a702d02537113e5610149ed91d0e0" title="Convert filesystem path to url path.">util::path_to_url</a>(</div>
+<div class="line"><span class="lineno">  128</span>        std::filesystem::relative(element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#afef560523e23f8911498ba519da86be7">file</a>(), <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a2823a7c198790695b9b3afcc3513a362">relative_to_path_</a>).string()));</div>
+<div class="line"><span class="lineno">  129</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#aac84bd3ae927ce51254c1e5f57b5c650">set_translation_unit</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4eb6f4cd43bb361929ea0767cb99d13b" title="Return relative path to current translation unit.">tu_path</a>().<span class="keywordtype">string</span>());</div>
+<div class="line"><span class="lineno">  130</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a9179112cf251651f04fddcacb0fb3ea1">set_line</a>(line);</div>
+<div class="line"><span class="lineno">  131</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a2de2361ac5c5e0c1e2d81612dd043df6">set_column</a>(column);</div>
+<div class="line"><span class="lineno">  132</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a82cf4e440646111ebfebcc88c89ae3f4">set_location_id</a>(location.getHashValue());</div>
+<div class="line"><span class="lineno">  133</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad493da9e2a20702cc688c7dc19a7f38c" name="ad493da9e2a20702cc688c7dc19a7f38c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad493da9e2a20702cc688c7dc19a7f38c">&#9670;&#160;</a></span>set_source_location() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::visitor::translation_unit_visitor::set_source_location </td>
+          <td>(</td>
+          <td class="paramtype">const clang::Stmt &amp;&#160;</td>
+          <td class="paramname"><em>stmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">clanguml::common::model::source_location</a> &amp;&#160;</td>
+          <td class="paramname"><em>element</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html#l00091">91</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   93</span>{</div>
+<div class="line"><span class="lineno">   94</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437" title="Set source location in diagram element.">set_source_location</a>(stmt.getBeginLoc(), element);</div>
+<div class="line"><span class="lineno">   95</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad7d8626c1357ef3ab72f4b4a1b42d889" name="ad7d8626c1357ef3ab72f4b4a1b42d889"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7d8626c1357ef3ab72f4b4a1b42d889">&#9670;&#160;</a></span>set_tu_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::visitor::translation_unit_visitor::set_tu_path </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>translation_unit_path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html#l00041">41</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   43</span>{</div>
+<div class="line"><span class="lineno">   44</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a58caee8c6e68a67523f8be2b5c61c259">translation_unit_path_</a> = relative(</div>
+<div class="line"><span class="lineno">   45</span>        std::filesystem::path{translation_unit_path}, <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a2823a7c198790695b9b3afcc3513a362">relative_to_path_</a>);</div>
+<div class="line"><span class="lineno">   46</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a58caee8c6e68a67523f8be2b5c61c259">translation_unit_path_</a>.make_preferred();</div>
+<div class="line"><span class="lineno">   47</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a08aba222e4ab1d11c942de1aac0ce255" name="a08aba222e4ab1d11c942de1aac0ce255"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08aba222e4ab1d11c942de1aac0ce255">&#9670;&#160;</a></span>source_manager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::SourceManager &amp; clanguml::common::visitor::translation_unit_visitor::source_manager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get clang::SourceManager. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to clang::SourceManager used by this translation unit visitor </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html#l00054">54</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   55</span>{</div>
+<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>;</div>
+<div class="line"><span class="lineno">   57</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4eb6f4cd43bb361929ea0767cb99d13b" name="a4eb6f4cd43bb361929ea0767cb99d13b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4eb6f4cd43bb361929ea0767cb99d13b">&#9670;&#160;</a></span>tu_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::filesystem::path &amp; clanguml::common::visitor::translation_unit_visitor::tu_path </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return relative path to current translation unit. </p>
+<dl class="section return"><dt>Returns</dt><dd>Current translation unit path </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html#l00049">49</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   50</span>{</div>
+<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a58caee8c6e68a67523f8be2b5c61c259">translation_unit_path_</a>;</div>
+<div class="line"><span class="lineno">   52</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1ca34c3f3ef707fcc26878dd015dc898" name="a1ca34c3f3ef707fcc26878dd015dc898"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ca34c3f3ef707fcc26878dd015dc898">&#9670;&#160;</a></span>comment_visitor_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor.html">comment::comment_visitor</a>&gt; clanguml::common::visitor::translation_unit_visitor::comment_visitor_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00116">116</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+
+</div>
+</div>
+<a id="a2823a7c198790695b9b3afcc3513a362" name="a2823a7c198790695b9b3afcc3513a362"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2823a7c198790695b9b3afcc3513a362">&#9670;&#160;</a></span>relative_to_path_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::filesystem::path clanguml::common::visitor::translation_unit_visitor::relative_to_path_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00118">118</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+
+</div>
+</div>
+<a id="a8450ee9a2363b20ce866a8243c301d67" name="a8450ee9a2363b20ce866a8243c301d67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8450ee9a2363b20ce866a8243c301d67">&#9670;&#160;</a></span>source_manager_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::SourceManager&amp; clanguml::common::visitor::translation_unit_visitor::source_manager_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00114">114</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+
+</div>
+</div>
+<a id="a58caee8c6e68a67523f8be2b5c61c259" name="a58caee8c6e68a67523f8be2b5c61c259"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58caee8c6e68a67523f8be2b5c61c259">&#9670;&#160;</a></span>translation_unit_path_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::filesystem::path clanguml::common::visitor::translation_unit_visitor::translation_unit_path_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00120">120</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/common/visitor/<a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a></li>
+<li>src/common/visitor/<a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

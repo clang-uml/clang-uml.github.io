@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: clanguml::common::visitor::comment::plain_visitor Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceclanguml.html">clanguml</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1common.html">common</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1common_1_1visitor.html">visitor</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1common_1_1visitor_1_1comment.html">comment</a></li><li class="navelem"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1plain__visitor.html">plain_visitor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classclanguml_1_1common_1_1visitor_1_1comment_1_1plain__visitor-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">clanguml::common::visitor::comment::plain_visitor Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Plain comment visitor which extracts raw and formatted comment.  
+ <a href="classclanguml_1_1common_1_1visitor_1_1comment_1_1plain__visitor.html#details">More...</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Plain comment visitor which extracts raw and formatted comment. </p>
+
+<p class="definition">Definition at line <a class="el" href="plain__visitor_8h_source.html#l00031">31</a> of file <a class="el" href="plain__visitor_8h_source.html">plain_visitor.h</a>.</p>
+</div>
+<p><code>#include &lt;<a class="el" href="plain__visitor_8h_source.html">plain_visitor.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:aaa18c0711e6d9e4a1f4eb5913ecd1fd1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1plain__visitor.html#aaa18c0711e6d9e4a1f4eb5913ecd1fd1">plain_visitor</a> (clang::SourceManager &amp;<a class="el" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor.html#a40b499cf59130e35d444663f49063593">source_manager</a>)</td></tr>
+<tr class="separator:aaa18c0711e6d9e4a1f4eb5913ecd1fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fe0642b22a42db8c019483fc006c4ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1plain__visitor.html#a0fe0642b22a42db8c019483fc006c4ba">visit</a> (const clang::NamedDecl &amp;decl, <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">common::model::decorated_element</a> &amp;e) override</td></tr>
+<tr class="separator:a0fe0642b22a42db8c019483fc006c4ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor.html">clanguml::common::visitor::comment::comment_visitor</a></td></tr>
+<tr class="memitem:a4d71ec653d0242b894e72e1c6bfd7c7d inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor.html#a4d71ec653d0242b894e72e1c6bfd7c7d">comment_visitor</a> (clang::SourceManager &amp;<a class="el" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor.html#a40b499cf59130e35d444663f49063593">source_manager</a>)</td></tr>
+<tr class="separator:a4d71ec653d0242b894e72e1c6bfd7c7d inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a273f92323d8c592d55488314d31736bb inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor.html#a273f92323d8c592d55488314d31736bb">~comment_visitor</a> ()=default</td></tr>
+<tr class="separator:a273f92323d8c592d55488314d31736bb inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa26a5025ff65aab651eaa5701b864fdf inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor.html#aa26a5025ff65aab651eaa5701b864fdf">visit</a> (const clang::NamedDecl &amp;decl, <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">common::model::decorated_element</a> &amp;e)=0</td></tr>
+<tr class="separator:aa26a5025ff65aab651eaa5701b864fdf inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40b499cf59130e35d444663f49063593 inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor"><td class="memItemLeft" align="right" valign="top">clang::SourceManager &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor.html#a40b499cf59130e35d444663f49063593">source_manager</a> ()</td></tr>
+<tr class="separator:a40b499cf59130e35d444663f49063593 inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aaa18c0711e6d9e4a1f4eb5913ecd1fd1" name="aaa18c0711e6d9e4a1f4eb5913ecd1fd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa18c0711e6d9e4a1f4eb5913ecd1fd1">&#9670;&#160;</a></span>plain_visitor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clanguml::common::visitor::comment::plain_visitor::plain_visitor </td>
+          <td>(</td>
+          <td class="paramtype">clang::SourceManager &amp;&#160;</td>
+          <td class="paramname"><em>source_manager</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="plain__visitor_8cc_source.html#l00023">23</a> of file <a class="el" href="plain__visitor_8cc_source.html">plain_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   24</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor.html#a4d71ec653d0242b894e72e1c6bfd7c7d">comment_visitor</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor.html#a40b499cf59130e35d444663f49063593">source_manager</a>}</div>
+<div class="line"><span class="lineno">   25</span>{</div>
+<div class="line"><span class="lineno">   26</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0fe0642b22a42db8c019483fc006c4ba" name="a0fe0642b22a42db8c019483fc006c4ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fe0642b22a42db8c019483fc006c4ba">&#9670;&#160;</a></span>visit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::visitor::comment::plain_visitor::visit </td>
+          <td>(</td>
+          <td class="paramtype">const clang::NamedDecl &amp;&#160;</td>
+          <td class="paramname"><em>decl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">common::model::decorated_element</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Extracts 'raw' and 'formatted' comment values from the Clang's parser.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">decl</td><td>Clang's named declaration </td></tr>
+    <tr><td class="paramname">e</td><td>Diagram element </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor.html#aa26a5025ff65aab651eaa5701b864fdf">clanguml::common::visitor::comment::comment_visitor</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="plain__visitor_8cc_source.html#l00028">28</a> of file <a class="el" href="plain__visitor_8cc_source.html">plain_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   30</span>{</div>
+<div class="line"><span class="lineno">   31</span>    <span class="keyword">const</span> <span class="keyword">auto</span> *comment =</div>
+<div class="line"><span class="lineno">   32</span>        decl.getASTContext().getRawCommentForDeclNoCache(&amp;decl);</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">if</span> (comment == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   36</span>    }</div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>    <span class="keyword">auto</span> raw_comment = comment-&gt;getRawText(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor.html#a40b499cf59130e35d444663f49063593">source_manager</a>());</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>    <span class="keyword">auto</span> formatted_comment = comment-&gt;getFormattedText(</div>
+<div class="line"><span class="lineno">   41</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor.html#a40b499cf59130e35d444663f49063593">source_manager</a>(), decl.getASTContext().getDiagnostics());</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>    <a class="code hl_typedef" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">common::model::comment_t</a> cmt = inja::json::object();</div>
+<div class="line"><span class="lineno">   44</span>    cmt[<span class="stringliteral">&quot;raw&quot;</span>] = raw_comment;</div>
+<div class="line"><span class="lineno">   45</span>    cmt[<span class="stringliteral">&quot;formatted&quot;</span>] = formatted_comment;</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>    e.set_comment(cmt);</div>
+<div class="line"><span class="lineno">   48</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/common/visitor/comment/<a class="el" href="plain__visitor_8h_source.html">plain_visitor.h</a></li>
+<li>src/common/visitor/comment/<a class="el" href="plain__visitor_8cc_source.html">plain_visitor.cc</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

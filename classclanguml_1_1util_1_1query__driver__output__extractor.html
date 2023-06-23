@@ -1,0 +1,491 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: clanguml::util::query_driver_output_extractor Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceclanguml.html">clanguml</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1util.html">util</a></li><li class="navelem"><a class="el" href="classclanguml_1_1util_1_1query__driver__output__extractor.html">query_driver_output_extractor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="classclanguml_1_1util_1_1query__driver__output__extractor-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">clanguml::util::query_driver_output_extractor Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="query__driver__output__extractor_8h_source.html#l00030">30</a> of file <a class="el" href="query__driver__output__extractor_8h_source.html">query_driver_output_extractor.h</a>.</p>
+</div>
+<p><code>#include &lt;<a class="el" href="query__driver__output__extractor_8h_source.html">query_driver_output_extractor.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ae19dc261d1581eedfdcb8351f53a51d2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#ae19dc261d1581eedfdcb8351f53a51d2">query_driver_output_extractor</a> (std::string command, std::string language)</td></tr>
+<tr class="separator:ae19dc261d1581eedfdcb8351f53a51d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3373f8afb4ef2fc5968c156e8e5f1e64"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#a3373f8afb4ef2fc5968c156e8e5f1e64">~query_driver_output_extractor</a> ()=default</td></tr>
+<tr class="separator:a3373f8afb4ef2fc5968c156e8e5f1e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6e5e81fe1c96a8d3b584dd3eafd1a96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#ab6e5e81fe1c96a8d3b584dd3eafd1a96">execute</a> ()</td></tr>
+<tr class="separator:ab6e5e81fe1c96a8d3b584dd3eafd1a96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab72ae52729ecb157ecc9c0c056b217c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#ab72ae52729ecb157ecc9c0c056b217c1">extract_target</a> (const std::string &amp;output)</td></tr>
+<tr class="separator:ab72ae52729ecb157ecc9c0c056b217c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4149712d027c2d3425c480040dc307ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#a4149712d027c2d3425c480040dc307ef">extract_system_include_paths</a> (const std::string &amp;output)</td></tr>
+<tr class="separator:a4149712d027c2d3425c480040dc307ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5ee626ec657645e34f71495c5eda3b1"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#ab5ee626ec657645e34f71495c5eda3b1">system_include_paths</a> () const</td></tr>
+<tr class="separator:ab5ee626ec657645e34f71495c5eda3b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a472d2f40596021042deaf262c2e4edbd"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#a472d2f40596021042deaf262c2e4edbd">target</a> () const</td></tr>
+<tr class="separator:a472d2f40596021042deaf262c2e4edbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a65e76c8010d538ba96d4e419a9f222e7"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#a65e76c8010d538ba96d4e419a9f222e7">command_</a></td></tr>
+<tr class="separator:a65e76c8010d538ba96d4e419a9f222e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6ce882f0dd77425c3072b925edf2f82"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#ac6ce882f0dd77425c3072b925edf2f82">language_</a></td></tr>
+<tr class="separator:ac6ce882f0dd77425c3072b925edf2f82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdeca9433db1bae7c5106a7b4f2c3945"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#abdeca9433db1bae7c5106a7b4f2c3945">target_</a></td></tr>
+<tr class="separator:abdeca9433db1bae7c5106a7b4f2c3945"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a230e345eca51a7721dad5f71854b1c2d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#a230e345eca51a7721dad5f71854b1c2d">system_include_paths_</a></td></tr>
+<tr class="separator:a230e345eca51a7721dad5f71854b1c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae19dc261d1581eedfdcb8351f53a51d2" name="ae19dc261d1581eedfdcb8351f53a51d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae19dc261d1581eedfdcb8351f53a51d2">&#9670;&#160;</a></span>query_driver_output_extractor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clanguml::util::query_driver_output_extractor::query_driver_output_extractor </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>command</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>language</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="query__driver__output__extractor_8cc_source.html#l00028">28</a> of file <a class="el" href="query__driver__output__extractor_8cc_source.html">query_driver_output_extractor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   30</span>    : <a class="code hl_variable" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#a65e76c8010d538ba96d4e419a9f222e7">command_</a>{std::move(command)}</div>
+<div class="line"><span class="lineno">   31</span>    , <a class="code hl_variable" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#ac6ce882f0dd77425c3072b925edf2f82">language_</a>{std::move(language)}</div>
+<div class="line"><span class="lineno">   32</span>{</div>
+<div class="line"><span class="lineno">   33</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3373f8afb4ef2fc5968c156e8e5f1e64" name="a3373f8afb4ef2fc5968c156e8e5f1e64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3373f8afb4ef2fc5968c156e8e5f1e64">&#9670;&#160;</a></span>~query_driver_output_extractor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">clanguml::util::query_driver_output_extractor::~query_driver_output_extractor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab6e5e81fe1c96a8d3b584dd3eafd1a96" name="ab6e5e81fe1c96a8d3b584dd3eafd1a96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6e5e81fe1c96a8d3b584dd3eafd1a96">&#9670;&#160;</a></span>execute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::util::query_driver_output_extractor::execute </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="query__driver__output__extractor_8cc_source.html#l00035">35</a> of file <a class="el" href="query__driver__output__extractor_8cc_source.html">query_driver_output_extractor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   36</span>{</div>
+<div class="line"><span class="lineno">   37</span>    <span class="keyword">auto</span> cmd =</div>
+<div class="line"><span class="lineno">   38</span>        fmt::format(<span class="stringliteral">&quot;{} -E -v -x {} /dev/null 2&gt;&amp;1&quot;</span>, <a class="code hl_variable" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#a65e76c8010d538ba96d4e419a9f222e7">command_</a>, <a class="code hl_variable" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#ac6ce882f0dd77425c3072b925edf2f82">language_</a>);</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Executing query driver command: {}&quot;</span>, cmd);</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>    <span class="keyword">auto</span> driver_output = <a class="code hl_function" href="namespaceclanguml_1_1util.html#ac6a4536956b8df20164c9ef36c6e769c">get_process_output</a>(cmd);</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>    <a class="code hl_variable" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#a230e345eca51a7721dad5f71854b1c2d">system_include_paths_</a>.clear();</div>
+<div class="line"><span class="lineno">   45</span>    <a class="code hl_function" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#a4149712d027c2d3425c480040dc307ef">extract_system_include_paths</a>(driver_output);</div>
+<div class="line"><span class="lineno">   46</span>    <a class="code hl_function" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#ab72ae52729ecb157ecc9c0c056b217c1">extract_target</a>(driver_output);</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#a230e345eca51a7721dad5f71854b1c2d">system_include_paths_</a>.empty()) {</div>
+<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">throw</span> query_driver_no_paths(fmt::format(</div>
+<div class="line"><span class="lineno">   50</span>            <span class="stringliteral">&quot;Compiler driver {} did not report any system include paths &quot;</span></div>
+<div class="line"><span class="lineno">   51</span>            <span class="stringliteral">&quot;in its output: {}&quot;</span>,</div>
+<div class="line"><span class="lineno">   52</span>            <a class="code hl_variable" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#a65e76c8010d538ba96d4e419a9f222e7">command_</a>, driver_output));</div>
+<div class="line"><span class="lineno">   53</span>    }</div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Extracted the following paths from compiler driver: {}&quot;</span>,</div>
+<div class="line"><span class="lineno">   56</span>        fmt::join(<a class="code hl_variable" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#a230e345eca51a7721dad5f71854b1c2d">system_include_paths_</a>, <span class="stringliteral">&quot;,&quot;</span>));</div>
+<div class="line"><span class="lineno">   57</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4149712d027c2d3425c480040dc307ef" name="a4149712d027c2d3425c480040dc307ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4149712d027c2d3425c480040dc307ef">&#9670;&#160;</a></span>extract_system_include_paths()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::util::query_driver_output_extractor::extract_system_include_paths </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>output</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="query__driver__output__extractor_8cc_source.html#l00073">73</a> of file <a class="el" href="query__driver__output__extractor_8cc_source.html">query_driver_output_extractor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   75</span>{</div>
+<div class="line"><span class="lineno">   76</span>    std::istringstream f(output);</div>
+<div class="line"><span class="lineno">   77</span>    std::string line;</div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>    <span class="keywordtype">bool</span> in_include_paths_range{<span class="keyword">false</span>};</div>
+<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">while</span> (std::getline(f, line)) {</div>
+<div class="line"><span class="lineno">   81</span>        line = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e">trim</a>(line);</div>
+<div class="line"><span class="lineno">   82</span>        <span class="keywordflow">if</span> (line == <span class="stringliteral">&quot;#include &lt;...&gt; search starts here:&quot;</span>) {</div>
+<div class="line"><span class="lineno">   83</span>            in_include_paths_range = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   84</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   85</span>        }</div>
+<div class="line"><span class="lineno">   86</span>        <span class="keywordflow">if</span> (line == <span class="stringliteral">&quot;End of search list.&quot;</span>) {</div>
+<div class="line"><span class="lineno">   87</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   88</span>        }</div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">if</span> (in_include_paths_range) {</div>
+<div class="line"><span class="lineno">   91</span>            <a class="code hl_variable" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#a230e345eca51a7721dad5f71854b1c2d">system_include_paths_</a>.emplace_back(line);</div>
+<div class="line"><span class="lineno">   92</span>        }</div>
+<div class="line"><span class="lineno">   93</span>    }</div>
+<div class="line"><span class="lineno">   94</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab72ae52729ecb157ecc9c0c056b217c1" name="ab72ae52729ecb157ecc9c0c056b217c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab72ae52729ecb157ecc9c0c056b217c1">&#9670;&#160;</a></span>extract_target()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::util::query_driver_output_extractor::extract_target </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>output</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="query__driver__output__extractor_8cc_source.html#l00059">59</a> of file <a class="el" href="query__driver__output__extractor_8cc_source.html">query_driver_output_extractor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   60</span>{</div>
+<div class="line"><span class="lineno">   61</span>    std::istringstream f(output);</div>
+<div class="line"><span class="lineno">   62</span>    std::string line;</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">while</span> (std::getline(f, line)) {</div>
+<div class="line"><span class="lineno">   65</span>        line = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e">trim</a>(line);</div>
+<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1util.html#ac843d642a89078b156b7253979c32637">util::starts_with</a>(line, std::string{<span class="stringliteral">&quot;Target: &quot;</span>})) {</div>
+<div class="line"><span class="lineno">   67</span>            <a class="code hl_variable" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#abdeca9433db1bae7c5106a7b4f2c3945">target_</a> = line.substr(strlen(<span class="stringliteral">&quot;Target: &quot;</span>));</div>
+<div class="line"><span class="lineno">   68</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   69</span>        }</div>
+<div class="line"><span class="lineno">   70</span>    }</div>
+<div class="line"><span class="lineno">   71</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab5ee626ec657645e34f71495c5eda3b1" name="ab5ee626ec657645e34f71495c5eda3b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5ee626ec657645e34f71495c5eda3b1">&#9670;&#160;</a></span>system_include_paths()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; std::string &gt; &amp; clanguml::util::query_driver_output_extractor::system_include_paths </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="query__driver__output__extractor_8cc_source.html#l00097">97</a> of file <a class="el" href="query__driver__output__extractor_8cc_source.html">query_driver_output_extractor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   98</span>{</div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#a230e345eca51a7721dad5f71854b1c2d">system_include_paths_</a>;</div>
+<div class="line"><span class="lineno">  100</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a472d2f40596021042deaf262c2e4edbd" name="a472d2f40596021042deaf262c2e4edbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a472d2f40596021042deaf262c2e4edbd">&#9670;&#160;</a></span>target()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; clanguml::util::query_driver_output_extractor::target </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="query__driver__output__extractor_8cc_source.html#l00102">102</a> of file <a class="el" href="query__driver__output__extractor_8cc_source.html">query_driver_output_extractor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  103</span>{</div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1util_1_1query__driver__output__extractor.html#abdeca9433db1bae7c5106a7b4f2c3945">target_</a>;</div>
+<div class="line"><span class="lineno">  105</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a65e76c8010d538ba96d4e419a9f222e7" name="a65e76c8010d538ba96d4e419a9f222e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65e76c8010d538ba96d4e419a9f222e7">&#9670;&#160;</a></span>command_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string clanguml::util::query_driver_output_extractor::command_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="query__driver__output__extractor_8h_source.html#l00047">47</a> of file <a class="el" href="query__driver__output__extractor_8h_source.html">query_driver_output_extractor.h</a>.</p>
+
+</div>
+</div>
+<a id="ac6ce882f0dd77425c3072b925edf2f82" name="ac6ce882f0dd77425c3072b925edf2f82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6ce882f0dd77425c3072b925edf2f82">&#9670;&#160;</a></span>language_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string clanguml::util::query_driver_output_extractor::language_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="query__driver__output__extractor_8h_source.html#l00048">48</a> of file <a class="el" href="query__driver__output__extractor_8h_source.html">query_driver_output_extractor.h</a>.</p>
+
+</div>
+</div>
+<a id="a230e345eca51a7721dad5f71854b1c2d" name="a230e345eca51a7721dad5f71854b1c2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a230e345eca51a7721dad5f71854b1c2d">&#9670;&#160;</a></span>system_include_paths_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; clanguml::util::query_driver_output_extractor::system_include_paths_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="query__driver__output__extractor_8h_source.html#l00050">50</a> of file <a class="el" href="query__driver__output__extractor_8h_source.html">query_driver_output_extractor.h</a>.</p>
+
+</div>
+</div>
+<a id="abdeca9433db1bae7c5106a7b4f2c3945" name="abdeca9433db1bae7c5106a7b4f2c3945"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdeca9433db1bae7c5106a7b4f2c3945">&#9670;&#160;</a></span>target_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::util::query_driver_output_extractor::target_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="query__driver__output__extractor_8h_source.html#l00049">49</a> of file <a class="el" href="query__driver__output__extractor_8h_source.html">query_driver_output_extractor.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/util/<a class="el" href="query__driver__output__extractor_8h_source.html">query_driver_output_extractor.h</a></li>
+<li>src/util/<a class="el" href="query__driver__output__extractor_8cc_source.html">query_driver_output_extractor.cc</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

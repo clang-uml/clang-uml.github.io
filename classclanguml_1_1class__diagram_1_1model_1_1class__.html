@@ -1,0 +1,1369 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: clanguml::class_diagram::model::class_ Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceclanguml.html">clanguml</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1class__diagram.html">class_diagram</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1class__diagram_1_1model.html">model</a></li><li class="navelem"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
+<a href="classclanguml_1_1class__diagram_1_1model_1_1class__-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">clanguml::class_diagram::model::class_ Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Diagram element representing a class or class template.  
+ <a href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#details">More...</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Diagram element representing a class or class template. </p>
+
+<p class="definition">Definition at line <a class="el" href="class_8h_source.html#l00038">38</a> of file <a class="el" href="class_8h_source.html">class.h</a>.</p>
+</div>
+<p><code>#include &lt;<a class="el" href="class_8h_source.html">class.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a10afc6ca23c7414bb386438721ed6d17"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a10afc6ca23c7414bb386438721ed6d17">class_</a> (const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">common::model::namespace_</a> &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1element.html#ab9f1e8d0155305018546e7b5b80c296a">using_namespace</a>)</td></tr>
+<tr class="separator:a10afc6ca23c7414bb386438721ed6d17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0551b130facfaef4047355bd2683b28a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a0551b130facfaef4047355bd2683b28a">class_</a> (const <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;)=delete</td></tr>
+<tr class="separator:a0551b130facfaef4047355bd2683b28a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2188d0ac97b972b2b6aa2cbad5c5ae6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#ab2188d0ac97b972b2b6aa2cbad5c5ae6">class_</a> (<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;&amp;) noexcept=delete</td></tr>
+<tr class="separator:ab2188d0ac97b972b2b6aa2cbad5c5ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cba7f8ca3699aa2931d7ec0fa25bc25"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a2cba7f8ca3699aa2931d7ec0fa25bc25">operator=</a> (const <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;)=delete</td></tr>
+<tr class="separator:a2cba7f8ca3699aa2931d7ec0fa25bc25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5528d4d5adb329777702f33a558668f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a5528d4d5adb329777702f33a558668f2">operator=</a> (<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a5528d4d5adb329777702f33a558668f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa802a21c6ddb1ab4ca68d7bc691c4c1c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#aa802a21c6ddb1ab4ca68d7bc691c4c1c">type_name</a> () const override</td></tr>
+<tr class="separator:aa802a21c6ddb1ab4ca68d7bc691c4c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf33e4bf002179b2db784565d153012e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#adf33e4bf002179b2db784565d153012e">is_struct</a> () const</td></tr>
+<tr class="separator:adf33e4bf002179b2db784565d153012e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab407ff5b3314c1ebf3a472adbd0bd53d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#ab407ff5b3314c1ebf3a472adbd0bd53d">is_struct</a> (bool is_struct)</td></tr>
+<tr class="separator:ab407ff5b3314c1ebf3a472adbd0bd53d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63e5b4f668f65cc35f6337afbfd6a690"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a63e5b4f668f65cc35f6337afbfd6a690">is_template</a> () const</td></tr>
+<tr class="separator:a63e5b4f668f65cc35f6337afbfd6a690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ca058e13fdff5a253858b6a03d7d8f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a8ca058e13fdff5a253858b6a03d7d8f7">is_template</a> (bool is_template)</td></tr>
+<tr class="separator:a8ca058e13fdff5a253858b6a03d7d8f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1faf8c5872394c29991f215efd83cd89"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a1faf8c5872394c29991f215efd83cd89">is_union</a> () const</td></tr>
+<tr class="separator:a1faf8c5872394c29991f215efd83cd89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91c3ca2ec2c5fdf413b92f6242477b30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a91c3ca2ec2c5fdf413b92f6242477b30">is_union</a> (bool is_union)</td></tr>
+<tr class="separator:a91c3ca2ec2c5fdf413b92f6242477b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d2a1281d8480d47dcef276ca1aa446c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a6d2a1281d8480d47dcef276ca1aa446c">add_member</a> (<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html">class_member</a> &amp;&amp;member)</td></tr>
+<tr class="separator:a6d2a1281d8480d47dcef276ca1aa446c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad483f1f81e9b335920213a70243de59c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#ad483f1f81e9b335920213a70243de59c">add_method</a> (<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__method.html">class_method</a> &amp;&amp;method)</td></tr>
+<tr class="separator:ad483f1f81e9b335920213a70243de59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae253ee4ef18893704a807b0c28bc697e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#ae253ee4ef18893704a807b0c28bc697e">add_parent</a> (<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__parent.html">class_parent</a> &amp;&amp;parent)</td></tr>
+<tr class="separator:ae253ee4ef18893704a807b0c28bc697e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cd4b86f0e6af82abe816f501f0ef6b6"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html">class_member</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a2cd4b86f0e6af82abe816f501f0ef6b6">members</a> () const</td></tr>
+<tr class="separator:a2cd4b86f0e6af82abe816f501f0ef6b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa246dabb7e9ee0823091f09f119bcc49"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__method.html">class_method</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#aa246dabb7e9ee0823091f09f119bcc49">methods</a> () const</td></tr>
+<tr class="separator:aa246dabb7e9ee0823091f09f119bcc49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a537dd72927e9e795a7385ce8b9d78b67"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__parent.html">class_parent</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a537dd72927e9e795a7385ce8b9d78b67">parents</a> () const</td></tr>
+<tr class="separator:a537dd72927e9e795a7385ce8b9d78b67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae586d0f33eb420e2ff1dbf9efb6e9f6c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#ae586d0f33eb420e2ff1dbf9efb6e9f6c">full_name</a> (bool relative=true) const override</td></tr>
+<tr class="memdesc:ae586d0f33eb420e2ff1dbf9efb6e9f6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get class full name.  <br /></td></tr>
+<tr class="separator:ae586d0f33eb420e2ff1dbf9efb6e9f6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ed4aea6dc53d25c5cd7c0de30367f95"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a6ed4aea6dc53d25c5cd7c0de30367f95">full_name_no_ns</a> () const override</td></tr>
+<tr class="memdesc:a6ed4aea6dc53d25c5cd7c0de30367f95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get unqualified class ful name.  <br /></td></tr>
+<tr class="separator:a6ed4aea6dc53d25c5cd7c0de30367f95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e49d316812760faee7915c520e04c7c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a6e49d316812760faee7915c520e04c7c">is_abstract</a> () const</td></tr>
+<tr class="separator:a6e49d316812760faee7915c520e04c7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a127e140fb72ab0e5f0261c8e656e50bd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a127e140fb72ab0e5f0261c8e656e50bd">calculate_template_specialization_match</a> (const <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;other) const</td></tr>
+<tr class="memdesc:a127e140fb72ab0e5f0261c8e656e50bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate template specialization match with other class.  <br /></td></tr>
+<tr class="separator:a127e140fb72ab0e5f0261c8e656e50bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accc4093adce46b4105fd8f24f0083c4e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#accc4093adce46b4105fd8f24f0083c4e">template_specialization_found</a> () const</td></tr>
+<tr class="separator:accc4093adce46b4105fd8f24f0083c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad16b9c4bca602112fb9187b9aff52bfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#ad16b9c4bca602112fb9187b9aff52bfd">template_specialization_found</a> (bool found)</td></tr>
+<tr class="separator:ad16b9c4bca602112fb9187b9aff52bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a211725c8fb8e5b09e7ceb32d3ba45a33"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a211725c8fb8e5b09e7ceb32d3ba45a33">doxygen_link</a> () const override</td></tr>
+<tr class="memdesc:a211725c8fb8e5b09e7ceb32d3ba45a33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate Doxygen style HTML link for the class.  <br /></td></tr>
+<tr class="separator:a211725c8fb8e5b09e7ceb32d3ba45a33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classclanguml_1_1common_1_1model_1_1element"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1model_1_1element')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1model_1_1element.html">clanguml::common::model::element</a></td></tr>
+<tr class="memitem:a53b964273c6e885e6e0f96be2684829b inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element.html#a53b964273c6e885e6e0f96be2684829b">element</a> (<a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">namespace_</a> <a class="el" href="classclanguml_1_1common_1_1model_1_1element.html#ab9f1e8d0155305018546e7b5b80c296a">using_namespace</a>)</td></tr>
+<tr class="separator:a53b964273c6e885e6e0f96be2684829b inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb8ab4098baa092b973706181ee4558a inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element.html#afb8ab4098baa092b973706181ee4558a">~element</a> () override=default</td></tr>
+<tr class="separator:afb8ab4098baa092b973706181ee4558a inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0f9ec7a4def1b9619ea82e83148c862 inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element.html#ad0f9ec7a4def1b9619ea82e83148c862">name_and_ns</a> () const</td></tr>
+<tr class="separator:ad0f9ec7a4def1b9619ea82e83148c862 inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a2e6071da30cdefb84bea6e69544948 inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element.html#a7a2e6071da30cdefb84bea6e69544948">set_namespace</a> (const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">namespace_</a> &amp;ns)</td></tr>
+<tr class="separator:a7a2e6071da30cdefb84bea6e69544948 inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57b35a46404e6e2820e2b12568d9ddad inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">namespace_</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element.html#a57b35a46404e6e2820e2b12568d9ddad">get_namespace</a> () const</td></tr>
+<tr class="separator:a57b35a46404e6e2820e2b12568d9ddad inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd1c6f8dc8d61345ae647cc419f92836 inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">namespace_</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element.html#afd1c6f8dc8d61345ae647cc419f92836">get_relative_namespace</a> () const</td></tr>
+<tr class="separator:afd1c6f8dc8d61345ae647cc419f92836 inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a453c672a60c005b9c4ad1d4586b4fd4a inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">namespace_</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element.html#a453c672a60c005b9c4ad1d4586b4fd4a">path</a> () const</td></tr>
+<tr class="separator:a453c672a60c005b9c4ad1d4586b4fd4a inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a544095fd9b958856854f36bc82281ae3 inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element.html#a544095fd9b958856854f36bc82281ae3">full_name</a> (bool) const override</td></tr>
+<tr class="separator:a544095fd9b958856854f36bc82281ae3 inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf08a560f200e3de62e1b1a18d7f6dcb inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element.html#abf08a560f200e3de62e1b1a18d7f6dcb">full_name_no_ns</a> () const</td></tr>
+<tr class="separator:abf08a560f200e3de62e1b1a18d7f6dcb inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9f1e8d0155305018546e7b5b80c296a inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">namespace_</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element.html#ab9f1e8d0155305018546e7b5b80c296a">using_namespace</a> () const</td></tr>
+<tr class="separator:ab9f1e8d0155305018546e7b5b80c296a inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a2762032707bb21b685cbb310cd5959 inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memItemLeft" align="right" valign="top">inja::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element.html#a1a2762032707bb21b685cbb310cd5959">context</a> () const override</td></tr>
+<tr class="separator:a1a2762032707bb21b685cbb310cd5959 inherit pub_methods_classclanguml_1_1common_1_1model_1_1element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html">clanguml::common::model::diagram_element</a></td></tr>
+<tr class="memitem:a14cd4d37689509215f7294e2bd5a7a64 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a14cd4d37689509215f7294e2bd5a7a64">diagram_element</a> ()</td></tr>
+<tr class="separator:a14cd4d37689509215f7294e2bd5a7a64 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7b1a4bc06419ef17336d1c941ee85e5 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#ad7b1a4bc06419ef17336d1c941ee85e5">~diagram_element</a> ()=default</td></tr>
+<tr class="separator:ad7b1a4bc06419ef17336d1c941ee85e5 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a334452c2b31c7c069439154c544b51e7 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">id_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a334452c2b31c7c069439154c544b51e7">id</a> () const</td></tr>
+<tr class="memdesc:a334452c2b31c7c069439154c544b51e7 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns diagram element id.  <br /></td></tr>
+<tr class="separator:a334452c2b31c7c069439154c544b51e7 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45084e9a88ed6d7d2eb42c8093d6c261 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a45084e9a88ed6d7d2eb42c8093d6c261">set_id</a> (<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">id_t</a> <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a334452c2b31c7c069439154c544b51e7">id</a>)</td></tr>
+<tr class="separator:a45084e9a88ed6d7d2eb42c8093d6c261 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ba55023c4791661e2470aa57b3f54d7 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a7ba55023c4791661e2470aa57b3f54d7">alias</a> () const</td></tr>
+<tr class="memdesc:a7ba55023c4791661e2470aa57b3f54d7 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return elements' diagram alias.  <br /></td></tr>
+<tr class="separator:a7ba55023c4791661e2470aa57b3f54d7 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc8be5b132c20ba0660be742f168aeed inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#abc8be5b132c20ba0660be742f168aeed">set_name</a> (const std::string &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a738ce54aa464c34ebbe6a5bb6ddecaec">name</a>)</td></tr>
+<tr class="separator:abc8be5b132c20ba0660be742f168aeed inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a738ce54aa464c34ebbe6a5bb6ddecaec inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a738ce54aa464c34ebbe6a5bb6ddecaec">name</a> () const</td></tr>
+<tr class="separator:a738ce54aa464c34ebbe6a5bb6ddecaec inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e3c972d7c401b31455a3445705eead2 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a4e3c972d7c401b31455a3445705eead2">type_name</a> () const</td></tr>
+<tr class="separator:a4e3c972d7c401b31455a3445705eead2 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d497c13b485e3f493b05367f663ce96 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a3d497c13b485e3f493b05367f663ce96">full_name</a> (bool) const</td></tr>
+<tr class="memdesc:a3d497c13b485e3f493b05367f663ce96 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the elements fully qualified name.  <br /></td></tr>
+<tr class="separator:a3d497c13b485e3f493b05367f663ce96 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b61e36d75bbf2016f97f654f8937588 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">relationship</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a4b61e36d75bbf2016f97f654f8937588">relationships</a> ()</td></tr>
+<tr class="separator:a4b61e36d75bbf2016f97f654f8937588 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43bab2fb85b6ea7ea716a8b200e47231 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">relationship</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a43bab2fb85b6ea7ea716a8b200e47231">relationships</a> () const</td></tr>
+<tr class="separator:a43bab2fb85b6ea7ea716a8b200e47231 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8faf83eb4623f77fd25ac9c7f98d3b8a inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a8faf83eb4623f77fd25ac9c7f98d3b8a">add_relationship</a> (<a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">relationship</a> &amp;&amp;cr)</td></tr>
+<tr class="separator:a8faf83eb4623f77fd25ac9c7f98d3b8a inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81ce102758a0196032e031d9a91d44f3 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a81ce102758a0196032e031d9a91d44f3">append</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">decorated_element</a> &amp;e)</td></tr>
+<tr class="separator:a81ce102758a0196032e031d9a91d44f3 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfbf1d8eb9dd6d510da03f2b1ff1f794 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">virtual inja::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#adfbf1d8eb9dd6d510da03f2b1ff1f794">context</a> () const</td></tr>
+<tr class="separator:adfbf1d8eb9dd6d510da03f2b1ff1f794 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56305d990c475970d0aed44a1944787f inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a56305d990c475970d0aed44a1944787f">is_nested</a> () const</td></tr>
+<tr class="separator:a56305d990c475970d0aed44a1944787f inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b9d70b122a847eafb03ea142242328c inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a7b9d70b122a847eafb03ea142242328c">nested</a> (bool nested)</td></tr>
+<tr class="separator:a7b9d70b122a847eafb03ea142242328c inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadd359f2c41fb1b22dc8e026cc373501 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#aadd359f2c41fb1b22dc8e026cc373501">complete</a> () const</td></tr>
+<tr class="separator:aadd359f2c41fb1b22dc8e026cc373501 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eb47d88573c740255526c4c47d8a033 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a1eb47d88573c740255526c4c47d8a033">complete</a> (bool completed)</td></tr>
+<tr class="separator:a1eb47d88573c740255526c4c47d8a033 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">clanguml::common::model::decorated_element</a></td></tr>
+<tr class="memitem:a9b7061ca0eaafc09ba77d864dda7f079 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a9b7061ca0eaafc09ba77d864dda7f079">~decorated_element</a> ()=default</td></tr>
+<tr class="separator:a9b7061ca0eaafc09ba77d864dda7f079 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76769ab338d3fc500e8a239a13fb6007 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a76769ab338d3fc500e8a239a13fb6007">skip</a> () const</td></tr>
+<tr class="separator:a76769ab338d3fc500e8a239a13fb6007 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac29274b68b39a6358766327f08f69e44 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#ac29274b68b39a6358766327f08f69e44">skip_relationship</a> () const</td></tr>
+<tr class="separator:ac29274b68b39a6358766327f08f69e44 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77974a108ab93d1dc3469a72a11bd492 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">relationship_t</a>, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a77974a108ab93d1dc3469a72a11bd492">get_relationship</a> () const</td></tr>
+<tr class="separator:a77974a108ab93d1dc3469a72a11bd492 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaef772c36531d172960f5692c0dabb9f inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#aaef772c36531d172960f5692c0dabb9f">style_spec</a> () const</td></tr>
+<tr class="separator:aaef772c36531d172960f5692c0dabb9f inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a046a87735974eb6d8f905a8656e82cbb inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structclanguml_1_1decorators_1_1decorator.html">decorators::decorator</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a046a87735974eb6d8f905a8656e82cbb">decorators</a> () const</td></tr>
+<tr class="separator:a046a87735974eb6d8f905a8656e82cbb inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaad5a04bff30c3231764e4eb0ba9c241 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#aaad5a04bff30c3231764e4eb0ba9c241">add_decorators</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structclanguml_1_1decorators_1_1decorator.html">decorators::decorator</a> &gt; &gt; &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a046a87735974eb6d8f905a8656e82cbb">decorators</a>)</td></tr>
+<tr class="separator:aaad5a04bff30c3231764e4eb0ba9c241 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12b8a15be5d9bffe765c4beb8b6144ba inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a12b8a15be5d9bffe765c4beb8b6144ba">append</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">decorated_element</a> &amp;de)</td></tr>
+<tr class="separator:a12b8a15be5d9bffe765c4beb8b6144ba inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01d2d05924f7cc1bd3c99b73029f6c5f inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">comment_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a01d2d05924f7cc1bd3c99b73029f6c5f">comment</a> () const</td></tr>
+<tr class="separator:a01d2d05924f7cc1bd3c99b73029f6c5f inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1603e04dfb18d6f839da54e6e3f1e220 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a1603e04dfb18d6f839da54e6e3f1e220">set_comment</a> (const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">comment_t</a> &amp;c)</td></tr>
+<tr class="separator:a1603e04dfb18d6f839da54e6e3f1e220 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f57a20612b439c2da8dc88e0d181638 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">virtual std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a5f57a20612b439c2da8dc88e0d181638">doxygen_link</a> () const</td></tr>
+<tr class="separator:a5f57a20612b439c2da8dc88e0d181638 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1model_1_1source__location')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">clanguml::common::model::source_location</a></td></tr>
+<tr class="memitem:a1b9608fd917becc7259a7430394db295 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#a1b9608fd917becc7259a7430394db295">source_location</a> ()=default</td></tr>
+<tr class="separator:a1b9608fd917becc7259a7430394db295 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3091366620f31dcc9f355bce26e4d773 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#a3091366620f31dcc9f355bce26e4d773">source_location</a> (std::string f, unsigned int l)</td></tr>
+<tr class="separator:a3091366620f31dcc9f355bce26e4d773 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afef560523e23f8911498ba519da86be7 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#afef560523e23f8911498ba519da86be7">file</a> () const</td></tr>
+<tr class="separator:afef560523e23f8911498ba519da86be7 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec3793735a334061998533cf24ed5e93 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#aec3793735a334061998533cf24ed5e93">set_file</a> (const std::string &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#afef560523e23f8911498ba519da86be7">file</a>)</td></tr>
+<tr class="separator:aec3793735a334061998533cf24ed5e93 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38503fae39aeae29d56463bd41d60477 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#a38503fae39aeae29d56463bd41d60477">file_relative</a> () const</td></tr>
+<tr class="separator:a38503fae39aeae29d56463bd41d60477 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41e5371c246850fa75c507069da22512 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#a41e5371c246850fa75c507069da22512">set_file_relative</a> (const std::string &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#afef560523e23f8911498ba519da86be7">file</a>)</td></tr>
+<tr class="separator:a41e5371c246850fa75c507069da22512 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5447365aea2beb16374387e8f0b9ebcd inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#a5447365aea2beb16374387e8f0b9ebcd">translation_unit</a> () const</td></tr>
+<tr class="separator:a5447365aea2beb16374387e8f0b9ebcd inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac84bd3ae927ce51254c1e5f57b5c650 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#aac84bd3ae927ce51254c1e5f57b5c650">set_translation_unit</a> (const std::string &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#a5447365aea2beb16374387e8f0b9ebcd">translation_unit</a>)</td></tr>
+<tr class="separator:aac84bd3ae927ce51254c1e5f57b5c650 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f2ab3af1b5c2129876b018b9fb3ba0c inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#a1f2ab3af1b5c2129876b018b9fb3ba0c">line</a> () const</td></tr>
+<tr class="separator:a1f2ab3af1b5c2129876b018b9fb3ba0c inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9179112cf251651f04fddcacb0fb3ea1 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#a9179112cf251651f04fddcacb0fb3ea1">set_line</a> (const unsigned <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#a1f2ab3af1b5c2129876b018b9fb3ba0c">line</a>)</td></tr>
+<tr class="separator:a9179112cf251651f04fddcacb0fb3ea1 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8850116b7925aae1397182e4c726df1b inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#a8850116b7925aae1397182e4c726df1b">column</a> () const</td></tr>
+<tr class="separator:a8850116b7925aae1397182e4c726df1b inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2de2361ac5c5e0c1e2d81612dd043df6 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#a2de2361ac5c5e0c1e2d81612dd043df6">set_column</a> (const unsigned <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#a8850116b7925aae1397182e4c726df1b">column</a>)</td></tr>
+<tr class="separator:a2de2361ac5c5e0c1e2d81612dd043df6 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a844aed647a54e521838efad0ee9f4983 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#a844aed647a54e521838efad0ee9f4983">location_id</a> () const</td></tr>
+<tr class="separator:a844aed647a54e521838efad0ee9f4983 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82cf4e440646111ebfebcc88c89ae3f4 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#a82cf4e440646111ebfebcc88c89ae3f4">set_location_id</a> (unsigned int h)</td></tr>
+<tr class="separator:a82cf4e440646111ebfebcc88c89ae3f4 inherit pub_methods_classclanguml_1_1common_1_1model_1_1source__location"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classclanguml_1_1common_1_1model_1_1stylable__element"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1model_1_1stylable__element')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1model_1_1stylable__element.html">clanguml::common::model::stylable_element</a></td></tr>
+<tr class="memitem:ac0e16f49434f94146e0a969a310f1a3e inherit pub_methods_classclanguml_1_1common_1_1model_1_1stylable__element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1stylable__element.html#ac0e16f49434f94146e0a969a310f1a3e">set_style</a> (const std::string &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1stylable__element.html#a087e3ffb3dc469bbcb77d7c540091f40">style</a>)</td></tr>
+<tr class="separator:ac0e16f49434f94146e0a969a310f1a3e inherit pub_methods_classclanguml_1_1common_1_1model_1_1stylable__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a087e3ffb3dc469bbcb77d7c540091f40 inherit pub_methods_classclanguml_1_1common_1_1model_1_1stylable__element"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1stylable__element.html#a087e3ffb3dc469bbcb77d7c540091f40">style</a> () const</td></tr>
+<tr class="separator:a087e3ffb3dc469bbcb77d7c540091f40 inherit pub_methods_classclanguml_1_1common_1_1model_1_1stylable__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classclanguml_1_1common_1_1model_1_1template__trait"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1model_1_1template__trait')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1model_1_1template__trait.html">clanguml::common::model::template_trait</a></td></tr>
+<tr class="memitem:a9312d26e66b56de94c6abca93baafe87 inherit pub_methods_classclanguml_1_1common_1_1model_1_1template__trait"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1template__trait.html#a9312d26e66b56de94c6abca93baafe87">render_template_params</a> (std::ostream &amp;ostr, const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">common::model::namespace_</a> &amp;using_namespace, bool relative) const</td></tr>
+<tr class="separator:a9312d26e66b56de94c6abca93baafe87 inherit pub_methods_classclanguml_1_1common_1_1model_1_1template__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa5c310434c38b89b8edfd04a07ca8b9 inherit pub_methods_classclanguml_1_1common_1_1model_1_1template__trait"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1template__trait.html#afa5c310434c38b89b8edfd04a07ca8b9">add_template</a> (<a class="el" href="classclanguml_1_1common_1_1model_1_1template__parameter.html">template_parameter</a> &amp;&amp;tmplt)</td></tr>
+<tr class="separator:afa5c310434c38b89b8edfd04a07ca8b9 inherit pub_methods_classclanguml_1_1common_1_1model_1_1template__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bf0dcd17171ade640fbf68dcfdb6d61 inherit pub_methods_classclanguml_1_1common_1_1model_1_1template__trait"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1template__parameter.html">template_parameter</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1template__trait.html#a6bf0dcd17171ade640fbf68dcfdb6d61">template_params</a> () const</td></tr>
+<tr class="separator:a6bf0dcd17171ade640fbf68dcfdb6d61 inherit pub_methods_classclanguml_1_1common_1_1model_1_1template__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8080e9457e81b823a447bd4ea4f6c9ed inherit pub_methods_classclanguml_1_1common_1_1model_1_1template__trait"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1template__trait.html#a8080e9457e81b823a447bd4ea4f6c9ed">calculate_template_specialization_match</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1template__trait.html">template_trait</a> &amp;other) const</td></tr>
+<tr class="memdesc:a8080e9457e81b823a447bd4ea4f6c9ed inherit pub_methods_classclanguml_1_1common_1_1model_1_1template__trait"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper around <a class="el" href="namespaceclanguml_1_1common_1_1model.html#ad2af8edcb737230d458ebcb450ef8b0c">calculate_template_params_specialization_match()</a>  <br /></td></tr>
+<tr class="separator:a8080e9457e81b823a447bd4ea4f6c9ed inherit pub_methods_classclanguml_1_1common_1_1model_1_1template__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ac544888462e6dc5f967aaa27d4ae5183"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#ac544888462e6dc5f967aaa27d4ae5183">is_struct_</a> {false}</td></tr>
+<tr class="separator:ac544888462e6dc5f967aaa27d4ae5183"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7d39859d928ee8ddaf5143675512a2d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#ac7d39859d928ee8ddaf5143675512a2d">is_template_</a> {false}</td></tr>
+<tr class="separator:ac7d39859d928ee8ddaf5143675512a2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70a12751fa9245581dbbebe361de06cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a70a12751fa9245581dbbebe361de06cb">is_union_</a> {false}</td></tr>
+<tr class="separator:a70a12751fa9245581dbbebe361de06cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6620e487a6696fe87a707a90afd935f9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html">class_member</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a6620e487a6696fe87a707a90afd935f9">members_</a></td></tr>
+<tr class="separator:a6620e487a6696fe87a707a90afd935f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ee2beb3c96860db5d9bebd11348115f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__method.html">class_method</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a8ee2beb3c96860db5d9bebd11348115f">methods_</a></td></tr>
+<tr class="separator:a8ee2beb3c96860db5d9bebd11348115f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01c93bf76f16117ce6f3602a71a5b033"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__parent.html">class_parent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a01c93bf76f16117ce6f3602a71a5b033">bases_</a></td></tr>
+<tr class="separator:a01c93bf76f16117ce6f3602a71a5b033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9dc45c22fe5600979d52cca524997b1"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#ab9dc45c22fe5600979d52cca524997b1">base_template_full_name_</a></td></tr>
+<tr class="separator:ab9dc45c22fe5600979d52cca524997b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9f904f8122c267a5cb0ebec07914afa"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#ae9f904f8122c267a5cb0ebec07914afa">full_name_</a></td></tr>
+<tr class="separator:ae9f904f8122c267a5cb0ebec07914afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22c0356cb2e2995b5103b86b6e44ec77"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a22c0356cb2e2995b5103b86b6e44ec77">template_specialization_found_</a> {false}</td></tr>
+<tr class="separator:a22c0356cb2e2995b5103b86b6e44ec77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a0ff2f40653fdfb71e1f6efca02af9b5f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a0ff2f40653fdfb71e1f6efca02af9b5f">operator==</a> (const <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;l, const <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;r)</td></tr>
+<tr class="separator:a0ff2f40653fdfb71e1f6efca02af9b5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_types_classclanguml_1_1common_1_1model_1_1diagram__element"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classclanguml_1_1common_1_1model_1_1diagram__element')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html">clanguml::common::model::diagram_element</a></td></tr>
+<tr class="memitem:a130e662a8c3e9e72973b2a1e2ebb583e inherit pub_types_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">id_t</a> = int64_t</td></tr>
+<tr class="separator:a130e662a8c3e9e72973b2a1e2ebb583e inherit pub_types_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a10afc6ca23c7414bb386438721ed6d17" name="a10afc6ca23c7414bb386438721ed6d17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10afc6ca23c7414bb386438721ed6d17">&#9670;&#160;</a></span>class_() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clanguml::class_diagram::model::class_::class_ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">common::model::namespace_</a> &amp;&#160;</td>
+          <td class="paramname"><em>using_namespace</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00027">27</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   28</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#a53b964273c6e885e6e0f96be2684829b">element</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#ab9f1e8d0155305018546e7b5b80c296a">using_namespace</a>}</div>
+<div class="line"><span class="lineno">   29</span>{</div>
+<div class="line"><span class="lineno">   30</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0551b130facfaef4047355bd2683b28a" name="a0551b130facfaef4047355bd2683b28a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0551b130facfaef4047355bd2683b28a">&#9670;&#160;</a></span>class_() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">clanguml::class_diagram::model::class_::class_ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab2188d0ac97b972b2b6aa2cbad5c5ae6" name="ab2188d0ac97b972b2b6aa2cbad5c5ae6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2188d0ac97b972b2b6aa2cbad5c5ae6">&#9670;&#160;</a></span>class_() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">clanguml::class_diagram::model::class_::class_ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6d2a1281d8480d47dcef276ca1aa446c" name="a6d2a1281d8480d47dcef276ca1aa446c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d2a1281d8480d47dcef276ca1aa446c">&#9670;&#160;</a></span>add_member()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::class_diagram::model::class_::add_member </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html">class_member</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>member</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Add a data member to the class.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">member</td><td>Class data member. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00044">44</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   45</span>{</div>
+<div class="line"><span class="lineno">   46</span>    <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a6620e487a6696fe87a707a90afd935f9">members_</a>.emplace_back(std::move(member));</div>
+<div class="line"><span class="lineno">   47</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad483f1f81e9b335920213a70243de59c" name="ad483f1f81e9b335920213a70243de59c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad483f1f81e9b335920213a70243de59c">&#9670;&#160;</a></span>add_method()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::class_diagram::model::class_::add_method </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__method.html">class_method</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>method</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Add a method to the class.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">method</td><td>Class method. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00049">49</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   50</span>{</div>
+<div class="line"><span class="lineno">   51</span>    <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a8ee2beb3c96860db5d9bebd11348115f">methods_</a>.emplace_back(std::move(method));</div>
+<div class="line"><span class="lineno">   52</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae253ee4ef18893704a807b0c28bc697e" name="ae253ee4ef18893704a807b0c28bc697e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae253ee4ef18893704a807b0c28bc697e">&#9670;&#160;</a></span>add_parent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::class_diagram::model::class_::add_parent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__parent.html">class_parent</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>parent</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Add class parent (inheritance relationship).</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Maybe it would be good to refactor this into a regular relationship. We could drop the '<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__parent.html">class_parent</a>' class completely...</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Class parent. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00054">54</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   55</span>{</div>
+<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a01c93bf76f16117ce6f3602a71a5b033">bases_</a>) {</div>
+<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">if</span> (p.id() == parent.id()) {</div>
+<div class="line"><span class="lineno">   58</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   59</span>        }</div>
+<div class="line"><span class="lineno">   60</span>    }</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>    <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a01c93bf76f16117ce6f3602a71a5b033">bases_</a>.emplace_back(std::move(parent));</div>
+<div class="line"><span class="lineno">   63</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a127e140fb72ab0e5f0261c8e656e50bd" name="a127e140fb72ab0e5f0261c8e656e50bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a127e140fb72ab0e5f0261c8e656e50bd">&#9670;&#160;</a></span>calculate_template_specialization_match()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int clanguml::class_diagram::model::class_::calculate_template_specialization_match </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate template specialization match with other class. </p>
+<p>This method is a wrapper over <a class="el" href="classclanguml_1_1common_1_1model_1_1template__trait.html#a8080e9457e81b823a447bd4ea4f6c9ed">template_trait::calculate_template_specialization_match()</a></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00118">118</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  119</span>{</div>
+<div class="line"><span class="lineno">  120</span>    <span class="keywordtype">int</span> res{0};</div>
+<div class="line"><span class="lineno">  121</span> </div>
+<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#ad0f9ec7a4def1b9619ea82e83148c862">name_and_ns</a>() != other.name_and_ns()) {</div>
+<div class="line"><span class="lineno">  123</span>        <span class="keywordflow">return</span> res;</div>
+<div class="line"><span class="lineno">  124</span>    }</div>
+<div class="line"><span class="lineno">  125</span> </div>
+<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1template__trait.html#a8080e9457e81b823a447bd4ea4f6c9ed" title="Wrapper around calculate_template_params_specialization_match()">template_trait::calculate_template_specialization_match</a>(other);</div>
+<div class="line"><span class="lineno">  127</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a211725c8fb8e5b09e7ceb32d3ba45a33" name="a211725c8fb8e5b09e7ceb32d3ba45a33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a211725c8fb8e5b09e7ceb32d3ba45a33">&#9670;&#160;</a></span>doxygen_link()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::string &gt; clanguml::class_diagram::model::class_::doxygen_link </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generate Doxygen style HTML link for the class. </p>
+<p>This method generates a link, which can be used in SVG diagrams to create links from classes to Doxygen documentation pages.</p>
+<dl class="section return"><dt>Returns</dt><dd>Doxygen-style HTML link for the class. </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a5f57a20612b439c2da8dc88e0d181638">clanguml::common::model::decorated_element</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00139">139</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  140</span>{</div>
+<div class="line"><span class="lineno">  141</span>    <span class="keyword">auto</span> type = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#adf33e4bf002179b2db784565d153012e">is_struct</a>() ? <span class="stringliteral">&quot;struct&quot;</span> : <span class="stringliteral">&quot;class&quot;</span>;</div>
+<div class="line"><span class="lineno">  142</span> </div>
+<div class="line"><span class="lineno">  143</span>    <span class="keyword">auto</span> <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a738ce54aa464c34ebbe6a5bb6ddecaec">name</a> = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#ad0f9ec7a4def1b9619ea82e83148c862">name_and_ns</a>();</div>
+<div class="line"><span class="lineno">  144</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#af03f03692e01199e8c12a3c60db21754" title="Find and replace in string.">util::replace_all</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a738ce54aa464c34ebbe6a5bb6ddecaec">name</a>, <span class="stringliteral">&quot;_&quot;</span>, <span class="stringliteral">&quot;__&quot;</span>);</div>
+<div class="line"><span class="lineno">  145</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#af03f03692e01199e8c12a3c60db21754" title="Find and replace in string.">util::replace_all</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a738ce54aa464c34ebbe6a5bb6ddecaec">name</a>, <span class="stringliteral">&quot;::&quot;</span>, <span class="stringliteral">&quot;_1_1&quot;</span>);</div>
+<div class="line"><span class="lineno">  146</span>    <span class="keywordflow">return</span> fmt::format(<span class="stringliteral">&quot;{}{}.html&quot;</span>, type, <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a738ce54aa464c34ebbe6a5bb6ddecaec">name</a>);</div>
+<div class="line"><span class="lineno">  147</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae586d0f33eb420e2ff1dbf9efb6e9f6c" name="ae586d0f33eb420e2ff1dbf9efb6e9f6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae586d0f33eb420e2ff1dbf9efb6e9f6c">&#9670;&#160;</a></span>full_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::class_diagram::model::class_::full_name </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>relative</em> = <code>true</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get class full name. </p>
+<p>This method renders the entire class name including all template parameters and/or arguments.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">relative</td><td>Whether the class name should be relative to using_namespace </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Full class name. </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a3d497c13b485e3f493b05367f663ce96">clanguml::common::model::diagram_element</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00086">86</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   87</span>{</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1util.html">clanguml::util</a>;</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keyword">using </span><a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">clanguml::common::model::namespace_</a>;</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>    std::ostringstream ostr;</div>
+<div class="line"><span class="lineno">   92</span> </div>
+<div class="line"><span class="lineno">   93</span>    ostr &lt;&lt; <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#ad0f9ec7a4def1b9619ea82e83148c862">name_and_ns</a>();</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1template__trait.html#a9312d26e66b56de94c6abca93baafe87">render_template_params</a>(ostr, <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#ab9f1e8d0155305018546e7b5b80c296a">using_namespace</a>(), relative);</div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>    std::string res;</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">if</span> (relative)</div>
+<div class="line"><span class="lineno">  100</span>        res = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#ab9f1e8d0155305018546e7b5b80c296a">using_namespace</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#adc9f5a074e7c7a0be1d4555219de20c7">relative</a>(ostr.str());</div>
+<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  102</span>        res = ostr.str();</div>
+<div class="line"><span class="lineno">  103</span> </div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">if</span> (res.empty())</div>
+<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;&lt;&lt;anonymous&gt;&gt;&quot;</span>;</div>
+<div class="line"><span class="lineno">  106</span> </div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">return</span> res;</div>
+<div class="line"><span class="lineno">  108</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6ed4aea6dc53d25c5cd7c0de30367f95" name="a6ed4aea6dc53d25c5cd7c0de30367f95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ed4aea6dc53d25c5cd7c0de30367f95">&#9670;&#160;</a></span>full_name_no_ns()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::class_diagram::model::class_::full_name_no_ns </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get unqualified class ful name. </p>
+<p>This method returns the class full name but without any namespace qualifier.</p>
+<dl class="section return"><dt>Returns</dt><dd>Full class name without namespace. </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classclanguml_1_1common_1_1model_1_1element.html#abf08a560f200e3de62e1b1a18d7f6dcb">clanguml::common::model::element</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00073">73</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   74</span>{</div>
+<div class="line"><span class="lineno">   75</span>    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1util.html">clanguml::util</a>;</div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span>    std::ostringstream ostr;</div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>    ostr &lt;&lt; <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a738ce54aa464c34ebbe6a5bb6ddecaec">name</a>();</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1template__trait.html#a9312d26e66b56de94c6abca93baafe87">render_template_params</a>(ostr, <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#ab9f1e8d0155305018546e7b5b80c296a">using_namespace</a>(), <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   82</span> </div>
+<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">return</span> ostr.str();</div>
+<div class="line"><span class="lineno">   84</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6e49d316812760faee7915c520e04c7c" name="a6e49d316812760faee7915c520e04c7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e49d316812760faee7915c520e04c7c">&#9670;&#160;</a></span>is_abstract()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::class_diagram::model::class_::is_abstract </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether the class is abstract.</p>
+<dl class="section return"><dt>Returns</dt><dd>True, if at least one method is abstract (=0). </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00110">110</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  111</span>{</div>
+<div class="line"><span class="lineno">  112</span>    <span class="comment">// TODO check if all base abstract methods are overriden</span></div>
+<div class="line"><span class="lineno">  113</span>    <span class="comment">// with non-abstract methods</span></div>
+<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">return</span> std::any_of(<a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a8ee2beb3c96860db5d9bebd11348115f">methods_</a>.begin(), <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a8ee2beb3c96860db5d9bebd11348115f">methods_</a>.end(),</div>
+<div class="line"><span class="lineno">  115</span>        [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;method) { return method.is_pure_virtual(); });</div>
+<div class="line"><span class="lineno">  116</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adf33e4bf002179b2db784565d153012e" name="adf33e4bf002179b2db784565d153012e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf33e4bf002179b2db784565d153012e">&#9670;&#160;</a></span>is_struct() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::class_diagram::model::class_::is_struct </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether or not the class was declared in the code as 'struct'.</p>
+<dl class="section return"><dt>Returns</dt><dd>True, if the class was declared as 'struct' </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00032">32</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   32</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#ac544888462e6dc5f967aaa27d4ae5183">is_struct_</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab407ff5b3314c1ebf3a472adbd0bd53d" name="ab407ff5b3314c1ebf3a472adbd0bd53d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab407ff5b3314c1ebf3a472adbd0bd53d">&#9670;&#160;</a></span>is_struct() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::class_diagram::model::class_::is_struct </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_struct</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set, whether the class was declared as 'struct'.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">is_struct</td><td>True, if the class was declared as 'struct' </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00034">34</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   34</span>{ <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#ac544888462e6dc5f967aaa27d4ae5183">is_struct_</a> = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#adf33e4bf002179b2db784565d153012e">is_struct</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a63e5b4f668f65cc35f6337afbfd6a690" name="a63e5b4f668f65cc35f6337afbfd6a690"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63e5b4f668f65cc35f6337afbfd6a690">&#9670;&#160;</a></span>is_template() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::class_diagram::model::class_::is_template </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether or not the class is a template.</p>
+<dl class="section return"><dt>Returns</dt><dd>True, if the class is a template. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00036">36</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   36</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#ac7d39859d928ee8ddaf5143675512a2d">is_template_</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8ca058e13fdff5a253858b6a03d7d8f7" name="a8ca058e13fdff5a253858b6a03d7d8f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ca058e13fdff5a253858b6a03d7d8f7">&#9670;&#160;</a></span>is_template() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::class_diagram::model::class_::is_template </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_template</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set, whether the class is a template.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">is_struct</td><td>True, if the class is a template. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00038">38</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   38</span>{ <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#ac7d39859d928ee8ddaf5143675512a2d">is_template_</a> = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a63e5b4f668f65cc35f6337afbfd6a690">is_template</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1faf8c5872394c29991f215efd83cd89" name="a1faf8c5872394c29991f215efd83cd89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1faf8c5872394c29991f215efd83cd89">&#9670;&#160;</a></span>is_union() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::class_diagram::model::class_::is_union </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether or not the class is a union.</p>
+<dl class="section return"><dt>Returns</dt><dd>True, if the class is a union. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00040">40</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   40</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a70a12751fa9245581dbbebe361de06cb">is_union_</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a91c3ca2ec2c5fdf413b92f6242477b30" name="a91c3ca2ec2c5fdf413b92f6242477b30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91c3ca2ec2c5fdf413b92f6242477b30">&#9670;&#160;</a></span>is_union() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::class_diagram::model::class_::is_union </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_union</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set, whether the class is a union.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>True, if the class is a union. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00042">42</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   42</span>{ <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a70a12751fa9245581dbbebe361de06cb">is_union_</a> = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a1faf8c5872394c29991f215efd83cd89">is_union</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2cd4b86f0e6af82abe816f501f0ef6b6" name="a2cd4b86f0e6af82abe816f501f0ef6b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cd4b86f0e6af82abe816f501f0ef6b6">&#9670;&#160;</a></span>members()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html">class_member</a> &gt; &amp; clanguml::class_diagram::model::class_::members </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get reference to class member list.</p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to class members. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00065">65</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   65</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a6620e487a6696fe87a707a90afd935f9">members_</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa246dabb7e9ee0823091f09f119bcc49" name="aa246dabb7e9ee0823091f09f119bcc49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa246dabb7e9ee0823091f09f119bcc49">&#9670;&#160;</a></span>methods()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__method.html">class_method</a> &gt; &amp; clanguml::class_diagram::model::class_::methods </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get reference to class method list.</p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to class methods. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00067">67</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   67</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a8ee2beb3c96860db5d9bebd11348115f">methods_</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5528d4d5adb329777702f33a558668f2" name="a5528d4d5adb329777702f33a558668f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5528d4d5adb329777702f33a558668f2">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp; clanguml::class_diagram::model::class_::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2cba7f8ca3699aa2931d7ec0fa25bc25" name="a2cba7f8ca3699aa2931d7ec0fa25bc25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cba7f8ca3699aa2931d7ec0fa25bc25">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp; clanguml::class_diagram::model::class_::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a537dd72927e9e795a7385ce8b9d78b67" name="a537dd72927e9e795a7385ce8b9d78b67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a537dd72927e9e795a7385ce8b9d78b67">&#9670;&#160;</a></span>parents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__parent.html">class_parent</a> &gt; &amp; clanguml::class_diagram::model::class_::parents </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get reference to class parent list.</p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to class parents. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00069">69</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   69</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a01c93bf76f16117ce6f3602a71a5b033">bases_</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="accc4093adce46b4105fd8f24f0083c4e" name="accc4093adce46b4105fd8f24f0083c4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accc4093adce46b4105fd8f24f0083c4e">&#9670;&#160;</a></span>template_specialization_found() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::class_diagram::model::class_::template_specialization_found </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether, a template specialization has already been found for this class. </p><dl class="section return"><dt>Returns</dt><dd>True, if a template specialization has already been found. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00134">134</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  135</span>{</div>
+<div class="line"><span class="lineno">  136</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a22c0356cb2e2995b5103b86b6e44ec77">template_specialization_found_</a>;</div>
+<div class="line"><span class="lineno">  137</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad16b9c4bca602112fb9187b9aff52bfd" name="ad16b9c4bca602112fb9187b9aff52bfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad16b9c4bca602112fb9187b9aff52bfd">&#9670;&#160;</a></span>template_specialization_found() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::class_diagram::model::class_::template_specialization_found </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>found</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set, whether a template specialization has already been found for this class.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">found</td><td>True, if a template specialization has already been found. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00129">129</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  130</span>{</div>
+<div class="line"><span class="lineno">  131</span>    <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#a22c0356cb2e2995b5103b86b6e44ec77">template_specialization_found_</a> = found;</div>
+<div class="line"><span class="lineno">  132</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa802a21c6ddb1ab4ca68d7bc691c4c1c" name="aa802a21c6ddb1ab4ca68d7bc691c4c1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa802a21c6ddb1ab4ca68d7bc691c4c1c">&#9670;&#160;</a></span>type_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::class_diagram::model::class_::type_name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the type name of the diagram element.</p>
+<dl class="section return"><dt>Returns</dt><dd>Type name of the diagram element. </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a4e3c972d7c401b31455a3445705eead2">clanguml::common::model::diagram_element</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="class_8h_source.html#l00056">56</a> of file <a class="el" href="class_8h_source.html">class.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   56</span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;class&quot;</span>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Symbol Documentation</h2>
+<a id="a0ff2f40653fdfb71e1f6efca02af9b5f" name="a0ff2f40653fdfb71e1f6efca02af9b5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ff2f40653fdfb71e1f6efca02af9b5f">&#9670;&#160;</a></span>operator==</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html">class_</a> &amp;&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="class_8cc_source.html#l00071">71</a> of file <a class="el" href="class_8cc_source.html">class.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   71</span>{ <span class="keywordflow">return</span> l.id() == r.id(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ab9dc45c22fe5600979d52cca524997b1" name="ab9dc45c22fe5600979d52cca524997b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9dc45c22fe5600979d52cca524997b1">&#9670;&#160;</a></span>base_template_full_name_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::class_diagram::model::class_::base_template_full_name_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="class_8h_source.html#l00216">216</a> of file <a class="el" href="class_8h_source.html">class.h</a>.</p>
+
+</div>
+</div>
+<a id="a01c93bf76f16117ce6f3602a71a5b033" name="a01c93bf76f16117ce6f3602a71a5b033"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01c93bf76f16117ce6f3602a71a5b033">&#9670;&#160;</a></span>bases_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__parent.html">class_parent</a>&gt; clanguml::class_diagram::model::class_::bases_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="class_8h_source.html#l00215">215</a> of file <a class="el" href="class_8h_source.html">class.h</a>.</p>
+
+</div>
+</div>
+<a id="ae9f904f8122c267a5cb0ebec07914afa" name="ae9f904f8122c267a5cb0ebec07914afa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9f904f8122c267a5cb0ebec07914afa">&#9670;&#160;</a></span>full_name_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::class_diagram::model::class_::full_name_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="class_8h_source.html#l00217">217</a> of file <a class="el" href="class_8h_source.html">class.h</a>.</p>
+
+</div>
+</div>
+<a id="ac544888462e6dc5f967aaa27d4ae5183" name="ac544888462e6dc5f967aaa27d4ae5183"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac544888462e6dc5f967aaa27d4ae5183">&#9670;&#160;</a></span>is_struct_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::class_diagram::model::class_::is_struct_ {false}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="class_8h_source.html#l00210">210</a> of file <a class="el" href="class_8h_source.html">class.h</a>.</p>
+
+</div>
+</div>
+<a id="ac7d39859d928ee8ddaf5143675512a2d" name="ac7d39859d928ee8ddaf5143675512a2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7d39859d928ee8ddaf5143675512a2d">&#9670;&#160;</a></span>is_template_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::class_diagram::model::class_::is_template_ {false}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="class_8h_source.html#l00211">211</a> of file <a class="el" href="class_8h_source.html">class.h</a>.</p>
+
+</div>
+</div>
+<a id="a70a12751fa9245581dbbebe361de06cb" name="a70a12751fa9245581dbbebe361de06cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70a12751fa9245581dbbebe361de06cb">&#9670;&#160;</a></span>is_union_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::class_diagram::model::class_::is_union_ {false}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="class_8h_source.html#l00212">212</a> of file <a class="el" href="class_8h_source.html">class.h</a>.</p>
+
+</div>
+</div>
+<a id="a6620e487a6696fe87a707a90afd935f9" name="a6620e487a6696fe87a707a90afd935f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6620e487a6696fe87a707a90afd935f9">&#9670;&#160;</a></span>members_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html">class_member</a>&gt; clanguml::class_diagram::model::class_::members_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="class_8h_source.html#l00213">213</a> of file <a class="el" href="class_8h_source.html">class.h</a>.</p>
+
+</div>
+</div>
+<a id="a8ee2beb3c96860db5d9bebd11348115f" name="a8ee2beb3c96860db5d9bebd11348115f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ee2beb3c96860db5d9bebd11348115f">&#9670;&#160;</a></span>methods_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__method.html">class_method</a>&gt; clanguml::class_diagram::model::class_::methods_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="class_8h_source.html#l00214">214</a> of file <a class="el" href="class_8h_source.html">class.h</a>.</p>
+
+</div>
+</div>
+<a id="a22c0356cb2e2995b5103b86b6e44ec77" name="a22c0356cb2e2995b5103b86b6e44ec77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22c0356cb2e2995b5103b86b6e44ec77">&#9670;&#160;</a></span>template_specialization_found_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::class_diagram::model::class_::template_specialization_found_ {false}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="class_8h_source.html#l00219">219</a> of file <a class="el" href="class_8h_source.html">class.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/class_diagram/model/<a class="el" href="class_8h_source.html">class.h</a></li>
+<li>src/class_diagram/model/<a class="el" href="class_8cc_source.html">class.cc</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

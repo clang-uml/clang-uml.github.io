@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: Generating class diagrams</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">Generating class diagrams</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="generating-class-diagrams"></a></p>
+<ul>
+<li><a class="el" href="md_docs_2class__diagrams.html#classes-and-their-properties">Classes and their properties</a><ul>
+<li><a class="el" href="md_docs_2class__diagrams.html#excluding-private-or-protected-members-from-the-diagram">Excluding private or protected members from the diagram</a></li>
+</ul>
+</li>
+<li><a class="el" href="md_docs_2class__diagrams.html#relationships">Relationships</a><ul>
+<li><a class="el" href="md_docs_2class__diagrams.html#relationships-to-classes-in-containers-or-smart-pointers">Relationships to classes in containers or smart pointers</a></li>
+</ul>
+</li>
+<li><a class="el" href="md_docs_2class__diagrams.html#inheritance-diagrams">Inheritance diagrams</a></li>
+<li><a class="el" href="md_docs_2class__diagrams.html#including-packages-in-the-diagram">Including packages in the diagram</a></li>
+<li><a class="el" href="md_docs_2class__diagrams.html#class-context-diagram">Class context diagram</a></li>
+<li><a class="el" href="md_docs_2class__diagrams.html#disabling-dependency-relationships">Disabling dependency relationships</a></li>
+</ul>
+<p>The minimal config required to generate a class diagram is presented below: </p><div class="fragment language-yaml"><div class="line"># Path to the directory where `compile_commands.json` can be found</div>
+<div class="line">compilation_database_dir: _build</div>
+<div class="line"># Output directory for the diagrams</div>
+<div class="line">output_directory: puml</div>
+<div class="line"># Diagrams definitions</div>
+<div class="line">diagrams:</div>
+<div class="line">  # Diagram name</div>
+<div class="line">  t00002_class:</div>
+<div class="line">    # Type of diagram (has to be `class`)</div>
+<div class="line">    type: class</div>
+<div class="line">    # Include only translation units matching the following patterns</div>
+<div class="line">    glob:</div>
+<div class="line">      - src/*.cc</div>
+<div class="line">    # Render all names in the diagram relative to specific namespace</div>
+<div class="line">    using_namespace:</div>
+<div class="line">      - ns1</div>
+<div class="line">    # Include only classes from specific namespace</div>
+<div class="line">    include:</div>
+<div class="line">      namespaces:</div>
+<div class="line">        - ns1::ns2</div>
+</div><!-- fragment --><h1><a class="anchor" id="classes-and-their-properties"></a>
+Classes and their properties</h1>
+<p>The basic class diagram generated by <code>clang-uml</code> and rendered using PlantUML looks like this:</p>
+<div class="image">
+<embed type="image/svg+xml" src="t00003_class.svg"></embed>
+</div>
+    <p>Member types and method return types are rendered at the end after <code>:</code> sign.</p>
+<p>Static methods and members are underlined.</p>
+<p>In case method argument lists are too long and not required for diagram readability, they can be suppressed completely or abbreviated by setting <code>generate_method_arguments</code> option to either <code>none</code>, <code>abbreviated</code> or <code>full</code> (default).</p>
+<h2><a class="anchor" id="excluding-private-or-protected-members-from-the-diagram"></a>
+Excluding private or protected members from the diagram</h2>
+<p>In order to only include public members in the class diagrams, we can add the following inclusion filters: </p><div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  access:</div>
+<div class="line">    - public</div>
+</div><!-- fragment --><p>To render only classes without any properties an exclusion filter can be added: </p><div class="fragment language-yaml"><div class="line">exclude:</div>
+<div class="line">  access:</div>
+<div class="line">    - public</div>
+<div class="line">    - protected</div>
+<div class="line">    - private</div>
+</div><!-- fragment --><h1><a class="anchor" id="relationships"></a>
+Relationships</h1>
+<p>The following table presents the PlantUML arrows representing each relationship in the class diagrams.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">UML   </th><th class="markdownTableHeadNone">PlantUML    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Inheritance   </td><td class="markdownTableBodyNone"><img src="puml_inheritance.png" alt="" class="inline" title="extension"/>       </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Association   </td><td class="markdownTableBodyNone"><img src="puml_association.png" alt="" class="inline" title="association"/>       </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Dependency   </td><td class="markdownTableBodyNone"><img src="puml_dependency.png" alt="" class="inline" title="dependency"/>       </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Aggregation   </td><td class="markdownTableBodyNone"><img src="puml_aggregation.png" alt="" class="inline" title="aggregation"/>       </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Composition   </td><td class="markdownTableBodyNone"><img src="puml_composition.png" alt="" class="inline" title="composition"/>       </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Template specialization/instantiation   </td><td class="markdownTableBodyNone"><img src="puml_instantiation.png" alt="" class="inline" title="specialization"/>       </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Nesting (inner class/enum)   </td><td class="markdownTableBodyNone"><img src="puml_nested.png" alt="" class="inline" title="nesting"/>      </td></tr>
+</table>
+<p>By default, a member from which a relationship has been added to the diagram between 2 classes will also be rendered inside the class. This behaviour can be however disabled by adding the following option to the diagram definition: </p><div class="fragment language-yaml"><div class="line">include_relations_also_as_members: false</div>
+</div><!-- fragment --><h2><a class="anchor" id="relationships-to-classes-in-containers-or-smart-pointers"></a>
+Relationships to classes in containers or smart pointers</h2>
+<p><code>clang-uml</code> will automatically detect class members as well as method arguments, which reference or own values of types relevant for a given diagram but wrapped in smart pointers or containers and still generate relationship between these classes, for instance the following code:</p>
+<div class="fragment language-cpp"><div class="line"><span class="keyword">class </span>A { };</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">class </span>B { };</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">class </span>C { };</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">class </span>R {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    std::unique_ptr&lt;A&gt; a;</div>
+<div class="line">    std::shared_ptr&lt;B&gt; b;</div>
+<div class="line">    std::weak_ptr&lt;C&gt; c;</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>generates the following diagram:</p>
+<div class="image">
+<embed type="image/svg+xml" src="t00007_class.svg"></embed>
+</div>
+    <h1><a class="anchor" id="inheritance-diagrams"></a>
+Inheritance diagrams</h1>
+<p>A common type of class diagram is an inheritance diagram, where only subclasses of a specific base class are included and only the inheritance relationships are rendered. This can be easily achieved in <code>clang-uml</code> through inclusion filters: </p><div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  subclasses:</div>
+<div class="line">    - clanguml::t00039::A</div>
+<div class="line">  relationships:</div>
+<div class="line">    - inheritance</div>
+</div><!-- fragment --><h1><a class="anchor" id="including-packages-in-the-diagram"></a>
+Including packages in the diagram</h1>
+<p>By default, <code>clang-uml</code> will render all element names including a namespace (relative to <code>using_namespace</code> property), e.g. <code>ns1::ns2::MyClass</code>. In order to generate packages in the diagram for each namespace instead, the following option must be set to <code>true</code>:</p>
+<div class="fragment language-yaml"><div class="line">generate_packages: true</div>
+</div><!-- fragment --><p>which results in the following diagram:</p>
+<div class="image">
+<embed type="image/svg+xml" src="t00036_class.svg"></embed>
+</div>
+    <p>In case the code base is structured based on subdirectory instead of namespaces, packages can be generated based on the location of a given declaration in the filesystem tree, by adding also the following option:</p>
+<div class="fragment language-yaml"><div class="line">package_type: directory</div>
+</div><!-- fragment --><p>which results in the following diagram:</p>
+<div class="image">
+<embed type="image/svg+xml" src="t00065_class.svg"></embed>
+</div>
+    <blockquote class="doxtable">
+<p>&zwj;In this case make sure that the root path of the configuration file is properly configured for your project, if necessary add <code>relative_to</code> option to denote the root path against which all relative paths in the config file are calculated. </p>
+</blockquote>
+<h1><a class="anchor" id="class-context-diagram"></a>
+Class context diagram</h1>
+<p>Sometimes it's helpful to generate a class diagram depicting only direct relationships of a given class, e.g. within the classes' documentation page, this can be easily achieved using <code>context</code> inclusion filter:</p>
+<div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  context:</div>
+<div class="line">    - ns1::MyClass</div>
+</div><!-- fragment --><h1><a class="anchor" id="disabling-dependency-relationships"></a>
+Disabling dependency relationships</h1>
+<p>In many cases, dependency relationships between classes can clutter the diagram too much, for instance consider this diagram:</p>
+<div class="image">
+<embed type="image/svg+xml" src="t00019_class.svg"></embed>
+</div>
+    <p>where the dependency relationships do not bring much information into the diagram. In such cases it might be useful to disable dependency relationships for this diagram completely using the following exclusion filter: </p><div class="fragment language-yaml"><div class="line">exclude:</div>
+<div class="line">  relationships:</div>
+<div class="line">    - dependency</div>
+</div><!-- fragment --><p>Dependency relationships are inferred whenever a class uses another class, thus often dependency relationship will be rendered in addition to other relationships such as association or inheritance. In the future there might be an option to remove the redundant dependency relationships from the diagram automatically. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

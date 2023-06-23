@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: src/cli/cli_handler.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b78fdfbbb632ce54d070469d6a721373.html">cli</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">cli_handler.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="cli__handler_8h.html">Go to the documentation of this file.</a><div class="fragment language-cpp"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file src/options/cli_handler.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (c) 2021-2023 Bartek Kryza &lt;bkryza@gmail.com&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * You may obtain a copy of the License at</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * See the License for the specific language governing permissions and</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * limitations under the License.</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="enums_8h.html">common/model/enums.h</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="config_8h.html">config/config.h</a>&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;cli11/CLI11.hpp&gt;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;optional&gt;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1cli.html">clanguml::cli</a> {<span class="comment"></span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"> * This enum represents possible exit states of the command line parser.</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57">   31</a></span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57">cli_flow_t</a> {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_enumvalue" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57ac2477f77de6d38233af46d78ec777846">kExit</a>,    <span class="comment">/*!&lt; The application should exit (e.g. `-h`) */</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_enumvalue" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57ae3587c730cc1aa530fa4ddc9c4204e97">kError</a>,   <span class="comment">/*!&lt; The options or configuration file were invalid */</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_enumvalue" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57a234b41cc8342dc898d9100f4ca35098d">kContinue</a> <span class="comment">/*!&lt; Continue with processing diagrams */</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>};</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"></span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"> * @brief Command line options handler</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"> * This class is responsible for handling the command line options</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"> * and executing required actions.</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html">   43</a></span><span class="keyword">class </span><a class="code hl_class" href="classclanguml_1_1cli_1_1cli__handler.html" title="Command line options handler.">cli_handler</a> {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_class" href="classclanguml_1_1cli_1_1cli__handler.html" title="Command line options handler.">cli_handler</a>(std::ostream &amp;ostr = std::cout,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        std::shared_ptr&lt;spdlog::logger&gt; logger = spdlog::stdout_color_mt(</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="stringliteral">&quot;clanguml-logger&quot;</span>, spdlog::color_mode::automatic));</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"></span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">     * Main CLI handling method.</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">     * @embed{cli_handle_options_sequence.svg}</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">     * @param argc</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">     * @param argv</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">     * @return Command line handler state</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_enumeration" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57">cli_flow_t</a> <a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#a5a408a4cc4355cc653b8d4bd85eff789">handle_options</a>(<span class="keywordtype">int</span> argc, <span class="keyword">const</span> <span class="keywordtype">char</span> **argv);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment"></span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">     * Print the program version and basic information</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">     * @return Command line handler state</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <a class="code hl_enumeration" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57">cli_flow_t</a> <a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#ade3d9864d2b1b3bf1e422291a8593709">print_version</a>();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment"></span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">     * Print list of diagrams available in the configuration file</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">     * @return Command line handler state</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <a class="code hl_enumeration" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57">cli_flow_t</a> <a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#a2148f0d384316dd5d8618fdcce951592">print_diagrams_list</a>();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment"></span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">     * Print list of available diagram templates, including their names</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">     * and types.</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">     * @return Command line handler state</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <a class="code hl_enumeration" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57">cli_flow_t</a> <a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#addefbfd51c449675fa15b79e9e7e3652">print_diagram_templates</a>();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment"></span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">     * Print definition of a specific diagram template.</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">     * @param template_name Name of the diagram template</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">     * @return Command line handler state</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <a class="code hl_enumeration" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57">cli_flow_t</a> <a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#a736b221b85037098eb5cc820bca7dd54">print_diagram_template</a>(<span class="keyword">const</span> std::string &amp;template_name);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment"></span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">     * Print effective config after loading and setting default values.</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">     * @return Command line handler state</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <a class="code hl_enumeration" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57">cli_flow_t</a> <a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#a980e5ebbbf969420c4d4c884e6778d49">print_config</a>();</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment"></span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">     * Generate sample configuration file and exit.</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment">     * @return Command line handler state</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <a class="code hl_enumeration" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57">cli_flow_t</a> <a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#a7deace030ba7a54ca3fa3cc0fd124f2f">create_config_file</a>();</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment"></span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">     * Add example diagram of given type to the config file.</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">     * @param type Type of the sample diagram to add</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">     * @param config_file_path Path to the config file</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment">     * @param name Name of the new diagram</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">     * @return Command line handler state</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <a class="code hl_enumeration" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57">cli_flow_t</a> <a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#a26be294ed333e2f297a11899aef3198e">add_config_diagram</a>(<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">clanguml::common::model::diagram_t</a> type,</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keyword">const</span> std::string &amp;config_file_path, <span class="keyword">const</span> std::string &amp;name);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment"></span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment">     * Add diagram based on template</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">     * @param config_file_path</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">     * @param template_name</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">     * @param template_variables</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">     * @return Command line handler state</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <a class="code hl_enumeration" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57">cli_flow_t</a> <a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#a65620fee67ca73ee30686dc71eb621de">add_config_diagram_from_template</a>(</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keyword">const</span> std::string &amp;config_file_path, <span class="keyword">const</span> std::string &amp;template_name,</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a8aaca96837f762cada7e124ac079a60b">template_variables</a>);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment"></span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">     * Check if diagram output directory exists, if not create it</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment">     * @param dir Path to the output directory</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment">     * @return True if directory exists or has been created</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#a05367c20ccc4f85151ce4f103a0a7b40">ensure_output_directory_exists</a>(<span class="keyword">const</span> std::string &amp;dir);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#ad6f5a1c7ef0d42bcf69632f52e6b93ad">  135</a></span>    std::string <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#ad6f5a1c7ef0d42bcf69632f52e6b93ad">config_path</a>{<span class="stringliteral">&quot;.clang-uml&quot;</span>};</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a0749d219ce58408f1e9a7b3ea466ac3b">  136</a></span>    std::optional&lt;std::string&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a0749d219ce58408f1e9a7b3ea466ac3b">compilation_database_dir</a>{};</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a1a62953d1a35a794599c9c30324f7725">  137</a></span>    std::vector&lt;std::string&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1a62953d1a35a794599c9c30324f7725">diagram_names</a>{};</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a2f82c0806d0374b9520d7c8e0e83902d">  138</a></span>    std::optional&lt;std::string&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a2f82c0806d0374b9520d7c8e0e83902d">output_directory</a>{};</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#aa5cb76911510d25e3c5f21e0a260a44f">  139</a></span>    std::string <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#aa5cb76911510d25e3c5f21e0a260a44f">effective_output_directory</a>{};</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a2c534899ea558bed6ec71bdc5e0600c4">  140</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a2c534899ea558bed6ec71bdc5e0600c4">thread_count</a>{};</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a74852812f0b117350ad0c7da205ca75e">  141</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a74852812f0b117350ad0c7da205ca75e">show_version</a>{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#aeed67808d5424f05a3cc89d634c4657b">  142</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#aeed67808d5424f05a3cc89d634c4657b">verbose</a>{};</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#aefb120adc5aa824fa0dca808a46f9168">  143</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#aefb120adc5aa824fa0dca808a46f9168">progress</a>{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a2e78f70264024d6019d5931998476010">  144</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a2e78f70264024d6019d5931998476010">list_diagrams</a>{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a21e3a8678b11cda1fb51783b85e755d1">  145</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a21e3a8678b11cda1fb51783b85e755d1">quiet</a>{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a010ceceacc823dda04806fddfa9a71c2">  146</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a010ceceacc823dda04806fddfa9a71c2">initialize</a>{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a11fdc10ec13bd2265a19d11231135048">  147</a></span>    std::optional&lt;std::vector&lt;std::string&gt;&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a11fdc10ec13bd2265a19d11231135048">add_compile_flag</a>;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#ad288d994fbf1b973cb08f3864f506d4f">  148</a></span>    std::optional&lt;std::vector&lt;std::string&gt;&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#ad288d994fbf1b973cb08f3864f506d4f">remove_compile_flag</a>;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="preprocessor">#if !defined(_WIN32)</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#ab0eb6eeb0edaa3bc3723a28ac041bb6d">  150</a></span>    std::optional&lt;std::string&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#ab0eb6eeb0edaa3bc3723a28ac041bb6d">query_driver</a>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a422c38b55a472c21d295712c9b717c6e">  152</a></span>    std::optional&lt;std::string&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a422c38b55a472c21d295712c9b717c6e">add_class_diagram</a>;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a47efe66598ab2901d7af98dea020b8a3">  153</a></span>    std::optional&lt;std::string&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a47efe66598ab2901d7af98dea020b8a3">add_sequence_diagram</a>;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#add0bc0bddd725a34dcb4f6875c15e750">  154</a></span>    std::optional&lt;std::string&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#add0bc0bddd725a34dcb4f6875c15e750">add_package_diagram</a>;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a49fe88dcc4b7866178e1eb98204d711e">  155</a></span>    std::optional&lt;std::string&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a49fe88dcc4b7866178e1eb98204d711e">add_include_diagram</a>;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#aa0520dbd5f56e9a8c131e906f0199c6e">  156</a></span>    std::optional&lt;std::string&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#aa0520dbd5f56e9a8c131e906f0199c6e">add_diagram_from_template</a>;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#af6886d6db9f6090349f9bcb1bd72aa7c">  157</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#af6886d6db9f6090349f9bcb1bd72aa7c">dump_config</a>{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a4769f6de2ab4877137f1934245a3eac0">  158</a></span>    std::optional&lt;bool&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a4769f6de2ab4877137f1934245a3eac0">paths_relative_to_pwd</a>{};</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a8aaca96837f762cada7e124ac079a60b">  159</a></span>    std::vector&lt;std::string&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a8aaca96837f762cada7e124ac079a60b">template_variables</a>{};</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a90b5f6262f30b1d18b7db88fd05868fa">  160</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a90b5f6262f30b1d18b7db88fd05868fa">list_templates</a>{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#aa097da6edc2d3503bfec09328c83076a">  161</a></span>    std::optional&lt;bool&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#aa097da6edc2d3503bfec09328c83076a">no_metadata</a>{};</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a0b47efabede9b7928417756231c6fdd6">  162</a></span>    std::optional&lt;std::string&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a0b47efabede9b7928417756231c6fdd6">show_template</a>;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a970b2b175accf99fe956d1639cc47e7a">  163</a></span>    std::vector&lt;clanguml::common::generator_type_t&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a970b2b175accf99fe956d1639cc47e7a">generators</a>{</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        <a class="code hl_enumvalue" href="namespaceclanguml_1_1common.html#ad9e84a71a64680dc9618e3dfb3fd6788ad5ae37e34fa67717c36f0e9a4e35f022">clanguml::common::generator_type_t::plantuml</a>};</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">  166</a></span>    <a class="code hl_struct" href="structclanguml_1_1config_1_1config.html" title="Represents entire configuration file.">clanguml::config::config</a> <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">config</a>;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="keyword">private</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">     * This method parses the command line options using CLI11 library.</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment">     * @param argc</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment">     * @param argv</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="comment">     * @return Command line handler state</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <a class="code hl_enumeration" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57">cli_flow_t</a> <a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#ae4812db0fda5b55476ff56450a8eec60">parse</a>(<span class="keywordtype">int</span> argc, <span class="keyword">const</span> <span class="keywordtype">char</span> **argv);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="comment"></span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment">     * Handle command line options before parsing the configuration file</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="comment">     * @return Command line handler state</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <a class="code hl_enumeration" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57">cli_flow_t</a> <a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#a147e1e753f6328287e89edbea58b08b5">handle_pre_config_options</a>();</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="comment"></span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment">     * Load configuration file from file or stdin</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment">     * @return Command line handler state</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <a class="code hl_enumeration" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57">cli_flow_t</a> <a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#a77847ce5924154ea37ad869896bbdda3">load_config</a>();</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment"></span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment">     * Handle command line options before parsing the configuration file</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment">     * @return Command line handler state</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <a class="code hl_enumeration" href="namespaceclanguml_1_1cli.html#a3642a017aa41362b6914a5b4d1599a57">cli_flow_t</a> <a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#a57d1da4608dee18b64451587730ac7f6">handle_post_config_options</a>();</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment"></span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment">     * Setup spdlog library depending on provided command line options</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#a69a9e672145013b2e39a8a0f3ce29858">setup_logging</a>();</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#a5ea3644b66f418cefb4cad9886b70b8e">  204</a></span>    std::ostream &amp;<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a5ea3644b66f418cefb4cad9886b70b8e">ostr_</a>;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#af44ad3daac0f3d57cdaed4764c52b240">  205</a></span>    std::shared_ptr&lt;spdlog::logger&gt; <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#af44ad3daac0f3d57cdaed4764c52b240">logger_</a>;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno"><a class="line" href="classclanguml_1_1cli_1_1cli__handler.html#ad860e0feeda1100e8db2e5a98e55d150">  206</a></span>    CLI::App <a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#ad860e0feeda1100e8db2e5a98e55d150">app</a>{<span class="stringliteral">&quot;Clang-based UML diagram generator for C++&quot;</span>};</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>};</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>} <span class="comment">// namespace clanguml::cli</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

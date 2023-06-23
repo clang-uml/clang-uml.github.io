@@ -1,0 +1,867 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: clanguml::common::model::relationship Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceclanguml.html">clanguml</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1common.html">common</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1common_1_1model.html">model</a></li><li class="navelem"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">relationship</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
+<a href="classclanguml_1_1common_1_1model_1_1relationship-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">clanguml::common::model::relationship Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Class representing any relationship other than inheritance.  
+ <a href="classclanguml_1_1common_1_1model_1_1relationship.html#details">More...</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class representing any relationship other than inheritance. </p>
+<p>This class represents all kinds of relationships between diagram elements, except for inheritance which are handled in a special way (See <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__parent.html">clanguml::class_diagram::model::class_parent</a>).</p>
+<p> <embed src="relationship_context_class.svg"/>  </p>
+
+<p class="definition">Definition at line <a class="el" href="relationship_8h_source.html#l00037">37</a> of file <a class="el" href="relationship_8h_source.html">relationship.h</a>.</p>
+</div>
+<p><code>#include &lt;<a class="el" href="relationship_8h_source.html">relationship.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:abc777e854b5ce32c3df2125a85e72a0f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#abc777e854b5ce32c3df2125a85e72a0f">relationship</a> (<a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">relationship_t</a> <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a914f3fd7e9aecd8479c9bb45cf18f951">type</a>, int64_t <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a50aba57b6c74884e2f55e2090b289fe2">destination</a>, <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6">access_t</a> <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#aed2070c7485635fe8916e31b1d18f772">access</a>=<a class="el" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6a8576a54b49c65252099050c24aa98095">access_t::kPublic</a>, std::string <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#adcdf4298495c2bcf64953ca8e86986d4">label</a>=&quot;&quot;, std::string <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a6f1b8c583084d51f23057e6ce1da83dd">multiplicity_source</a>=&quot;&quot;, std::string <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#abba1220bbb8b6629c0db6ea844911ad5">multiplicity_destination</a>=&quot;&quot;)</td></tr>
+<tr class="separator:abc777e854b5ce32c3df2125a85e72a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad52a3a5c8d8ea3e546492d6412bd9dfc"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#ad52a3a5c8d8ea3e546492d6412bd9dfc">~relationship</a> ()=default</td></tr>
+<tr class="separator:ad52a3a5c8d8ea3e546492d6412bd9dfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f97fb86ece95e162f4c3cffbbc73dd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a0f97fb86ece95e162f4c3cffbbc73dd6">set_type</a> (<a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">relationship_t</a> <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a914f3fd7e9aecd8479c9bb45cf18f951">type</a>) noexcept</td></tr>
+<tr class="separator:a0f97fb86ece95e162f4c3cffbbc73dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a914f3fd7e9aecd8479c9bb45cf18f951"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">relationship_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a914f3fd7e9aecd8479c9bb45cf18f951">type</a> () const noexcept</td></tr>
+<tr class="separator:a914f3fd7e9aecd8479c9bb45cf18f951"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c2964f1f64de4464dcbda352cd499d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a3c2964f1f64de4464dcbda352cd499d0">set_destination</a> (int64_t <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a50aba57b6c74884e2f55e2090b289fe2">destination</a>)</td></tr>
+<tr class="separator:a3c2964f1f64de4464dcbda352cd499d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50aba57b6c74884e2f55e2090b289fe2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">clanguml::common::id_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a50aba57b6c74884e2f55e2090b289fe2">destination</a> () const</td></tr>
+<tr class="separator:a50aba57b6c74884e2f55e2090b289fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3e5ad2b5985c95d4ac4b96f22fcbe74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#ae3e5ad2b5985c95d4ac4b96f22fcbe74">set_multiplicity_source</a> (const std::string &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a6f1b8c583084d51f23057e6ce1da83dd">multiplicity_source</a>)</td></tr>
+<tr class="separator:ae3e5ad2b5985c95d4ac4b96f22fcbe74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f1b8c583084d51f23057e6ce1da83dd"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a6f1b8c583084d51f23057e6ce1da83dd">multiplicity_source</a> () const</td></tr>
+<tr class="separator:a6f1b8c583084d51f23057e6ce1da83dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3172dfc7243dccd3033134ec22fbc117"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a3172dfc7243dccd3033134ec22fbc117">set_multiplicity_destination</a> (const std::string &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#abba1220bbb8b6629c0db6ea844911ad5">multiplicity_destination</a>)</td></tr>
+<tr class="separator:a3172dfc7243dccd3033134ec22fbc117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abba1220bbb8b6629c0db6ea844911ad5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#abba1220bbb8b6629c0db6ea844911ad5">multiplicity_destination</a> () const</td></tr>
+<tr class="separator:abba1220bbb8b6629c0db6ea844911ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0adc8f308e5357ca7e47d7fd9d76f16d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a0adc8f308e5357ca7e47d7fd9d76f16d">set_label</a> (const std::string &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#adcdf4298495c2bcf64953ca8e86986d4">label</a>)</td></tr>
+<tr class="separator:a0adc8f308e5357ca7e47d7fd9d76f16d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcdf4298495c2bcf64953ca8e86986d4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#adcdf4298495c2bcf64953ca8e86986d4">label</a> () const</td></tr>
+<tr class="separator:adcdf4298495c2bcf64953ca8e86986d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9343a2cf9ee7c39942082105ea161379"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a9343a2cf9ee7c39942082105ea161379">set_access</a> (<a class="el" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6">access_t</a> scope) noexcept</td></tr>
+<tr class="separator:a9343a2cf9ee7c39942082105ea161379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed2070c7485635fe8916e31b1d18f772"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6">access_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#aed2070c7485635fe8916e31b1d18f772">access</a> () const noexcept</td></tr>
+<tr class="separator:aed2070c7485635fe8916e31b1d18f772"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">clanguml::common::model::decorated_element</a></td></tr>
+<tr class="memitem:a9b7061ca0eaafc09ba77d864dda7f079 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a9b7061ca0eaafc09ba77d864dda7f079">~decorated_element</a> ()=default</td></tr>
+<tr class="separator:a9b7061ca0eaafc09ba77d864dda7f079 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76769ab338d3fc500e8a239a13fb6007 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a76769ab338d3fc500e8a239a13fb6007">skip</a> () const</td></tr>
+<tr class="separator:a76769ab338d3fc500e8a239a13fb6007 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac29274b68b39a6358766327f08f69e44 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#ac29274b68b39a6358766327f08f69e44">skip_relationship</a> () const</td></tr>
+<tr class="separator:ac29274b68b39a6358766327f08f69e44 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77974a108ab93d1dc3469a72a11bd492 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">relationship_t</a>, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a77974a108ab93d1dc3469a72a11bd492">get_relationship</a> () const</td></tr>
+<tr class="separator:a77974a108ab93d1dc3469a72a11bd492 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaef772c36531d172960f5692c0dabb9f inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#aaef772c36531d172960f5692c0dabb9f">style_spec</a> () const</td></tr>
+<tr class="separator:aaef772c36531d172960f5692c0dabb9f inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a046a87735974eb6d8f905a8656e82cbb inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structclanguml_1_1decorators_1_1decorator.html">decorators::decorator</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a046a87735974eb6d8f905a8656e82cbb">decorators</a> () const</td></tr>
+<tr class="separator:a046a87735974eb6d8f905a8656e82cbb inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaad5a04bff30c3231764e4eb0ba9c241 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#aaad5a04bff30c3231764e4eb0ba9c241">add_decorators</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="structclanguml_1_1decorators_1_1decorator.html">decorators::decorator</a> &gt; &gt; &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a046a87735974eb6d8f905a8656e82cbb">decorators</a>)</td></tr>
+<tr class="separator:aaad5a04bff30c3231764e4eb0ba9c241 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12b8a15be5d9bffe765c4beb8b6144ba inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a12b8a15be5d9bffe765c4beb8b6144ba">append</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">decorated_element</a> &amp;de)</td></tr>
+<tr class="separator:a12b8a15be5d9bffe765c4beb8b6144ba inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01d2d05924f7cc1bd3c99b73029f6c5f inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">comment_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a01d2d05924f7cc1bd3c99b73029f6c5f">comment</a> () const</td></tr>
+<tr class="separator:a01d2d05924f7cc1bd3c99b73029f6c5f inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1603e04dfb18d6f839da54e6e3f1e220 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a1603e04dfb18d6f839da54e6e3f1e220">set_comment</a> (const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">comment_t</a> &amp;c)</td></tr>
+<tr class="separator:a1603e04dfb18d6f839da54e6e3f1e220 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f57a20612b439c2da8dc88e0d181638 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">virtual std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a5f57a20612b439c2da8dc88e0d181638">doxygen_link</a> () const</td></tr>
+<tr class="separator:a5f57a20612b439c2da8dc88e0d181638 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classclanguml_1_1common_1_1model_1_1stylable__element"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1model_1_1stylable__element')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1model_1_1stylable__element.html">clanguml::common::model::stylable_element</a></td></tr>
+<tr class="memitem:ac0e16f49434f94146e0a969a310f1a3e inherit pub_methods_classclanguml_1_1common_1_1model_1_1stylable__element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1stylable__element.html#ac0e16f49434f94146e0a969a310f1a3e">set_style</a> (const std::string &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1stylable__element.html#a087e3ffb3dc469bbcb77d7c540091f40">style</a>)</td></tr>
+<tr class="separator:ac0e16f49434f94146e0a969a310f1a3e inherit pub_methods_classclanguml_1_1common_1_1model_1_1stylable__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a087e3ffb3dc469bbcb77d7c540091f40 inherit pub_methods_classclanguml_1_1common_1_1model_1_1stylable__element"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1stylable__element.html#a087e3ffb3dc469bbcb77d7c540091f40">style</a> () const</td></tr>
+<tr class="separator:a087e3ffb3dc469bbcb77d7c540091f40 inherit pub_methods_classclanguml_1_1common_1_1model_1_1stylable__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a71710fe27939630c4d97e78f9f19f4eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">relationship_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a71710fe27939630c4d97e78f9f19f4eb">type_</a></td></tr>
+<tr class="separator:a71710fe27939630c4d97e78f9f19f4eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac758c240b30b3c58743300125ea098ac"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#ac758c240b30b3c58743300125ea098ac">destination_</a></td></tr>
+<tr class="separator:ac758c240b30b3c58743300125ea098ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5125ce5b44e1421c01c65804820693e6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a5125ce5b44e1421c01c65804820693e6">multiplicity_source_</a></td></tr>
+<tr class="separator:a5125ce5b44e1421c01c65804820693e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bac766989135b7e26e8a2e8bcb975a8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a5bac766989135b7e26e8a2e8bcb975a8">multiplicity_destination_</a></td></tr>
+<tr class="separator:a5bac766989135b7e26e8a2e8bcb975a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d435767300bca4734ea4f8212fd08aa"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a9d435767300bca4734ea4f8212fd08aa">label_</a></td></tr>
+<tr class="separator:a9d435767300bca4734ea4f8212fd08aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adac0c0defe2e30a50231234edf617a60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6">access_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#adac0c0defe2e30a50231234edf617a60">access_</a></td></tr>
+<tr class="separator:adac0c0defe2e30a50231234edf617a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a780ec6dac33d99d60ae2ae895577192f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html#a780ec6dac33d99d60ae2ae895577192f">operator==</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">relationship</a> &amp;l, const <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">relationship</a> &amp;r)</td></tr>
+<tr class="separator:a780ec6dac33d99d60ae2ae895577192f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="abc777e854b5ce32c3df2125a85e72a0f" name="abc777e854b5ce32c3df2125a85e72a0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc777e854b5ce32c3df2125a85e72a0f">&#9670;&#160;</a></span>relationship()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clanguml::common::model::relationship::relationship </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">relationship_t</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>destination</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6">access_t</a>&#160;</td>
+          <td class="paramname"><em>access</em> = <code><a class="el" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6a8576a54b49c65252099050c24aa98095">access_t::kPublic</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>label</em> = <code>&quot;&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>multiplicity_source</em> = <code>&quot;&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>multiplicity_destination</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Constructor.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Type of relationship </td></tr>
+    <tr><td class="paramname">destination</td><td>Id of the relationship target </td></tr>
+    <tr><td class="paramname">access</td><td>Access scope of the relationship </td></tr>
+    <tr><td class="paramname">label</td><td>Relationship label </td></tr>
+    <tr><td class="paramname">multiplicity_source</td><td>Multiplicity at the source </td></tr>
+    <tr><td class="paramname">multiplicity_destination</td><td>Multiplicity at the destination </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="relationship_8cc_source.html#l00025">25</a> of file <a class="el" href="relationship_8cc_source.html">relationship.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   28</span>    : <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#a71710fe27939630c4d97e78f9f19f4eb">type_</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1relationship.html#a914f3fd7e9aecd8479c9bb45cf18f951">type</a>}</div>
+<div class="line"><span class="lineno">   29</span>    , <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#ac758c240b30b3c58743300125ea098ac">destination_</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1relationship.html#a50aba57b6c74884e2f55e2090b289fe2">destination</a>}</div>
+<div class="line"><span class="lineno">   30</span>    , <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#a5125ce5b44e1421c01c65804820693e6">multiplicity_source_</a>{std::move(<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1relationship.html#a6f1b8c583084d51f23057e6ce1da83dd">multiplicity_source</a>)}</div>
+<div class="line"><span class="lineno">   31</span>    , <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#a5bac766989135b7e26e8a2e8bcb975a8">multiplicity_destination_</a>{std::move(<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1relationship.html#abba1220bbb8b6629c0db6ea844911ad5">multiplicity_destination</a>)}</div>
+<div class="line"><span class="lineno">   32</span>    , <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#a9d435767300bca4734ea4f8212fd08aa">label_</a>{std::move(<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1relationship.html#adcdf4298495c2bcf64953ca8e86986d4">label</a>)}</div>
+<div class="line"><span class="lineno">   33</span>    , <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#adac0c0defe2e30a50231234edf617a60">access_</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1relationship.html#aed2070c7485635fe8916e31b1d18f772">access</a>}</div>
+<div class="line"><span class="lineno">   34</span>{</div>
+<div class="line"><span class="lineno">   35</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad52a3a5c8d8ea3e546492d6412bd9dfc" name="ad52a3a5c8d8ea3e546492d6412bd9dfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad52a3a5c8d8ea3e546492d6412bd9dfc">&#9670;&#160;</a></span>~relationship()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual clanguml::common::model::relationship::~relationship </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aed2070c7485635fe8916e31b1d18f772" name="aed2070c7485635fe8916e31b1d18f772"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed2070c7485635fe8916e31b1d18f772">&#9670;&#160;</a></span>access()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6">access_t</a> clanguml::common::model::relationship::access </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the relationship access scope (e.g. <code>public</code>).</p>
+<dl class="section return"><dt>Returns</dt><dd>Access scope </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="relationship_8cc_source.html#l00079">79</a> of file <a class="el" href="relationship_8cc_source.html">relationship.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   79</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#adac0c0defe2e30a50231234edf617a60">access_</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a50aba57b6c74884e2f55e2090b289fe2" name="a50aba57b6c74884e2f55e2090b289fe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50aba57b6c74884e2f55e2090b289fe2">&#9670;&#160;</a></span>destination()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">clanguml::common::id_t</a> clanguml::common::model::relationship::destination </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the id of the target element of this relationship.</p>
+<dl class="section return"><dt>Returns</dt><dd>Target element id. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="relationship_8cc_source.html#l00046">46</a> of file <a class="el" href="relationship_8cc_source.html">relationship.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   47</span>{</div>
+<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#ac758c240b30b3c58743300125ea098ac">destination_</a>;</div>
+<div class="line"><span class="lineno">   49</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adcdf4298495c2bcf64953ca8e86986d4" name="adcdf4298495c2bcf64953ca8e86986d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcdf4298495c2bcf64953ca8e86986d4">&#9670;&#160;</a></span>label()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::common::model::relationship::label </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the relationship label.</p>
+<dl class="section return"><dt>Returns</dt><dd>Relationoship label. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="relationship_8cc_source.html#l00075">75</a> of file <a class="el" href="relationship_8cc_source.html">relationship.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   75</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#a9d435767300bca4734ea4f8212fd08aa">label_</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abba1220bbb8b6629c0db6ea844911ad5" name="abba1220bbb8b6629c0db6ea844911ad5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abba1220bbb8b6629c0db6ea844911ad5">&#9670;&#160;</a></span>multiplicity_destination()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::common::model::relationship::multiplicity_destination </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the relationship multiplicity at the destination.</p>
+<dl class="section return"><dt>Returns</dt><dd>Destination multiplicity. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="relationship_8cc_source.html#l00068">68</a> of file <a class="el" href="relationship_8cc_source.html">relationship.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   69</span>{</div>
+<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#a5bac766989135b7e26e8a2e8bcb975a8">multiplicity_destination_</a>;</div>
+<div class="line"><span class="lineno">   71</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6f1b8c583084d51f23057e6ce1da83dd" name="a6f1b8c583084d51f23057e6ce1da83dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f1b8c583084d51f23057e6ce1da83dd">&#9670;&#160;</a></span>multiplicity_source()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::common::model::relationship::multiplicity_source </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the relationship multiplicity at the source.</p>
+<dl class="section return"><dt>Returns</dt><dd>Source multiplicity. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="relationship_8cc_source.html#l00057">57</a> of file <a class="el" href="relationship_8cc_source.html">relationship.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   58</span>{</div>
+<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#a5125ce5b44e1421c01c65804820693e6">multiplicity_source_</a>;</div>
+<div class="line"><span class="lineno">   60</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9343a2cf9ee7c39942082105ea161379" name="a9343a2cf9ee7c39942082105ea161379"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9343a2cf9ee7c39942082105ea161379">&#9670;&#160;</a></span>set_access()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::model::relationship::set_access </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6">access_t</a>&#160;</td>
+          <td class="paramname"><em>scope</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the access scope for this relationship (e.g <code>public</code>)</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scope</td><td>Access scope </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="relationship_8cc_source.html#l00077">77</a> of file <a class="el" href="relationship_8cc_source.html">relationship.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   77</span>{ <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#adac0c0defe2e30a50231234edf617a60">access_</a> = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1relationship.html#aed2070c7485635fe8916e31b1d18f772">access</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3c2964f1f64de4464dcbda352cd499d0" name="a3c2964f1f64de4464dcbda352cd499d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c2964f1f64de4464dcbda352cd499d0">&#9670;&#160;</a></span>set_destination()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::model::relationship::set_destination </td>
+          <td>(</td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>destination</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set id of the diagram element which is the target of this relationship.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">destination</td><td>Target element id. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="relationship_8cc_source.html#l00041">41</a> of file <a class="el" href="relationship_8cc_source.html">relationship.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   42</span>{</div>
+<div class="line"><span class="lineno">   43</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#ac758c240b30b3c58743300125ea098ac">destination_</a> = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1relationship.html#a50aba57b6c74884e2f55e2090b289fe2">destination</a>;</div>
+<div class="line"><span class="lineno">   44</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0adc8f308e5357ca7e47d7fd9d76f16d" name="a0adc8f308e5357ca7e47d7fd9d76f16d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0adc8f308e5357ca7e47d7fd9d76f16d">&#9670;&#160;</a></span>set_label()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::model::relationship::set_label </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>label</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set relationship label.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">label</td><td>Relationship label. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="relationship_8cc_source.html#l00073">73</a> of file <a class="el" href="relationship_8cc_source.html">relationship.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   73</span>{ <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#a9d435767300bca4734ea4f8212fd08aa">label_</a> = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1relationship.html#adcdf4298495c2bcf64953ca8e86986d4">label</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3172dfc7243dccd3033134ec22fbc117" name="a3172dfc7243dccd3033134ec22fbc117"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3172dfc7243dccd3033134ec22fbc117">&#9670;&#160;</a></span>set_multiplicity_destination()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::model::relationship::set_multiplicity_destination </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>multiplicity_destination</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the relationship multiplicity at the destination.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">multiplicity_destination</td><td>Destination multiplicity. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="relationship_8cc_source.html#l00062">62</a> of file <a class="el" href="relationship_8cc_source.html">relationship.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   64</span>{</div>
+<div class="line"><span class="lineno">   65</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#a5bac766989135b7e26e8a2e8bcb975a8">multiplicity_destination_</a> = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1relationship.html#abba1220bbb8b6629c0db6ea844911ad5">multiplicity_destination</a>;</div>
+<div class="line"><span class="lineno">   66</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae3e5ad2b5985c95d4ac4b96f22fcbe74" name="ae3e5ad2b5985c95d4ac4b96f22fcbe74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3e5ad2b5985c95d4ac4b96f22fcbe74">&#9670;&#160;</a></span>set_multiplicity_source()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::model::relationship::set_multiplicity_source </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>multiplicity_source</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the relationship multiplicity at the source.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">multiplicity_source</td><td>Source multiplicity. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="relationship_8cc_source.html#l00051">51</a> of file <a class="el" href="relationship_8cc_source.html">relationship.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   53</span>{</div>
+<div class="line"><span class="lineno">   54</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#a5125ce5b44e1421c01c65804820693e6">multiplicity_source_</a> = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1relationship.html#a6f1b8c583084d51f23057e6ce1da83dd">multiplicity_source</a>;</div>
+<div class="line"><span class="lineno">   55</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0f97fb86ece95e162f4c3cffbbc73dd6" name="a0f97fb86ece95e162f4c3cffbbc73dd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f97fb86ece95e162f4c3cffbbc73dd6">&#9670;&#160;</a></span>set_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::model::relationship::set_type </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">relationship_t</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the type of relatinoship.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Type of relationship. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="relationship_8cc_source.html#l00037">37</a> of file <a class="el" href="relationship_8cc_source.html">relationship.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   37</span>{ <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#a71710fe27939630c4d97e78f9f19f4eb">type_</a> = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1relationship.html#a914f3fd7e9aecd8479c9bb45cf18f951">type</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a914f3fd7e9aecd8479c9bb45cf18f951" name="a914f3fd7e9aecd8479c9bb45cf18f951"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a914f3fd7e9aecd8479c9bb45cf18f951">&#9670;&#160;</a></span>type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">relationship_t</a> clanguml::common::model::relationship::type </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the type of relatinoship.</p>
+<dl class="section return"><dt>Returns</dt><dd>Type of relationship. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="relationship_8cc_source.html#l00039">39</a> of file <a class="el" href="relationship_8cc_source.html">relationship.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   39</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1relationship.html#a71710fe27939630c4d97e78f9f19f4eb">type_</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Symbol Documentation</h2>
+<a id="a780ec6dac33d99d60ae2ae895577192f" name="a780ec6dac33d99d60ae2ae895577192f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a780ec6dac33d99d60ae2ae895577192f">&#9670;&#160;</a></span>operator==</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">relationship</a> &amp;&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">relationship</a> &amp;&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="relationship_8cc_source.html#l00081">81</a> of file <a class="el" href="relationship_8cc_source.html">relationship.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   82</span>{</div>
+<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">return</span> l.type() == r.type() &amp;&amp; l.destination() == r.destination() &amp;&amp;</div>
+<div class="line"><span class="lineno">   84</span>        l.label() == r.label();</div>
+<div class="line"><span class="lineno">   85</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="adac0c0defe2e30a50231234edf617a60" name="adac0c0defe2e30a50231234edf617a60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adac0c0defe2e30a50231234edf617a60">&#9670;&#160;</a></span>access_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6">access_t</a> clanguml::common::model::relationship::access_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="relationship_8h_source.html#l00151">151</a> of file <a class="el" href="relationship_8h_source.html">relationship.h</a>.</p>
+
+</div>
+</div>
+<a id="ac758c240b30b3c58743300125ea098ac" name="ac758c240b30b3c58743300125ea098ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac758c240b30b3c58743300125ea098ac">&#9670;&#160;</a></span>destination_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t clanguml::common::model::relationship::destination_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="relationship_8h_source.html#l00147">147</a> of file <a class="el" href="relationship_8h_source.html">relationship.h</a>.</p>
+
+</div>
+</div>
+<a id="a9d435767300bca4734ea4f8212fd08aa" name="a9d435767300bca4734ea4f8212fd08aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d435767300bca4734ea4f8212fd08aa">&#9670;&#160;</a></span>label_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::common::model::relationship::label_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="relationship_8h_source.html#l00150">150</a> of file <a class="el" href="relationship_8h_source.html">relationship.h</a>.</p>
+
+</div>
+</div>
+<a id="a5bac766989135b7e26e8a2e8bcb975a8" name="a5bac766989135b7e26e8a2e8bcb975a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bac766989135b7e26e8a2e8bcb975a8">&#9670;&#160;</a></span>multiplicity_destination_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::common::model::relationship::multiplicity_destination_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="relationship_8h_source.html#l00149">149</a> of file <a class="el" href="relationship_8h_source.html">relationship.h</a>.</p>
+
+</div>
+</div>
+<a id="a5125ce5b44e1421c01c65804820693e6" name="a5125ce5b44e1421c01c65804820693e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5125ce5b44e1421c01c65804820693e6">&#9670;&#160;</a></span>multiplicity_source_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::common::model::relationship::multiplicity_source_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="relationship_8h_source.html#l00148">148</a> of file <a class="el" href="relationship_8h_source.html">relationship.h</a>.</p>
+
+</div>
+</div>
+<a id="a71710fe27939630c4d97e78f9f19f4eb" name="a71710fe27939630c4d97e78f9f19f4eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71710fe27939630c4d97e78f9f19f4eb">&#9670;&#160;</a></span>type_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">relationship_t</a> clanguml::common::model::relationship::type_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="relationship_8h_source.html#l00146">146</a> of file <a class="el" href="relationship_8h_source.html">relationship.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/common/model/<a class="el" href="relationship_8h_source.html">relationship.h</a></li>
+<li>src/common/model/<a class="el" href="relationship_8cc_source.html">relationship.cc</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

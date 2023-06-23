@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: Common diagram generation options</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.3.7</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">Common diagram generation options</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="common-diagram-generation-options"></a></p>
+<ul>
+<li><a class="el" href="md_docs_2common__options.html#overall-configuration-file-structure">Overall configuration file structure</a></li>
+<li><a class="el" href="md_docs_2common__options.html#translation-unit-glob-patterns">Translation unit glob patterns</a></li>
+<li><a class="el" href="md_docs_2common__options.html#plantuml-custom-directives">PlantUML custom directives</a></li>
+<li><a class="el" href="md_docs_2common__options.html#adding-debug-information-in-the-generated-diagrams">Adding debug information in the generated diagrams</a></li>
+<li><a class="el" href="md_docs_2common__options.html#resolving-include-path-and-compiler-flags-issues">Resolving include path and compiler flags issues</a><ul>
+<li><a class="el" href="md_docs_2common__options.html#use---query-driver-command-line-option">Use '--query-driver' command line option</a></li>
+<li><a class="el" href="md_docs_2common__options.html#manually-add-and-remove-compile-flags-from-the-compilation-database">Manually add and remove compile flags from the compilation database</a></li>
+<li><a class="el" href="md_docs_2common__options.html#using-cmake_cxx_implicit_include_directories">Using 'CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES'</a></li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="overall-configuration-file-structure"></a>
+Overall configuration file structure</h1>
+<p>By default, <code>clang-uml</code> will look for file <code>.clang-uml</code> in the projects directory and read all diagrams definitions from it. The file must be specified in <a class="el" href="namespaceYAML.html">YAML</a> and it's overall structure is as follows:</p>
+<div class="fragment language-yaml"><div class="line"># common options for all diagrams</div>
+<div class="line">...</div>
+<div class="line">diagrams:</div>
+<div class="line">  first_diagram_name:</div>
+<div class="line">    type: class|sequence|package|include</div>
+<div class="line">    # diagram specific options</div>
+<div class="line">    ...</div>
+<div class="line">  second_diagram_name:</div>
+<div class="line">    type: class|sequence|package|include</div>
+<div class="line">    # diagram specific options</div>
+<div class="line">    ...</div>
+<div class="line">  ...</div>
+</div><!-- fragment --><p>The top level common options are inherited by specific diagrams, if the option is applicable to them and they themselves do not override this option.</p>
+<p>For detailed reference of all configuration options see <a class="el" href="md_docs_2configuration__file.html">here</a>.</p>
+<p>Effective configuration, including default values can be printed out in <a class="el" href="namespaceYAML.html">YAML</a> format using the following option:</p>
+<div class="fragment language-bash"><div class="line">clang-uml --dump-config</div>
+</div><!-- fragment --><h1><a class="anchor" id="translation-unit-glob-patterns"></a>
+Translation unit glob patterns</h1>
+<p>One of the key options of the diagram configuration is the list of translation units, which should be parsed to get all necessary information for a diagram.</p>
+<p>The syntax is simple and based on glob patterns, which can be added to the configuration file as follows:</p>
+<div class="fragment language-yaml"><div class="line">glob:</div>
+<div class="line">  - src/dir1/*.cc</div>
+<div class="line">  - src/dir3/*.cc</div>
+</div><!-- fragment --><p>The glob patterns only need to match the translation units, which are also in the <code>compile_commands.json</code> file, i.e. any files that match the glob patterns but are not in <code>compile_commands.json</code> will be ignored. In case the <code>glob</code> pattern set does not much any translation units an error will be printed on the standard output.</p>
+<p>For small projects, the <code>glob</code> property can be omitted, which will result in <code>clang-uml</code> parsing all translation units from <code>compile_commands.json</code> for the diagram. However for large projects, constraining the number of translation units for each diagram to absolute minimum will significantly decrease the diagram generation times.</p>
+<h1><a class="anchor" id="plantuml-custom-directives"></a>
+PlantUML custom directives</h1>
+<p>In case it's necessary to add some custom PlantUML declarations before or after the generated diagram content, it can be achieved simply using the <code>plantuml</code> configuration properties, for instance:</p>
+<div class="fragment language-yaml"><div class="line">plantuml:</div>
+<div class="line">  before:</div>
+<div class="line">    - left to right direction</div>
+<div class="line">  after:</div>
+<div class="line">    - note left of {{ alias(&quot;ns1::ns2::MyClass&quot;) }} This is my class. </div>
+</div><!-- fragment --><p>These directive are useful for instance for adding notes to elements in the diagrams or customizing diagram layout or style.</p>
+<p>Please note that when referring to diagram elements in the PlantUML directives, they must be added using Jinja templates <code>alias</code> command as in the example above.</p>
+<p>More options can be found in the official PlantUML <a href="https://plantuml.com/">documentation</a>.</p>
+<h1><a class="anchor" id="adding-debug-information-in-the-generated-diagrams"></a>
+Adding debug information in the generated diagrams</h1>
+<p>Sometimes it is useful for debugging issues with the diagrams to have information on the exact source location, from which given declaration or call expression was derived. By adding option:</p>
+<div class="fragment language-yaml"><div class="line">debug_mode: true</div>
+</div><!-- fragment --><p>the generated PlantUML diagram will contain comments before each line containing the source location of the specific diagram element.</p>
+<h1><a class="anchor" id="resolving-include-path-and-compiler-flags-issues"></a>
+Resolving include path and compiler flags issues</h1>
+<p>Due to the fact, that your project can be compiled with different compilers and toolchains than the Clang version, which <code>clang-uml</code> uses on your platform, include paths specified in the generated <code>compile_commands.json</code> can be incorrect.</p>
+<blockquote class="doxtable">
+<p>&zwj;This is often an issue on macOS, when <code>clang-uml</code> uses Homebrew version of LLVM and your project was built using system Apple Clang </p>
+</blockquote>
+<p>Typically, this results in ugly error messages on the screen during diagram generation, such as:</p>
+<div class="fragment language-cpp"><div class="line">... fatal: &#39;stddef.h&#39; file not found</div>
+</div><!-- fragment --><p>or</p>
+<div class="fragment language-cpp"><div class="line">... warning: implicit conversion from &#39;int&#39; to &#39;float&#39; changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]</div>
+</div><!-- fragment --><p>These errors can be overcome, by ensuring that the Clang parser has the correct include paths to analyse your code base on the given platform. <code>clang-uml</code> provides several mechanisms to resolve this issue:</p>
+<h2><a class="anchor" id="use---query-driver-command-line-option"></a>
+Use '–query-driver' command line option</h2>
+<blockquote class="doxtable">
+<p>&zwj;This option is not available on Windows. </p>
+</blockquote>
+<p>Providing this option on the <code>clang-uml</code> command line will result in <code>clang-uml</code> executing the specified compiler with the following command, e.g.:</p>
+<div class="fragment language-bash"><div class="line">/usr/bin/c++ -E -v -x c /dev/null 2&gt;&amp;1</div>
+</div><!-- fragment --><p>and extracting from the output the target and system include paths, which are then injected to each entry of the compilation database. For instance, on my system, when generating diagrams for an embedded project and providing <code>arm-none-eabi-gcc</code> as driver:</p>
+<div class="fragment language-bash"><div class="line">clang-uml --query-driver arm-none-eabi-gcc</div>
+</div><!-- fragment --><p>the following options are appended to each command line after <code>argv[0]</code> of the command:</p>
+<div class="fragment language-bash"><div class="line">--target=arm-none-eabi -isystem /usr/lib/gcc/arm-none-eabi/10.3.1/include -isystem /usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed -isystem /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include</div>
+</div><!-- fragment --><p>If you want to include the system headers reported by the compiler specified already as <code>argv[0]</code> in your <code>compile_commands.json</code>, you can simply invoke <code>clang-uml</code> as:</p>
+<div class="fragment language-bash"><div class="line">clang-uml --query-driver .</div>
+</div><!-- fragment --><p>however please make sure that the <code>compile_commands.json</code> contain a command, which is safe to execute.</p>
+<h2><a class="anchor" id="manually-add-and-remove-compile-flags-from-the-compilation-database"></a>
+Manually add and remove compile flags from the compilation database</h2>
+<p>If the system paths extracted from the compiler are not sufficient to resolve include paths issues, it is possible to manually adjust the compilation flags providing <code>add_compile_flags</code> and <code>remove_compile_flags</code> in the configuration file, or providing <code>--add-compile-flag</code> and <code>--remove-compile-flag</code> in the <code>clang-uml</code> command line.</p>
+<p>For instance:</p>
+<div class="fragment language-yaml"><div class="line">add_compile_flags:</div>
+<div class="line">  - -I/opt/my_toolchain/include</div>
+<div class="line">remove_compile_flags:</div>
+<div class="line">  - -I/usr/include</div>
+</div><!-- fragment --><p>These options can be also passed on the command line, for instance:</p>
+<div class="fragment language-bash"><div class="line">clang-uml --add-compile-flag -I/opt/my_toolchain/include \</div>
+<div class="line">          --remove-compile-flag -I/usr/include ...</div>
+</div><!-- fragment --><h2><a class="anchor" id="using-cmake_cxx_implicit_include_directories"></a>
+Using 'CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES'</h2>
+<p>Yet another option, for CMake based projects, is to use the following CMake option:</p>
+<div class="fragment language-cmake"><div class="line">set(CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES ${CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES})</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>
