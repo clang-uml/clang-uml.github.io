@@ -147,20 +147,20 @@ $(function() {
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1util.html">clanguml::util</a> {</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classclanguml_1_1util_1_1thread__pool__executor.html#a718d4b3feb35ae74cdfe09047fb752e8">   23</a></span><a class="code hl_function" href="classclanguml_1_1util_1_1thread__pool__executor.html#a718d4b3feb35ae74cdfe09047fb752e8">thread_pool_executor::thread_pool_executor</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> pool_size)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classclanguml_1_1util_1_1thread__pool__executor.html#a718d4b3feb35ae74cdfe09047fb752e8">   23</a></span><a class="code hl_function" href="classclanguml_1_1util_1_1thread__pool__executor.html#a718d4b3feb35ae74cdfe09047fb752e8" title="Constructor.">thread_pool_executor::thread_pool_executor</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> pool_size)</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    : done_{false}</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordflow">if</span> (pool_size == 0U)</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        pool_size = std::thread::hardware_concurrency();</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0U; i &lt; pool_size; i++) {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <a class="code hl_variable" href="classclanguml_1_1util_1_1thread__pool__executor.html#a972a3b50b12717610e4ee76669c40f12">threads_</a>.emplace_back(&amp;<a class="code hl_function" href="classclanguml_1_1util_1_1thread__pool__executor.html#ad79343bdde4aba073703e34470b093af">thread_pool_executor::worker</a>, <span class="keyword">this</span>);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <a class="code hl_variable" href="classclanguml_1_1util_1_1thread__pool__executor.html#a972a3b50b12717610e4ee76669c40f12">threads_</a>.emplace_back(&amp;<a class="code hl_function" href="classclanguml_1_1util_1_1thread__pool__executor.html#ad79343bdde4aba073703e34470b093af" title="Main worker pool thread method - take task from queue and execute.">thread_pool_executor::worker</a>, <span class="keyword">this</span>);</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classclanguml_1_1util_1_1thread__pool__executor.html#a4e62896efe6294b587730b8c3cdb6ebd">   34</a></span><a class="code hl_function" href="classclanguml_1_1util_1_1thread__pool__executor.html#a4e62896efe6294b587730b8c3cdb6ebd">thread_pool_executor::~thread_pool_executor</a>() { <a class="code hl_function" href="classclanguml_1_1util_1_1thread__pool__executor.html#ac9d81f96338c24edb1e07a01db99ea2d">stop</a>(); }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classclanguml_1_1util_1_1thread__pool__executor.html#a4e62896efe6294b587730b8c3cdb6ebd">   34</a></span><a class="code hl_function" href="classclanguml_1_1util_1_1thread__pool__executor.html#a4e62896efe6294b587730b8c3cdb6ebd">thread_pool_executor::~thread_pool_executor</a>() { <a class="code hl_function" href="classclanguml_1_1util_1_1thread__pool__executor.html#ac9d81f96338c24edb1e07a01db99ea2d" title="Join all active threads in the pool.">stop</a>(); }</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classclanguml_1_1util_1_1thread__pool__executor.html#aa409856bc3f1ebb007f53fbe17746e61">   36</a></span>std::future&lt;void&gt; <a class="code hl_function" href="classclanguml_1_1util_1_1thread__pool__executor.html#aa409856bc3f1ebb007f53fbe17746e61">thread_pool_executor::add</a>(std::function&lt;<span class="keywordtype">void</span>()&gt; &amp;&amp;task)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classclanguml_1_1util_1_1thread__pool__executor.html#aa409856bc3f1ebb007f53fbe17746e61">   36</a></span>std::future&lt;void&gt; <a class="code hl_function" href="classclanguml_1_1util_1_1thread__pool__executor.html#aa409856bc3f1ebb007f53fbe17746e61" title="Add a task to run on the pool.">thread_pool_executor::add</a>(std::function&lt;<span class="keywordtype">void</span>()&gt; &amp;&amp;task)</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>{</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    std::unique_lock&lt;std::mutex&gt; l(<a class="code hl_variable" href="classclanguml_1_1util_1_1thread__pool__executor.html#adc4ace238edfaf282460eb62c297864e">tasks_mutex_</a>);</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
@@ -175,7 +175,7 @@ $(function() {
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">return</span> res;</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classclanguml_1_1util_1_1thread__pool__executor.html#ac9d81f96338c24edb1e07a01db99ea2d">   51</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1util_1_1thread__pool__executor.html#ac9d81f96338c24edb1e07a01db99ea2d">thread_pool_executor::stop</a>()</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classclanguml_1_1util_1_1thread__pool__executor.html#ac9d81f96338c24edb1e07a01db99ea2d">   51</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1util_1_1thread__pool__executor.html#ac9d81f96338c24edb1e07a01db99ea2d" title="Join all active threads in the pool.">thread_pool_executor::stop</a>()</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <a class="code hl_variable" href="classclanguml_1_1util_1_1thread__pool__executor.html#a14478e4213092bb2ac527da097e5669d">done_</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;thread : <a class="code hl_variable" href="classclanguml_1_1util_1_1thread__pool__executor.html#a972a3b50b12717610e4ee76669c40f12">threads_</a>) {</div>
@@ -184,7 +184,7 @@ $(function() {
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classclanguml_1_1util_1_1thread__pool__executor.html#ad79343bdde4aba073703e34470b093af">   60</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1util_1_1thread__pool__executor.html#ad79343bdde4aba073703e34470b093af">thread_pool_executor::worker</a>()</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classclanguml_1_1util_1_1thread__pool__executor.html#ad79343bdde4aba073703e34470b093af">   60</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1util_1_1thread__pool__executor.html#ad79343bdde4aba073703e34470b093af" title="Main worker pool thread method - take task from queue and execute.">thread_pool_executor::worker</a>()</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>{</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">try</span> {</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordflow">while</span> (!<a class="code hl_variable" href="classclanguml_1_1util_1_1thread__pool__executor.html#a14478e4213092bb2ac527da097e5669d">done_</a>) {</div>
@@ -215,9 +215,16 @@ $(function() {
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>} <span class="comment">// namespace clanguml::util</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+<hr class="footer"/><address class="footer">
+    <small>
+        <span class="copyright">&#160;&#160;Copyright &copy; 2022-present <a href="https://github.com/bkryza">Bartek Kryza</a>
+        </span>
+    Generated by&#160;
+    <a href="https://www.doxygen.org/index.html">
+        <img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/>
+    </a> 1.9.7
 </small></address>
 </body>
 </html>

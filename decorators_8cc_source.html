@@ -151,7 +151,7 @@ $(function() {
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1decorators.html">   25</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1decorators.html">clanguml::decorators</a> {</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structclanguml_1_1decorators_1_1decorator.html#a7d6a56bc3e618e9a54728b3d7d1b02d1">   27</a></span>std::shared_ptr&lt;decorator&gt; <a class="code hl_function" href="structclanguml_1_1decorators_1_1decorator.html#a7d6a56bc3e618e9a54728b3d7d1b02d1">decorator::from_string</a>(std::string_view c)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structclanguml_1_1decorators_1_1decorator.html#a7d6a56bc3e618e9a54728b3d7d1b02d1">   27</a></span>std::shared_ptr&lt;decorator&gt; <a class="code hl_function" href="structclanguml_1_1decorators_1_1decorator.html#a7d6a56bc3e618e9a54728b3d7d1b02d1" title="Create decorator of specific type based on it&#39;s string representation.">decorator::from_string</a>(std::string_view c)</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">if</span> (c.find(<a class="code hl_variable" href="structclanguml_1_1decorators_1_1note.html#a766fb5813f0255d88f3536417a166f28">note::label</a>) == 0) {</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="structclanguml_1_1decorators_1_1note.html#a626c6ca9f585fc2832ab75b227118f79">note::from_string</a>(c);</div>
@@ -178,7 +178,7 @@ $(function() {
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">return</span> {};</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structclanguml_1_1decorators_1_1decorator.html#a2253eb4691c72805ec99eaa40bc2b687">   54</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="structclanguml_1_1decorators_1_1decorator.html#a2253eb4691c72805ec99eaa40bc2b687">decorator::applies_to_diagram</a>(<span class="keyword">const</span> std::string &amp;name)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structclanguml_1_1decorators_1_1decorator.html#a2253eb4691c72805ec99eaa40bc2b687">   54</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="structclanguml_1_1decorators_1_1decorator.html#a2253eb4691c72805ec99eaa40bc2b687" title="Check if decorator applies to a specific diagram.">decorator::applies_to_diagram</a>(<span class="keyword">const</span> std::string &amp;name)</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>{</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator.html#a5c5e52f7b3611c694fb7e356c9208577">diagrams</a>.empty() ||</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        (std::find(<a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator.html#a5c5e52f7b3611c694fb7e356c9208577">diagrams</a>.begin(), <a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator.html#a5c5e52f7b3611c694fb7e356c9208577">diagrams</a>.end(), name) != <a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator.html#a5c5e52f7b3611c694fb7e356c9208577">diagrams</a>.end());</div>
@@ -224,8 +224,8 @@ $(function() {
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    pos = std::distance(c.begin(), it);</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    res.<a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator__toks.html#a75b5e92b81ff361a89baff432dd032c2">text</a> = c.substr(pos, c.find(<span class="charliteral">&#39;}&#39;</span>, pos) - pos);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    res.<a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator__toks.html#a75b5e92b81ff361a89baff432dd032c2">text</a> = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e">util::trim</a>(res.<a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator__toks.html#a75b5e92b81ff361a89baff432dd032c2">text</a>);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    res.<a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator__toks.html#a213b0e0a767d100fd7efafc24c84dd39">param</a> = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e">util::trim</a>(res.<a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator__toks.html#a213b0e0a767d100fd7efafc24c84dd39">param</a>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    res.<a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator__toks.html#a75b5e92b81ff361a89baff432dd032c2">text</a> = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e" title="Trim a string.">util::trim</a>(res.<a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator__toks.html#a75b5e92b81ff361a89baff432dd032c2">text</a>);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    res.<a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator__toks.html#a213b0e0a767d100fd7efafc24c84dd39">param</a> = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e" title="Trim a string.">util::trim</a>(res.<a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator__toks.html#a213b0e0a767d100fd7efafc24c84dd39">param</a>);</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">return</span> res;</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
@@ -300,7 +300,7 @@ $(function() {
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keywordflow">return</span> res;</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>}</div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1decorators.html#affa9cca8db03c36d8ce91e29be203f8d">  176</a></span>std::vector&lt;std::shared_ptr&lt;decorator&gt;&gt; <a class="code hl_function" href="namespaceclanguml_1_1decorators.html#affa9cca8db03c36d8ce91e29be203f8d">parse</a>(</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1decorators.html#a86df136afe66fb69f18320c135a96aa3">  176</a></span>std::vector&lt;std::shared_ptr&lt;decorator&gt;&gt; <a class="code hl_function" href="namespaceclanguml_1_1decorators.html#a86df136afe66fb69f18320c135a96aa3" title="Parse a documentation block and extract all clang-uml decorators.">parse</a>(</div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    std::string documentation_block, <span class="keyword">const</span> std::string &amp;clanguml_tag)</div>
 <div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>{</div>
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    std::vector&lt;std::shared_ptr&lt;decorator&gt;&gt; res;</div>
@@ -310,7 +310,7 @@ $(function() {
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="comment">// First replace all \uml occurences with @uml</span></div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#af03f03692e01199e8c12a3c60db21754" title="Find and replace in string.">util::replace_all</a>(</div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        documentation_block, <span class="stringliteral">&quot;\\&quot;</span> + clanguml_tag, <span class="stringliteral">&quot;@&quot;</span> + clanguml_tag);</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    documentation_block = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e">util::trim</a>(documentation_block);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    documentation_block = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e" title="Trim a string.">util::trim</a>(documentation_block);</div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keyword">const</span> std::string_view block_view{documentation_block};</div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
@@ -323,7 +323,7 @@ $(function() {
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            <span class="keywordflow">return</span> res;</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <span class="keyword">auto</span> com =</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            <a class="code hl_function" href="structclanguml_1_1decorators_1_1decorator.html#a7d6a56bc3e618e9a54728b3d7d1b02d1">decorator::from_string</a>(block_view.substr(c_begin + 1, c_end - 2));</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            <a class="code hl_function" href="structclanguml_1_1decorators_1_1decorator.html#a7d6a56bc3e618e9a54728b3d7d1b02d1" title="Create decorator of specific type based on it&#39;s string representation.">decorator::from_string</a>(block_view.substr(c_begin + 1, c_end - 2));</div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="keywordflow">if</span> (com)</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>            res.emplace_back(std::move(com));</div>
@@ -336,9 +336,16 @@ $(function() {
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>} <span class="comment">// namespace clanguml::decorators</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+<hr class="footer"/><address class="footer">
+    <small>
+        <span class="copyright">&#160;&#160;Copyright &copy; 2022-present <a href="https://github.com/bkryza">Bartek Kryza</a>
+        </span>
+    Generated by&#160;
+    <a href="https://www.doxygen.org/index.html">
+        <img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/>
+    </a> 1.9.7
 </small></address>
 </body>
 </html>

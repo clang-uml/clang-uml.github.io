@@ -987,12 +987,12 @@ $(function() {
 <div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span>        <span class="comment">// If the current directory is also a git repository,</span></div>
 <div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>        <span class="comment">// load some config values, which can be included in the</span></div>
 <div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span>        <span class="comment">// generated diagrams</span></div>
-<div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1util.html#a27b71122eddd73463d350241308c3dc7">util::is_git_repository</a>() &amp;&amp; !doc[<span class="stringliteral">&quot;git&quot;</span>]) {</div>
+<div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1util.html#a27b71122eddd73463d350241308c3dc7" title="Check if $PWD is in a Git repository.">util::is_git_repository</a>() &amp;&amp; !doc[<span class="stringliteral">&quot;git&quot;</span>]) {</div>
 <div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span>            YAML::Node <a class="code hl_struct" href="structclanguml_1_1config_1_1git__config.html">git_config</a>{YAML::NodeType::Map};</div>
-<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span>            <a class="code hl_struct" href="structclanguml_1_1config_1_1git__config.html">git_config</a>[<span class="stringliteral">&quot;branch&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a36e2f6f3bc593bc76ed66b3299501b85">util::get_git_branch</a>();</div>
-<div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span>            <a class="code hl_struct" href="structclanguml_1_1config_1_1git__config.html">git_config</a>[<span class="stringliteral">&quot;revision&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1util.html#aee88bc84a66dcb46befc4204c397fd1b">util::get_git_revision</a>();</div>
-<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span>            <a class="code hl_struct" href="structclanguml_1_1config_1_1git__config.html">git_config</a>[<span class="stringliteral">&quot;commit&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a05c6b17f818acbc17c7b089fe2e48754">util::get_git_commit</a>();</div>
-<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span>            <a class="code hl_struct" href="structclanguml_1_1config_1_1git__config.html">git_config</a>[<span class="stringliteral">&quot;toplevel&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1util.html#ab3b3144fdf83ad36950bc5c2ba016501">util::get_git_toplevel_dir</a>();</div>
+<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span>            <a class="code hl_struct" href="structclanguml_1_1config_1_1git__config.html">git_config</a>[<span class="stringliteral">&quot;branch&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a36e2f6f3bc593bc76ed66b3299501b85" title="Get current Git branch.">util::get_git_branch</a>();</div>
+<div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span>            <a class="code hl_struct" href="structclanguml_1_1config_1_1git__config.html">git_config</a>[<span class="stringliteral">&quot;revision&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1util.html#aee88bc84a66dcb46befc4204c397fd1b" title="Get current Git revision.">util::get_git_revision</a>();</div>
+<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span>            <a class="code hl_struct" href="structclanguml_1_1config_1_1git__config.html">git_config</a>[<span class="stringliteral">&quot;commit&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a05c6b17f818acbc17c7b089fe2e48754" title="Get current Git commit.">util::get_git_commit</a>();</div>
+<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span>            <a class="code hl_struct" href="structclanguml_1_1config_1_1git__config.html">git_config</a>[<span class="stringliteral">&quot;toplevel&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1util.html#ab3b3144fdf83ad36950bc5c2ba016501" title="Get path to the top level Git directory.">util::get_git_toplevel_dir</a>();</div>
 <div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span> </div>
 <div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span>            doc[<span class="stringliteral">&quot;git&quot;</span>] = <a class="code hl_struct" href="structclanguml_1_1config_1_1git__config.html">git_config</a>;</div>
 <div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span>        }</div>
@@ -1035,9 +1035,16 @@ $(function() {
 <div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span>}</div>
 <div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span>} <span class="comment">// namespace clanguml::config</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+<hr class="footer"/><address class="footer">
+    <small>
+        <span class="copyright">&#160;&#160;Copyright &copy; 2022-present <a href="https://github.com/bkryza">Bartek Kryza</a>
+        </span>
+    Generated by&#160;
+    <a href="https://www.doxygen.org/index.html">
+        <img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/>
+    </a> 1.9.7
 </small></address>
 </body>
 </html>

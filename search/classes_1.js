@@ -13,7 +13,7 @@ var searchData=
   ['cli_5fhandler_10',['cli_handler',['../classclanguml_1_1cli_1_1cli__handler.html',1,'clanguml::cli']]],
   ['comment_5fvisitor_11',['comment_visitor',['../classclanguml_1_1common_1_1visitor_1_1comment_1_1comment__visitor.html',1,'clanguml::common::visitor::comment']]],
   ['compilation_5fdatabase_12',['compilation_database',['../classclanguml_1_1common_1_1compilation__database.html',1,'clanguml::common']]],
-  ['compilation_5fdatabase_5ferror_13',['compilation_database_error',['../classclanguml_1_1common_1_1compilation__database__error.html',1,'clanguml::common']]],
+  ['compilation_5fdatabase_5ferror_13',['compilation_database_error',['../classclanguml_1_1error_1_1compilation__database__error.html',1,'clanguml::error']]],
   ['composition_14',['composition',['../structclanguml_1_1decorators_1_1composition.html',1,'clanguml::decorators']]],
   ['concept_5f_15',['concept_',['../classclanguml_1_1class__diagram_1_1model_1_1concept__.html',1,'clanguml::class_diagram::model']]],
   ['config_16',['config',['../structclanguml_1_1config_1_1config.html',1,'clanguml::config']]],

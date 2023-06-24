@@ -139,7 +139,7 @@ $(function() {
 <p>This class provides custom specialization of Clang's <a href="https://clang.llvm.org/doxygen/classclang_1_1tooling_1_1CompilationDatabase.html">CompilationDatabase</a>, which provides the possibility of adjusting the compilation flags after they have been loaded from the <code>compile_commands.json</code> file.</p>
 <p> <embed src="compilation_database_context_class.svg"/>  </p>
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00051">51</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00048">48</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -311,7 +311,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  136</span>        !<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().remove_compile_flags().empty()) {</div>
 <div class="line"><span class="lineno">  137</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;compile_command : commands) {</div>
 <div class="line"><span class="lineno">  138</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;flag : <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().remove_compile_flags()) {</div>
-<div class="line"><span class="lineno">  139</span>                <a class="code hl_function" href="namespaceclanguml_1_1util.html#ad0188dcbd54a723d6fbe5a06fc30d10b">util::erase_if</a>(compile_command.CommandLine,</div>
+<div class="line"><span class="lineno">  139</span>                <a class="code hl_function" href="namespaceclanguml_1_1util.html#ad0188dcbd54a723d6fbe5a06fc30d10b" title="Remove and erase elements from a vector.">util::erase_if</a>(compile_command.CommandLine,</div>
 <div class="line"><span class="lineno">  140</span>                    [&amp;flag](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;arg) { return flag == arg; });</div>
 <div class="line"><span class="lineno">  141</span>            }</div>
 <div class="line"><span class="lineno">  142</span>        }</div>
@@ -359,7 +359,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   31</span>        cfg.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a9d79bf1d8ede01e54ceea94923125f6a">compilation_database_dir</a>(), error_message);</div>
 <div class="line"><span class="lineno">   32</span> </div>
 <div class="line"><span class="lineno">   33</span>    <span class="keywordflow">if</span> (!error_message.empty())</div>
-<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">throw</span> compilation_database_error(error_message);</div>
+<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">throw</span> error::compilation_database_error(error_message);</div>
 <div class="line"><span class="lineno">   35</span> </div>
 <div class="line"><span class="lineno">   36</span>    <span class="keywordflow">return</span> std::make_unique&lt;compilation_database&gt;(std::move(res), cfg);</div>
 <div class="line"><span class="lineno">   37</span>}</div>
@@ -568,7 +568,7 @@ Private Attributes</h2></td></tr>
 <p>Pointer to the Clang's original compilation database.</p>
 <p>Actual instance of the compilation database is stored in here. The inheritance is just to keep the interface. </p>
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00119">119</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00116">116</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
 
 </div>
 </div>
@@ -593,7 +593,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Reference to the instance of clanguml config. </p>
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00124">124</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00121">121</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
 
 </div>
 </div>
@@ -602,9 +602,16 @@ Private Attributes</h2></td></tr>
 <li>src/common/<a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a></li>
 </ul>
 </div><!-- contents -->
+<!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+<hr class="footer"/><address class="footer">
+    <small>
+        <span class="copyright">&#160;&#160;Copyright &copy; 2022-present <a href="https://github.com/bkryza">Bartek Kryza</a>
+        </span>
+    Generated by&#160;
+    <a href="https://www.doxygen.org/index.html">
+        <img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/>
+    </a> 1.9.7
 </small></address>
 </body>
 </html>

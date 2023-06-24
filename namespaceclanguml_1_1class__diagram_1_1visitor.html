@@ -139,6 +139,7 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1visitor_1_1template__builder.html">template_builder</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class responsible for building all kinds of templates from Clang AST.  <a href="classclanguml_1_1class__diagram_1_1visitor_1_1template__builder.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html">translation_unit_visitor</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class diagram translation unit visitor.  <a href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#details">More...</a><br /></td></tr>
@@ -198,35 +199,42 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="template__builder_8cc_source.html#l00671">671</a> of file <a class="el" href="template__builder_8cc_source.html">template_builder.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  673</span>{</div>
-<div class="line"><span class="lineno">  674</span>    <span class="keywordflow">if</span> (type_parameter.find(<span class="stringliteral">&quot;type-parameter-&quot;</span>) != 0)</div>
-<div class="line"><span class="lineno">  675</span>        <span class="keywordflow">return</span> type_parameter;</div>
-<div class="line"><span class="lineno">  676</span> </div>
-<div class="line"><span class="lineno">  677</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *template_decl =</div>
-<div class="line"><span class="lineno">  678</span>            llvm::dyn_cast&lt;clang::ClassTemplateSpecializationDecl&gt;(decl);</div>
-<div class="line"><span class="lineno">  679</span>        template_decl != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  680</span>        <span class="keywordflow">return</span> detail::map_type_parameter_to_template_parameter(</div>
-<div class="line"><span class="lineno">  681</span>            template_decl, type_parameter);</div>
-<div class="line"><span class="lineno">  682</span>    }</div>
-<div class="line"><span class="lineno">  683</span> </div>
-<div class="line"><span class="lineno">  684</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *alias_decl =</div>
-<div class="line"><span class="lineno">  685</span>            llvm::dyn_cast&lt;clang::TypeAliasTemplateDecl&gt;(decl);</div>
-<div class="line"><span class="lineno">  686</span>        alias_decl != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  687</span>        <span class="keywordflow">return</span> detail::map_type_parameter_to_template_parameter(</div>
-<div class="line"><span class="lineno">  688</span>            alias_decl, type_parameter);</div>
-<div class="line"><span class="lineno">  689</span>    }</div>
-<div class="line"><span class="lineno">  690</span> </div>
-<div class="line"><span class="lineno">  691</span>    <span class="comment">// Fallback</span></div>
-<div class="line"><span class="lineno">  692</span>    <span class="keywordflow">return</span> type_parameter;</div>
-<div class="line"><span class="lineno">  693</span>}</div>
+<p class="definition">Definition at line <a class="el" href="template__builder_8cc_source.html#l00672">672</a> of file <a class="el" href="template__builder_8cc_source.html">template_builder.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  674</span>{</div>
+<div class="line"><span class="lineno">  675</span>    <span class="keywordflow">if</span> (type_parameter.find(<span class="stringliteral">&quot;type-parameter-&quot;</span>) != 0)</div>
+<div class="line"><span class="lineno">  676</span>        <span class="keywordflow">return</span> type_parameter;</div>
+<div class="line"><span class="lineno">  677</span> </div>
+<div class="line"><span class="lineno">  678</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *template_decl =</div>
+<div class="line"><span class="lineno">  679</span>            llvm::dyn_cast&lt;clang::ClassTemplateSpecializationDecl&gt;(decl);</div>
+<div class="line"><span class="lineno">  680</span>        template_decl != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  681</span>        <span class="keywordflow">return</span> detail::map_type_parameter_to_template_parameter(</div>
+<div class="line"><span class="lineno">  682</span>            template_decl, type_parameter);</div>
+<div class="line"><span class="lineno">  683</span>    }</div>
+<div class="line"><span class="lineno">  684</span> </div>
+<div class="line"><span class="lineno">  685</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *alias_decl =</div>
+<div class="line"><span class="lineno">  686</span>            llvm::dyn_cast&lt;clang::TypeAliasTemplateDecl&gt;(decl);</div>
+<div class="line"><span class="lineno">  687</span>        alias_decl != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  688</span>        <span class="keywordflow">return</span> detail::map_type_parameter_to_template_parameter(</div>
+<div class="line"><span class="lineno">  689</span>            alias_decl, type_parameter);</div>
+<div class="line"><span class="lineno">  690</span>    }</div>
+<div class="line"><span class="lineno">  691</span> </div>
+<div class="line"><span class="lineno">  692</span>    <span class="comment">// Fallback</span></div>
+<div class="line"><span class="lineno">  693</span>    <span class="keywordflow">return</span> type_parameter;</div>
+<div class="line"><span class="lineno">  694</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
+<!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+<hr class="footer"/><address class="footer">
+    <small>
+        <span class="copyright">&#160;&#160;Copyright &copy; 2022-present <a href="https://github.com/bkryza">Bartek Kryza</a>
+        </span>
+    Generated by&#160;
+    <a href="https://www.doxygen.org/index.html">
+        <img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/>
+    </a> 1.9.7
 </small></address>
 </body>
 </html>

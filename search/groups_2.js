@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['yaml_20serialization_20emitters_0',['YAML serialization emitters',['../group__yaml__emitters.html',1,'']]]
+  ['of_20resursiveastvisitor_20methods_0',['of ResursiveASTVisitor methods',['../group__Implementation.html',1,'']]]
 ];

@@ -164,7 +164,7 @@ $(function() {
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">namespace </span><a class="code hl_enumvalue" href="namespaceclanguml_1_1common.html#ad9e84a71a64680dc9618e3dfb3fd6788ad5ae37e34fa67717c36f0e9a4e35f022">plantuml</a> {</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1package__diagram_1_1generators_1_1plantuml.html#a9fa23c03e591b43c40308a951ae9d286">   39</a></span><span class="keyword">using </span><a class="code hl_struct" href="structclanguml_1_1config_1_1package__diagram.html" title="Package diagram configuration.">diagram_config</a> = <a class="code hl_struct" href="structclanguml_1_1config_1_1package__diagram.html" title="Package diagram configuration.">clanguml::config::package_diagram</a>;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1package__diagram_1_1generators_1_1plantuml.html#a59ef196e21bf83387ca5ccb612da0303">   40</a></span><span class="keyword">using </span><a class="code hl_class" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html">diagram_model</a> = <a class="code hl_class" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html">clanguml::package_diagram::model::diagram</a>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1package__diagram_1_1generators_1_1plantuml.html#a59ef196e21bf83387ca5ccb612da0303">   40</a></span><span class="keyword">using </span><a class="code hl_class" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html" title="Package diagram model.">diagram_model</a> = <a class="code hl_class" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html" title="Package diagram model.">clanguml::package_diagram::model::diagram</a>;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> C, <span class="keyword">typename</span> D&gt;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1package__diagram_1_1generators_1_1plantuml.html#a87a6bbad0edf1022f68f8a6b7b0d900a">   43</a></span><span class="keyword">using </span><a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html" title="Base class for diagram generators.">common_generator</a> =</div>
@@ -174,34 +174,67 @@ $(function() {
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">using </span><a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1package.html" title="Diagram element representing namespace or directory package.">clanguml::common::model::package</a>;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">using </span><a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">clanguml::common::model::relationship_t</a>;</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1util.html">clanguml::util</a>;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html">   51</a></span><span class="keyword">class </span><a class="code hl_class" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html">generator</a> : <span class="keyword">public</span> <a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html" title="Base class for diagram generators.">common_generator</a>&lt;diagram_config, diagram_model&gt; {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <a class="code hl_class" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html">generator</a>(<a class="code hl_struct" href="structclanguml_1_1config_1_1package__diagram.html" title="Package diagram configuration.">diagram_config</a> &amp;config, <a class="code hl_class" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html">diagram_model</a> &amp;model);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#ad69d74ebabbfed3198fd23c4fa8e92fd">   55</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#ad69d74ebabbfed3198fd23c4fa8e92fd">generate_alias</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1package.html" title="Diagram element representing namespace or directory package.">package</a> &amp;c, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a45f65da158e15590af36ee886fa2c22f">generate_relationships</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1package.html" title="Diagram element representing namespace or directory package.">package</a> &amp;p, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a7abcbd0f8ecb26ed7076f1d3a5281a15">generate</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1package.html" title="Diagram element representing namespace or directory package.">package</a> &amp;e, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a7abcbd0f8ecb26ed7076f1d3a5281a15">generate</a>(std::ostream &amp;ostr) <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#abf2d2755f0f27e8c8003c19285d096e8">generate_groups</a>(std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">mutable</span> <a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1nested__element__stack.html">common::generators::nested_element_stack&lt;common::model::package&gt;</a></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">   67</a></span>        <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>};</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>} <span class="comment">// namespace plantuml</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>} <span class="comment">// namespace generators</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>} <span class="comment">// namespace package_diagram</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>} <span class="comment">// namespace clanguml</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment"></span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> * @brief Package diagram PlantUML generator</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html">   54</a></span><span class="keyword">class </span><a class="code hl_class" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html" title="Package diagram PlantUML generator.">generator</a> : <span class="keyword">public</span> <a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html" title="Base class for diagram generators.">common_generator</a>&lt;diagram_config, diagram_model&gt; {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <a class="code hl_class" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html" title="Package diagram PlantUML generator.">generator</a>(<a class="code hl_struct" href="structclanguml_1_1config_1_1package__diagram.html" title="Package diagram configuration.">diagram_config</a> &amp;config, <a class="code hl_class" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html" title="Package diagram model.">diagram_model</a> &amp;model);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment"></span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">     * @brief Main generator method.</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">     * This method is called first and coordinates the entire diagram</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">     * generation.</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">     * @param ostr Output stream.</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a36b8bc007630db4d4435553e4bde1c93" title="Main generator method.">generate</a>(std::ostream &amp;ostr) <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment"></span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">     * @brief Generate relationships originating from package `p`</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">     * @param p Diagram element</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">     * @param parent Output stream</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a45f65da158e15590af36ee886fa2c22f" title="Generate relationships originating from package p">generate_relationships</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1package.html" title="Diagram element representing namespace or directory package.">package</a> &amp;p, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment"></span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">     * @brief Generate diagram package element</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">     * @param p Package diagram element</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">     * @param parent Output stream</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a36b8bc007630db4d4435553e4bde1c93" title="Main generator method.">generate</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1package.html" title="Diagram element representing namespace or directory package.">package</a> &amp;e, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment"></span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">     * @brief Generate package elements grouped using `together` PlantUML tag</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#abf2d2755f0f27e8c8003c19285d096e8" title="Generate package elements grouped using together PlantUML tag.">generate_groups</a>(std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keyword">mutable</span> <a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1nested__element__stack.html">common::generators::nested_element_stack&lt;common::model::package&gt;</a></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">   93</a></span>        <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>};</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>} <span class="comment">// namespace plantuml</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>} <span class="comment">// namespace generators</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>} <span class="comment">// namespace package_diagram</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>} <span class="comment">// namespace clanguml</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+<hr class="footer"/><address class="footer">
+    <small>
+        <span class="copyright">&#160;&#160;Copyright &copy; 2022-present <a href="https://github.com/bkryza">Bartek Kryza</a>
+        </span>
+    Generated by&#160;
+    <a href="https://www.doxygen.org/index.html">
+        <img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/>
+    </a> 1.9.7
 </small></address>
 </body>
 </html>

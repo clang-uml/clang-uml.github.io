@@ -131,9 +131,14 @@ $(function() {
   <div class="headertitle"><div class="title">clanguml::decorators::decorator Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Base class for clang-uml comment tags.  
+ <a href="structclanguml_1_1decorators_1_1decorator.html#details">More...</a></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="decorators_8h_source.html#l00036">36</a> of file <a class="el" href="decorators_8h_source.html">decorators.h</a>.</p>
+<div class="textblock"><p>Base class for clang-uml comment tags. </p>
+<p>This class provides basic interface for <code>clang-uml</code> comment tags, called decorators. All decorators are added to the code using <code>uml</code> Doxygen-style tag. </p>
+
+<p class="definition">Definition at line <a class="el" href="decorators_8h_source.html#l00043">43</a> of file <a class="el" href="decorators_8h_source.html">decorators.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="decorators_8h_source.html">decorators.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -142,11 +147,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6ebb4090b53070fd0690bd656ad51e4a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1decorators_1_1decorator.html#a6ebb4090b53070fd0690bd656ad51e4a">~decorator</a> ()=default</td></tr>
 <tr class="separator:a6ebb4090b53070fd0690bd656ad51e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2253eb4691c72805ec99eaa40bc2b687"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1decorators_1_1decorator.html#a2253eb4691c72805ec99eaa40bc2b687">applies_to_diagram</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a2253eb4691c72805ec99eaa40bc2b687"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if decorator applies to a specific diagram.  <br /></td></tr>
 <tr class="separator:a2253eb4691c72805ec99eaa40bc2b687"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a7d6a56bc3e618e9a54728b3d7d1b02d1"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="structclanguml_1_1decorators_1_1decorator.html">decorator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1decorators_1_1decorator.html#a7d6a56bc3e618e9a54728b3d7d1b02d1">from_string</a> (std::string_view c)</td></tr>
+<tr class="memdesc:a7d6a56bc3e618e9a54728b3d7d1b02d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create decorator of specific type based on it's string representation.  <br /></td></tr>
 <tr class="separator:a7d6a56bc3e618e9a54728b3d7d1b02d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -202,6 +209,15 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Check if decorator applies to a specific diagram. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Name of the diagram </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True, if this decorator applies to diagram <code>name</code> </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="decorators_8cc_source.html#l00054">54</a> of file <a class="el" href="decorators_8cc_source.html">decorators.cc</a>.</p>
 <div class="fragment DoxyCode"><div class="line"><span class="lineno">   55</span>{</div>
 <div class="line"><span class="lineno">   56</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator.html#a5c5e52f7b3611c694fb7e356c9208577">diagrams</a>.empty() ||</div>
@@ -233,6 +249,15 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Create decorator of specific type based on it's string representation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Decorator string representation extracted from the comment </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Decorator instance </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="decorators_8cc_source.html#l00027">27</a> of file <a class="el" href="decorators_8cc_source.html">decorators.cc</a>.</p>
 <div class="fragment DoxyCode"><div class="line"><span class="lineno">   28</span>{</div>
@@ -337,8 +362,8 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   97</span> </div>
 <div class="line"><span class="lineno">   98</span>    pos = std::distance(c.begin(), it);</div>
 <div class="line"><span class="lineno">   99</span>    res.text = c.substr(pos, c.find(<span class="charliteral">&#39;}&#39;</span>, pos) - pos);</div>
-<div class="line"><span class="lineno">  100</span>    res.text = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e">util::trim</a>(res.text);</div>
-<div class="line"><span class="lineno">  101</span>    res.param = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e">util::trim</a>(res.param);</div>
+<div class="line"><span class="lineno">  100</span>    res.text = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e" title="Trim a string.">util::trim</a>(res.text);</div>
+<div class="line"><span class="lineno">  101</span>    res.param = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e" title="Trim a string.">util::trim</a>(res.param);</div>
 <div class="line"><span class="lineno">  102</span> </div>
 <div class="line"><span class="lineno">  103</span>    <span class="keywordflow">return</span> res;</div>
 <div class="line"><span class="lineno">  104</span>}</div>
@@ -357,8 +382,9 @@ Protected Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>List of diagram names to which a given decorator applies </p>
 
-<p class="definition">Definition at line <a class="el" href="decorators_8h_source.html#l00037">37</a> of file <a class="el" href="decorators_8h_source.html">decorators.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="decorators_8h_source.html#l00045">45</a> of file <a class="el" href="decorators_8h_source.html">decorators.h</a>.</p>
 
 </div>
 </div>
@@ -367,9 +393,16 @@ Protected Member Functions</h2></td></tr>
 <li>src/decorators/<a class="el" href="decorators_8cc_source.html">decorators.cc</a></li>
 </ul>
 </div><!-- contents -->
+<!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+<hr class="footer"/><address class="footer">
+    <small>
+        <span class="copyright">&#160;&#160;Copyright &copy; 2022-present <a href="https://github.com/bkryza">Bartek Kryza</a>
+        </span>
+    Generated by&#160;
+    <a href="https://www.doxygen.org/index.html">
+        <img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/>
+    </a> 1.9.7
 </small></address>
 </body>
 </html>
