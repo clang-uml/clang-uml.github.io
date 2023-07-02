@@ -76,7 +76,7 @@ var searchData=
   ['argument_5fhints_73',['argument_hints',['../structclanguml_1_1config_1_1relationship__hint__t.html#a02788e85836c48a7bea039fd4d87fc9e',1,'clanguml::config::relationship_hint_t']]],
   ['argument_5fprocess_5fdispatch_74',['argument_process_dispatch',['../classclanguml_1_1class__diagram_1_1visitor_1_1template__builder.html#a82d5a8844d39308caf85c3b38ca5fc8a',1,'clanguml::class_diagram::visitor::template_builder']]],
   ['as_5fis_75',['as_is',['../namespaceclanguml_1_1config.html#aa4470d989737e49f463da70d4b195ef0ab91bbd5bee662ac721bd55c847e41a5b',1,'clanguml::config']]],
-  ['assignment_76',['assignment',['../namespaceclanguml_1_1config.html#aefa47da9b10ffcc1ca7c08a9b9839f87aafb7bbeb1adca3d11f0bfb38e1f7f856',1,'clanguml::config']]],
+  ['assignment_76',['assignment',['../namespaceclanguml_1_1config.html#aefa47da9b10ffcc1ca7c08a9b9839f87aafb7bbeb1adca3d11f0bfb38e1f7f856',1,'clanguml::config::assignment'],['../namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caafb7bbeb1adca3d11f0bfb38e1f7f856',1,'clanguml::config::assignment']]],
   ['association_77',['association',['../structclanguml_1_1decorators_1_1association.html',1,'clanguml::decorators']]],
   ['ast_5fid_5fmapper_78',['ast_id_mapper',['../classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8e0a63405e69e11d50821c80c09475c0',1,'clanguml::common::visitor::ast_id_mapper::ast_id_mapper()'],['../classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html',1,'clanguml::common::visitor::ast_id_mapper']]],
   ['ast_5fid_5fmapper_2ecc_79',['ast_id_mapper.cc',['../ast__id__mapper_8cc.html',1,'']]],

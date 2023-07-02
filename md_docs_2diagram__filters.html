@@ -134,6 +134,7 @@ $(function() {
 <li><a class="el" href="md_docs_2diagram__filters.html#specializations">specializations</a></li>
 <li><a class="el" href="md_docs_2diagram__filters.html#access">access</a></li>
 <li><a class="el" href="md_docs_2diagram__filters.html#method_types">method_types</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#callee_types">callee_types</a></li>
 <li><a class="el" href="md_docs_2diagram__filters.html#dependants-and-dependencies">dependants and dependencies</a></li>
 </ul>
 <p>Diagram filters are at the core of generating diagrams with <code>clang-uml</code>, as they allow to fine tune the scope of each diagram, and thus provide you with a several small, but readable diagrams instead of a single huge diagram that cannot be effectively browsed, printed or included in an online documentation of your project.</p>
@@ -180,7 +181,9 @@ $(function() {
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>dependants</code>   </td><td class="markdownTableBodyNone">Qualified name or regex   </td><td class="markdownTableBodyNone"><code>ns1::ns2::ClassA</code>, <code>r: 'ns1::ns2::ClassA.+'</code>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>dependencies</code>   </td><td class="markdownTableBodyNone">Qualified name or regex   </td><td class="markdownTableBodyNone"><code>ns1::ns2::ClassA</code>, <code>r: 'ns1::ns2::ClassA.+'</code>   </td></tr>
+<td class="markdownTableBodyNone"><code>dependencies</code>   </td><td class="markdownTableBodyNone">Qualified name or regex   </td><td class="markdownTableBodyNone"><code>ns1::ns2::ClassA</code>, <code>r: 'ns1::ns2::ClassA.+'</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>callee_types</code>   </td><td class="markdownTableBodyNone">Callee types in sequence diagrams   </td><td class="markdownTableBodyNone"><code>constructor</code>, <code>assignment</code>, <code>operator</code>, <code>defaulted</code>, <code>static</code>, <code>method</code>, <code>function</code>, <code>function_template</code>, <code>lambda</code>   </td></tr>
 </table>
 <p>The following filters are available.</p>
 <h1><a class="anchor" id="namespaces"></a>
@@ -266,6 +269,20 @@ method_types</h1>
 <li>static</li>
 </ul>
 <p>This filter is independent of the <code>access</code> filter, which controls which methods are included based on access scope (e.g. <code>public</code>).</p>
+<h1><a class="anchor" id="callee_types"></a>
+callee_types</h1>
+<p>This filter is specific for <code>sequence diagrams</code> and allows to control which types calls should be included/excluded from the diagram. In a sequence diagram, a <code>callee</code> is the receiver of a message, and this filter specifies which types of receivers should match.</p>
+<p>The following callee types are supported:</p><ul>
+<li>constructor</li>
+<li>assignment</li>
+<li>operator</li>
+<li>defaulted</li>
+<li>static</li>
+<li>method</li>
+<li>function</li>
+<li>function_template</li>
+<li>lambda</li>
+</ul>
 <h1><a class="anchor" id="dependants-and-dependencies"></a>
 dependants and dependencies</h1>
 <p>These filters allow to specify that only dependants or dependencies of a given class should be included in the diagram. This can be useful for analyzing what classes in your project depend on some other class, which could have impact for instance on refactoring.</p>
