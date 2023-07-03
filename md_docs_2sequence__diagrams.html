@@ -128,6 +128,7 @@ $(function() {
 <li><a class="el" href="md_docs_2sequence__diagrams.html#grouping-free-functions-by-file">Grouping free functions by file</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#lambda-expressions-in-sequence-diagrams">Lambda expressions in sequence diagrams</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#customizing-participants-order">Customizing participants order</a></li>
+<li><a class="el" href="md_docs_2sequence__diagrams.html#generating-return-types">Generating return types</a></li>
 </ul>
 <p>The minimal config required to generate a sequence diagram is presented below: </p><div class="fragment language-yaml"><div class="line"># Path to the directory where `compile_commands.json` can be found</div>
 <div class="line">compilation_database_dir: _build</div>
@@ -317,7 +318,13 @@ Customizing participants order</h1>
 <div class="line">      - clanguml::t20029::Retrier&lt;clanguml::t20029::ConnectionPool&gt;</div>
 <div class="line">      - clanguml::t20029::ConnectionPool</div>
 <div class="line">      - clanguml::t20029::encode_b64(std::string &amp;&amp;)</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- fragment --><h1><a class="anchor" id="generating-return-types"></a>
+Generating return types</h1>
+<p>By default, return messages do not contain the return type information from the function or method. Instead, if the result is void there is no return arrow from the activity representing the function body.</p>
+<p>It is however possible to enable rendering of return types, by adding the following configuration option:</p>
+<div class="fragment language-yaml"><div class="line">generate_return_types: true</div>
+</div><!-- fragment --><p>This option only affects the <code>plantuml</code> generation, in <code>json</code> generator <code>return_type</code> property is always present in the message nodes. </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

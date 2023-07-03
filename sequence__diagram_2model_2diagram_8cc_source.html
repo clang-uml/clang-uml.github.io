@@ -439,26 +439,36 @@ $(function() {
 <div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>                assert(block_nest_level &gt;= 0);</div>
 <div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>            }</div>
 <div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>            <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>                block_message_stack.back().push_back(m);</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>            }</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>        }</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span> </div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>        act.messages().clear();</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span> </div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;m : block_message_stack[0]) {</div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>            act.add_message(m);</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>        }</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    }</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>}</div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>} <span class="comment">// namespace clanguml::sequence_diagram::model</span></div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span> </div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1common_1_1model.html">clanguml::common::model</a> {</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common_1_1model.html#afb4b02b1e246f5b3c78dc1b96af80eb2">  330</a></span><span class="keywordtype">bool</span> check_diagram_type&lt;clanguml::sequence_diagram::model::diagram&gt;(<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">diagram_t</a> t)</div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>{</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    <span class="keywordflow">return</span> t == diagram_t::kSequence;</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>}</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>}</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>                <span class="keywordflow">if</span> (m.type() == message_t::kCall) {</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>                    <span class="comment">// Set the message return type based on the callee return</span></div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>                    <span class="comment">// type</span></div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>                    <span class="keyword">auto</span> to_participant =</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>                        get_participant&lt;sequence_diagram::model::function&gt;(</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>                            m.to());</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>                    <span class="keywordflow">if</span> (to_participant.has_value()) {</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>                        m.set_return_type(to_participant.value().return_type());</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>                    }</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>                }</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>                block_message_stack.back().push_back(m);</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>            }</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        }</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        act.messages().clear();</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;m : block_message_stack[0]) {</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>            act.add_message(m);</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        }</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    }</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>}</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>} <span class="comment">// namespace clanguml::sequence_diagram::model</span></div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span> </div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1common_1_1model.html">clanguml::common::model</a> {</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common_1_1model.html#afb4b02b1e246f5b3c78dc1b96af80eb2">  340</a></span><span class="keywordtype">bool</span> check_diagram_type&lt;clanguml::sequence_diagram::model::diagram&gt;(<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">diagram_t</a> t)</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>{</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>    <span class="keywordflow">return</span> t == diagram_t::kSequence;</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>}</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

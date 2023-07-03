@@ -774,17 +774,27 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  312</span>                assert(block_nest_level &gt;= 0);</div>
 <div class="line"><span class="lineno">  313</span>            }</div>
 <div class="line"><span class="lineno">  314</span>            <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  315</span>                block_message_stack.back().push_back(m);</div>
-<div class="line"><span class="lineno">  316</span>            }</div>
-<div class="line"><span class="lineno">  317</span>        }</div>
-<div class="line"><span class="lineno">  318</span> </div>
-<div class="line"><span class="lineno">  319</span>        act.messages().clear();</div>
-<div class="line"><span class="lineno">  320</span> </div>
-<div class="line"><span class="lineno">  321</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;m : block_message_stack[0]) {</div>
-<div class="line"><span class="lineno">  322</span>            act.add_message(m);</div>
-<div class="line"><span class="lineno">  323</span>        }</div>
-<div class="line"><span class="lineno">  324</span>    }</div>
-<div class="line"><span class="lineno">  325</span>}</div>
+<div class="line"><span class="lineno">  315</span>                <span class="keywordflow">if</span> (m.type() == message_t::kCall) {</div>
+<div class="line"><span class="lineno">  316</span>                    <span class="comment">// Set the message return type based on the callee return</span></div>
+<div class="line"><span class="lineno">  317</span>                    <span class="comment">// type</span></div>
+<div class="line"><span class="lineno">  318</span>                    <span class="keyword">auto</span> to_participant =</div>
+<div class="line"><span class="lineno">  319</span>                        get_participant&lt;sequence_diagram::model::function&gt;(</div>
+<div class="line"><span class="lineno">  320</span>                            m.to());</div>
+<div class="line"><span class="lineno">  321</span>                    <span class="keywordflow">if</span> (to_participant.has_value()) {</div>
+<div class="line"><span class="lineno">  322</span>                        m.set_return_type(to_participant.value().return_type());</div>
+<div class="line"><span class="lineno">  323</span>                    }</div>
+<div class="line"><span class="lineno">  324</span>                }</div>
+<div class="line"><span class="lineno">  325</span>                block_message_stack.back().push_back(m);</div>
+<div class="line"><span class="lineno">  326</span>            }</div>
+<div class="line"><span class="lineno">  327</span>        }</div>
+<div class="line"><span class="lineno">  328</span> </div>
+<div class="line"><span class="lineno">  329</span>        act.messages().clear();</div>
+<div class="line"><span class="lineno">  330</span> </div>
+<div class="line"><span class="lineno">  331</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;m : block_message_stack[0]) {</div>
+<div class="line"><span class="lineno">  332</span>            act.add_message(m);</div>
+<div class="line"><span class="lineno">  333</span>        }</div>
+<div class="line"><span class="lineno">  334</span>    }</div>
+<div class="line"><span class="lineno">  335</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

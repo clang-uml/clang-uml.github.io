@@ -139,7 +139,7 @@ $(function() {
 <p> <embed src="config_context_class.svg"/> </p>
 <p>The configuration file is loaded by invoking </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="namespaceclanguml_1_1config.html#a9898f03d87128a08398affd1f23d7485" title="Load and parse .clang-uml configuration file.">clanguml::config::load()</a> <a class="el" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">function</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00563">563</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00564">564</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="config_8h_source.html">config.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -212,6 +212,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ad75d03a8da88603f5f1941bfa44c7b69 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3167a25446d14c6c53316b03000d7721 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a3167a25446d14c6c53316b03000d7721">combine_free_functions_into_file_participants</a></td></tr>
 <tr class="separator:a3167a25446d14c6c53316b03000d7721 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89221b422852b721cf14b7493e3251b6 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a89221b422852b721cf14b7493e3251b6">generate_return_types</a> {&quot;generate_return_types&quot;, false}</td></tr>
+<tr class="separator:a89221b422852b721cf14b7493e3251b6 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92cc46a5b1b9376e0431898a33748ddc inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; std::vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a92cc46a5b1b9376e0431898a33748ddc">participants_order</a> {&quot;participants_order&quot;}</td></tr>
 <tr class="separator:a92cc46a5b1b9376e0431898a33748ddc inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f016307af2cb28657eed26b340f245b inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a1f016307af2cb28657eed26b340f245b">debug_mode</a> {&quot;debug_mode&quot;, false}</td></tr>
@@ -236,19 +238,19 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Initialize predefined diagram templates. </p>
 
-<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00801">801</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  802</span>{</div>
-<div class="line"><span class="lineno">  803</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;predefined_templates_str = <a class="code hl_function" href="namespaceclanguml_1_1config.html#a5918bafd14666c59998d0c83dbea5483" title="Return YAML with predefined diagram templates.">get_predefined_diagram_templates</a>();</div>
-<div class="line"><span class="lineno">  804</span> </div>
-<div class="line"><span class="lineno">  805</span>    YAML::Node predefined_templates = YAML::Load(predefined_templates_str);</div>
-<div class="line"><span class="lineno">  806</span> </div>
-<div class="line"><span class="lineno">  807</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a862534e1ce2a40ecac3aba700e53349f">diagram_templates</a>) {</div>
-<div class="line"><span class="lineno">  808</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a862534e1ce2a40ecac3aba700e53349f">diagram_templates</a>.set({});</div>
-<div class="line"><span class="lineno">  809</span>    }</div>
-<div class="line"><span class="lineno">  810</span> </div>
-<div class="line"><span class="lineno">  811</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a862534e1ce2a40ecac3aba700e53349f">diagram_templates</a>().merge(</div>
-<div class="line"><span class="lineno">  812</span>        predefined_templates.as&lt;std::map&lt;std::string, diagram_template&gt;&gt;());</div>
-<div class="line"><span class="lineno">  813</span>}</div>
+<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00806">806</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  807</span>{</div>
+<div class="line"><span class="lineno">  808</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;predefined_templates_str = <a class="code hl_function" href="namespaceclanguml_1_1config.html#a5918bafd14666c59998d0c83dbea5483" title="Return YAML with predefined diagram templates.">get_predefined_diagram_templates</a>();</div>
+<div class="line"><span class="lineno">  809</span> </div>
+<div class="line"><span class="lineno">  810</span>    YAML::Node predefined_templates = YAML::Load(predefined_templates_str);</div>
+<div class="line"><span class="lineno">  811</span> </div>
+<div class="line"><span class="lineno">  812</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a862534e1ce2a40ecac3aba700e53349f">diagram_templates</a>) {</div>
+<div class="line"><span class="lineno">  813</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a862534e1ce2a40ecac3aba700e53349f">diagram_templates</a>.set({});</div>
+<div class="line"><span class="lineno">  814</span>    }</div>
+<div class="line"><span class="lineno">  815</span> </div>
+<div class="line"><span class="lineno">  816</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a862534e1ce2a40ecac3aba700e53349f">diagram_templates</a>().merge(</div>
+<div class="line"><span class="lineno">  817</span>        predefined_templates.as&lt;std::map&lt;std::string, diagram_template&gt;&gt;());</div>
+<div class="line"><span class="lineno">  818</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -266,7 +268,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>List of compilation flags to be injected into the compilation commands from database </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00571">571</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00572">572</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -285,7 +287,7 @@ Public Attributes</h2></td></tr>
 <div class="line">        <span class="stringliteral">&quot;compilation_database_dir&quot;</span>, <span class="stringliteral">&quot;.&quot;</span>}</div>
 </div><!-- fragment --><p>Path to the directory containing compile_commands.json </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00565">565</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00566">566</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -304,7 +306,7 @@ Public Attributes</h2></td></tr>
 <div class="line">        <span class="stringliteral">&quot;diagram_templates&quot;</span>}</div>
 </div><!-- fragment --><p>Dictionary of user defined diagram templates, if any </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00590">590</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00591">591</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -321,7 +323,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Dictionary of diagrams, keys represent diagram names </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00594">594</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00595">595</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -338,7 +340,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Diagrams output directory </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00587">587</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00588">588</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -355,7 +357,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Extract include paths by executing specified compiler driver. When the value is &lsquo;&rsquo;`, the command specified in compile_commands.json will be used. Otherwise the provided value will be treated as compiler executable (e.g. clang++-15) and executed. </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00584">584</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00585">585</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -374,7 +376,7 @@ Public Attributes</h2></td></tr>
 <div class="line">        <span class="stringliteral">&quot;remove_compile_flags&quot;</span>}</div>
 </div><!-- fragment --><p>List of compilation flags to be removed from the compilation commands from database </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00576">576</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00577">577</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
