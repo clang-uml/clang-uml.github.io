@@ -137,7 +137,7 @@ $(function() {
 <p>This class provides common interface for diagram configuration sections of different diagram types.</p>
 <p> <embed src="diagram_config_hierarchy_class.svg"/>  </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00466">466</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00468">468</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="config_8h_source.html">config.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -216,6 +216,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a3167a25446d14c6c53316b03000d7721 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89221b422852b721cf14b7493e3251b6 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a89221b422852b721cf14b7493e3251b6">generate_return_types</a> {&quot;generate_return_types&quot;, false}</td></tr>
 <tr class="separator:a89221b422852b721cf14b7493e3251b6 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f99acf6a307527245ec3dc0520f8046 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a2f99acf6a307527245ec3dc0520f8046">generate_condition_statements</a></td></tr>
+<tr class="separator:a2f99acf6a307527245ec3dc0520f8046 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92cc46a5b1b9376e0431898a33748ddc inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; std::vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a92cc46a5b1b9376e0431898a33748ddc">participants_order</a> {&quot;participants_order&quot;}</td></tr>
 <tr class="separator:a92cc46a5b1b9376e0431898a33748ddc inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f016307af2cb28657eed26b340f245b inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a1f016307af2cb28657eed26b340f245b">debug_mode</a> {&quot;debug_mode&quot;, false}</td></tr>
@@ -266,29 +268,29 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00224">224</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  226</span>{</div>
-<div class="line"><span class="lineno">  227</span>    <span class="keyword">const</span> <span class="keyword">auto</span> relative_name = <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a6cabfc23ebde9c79d5f413fce219ec54">using_namespace</a>().relative(full_name);</div>
-<div class="line"><span class="lineno">  228</span> </div>
-<div class="line"><span class="lineno">  229</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[hint_target, hints] : <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a3aa235827b13259498d62998e5601019">layout</a>()) {</div>
-<div class="line"><span class="lineno">  230</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;hint : hints) {</div>
-<div class="line"><span class="lineno">  231</span>            <span class="keywordflow">if</span> (hint.hint == <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892adb3f3946ba271882d8c74cdbf3d5179a">hint_t::together</a>) {</div>
-<div class="line"><span class="lineno">  232</span>                <span class="keyword">const</span> <span class="keyword">auto</span> &amp;together_others =</div>
-<div class="line"><span class="lineno">  233</span>                    std::get&lt;std::vector&lt;std::string&gt;&gt;(hint.entity);</div>
-<div class="line"><span class="lineno">  234</span> </div>
-<div class="line"><span class="lineno">  235</span>                <span class="keywordflow">if</span> ((full_name == hint_target) ||</div>
-<div class="line"><span class="lineno">  236</span>                    <a class="code hl_function" href="namespaceclanguml_1_1util.html#a3846efe63ca7c81994f57ae243eb496a">util::contains</a>(together_others, full_name))</div>
-<div class="line"><span class="lineno">  237</span>                    <span class="keywordflow">return</span> hint_target;</div>
-<div class="line"><span class="lineno">  238</span> </div>
-<div class="line"><span class="lineno">  239</span>                <span class="keywordflow">if</span> ((relative_name == hint_target) ||</div>
-<div class="line"><span class="lineno">  240</span>                    <a class="code hl_function" href="namespaceclanguml_1_1util.html#a3846efe63ca7c81994f57ae243eb496a">util::contains</a>(together_others, relative_name))</div>
-<div class="line"><span class="lineno">  241</span>                    <span class="keywordflow">return</span> hint_target;</div>
-<div class="line"><span class="lineno">  242</span>            }</div>
-<div class="line"><span class="lineno">  243</span>        }</div>
-<div class="line"><span class="lineno">  244</span>    }</div>
-<div class="line"><span class="lineno">  245</span> </div>
-<div class="line"><span class="lineno">  246</span>    <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><span class="lineno">  247</span>}</div>
+<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00226">226</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  228</span>{</div>
+<div class="line"><span class="lineno">  229</span>    <span class="keyword">const</span> <span class="keyword">auto</span> relative_name = <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a6cabfc23ebde9c79d5f413fce219ec54">using_namespace</a>().relative(full_name);</div>
+<div class="line"><span class="lineno">  230</span> </div>
+<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[hint_target, hints] : <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a3aa235827b13259498d62998e5601019">layout</a>()) {</div>
+<div class="line"><span class="lineno">  232</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;hint : hints) {</div>
+<div class="line"><span class="lineno">  233</span>            <span class="keywordflow">if</span> (hint.hint == <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892adb3f3946ba271882d8c74cdbf3d5179a">hint_t::together</a>) {</div>
+<div class="line"><span class="lineno">  234</span>                <span class="keyword">const</span> <span class="keyword">auto</span> &amp;together_others =</div>
+<div class="line"><span class="lineno">  235</span>                    std::get&lt;std::vector&lt;std::string&gt;&gt;(hint.entity);</div>
+<div class="line"><span class="lineno">  236</span> </div>
+<div class="line"><span class="lineno">  237</span>                <span class="keywordflow">if</span> ((full_name == hint_target) ||</div>
+<div class="line"><span class="lineno">  238</span>                    <a class="code hl_function" href="namespaceclanguml_1_1util.html#a3846efe63ca7c81994f57ae243eb496a">util::contains</a>(together_others, full_name))</div>
+<div class="line"><span class="lineno">  239</span>                    <span class="keywordflow">return</span> hint_target;</div>
+<div class="line"><span class="lineno">  240</span> </div>
+<div class="line"><span class="lineno">  241</span>                <span class="keywordflow">if</span> ((relative_name == hint_target) ||</div>
+<div class="line"><span class="lineno">  242</span>                    <a class="code hl_function" href="namespaceclanguml_1_1util.html#a3846efe63ca7c81994f57ae243eb496a">util::contains</a>(together_others, relative_name))</div>
+<div class="line"><span class="lineno">  243</span>                    <span class="keywordflow">return</span> hint_target;</div>
+<div class="line"><span class="lineno">  244</span>            }</div>
+<div class="line"><span class="lineno">  245</span>        }</div>
+<div class="line"><span class="lineno">  246</span>    }</div>
+<div class="line"><span class="lineno">  247</span> </div>
+<div class="line"><span class="lineno">  248</span>    <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><span class="lineno">  249</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -310,30 +312,30 @@ Public Attributes</h2></td></tr>
 <p>Returns list of translation unit paths. </p>
 <dl class="section return"><dt>Returns</dt><dd>List of translation unit paths </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00188">188</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  189</span>{</div>
-<div class="line"><span class="lineno">  190</span>    std::vector&lt;std::string&gt; translation_units{};</div>
-<div class="line"><span class="lineno">  191</span> </div>
-<div class="line"><span class="lineno">  192</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Looking for translation units in {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  193</span>        std::filesystem::current_path().<span class="keywordtype">string</span>());</div>
-<div class="line"><span class="lineno">  194</span> </div>
-<div class="line"><span class="lineno">  195</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;g : <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ac54db8cfd5ef06c9963f2158f0494cf0">glob</a>()) {</div>
-<div class="line"><span class="lineno">  196</span>        std::string glob_path =</div>
-<div class="line"><span class="lineno">  197</span>            fmt::format(<span class="stringliteral">&quot;{}/{}&quot;</span>, <a class="code hl_function" href="structclanguml_1_1config_1_1diagram.html#a016e53083be67629dda6ad6c6bf47323" title="Returns absolute path of the relative_to option.">root_directory</a>().<span class="keywordtype">string</span>(), g.c_str());</div>
-<div class="line"><span class="lineno">  198</span> </div>
-<div class="line"><span class="lineno">  199</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Searching glob path {}&quot;</span>, glob_path);</div>
+<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00190">190</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  191</span>{</div>
+<div class="line"><span class="lineno">  192</span>    std::vector&lt;std::string&gt; translation_units{};</div>
+<div class="line"><span class="lineno">  193</span> </div>
+<div class="line"><span class="lineno">  194</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Looking for translation units in {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  195</span>        std::filesystem::current_path().<span class="keywordtype">string</span>());</div>
+<div class="line"><span class="lineno">  196</span> </div>
+<div class="line"><span class="lineno">  197</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;g : <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ac54db8cfd5ef06c9963f2158f0494cf0">glob</a>()) {</div>
+<div class="line"><span class="lineno">  198</span>        std::string glob_path =</div>
+<div class="line"><span class="lineno">  199</span>            fmt::format(<span class="stringliteral">&quot;{}/{}&quot;</span>, <a class="code hl_function" href="structclanguml_1_1config_1_1diagram.html#a016e53083be67629dda6ad6c6bf47323" title="Returns absolute path of the relative_to option.">root_directory</a>().<span class="keywordtype">string</span>(), g.c_str());</div>
 <div class="line"><span class="lineno">  200</span> </div>
-<div class="line"><span class="lineno">  201</span>        <span class="keyword">auto</span> matches = glob::glob(glob_path, <span class="keyword">true</span>, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  201</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Searching glob path {}&quot;</span>, glob_path);</div>
 <div class="line"><span class="lineno">  202</span> </div>
-<div class="line"><span class="lineno">  203</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;match : matches) {</div>
-<div class="line"><span class="lineno">  204</span>            <span class="keyword">const</span> <span class="keyword">auto</span> path =</div>
-<div class="line"><span class="lineno">  205</span>                std::filesystem::canonical(<a class="code hl_function" href="structclanguml_1_1config_1_1diagram.html#a016e53083be67629dda6ad6c6bf47323" title="Returns absolute path of the relative_to option.">root_directory</a>() / match);</div>
-<div class="line"><span class="lineno">  206</span>            translation_units.emplace_back(path.string());</div>
-<div class="line"><span class="lineno">  207</span>        }</div>
-<div class="line"><span class="lineno">  208</span>    }</div>
-<div class="line"><span class="lineno">  209</span> </div>
-<div class="line"><span class="lineno">  210</span>    <span class="keywordflow">return</span> translation_units;</div>
-<div class="line"><span class="lineno">  211</span>}</div>
+<div class="line"><span class="lineno">  203</span>        <span class="keyword">auto</span> matches = glob::glob(glob_path, <span class="keyword">true</span>, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;match : matches) {</div>
+<div class="line"><span class="lineno">  206</span>            <span class="keyword">const</span> <span class="keyword">auto</span> path =</div>
+<div class="line"><span class="lineno">  207</span>                std::filesystem::canonical(<a class="code hl_function" href="structclanguml_1_1config_1_1diagram.html#a016e53083be67629dda6ad6c6bf47323" title="Returns absolute path of the relative_to option.">root_directory</a>() / match);</div>
+<div class="line"><span class="lineno">  208</span>            translation_units.emplace_back(path.string());</div>
+<div class="line"><span class="lineno">  209</span>        }</div>
+<div class="line"><span class="lineno">  210</span>    }</div>
+<div class="line"><span class="lineno">  211</span> </div>
+<div class="line"><span class="lineno">  212</span>    <span class="keywordflow">return</span> translation_units;</div>
+<div class="line"><span class="lineno">  213</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -355,42 +357,42 @@ Public Attributes</h2></td></tr>
 <p>Initialize predefined set of C++ type aliases. </p>
 <p>This method is responsible for setting up a predefined set of C++ aliases to make the diagrams look nicer, for instance we want to have <code>std::string</code> instead of <code>std::basic_string&lt;char&gt;</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00249">249</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  250</span>{</div>
-<div class="line"><span class="lineno">  251</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::basic_string&lt;char&gt;&quot;</span>) == 0U) {</div>
-<div class="line"><span class="lineno">  252</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert({<span class="stringliteral">&quot;std::basic_string&lt;char&gt;&quot;</span>, <span class="stringliteral">&quot;std::string&quot;</span>});</div>
-<div class="line"><span class="lineno">  253</span>    }</div>
-<div class="line"><span class="lineno">  254</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::basic_string&lt;char,std::char_traits&lt;&quot;</span></div>
-<div class="line"><span class="lineno">  255</span>                             <span class="stringliteral">&quot;char&gt;,std::allocator&lt;char&gt;&gt;&quot;</span>) == 0U) {</div>
-<div class="line"><span class="lineno">  256</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert({<span class="stringliteral">&quot;std::basic_string&lt;char,std::char_traits&lt;&quot;</span></div>
-<div class="line"><span class="lineno">  257</span>                               <span class="stringliteral">&quot;char&gt;,std::allocator&lt;char&gt;&gt;&quot;</span>,</div>
-<div class="line"><span class="lineno">  258</span>            <span class="stringliteral">&quot;std::string&quot;</span>});</div>
-<div class="line"><span class="lineno">  259</span>    }</div>
-<div class="line"><span class="lineno">  260</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::basic_string&lt;wchar_t&gt;&quot;</span>) == 0U) {</div>
-<div class="line"><span class="lineno">  261</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert({<span class="stringliteral">&quot;std::basic_string&lt;wchar_t&gt;&quot;</span>, <span class="stringliteral">&quot;std::wstring&quot;</span>});</div>
-<div class="line"><span class="lineno">  262</span>    }</div>
-<div class="line"><span class="lineno">  263</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::basic_string&lt;char16_t&gt;&quot;</span>) == 0U) {</div>
-<div class="line"><span class="lineno">  264</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert(</div>
-<div class="line"><span class="lineno">  265</span>            {<span class="stringliteral">&quot;std::basic_string&lt;char16_t&gt;&quot;</span>, <span class="stringliteral">&quot;std::u16string&quot;</span>});</div>
-<div class="line"><span class="lineno">  266</span>    }</div>
-<div class="line"><span class="lineno">  267</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::basic_string&lt;char32_t&gt;&quot;</span>) == 0U) {</div>
-<div class="line"><span class="lineno">  268</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert(</div>
-<div class="line"><span class="lineno">  269</span>            {<span class="stringliteral">&quot;std::basic_string&lt;char32_t&gt;&quot;</span>, <span class="stringliteral">&quot;std::u32string&quot;</span>});</div>
-<div class="line"><span class="lineno">  270</span>    }</div>
-<div class="line"><span class="lineno">  271</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::integral_constant&lt;bool,true&gt;&quot;</span>) == 0U) {</div>
-<div class="line"><span class="lineno">  272</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert(</div>
-<div class="line"><span class="lineno">  273</span>            {<span class="stringliteral">&quot;std::integral_constant&lt;bool,true&gt;&quot;</span>, <span class="stringliteral">&quot;std::true_type&quot;</span>});</div>
-<div class="line"><span class="lineno">  274</span>    }</div>
-<div class="line"><span class="lineno">  275</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::integral_constant&lt;bool,false&gt;&quot;</span>) == 0U) {</div>
-<div class="line"><span class="lineno">  276</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert(</div>
-<div class="line"><span class="lineno">  277</span>            {<span class="stringliteral">&quot;std::integral_constant&lt;bool,false&gt;&quot;</span>, <span class="stringliteral">&quot;std::false_type&quot;</span>});</div>
-<div class="line"><span class="lineno">  278</span>    }</div>
-<div class="line"><span class="lineno">  279</span><span class="preprocessor">#if LLVM_VERSION_MAJOR &gt;= 16</span></div>
-<div class="line"><span class="lineno">  280</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::basic_string&quot;</span>) == 0U) {</div>
-<div class="line"><span class="lineno">  281</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert({<span class="stringliteral">&quot;std::basic_string&quot;</span>, <span class="stringliteral">&quot;std::string&quot;</span>});</div>
-<div class="line"><span class="lineno">  282</span>    }</div>
-<div class="line"><span class="lineno">  283</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  284</span>}</div>
+<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00251">251</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  252</span>{</div>
+<div class="line"><span class="lineno">  253</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::basic_string&lt;char&gt;&quot;</span>) == 0U) {</div>
+<div class="line"><span class="lineno">  254</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert({<span class="stringliteral">&quot;std::basic_string&lt;char&gt;&quot;</span>, <span class="stringliteral">&quot;std::string&quot;</span>});</div>
+<div class="line"><span class="lineno">  255</span>    }</div>
+<div class="line"><span class="lineno">  256</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::basic_string&lt;char,std::char_traits&lt;&quot;</span></div>
+<div class="line"><span class="lineno">  257</span>                             <span class="stringliteral">&quot;char&gt;,std::allocator&lt;char&gt;&gt;&quot;</span>) == 0U) {</div>
+<div class="line"><span class="lineno">  258</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert({<span class="stringliteral">&quot;std::basic_string&lt;char,std::char_traits&lt;&quot;</span></div>
+<div class="line"><span class="lineno">  259</span>                               <span class="stringliteral">&quot;char&gt;,std::allocator&lt;char&gt;&gt;&quot;</span>,</div>
+<div class="line"><span class="lineno">  260</span>            <span class="stringliteral">&quot;std::string&quot;</span>});</div>
+<div class="line"><span class="lineno">  261</span>    }</div>
+<div class="line"><span class="lineno">  262</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::basic_string&lt;wchar_t&gt;&quot;</span>) == 0U) {</div>
+<div class="line"><span class="lineno">  263</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert({<span class="stringliteral">&quot;std::basic_string&lt;wchar_t&gt;&quot;</span>, <span class="stringliteral">&quot;std::wstring&quot;</span>});</div>
+<div class="line"><span class="lineno">  264</span>    }</div>
+<div class="line"><span class="lineno">  265</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::basic_string&lt;char16_t&gt;&quot;</span>) == 0U) {</div>
+<div class="line"><span class="lineno">  266</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert(</div>
+<div class="line"><span class="lineno">  267</span>            {<span class="stringliteral">&quot;std::basic_string&lt;char16_t&gt;&quot;</span>, <span class="stringliteral">&quot;std::u16string&quot;</span>});</div>
+<div class="line"><span class="lineno">  268</span>    }</div>
+<div class="line"><span class="lineno">  269</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::basic_string&lt;char32_t&gt;&quot;</span>) == 0U) {</div>
+<div class="line"><span class="lineno">  270</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert(</div>
+<div class="line"><span class="lineno">  271</span>            {<span class="stringliteral">&quot;std::basic_string&lt;char32_t&gt;&quot;</span>, <span class="stringliteral">&quot;std::u32string&quot;</span>});</div>
+<div class="line"><span class="lineno">  272</span>    }</div>
+<div class="line"><span class="lineno">  273</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::integral_constant&lt;bool,true&gt;&quot;</span>) == 0U) {</div>
+<div class="line"><span class="lineno">  274</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert(</div>
+<div class="line"><span class="lineno">  275</span>            {<span class="stringliteral">&quot;std::integral_constant&lt;bool,true&gt;&quot;</span>, <span class="stringliteral">&quot;std::true_type&quot;</span>});</div>
+<div class="line"><span class="lineno">  276</span>    }</div>
+<div class="line"><span class="lineno">  277</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::integral_constant&lt;bool,false&gt;&quot;</span>) == 0U) {</div>
+<div class="line"><span class="lineno">  278</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert(</div>
+<div class="line"><span class="lineno">  279</span>            {<span class="stringliteral">&quot;std::integral_constant&lt;bool,false&gt;&quot;</span>, <span class="stringliteral">&quot;std::false_type&quot;</span>});</div>
+<div class="line"><span class="lineno">  280</span>    }</div>
+<div class="line"><span class="lineno">  281</span><span class="preprocessor">#if LLVM_VERSION_MAJOR &gt;= 16</span></div>
+<div class="line"><span class="lineno">  282</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().count(<span class="stringliteral">&quot;std::basic_string&quot;</span>) == 0U) {</div>
+<div class="line"><span class="lineno">  283</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().insert({<span class="stringliteral">&quot;std::basic_string&quot;</span>, <span class="stringliteral">&quot;std::string&quot;</span>});</div>
+<div class="line"><span class="lineno">  284</span>    }</div>
+<div class="line"><span class="lineno">  285</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  286</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -419,10 +421,10 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Relative path </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00218">218</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  220</span>{</div>
-<div class="line"><span class="lineno">  221</span>    <span class="keywordflow">return</span> relative(p, <a class="code hl_function" href="structclanguml_1_1config_1_1diagram.html#a016e53083be67629dda6ad6c6bf47323" title="Returns absolute path of the relative_to option.">root_directory</a>()).lexically_normal().string();</div>
-<div class="line"><span class="lineno">  222</span>}</div>
+<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00220">220</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  222</span>{</div>
+<div class="line"><span class="lineno">  223</span>    <span class="keywordflow">return</span> relative(p, <a class="code hl_function" href="structclanguml_1_1config_1_1diagram.html#a016e53083be67629dda6ad6c6bf47323" title="Returns absolute path of the relative_to option.">root_directory</a>()).lexically_normal().string();</div>
+<div class="line"><span class="lineno">  224</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -444,10 +446,10 @@ Public Attributes</h2></td></tr>
 <p>Returns absolute path of the <code>relative_to</code> option. </p>
 <dl class="section return"><dt>Returns</dt><dd>Absolute path of <code>relative_to</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00213">213</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  214</span>{</div>
-<div class="line"><span class="lineno">  215</span>    <span class="keywordflow">return</span> canonical(absolute(<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#aa5d898b7149f33468901ebd04ca1e00a">base_directory</a>() / <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#aa2bbc9923b17e697e97a4224499a2899">relative_to</a>()));</div>
-<div class="line"><span class="lineno">  216</span>}</div>
+<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00215">215</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  216</span>{</div>
+<div class="line"><span class="lineno">  217</span>    <span class="keywordflow">return</span> canonical(absolute(<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#aa5d898b7149f33468901ebd04ca1e00a">base_directory</a>() / <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#aa2bbc9923b17e697e97a4224499a2899">relative_to</a>()));</div>
+<div class="line"><span class="lineno">  218</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -491,7 +493,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00506">506</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00508">508</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>

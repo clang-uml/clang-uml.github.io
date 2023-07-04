@@ -950,64 +950,74 @@ Private Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="call__expression__context_8cc_source.html#l00306">306</a> of file <a class="el" href="call__expression__context_8cc_source.html">call_expression_context.cc</a>.</p>
 <div class="fragment DoxyCode"><div class="line"><span class="lineno">  308</span>{</div>
 <div class="line"><span class="lineno">  309</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a7d4c993ce97d580c580349062dcc4936" title="Get current if statement block.">current_ifstmt</a>() != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  310</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a7d4c993ce97d580c580349062dcc4936" title="Get current if statement block.">current_ifstmt</a>()-&gt;getCond(), stmt)) {</div>
+<div class="line"><span class="lineno">  310</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a7d4c993ce97d580c580349062dcc4936" title="Get current if statement block.">current_ifstmt</a>()-&gt;getCond(), stmt))</div>
 <div class="line"><span class="lineno">  311</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  312</span>        }</div>
-<div class="line"><span class="lineno">  313</span>    }</div>
-<div class="line"><span class="lineno">  314</span> </div>
-<div class="line"><span class="lineno">  315</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a4b1d6f6022eb8e58d2898ebf07588cba" title="Get current else if statement block.">current_elseifstmt</a>() != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  316</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a4b1d6f6022eb8e58d2898ebf07588cba" title="Get current else if statement block.">current_elseifstmt</a>()-&gt;getCond(), stmt)) {</div>
-<div class="line"><span class="lineno">  317</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  318</span>        }</div>
-<div class="line"><span class="lineno">  319</span>    }</div>
-<div class="line"><span class="lineno">  320</span> </div>
-<div class="line"><span class="lineno">  321</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *loop_stmt = <a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a2f7139641908d84f2346234bf3bb5719" title="Get current loop statement block.">current_loopstmt</a>(); loop_stmt != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  322</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *for_stmt = clang::dyn_cast&lt;clang::ForStmt&gt;(loop_stmt);</div>
-<div class="line"><span class="lineno">  323</span>            for_stmt != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  324</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(for_stmt-&gt;getCond(), stmt)) {</div>
-<div class="line"><span class="lineno">  325</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  326</span>            }</div>
-<div class="line"><span class="lineno">  327</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(for_stmt-&gt;getInit(), stmt)) {</div>
-<div class="line"><span class="lineno">  328</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  329</span>            }</div>
-<div class="line"><span class="lineno">  330</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(for_stmt-&gt;getInc(), stmt)) {</div>
-<div class="line"><span class="lineno">  331</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  332</span>            }</div>
-<div class="line"><span class="lineno">  333</span>        }</div>
-<div class="line"><span class="lineno">  334</span> </div>
-<div class="line"><span class="lineno">  335</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *range_for_stmt =</div>
-<div class="line"><span class="lineno">  336</span>                clang::dyn_cast&lt;clang::CXXForRangeStmt&gt;(loop_stmt);</div>
-<div class="line"><span class="lineno">  337</span>            range_for_stmt != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  338</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(range_for_stmt-&gt;getRangeInit(), stmt)) {</div>
-<div class="line"><span class="lineno">  339</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  340</span>            }</div>
-<div class="line"><span class="lineno">  341</span>        }</div>
-<div class="line"><span class="lineno">  342</span> </div>
-<div class="line"><span class="lineno">  343</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *while_stmt =</div>
-<div class="line"><span class="lineno">  344</span>                clang::dyn_cast&lt;clang::WhileStmt&gt;(loop_stmt);</div>
-<div class="line"><span class="lineno">  345</span>            while_stmt != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  346</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(while_stmt-&gt;getCond(), stmt)) {</div>
-<div class="line"><span class="lineno">  347</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  348</span>            }</div>
-<div class="line"><span class="lineno">  349</span>        }</div>
-<div class="line"><span class="lineno">  350</span> </div>
-<div class="line"><span class="lineno">  351</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *do_stmt = clang::dyn_cast&lt;clang::DoStmt&gt;(loop_stmt);</div>
-<div class="line"><span class="lineno">  352</span>            do_stmt != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  353</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(do_stmt-&gt;getCond(), stmt)) {</div>
-<div class="line"><span class="lineno">  354</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  355</span>            }</div>
-<div class="line"><span class="lineno">  356</span>        }</div>
-<div class="line"><span class="lineno">  357</span> </div>
-<div class="line"><span class="lineno">  358</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a155a597760f369980bc5d30e4d9d0fdb" title="Get current :? statement block.">current_conditionaloperator</a>() != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  359</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(</div>
-<div class="line"><span class="lineno">  360</span>                    <a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a155a597760f369980bc5d30e4d9d0fdb" title="Get current :? statement block.">current_conditionaloperator</a>()-&gt;getCond(), stmt)) {</div>
-<div class="line"><span class="lineno">  361</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  362</span>            }</div>
-<div class="line"><span class="lineno">  363</span>        }</div>
-<div class="line"><span class="lineno">  364</span>    }</div>
-<div class="line"><span class="lineno">  365</span> </div>
-<div class="line"><span class="lineno">  366</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  367</span>}</div>
+<div class="line"><span class="lineno">  312</span> </div>
+<div class="line"><span class="lineno">  313</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *condition_decl_stmt = <a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a7d4c993ce97d580c580349062dcc4936" title="Get current if statement block.">current_ifstmt</a>()-&gt;getInit();</div>
+<div class="line"><span class="lineno">  314</span>            condition_decl_stmt != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  315</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(condition_decl_stmt, stmt))</div>
+<div class="line"><span class="lineno">  316</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  317</span>        }</div>
+<div class="line"><span class="lineno">  318</span>    }</div>
+<div class="line"><span class="lineno">  319</span> </div>
+<div class="line"><span class="lineno">  320</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a4b1d6f6022eb8e58d2898ebf07588cba" title="Get current else if statement block.">current_elseifstmt</a>() != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  321</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a4b1d6f6022eb8e58d2898ebf07588cba" title="Get current else if statement block.">current_elseifstmt</a>()-&gt;getCond(), stmt))</div>
+<div class="line"><span class="lineno">  322</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  323</span>    }</div>
+<div class="line"><span class="lineno">  324</span> </div>
+<div class="line"><span class="lineno">  325</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a155a597760f369980bc5d30e4d9d0fdb" title="Get current :? statement block.">current_conditionaloperator</a>() != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  326</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(</div>
+<div class="line"><span class="lineno">  327</span>                <a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a155a597760f369980bc5d30e4d9d0fdb" title="Get current :? statement block.">current_conditionaloperator</a>()-&gt;getCond(), stmt))</div>
+<div class="line"><span class="lineno">  328</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  329</span>    }</div>
+<div class="line"><span class="lineno">  330</span> </div>
+<div class="line"><span class="lineno">  331</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *loop_stmt = <a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a2f7139641908d84f2346234bf3bb5719" title="Get current loop statement block.">current_loopstmt</a>(); loop_stmt != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  332</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *for_stmt = clang::dyn_cast&lt;clang::ForStmt&gt;(loop_stmt);</div>
+<div class="line"><span class="lineno">  333</span>            for_stmt != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  334</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(for_stmt-&gt;getCond(), stmt)) {</div>
+<div class="line"><span class="lineno">  335</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  336</span>            }</div>
+<div class="line"><span class="lineno">  337</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(for_stmt-&gt;getInit(), stmt)) {</div>
+<div class="line"><span class="lineno">  338</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  339</span>            }</div>
+<div class="line"><span class="lineno">  340</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(for_stmt-&gt;getInc(), stmt)) {</div>
+<div class="line"><span class="lineno">  341</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  342</span>            }</div>
+<div class="line"><span class="lineno">  343</span>        }</div>
+<div class="line"><span class="lineno">  344</span> </div>
+<div class="line"><span class="lineno">  345</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *range_for_stmt =</div>
+<div class="line"><span class="lineno">  346</span>                clang::dyn_cast&lt;clang::CXXForRangeStmt&gt;(loop_stmt);</div>
+<div class="line"><span class="lineno">  347</span>            range_for_stmt != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  348</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(range_for_stmt-&gt;getRangeInit(), stmt)) {</div>
+<div class="line"><span class="lineno">  349</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  350</span>            }</div>
+<div class="line"><span class="lineno">  351</span>        }</div>
+<div class="line"><span class="lineno">  352</span> </div>
+<div class="line"><span class="lineno">  353</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *while_stmt =</div>
+<div class="line"><span class="lineno">  354</span>                clang::dyn_cast&lt;clang::WhileStmt&gt;(loop_stmt);</div>
+<div class="line"><span class="lineno">  355</span>            while_stmt != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  356</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(while_stmt-&gt;getCond(), stmt)) {</div>
+<div class="line"><span class="lineno">  357</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  358</span>            }</div>
+<div class="line"><span class="lineno">  359</span>        }</div>
+<div class="line"><span class="lineno">  360</span> </div>
+<div class="line"><span class="lineno">  361</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *do_stmt = clang::dyn_cast&lt;clang::DoStmt&gt;(loop_stmt);</div>
+<div class="line"><span class="lineno">  362</span>            do_stmt != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  363</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(do_stmt-&gt;getCond(), stmt)) {</div>
+<div class="line"><span class="lineno">  364</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  365</span>            }</div>
+<div class="line"><span class="lineno">  366</span>        }</div>
+<div class="line"><span class="lineno">  367</span> </div>
+<div class="line"><span class="lineno">  368</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a155a597760f369980bc5d30e4d9d0fdb" title="Get current :? statement block.">current_conditionaloperator</a>() != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  369</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common.html#a173f66b518b0ed59244e02148bcb1e62" title="Check if an expression is contained in another expression.">common::is_subexpr_of</a>(</div>
+<div class="line"><span class="lineno">  370</span>                    <a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a155a597760f369980bc5d30e4d9d0fdb" title="Get current :? statement block.">current_conditionaloperator</a>()-&gt;getCond(), stmt)) {</div>
+<div class="line"><span class="lineno">  371</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  372</span>            }</div>
+<div class="line"><span class="lineno">  373</span>        }</div>
+<div class="line"><span class="lineno">  374</span>    }</div>
+<div class="line"><span class="lineno">  375</span> </div>
+<div class="line"><span class="lineno">  376</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  377</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
