@@ -133,13 +133,13 @@ Functions</h2></td></tr>
 <tr class="memitem:a980403e5883aa59d7146b50d13aef594"><td class="memTemplParams" colspan="2">template&lt;typename DiagramConfig , typename GeneratorTag , typename DiagramModel &gt; </td></tr>
 <tr class="memitem:a980403e5883aa59d7146b50d13aef594"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1detail.html#a980403e5883aa59d7146b50d13aef594">generate_diagram_select_generator</a> (const std::string &amp;od, const std::string &amp;name, std::shared_ptr&lt; <a class="el" href="structclanguml_1_1config_1_1diagram.html">clanguml::config::diagram</a> &gt; diagram, const DiagramModel &amp;model)</td></tr>
 <tr class="separator:a980403e5883aa59d7146b50d13aef594"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7598f347e6be92260ea0c5d8742ee82b"><td class="memTemplParams" colspan="2">template&lt;typename DiagramConfig &gt; </td></tr>
-<tr class="memitem:a7598f347e6be92260ea0c5d8742ee82b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1detail.html#a7598f347e6be92260ea0c5d8742ee82b">generate_diagram_impl</a> (const std::string &amp;od, const std::string &amp;name, std::shared_ptr&lt; <a class="el" href="structclanguml_1_1config_1_1diagram.html">clanguml::config::diagram</a> &gt; diagram, const <a class="el" href="classclanguml_1_1common_1_1compilation__database.html">common::compilation_database</a> &amp;db, const std::vector&lt; std::string &gt; &amp;translation_units, const std::vector&lt; <a class="el" href="namespaceclanguml_1_1common.html#ad9e84a71a64680dc9618e3dfb3fd6788">clanguml::common::generator_type_t</a> &gt; &amp;generators, bool verbose, std::function&lt; void()&gt; &amp;&amp;progress)</td></tr>
-<tr class="separator:a7598f347e6be92260ea0c5d8742ee82b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d9e53e2d857a2b97639800f96254c14"><td class="memTemplParams" colspan="2">template&lt;typename DiagramConfig &gt; </td></tr>
+<tr class="memitem:a0d9e53e2d857a2b97639800f96254c14"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1detail.html#a0d9e53e2d857a2b97639800f96254c14">generate_diagram_impl</a> (const std::string &amp;od, const std::string &amp;name, std::shared_ptr&lt; <a class="el" href="structclanguml_1_1config_1_1diagram.html">clanguml::config::diagram</a> &gt; diagram, const <a class="el" href="classclanguml_1_1common_1_1compilation__database.html">common::compilation_database</a> &amp;db, const std::vector&lt; std::string &gt; &amp;translation_units, const <a class="el" href="structclanguml_1_1cli_1_1runtime__config.html">cli::runtime_config</a> &amp;rc, std::function&lt; void()&gt; &amp;&amp;progress)</td></tr>
+<tr class="separator:a0d9e53e2d857a2b97639800f96254c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a7598f347e6be92260ea0c5d8742ee82b" name="a7598f347e6be92260ea0c5d8742ee82b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7598f347e6be92260ea0c5d8742ee82b">&#9670;&#160;</a></span>generate_diagram_impl()</h2>
+<a id="a0d9e53e2d857a2b97639800f96254c14" name="a0d9e53e2d857a2b97639800f96254c14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d9e53e2d857a2b97639800f96254c14">&#9670;&#160;</a></span>generate_diagram_impl()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -179,14 +179,8 @@ template&lt;typename DiagramConfig &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="namespaceclanguml_1_1common.html#ad9e84a71a64680dc9618e3dfb3fd6788">clanguml::common::generator_type_t</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>generators</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>verbose</em>, </td>
+          <td class="paramtype">const <a class="el" href="structclanguml_1_1cli_1_1runtime__config.html">cli::runtime_config</a> &amp;&#160;</td>
+          <td class="paramname"><em>rc</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -203,27 +197,39 @@ template&lt;typename DiagramConfig &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="generators_8cc_source.html#l00082">82</a> of file <a class="el" href="generators_8cc_source.html">generators.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   88</span>{</div>
-<div class="line"><span class="lineno">   89</span>    <span class="keyword">using </span>diagram_config = DiagramConfig;</div>
-<div class="line"><span class="lineno">   90</span>    <span class="keyword">using </span>diagram_model = <span class="keyword">typename</span> <a class="code hl_struct" href="structclanguml_1_1common_1_1generators_1_1diagram__model__t.html">diagram_model_t&lt;DiagramConfig&gt;::type</a>;</div>
-<div class="line"><span class="lineno">   91</span>    <span class="keyword">using </span>diagram_visitor = <span class="keyword">typename</span> <a class="code hl_struct" href="structclanguml_1_1common_1_1generators_1_1diagram__visitor__t.html">diagram_visitor_t&lt;DiagramConfig&gt;::type</a>;</div>
-<div class="line"><span class="lineno">   92</span> </div>
-<div class="line"><span class="lineno">   93</span>    <span class="keyword">auto</span> model = <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#a354815632bd8179d6bcea252f6f79f3d" title="Specialization of clang::ASTFrontendAction">clanguml::common::generators::generate</a>&lt;diagram_model,</div>
-<div class="line"><span class="lineno">   94</span>        diagram_config, diagram_visitor&gt;(db, diagram-&gt;name,</div>
-<div class="line"><span class="lineno">   95</span>        <span class="keyword">dynamic_cast&lt;</span>diagram_config &amp;<span class="keyword">&gt;</span>(*diagram), translation_units, verbose,</div>
-<div class="line"><span class="lineno">   96</span>        std::move(progress));</div>
-<div class="line"><span class="lineno">   97</span> </div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> generator_type : generators) {</div>
-<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">if</span> (generator_type == generator_type_t::plantuml) {</div>
-<div class="line"><span class="lineno">  100</span>            <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators_1_1detail.html#a980403e5883aa59d7146b50d13aef594">generate_diagram_select_generator</a>&lt;diagram_config,</div>
-<div class="line"><span class="lineno">  101</span>                <a class="code hl_struct" href="structclanguml_1_1common_1_1generators_1_1plantuml__generator__tag.html">plantuml_generator_tag</a>&gt;(od, name, diagram, model);</div>
-<div class="line"><span class="lineno">  102</span>        }</div>
-<div class="line"><span class="lineno">  103</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (generator_type == generator_type_t::json) {</div>
-<div class="line"><span class="lineno">  104</span>            generate_diagram_select_generator&lt;diagram_config,</div>
-<div class="line"><span class="lineno">  105</span>                <a class="code hl_struct" href="structclanguml_1_1common_1_1generators_1_1json__generator__tag.html">json_generator_tag</a>&gt;(od, name, diagram, model);</div>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   87</span>{</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keyword">using </span>diagram_config = DiagramConfig;</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keyword">using </span>diagram_model = <span class="keyword">typename</span> <a class="code hl_struct" href="structclanguml_1_1common_1_1generators_1_1diagram__model__t.html">diagram_model_t&lt;DiagramConfig&gt;::type</a>;</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keyword">using </span>diagram_visitor = <span class="keyword">typename</span> <a class="code hl_struct" href="structclanguml_1_1common_1_1generators_1_1diagram__visitor__t.html">diagram_visitor_t&lt;DiagramConfig&gt;::type</a>;</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>    <span class="keyword">auto</span> model = <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#a354815632bd8179d6bcea252f6f79f3d" title="Specialization of clang::ASTFrontendAction">clanguml::common::generators::generate</a>&lt;diagram_model,</div>
+<div class="line"><span class="lineno">   93</span>        diagram_config, diagram_visitor&gt;(db, diagram-&gt;name,</div>
+<div class="line"><span class="lineno">   94</span>        <span class="keyword">dynamic_cast&lt;</span>diagram_config &amp;<span class="keyword">&gt;</span>(*diagram), translation_units, rc.<a class="code hl_variable" href="structclanguml_1_1cli_1_1runtime__config.html#a2017a15738dd3decdc3e275410fb9006">verbose</a>,</div>
+<div class="line"><span class="lineno">   95</span>        std::move(progress));</div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;DiagramConfig, config::sequence_diagram&gt;) {</div>
+<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">if</span> (rc.<a class="code hl_variable" href="structclanguml_1_1cli_1_1runtime__config.html#a5434b7ee747d137a1bc6c66ec728154e">print_start_from</a>) {</div>
+<div class="line"><span class="lineno">   99</span>            <span class="keyword">auto</span> start_from_values = model-&gt;list_start_from_values();</div>
+<div class="line"><span class="lineno">  100</span> </div>
+<div class="line"><span class="lineno">  101</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;start_from : start_from_values) {</div>
+<div class="line"><span class="lineno">  102</span>                std::cout &lt;&lt; start_from &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  103</span>            }</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>            <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  106</span>        }</div>
 <div class="line"><span class="lineno">  107</span>    }</div>
-<div class="line"><span class="lineno">  108</span>}</div>
+<div class="line"><span class="lineno">  108</span> </div>
+<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> generator_type : rc.generators) {</div>
+<div class="line"><span class="lineno">  110</span>        <span class="keywordflow">if</span> (generator_type == generator_type_t::plantuml) {</div>
+<div class="line"><span class="lineno">  111</span>            generate_diagram_select_generator&lt;diagram_config,</div>
+<div class="line"><span class="lineno">  112</span>                plantuml_generator_tag&gt;(od, name, diagram, model);</div>
+<div class="line"><span class="lineno">  113</span>        }</div>
+<div class="line"><span class="lineno">  114</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (generator_type == generator_type_t::json) {</div>
+<div class="line"><span class="lineno">  115</span>            generate_diagram_select_generator&lt;diagram_config,</div>
+<div class="line"><span class="lineno">  116</span>                json_generator_tag&gt;(od, name, diagram, model);</div>
+<div class="line"><span class="lineno">  117</span>        }</div>
+<div class="line"><span class="lineno">  118</span>    }</div>
+<div class="line"><span class="lineno">  119</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

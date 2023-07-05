@@ -168,15 +168,14 @@ Sequence diagram overview</h1>
 <h1><a class="anchor" id="specifying-diagram-entry-point"></a>
 Specifying diagram entry point</h1>
 <p>Sequence diagrams require an entry point for the diagram in order to determine, at which point in the code the sequence diagram should start. Currently, the entry point can only be a method or a free function, both specified using <code>start_from</code> configuration property, for instance: </p><div class="fragment language-yaml"><div class="line">start_from:</div>
-<div class="line">  - function: &quot;main(int,char**)&quot;</div>
+<div class="line">  - function: &quot;main(int,const char**)&quot;</div>
 </div><!-- fragment --><p> or </p><div class="fragment language-yaml"><div class="line">start_from:</div>
 <div class="line">  - function: &quot;clanguml::sequence_diagram::visitor::translation_unit_visitor::VisitCXXRecordDecl(clang::CXXRecordDecl *)&quot;</div>
-</div><!-- fragment --><p>The entrypoints must be fully qualified and they must match exactly the string representation of given function or method in the <code>clang-uml</code> model, which can be frustrating after few attempts. If not sure, the best way is to put anything in the <code>function</code> property value at first, run the <code>clang-uml</code> on the diagram with verbose set to <code>-vvv</code> and look in the logs for the relevant function signature. At the end of the diagram generation at this verbosity level, <code>clang-uml</code> will generate a textual representation of all discovered activities relevant for this diagram, for instance if you're looking <em>for exact signature of method <code>translation_unit_visitor::VisitCXXRecordDecl</code>, look for similar</em> output in the logs:</p>
-<div class="fragment language-bash"><div class="line">[trace] [tid 3842954] [diagram.cc:194] Sequence id=1875210076312968845:</div>
-<div class="line">[trace] [tid 3842954] [diagram.cc:198]    Activity id=1875210076312968845, from=clanguml::sequence_diagram::visitor::translation_unit_visitor::VisitCXXRecordDecl(clang::CXXRecordDecl *):</div>
-<div class="line">[trace] [tid 3842954] [diagram.cc:208]        Message from=clanguml::sequence_diagram::visitor::translation_unit_visitor::VisitCXXRecordDecl(clang::CXXRecordDecl *), from_id=1875210076312968845, to=__UNRESOLVABLE_ID__, to_id=0, name=, type=if</div>
-<div class="line">[trace] [tid 3842954] [diagram.cc:217]        Message from=clanguml::sequence_diagram::visitor::translation_unit_visitor::VisitCXXRecordDecl(clang::CXXRecordDecl *), from_id=1875210076312968845, to=clanguml::sequence_diagram::visitor::translation_unit_visitor::should_include(const clang::TagDecl *), to_id=664596622746486441, name=should_include, type=call</div>
-</div><!-- fragment --><p>Then you just need to copy and paste the signature exactly and rerun <code>clang-uml</code>.</p>
+</div><!-- fragment --><p>The entrypoints must be fully qualified and they must match exactly the string representation of given function or method in the <code>clang-uml</code> model.</p>
+<p>To find the exact function signature run <code>clang-uml</code> as follows:</p>
+<div class="fragment language-bash"><div class="line">clang-uml --print-start-from -n main_sequence | grep main</div>
+</div><!-- fragment --><p>Command line flag <code>--print-start-from</code> will print on stdout all functions and methods available in the diagram model, and each line of this output can be directly used as a value of <code>start_from</code> option in the config file.</p>
+<p>Since that list can be quite large, it's best to filter the output to limit the number of lines to a subset of possible candidates.</p>
 <h1><a class="anchor" id="grouping-free-functions-by-file"></a>
 Grouping free functions by file</h1>
 <p>By default, <code>clang-uml</code> will generate a new participant for each call to a free function (not method), which can lead to a very large number of participants in the diagram. If it's an issue, an option can be provided in the diagram definition:</p>
