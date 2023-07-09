@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.3.7</span>
+       <span id="projectnumber">0.3.8</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -160,7 +160,7 @@ Translation unit glob patterns</h1>
 <div class="fragment language-yaml"><div class="line">glob:</div>
 <div class="line">  - src/dir1/*.cc</div>
 <div class="line">  - src/dir3/*.cc</div>
-</div><!-- fragment --><p>The glob patterns only need to match the translation units, which are also in the <code>compile_commands.json</code> file, i.e. any files that match the glob patterns but are not in <code>compile_commands.json</code> will be ignored. In case the <code>glob</code> pattern set does not much any translation units an error will be printed on the standard output.</p>
+</div><!-- fragment --><p>The glob patterns only need to match the translation units, which are also in the <code>compile_commands.json</code> file, i.e. any files that match the glob patterns but are not in <code>compile_commands.json</code> will be ignored. In case the <code>glob</code> pattern set does not match any translation units an error will be printed on the standard output.</p>
 <p>For small projects, the <code>glob</code> property can be omitted, which will result in <code>clang-uml</code> parsing all translation units from <code>compile_commands.json</code> for the diagram. However for large projects, constraining the number of translation units for each diagram to absolute minimum will significantly decrease the diagram generation times.</p>
 <h1><a class="anchor" id="plantuml-custom-directives"></a>
 PlantUML custom directives</h1>
@@ -180,11 +180,11 @@ Adding debug information in the generated diagrams</h1>
 </div><!-- fragment --><p>the generated PlantUML diagram will contain comments before each line containing the source location of the specific diagram element.</p>
 <h1><a class="anchor" id="resolving-include-path-and-compiler-flags-issues"></a>
 Resolving include path and compiler flags issues</h1>
-<p>Due to the fact, that your project can be compiled with different compilers and toolchains than the Clang version, which <code>clang-uml</code> uses on your platform, include paths specified in the generated <code>compile_commands.json</code> can be incorrect.</p>
+<p>Due to the fact, that your project can be compiled with different compilers and toolchains, the system paths and compilation flags detected by the Clang version linked to your <code>clang-uml</code> installation might differ from the ones actually used to compile your project.</p>
 <blockquote class="doxtable">
 <p>&zwj;This is often an issue on macOS, when <code>clang-uml</code> uses Homebrew version of LLVM and your project was built using system Apple Clang </p>
 </blockquote>
-<p>Typically, this results in ugly error messages on the screen during diagram generation, such as:</p>
+<p>Typically, this results in error messages on the console during diagram generation, such as:</p>
 <div class="fragment language-cpp"><div class="line">... fatal: &#39;stddef.h&#39; file not found</div>
 </div><!-- fragment --><p>or</p>
 <div class="fragment language-cpp"><div class="line">... warning: implicit conversion from &#39;int&#39; to &#39;float&#39; changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]</div>
@@ -202,10 +202,10 @@ Use '–query-driver' command line option</h2>
 <div class="fragment language-bash"><div class="line">--target=arm-none-eabi -isystem /usr/lib/gcc/arm-none-eabi/10.3.1/include -isystem /usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed -isystem /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include</div>
 </div><!-- fragment --><p>If you want to include the system headers reported by the compiler specified already as <code>argv[0]</code> in your <code>compile_commands.json</code>, you can simply invoke <code>clang-uml</code> as:</p>
 <div class="fragment language-bash"><div class="line">clang-uml --query-driver .</div>
-</div><!-- fragment --><p>however please make sure that the <code>compile_commands.json</code> contain a command, which is safe to execute.</p>
+</div><!-- fragment --><p>however please make sure that the <code>compile_commands.json</code> contains a command, which is safe to execute.</p>
 <h2><a class="anchor" id="manually-add-and-remove-compile-flags-from-the-compilation-database"></a>
 Manually add and remove compile flags from the compilation database</h2>
-<p>If the system paths extracted from the compiler are not sufficient to resolve include paths issues, it is possible to manually adjust the compilation flags providing <code>add_compile_flags</code> and <code>remove_compile_flags</code> in the configuration file, or providing <code>--add-compile-flag</code> and <code>--remove-compile-flag</code> in the <code>clang-uml</code> command line.</p>
+<p>If the system paths extracted from the compiler are not sufficient to resolve include paths issues, it is possible to manually adjust the compilation flags by providing <code>add_compile_flags</code> and <code>remove_compile_flags</code> in the configuration file, or providing <code>--add-compile-flag</code> and <code>--remove-compile-flag</code> on the <code>clang-uml</code> command line.</p>
 <p>For instance:</p>
 <div class="fragment language-yaml"><div class="line">add_compile_flags:</div>
 <div class="line">  - -I/opt/my_toolchain/include</div>
