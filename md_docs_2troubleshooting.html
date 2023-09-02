@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.3.8</span>
+       <span id="projectnumber">0.3.9</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -132,6 +132,7 @@ $(function() {
 <li><a class="el" href="md_docs_2troubleshooting.html#yaml-anchors-and-aliases-are-not-fully-supported">YAML anchors and aliases are not fully supported</a></li>
 </ul>
 </li>
+<li><a class="el" href="md_docs_2troubleshooting.html#schema-validation-error-is-thrown-but-the-configuration-file-is-correct">Schema validation error is thrown, but the configuration file is correct</a></li>
 <li><a class="el" href="md_docs_2test__cases.html#class-diagrams">Class diagrams</a><ul>
 <li><a class="el" href="md_docs_2troubleshooting.html#fatal-error-stddefh-file-not-found">&quot;fatal error: 'stddef.h' file not found&quot;</a></li>
 <li><a class="el" href="md_docs_2troubleshooting.html#how-can-i-generate-class-diagram-of-my-entire-project">How can I generate class diagram of my entire project</a></li>
@@ -225,7 +226,11 @@ YAML anchors and aliases are not fully supported</h2>
 <div class="line">      - function: &#39;foo(int,float)&#39;</div>
 </div><!-- fragment --><p>One option around this is to use some <a class="el" href="namespaceYAML.html">YAML</a> preprocessor, such as <a href="https://github.com/mikefarah/yq">yq</a> on such file and passing the configuration file to <code>clang-uml</code> using <code>stdin</code>, e.g.:</p>
 <div class="fragment language-bash"><div class="line">yq &#39;explode(.)&#39; .clang-uml | clang-uml --config -</div>
-</div><!-- fragment --><h1><a class="anchor" id="class-diagrams-1"></a>
+</div><!-- fragment --><h1><a class="anchor" id="schema-validation-error-is-thrown-but-the-configuration-file-is-correct"></a>
+Schema validation error is thrown, but the configuration file is correct</h1>
+<p>Current version of <code>clang-uml</code> performs automatic configuration file schema validation, and exits if the configuration file is invalid.</p>
+<p>In case there is a bug in the schema validation, the schema validation step can be skipped by providing <code>--no-validate</code> command line option.</p>
+<h1><a class="anchor" id="class-diagrams-1"></a>
 Class diagrams</h1>
 <h2><a class="anchor" id="fatal-error-stddefh-file-not-found"></a>
 "fatal error: 'stddef.h' file not found"</h2>

@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.3.8</span>
+       <span id="projectnumber">0.3.9</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -1627,12 +1627,14 @@ template&lt;typename T , typename P , typename F &gt; </div>
 <div class="line"><span class="lineno">   26</span>        out &lt;&lt; std::get&lt;std::string&gt;(m.<a class="code hl_function" href="structclanguml_1_1common_1_1or__regex.html#add6e63262675d09c1231860148f5516b">value</a>());</div>
 <div class="line"><span class="lineno">   27</span>    }</div>
 <div class="line"><span class="lineno">   28</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   29</span>        out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;r&quot;</span> &lt;&lt; YAML::Value</div>
-<div class="line"><span class="lineno">   30</span>            &lt;&lt; std::get&lt;regex&gt;(m.<a class="code hl_function" href="structclanguml_1_1common_1_1or__regex.html#add6e63262675d09c1231860148f5516b">value</a>()).pattern;</div>
-<div class="line"><span class="lineno">   31</span>    }</div>
-<div class="line"><span class="lineno">   32</span> </div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><span class="lineno">   34</span>}</div>
+<div class="line"><span class="lineno">   29</span>        out &lt;&lt; YAML::BeginMap;</div>
+<div class="line"><span class="lineno">   30</span>        out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;r&quot;</span> &lt;&lt; YAML::Value</div>
+<div class="line"><span class="lineno">   31</span>            &lt;&lt; std::get&lt;regex&gt;(m.<a class="code hl_function" href="structclanguml_1_1common_1_1or__regex.html#add6e63262675d09c1231860148f5516b">value</a>()).pattern;</div>
+<div class="line"><span class="lineno">   32</span>        out &lt;&lt; YAML::EndMap;</div>
+<div class="line"><span class="lineno">   33</span>    }</div>
+<div class="line"><span class="lineno">   34</span> </div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">return</span> out;</div>
+<div class="line"><span class="lineno">   36</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

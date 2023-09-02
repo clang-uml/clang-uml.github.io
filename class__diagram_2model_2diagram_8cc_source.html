@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.3.8</span>
+       <span id="projectnumber">0.3.9</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -335,15 +335,42 @@ $(function() {
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordflow">return</span> ctx;</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>}</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>} <span class="comment">// namespace clanguml::class_diagram::model</span></div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common.html">  213</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1common_1_1model.html">clanguml::common::model</a> {</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common_1_1model.html#ab9de28b2bc311397be96f438af489f70">  215</a></span><span class="keywordtype">bool</span> check_diagram_type&lt;clanguml::class_diagram::model::diagram&gt;(<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">diagram_t</a> t)</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>{</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keywordflow">return</span> t == diagram_t::kClass;</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>}</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>}</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#a4fbf023aacc6875a2fb529ad486e2b84">  211</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#a4fbf023aacc6875a2fb529ad486e2b84" title="Remove redundant dependency relationships.">diagram::remove_redundant_dependencies</a>()</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>{</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">common::id_t</a>;</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <span class="keyword">using </span><a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1relationship.html" title="Class representing any relationship other than inheritance.">common::model::relationship</a>;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keyword">using </span><a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">common::model::relationship_t</a>;</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;c : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a4ebcaf3cc89e0b529561328958b044e5" title="Get collection of reference to diagram elements.">element_view&lt;class_&gt;::view</a>()) {</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        std::set&lt;id_t&gt; dependency_relationships_to_remove;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;r : c.get().relationships()) {</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            <span class="keywordflow">if</span> (r.type() != relationship_t::kDependency)</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>                dependency_relationships_to_remove.emplace(r.destination());</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        }</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;base : c.get().parents()) {</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            dependency_relationships_to_remove.emplace(base.id());</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        }</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <a class="code hl_function" href="namespaceclanguml_1_1util.html#ad0188dcbd54a723d6fbe5a06fc30d10b" title="Remove and erase elements from a vector.">util::erase_if</a>(c.get().relationships(),</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>            [&amp;dependency_relationships_to_remove](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;r) {</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>                return r.type() == relationship_t::kDependency &amp;&amp;</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>                    dependency_relationships_to_remove.count(r.destination()) &gt;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>                    0;</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>            });</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    }</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>}</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>} <span class="comment">// namespace clanguml::class_diagram::model</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common.html">  240</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1common_1_1model.html">clanguml::common::model</a> {</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common_1_1model.html#ab9de28b2bc311397be96f438af489f70">  242</a></span><span class="keywordtype">bool</span> check_diagram_type&lt;clanguml::class_diagram::model::diagram&gt;(<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">diagram_t</a> t)</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>{</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    <span class="keywordflow">return</span> t == diagram_t::kClass;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>}</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

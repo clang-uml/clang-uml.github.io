@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.3.8</span>
+       <span id="projectnumber">0.3.9</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -247,15 +247,20 @@ Class context diagram</h1>
 <div class="line">    - ns1::MyClass</div>
 </div><!-- fragment --><h1><a class="anchor" id="disabling-dependency-relationships"></a>
 Disabling dependency relationships</h1>
-<p>In many cases, dependency relationships between classes can clutter the diagram too much, for instance consider this diagram:</p>
-<div class="image">
-<embed type="image/svg+xml" src="t00019_class.svg"></embed>
-</div>
-    <p>where the dependency relationships do not bring much information into the diagram. In such cases it might be useful to disable dependency relationships for this diagram completely using the following exclusion filter: </p><div class="fragment language-yaml"><div class="line">exclude:</div>
+<p>Dependency relationships are inferred whenever a class uses another class, thus often dependency relationship will be rendered in addition to other relationships such as association or inheritance. By default, <code>clang-uml</code> will remove these redundant dependency relationships, however if it is necessary to retain them it can be done using the following option:</p>
+<div class="fragment language-yaml"><div class="line">skip_redundant_dependencies: false</div>
+</div><!-- fragment --><p>In many cases, dependency relationships between classes can clutter the diagram too much. In such cases it might be useful to disable dependency relationships completely for this diagram completely using the following exclusion filter: </p><div class="fragment language-yaml"><div class="line">exclude:</div>
 <div class="line">  relationships:</div>
 <div class="line">    - dependency</div>
-</div><!-- fragment --><p>Dependency relationships are inferred whenever a class uses another class, thus often dependency relationship will be rendered in addition to other relationships such as association or inheritance. In the future there might be an option to remove the redundant dependency relationships from the diagram automatically. </p>
-</div></div><!-- contents -->
+</div><!-- fragment --><p>It is also possible to only disable dependency relationships generated from template arguments to other templates. By default, the following code:</p>
+<div class="fragment language-cpp"><div class="line"><span class="keyword">class </span>A {};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">class </span>B {</div>
+<div class="line">  std::vector&lt;A&gt; a;</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>will generate a dependency from <code>B</code> to <code>A</code> in addition to aggregation relationship. This can be disabled by specifying the following option:</p>
+<div class="fragment language-yaml"><div class="line">generate_template_argument_dependencies: false</div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.3.8</span>
+       <span id="projectnumber">0.3.9</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -151,6 +151,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4ebcaf3cc89e0b529561328958b044e5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespaceclanguml_1_1common.html#a890433df3c41bd4c468dbce1711eb02f">reference_vector</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element__view.html#a4ebcaf3cc89e0b529561328958b044e5">view</a> () const</td></tr>
 <tr class="memdesc:a4ebcaf3cc89e0b529561328958b044e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get collection of reference to diagram elements.  <br /></td></tr>
 <tr class="separator:a4ebcaf3cc89e0b529561328958b044e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac33b72254c9b81c9cb0d78cac2a35976"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common.html#a890433df3c41bd4c468dbce1711eb02f">reference_vector</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element__view.html#ac33b72254c9b81c9cb0d78cac2a35976">view</a> ()</td></tr>
+<tr class="memdesc:ac33b72254c9b81c9cb0d78cac2a35976"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get collection of reference to diagram elements.  <br /></td></tr>
+<tr class="separator:ac33b72254c9b81c9cb0d78cac2a35976"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17cec3617bbd9705429f970257c2080f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1optional__ref.html">common::optional_ref</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element__view.html#a17cec3617bbd9705429f970257c2080f">get</a> (<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a130e662a8c3e9e72973b2a1e2ebb583e">clanguml::common::model::diagram_element::id_t</a> id) const</td></tr>
 <tr class="memdesc:a17cec3617bbd9705429f970257c2080f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get typed diagram element by id.  <br /></td></tr>
 <tr class="separator:a17cec3617bbd9705429f970257c2080f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -237,21 +240,54 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="element__view_8h_source.html#l00054">54</a> of file <a class="el" href="element__view_8h_source.html">element_view.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   56</span>    {</div>
-<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;e : <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">elements_</a>) {</div>
-<div class="line"><span class="lineno">   58</span>            <span class="keywordflow">if</span> (e.get().id() == <span class="keywordtype">id</span>) {</div>
-<div class="line"><span class="lineno">   59</span>                <span class="keywordflow">return</span> {e};</div>
-<div class="line"><span class="lineno">   60</span>            }</div>
-<div class="line"><span class="lineno">   61</span>        }</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">   64</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="element__view_8h_source.html#l00061">61</a> of file <a class="el" href="element__view_8h_source.html">element_view.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   63</span>    {</div>
+<div class="line"><span class="lineno">   64</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;e : <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">elements_</a>) {</div>
+<div class="line"><span class="lineno">   65</span>            <span class="keywordflow">if</span> (e.get().id() == <span class="keywordtype">id</span>) {</div>
+<div class="line"><span class="lineno">   66</span>                <span class="keywordflow">return</span> {e};</div>
+<div class="line"><span class="lineno">   67</span>            }</div>
+<div class="line"><span class="lineno">   68</span>        }</div>
+<div class="line"><span class="lineno">   69</span> </div>
+<div class="line"><span class="lineno">   70</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">   71</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac33b72254c9b81c9cb0d78cac2a35976" name="ac33b72254c9b81c9cb0d78cac2a35976"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac33b72254c9b81c9cb0d78cac2a35976">&#9670;&#160;</a></span>view() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common.html#a890433df3c41bd4c468dbce1711eb02f">reference_vector</a>&lt; T &gt; &amp; <a class="el" href="classclanguml_1_1common_1_1model_1_1element__view.html">clanguml::common::model::element_view</a>&lt; T &gt;::view </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get collection of reference to diagram elements. </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="element__view_8h_source.html#l00053">53</a> of file <a class="el" href="element__view_8h_source.html">element_view.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   53</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">elements_</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a4ebcaf3cc89e0b529561328958b044e5" name="a4ebcaf3cc89e0b529561328958b044e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ebcaf3cc89e0b529561328958b044e5">&#9670;&#160;</a></span>view()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ebcaf3cc89e0b529561328958b044e5">&#9670;&#160;</a></span>view() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -306,7 +342,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="element__view_8h_source.html#l00067">67</a> of file <a class="el" href="element__view_8h_source.html">element_view.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="element__view_8h_source.html#l00074">74</a> of file <a class="el" href="element__view_8h_source.html">element_view.h</a>.</p>
 
 </div>
 </div>

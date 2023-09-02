@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.3.8</span>
+       <span id="projectnumber">0.3.9</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -124,7 +124,7 @@ $(function() {
 <div class="textblock"><p><a class="anchor" id="generating-sequence-diagrams"></a></p>
 <ul>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#sequence-diagram-overview">Sequence diagram overview</a></li>
-<li><a class="el" href="md_docs_2sequence__diagrams.html#specifying-diagram-entry-point">Specifying diagram entry point</a></li>
+<li><a class="el" href="md_docs_2sequence__diagrams.html#specifying-diagram-location-constraints">Specifying diagram location constraints</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#grouping-free-functions-by-file">Grouping free functions by file</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#lambda-expressions-in-sequence-diagrams">Lambda expressions in sequence diagrams</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#customizing-participants-order">Customizing participants order</a></li>
@@ -165,16 +165,27 @@ Sequence diagram overview</h1>
 <li>Call expressions in conditional expressions in block statements (e.g. <code>if</code> or <code>while</code>) are rendered inside the PlantUML <code>alt</code> or <code>loop</code> blocks but wrapped in <code>[</code>, <code>]</code> brackets</li>
 <li>Lambda expressions are generated as standalone participants, whose name comprises the parent context where they are defined and the exact source code location</li>
 </ul>
-<h1><a class="anchor" id="specifying-diagram-entry-point"></a>
-Specifying diagram entry point</h1>
-<p>Sequence diagrams require an entry point for the diagram in order to determine, at which point in the code the sequence diagram should start. Currently, the entry point can only be a method or a free function, both specified using <code>start_from</code> configuration property, for instance: </p><div class="fragment language-yaml"><div class="line">start_from:</div>
+<h1><a class="anchor" id="specifying-diagram-location-constraints"></a>
+Specifying diagram location constraints</h1>
+<p>Sequence diagrams require a specification of location constraints in order to determine, which call chains should be included in the diagram. Currently, there are 3 types of constraints:</p><ul>
+<li><code>from</code> - will include all message call chains which start at the locations specified in this constraint (this was previously named <code>start_from</code>)</li>
+<li><code>to</code> - will include all message call chains which end at the specified locations</li>
+<li><code>from_to</code> - will include all call chains which start and end at the specified location constraints</li>
+</ul>
+<p>Currently, the constraints can be a method or a free function, both specified using the full signature of the function, e.g.</p>
+<div class="fragment language-yaml"><div class="line">from:</div>
 <div class="line">  - function: &quot;main(int,const char**)&quot;</div>
-</div><!-- fragment --><p> or </p><div class="fragment language-yaml"><div class="line">start_from:</div>
+</div><!-- fragment --><p> or </p><div class="fragment language-yaml"><div class="line">to:</div>
 <div class="line">  - function: &quot;clanguml::sequence_diagram::visitor::translation_unit_visitor::VisitCXXRecordDecl(clang::CXXRecordDecl *)&quot;</div>
-</div><!-- fragment --><p>The entrypoints must be fully qualified and they must match exactly the string representation of given function or method in the <code>clang-uml</code> model.</p>
-<p>To find the exact function signature run <code>clang-uml</code> as follows:</p>
-<div class="fragment language-bash"><div class="line">clang-uml --print-start-from -n main_sequence | grep main</div>
-</div><!-- fragment --><p>Command line flag <code>--print-start-from</code> will print on stdout all functions and methods available in the diagram model, and each line of this output can be directly used as a value of <code>start_from</code> option in the config file.</p>
+</div><!-- fragment --><p>The locations must be fully qualified, and they must match exactly the string representation of a given function or method in the <code>clang-uml</code> model.</p>
+<p>In case of the <code>from_to</code> constraint, it is necessary to provide both <code>from</code> and <code>to</code> locations as follows: </p><div class="fragment language-yaml"><div class="line">from_to:</div>
+<div class="line">  - [function: &quot;clanguml::t20034::D::d2()&quot;,</div>
+<div class="line">     function: &quot;clanguml::t20034::A::a2()&quot;]</div>
+</div><!-- fragment --><p>To find the exact function signature which can be used as a <code>from</code> location, run <code>clang-uml</code> as follows:</p>
+<div class="fragment language-bash"><div class="line">clang-uml --print-from -n main_sequence | grep main</div>
+</div><!-- fragment --><p>or to get all possible <code>to</code> locations, run:</p>
+<div class="fragment language-bash"><div class="line">clang-uml --print-to -n main_sequence | grep main</div>
+</div><!-- fragment --><p>Command line flags <code>--print-from</code> and <code>--print-to</code> will print on stdout all functions and methods available in the diagram model, and each line of this output can be directly used as a value of <code>start_from</code>, <code>from_to</code> or <code>to</code> properties in the config file.</p>
 <p>Since that list can be quite large, it's best to filter the output to limit the number of lines to a subset of possible candidates.</p>
 <h1><a class="anchor" id="grouping-free-functions-by-file"></a>
 Grouping free functions by file</h1>

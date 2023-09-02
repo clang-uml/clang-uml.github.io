@@ -12,7 +12,8 @@ var searchData=
   ['add_5fpackage_5fdiagram_9',['add_package_diagram',['../classclanguml_1_1cli_1_1cli__handler.html#add0bc0bddd725a34dcb4f6875c15e750',1,'clanguml::cli::cli_handler']]],
   ['add_5fsequence_5fdiagram_10',['add_sequence_diagram',['../classclanguml_1_1cli_1_1cli__handler.html#a47efe66598ab2901d7af98dea020b8a3',1,'clanguml::cli::cli_handler']]],
   ['after_11',['after',['../structclanguml_1_1config_1_1plantuml.html#ad611c91f95819377cbd7d70eb2420b6b',1,'clanguml::config::plantuml']]],
-  ['anonymous_5fstruct_5frelationships_5f_12',['anonymous_struct_relationships_',['../classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a923bc4aef0f890da56de4124b88c8647',1,'clanguml::class_diagram::visitor::translation_unit_visitor::anonymous_struct_relationships_'],['../classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#afc0dbe7e3169f3577b04ded868796a65',1,'clanguml::sequence_diagram::visitor::translation_unit_visitor::anonymous_struct_relationships_']]],
-  ['app_13',['app',['../classclanguml_1_1cli_1_1cli__handler.html#ad860e0feeda1100e8db2e5a98e55d150',1,'clanguml::cli::cli_handler']]],
-  ['argument_5fhints_14',['argument_hints',['../structclanguml_1_1config_1_1relationship__hint__t.html#a02788e85836c48a7bea039fd4d87fc9e',1,'clanguml::config::relationship_hint_t']]]
+  ['alternate_5fnames_12',['alternate_names',['../structclanguml_1_1config_1_1option.html#aaf358476a4dab0a4e33f55e2b9485607',1,'clanguml::config::option']]],
+  ['anonymous_5fstruct_5frelationships_5f_13',['anonymous_struct_relationships_',['../classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a923bc4aef0f890da56de4124b88c8647',1,'clanguml::class_diagram::visitor::translation_unit_visitor::anonymous_struct_relationships_'],['../classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#afc0dbe7e3169f3577b04ded868796a65',1,'clanguml::sequence_diagram::visitor::translation_unit_visitor::anonymous_struct_relationships_']]],
+  ['app_14',['app',['../classclanguml_1_1cli_1_1cli__handler.html#ad860e0feeda1100e8db2e5a98e55d150',1,'clanguml::cli::cli_handler']]],
+  ['argument_5fhints_15',['argument_hints',['../structclanguml_1_1config_1_1relationship__hint__t.html#a02788e85836c48a7bea039fd4d87fc9e',1,'clanguml::config::relationship_hint_t']]]
 ];

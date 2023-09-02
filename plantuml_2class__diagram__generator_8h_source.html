@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.3.8</span>
+       <span id="projectnumber">0.3.9</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -193,229 +193,231 @@ $(function() {
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a2004a24f20cad5df6e0e7efa9e0891f0">   66</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a2004a24f20cad5df6e0e7efa9e0891f0">method_groups_t</a> = std::map&lt;std::string, std::vector&lt;class_method&gt;&gt;;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html" title="Class diagram PlantUML generator.">generator</a>(<a class="code hl_struct" href="structclanguml_1_1config_1_1class__diagram.html" title="Class diagram configuration.">diagram_config</a> &amp;config, <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html" title="Class representing a class diagram.">diagram_model</a> &amp;model);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment"></span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">     * @brief Main generator method.</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">     * This method is called first and coordinates the entire diagram</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">     * generation.</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">     * @param ostr Output stream.</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a739470d3b7ebf209aa84d2213472c3c6" title="Main generator method.">generate</a>(std::ostream &amp;ostr) <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment"></span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">     * @brief In a nested diagram, generate the top level elements.</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">     * This method iterates over the top level elements. In case the diagram</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">     * is nested (i.e. includes packages), for each package it recursively</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">     * call generation of elements contained in each package.</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">     * @param parent JSON node</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#aef1aed0328f55415ce37f25ed84a568a" title="In a nested diagram, generate the top level elements.">generate_top_level_elements</a>(std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment"></span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">     * @brief Generate a hyperlink for a class element.</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">     * @param e Class element (e.g. a method)</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#aaf22952d3b00073a27d6eea63150efa6" title="Generate a hyperlink for a class element.">generate_link</a>(std::ostream &amp;ostr, <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html" title="Base class for class elements (e.g. member or method).">class_element</a> &amp;e) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment"></span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">     * @brief Generate PlantUML alias for a class element.</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">     * @param c Class element</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a13f56a316639a5ed9e5dd78c59569771" title="Generate PlantUML alias for a class element.">generate_alias</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html" title="Diagram element representing a class or class template.">class_</a> &amp;c, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment"></span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment">     * @brief Generate PlantUML alias for a enum element.</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">     * @param e Enum element</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a13f56a316639a5ed9e5dd78c59569771" title="Generate PlantUML alias for a class element.">generate_alias</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1enum__.html">enum_</a> &amp;e, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment"></span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment">     * @brief Generate PlantUML alias for a concept element.</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">     * @param c Concept element</span></div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a13f56a316639a5ed9e5dd78c59569771" title="Generate PlantUML alias for a class element.">generate_alias</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1concept__.html" title="Model of C++ concept.">concept_</a> &amp;c, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment"></span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment">     * @brief Render class element to PlantUML</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">     * @param c Class element</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a739470d3b7ebf209aa84d2213472c3c6" title="Main generator method.">generate</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html" title="Diagram element representing a class or class template.">class_</a> &amp;c, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment"></span> </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">     * @brief Render class methods to PlantUML</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment">     * @param methods List of class methods</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a974fe1ec0a09efc4fb22a181413c40a7" title="Render class methods to PlantUML.">generate_methods</a>(</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="keyword">const</span> std::vector&lt;class_method&gt; &amp;methods, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment"></span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment">     * @brief Render class methods to PlantUML in groups</span></div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="comment">     * @param methods Methods grouped by method type</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a974fe1ec0a09efc4fb22a181413c40a7" title="Render class methods to PlantUML.">generate_methods</a>(</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a2004a24f20cad5df6e0e7efa9e0891f0">method_groups_t</a> &amp;methods, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="comment"></span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="comment">     * @brief Render class method to PlantUML</span></div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment">     * @param m Class method</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a178ed23384c7bf51856f5e1a120606d9" title="Render class method to PlantUML.">generate_method</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1class__method.html" title="Class method model.">class_method</a> &amp;m, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment"></span> </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment">     * @brief Render class member to PlantUML</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="comment">     * @param m Class member</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a6ca33dd73a738768f35eb6a176e11d05" title="Render class member to PlantUML.">generate_member</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html" title="Class member model.">class_member</a> &amp;m, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="comment"></span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">     * @brief Render all relationships in the diagram to PlantUML</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a222a7c007610d5d381db4cb0db5b14b4" title="Render all relationships in the diagram to PlantUML.">generate_relationships</a>(std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment"></span> </div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="comment">     * @brief Render all relationships originating from class element.</span></div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="comment">     * @param c Class element</span></div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a222a7c007610d5d381db4cb0db5b14b4" title="Render all relationships in the diagram to PlantUML.">generate_relationships</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html" title="Diagram element representing a class or class template.">class_</a> &amp;c, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="comment"></span> </div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="comment">     * @brief Render a specific relationship to PlantUML.</span></div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="comment">     * @param r Relationship model</span></div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="comment">     * @param rendered_relations Set of already rendered relationships, to</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment">     *                           ensure that there are no duplicate</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment">     *                           relationships</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a077aabae3019748c0d3f12728e01cfc1" title="Render a specific relationship to PlantUML.">generate_relationship</a>(</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1relationship.html" title="Class representing any relationship other than inheritance.">relationship</a> &amp;r, std::set&lt;std::string&gt; &amp;rendered_relations) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment"></span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment">     * @brief Render enum element to PlantUML</span></div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment">     * @param e Enum element</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a739470d3b7ebf209aa84d2213472c3c6" title="Main generator method.">generate</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1enum__.html">enum_</a> &amp;e, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment"></span> </div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment">     * @brief Render all relationships originating from enum element.</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment">     * @param c Enum element</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a222a7c007610d5d381db4cb0db5b14b4" title="Render all relationships in the diagram to PlantUML.">generate_relationships</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1enum__.html">enum_</a> &amp;c, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="comment"></span> </div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="comment">     * @brief Render concept element to PlantUML</span></div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="comment">     * @param c Concept element</span></div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a739470d3b7ebf209aa84d2213472c3c6" title="Main generator method.">generate</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1concept__.html" title="Model of C++ concept.">concept_</a> &amp;c, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="comment"></span> </div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="comment">     * @brief Render all relationships originating from concept element.</span></div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="comment">     * @param c Concept element</span></div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a222a7c007610d5d381db4cb0db5b14b4" title="Render all relationships in the diagram to PlantUML.">generate_relationships</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1concept__.html" title="Model of C++ concept.">concept_</a> &amp;c, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="comment"></span> </div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="comment">     * @brief Render package element to PlantUML</span></div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="comment">     * @param p Package element</span></div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a739470d3b7ebf209aa84d2213472c3c6" title="Main generator method.">generate</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1package.html" title="Diagram element representing namespace or directory package.">package</a> &amp;p, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="comment"></span> </div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="comment">     * @brief Render all relationships originating from package element.</span></div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="comment">     * @param p Package element</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a222a7c007610d5d381db4cb0db5b14b4" title="Render all relationships in the diagram to PlantUML.">generate_relationships</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1package.html" title="Diagram element representing namespace or directory package.">package</a> &amp;p, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="comment"></span> </div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="comment">     * @brief Generate any notes attached specifically to some class element.</span></div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="comment">     * @param ostream Output stream</span></div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="comment">     * @param member Class element (member or method)</span></div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="comment">     * @param alias PlantUML class alias</span></div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#aad8718d7ece0404cd3339b09fc70d397" title="Generate any notes attached specifically to some class element.">generate_member_notes</a>(std::ostream &amp;ostream,</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html" title="Base class for class elements (e.g. member or method).">class_element</a> &amp;member, <span class="keyword">const</span> std::string &amp;alias) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="comment"></span> </div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="comment">     * @brief Generate elements grouped together in `together` groups.</span></div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#abba19faea7074e11fe59a1c99c7dd9cc" title="Generate elements grouped together in together groups.">generate_groups</a>(std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="comment"></span> </div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="comment">     * @brief Group class methods based on method type.</span></div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="comment">     * @param methods List of class methods.</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html" title="Class diagram PlantUML generator.">generator</a>(<a class="code hl_struct" href="structclanguml_1_1config_1_1class__diagram.html" title="Class diagram configuration.">diagram_config</a> &amp;<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>, <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html" title="Class representing a class diagram.">diagram_model</a> &amp;<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keyword">using </span><a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html" title="Base class for diagram generators.">common_generator</a>&lt;<a class="code hl_typedef" href="namespaceclanguml_1_1class__diagram_1_1generators_1_1plantuml.html#a76638333b83c20260d7d8bb735bc3980">diagram_config</a>, <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html" title="Class representing a class diagram.">diagram_model</a>&gt;<a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#ad0769615d8399ff6c972132c7c3efb21" title="Render class element to PlantUML.">::generate</a>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment"></span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">     * @brief Main generator method.</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">     * This method is called first and coordinates the entire diagram</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">     * generation.</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">     * @param ostr Output stream.</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a08f28198958055672978068d063f0866" title="Main generator method.">generate_diagram</a>(std::ostream &amp;ostr) <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment"></span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">     * @brief In a nested diagram, generate the top level elements.</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">     * This method iterates over the top level elements. In case the diagram</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">     * is nested (i.e. includes packages), for each package it recursively</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">     * call generation of elements contained in each package.</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">     * @param parent JSON node</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#aef1aed0328f55415ce37f25ed84a568a" title="In a nested diagram, generate the top level elements.">generate_top_level_elements</a>(std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment"></span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">     * @brief Generate a hyperlink for a class element.</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">     * @param e Class element (e.g. a method)</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#aaf22952d3b00073a27d6eea63150efa6" title="Generate a hyperlink for a class element.">generate_link</a>(std::ostream &amp;ostr, <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html" title="Base class for class elements (e.g. member or method).">class_element</a> &amp;e) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment"></span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">     * @brief Generate PlantUML alias for a class element.</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">     * @param c Class element</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a13f56a316639a5ed9e5dd78c59569771" title="Generate PlantUML alias for a class element.">generate_alias</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html" title="Diagram element representing a class or class template.">class_</a> &amp;c, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment"></span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">     * @brief Generate PlantUML alias for a enum element.</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment">     * @param e Enum element</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a13f56a316639a5ed9e5dd78c59569771" title="Generate PlantUML alias for a class element.">generate_alias</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1enum__.html">enum_</a> &amp;e, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment"></span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">     * @brief Generate PlantUML alias for a concept element.</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">     * @param c Concept element</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a13f56a316639a5ed9e5dd78c59569771" title="Generate PlantUML alias for a class element.">generate_alias</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1concept__.html" title="Model of C++ concept.">concept_</a> &amp;c, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment"></span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">     * @brief Render class element to PlantUML</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">     * @param c Class element</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#ad0769615d8399ff6c972132c7c3efb21" title="Render class element to PlantUML.">generate</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html" title="Diagram element representing a class or class template.">class_</a> &amp;c, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment"></span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment">     * @brief Render class methods to PlantUML</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment">     * @param methods List of class methods</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a974fe1ec0a09efc4fb22a181413c40a7" title="Render class methods to PlantUML.">generate_methods</a>(</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        <span class="keyword">const</span> std::vector&lt;class_method&gt; &amp;methods, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment"></span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="comment">     * @brief Render class methods to PlantUML in groups</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">     * @param methods Methods grouped by method type</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a974fe1ec0a09efc4fb22a181413c40a7" title="Render class methods to PlantUML.">generate_methods</a>(</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a2004a24f20cad5df6e0e7efa9e0891f0">method_groups_t</a> &amp;methods, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="comment"></span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment">     * @brief Render class method to PlantUML</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">     * @param m Class method</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a178ed23384c7bf51856f5e1a120606d9" title="Render class method to PlantUML.">generate_method</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1class__method.html" title="Class method model.">class_method</a> &amp;m, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment"></span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="comment">     * @brief Render class member to PlantUML</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment">     * @param m Class member</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a6ca33dd73a738768f35eb6a176e11d05" title="Render class member to PlantUML.">generate_member</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html" title="Class member model.">class_member</a> &amp;m, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment"></span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">     * @brief Render all relationships in the diagram to PlantUML</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a222a7c007610d5d381db4cb0db5b14b4" title="Render all relationships in the diagram to PlantUML.">generate_relationships</a>(std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="comment"></span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="comment">     * @brief Render all relationships originating from class element.</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="comment">     * @param c Class element</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a222a7c007610d5d381db4cb0db5b14b4" title="Render all relationships in the diagram to PlantUML.">generate_relationships</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html" title="Diagram element representing a class or class template.">class_</a> &amp;c, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="comment"></span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="comment">     * @brief Render a specific relationship to PlantUML.</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment">     * @param r Relationship model</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment">     * @param rendered_relations Set of already rendered relationships, to</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment">     *                           ensure that there are no duplicate</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment">     *                           relationships</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a077aabae3019748c0d3f12728e01cfc1" title="Render a specific relationship to PlantUML.">generate_relationship</a>(</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1relationship.html" title="Class representing any relationship other than inheritance.">relationship</a> &amp;r, std::set&lt;std::string&gt; &amp;rendered_relations) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment"></span> </div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment">     * @brief Render enum element to PlantUML</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment">     * @param e Enum element</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#ad0769615d8399ff6c972132c7c3efb21" title="Render class element to PlantUML.">generate</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1enum__.html">enum_</a> &amp;e, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment"></span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment">     * @brief Render all relationships originating from enum element.</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="comment">     * @param c Enum element</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a222a7c007610d5d381db4cb0db5b14b4" title="Render all relationships in the diagram to PlantUML.">generate_relationships</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1enum__.html">enum_</a> &amp;c, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="comment"></span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="comment">     * @brief Render concept element to PlantUML</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="comment">     * @param c Concept element</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#ad0769615d8399ff6c972132c7c3efb21" title="Render class element to PlantUML.">generate</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1concept__.html" title="Model of C++ concept.">concept_</a> &amp;c, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="comment"></span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="comment">     * @brief Render all relationships originating from concept element.</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="comment">     * @param c Concept element</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a222a7c007610d5d381db4cb0db5b14b4" title="Render all relationships in the diagram to PlantUML.">generate_relationships</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1concept__.html" title="Model of C++ concept.">concept_</a> &amp;c, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="comment"></span> </div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="comment">     * @brief Render package element to PlantUML</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="comment">     * @param p Package element</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#ad0769615d8399ff6c972132c7c3efb21" title="Render class element to PlantUML.">generate</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1package.html" title="Diagram element representing namespace or directory package.">package</a> &amp;p, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="comment"></span> </div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="comment">     * @brief Render all relationships originating from package element.</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="comment">     * @param p Package element</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a222a7c007610d5d381db4cb0db5b14b4" title="Render all relationships in the diagram to PlantUML.">generate_relationships</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1package.html" title="Diagram element representing namespace or directory package.">package</a> &amp;p, std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="comment"></span> </div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="comment">     * @brief Generate any notes attached specifically to some class element.</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="comment">     * @param ostream Output stream</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="comment">     * @param member Class element (member or method)</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="comment">     * @param alias PlantUML class alias</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#aad8718d7ece0404cd3339b09fc70d397" title="Generate any notes attached specifically to some class element.">generate_member_notes</a>(std::ostream &amp;ostream,</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html" title="Base class for class elements (e.g. member or method).">class_element</a> &amp;member, <span class="keyword">const</span> std::string &amp;alias) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="comment"></span> </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="comment">     * @brief Generate elements grouped together in `together` groups.</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#abba19faea7074e11fe59a1c99c7dd9cc" title="Generate elements grouped together in together groups.">generate_groups</a>(std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="comment"></span> </div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="comment">     * @brief Group class methods based on method type.</span></div>
 <div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="comment">     * @return Map of method groups.</span></div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    <a class="code hl_typedef" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a2004a24f20cad5df6e0e7efa9e0891f0">method_groups_t</a> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#acca1a85d27a4290311c0a0003a70a4b8" title="Group class methods based on method type.">group_methods</a>(</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        <span class="keyword">const</span> std::vector&lt;class_method&gt; &amp;methods) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a3d2bd4bfabfb62ae6fe954e95c079a6e">  268</a></span>    <span class="keyword">const</span> std::vector&lt;std::string&gt; <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a3d2bd4bfabfb62ae6fe954e95c079a6e">method_groups_</a>{</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <span class="stringliteral">&quot;constructors&quot;</span>, <span class="stringliteral">&quot;assignment&quot;</span>, <span class="stringliteral">&quot;operators&quot;</span>, <span class="stringliteral">&quot;other&quot;</span>};</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    std::string <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a9d2b2f199677620c3ccda6fee7e10768">render_name</a>(std::string name) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="comment">     * @param methods List of class methods.</span></div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="comment">     * @return Map of method groups.</span></div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    <a class="code hl_typedef" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a2004a24f20cad5df6e0e7efa9e0891f0">method_groups_t</a> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#acca1a85d27a4290311c0a0003a70a4b8" title="Group class methods based on method type.">group_methods</a>(</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        <span class="keyword">const</span> std::vector&lt;class_method&gt; &amp;methods) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a3d2bd4bfabfb62ae6fe954e95c079a6e">  270</a></span>    <span class="keyword">const</span> std::vector&lt;std::string&gt; <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a3d2bd4bfabfb62ae6fe954e95c079a6e">method_groups_</a>{</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        <span class="stringliteral">&quot;constructors&quot;</span>, <span class="stringliteral">&quot;assignment&quot;</span>, <span class="stringliteral">&quot;operators&quot;</span>, <span class="stringliteral">&quot;other&quot;</span>};</div>
 <div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#ae86dec9b9e253038b0610331634b1208">  274</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#ae86dec9b9e253038b0610331634b1208">sort_class_elements</a>(std::vector&lt;T&gt; &amp;elements)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a665d7fa0801548f2adc21379d4eb3471">m_config</a>.member_order() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#aa4470d989737e49f463da70d4b195ef0ad472e6e0f43395e2f9397727dddccb58">config::member_order_t::lexical</a>) {</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>            std::sort(elements.begin(), elements.end(),</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>                [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;m1, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;m2) {</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>                    return m1.name() &lt; m2.name();</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>                });</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        }</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    }</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    <span class="keyword">mutable</span> <a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1nested__element__stack.html">common::generators::nested_element_stack&lt;common::model::element&gt;</a></div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a0451338287aa543c4bd37c654f9ebb53">  285</a></span>        <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a0451338287aa543c4bd37c654f9ebb53">together_group_stack_</a>;</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>};</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span> </div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>} <span class="comment">// namespace plantuml</span></div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>} <span class="comment">// namespace generators</span></div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>} <span class="comment">// namespace class_diagram</span></div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>} <span class="comment">// namespace clanguml</span></div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    std::string <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a9d2b2f199677620c3ccda6fee7e10768">render_name</a>(std::string name) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span> </div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#ae86dec9b9e253038b0610331634b1208">  276</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#ae86dec9b9e253038b0610331634b1208">sort_class_elements</a>(std::vector&lt;T&gt; &amp;elements)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().member_order() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#aa4470d989737e49f463da70d4b195ef0ad472e6e0f43395e2f9397727dddccb58">config::member_order_t::lexical</a>) {</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>            std::sort(elements.begin(), elements.end(),</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>                [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;m1, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;m2) {</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>                    return m1.name() &lt; m2.name();</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>                });</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        }</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    }</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    <span class="keyword">mutable</span> <a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1nested__element__stack.html">common::generators::nested_element_stack&lt;common::model::element&gt;</a></div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a0451338287aa543c4bd37c654f9ebb53">  287</a></span>        <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1generators_1_1plantuml_1_1generator.html#a0451338287aa543c4bd37c654f9ebb53">together_group_stack_</a>;</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>};</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>} <span class="comment">// namespace plantuml</span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>} <span class="comment">// namespace generators</span></div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>} <span class="comment">// namespace class_diagram</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>} <span class="comment">// namespace clanguml</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

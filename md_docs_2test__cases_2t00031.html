@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.3.8</span>
+       <span id="projectnumber">0.3.9</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -131,6 +131,7 @@ Config</h1>
 <div class="line">    type: class</div>
 <div class="line">    glob:</div>
 <div class="line">      - ../../tests/t00031/t00031.cc</div>
+<div class="line">    skip_redundant_dependencies: false</div>
 <div class="line">    using_namespace:</div>
 <div class="line">      - clanguml::t00031</div>
 <div class="line">    include:</div>
@@ -164,6 +165,8 @@ Source code</h1>
 <div class="line"><span class="comment">    /// @uml{composition}</span></div>
 <div class="line"><span class="comment">    /// @uml{style[#green,dashed,thickness=4]}</span></div>
 <div class="line"><span class="comment"></span>    std::vector&lt;B&gt; bbb;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> add_b(B b) { bbb.push_back(b); }</div>
 <div class="line"><span class="comment"></span> </div>
 <div class="line"><span class="comment">    /// @uml{style[#blue,dotted,thickness=8]}</span></div>
 <div class="line"><span class="comment"></span>    C&lt;int&gt; ccc;</div>
@@ -383,7 +386,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 12,</div>
 <div class="line">            &quot;file&quot;: &quot;../../tests/t00031/t00031.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 29,</div>
+<div class="line">            &quot;line&quot;: 31,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00031/t00031.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;C&lt;int&gt;&quot;</div>
@@ -399,13 +402,44 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 8,</div>
 <div class="line">            &quot;file&quot;: &quot;../../tests/t00031/t00031.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 32,</div>
+<div class="line">            &quot;line&quot;: 34,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00031/t00031.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;clanguml::t00031::D *&quot;</div>
 <div class="line">        }</div>
 <div class="line">      ],</div>
-<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;is_const&quot;: false,</div>
+<div class="line">          &quot;is_consteval&quot;: false,</div>
+<div class="line">          &quot;is_constexpr&quot;: false,</div>
+<div class="line">          &quot;is_constructor&quot;: false,</div>
+<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
+<div class="line">          &quot;is_defaulted&quot;: false,</div>
+<div class="line">          &quot;is_deleted&quot;: false,</div>
+<div class="line">          &quot;is_move_assignment&quot;: false,</div>
+<div class="line">          &quot;is_noexcept&quot;: false,</div>
+<div class="line">          &quot;is_operator&quot;: false,</div>
+<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
+<div class="line">          &quot;is_static&quot;: false,</div>
+<div class="line">          &quot;is_virtual&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;add_b&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;b&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;clanguml::t00031::B&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 10,</div>
+<div class="line">            &quot;file&quot;: &quot;../../tests/t00031/t00031.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 28,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00031/t00031.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
 <div class="line">      &quot;name&quot;: &quot;R&quot;,</div>
 <div class="line">      &quot;namespace&quot;: &quot;clanguml::t00031&quot;,</div>
 <div class="line">      &quot;source_location&quot;: {</div>
@@ -419,8 +453,8 @@ Generated JSON models</h1>
 <div class="line">    }</div>
 <div class="line">  ],</div>
 <div class="line">  &quot;metadata&quot;: {</div>
-<div class="line">    &quot;clang_uml_version&quot;: &quot;0.3.7-55-gfb370ad&quot;,</div>
-<div class="line">    &quot;llvm_version&quot;: &quot;Ubuntu clang version 15.0.6&quot;,</div>
+<div class="line">    &quot;clang_uml_version&quot;: &quot;0.3.8-32-ge830195&quot;,</div>
+<div class="line">    &quot;llvm_version&quot;: &quot;Ubuntu clang version 15.0.7&quot;,</div>
 <div class="line">    &quot;schema_version&quot;: 1</div>
 <div class="line">  },</div>
 <div class="line">  &quot;name&quot;: &quot;t00031_class&quot;,</div>
@@ -430,6 +464,12 @@ Generated JSON models</h1>
 <div class="line">      &quot;destination&quot;: &quot;116209144733282955&quot;,</div>
 <div class="line">      &quot;source&quot;: &quot;208700529175860645&quot;,</div>
 <div class="line">      &quot;type&quot;: &quot;instantiation&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;1441796358326382179&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;484712092364868032&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
