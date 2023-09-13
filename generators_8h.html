@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.3.9</span>
+       <span id="projectnumber">0.4.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -130,6 +130,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="json_2class__diagram__generator_8h_source.html">class_diagram/generators/json/class_diagram_generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mermaid_2class__diagram__generator_8h_source.html">class_diagram/generators/mermaid/class_diagram_generator.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="plantuml_2class__diagram__generator_8h_source.html">class_diagram/generators/plantuml/class_diagram_generator.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cli__handler_8h_source.html">cli/cli_handler.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="compilation__database_8h_source.html">common/compilation_database.h</a>&quot;</code><br />
@@ -137,11 +138,14 @@ $(function() {
 <code>#include &quot;<a class="el" href="diagram__filter_8h_source.html">common/model/diagram_filter.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="config_8h_source.html">config/config.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="json_2include__diagram__generator_8h_source.html">include_diagram/generators/json/include_diagram_generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mermaid_2include__diagram__generator_8h_source.html">include_diagram/generators/mermaid/include_diagram_generator.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="plantuml_2include__diagram__generator_8h_source.html">include_diagram/generators/plantuml/include_diagram_generator.h</a>&quot;</code><br />
 <code>#include &quot;indicators/indicators.hpp&quot;</code><br />
 <code>#include &quot;<a class="el" href="json_2package__diagram__generator_8h_source.html">package_diagram/generators/json/package_diagram_generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mermaid_2package__diagram__generator_8h_source.html">package_diagram/generators/mermaid/package_diagram_generator.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="plantuml_2package__diagram__generator_8h_source.html">package_diagram/generators/plantuml/package_diagram_generator.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="json_2sequence__diagram__generator_8h_source.html">sequence_diagram/generators/json/sequence_diagram_generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mermaid_2sequence__diagram__generator_8h_source.html">sequence_diagram/generators/mermaid/sequence_diagram_generator.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="plantuml_2sequence__diagram__generator_8h_source.html">sequence_diagram/generators/plantuml/sequence_diagram_generator.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="util_8h_source.html">util/util.h</a>&quot;</code><br />
 <code>#include &quot;version.h&quot;</code><br />
@@ -181,6 +185,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1common_1_1generators_1_1json__generator__tag.html">clanguml::common::generators::json_generator_tag</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1common_1_1generators_1_1mermaid__generator__tag.html">clanguml::common::generators::mermaid_generator_tag</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1common_1_1generators_1_1diagram__generator__t_3_01clanguml_1_1config_1_1class_fd22e130c2931e2aacc4e9ced6dce827.html">clanguml::common::generators::diagram_generator_t&lt; clanguml::config::class_diagram, plantuml_generator_tag &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1common_1_1generators_1_1diagram__generator__t_3_01clanguml_1_1config_1_1sequene4e9832a3d1e6f22eeb3d87fd8133db6.html">clanguml::common::generators::diagram_generator_t&lt; clanguml::config::sequence_diagram, plantuml_generator_tag &gt;</a></td></tr>
@@ -196,6 +202,14 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1common_1_1generators_1_1diagram__generator__t_3_01clanguml_1_1config_1_1packag304438aeb0935cd57bdc99b08918be0f.html">clanguml::common::generators::diagram_generator_t&lt; clanguml::config::package_diagram, json_generator_tag &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1common_1_1generators_1_1diagram__generator__t_3_01clanguml_1_1config_1_1includ1713b7381f1acdfe2d5d8a1b69fa3fb7.html">clanguml::common::generators::diagram_generator_t&lt; clanguml::config::include_diagram, json_generator_tag &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1common_1_1generators_1_1diagram__generator__t_3_01clanguml_1_1config_1_1class_2b637efbe9a23e066edb37ca81f6024b.html">clanguml::common::generators::diagram_generator_t&lt; clanguml::config::class_diagram, mermaid_generator_tag &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1common_1_1generators_1_1diagram__generator__t_3_01clanguml_1_1config_1_1sequenf326d5a7a64452e35c56bc654beeb94e.html">clanguml::common::generators::diagram_generator_t&lt; clanguml::config::sequence_diagram, mermaid_generator_tag &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1common_1_1generators_1_1diagram__generator__t_3_01clanguml_1_1config_1_1packagbeffc48d0e097b47fa18cf975f6b653d.html">clanguml::common::generators::diagram_generator_t&lt; clanguml::config::package_diagram, mermaid_generator_tag &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1common_1_1generators_1_1diagram__generator__t_3_01clanguml_1_1config_1_1includ7a755586a97f879041188fdbfe49becd.html">clanguml::common::generators::diagram_generator_t&lt; clanguml::config::include_diagram, mermaid_generator_tag &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1diagram__ast__consumer.html">clanguml::common::generators::diagram_ast_consumer&lt; DiagramModel, DiagramConfig, TranslationUnitVisitor &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of <a href="https://clang.llvm.org/doxygen/classclang_1_1ASTConsumer.html">clang::ASTConsumer</a>  <a href="classclanguml_1_1common_1_1generators_1_1diagram__ast__consumer.html#details">More...</a><br /></td></tr>

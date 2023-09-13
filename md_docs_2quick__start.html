@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.3.9</span>
+       <span id="projectnumber">0.4.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -129,7 +129,7 @@ $(function() {
 <li>Edit the generated <code>.clang-uml</code> file and set the following: <div class="fragment language-yaml"><div class="line"># Path to `compile_commands.json` directory</div>
 <div class="line">compilation_database_dir: .</div>
 <div class="line"># Path to diagram output directory</div>
-<div class="line">output_directory: puml</div>
+<div class="line">output_directory: diagrams</div>
 <div class="line">diagrams:</div>
 <div class="line">  # This is the name of the diagram</div>
 <div class="line">  some_class_diagram:</div>
@@ -152,7 +152,9 @@ $(function() {
 <div class="line"># or to see generation progress for each diagram run</div>
 <div class="line">clang-uml --progress</div>
 </div><!-- fragment --></li>
-<li>Generate SVG images from the PlantUML diagrams: <div class="fragment language-bash"><div class="line">plantuml -tsvg puml/*.puml</div>
+<li>Generate SVG images from the PlantUML diagrams: <div class="fragment language-bash"><div class="line">plantuml -tsvg diagrams/*.puml</div>
+</div><!-- fragment --> or generate also MermaidJS diagram (requires <a href="https://github.com/mermaid-js/mermaid-cli">mermaid-cli</a>): <div class="fragment language-cpp"><div class="line">clang-uml --progress -n some_class_diagram -g mermaid</div>
+<div class="line">mmdc -i diagrams/some_class_diagram.mmd -o diagrams/some_class_diagram.svg</div>
 </div><!-- fragment --></li>
 <li>Add another diagram: <div class="fragment language-bash"><div class="line">clang-uml --add-sequence-diagram another_diagram</div>
 </div><!-- fragment --></li>

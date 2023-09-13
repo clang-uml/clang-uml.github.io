@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.3.9</span>
+       <span id="projectnumber">0.4.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -125,7 +125,7 @@ $(function() {
 <h1><a class="anchor" id="config-102"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">compilation_database_dir: ..</div>
-<div class="line">output_directory: puml</div>
+<div class="line">output_directory: diagrams</div>
 <div class="line">diagrams:</div>
 <div class="line">  t30001_package:</div>
 <div class="line">    type: package</div>
@@ -146,6 +146,16 @@ Config</h1>
 <div class="line">        - &#39;note right of {{ alias(&quot;A::AA::AAA&quot;) }}: A AAA note...&#39;</div>
 <div class="line">        - &#39;{% set e=element(&quot;A::AA&quot;) %} note top of {{ alias(&quot;A::AA&quot;) }} : {{ e.comment.formatted }}&#39;</div>
 <div class="line">        - &#39;{% set e=element(&quot;B::AA&quot;) %} note top of {{ alias(&quot;B::AA&quot;) }} : {{ e.comment.formatted }}&#39;</div>
+<div class="line">    mermaid:</div>
+<div class="line">      before:</div>
+<div class="line">        - &quot;%% t30001 test diagram of type {{ diagram.type }}&quot;</div>
+<div class="line">      after:</div>
+<div class="line">        - &#39;N_0001(A AAA note...)&#39;</div>
+<div class="line">        - &#39;N_0001 -.- {{ alias(&quot;A::AA::AAA&quot;) }}&#39;</div>
+<div class="line">        - &#39;{% set e=element(&quot;A::AA&quot;) %}N_0002({{ e.comment.formatted }})&#39;</div>
+<div class="line">        - &#39;{% set e=element(&quot;B::AA&quot;) %}N_0003({{ e.comment.formatted }})&#39;</div>
+<div class="line">        - &#39;N_0002 -.- {{ alias(&quot;A::AA&quot;) }}&#39;</div>
+<div class="line">        - &#39;N_0003 -.- {{ alias(&quot;B::AA&quot;) }}&#39;</div>
 </div><!-- fragment --> <h1><a class="anchor" id="source-code-102"></a>
 Source code</h1>
 <p>File t30001.cc </p><div class="fragment language-cpp"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
@@ -174,10 +184,15 @@ Source code</h1>
 <div class="line">} <span class="comment">// namespace B</span></div>
 <div class="line">} <span class="comment">// namespace t30001</span></div>
 <div class="line">} <span class="comment">// namespace clanguml</span></div>
-</div><!-- fragment --> <h1><a class="anchor" id="generated-uml-diagrams-102"></a>
-Generated UML diagrams</h1>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-102"></a>
+Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t30001_package.svg"></embed>
+</div>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-102"></a>
+Generated Mermaid diagrams</h1>
+<div class="image">
+<embed type="image/svg+xml" src="t30001_package_mermaid.svg"></embed>
 </div>
      <h1><a class="anchor" id="generated-json-models-102"></a>
 Generated JSON models</h1>
@@ -360,8 +375,8 @@ Generated JSON models</h1>
 <div class="line">    }</div>
 <div class="line">  ],</div>
 <div class="line">  &quot;metadata&quot;: {</div>
-<div class="line">    &quot;clang_uml_version&quot;: &quot;0.3.8-32-ge830195&quot;,</div>
-<div class="line">    &quot;llvm_version&quot;: &quot;Ubuntu clang version 15.0.7&quot;,</div>
+<div class="line">    &quot;clang_uml_version&quot;: &quot;0.4.0&quot;,</div>
+<div class="line">    &quot;llvm_version&quot;: &quot;Ubuntu clang version 16.0.1 (++20230328073357+42d1b276f779-1~exp1~20230328073502.65)&quot;,</div>
 <div class="line">    &quot;schema_version&quot;: 1</div>
 <div class="line">  },</div>
 <div class="line">  &quot;name&quot;: &quot;t30001_package&quot;,</div>

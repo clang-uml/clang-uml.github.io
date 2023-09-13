@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.3.9</span>
+       <span id="projectnumber">0.4.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -125,7 +125,7 @@ $(function() {
 <ul>
 <li><a class="el" href="md_docs_2common__options.html#overall-configuration-file-structure">Overall configuration file structure</a></li>
 <li><a class="el" href="md_docs_2common__options.html#translation-unit-glob-patterns">Translation unit glob patterns</a></li>
-<li><a class="el" href="md_docs_2common__options.html#plantuml-custom-directives">PlantUML custom directives</a></li>
+<li><a class="el" href="md_docs_2common__options.html#custom-directives">Custom directives</a></li>
 <li><a class="el" href="md_docs_2common__options.html#adding-debug-information-in-the-generated-diagrams">Adding debug information in the generated diagrams</a></li>
 <li><a class="el" href="md_docs_2common__options.html#resolving-include-path-and-compiler-flags-issues">Resolving include path and compiler flags issues</a><ul>
 <li><a class="el" href="md_docs_2common__options.html#use---query-driver-command-line-option">Use '--query-driver' command line option</a></li>
@@ -162,17 +162,26 @@ Translation unit glob patterns</h1>
 <div class="line">  - src/dir3/*.cc</div>
 </div><!-- fragment --><p>The glob patterns only need to match the translation units, which are also in the <code>compile_commands.json</code> file, i.e. any files that match the glob patterns but are not in <code>compile_commands.json</code> will be ignored. In case the <code>glob</code> pattern set does not match any translation units an error will be printed on the standard output.</p>
 <p>For small projects, the <code>glob</code> property can be omitted, which will result in <code>clang-uml</code> parsing all translation units from <code>compile_commands.json</code> for the diagram. However for large projects, constraining the number of translation units for each diagram to absolute minimum will significantly decrease the diagram generation times.</p>
-<h1><a class="anchor" id="plantuml-custom-directives"></a>
-PlantUML custom directives</h1>
-<p>In case it's necessary to add some custom PlantUML declarations before or after the generated diagram content, it can be achieved simply using the <code>plantuml</code> configuration properties, for instance:</p>
+<h1><a class="anchor" id="custom-directives"></a>
+Custom directives</h1>
+<p>In case it's necessary to add some custom PlantUML or MermaidJS declarations before or after the generated diagram content, it can be achieved simply using the <code>plantuml</code> or <code>mermaid</code> configuration properties, for instance for PlantUML:</p>
 <div class="fragment language-yaml"><div class="line">plantuml:</div>
 <div class="line">  before:</div>
 <div class="line">    - left to right direction</div>
 <div class="line">  after:</div>
 <div class="line">    - note left of {{ alias(&quot;ns1::ns2::MyClass&quot;) }} This is my class. </div>
+</div><!-- fragment --><p>or for MermaidJS:</p>
+<div class="fragment language-yaml"><div class="line">mermaid:</div>
+<div class="line">  before:</div>
+<div class="line">    - direction LR</div>
+<div class="line">  after:</div>
+<div class="line">    - note for {{ alias(&quot;ns1::ns2::MyClass&quot;) }} &quot;This is my class.&quot; </div>
 </div><!-- fragment --><p>These directive are useful for instance for adding notes to elements in the diagrams or customizing diagram layout or style.</p>
 <p>Please note that when referring to diagram elements in the PlantUML directives, they must be added using Jinja templates <code>alias</code> command as in the example above.</p>
-<p>More options can be found in the official PlantUML <a href="https://plantuml.com/">documentation</a>.</p>
+<p>More options can be found in the official docs for each respective generator:</p><ul>
+<li><a href="https://plantuml.com/">PlantUML</a></li>
+<li><a href="https://mermaid.js.org/intro/">MermaidJS</a></li>
+</ul>
 <h1><a class="anchor" id="adding-debug-information-in-the-generated-diagrams"></a>
 Adding debug information in the generated diagrams</h1>
 <p>Sometimes it is useful for debugging issues with the diagrams to have information on the exact source location, from which given declaration or call expression was derived. By adding option:</p>

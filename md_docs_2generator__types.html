@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.3.9</span>
+       <span id="projectnumber">0.4.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -124,11 +124,12 @@ $(function() {
 <div class="textblock"><p><a class="anchor" id="generator-types"></a></p>
 <ul>
 <li><a class="el" href="md_docs_2generator__types.html#plantuml">PlantUML</a></li>
+<li><a class="el" href="md_docs_2generator__types.html#mermaidjs">MermaidJS</a></li>
 <li><a class="el" href="md_docs_2generator__types.html#json">JSON</a></li>
 </ul>
-<p>Currently, there are 2 types of diagram generators: <code>plantuml</code> and <code>json</code>.</p>
+<p>Currently, there are 3 types of diagram generators: <code>plantuml</code>, <code>mermaid</code> and <code>json</code>.</p>
 <p>To specify, which generators should be used on the command line use option <code>-g</code>. For instance to generate both types of diagrams run <code>clang-uml</code> as follows:</p>
-<div class="fragment language-bash"><div class="line">clang-uml -g plantuml -g json</div>
+<div class="fragment language-bash"><div class="line">clang-uml -g plantuml -g mermaid -g json</div>
 </div><!-- fragment --><p>By default, only <code>plantuml</code> diagrams are generated.</p>
 <h1><a class="anchor" id="plantuml"></a>
 PlantUML</h1>
@@ -187,7 +188,55 @@ PlantUML</h1>
 <div class="line">&#39;LLVM version Ubuntu clang version 15.0.6</div>
 <div class="line">@enduml</div>
 </div><!-- fragment --><p>The footer at the end is added by default, but can be disabled with <code>--no-metadata</code> command line option.</p>
-<h1><a class="anchor" id="json"></a>
+<h1><a class="anchor" id="mermaidjs"></a>
+MermaidJS</h1>
+<p>This generator, creates UML diagrams in textual MermaidJS format, which can then be used directly in some Markdown renderers (e.g. GitHub) or converted to various image formats using <a href="https://github.com/mermaid-js/mermaid-cli">mermaid-cli</a>.</p>
+<p>In case there is a need for adding custom MermaidJS directives to generated diagrams, they can be included directly in the diagram configuration. For example:</p>
+<div class="fragment language-yaml"><div class="line">mermaid:</div>
+<div class="line">  before:</div>
+<div class="line">    - direction LR</div>
+<div class="line">  after:</div>
+<div class="line">    - &#39;note for {{ alias(&quot;inheritable_diagram_options&quot;) }} &quot;Options common to all diagram types.&quot;&#39;</div>
+<div class="line">    - &#39;note for {{ alias(&quot;config&quot;) }} &quot;General options not used by diagrams.&quot;&#39;</div>
+</div><!-- fragment --><p>will add before the diagram contents (right after diagram type, e.g. <code>classDiagram</code>) diagram direction hint, and after each diagram contents 2 notes attached to elements.</p>
+<p>An example MermaidJS diagram is presented below:</p>
+<div class="fragment language-cpp"><div class="line">classDiagram</div>
+<div class="line">    class C_0001371951663534295727[&quot;A&quot;]</div>
+<div class="line">    class C_0001371951663534295727 {</div>
+<div class="line">        +A() : [default] void</div>
+<div class="line">        +A(int i) : void</div>
+<div class="line">        +A(A &amp;&amp;) : [default] void</div>
+<div class="line">        +A(const A &amp;) : void</div>
+<div class="line">        +A&lt;T&gt;(T t) : void</div>
+<div class="line">        +~A() : [default] void</div>
+<div class="line">        +operator=(A &amp;&amp; other) : A &amp;</div>
+<div class="line">        +operator=(A &amp; other) : A &amp;</div>
+<div class="line">        +operator++() : A &amp;</div>
+<div class="line">        +auto_method() : int</div>
+<div class="line">        +basic_method() : void</div>
+<div class="line">        +const_method() : [const] void</div>
+<div class="line">        +create_from_int(int i) : A$</div>
+<div class="line">        +default_int(int i = 12) : int</div>
+<div class="line">        +default_string(int i, std::string s = &quot;abc&quot;) : std::string</div>
+<div class="line">        +double_int(const int i) : int</div>
+<div class="line">        -private_method() : void</div>
+<div class="line">        #protected_method() : void</div>
+<div class="line">        +size() : [const,constexpr] std::size_t</div>
+<div class="line">        +static_method() : int$</div>
+<div class="line">        +sum(const double a, const double b) : int</div>
+<div class="line">        -a_ : int</div>
+<div class="line">        +auto_member : const unsigned long</div>
+<div class="line">        -b_ : int</div>
+<div class="line">        -c_ : int</div>
+<div class="line">        #compare : std::function&amp;lt;bool &amp;lpar;const int&amp;rpar;&amp;gt;</div>
+<div class="line">        -private_member : int</div>
+<div class="line">        #protected_member : int</div>
+<div class="line">        +public_member : int</div>
+<div class="line">        +static_const_int : const int</div>
+<div class="line">        +static_int : int</div>
+<div class="line">    }</div>
+<div class="line">    click C_0001371951663534295727 href &quot;https://github.com/bkryza/clang-uml/blob/70e70888231938ba5310a8e0e28b9351beba21ef/tests/t00003/t00003.cc#L7&quot; &quot;A&quot;</div>
+</div><!-- fragment --><h1><a class="anchor" id="json"></a>
 JSON</h1>
 <p>Generates a JSON representation of the intermediate <code>clang-uml</code> model, which can be used for scripting, integrations as well as analysing the code base or even generating diagrams in other formats.</p>
 <p>An equivalent of the above PlantUML diagram in JSON is presented below:</p>

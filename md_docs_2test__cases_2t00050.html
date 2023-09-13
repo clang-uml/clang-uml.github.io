@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.3.9</span>
+       <span id="projectnumber">0.4.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -125,7 +125,7 @@ $(function() {
 <h1><a class="anchor" id="config-48"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">compilation_database_dir: ..</div>
-<div class="line">output_directory: puml</div>
+<div class="line">output_directory: diagrams</div>
 <div class="line">diagrams:</div>
 <div class="line">  t00050_class:</div>
 <div class="line">    type: class</div>
@@ -188,7 +188,7 @@ Config</h1>
 <div class="line">          {% endfor %}</div>
 <div class="line"> </div>
 <div class="line">          {% endif %}</div>
-<div class="line">          {# Render template paramete if any #}</div>
+<div class="line">          {# Render template parameters if any #}</div>
 <div class="line">          {% if existsIn(e, &quot;comment&quot;) and existsIn(e.comment, &quot;tparam&quot;) %}</div>
 <div class="line">          {% set c=e.comment %} </div>
 <div class="line"> </div>
@@ -199,6 +199,32 @@ Config</h1>
 <div class="line">             {% endfor %}</div>
 <div class="line">          end note</div>
 <div class="line"> </div>
+<div class="line">          {% endif %}</div>
+<div class="line">          {% endfor %}</div>
+<div class="line">    mermaid:</div>
+<div class="line">      after:</div>
+<div class="line">        - |</div>
+<div class="line">          note for {{ alias(&quot;NoSuchClass&quot;) }} &quot;{{ comment(&quot;NoSuchClass&quot;).formatted }}&quot;</div>
+<div class="line">        - |</div>
+<div class="line">          note for {{ alias(&quot;A&quot;) }} &quot;{{ comment(&quot;clanguml::t00050::A&quot;).formatted }}&quot;</div>
+<div class="line">        - |</div>
+<div class="line">          note for {{ element(&quot;clanguml::t00050::A&quot;).alias }} {% set e=element(&quot;clanguml::t00050::A&quot;) %} &quot;{{ e.comment.formatted }}&quot;</div>
+<div class="line">          note for {{ alias(&quot;C&quot;) }} &quot;{{ trim(comment(&quot;clanguml::t00050::C&quot;).text) }}&quot;</div>
+<div class="line">          {% set cmt=comment(&quot;clanguml::t00050::G&quot;).paragraph %}</div>
+<div class="line">          note for {{ alias(&quot;G&quot;) }} &quot;{{ trim(cmt.0) }}&quot;</div>
+<div class="line">          note for {{ alias(&quot;G&quot;) }} &quot;{{ trim(cmt.1) }}&quot;</div>
+<div class="line">          note for {{ alias(&quot;G&quot;) }} &quot;{{ trim(cmt.2) }}&quot;</div>
+<div class="line">        - |</div>
+<div class="line">          {# Render brief comments and todos, if any were written for an element #}</div>
+<div class="line">          {% for e in diagram.elements %}</div>
+<div class="line">          {% if existsIn(e, &quot;comment&quot;) and existsIn(e.comment, &quot;brief&quot;) %}</div>
+<div class="line">          note for {{ e.alias }} {% set c=e.comment %} &quot;{{ c.brief.0 }}&quot;</div>
+<div class="line">          {% endif %}</div>
+<div class="line">          {% if existsIn(e, &quot;comment&quot;) and existsIn(e.comment, &quot;todo&quot;) %}</div>
+<div class="line">          {% set c=e.comment %}</div>
+<div class="line">          {% for t in c.todo %}</div>
+<div class="line">          note for {{ e.alias }} &quot;**TODO** {{ t }}&quot;</div>
+<div class="line">          {% endfor %}</div>
 <div class="line">          {% endif %}</div>
 <div class="line">          {% endfor %}</div>
 </div><!-- fragment --> <h1><a class="anchor" id="source-code-48"></a>
@@ -299,10 +325,15 @@ Source code</h1>
 <div class="line"> </div>
 <div class="line">} <span class="comment">// namespace t00050</span></div>
 <div class="line">} <span class="comment">// namespace clanguml</span></div>
-</div><!-- fragment --> <h1><a class="anchor" id="generated-uml-diagrams-48"></a>
-Generated UML diagrams</h1>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-48"></a>
+Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t00050_class.svg"></embed>
+</div>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-48"></a>
+Generated Mermaid diagrams</h1>
+<div class="image">
+<embed type="image/svg+xml" src="t00050_class_mermaid.svg"></embed>
 </div>
      <h1><a class="anchor" id="generated-json-models-48"></a>
 Generated JSON models</h1>
@@ -626,8 +657,8 @@ Generated JSON models</h1>
 <div class="line">    }</div>
 <div class="line">  ],</div>
 <div class="line">  &quot;metadata&quot;: {</div>
-<div class="line">    &quot;clang_uml_version&quot;: &quot;0.3.8-32-ge830195&quot;,</div>
-<div class="line">    &quot;llvm_version&quot;: &quot;Ubuntu clang version 15.0.7&quot;,</div>
+<div class="line">    &quot;clang_uml_version&quot;: &quot;0.4.0&quot;,</div>
+<div class="line">    &quot;llvm_version&quot;: &quot;Ubuntu clang version 16.0.1 (++20230328073357+42d1b276f779-1~exp1~20230328073502.65)&quot;,</div>
 <div class="line">    &quot;schema_version&quot;: 1</div>
 <div class="line">  },</div>
 <div class="line">  &quot;name&quot;: &quot;t00050_class&quot;,</div>
