@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.0</span>
+       <span id="projectnumber">0.4.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -218,11 +218,11 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True, if this decorator applies to diagram <code>name</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="decorators_8cc_source.html#l00054">54</a> of file <a class="el" href="decorators_8cc_source.html">decorators.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   55</span>{</div>
-<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator.html#a5c5e52f7b3611c694fb7e356c9208577">diagrams</a>.empty() ||</div>
-<div class="line"><span class="lineno">   57</span>        (std::find(<a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator.html#a5c5e52f7b3611c694fb7e356c9208577">diagrams</a>.begin(), <a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator.html#a5c5e52f7b3611c694fb7e356c9208577">diagrams</a>.end(), name) != <a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator.html#a5c5e52f7b3611c694fb7e356c9208577">diagrams</a>.end());</div>
-<div class="line"><span class="lineno">   58</span>}</div>
+<p class="definition">Definition at line <a class="el" href="decorators_8cc_source.html#l00057">57</a> of file <a class="el" href="decorators_8cc_source.html">decorators.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   58</span>{</div>
+<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator.html#a5c5e52f7b3611c694fb7e356c9208577">diagrams</a>.empty() ||</div>
+<div class="line"><span class="lineno">   60</span>        (std::find(<a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator.html#a5c5e52f7b3611c694fb7e356c9208577">diagrams</a>.begin(), <a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator.html#a5c5e52f7b3611c694fb7e356c9208577">diagrams</a>.end(), name) != <a class="code hl_variable" href="structclanguml_1_1decorators_1_1decorator.html#a5c5e52f7b3611c694fb7e356c9208577">diagrams</a>.end());</div>
+<div class="line"><span class="lineno">   61</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -282,9 +282,12 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   47</span>    <span class="keywordflow">if</span> (c.find(<a class="code hl_variable" href="structclanguml_1_1decorators_1_1association.html#a3e9069a177a96254c7a9b1118f297587">association::label</a>) == 0) {</div>
 <div class="line"><span class="lineno">   48</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="structclanguml_1_1decorators_1_1association.html#a09b88bffe7c4047f73c4c3f56acbdde2">association::from_string</a>(c);</div>
 <div class="line"><span class="lineno">   49</span>    }</div>
-<div class="line"><span class="lineno">   50</span> </div>
-<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">   52</span>}</div>
+<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">if</span> (c.find(<a class="code hl_variable" href="structclanguml_1_1decorators_1_1call.html#ab464715680442b0d665ec0ed4ce0a1f9">call::label</a>) == 0) {</div>
+<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="structclanguml_1_1decorators_1_1call.html#a70a118406a38275dd9db9c4d60d25c71">call::from_string</a>(c);</div>
+<div class="line"><span class="lineno">   52</span>    }</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">   55</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -322,51 +325,51 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="decorators_8cc_source.html#l00060">60</a> of file <a class="el" href="decorators_8cc_source.html">decorators.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   61</span>{</div>
-<div class="line"><span class="lineno">   62</span>    decorator_toks res;</div>
-<div class="line"><span class="lineno">   63</span>    res.label = label;</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordtype">size_t</span> pos{};</div>
-<div class="line"><span class="lineno">   65</span>    std::string_view::const_iterator it = c.begin();</div>
-<div class="line"><span class="lineno">   66</span>    std::advance(it, label.size());</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">if</span> (*it == <span class="charliteral">&#39;:&#39;</span>) {</div>
-<div class="line"><span class="lineno">   69</span>        std::advance(it, 1);</div>
+<p class="definition">Definition at line <a class="el" href="decorators_8cc_source.html#l00063">63</a> of file <a class="el" href="decorators_8cc_source.html">decorators.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   64</span>{</div>
+<div class="line"><span class="lineno">   65</span>    decorator_toks res;</div>
+<div class="line"><span class="lineno">   66</span>    res.label = label;</div>
+<div class="line"><span class="lineno">   67</span>    <span class="keywordtype">size_t</span> pos{};</div>
+<div class="line"><span class="lineno">   68</span>    std::string_view::const_iterator it = c.begin();</div>
+<div class="line"><span class="lineno">   69</span>    std::advance(it, label.size());</div>
 <div class="line"><span class="lineno">   70</span> </div>
-<div class="line"><span class="lineno">   71</span>        pos = std::distance(c.begin(), it);</div>
-<div class="line"><span class="lineno">   72</span>        <span class="comment">// If the diagram list is provided after &#39;:&#39;, [] is mandatory</span></div>
-<div class="line"><span class="lineno">   73</span>        <span class="comment">// even if empty</span></div>
-<div class="line"><span class="lineno">   74</span>        <span class="keyword">auto</span> d = c.substr(pos, c.find(<span class="charliteral">&#39;[&#39;</span>, pos) - pos);</div>
-<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">if</span> (!d.empty()) {</div>
-<div class="line"><span class="lineno">   76</span>            std::string d_str{d};</div>
-<div class="line"><span class="lineno">   77</span>            d_str.erase(std::remove_if(d_str.begin(), d_str.end(),</div>
-<div class="line"><span class="lineno">   78</span>                            <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span> (*)(<span class="keywordtype">int</span>)<span class="keyword">&gt;</span>(std::isspace)),</div>
-<div class="line"><span class="lineno">   79</span>                d_str.end());</div>
-<div class="line"><span class="lineno">   80</span>            res.diagrams = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a5db2bb4750585e6c7953792f137c47ab" title="Split a string using delimiter.">util::split</a>(d_str, <span class="stringliteral">&quot;,&quot;</span>);</div>
-<div class="line"><span class="lineno">   81</span>        }</div>
-<div class="line"><span class="lineno">   82</span> </div>
-<div class="line"><span class="lineno">   83</span>        std::advance(it, d.size());</div>
-<div class="line"><span class="lineno">   84</span>    }</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">if</span> (*it == <span class="charliteral">&#39;:&#39;</span>) {</div>
+<div class="line"><span class="lineno">   72</span>        std::advance(it, 1);</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>        pos = std::distance(c.begin(), it);</div>
+<div class="line"><span class="lineno">   75</span>        <span class="comment">// If the diagram list is provided after &#39;:&#39;, [] is mandatory</span></div>
+<div class="line"><span class="lineno">   76</span>        <span class="comment">// even if empty</span></div>
+<div class="line"><span class="lineno">   77</span>        <span class="keyword">auto</span> d = c.substr(pos, c.find(<span class="charliteral">&#39;[&#39;</span>, pos) - pos);</div>
+<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">if</span> (!d.empty()) {</div>
+<div class="line"><span class="lineno">   79</span>            std::string d_str{d};</div>
+<div class="line"><span class="lineno">   80</span>            d_str.erase(std::remove_if(d_str.begin(), d_str.end(),</div>
+<div class="line"><span class="lineno">   81</span>                            <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span> (*)(<span class="keywordtype">int</span>)<span class="keyword">&gt;</span>(std::isspace)),</div>
+<div class="line"><span class="lineno">   82</span>                d_str.end());</div>
+<div class="line"><span class="lineno">   83</span>            res.diagrams = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a5db2bb4750585e6c7953792f137c47ab" title="Split a string using delimiter.">util::split</a>(d_str, <span class="stringliteral">&quot;,&quot;</span>);</div>
+<div class="line"><span class="lineno">   84</span>        }</div>
 <div class="line"><span class="lineno">   85</span> </div>
-<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">if</span> (*it == <span class="charliteral">&#39;[&#39;</span>) {</div>
-<div class="line"><span class="lineno">   87</span>        std::advance(it, 1);</div>
+<div class="line"><span class="lineno">   86</span>        std::advance(it, d.size());</div>
+<div class="line"><span class="lineno">   87</span>    }</div>
 <div class="line"><span class="lineno">   88</span> </div>
-<div class="line"><span class="lineno">   89</span>        pos = std::distance(c.begin(), it);</div>
-<div class="line"><span class="lineno">   90</span>        res.param = c.substr(pos, c.find(<span class="charliteral">&#39;]&#39;</span>, pos) - pos);</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">if</span> (*it == <span class="charliteral">&#39;[&#39;</span>) {</div>
+<div class="line"><span class="lineno">   90</span>        std::advance(it, 1);</div>
 <div class="line"><span class="lineno">   91</span> </div>
-<div class="line"><span class="lineno">   92</span>        std::advance(it, res.param.size() + 1);</div>
-<div class="line"><span class="lineno">   93</span>    }</div>
-<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (std::isspace(*it) != 0) {</div>
-<div class="line"><span class="lineno">   95</span>        std::advance(it, 1);</div>
+<div class="line"><span class="lineno">   92</span>        pos = std::distance(c.begin(), it);</div>
+<div class="line"><span class="lineno">   93</span>        res.param = c.substr(pos, c.find(<span class="charliteral">&#39;]&#39;</span>, pos) - pos);</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>        std::advance(it, res.param.size() + 1);</div>
 <div class="line"><span class="lineno">   96</span>    }</div>
-<div class="line"><span class="lineno">   97</span> </div>
-<div class="line"><span class="lineno">   98</span>    pos = std::distance(c.begin(), it);</div>
-<div class="line"><span class="lineno">   99</span>    res.text = c.substr(pos, c.find(<span class="charliteral">&#39;}&#39;</span>, pos) - pos);</div>
-<div class="line"><span class="lineno">  100</span>    res.text = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e" title="Trim a string.">util::trim</a>(res.text);</div>
-<div class="line"><span class="lineno">  101</span>    res.param = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e" title="Trim a string.">util::trim</a>(res.param);</div>
-<div class="line"><span class="lineno">  102</span> </div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">return</span> res;</div>
-<div class="line"><span class="lineno">  104</span>}</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (std::isspace(*it) != 0) {</div>
+<div class="line"><span class="lineno">   98</span>        std::advance(it, 1);</div>
+<div class="line"><span class="lineno">   99</span>    }</div>
+<div class="line"><span class="lineno">  100</span> </div>
+<div class="line"><span class="lineno">  101</span>    pos = std::distance(c.begin(), it);</div>
+<div class="line"><span class="lineno">  102</span>    res.text = c.substr(pos, c.find(<span class="charliteral">&#39;}&#39;</span>, pos) - pos);</div>
+<div class="line"><span class="lineno">  103</span>    res.text = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e" title="Trim a string.">util::trim</a>(res.text);</div>
+<div class="line"><span class="lineno">  104</span>    res.param = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e" title="Trim a string.">util::trim</a>(res.param);</div>
+<div class="line"><span class="lineno">  105</span> </div>
+<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">return</span> res;</div>
+<div class="line"><span class="lineno">  107</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

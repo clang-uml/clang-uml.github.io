@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.0</span>
+       <span id="projectnumber">0.4.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -234,15 +234,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="yaml__emitters_8cc_source.html#l00336">336</a> of file <a class="el" href="yaml__emitters_8cc_source.html">yaml_emitters.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  337</span>{</div>
-<div class="line"><span class="lineno">  338</span>    out &lt;&lt; YAML::BeginMap;</div>
-<div class="line"><span class="lineno">  339</span>    out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;type&quot;</span> &lt;&lt; YAML::Value &lt;&lt; c.type();</div>
-<div class="line"><span class="lineno">  340</span>    out &lt;&lt; c.layout;</div>
-<div class="line"><span class="lineno">  341</span>    out &lt;&lt; dynamic_cast&lt;const inheritable_diagram_options &amp;&gt;(c);</div>
-<div class="line"><span class="lineno">  342</span>    out &lt;&lt; YAML::EndMap;</div>
-<div class="line"><span class="lineno">  343</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><span class="lineno">  344</span>}</div>
+<p class="definition">Definition at line <a class="el" href="yaml__emitters_8cc_source.html#l00346">346</a> of file <a class="el" href="yaml__emitters_8cc_source.html">yaml_emitters.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  347</span>{</div>
+<div class="line"><span class="lineno">  348</span>    out &lt;&lt; YAML::BeginMap;</div>
+<div class="line"><span class="lineno">  349</span>    out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;type&quot;</span> &lt;&lt; YAML::Value &lt;&lt; c.type();</div>
+<div class="line"><span class="lineno">  350</span>    out &lt;&lt; c.layout;</div>
+<div class="line"><span class="lineno">  351</span>    out &lt;&lt; dynamic_cast&lt;const inheritable_diagram_options &amp;&gt;(c);</div>
+<div class="line"><span class="lineno">  352</span>    out &lt;&lt; YAML::EndMap;</div>
+<div class="line"><span class="lineno">  353</span>    <span class="keywordflow">return</span> out;</div>
+<div class="line"><span class="lineno">  354</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -578,15 +578,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="yaml__emitters_8cc_source.html#l00358">358</a> of file <a class="el" href="yaml__emitters_8cc_source.html">yaml_emitters.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  359</span>{</div>
-<div class="line"><span class="lineno">  360</span>    out &lt;&lt; YAML::BeginMap;</div>
-<div class="line"><span class="lineno">  361</span>    out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;type&quot;</span> &lt;&lt; YAML::Value &lt;&lt; c.type();</div>
-<div class="line"><span class="lineno">  362</span>    out &lt;&lt; c.layout;</div>
-<div class="line"><span class="lineno">  363</span>    out &lt;&lt; dynamic_cast&lt;const inheritable_diagram_options &amp;&gt;(c);</div>
-<div class="line"><span class="lineno">  364</span>    out &lt;&lt; YAML::EndMap;</div>
-<div class="line"><span class="lineno">  365</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><span class="lineno">  366</span>}</div>
+<p class="definition">Definition at line <a class="el" href="yaml__emitters_8cc_source.html#l00368">368</a> of file <a class="el" href="yaml__emitters_8cc_source.html">yaml_emitters.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  369</span>{</div>
+<div class="line"><span class="lineno">  370</span>    out &lt;&lt; YAML::BeginMap;</div>
+<div class="line"><span class="lineno">  371</span>    out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;type&quot;</span> &lt;&lt; YAML::Value &lt;&lt; c.type();</div>
+<div class="line"><span class="lineno">  372</span>    out &lt;&lt; c.layout;</div>
+<div class="line"><span class="lineno">  373</span>    out &lt;&lt; dynamic_cast&lt;const inheritable_diagram_options &amp;&gt;(c);</div>
+<div class="line"><span class="lineno">  374</span>    out &lt;&lt; YAML::EndMap;</div>
+<div class="line"><span class="lineno">  375</span>    <span class="keywordflow">return</span> out;</div>
+<div class="line"><span class="lineno">  376</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -632,41 +632,51 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">  297</span>    out &lt;&lt; c.using_namespace;</div>
 <div class="line"><span class="lineno">  298</span>    out &lt;&lt; c.generate_metadata;</div>
 <div class="line"><span class="lineno">  299</span> </div>
-<div class="line"><span class="lineno">  300</span>    <span class="keywordflow">if</span> (<span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>class_diagram *<span class="keyword">&gt;</span>(&amp;c) != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  301</span>        out &lt;&lt; c.generate_method_arguments;</div>
-<div class="line"><span class="lineno">  302</span>        out &lt;&lt; c.generate_packages;</div>
-<div class="line"><span class="lineno">  303</span>        out &lt;&lt; c.include_relations_also_as_members;</div>
-<div class="line"><span class="lineno">  304</span>        <span class="keywordflow">if</span> (c.relationship_hints) {</div>
-<div class="line"><span class="lineno">  305</span>            out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;relationship_hints&quot;</span> &lt;&lt; YAML::Value</div>
-<div class="line"><span class="lineno">  306</span>                &lt;&lt; c.relationship_hints();</div>
-<div class="line"><span class="lineno">  307</span>        }</div>
-<div class="line"><span class="lineno">  308</span> </div>
-<div class="line"><span class="lineno">  309</span>        <span class="keywordflow">if</span> (c.type_aliases) {</div>
-<div class="line"><span class="lineno">  310</span>            out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;type_aliases&quot;</span> &lt;&lt; YAML::Value</div>
-<div class="line"><span class="lineno">  311</span>                &lt;&lt; c.type_aliases();</div>
-<div class="line"><span class="lineno">  312</span>        }</div>
-<div class="line"><span class="lineno">  313</span>        out &lt;&lt; c.member_order;</div>
-<div class="line"><span class="lineno">  314</span>        out &lt;&lt; c.package_type;</div>
-<div class="line"><span class="lineno">  315</span>        out &lt;&lt; c.generate_template_argument_dependencies;</div>
-<div class="line"><span class="lineno">  316</span>        out &lt;&lt; c.skip_redundant_dependencies;</div>
-<div class="line"><span class="lineno">  317</span>    }</div>
-<div class="line"><span class="lineno">  318</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>sequence_diagram *<span class="keyword">&gt;</span>(&amp;c) != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  319</span>        out &lt;&lt; c.combine_free_functions_into_file_participants;</div>
-<div class="line"><span class="lineno">  320</span>        out &lt;&lt; c.generate_condition_statements;</div>
-<div class="line"><span class="lineno">  321</span>        out &lt;&lt; c.generate_method_arguments;</div>
-<div class="line"><span class="lineno">  322</span>        out &lt;&lt; c.generate_return_types;</div>
-<div class="line"><span class="lineno">  323</span>        out &lt;&lt; c.participants_order;</div>
-<div class="line"><span class="lineno">  324</span>    }</div>
-<div class="line"><span class="lineno">  325</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>package_diagram *<span class="keyword">&gt;</span>(&amp;c) != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  326</span>        out &lt;&lt; c.generate_packages;</div>
-<div class="line"><span class="lineno">  327</span>        out &lt;&lt; c.package_type;</div>
-<div class="line"><span class="lineno">  328</span>    }</div>
-<div class="line"><span class="lineno">  329</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>include_diagram *<span class="keyword">&gt;</span>(&amp;c) != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  330</span>        out &lt;&lt; c.generate_system_headers;</div>
-<div class="line"><span class="lineno">  331</span>    }</div>
-<div class="line"><span class="lineno">  332</span> </div>
-<div class="line"><span class="lineno">  333</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><span class="lineno">  334</span>}</div>
+<div class="line"><span class="lineno">  300</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *cd = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>class_diagram *<span class="keyword">&gt;</span>(&amp;c);</div>
+<div class="line"><span class="lineno">  301</span>        cd != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  302</span>        out &lt;&lt; cd-&gt;title;</div>
+<div class="line"><span class="lineno">  303</span>        out &lt;&lt; c.generate_method_arguments;</div>
+<div class="line"><span class="lineno">  304</span>        out &lt;&lt; c.generate_packages;</div>
+<div class="line"><span class="lineno">  305</span>        out &lt;&lt; c.include_relations_also_as_members;</div>
+<div class="line"><span class="lineno">  306</span>        <span class="keywordflow">if</span> (c.relationship_hints) {</div>
+<div class="line"><span class="lineno">  307</span>            out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;relationship_hints&quot;</span> &lt;&lt; YAML::Value</div>
+<div class="line"><span class="lineno">  308</span>                &lt;&lt; c.relationship_hints();</div>
+<div class="line"><span class="lineno">  309</span>        }</div>
+<div class="line"><span class="lineno">  310</span> </div>
+<div class="line"><span class="lineno">  311</span>        <span class="keywordflow">if</span> (c.type_aliases) {</div>
+<div class="line"><span class="lineno">  312</span>            out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;type_aliases&quot;</span> &lt;&lt; YAML::Value</div>
+<div class="line"><span class="lineno">  313</span>                &lt;&lt; c.type_aliases();</div>
+<div class="line"><span class="lineno">  314</span>        }</div>
+<div class="line"><span class="lineno">  315</span>        out &lt;&lt; c.member_order;</div>
+<div class="line"><span class="lineno">  316</span>        out &lt;&lt; c.package_type;</div>
+<div class="line"><span class="lineno">  317</span>        out &lt;&lt; c.generate_template_argument_dependencies;</div>
+<div class="line"><span class="lineno">  318</span>        out &lt;&lt; c.skip_redundant_dependencies;</div>
+<div class="line"><span class="lineno">  319</span>    }</div>
+<div class="line"><span class="lineno">  320</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *sd = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>sequence_diagram *<span class="keyword">&gt;</span>(&amp;c);</div>
+<div class="line"><span class="lineno">  321</span>             sd != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  322</span>        out &lt;&lt; sd-&gt;title;</div>
+<div class="line"><span class="lineno">  323</span>        out &lt;&lt; c.combine_free_functions_into_file_participants;</div>
+<div class="line"><span class="lineno">  324</span>        out &lt;&lt; c.generate_condition_statements;</div>
+<div class="line"><span class="lineno">  325</span>        out &lt;&lt; c.generate_method_arguments;</div>
+<div class="line"><span class="lineno">  326</span>        out &lt;&lt; c.generate_return_types;</div>
+<div class="line"><span class="lineno">  327</span>        out &lt;&lt; c.participants_order;</div>
+<div class="line"><span class="lineno">  328</span>        out &lt;&lt; c.generate_message_comments;</div>
+<div class="line"><span class="lineno">  329</span>        out &lt;&lt; c.message_comment_width;</div>
+<div class="line"><span class="lineno">  330</span>    }</div>
+<div class="line"><span class="lineno">  331</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *pd = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>package_diagram *<span class="keyword">&gt;</span>(&amp;c);</div>
+<div class="line"><span class="lineno">  332</span>             pd != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  333</span>        out &lt;&lt; pd-&gt;title;</div>
+<div class="line"><span class="lineno">  334</span>        out &lt;&lt; c.generate_packages;</div>
+<div class="line"><span class="lineno">  335</span>        out &lt;&lt; c.package_type;</div>
+<div class="line"><span class="lineno">  336</span>    }</div>
+<div class="line"><span class="lineno">  337</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *<span class="keywordtype">id</span> = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>include_diagram *<span class="keyword">&gt;</span>(&amp;c);</div>
+<div class="line"><span class="lineno">  338</span>             <span class="keywordtype">id</span> != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  339</span>        out &lt;&lt; <span class="keywordtype">id</span>-&gt;title;</div>
+<div class="line"><span class="lineno">  340</span>        out &lt;&lt; c.generate_system_headers;</div>
+<div class="line"><span class="lineno">  341</span>    }</div>
+<div class="line"><span class="lineno">  342</span> </div>
+<div class="line"><span class="lineno">  343</span>    <span class="keywordflow">return</span> out;</div>
+<div class="line"><span class="lineno">  344</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -808,17 +818,17 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00708">708</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  709</span>{</div>
-<div class="line"><span class="lineno">  710</span>    <span class="keywordflow">if</span> (o.has_value) {</div>
-<div class="line"><span class="lineno">  711</span>        out &lt;&lt; YAML::Key &lt;&lt; o.name;</div>
-<div class="line"><span class="lineno">  712</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, std::filesystem::path&gt;)</div>
-<div class="line"><span class="lineno">  713</span>            out &lt;&lt; YAML::Value &lt;&lt; o.value.string();</div>
-<div class="line"><span class="lineno">  714</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  715</span>            out &lt;&lt; YAML::Value &lt;&lt; o.value;</div>
-<div class="line"><span class="lineno">  716</span>    }</div>
-<div class="line"><span class="lineno">  717</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><span class="lineno">  718</span>}</div>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00713">713</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  714</span>{</div>
+<div class="line"><span class="lineno">  715</span>    <span class="keywordflow">if</span> (o.has_value) {</div>
+<div class="line"><span class="lineno">  716</span>        out &lt;&lt; YAML::Key &lt;&lt; o.name;</div>
+<div class="line"><span class="lineno">  717</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, std::filesystem::path&gt;)</div>
+<div class="line"><span class="lineno">  718</span>            out &lt;&lt; YAML::Value &lt;&lt; o.value.string();</div>
+<div class="line"><span class="lineno">  719</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  720</span>            out &lt;&lt; YAML::Value &lt;&lt; o.value;</div>
+<div class="line"><span class="lineno">  721</span>    }</div>
+<div class="line"><span class="lineno">  722</span>    <span class="keywordflow">return</span> out;</div>
+<div class="line"><span class="lineno">  723</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -848,15 +858,15 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="yaml__emitters_8cc_source.html#l00368">368</a> of file <a class="el" href="yaml__emitters_8cc_source.html">yaml_emitters.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  369</span>{</div>
-<div class="line"><span class="lineno">  370</span>    out &lt;&lt; YAML::BeginMap;</div>
-<div class="line"><span class="lineno">  371</span>    out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;type&quot;</span> &lt;&lt; YAML::Value &lt;&lt; c.type();</div>
-<div class="line"><span class="lineno">  372</span>    out &lt;&lt; c.layout;</div>
-<div class="line"><span class="lineno">  373</span>    out &lt;&lt; dynamic_cast&lt;const inheritable_diagram_options &amp;&gt;(c);</div>
-<div class="line"><span class="lineno">  374</span>    out &lt;&lt; YAML::EndMap;</div>
-<div class="line"><span class="lineno">  375</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><span class="lineno">  376</span>}</div>
+<p class="definition">Definition at line <a class="el" href="yaml__emitters_8cc_source.html#l00378">378</a> of file <a class="el" href="yaml__emitters_8cc_source.html">yaml_emitters.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  379</span>{</div>
+<div class="line"><span class="lineno">  380</span>    out &lt;&lt; YAML::BeginMap;</div>
+<div class="line"><span class="lineno">  381</span>    out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;type&quot;</span> &lt;&lt; YAML::Value &lt;&lt; c.type();</div>
+<div class="line"><span class="lineno">  382</span>    out &lt;&lt; c.layout;</div>
+<div class="line"><span class="lineno">  383</span>    out &lt;&lt; dynamic_cast&lt;const inheritable_diagram_options &amp;&gt;(c);</div>
+<div class="line"><span class="lineno">  384</span>    out &lt;&lt; YAML::EndMap;</div>
+<div class="line"><span class="lineno">  385</span>    <span class="keywordflow">return</span> out;</div>
+<div class="line"><span class="lineno">  386</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1001,17 +1011,17 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="yaml__emitters_8cc_source.html#l00346">346</a> of file <a class="el" href="yaml__emitters_8cc_source.html">yaml_emitters.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  347</span>{</div>
-<div class="line"><span class="lineno">  348</span>    out &lt;&lt; YAML::BeginMap;</div>
-<div class="line"><span class="lineno">  349</span>    out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;type&quot;</span> &lt;&lt; YAML::Value &lt;&lt; c.type();</div>
-<div class="line"><span class="lineno">  350</span>    out &lt;&lt; c.from;</div>
-<div class="line"><span class="lineno">  351</span>    out &lt;&lt; c.from_to;</div>
-<div class="line"><span class="lineno">  352</span>    out &lt;&lt; c.to;</div>
-<div class="line"><span class="lineno">  353</span>    out &lt;&lt; dynamic_cast&lt;const inheritable_diagram_options &amp;&gt;(c);</div>
-<div class="line"><span class="lineno">  354</span>    out &lt;&lt; YAML::EndMap;</div>
-<div class="line"><span class="lineno">  355</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><span class="lineno">  356</span>}</div>
+<p class="definition">Definition at line <a class="el" href="yaml__emitters_8cc_source.html#l00356">356</a> of file <a class="el" href="yaml__emitters_8cc_source.html">yaml_emitters.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  357</span>{</div>
+<div class="line"><span class="lineno">  358</span>    out &lt;&lt; YAML::BeginMap;</div>
+<div class="line"><span class="lineno">  359</span>    out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;type&quot;</span> &lt;&lt; YAML::Value &lt;&lt; c.type();</div>
+<div class="line"><span class="lineno">  360</span>    out &lt;&lt; c.from;</div>
+<div class="line"><span class="lineno">  361</span>    out &lt;&lt; c.from_to;</div>
+<div class="line"><span class="lineno">  362</span>    out &lt;&lt; c.to;</div>
+<div class="line"><span class="lineno">  363</span>    out &lt;&lt; dynamic_cast&lt;const inheritable_diagram_options &amp;&gt;(c);</div>
+<div class="line"><span class="lineno">  364</span>    out &lt;&lt; YAML::EndMap;</div>
+<div class="line"><span class="lineno">  365</span>    <span class="keywordflow">return</span> out;</div>
+<div class="line"><span class="lineno">  366</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

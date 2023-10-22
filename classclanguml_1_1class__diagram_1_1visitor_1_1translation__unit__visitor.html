@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.0</span>
+       <span id="projectnumber">0.4.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -335,8 +335,11 @@ Private Attributes</h2></td></tr>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html">clanguml::common::visitor::translation_unit_visitor</a></td></tr>
 <tr class="memitem:a0b26fd2d97a4ae6d275a4b458c13878d inherit pro_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d">process_comment</a> (const clang::NamedDecl &amp;decl, <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">clanguml::common::model::decorated_element</a> &amp;e)</td></tr>
-<tr class="memdesc:a0b26fd2d97a4ae6d275a4b458c13878d inherit pro_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set source location in diagram element.  <br /></td></tr>
+<tr class="memdesc:a0b26fd2d97a4ae6d275a4b458c13878d inherit pro_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process comment directives in comment attached to a declaration.  <br /></td></tr>
 <tr class="separator:a0b26fd2d97a4ae6d275a4b458c13878d inherit pro_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23077d49fb0f93ca9d034533225dcd83 inherit pro_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a23077d49fb0f93ca9d034533225dcd83">process_comment</a> (const clang::RawComment *comment, clang::DiagnosticsEngine &amp;de, <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">clanguml::common::model::decorated_element</a> &amp;e)</td></tr>
+<tr class="memdesc:a23077d49fb0f93ca9d034533225dcd83 inherit pro_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process comment directives in raw comment.  <br /></td></tr>
+<tr class="separator:a23077d49fb0f93ca9d034533225dcd83 inherit pro_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aacce33f9d382ea6a2e9b0e301ca96f51" name="aacce33f9d382ea6a2e9b0e301ca96f51"></a>
@@ -789,7 +792,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  837</span> </div>
 <div class="line"><span class="lineno">  838</span>    c.is_struct(cls-&gt;isStruct());</div>
 <div class="line"><span class="lineno">  839</span> </div>
-<div class="line"><span class="lineno">  840</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Set source location in diagram element.">process_comment</a>(*cls, c);</div>
+<div class="line"><span class="lineno">  840</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Process comment directives in comment attached to a declaration.">process_comment</a>(*cls, c);</div>
 <div class="line"><span class="lineno">  841</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437" title="Set source location in diagram element.">set_source_location</a>(*cls, c);</div>
 <div class="line"><span class="lineno">  842</span> </div>
 <div class="line"><span class="lineno">  843</span>    <span class="keywordflow">if</span> (c.skip())</div>
@@ -852,7 +855,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  758</span>    concept_model.set_namespace(ns);</div>
 <div class="line"><span class="lineno">  759</span>    concept_model.set_id(<a class="code hl_function" href="group__to__id.html#ga383cbc45288ba84c53a163da7c41b1cc">common::to_id</a>(concept_model.full_name(<span class="keyword">false</span>)));</div>
 <div class="line"><span class="lineno">  760</span> </div>
-<div class="line"><span class="lineno">  761</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Set source location in diagram element.">process_comment</a>(*cpt, concept_model);</div>
+<div class="line"><span class="lineno">  761</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Process comment directives in comment attached to a declaration.">process_comment</a>(*cpt, concept_model);</div>
 <div class="line"><span class="lineno">  762</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437" title="Set source location in diagram element.">set_source_location</a>(*cpt, concept_model);</div>
 <div class="line"><span class="lineno">  763</span> </div>
 <div class="line"><span class="lineno">  764</span>    <span class="keywordflow">if</span> (concept_model.skip())</div>
@@ -926,7 +929,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  798</span>        record.set_id(<a class="code hl_function" href="group__to__id.html#ga383cbc45288ba84c53a163da7c41b1cc">common::to_id</a>(record.full_name(<span class="keyword">false</span>)));</div>
 <div class="line"><span class="lineno">  799</span>    }</div>
 <div class="line"><span class="lineno">  800</span> </div>
-<div class="line"><span class="lineno">  801</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Set source location in diagram element.">process_comment</a>(*rec, record);</div>
+<div class="line"><span class="lineno">  801</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Process comment directives in comment attached to a declaration.">process_comment</a>(*rec, record);</div>
 <div class="line"><span class="lineno">  802</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437" title="Set source location in diagram element.">set_source_location</a>(*rec, record);</div>
 <div class="line"><span class="lineno">  803</span> </div>
 <div class="line"><span class="lineno">  804</span>    <span class="keyword">const</span> <span class="keyword">auto</span> record_full_name = record_ptr-&gt;full_name(<span class="keyword">false</span>);</div>
@@ -2147,7 +2150,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 1871</span>        field_name, field_type_str};</div>
 <div class="line"><span class="lineno"> 1872</span> </div>
 <div class="line"><span class="lineno"> 1873</span>    <span class="comment">// Parse the field comment</span></div>
-<div class="line"><span class="lineno"> 1874</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Set source location in diagram element.">process_comment</a>(field_declaration, field);</div>
+<div class="line"><span class="lineno"> 1874</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Process comment directives in comment attached to a declaration.">process_comment</a>(field_declaration, field);</div>
 <div class="line"><span class="lineno"> 1875</span>    <span class="comment">// Register the source location of the field declaration</span></div>
 <div class="line"><span class="lineno"> 1876</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437" title="Set source location in diagram element.">set_source_location</a>(field_declaration, field);</div>
 <div class="line"><span class="lineno"> 1877</span> </div>
@@ -2422,7 +2425,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 1633</span>    method_parameter parameter;</div>
 <div class="line"><span class="lineno"> 1634</span>    parameter.set_name(p.getNameAsString());</div>
 <div class="line"><span class="lineno"> 1635</span> </div>
-<div class="line"><span class="lineno"> 1636</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Set source location in diagram element.">process_comment</a>(p, parameter);</div>
+<div class="line"><span class="lineno"> 1636</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Process comment directives in comment attached to a declaration.">process_comment</a>(p, parameter);</div>
 <div class="line"><span class="lineno"> 1637</span> </div>
 <div class="line"><span class="lineno"> 1638</span>    <span class="keywordflow">if</span> (parameter.skip())</div>
 <div class="line"><span class="lineno"> 1639</span>        <span class="keywordflow">return</span>;</div>
@@ -2653,7 +2656,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 1266</span> </div>
 <div class="line"><span class="lineno"> 1267</span>    <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#ab99d6c08626167d36745de1c1511c111" title="Process class method properties.">process_method_properties</a>(mf, c, method_name, method);</div>
 <div class="line"><span class="lineno"> 1268</span> </div>
-<div class="line"><span class="lineno"> 1269</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Set source location in diagram element.">process_comment</a>(mf, method);</div>
+<div class="line"><span class="lineno"> 1269</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Process comment directives in comment attached to a declaration.">process_comment</a>(mf, method);</div>
 <div class="line"><span class="lineno"> 1270</span> </div>
 <div class="line"><span class="lineno"> 1271</span>    <span class="comment">// Register the source location of the field declaration</span></div>
 <div class="line"><span class="lineno"> 1272</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437" title="Set source location in diagram element.">set_source_location</a>(mf, method);</div>
@@ -3052,7 +3055,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 1782</span>        field_declaration.getNameAsString(), type_name};</div>
 <div class="line"><span class="lineno"> 1783</span>    field.is_static(<span class="keyword">true</span>);</div>
 <div class="line"><span class="lineno"> 1784</span> </div>
-<div class="line"><span class="lineno"> 1785</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Set source location in diagram element.">process_comment</a>(field_declaration, field);</div>
+<div class="line"><span class="lineno"> 1785</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Process comment directives in comment attached to a declaration.">process_comment</a>(field_declaration, field);</div>
 <div class="line"><span class="lineno"> 1786</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437" title="Set source location in diagram element.">set_source_location</a>(field_declaration, field);</div>
 <div class="line"><span class="lineno"> 1787</span> </div>
 <div class="line"><span class="lineno"> 1788</span>    <span class="keywordflow">if</span> (field.skip())</div>
@@ -3144,7 +3147,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 1449</span> </div>
 <div class="line"><span class="lineno"> 1450</span>    <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#afaa202e93f6175dc50813795f0531adb" title="Process template parameters.">process_template_parameters</a>(mf, method);</div>
 <div class="line"><span class="lineno"> 1451</span> </div>
-<div class="line"><span class="lineno"> 1452</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Set source location in diagram element.">process_comment</a>(mf, method);</div>
+<div class="line"><span class="lineno"> 1452</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Process comment directives in comment attached to a declaration.">process_comment</a>(mf, method);</div>
 <div class="line"><span class="lineno"> 1453</span> </div>
 <div class="line"><span class="lineno"> 1454</span>    <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a>.skip())</div>
 <div class="line"><span class="lineno"> 1455</span>        <span class="keywordflow">return</span>;</div>
@@ -3369,7 +3372,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 1830</span>            <a class="code hl_function" href="group__to__id.html#ga383cbc45288ba84c53a163da7c41b1cc">common::to_id</a>(template_instantiation.full_name(<span class="keyword">false</span>)));</div>
 <div class="line"><span class="lineno"> 1831</span>    }</div>
 <div class="line"><span class="lineno"> 1832</span> </div>
-<div class="line"><span class="lineno"> 1833</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Set source location in diagram element.">process_comment</a>(*cls, template_instantiation);</div>
+<div class="line"><span class="lineno"> 1833</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Process comment directives in comment attached to a declaration.">process_comment</a>(*cls, template_instantiation);</div>
 <div class="line"><span class="lineno"> 1834</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437" title="Set source location in diagram element.">set_source_location</a>(*cls, template_instantiation);</div>
 <div class="line"><span class="lineno"> 1835</span> </div>
 <div class="line"><span class="lineno"> 1836</span>    <span class="keywordflow">if</span> (template_instantiation.skip())</div>

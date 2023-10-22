@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.0</span>
+       <span id="projectnumber">0.4.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -124,6 +124,7 @@ $(function() {
 <div class="textblock"><p><a class="anchor" id="common-diagram-generation-options"></a></p>
 <ul>
 <li><a class="el" href="md_docs_2common__options.html#overall-configuration-file-structure">Overall configuration file structure</a></li>
+<li><a class="el" href="md_docs_2common__options.html#diagram-titles">Diagram titles</a></li>
 <li><a class="el" href="md_docs_2common__options.html#translation-unit-glob-patterns">Translation unit glob patterns</a></li>
 <li><a class="el" href="md_docs_2common__options.html#custom-directives">Custom directives</a></li>
 <li><a class="el" href="md_docs_2common__options.html#adding-debug-information-in-the-generated-diagrams">Adding debug information in the generated diagrams</a></li>
@@ -153,6 +154,13 @@ Overall configuration file structure</h1>
 <p>For detailed reference of all configuration options see <a class="el" href="md_docs_2configuration__file.html">here</a>.</p>
 <p>Effective configuration, including default values can be printed out in <a class="el" href="namespaceYAML.html">YAML</a> format using the following option:</p>
 <div class="fragment language-bash"><div class="line">clang-uml --dump-config</div>
+</div><!-- fragment --><h1><a class="anchor" id="diagram-titles"></a>
+Diagram titles</h1>
+<p>Each type of diagram can have a <code>title</code> property, which will be generated in the diagram using directives specific to a given diagram generator, for instance:</p>
+<div class="fragment language-yaml"><div class="line">diagrams:</div>
+<div class="line">  diagram1:</div>
+<div class="line">    type: class</div>
+<div class="line">    title: Some explanatory diagram title</div>
 </div><!-- fragment --><h1><a class="anchor" id="translation-unit-glob-patterns"></a>
 Translation unit glob patterns</h1>
 <p>One of the key options of the diagram configuration is the list of translation units, which should be parsed to get all necessary information for a diagram.</p>

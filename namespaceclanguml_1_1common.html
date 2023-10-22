@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.0</span>
+       <span id="projectnumber">0.4.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -303,6 +303,9 @@ Functions</h2></td></tr>
 <tr class="separator:a24968abd97c1e81c85172eb8328dcada"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d7db842880bf1063b0c8b9041b6a899"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#a8d7db842880bf1063b0c8b9041b6a899">parse_source_location</a> (const std::string &amp;location_str, std::string &amp;file, unsigned &amp;line, unsigned &amp;column)</td></tr>
 <tr class="separator:a8d7db842880bf1063b0c8b9041b6a899"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae74e2f508627cbebb578082dfd7c98e1"><td class="memItemLeft" align="right" valign="top">clang::RawComment *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#ae74e2f508627cbebb578082dfd7c98e1">get_expression_raw_comment</a> (const clang::SourceManager &amp;sm, const clang::ASTContext &amp;context, const clang::Stmt *stmt)</td></tr>
+<tr class="memdesc:ae74e2f508627cbebb578082dfd7c98e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract a comment before or next to a statement.  <br /></td></tr>
+<tr class="separator:ae74e2f508627cbebb578082dfd7c98e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f6b3f1cb4c3c8572404cb8e205c034e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a1f6b3f1cb4c3c8572404cb8e205c034e"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#a1f6b3f1cb4c3c8572404cb8e205c034e">get_qualified_name</a> (const T &amp;declaration)</td></tr>
 <tr class="memdesc:a1f6b3f1cb4c3c8572404cb8e205c034e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get qualified name of some Clang declaration.  <br /></td></tr>
@@ -1004,6 +1007,72 @@ template&lt;typename T &gt; </div>
 <div class="line"><span class="lineno">  601</span> </div>
 <div class="line"><span class="lineno">  602</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceclanguml_1_1common.html#a50194811b07f51403a0d6f021c01d45e">format_condition_text</a>(<a class="code hl_function" href="namespaceclanguml_1_1common.html#acc38be5708481a799eb88bd929585bad" title="Get printable range of text of specific source range.">get_source_text</a>(condition_range, sm));</div>
 <div class="line"><span class="lineno">  603</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae74e2f508627cbebb578082dfd7c98e1" name="ae74e2f508627cbebb578082dfd7c98e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae74e2f508627cbebb578082dfd7c98e1">&#9670;&#160;</a></span>get_expression_raw_comment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clang::RawComment * clanguml::common::get_expression_raw_comment </td>
+          <td>(</td>
+          <td class="paramtype">const clang::SourceManager &amp;&#160;</td>
+          <td class="paramname"><em>sm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const clang::ASTContext &amp;&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const clang::Stmt *&#160;</td>
+          <td class="paramname"><em>stmt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Extract a comment before or next to a statement. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sm</td><td>clang::SourceManager reference </td></tr>
+    <tr><td class="paramname">context</td><td>clang::ASTContext reference </td></tr>
+    <tr><td class="paramname">stmt</td><td>Pointer to the current clang::Stmt </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to a clang::RawComment* or nullptr </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="clang__utils_8cc_source.html#l00852">852</a> of file <a class="el" href="clang__utils_8cc_source.html">clang_utils.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  854</span>{</div>
+<div class="line"><span class="lineno">  855</span>    <span class="comment">// First get the first line of the expression</span></div>
+<div class="line"><span class="lineno">  856</span>    <span class="keyword">auto</span> expr_begin = stmt-&gt;getSourceRange().getBegin();</div>
+<div class="line"><span class="lineno">  857</span>    <span class="keyword">const</span> <span class="keyword">auto</span> expr_begin_line = sm.getSpellingLineNumber(expr_begin);</div>
+<div class="line"><span class="lineno">  858</span> </div>
+<div class="line"><span class="lineno">  859</span>    <span class="keywordflow">if</span> (!context.Comments.empty() &amp;&amp;</div>
+<div class="line"><span class="lineno">  860</span>        context.Comments.getCommentsInFile(sm.getFileID(expr_begin)) != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  861</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> [offset, raw_comment] :</div>
+<div class="line"><span class="lineno">  862</span>            *context.Comments.getCommentsInFile(sm.getFileID(expr_begin))) {</div>
+<div class="line"><span class="lineno">  863</span>            <span class="keyword">const</span> <span class="keyword">auto</span> comment_end_line = sm.getSpellingLineNumber(</div>
+<div class="line"><span class="lineno">  864</span>                raw_comment-&gt;getSourceRange().getEnd());</div>
+<div class="line"><span class="lineno">  865</span> </div>
+<div class="line"><span class="lineno">  866</span>            <span class="keywordflow">if</span> (expr_begin_line == comment_end_line ||</div>
+<div class="line"><span class="lineno">  867</span>                expr_begin_line == comment_end_line + 1)</div>
+<div class="line"><span class="lineno">  868</span>                <span class="keywordflow">return</span> raw_comment;</div>
+<div class="line"><span class="lineno">  869</span>        }</div>
+<div class="line"><span class="lineno">  870</span> </div>
+<div class="line"><span class="lineno">  871</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  872</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

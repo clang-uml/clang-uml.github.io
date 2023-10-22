@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.0</span>
+       <span id="projectnumber">0.4.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -310,53 +310,42 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  248</span>                    e.full_name(<span class="keyword">false</span>);</div>
 <div class="line"><span class="lineno">  249</span>            });</div>
 <div class="line"><span class="lineno">  250</span> </div>
-<div class="line"><span class="lineno">  251</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a75d71d5924ebfa54b592b27b31c5d034">tvl::is_false</a>(result))</div>
-<div class="line"><span class="lineno">  252</span>            <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Element {} rejected by namespace_filter 1&quot;</span>,</div>
-<div class="line"><span class="lineno">  253</span>                e.full_name(<span class="keyword">false</span>));</div>
-<div class="line"><span class="lineno">  254</span> </div>
-<div class="line"><span class="lineno">  255</span>        <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  256</span>    }</div>
-<div class="line"><span class="lineno">  257</span> </div>
-<div class="line"><span class="lineno">  258</span>    <span class="keywordflow">if</span> (d.type() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffabb0cb7a283263408d77d35d2e034bb77">diagram_t::kPackage</a>) {</div>
-<div class="line"><span class="lineno">  259</span>        <span class="keyword">auto</span> result = <a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#aa07645c27199ad641a77953e1fc86f64">tvl::any_of</a>(<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1namespace__filter.html#aef00ea4936b74dfce2d437fd72df1476">namespaces_</a>.begin(), <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1namespace__filter.html#aef00ea4936b74dfce2d437fd72df1476">namespaces_</a>.end(),</div>
-<div class="line"><span class="lineno">  260</span>            [&amp;e, <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a4c0012c66ed99ea1500ee48ec5a197a7">is_inclusive</a> = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a4c0012c66ed99ea1500ee48ec5a197a7">is_inclusive</a>()](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;nsit) {</div>
-<div class="line"><span class="lineno">  261</span>                <span class="keywordflow">if</span> (std::holds_alternative&lt;namespace_&gt;(nsit.value())) {</div>
-<div class="line"><span class="lineno">  262</span>                    auto e_ns = namespace_{e.full_name(false)};</div>
-<div class="line"><span class="lineno">  263</span>                    <span class="keyword">auto</span> nsit_ns = std::get&lt;namespace_&gt;(nsit.value());</div>
+<div class="line"><span class="lineno">  251</span>        <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  252</span>    }</div>
+<div class="line"><span class="lineno">  253</span> </div>
+<div class="line"><span class="lineno">  254</span>    <span class="keywordflow">if</span> (d.type() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffabb0cb7a283263408d77d35d2e034bb77">diagram_t::kPackage</a>) {</div>
+<div class="line"><span class="lineno">  255</span>        <span class="keyword">auto</span> result = <a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#aa07645c27199ad641a77953e1fc86f64">tvl::any_of</a>(<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1namespace__filter.html#aef00ea4936b74dfce2d437fd72df1476">namespaces_</a>.begin(), <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1namespace__filter.html#aef00ea4936b74dfce2d437fd72df1476">namespaces_</a>.end(),</div>
+<div class="line"><span class="lineno">  256</span>            [&amp;e, <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a4c0012c66ed99ea1500ee48ec5a197a7">is_inclusive</a> = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a4c0012c66ed99ea1500ee48ec5a197a7">is_inclusive</a>()](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;nsit) {</div>
+<div class="line"><span class="lineno">  257</span>                <span class="keywordflow">if</span> (std::holds_alternative&lt;namespace_&gt;(nsit.value())) {</div>
+<div class="line"><span class="lineno">  258</span>                    auto e_ns = namespace_{e.full_name(false)};</div>
+<div class="line"><span class="lineno">  259</span>                    <span class="keyword">auto</span> nsit_ns = std::get&lt;namespace_&gt;(nsit.value());</div>
+<div class="line"><span class="lineno">  260</span> </div>
+<div class="line"><span class="lineno">  261</span>                    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a4c0012c66ed99ea1500ee48ec5a197a7">is_inclusive</a>)</div>
+<div class="line"><span class="lineno">  262</span>                        <span class="keywordflow">return</span> e_ns.starts_with(nsit_ns) ||</div>
+<div class="line"><span class="lineno">  263</span>                            nsit_ns.starts_with(e_ns) || e_ns == nsit_ns;</div>
 <div class="line"><span class="lineno">  264</span> </div>
-<div class="line"><span class="lineno">  265</span>                    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a4c0012c66ed99ea1500ee48ec5a197a7">is_inclusive</a>)</div>
-<div class="line"><span class="lineno">  266</span>                        <span class="keywordflow">return</span> e_ns.starts_with(nsit_ns) ||</div>
-<div class="line"><span class="lineno">  267</span>                            nsit_ns.starts_with(e_ns) || e_ns == nsit_ns;</div>
-<div class="line"><span class="lineno">  268</span> </div>
-<div class="line"><span class="lineno">  269</span>                    <span class="keywordflow">return</span> e_ns.starts_with(nsit_ns) || e_ns == nsit_ns;</div>
-<div class="line"><span class="lineno">  270</span>                }</div>
+<div class="line"><span class="lineno">  265</span>                    <span class="keywordflow">return</span> e_ns.starts_with(nsit_ns) || e_ns == nsit_ns;</div>
+<div class="line"><span class="lineno">  266</span>                }</div>
+<div class="line"><span class="lineno">  267</span> </div>
+<div class="line"><span class="lineno">  268</span>                <span class="keywordflow">return</span> std::get&lt;common::regex&gt;(nsit.value()) %=</div>
+<div class="line"><span class="lineno">  269</span>                    e.full_name(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  270</span>            });</div>
 <div class="line"><span class="lineno">  271</span> </div>
-<div class="line"><span class="lineno">  272</span>                <span class="keywordflow">return</span> std::get&lt;common::regex&gt;(nsit.value()) %=</div>
-<div class="line"><span class="lineno">  273</span>                    e.full_name(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  274</span>            });</div>
-<div class="line"><span class="lineno">  275</span> </div>
-<div class="line"><span class="lineno">  276</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a75d71d5924ebfa54b592b27b31c5d034">tvl::is_false</a>(result))</div>
-<div class="line"><span class="lineno">  277</span>            <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Element {} rejected by namespace_filter (package diagram)&quot;</span>,</div>
-<div class="line"><span class="lineno">  278</span>                e.full_name(<span class="keyword">false</span>));</div>
-<div class="line"><span class="lineno">  279</span> </div>
-<div class="line"><span class="lineno">  280</span>        <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  281</span>    }</div>
-<div class="line"><span class="lineno">  282</span> </div>
-<div class="line"><span class="lineno">  283</span>    <span class="keyword">auto</span> result = <a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#aa07645c27199ad641a77953e1fc86f64">tvl::any_of</a>(</div>
-<div class="line"><span class="lineno">  284</span>        <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1namespace__filter.html#aef00ea4936b74dfce2d437fd72df1476">namespaces_</a>.begin(), <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1namespace__filter.html#aef00ea4936b74dfce2d437fd72df1476">namespaces_</a>.end(), [&amp;e](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;nsit) {</div>
-<div class="line"><span class="lineno">  285</span>            if (std::holds_alternative&lt;namespace_&gt;(nsit.value())) {</div>
-<div class="line"><span class="lineno">  286</span>                return e.get_namespace().starts_with(</div>
-<div class="line"><span class="lineno">  287</span>                    std::get&lt;namespace_&gt;(nsit.value()));</div>
-<div class="line"><span class="lineno">  288</span>            }</div>
-<div class="line"><span class="lineno">  289</span> </div>
-<div class="line"><span class="lineno">  290</span>            <span class="keywordflow">return</span> std::get&lt;common::regex&gt;(nsit.value()) %= e.full_name(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  291</span>        });</div>
-<div class="line"><span class="lineno">  292</span> </div>
-<div class="line"><span class="lineno">  293</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a75d71d5924ebfa54b592b27b31c5d034">tvl::is_false</a>(result))</div>
-<div class="line"><span class="lineno">  294</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Element {} rejected by namespace_filter&quot;</span>, e.full_name(<span class="keyword">false</span>));</div>
-<div class="line"><span class="lineno">  295</span> </div>
-<div class="line"><span class="lineno">  296</span>    <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  297</span>}</div>
+<div class="line"><span class="lineno">  272</span>        <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  273</span>    }</div>
+<div class="line"><span class="lineno">  274</span> </div>
+<div class="line"><span class="lineno">  275</span>    <span class="keyword">auto</span> result = <a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#aa07645c27199ad641a77953e1fc86f64">tvl::any_of</a>(</div>
+<div class="line"><span class="lineno">  276</span>        <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1namespace__filter.html#aef00ea4936b74dfce2d437fd72df1476">namespaces_</a>.begin(), <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1namespace__filter.html#aef00ea4936b74dfce2d437fd72df1476">namespaces_</a>.end(), [&amp;e](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;nsit) {</div>
+<div class="line"><span class="lineno">  277</span>            if (std::holds_alternative&lt;namespace_&gt;(nsit.value())) {</div>
+<div class="line"><span class="lineno">  278</span>                return e.get_namespace().starts_with(</div>
+<div class="line"><span class="lineno">  279</span>                    std::get&lt;namespace_&gt;(nsit.value()));</div>
+<div class="line"><span class="lineno">  280</span>            }</div>
+<div class="line"><span class="lineno">  281</span> </div>
+<div class="line"><span class="lineno">  282</span>            <span class="keywordflow">return</span> std::get&lt;common::regex&gt;(nsit.value()) %= e.full_name(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  283</span>        });</div>
+<div class="line"><span class="lineno">  284</span> </div>
+<div class="line"><span class="lineno">  285</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  286</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

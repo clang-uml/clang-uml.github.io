@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.0</span>
+       <span id="projectnumber">0.4.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -249,31 +249,31 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="json_2package__diagram__generator_8cc_source.html#l00051">51</a> of file <a class="el" href="json_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   52</span>{</div>
-<div class="line"><span class="lineno">   53</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Generating package {}&quot;</span>, p.name());</div>
-<div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>    nlohmann::json j;</div>
-<div class="line"><span class="lineno">   56</span>    j[<span class="stringliteral">&quot;id&quot;</span>] = std::to_string(p.id());</div>
-<div class="line"><span class="lineno">   57</span>    j[<span class="stringliteral">&quot;name&quot;</span>] = p.name();</div>
-<div class="line"><span class="lineno">   58</span>    j[<span class="stringliteral">&quot;type&quot;</span>] = <span class="stringliteral">&quot;namespace&quot;</span>;</div>
-<div class="line"><span class="lineno">   59</span>    j[<span class="stringliteral">&quot;display_name&quot;</span>] = p.full_name(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   60</span>    j[<span class="stringliteral">&quot;is_deprecated&quot;</span>] = p.is_deprecated();</div>
-<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">if</span> (!p.file().empty())</div>
-<div class="line"><span class="lineno">   62</span>        j[<span class="stringliteral">&quot;source_location&quot;</span>] =</div>
-<div class="line"><span class="lineno">   63</span>            <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>common::model::source_location &amp;<span class="keyword">&gt;</span>(p);</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;comment = p.comment(); comment)</div>
-<div class="line"><span class="lineno">   65</span>        j[<span class="stringliteral">&quot;comment&quot;</span>] = comment.value();</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;subpackage : p) {</div>
-<div class="line"><span class="lineno">   68</span>        <span class="keyword">auto</span> &amp;pkg = <span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*subpackage);</div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(pkg)) {</div>
-<div class="line"><span class="lineno">   70</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1json_1_1generator.html#a94f56be6d7660096e045cd6ddb9b0ed8" title="Generate diagram package.">generate</a>(pkg, j);</div>
-<div class="line"><span class="lineno">   71</span>        }</div>
-<div class="line"><span class="lineno">   72</span>    }</div>
-<div class="line"><span class="lineno">   73</span> </div>
-<div class="line"><span class="lineno">   74</span>    parent[<span class="stringliteral">&quot;elements&quot;</span>].push_back(std::move(j));</div>
-<div class="line"><span class="lineno">   75</span>}</div>
+<p class="definition">Definition at line <a class="el" href="json_2package__diagram__generator_8cc_source.html#l00059">59</a> of file <a class="el" href="json_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   60</span>{</div>
+<div class="line"><span class="lineno">   61</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Generating package {}&quot;</span>, p.name());</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>    nlohmann::json j;</div>
+<div class="line"><span class="lineno">   64</span>    j[<span class="stringliteral">&quot;id&quot;</span>] = std::to_string(p.id());</div>
+<div class="line"><span class="lineno">   65</span>    j[<span class="stringliteral">&quot;name&quot;</span>] = p.name();</div>
+<div class="line"><span class="lineno">   66</span>    j[<span class="stringliteral">&quot;type&quot;</span>] = <span class="stringliteral">&quot;namespace&quot;</span>;</div>
+<div class="line"><span class="lineno">   67</span>    j[<span class="stringliteral">&quot;display_name&quot;</span>] = p.full_name(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   68</span>    j[<span class="stringliteral">&quot;is_deprecated&quot;</span>] = p.is_deprecated();</div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">if</span> (!p.file().empty())</div>
+<div class="line"><span class="lineno">   70</span>        j[<span class="stringliteral">&quot;source_location&quot;</span>] =</div>
+<div class="line"><span class="lineno">   71</span>            <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>common::model::source_location &amp;<span class="keyword">&gt;</span>(p);</div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;comment = p.comment(); comment)</div>
+<div class="line"><span class="lineno">   73</span>        j[<span class="stringliteral">&quot;comment&quot;</span>] = comment.value();</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;subpackage : p) {</div>
+<div class="line"><span class="lineno">   76</span>        <span class="keyword">auto</span> &amp;pkg = <span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*subpackage);</div>
+<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(pkg)) {</div>
+<div class="line"><span class="lineno">   78</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1json_1_1generator.html#a94f56be6d7660096e045cd6ddb9b0ed8" title="Generate diagram package.">generate</a>(pkg, j);</div>
+<div class="line"><span class="lineno">   79</span>        }</div>
+<div class="line"><span class="lineno">   80</span>    }</div>
+<div class="line"><span class="lineno">   81</span> </div>
+<div class="line"><span class="lineno">   82</span>    parent[<span class="stringliteral">&quot;elements&quot;</span>].push_back(std::move(j));</div>
+<div class="line"><span class="lineno">   83</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -312,30 +312,30 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="classclanguml_1_1common_1_1generators_1_1json_1_1generator.html#a249df5b5cbd7b373482b66f971036f79">clanguml::common::generators::json::generator&lt; ConfigType, DiagramType &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="json_2package__diagram__generator_8cc_source.html#l00077">77</a> of file <a class="el" href="json_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   78</span>{</div>
-<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().using_namespace)</div>
-<div class="line"><span class="lineno">   80</span>        parent[<span class="stringliteral">&quot;using_namespace&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().using_namespace().to_string();</div>
-<div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span>    parent[<span class="stringliteral">&quot;name&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().name();</div>
-<div class="line"><span class="lineno">   83</span>    parent[<span class="stringliteral">&quot;diagram_type&quot;</span>] = <span class="stringliteral">&quot;package&quot;</span>;</div>
-<div class="line"><span class="lineno">   84</span> </div>
-<div class="line"><span class="lineno">   85</span>    parent[<span class="stringliteral">&quot;elements&quot;</span>] = std::vector&lt;nlohmann::json&gt;{};</div>
-<div class="line"><span class="lineno">   86</span>    parent[<span class="stringliteral">&quot;relationships&quot;</span>] = std::vector&lt;nlohmann::json&gt;{};</div>
-<div class="line"><span class="lineno">   87</span> </div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>()) {</div>
-<div class="line"><span class="lineno">   89</span>        <span class="keyword">auto</span> &amp;pkg = <span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p);</div>
-<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(pkg)) {</div>
-<div class="line"><span class="lineno">   91</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1json_1_1generator.html#a94f56be6d7660096e045cd6ddb9b0ed8" title="Generate diagram package.">generate</a>(pkg, parent);</div>
-<div class="line"><span class="lineno">   92</span>        }</div>
-<div class="line"><span class="lineno">   93</span>    }</div>
-<div class="line"><span class="lineno">   94</span> </div>
-<div class="line"><span class="lineno">   95</span>    <span class="comment">// Process package relationships</span></div>
+<p class="definition">Definition at line <a class="el" href="json_2package__diagram__generator_8cc_source.html#l00085">85</a> of file <a class="el" href="json_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   86</span>{</div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().using_namespace)</div>
+<div class="line"><span class="lineno">   88</span>        parent[<span class="stringliteral">&quot;using_namespace&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().using_namespace().to_string();</div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span>    parent[<span class="stringliteral">&quot;name&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().name();</div>
+<div class="line"><span class="lineno">   91</span>    parent[<span class="stringliteral">&quot;diagram_type&quot;</span>] = <span class="stringliteral">&quot;package&quot;</span>;</div>
+<div class="line"><span class="lineno">   92</span> </div>
+<div class="line"><span class="lineno">   93</span>    parent[<span class="stringliteral">&quot;elements&quot;</span>] = std::vector&lt;nlohmann::json&gt;{};</div>
+<div class="line"><span class="lineno">   94</span>    parent[<span class="stringliteral">&quot;relationships&quot;</span>] = std::vector&lt;nlohmann::json&gt;{};</div>
+<div class="line"><span class="lineno">   95</span> </div>
 <div class="line"><span class="lineno">   96</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>()) {</div>
-<div class="line"><span class="lineno">   97</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(<span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p)))</div>
-<div class="line"><span class="lineno">   98</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1json_1_1generator.html#a008ce9bb9515401f7fc0b810102e53ac" title="Generate relationships originating from package p">generate_relationships</a>(<span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p), parent);</div>
-<div class="line"><span class="lineno">   99</span>    }</div>
-<div class="line"><span class="lineno">  100</span>}</div>
+<div class="line"><span class="lineno">   97</span>        <span class="keyword">auto</span> &amp;pkg = <span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p);</div>
+<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(pkg)) {</div>
+<div class="line"><span class="lineno">   99</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1json_1_1generator.html#a94f56be6d7660096e045cd6ddb9b0ed8" title="Generate diagram package.">generate</a>(pkg, parent);</div>
+<div class="line"><span class="lineno">  100</span>        }</div>
+<div class="line"><span class="lineno">  101</span>    }</div>
+<div class="line"><span class="lineno">  102</span> </div>
+<div class="line"><span class="lineno">  103</span>    <span class="comment">// Process package relationships</span></div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>()) {</div>
+<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(<span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p)))</div>
+<div class="line"><span class="lineno">  106</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1json_1_1generator.html#a008ce9bb9515401f7fc0b810102e53ac" title="Generate relationships originating from package p">generate_relationships</a>(<span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p), parent);</div>
+<div class="line"><span class="lineno">  107</span>    }</div>
+<div class="line"><span class="lineno">  108</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -382,17 +382,25 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   36</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(relationship_t::kDependency)) {</div>
 <div class="line"><span class="lineno">   37</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;r : p.relationships()) {</div>
 <div class="line"><span class="lineno">   38</span>            nlohmann::json rel = r;</div>
-<div class="line"><span class="lineno">   39</span>            rel[<span class="stringliteral">&quot;source&quot;</span>] = std::to_string(p.id());</div>
-<div class="line"><span class="lineno">   40</span>            parent[<span class="stringliteral">&quot;relationships&quot;</span>].push_back(std::move(rel));</div>
-<div class="line"><span class="lineno">   41</span>        }</div>
-<div class="line"><span class="lineno">   42</span>    }</div>
-<div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>    <span class="comment">// Process it&#39;s subpackages relationships</span></div>
-<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;subpackage : p) {</div>
-<div class="line"><span class="lineno">   46</span>        <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1json_1_1generator.html#a008ce9bb9515401f7fc0b810102e53ac" title="Generate relationships originating from package p">generate_relationships</a>(</div>
-<div class="line"><span class="lineno">   47</span>            <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>package &amp;<span class="keyword">&gt;</span>(*subpackage), parent);</div>
-<div class="line"><span class="lineno">   48</span>    }</div>
-<div class="line"><span class="lineno">   49</span>}</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>            <span class="keyword">auto</span> destination_package = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get(r.destination());</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>            <span class="keywordflow">if</span> (!destination_package ||</div>
+<div class="line"><span class="lineno">   43</span>                !<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(</div>
+<div class="line"><span class="lineno">   44</span>                    <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>package &amp;<span class="keyword">&gt;</span>(*destination_package)))</div>
+<div class="line"><span class="lineno">   45</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>            rel[<span class="stringliteral">&quot;source&quot;</span>] = std::to_string(p.id());</div>
+<div class="line"><span class="lineno">   48</span>            parent[<span class="stringliteral">&quot;relationships&quot;</span>].push_back(std::move(rel));</div>
+<div class="line"><span class="lineno">   49</span>        }</div>
+<div class="line"><span class="lineno">   50</span>    }</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>    <span class="comment">// Process it&#39;s subpackages relationships</span></div>
+<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;subpackage : p) {</div>
+<div class="line"><span class="lineno">   54</span>        <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1json_1_1generator.html#a008ce9bb9515401f7fc0b810102e53ac" title="Generate relationships originating from package p">generate_relationships</a>(</div>
+<div class="line"><span class="lineno">   55</span>            <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>package &amp;<span class="keyword">&gt;</span>(*subpackage), parent);</div>
+<div class="line"><span class="lineno">   56</span>    }</div>
+<div class="line"><span class="lineno">   57</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

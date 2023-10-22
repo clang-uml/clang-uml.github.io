@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.0</span>
+       <span id="projectnumber">0.4.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -137,6 +137,11 @@ $(function() {
 <li><a class="el" href="md_docs_2installation.html#visual-studio-native-build">Visual Studio native build</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a class="el" href="md_docs_2installation.html#shell-autocompletion-scripts">Shell autocompletion scripts</a><ul>
+<li><a class="el" href="md_docs_2installation.html#bash">Bash</a></li>
+<li><a class="el" href="md_docs_2installation.html#zsh">Zsh</a></li>
 </ul>
 </li>
 </ul>
@@ -250,6 +255,33 @@ Visual Studio native build</h4>
 <div class="line">Using LLVM/Clang libraries version: clang version 15.0.6 (https://github.com/llvm/llvm-project.git 088f33605d8a61ff519c580a71b1dd57d16a03f8)</div>
 </div><!-- fragment --><p>Finally, remove the temporary build directory:</p>
 <div class="fragment language-bash"><div class="line">rm -r C:\clang-uml-tmp</div>
+</div><!-- fragment --><h2><a class="anchor" id="shell-autocompletion-scripts"></a>
+Shell autocompletion scripts</h2>
+<p>For <code>Linux</code> and <code>macos</code>, Bash and Zsh autocomplete scripts are available, and if <code>clang-uml</code> is installed from a distribution package they should work out of the box. When installing <code>clang-uml</code> from sources the files need to be installed manually. The completion scripts are available in directory:</p><ul>
+<li><a href="./packaging/autocomplete"><code>packaging/autocomplete</code></a></li>
+</ul>
+<h3><a class="anchor" id="bash"></a>
+Bash</h3>
+<p>The <code>clang-uml</code> script can be either directly loaded to the current Bash session using:</p>
+<div class="fragment language-shell"><div class="line">source clang-uml</div>
+</div><!-- fragment --><p>or the script can be copied to <code>/usr/share/bash-completion/completions/</code> or <code>/etc/bash_completion.d</code> on Linux or to <code>/usr/local/etc/bash_completion.d</code> on <code>macos</code> with <code>Homebrew</code>.</p>
+<div class="fragment language-shell"><div class="line">sudo cp packaging/autocomplete/clang-uml /usr/share/bash-completion/completions/</div>
+</div><!-- fragment --><p>Make sure autocompletion is enabled in your <code>~/.bashrc</code> or <code>~/.bash_profile</code>:</p>
+<div class="fragment language-shell"><div class="line">if [ -f /etc/bash_completion ]; then</div>
+<div class="line">  . /etc/bash_completion</div>
+<div class="line">fi</div>
+</div><!-- fragment --><p>On OSX you might need to install <code>bash-completion</code> using Homebrew: </p><div class="fragment language-shell"><div class="line">brew install bash-completion</div>
+</div><!-- fragment --><p> Make sure to the following lines are uncommented in the <code>~/.bashrc</code>:</p>
+<div class="fragment language-shell"><div class="line">if [ -f $(brew --prefix)/etc/bash_completion ]; then</div>
+<div class="line">  . $(brew --prefix)/etc/bash_completion</div>
+<div class="line">fi</div>
+</div><!-- fragment --><h3><a class="anchor" id="zsh"></a>
+Zsh</h3>
+<p>In Zsh, the <code>_clang-uml</code> Zsh completion file must be copied to one of the folders under <code>$FPATH</code> variable, and the Zsh terminal should be reopened.</p>
+<p>For testing, <code>_clang-uml</code> completion function can be updated without restarting Zsh:</p>
+<div class="fragment language-shell"><div class="line"># Copy _clang-uml somewhere under $FPATH</div>
+<div class="line">$ unfunction _clang-uml</div>
+<div class="line">$ autoload -U _clang-uml</div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- HTML footer for doxygen 1.9.1-->

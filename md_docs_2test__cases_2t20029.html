@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.0</span>
+       <span id="projectnumber">0.4.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -126,6 +126,8 @@ $(function() {
 Config</h1>
 <div class="fragment language-yaml"><div class="line">compilation_database_dir: ..</div>
 <div class="line">output_directory: diagrams</div>
+<div class="line">add_compile_flags:</div>
+<div class="line">  - -fparse-all-comments</div>
 <div class="line">diagrams:</div>
 <div class="line">  t20029_sequence:</div>
 <div class="line">    type: sequence</div>
@@ -141,6 +143,7 @@ Config</h1>
 <div class="line">      - clanguml::t20029</div>
 <div class="line">    from:</div>
 <div class="line">      - function: clanguml::t20029::tmain()</div>
+<div class="line">    generate_message_comments: true</div>
 <div class="line">    participants_order:</div>
 <div class="line">      - clanguml::t20029::tmain()</div>
 <div class="line">      - clanguml::t20029::Encoder&lt;clanguml::t20029::Retrier&lt;clanguml::t20029::ConnectionPool&gt;&gt;</div>
@@ -163,7 +166,10 @@ Source code</h1>
 <div class="line"><span class="keyword">public</span>:</div>
 <div class="line">    <span class="keywordtype">bool</span> send(std::string &amp;&amp;msg)</div>
 <div class="line">    {</div>
-<div class="line">        <span class="keywordflow">return</span> T::send(std::move(encode(std::move(msg))));</div>
+<div class="line">        <span class="keywordflow">return</span> T::send(std::move(</div>
+<div class="line">            <span class="comment">// Encode the message using Base64 encoding and pass it to the next</span></div>
+<div class="line">            <span class="comment">// layer</span></div>
+<div class="line">            encode(std::move(msg))));</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">protected</span>:</div>
@@ -178,6 +184,7 @@ Source code</h1>
 <div class="line"> </div>
 <div class="line">        <span class="keywordtype">int</span> retryCount = 5;</div>
 <div class="line"> </div>
+<div class="line">        <span class="comment">// Repeat until send() succeeds or retry count is exceeded</span></div>
 <div class="line">        <span class="keywordflow">while</span> (retryCount--) {</div>
 <div class="line">            <span class="keywordflow">if</span> (T::send(buffer))</div>
 <div class="line">                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -207,8 +214,10 @@ Source code</h1>
 <div class="line">{</div>
 <div class="line">    <span class="keyword">auto</span> pool = std::make_shared&lt;Encoder&lt;Retrier&lt;ConnectionPool&gt;&gt;&gt;();</div>
 <div class="line"> </div>
+<div class="line">    <span class="comment">// Establish connection to the remote server synchronously</span></div>
 <div class="line">    pool-&gt;connect();</div>
 <div class="line"> </div>
+<div class="line">    <span class="comment">// Repeat for each line in the input stream</span></div>
 <div class="line">    <span class="keywordflow">for</span> (std::string line; std::getline(std::cin, line);) {</div>
 <div class="line">        <span class="keywordflow">if</span> (!pool-&gt;send(std::move(line)))</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
@@ -233,8 +242,8 @@ Generated JSON models</h1>
 <div class="fragment language-json"><div class="line">{</div>
 <div class="line">  &quot;diagram_type&quot;: &quot;sequence&quot;,</div>
 <div class="line">  &quot;metadata&quot;: {</div>
-<div class="line">    &quot;clang_uml_version&quot;: &quot;0.4.0&quot;,</div>
-<div class="line">    &quot;llvm_version&quot;: &quot;Ubuntu clang version 16.0.1 (++20230328073357+42d1b276f779-1~exp1~20230328073502.65)&quot;,</div>
+<div class="line">    &quot;clang_uml_version&quot;: &quot;0.4.1&quot;,</div>
+<div class="line">    &quot;llvm_version&quot;: &quot;Ubuntu clang version 16.0.6 (++20230710042027+7cbf1a259152-1~exp1~20230710162048.105)&quot;,</div>
 <div class="line">    &quot;schema_version&quot;: 1</div>
 <div class="line">  },</div>
 <div class="line">  &quot;name&quot;: &quot;t20029_sequence&quot;,</div>
@@ -245,7 +254,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 5,</div>
 <div class="line">        &quot;file&quot;: &quot;../../tests/t20029/t20029.cc&quot;,</div>
-<div class="line">        &quot;line&quot;: 55,</div>
+<div class="line">        &quot;line&quot;: 59,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t20029/t20029.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;type&quot;: &quot;function&quot;</div>
@@ -267,7 +276,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 29,</div>
 <div class="line">        &quot;file&quot;: &quot;../../tests/t20029/t20029.cc&quot;,</div>
-<div class="line">        &quot;line&quot;: 22,</div>
+<div class="line">        &quot;line&quot;: 25,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t20029/t20029.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;type&quot;: &quot;class&quot;</div>
@@ -278,7 +287,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 7,</div>
 <div class="line">        &quot;file&quot;: &quot;../../tests/t20029/t20029.cc&quot;,</div>
-<div class="line">        &quot;line&quot;: 39,</div>
+<div class="line">        &quot;line&quot;: 43,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t20029/t20029.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;type&quot;: &quot;class&quot;</div>
@@ -299,6 +308,7 @@ Generated JSON models</h1>
 <div class="line">    {</div>
 <div class="line">      &quot;messages&quot;: [</div>
 <div class="line">        {</div>
+<div class="line">          &quot;comment&quot;: &quot;Establish connection to the remote server synchronously&quot;,</div>
 <div class="line">          &quot;from&quot;: {</div>
 <div class="line">            &quot;activity_id&quot;: &quot;2091374738808319642&quot;,</div>
 <div class="line">            &quot;activity_name&quot;: &quot;clanguml::t20029::tmain()&quot;,</div>
@@ -311,7 +321,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 5,</div>
 <div class="line">            &quot;file&quot;: &quot;../../tests/t20029/t20029.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 59,</div>
+<div class="line">            &quot;line&quot;: 64,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t20029/t20029.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;to&quot;: {</div>
@@ -342,7 +352,7 @@ Generated JSON models</h1>
 <div class="line">                      &quot;source_location&quot;: {</div>
 <div class="line">                        &quot;column&quot;: 14,</div>
 <div class="line">                        &quot;file&quot;: &quot;../../tests/t20029/t20029.cc&quot;,</div>
-<div class="line">                        &quot;line&quot;: 62,</div>
+<div class="line">                        &quot;line&quot;: 68,</div>
 <div class="line">                        &quot;translation_unit&quot;: &quot;../../tests/t20029/t20029.cc&quot;</div>
 <div class="line">                      },</div>
 <div class="line">                      &quot;to&quot;: {</div>
@@ -353,6 +363,7 @@ Generated JSON models</h1>
 <div class="line">                      &quot;type&quot;: &quot;message&quot;</div>
 <div class="line">                    },</div>
 <div class="line">                    {</div>
+<div class="line">                      &quot;comment&quot;: &quot;Encode the message using Base64 encoding and pass it to the next\nlayer&quot;,</div>
 <div class="line">                      &quot;from&quot;: {</div>
 <div class="line">                        &quot;activity_id&quot;: &quot;2026763864005979273&quot;,</div>
 <div class="line">                        &quot;activity_name&quot;: &quot;clanguml::t20029::Encoder&lt;clanguml::t20029::Retrier&lt;clanguml::t20029::ConnectionPool&gt;&gt;::send(std::string &amp;&amp;)&quot;,</div>
@@ -362,9 +373,9 @@ Generated JSON models</h1>
 <div class="line">                      &quot;return_type&quot;: &quot;std::string&quot;,</div>
 <div class="line">                      &quot;scope&quot;: &quot;normal&quot;,</div>
 <div class="line">                      &quot;source_location&quot;: {</div>
-<div class="line">                        &quot;column&quot;: 34,</div>
+<div class="line">                        &quot;column&quot;: 13,</div>
 <div class="line">                        &quot;file&quot;: &quot;../../tests/t20029/t20029.cc&quot;,</div>
-<div class="line">                        &quot;line&quot;: 15,</div>
+<div class="line">                        &quot;line&quot;: 18,</div>
 <div class="line">                        &quot;translation_unit&quot;: &quot;../../tests/t20029/t20029.cc&quot;</div>
 <div class="line">                      },</div>
 <div class="line">                      &quot;to&quot;: {</div>
@@ -386,7 +397,7 @@ Generated JSON models</h1>
 <div class="line">                      &quot;source_location&quot;: {</div>
 <div class="line">                        &quot;column&quot;: 52,</div>
 <div class="line">                        &quot;file&quot;: &quot;../../tests/t20029/t20029.cc&quot;,</div>
-<div class="line">                        &quot;line&quot;: 19,</div>
+<div class="line">                        &quot;line&quot;: 22,</div>
 <div class="line">                        &quot;translation_unit&quot;: &quot;../../tests/t20029/t20029.cc&quot;</div>
 <div class="line">                      },</div>
 <div class="line">                      &quot;to&quot;: {</div>
@@ -438,7 +449,7 @@ Generated JSON models</h1>
 <div class="line">                                  &quot;source_location&quot;: {</div>
 <div class="line">                                    &quot;column&quot;: 17,</div>
 <div class="line">                                    &quot;file&quot;: &quot;../../tests/t20029/t20029.cc&quot;,</div>
-<div class="line">                                    &quot;line&quot;: 31,</div>
+<div class="line">                                    &quot;line&quot;: 35,</div>
 <div class="line">                                    &quot;translation_unit&quot;: &quot;../../tests/t20029/t20029.cc&quot;</div>
 <div class="line">                                  },</div>
 <div class="line">                                  &quot;to&quot;: {</div>

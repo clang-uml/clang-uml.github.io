@@ -21,8 +21,9 @@ var searchData=
   ['option_3c_20std_3a_3avector_3c_20std_3a_3avector_3c_20clanguml_3a_3aconfig_3a_3asource_5flocation_20_3e_20_3e_20_3e_18',['option&lt; std::vector&lt; std::vector&lt; clanguml::config::source_location &gt; &gt; &gt;',['../structclanguml_1_1config_1_1option.html',1,'clanguml::config']]],
   ['option_3c_20struct_20clanguml_3a_3aconfig_3a_3amermaid_20_3e_19',['option&lt; struct clanguml::config::mermaid &gt;',['../structclanguml_1_1config_1_1option.html',1,'clanguml::config']]],
   ['option_3c_20type_5faliases_5ft_20_3e_20',['option&lt; type_aliases_t &gt;',['../structclanguml_1_1config_1_1option.html',1,'clanguml::config']]],
-  ['option_5fwith_5falt_5fnames_5ftag_21',['option_with_alt_names_tag',['../structclanguml_1_1config_1_1option__with__alt__names__tag.html',1,'clanguml::config']]],
-  ['optional_5fref_22',['optional_ref',['../classclanguml_1_1common_1_1optional__ref.html',1,'clanguml::common']]],
-  ['or_5fregex_23',['or_regex',['../structclanguml_1_1common_1_1or__regex.html',1,'clanguml::common']]],
-  ['or_5fregex_3c_20std_3a_3afilesystem_3a_3apath_20_3e_24',['or_regex&lt; std::filesystem::path &gt;',['../structclanguml_1_1common_1_1or__regex.html',1,'clanguml::common']]]
+  ['option_3c_20unsigned_20_3e_21',['option&lt; unsigned &gt;',['../structclanguml_1_1config_1_1option.html',1,'clanguml::config']]],
+  ['option_5fwith_5falt_5fnames_5ftag_22',['option_with_alt_names_tag',['../structclanguml_1_1config_1_1option__with__alt__names__tag.html',1,'clanguml::config']]],
+  ['optional_5fref_23',['optional_ref',['../classclanguml_1_1common_1_1optional__ref.html',1,'clanguml::common']]],
+  ['or_5fregex_24',['or_regex',['../structclanguml_1_1common_1_1or__regex.html',1,'clanguml::common']]],
+  ['or_5fregex_3c_20std_3a_3afilesystem_3a_3apath_20_3e_25',['or_regex&lt; std::filesystem::path &gt;',['../structclanguml_1_1common_1_1or__regex.html',1,'clanguml::common']]]
 ];

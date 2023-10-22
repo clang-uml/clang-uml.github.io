@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.0</span>
+       <span id="projectnumber">0.4.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -198,7 +198,7 @@ $(function() {
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a2cb62d49379b53d220540388b7baf564" title="Get reference to Clang AST to clang-uml id mapper.">id_mapper</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a35a271cc1d85a33f099c56198a09850e">add</a>(ns-&gt;getID(), p-&gt;id());</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a5e4db7675bcaf544e577cdc9075fe336" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#af6391c29bf3889f388b93c7404ac68c7" title="Check if the diagram should include a declaration.">should_include</a>(*p) &amp;&amp; !<a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a5e4db7675bcaf544e577cdc9075fe336" title="Get diagram model reference.">diagram</a>().get(p-&gt;id())) {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Set source location in diagram element.">process_comment</a>(*ns, *p);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Process comment directives in comment attached to a declaration.">process_comment</a>(*ns, *p);</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437" title="Set source location in diagram element.">set_source_location</a>(*ns, *p);</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        p-&gt;set_style(p-&gt;style_spec());</div>
@@ -284,7 +284,7 @@ $(function() {
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a2cb62d49379b53d220540388b7baf564" title="Get reference to Clang AST to clang-uml id mapper.">id_mapper</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a35a271cc1d85a33f099c56198a09850e">add</a>(enm-&gt;getID(), e.id());</div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Set source location in diagram element.">process_comment</a>(*enm, e);</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Process comment directives in comment attached to a declaration.">process_comment</a>(*enm, e);</div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437" title="Set source location in diagram element.">set_source_location</a>(*enm, e);</div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordflow">if</span> (e.skip())</div>
@@ -885,7 +885,7 @@ $(function() {
 <div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span>    concept_model.set_namespace(ns);</div>
 <div class="line"><a id="l00759" name="l00759"></a><span class="lineno">  759</span>    concept_model.set_id(<a class="code hl_function" href="group__to__id.html#ga383cbc45288ba84c53a163da7c41b1cc">common::to_id</a>(concept_model.full_name(<span class="keyword">false</span>)));</div>
 <div class="line"><a id="l00760" name="l00760"></a><span class="lineno">  760</span> </div>
-<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Set source location in diagram element.">process_comment</a>(*cpt, concept_model);</div>
+<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Process comment directives in comment attached to a declaration.">process_comment</a>(*cpt, concept_model);</div>
 <div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437" title="Set source location in diagram element.">set_source_location</a>(*cpt, concept_model);</div>
 <div class="line"><a id="l00763" name="l00763"></a><span class="lineno">  763</span> </div>
 <div class="line"><a id="l00764" name="l00764"></a><span class="lineno">  764</span>    <span class="keywordflow">if</span> (concept_model.skip())</div>
@@ -925,7 +925,7 @@ $(function() {
 <div class="line"><a id="l00798" name="l00798"></a><span class="lineno">  798</span>        record.set_id(<a class="code hl_function" href="group__to__id.html#ga383cbc45288ba84c53a163da7c41b1cc">common::to_id</a>(record.full_name(<span class="keyword">false</span>)));</div>
 <div class="line"><a id="l00799" name="l00799"></a><span class="lineno">  799</span>    }</div>
 <div class="line"><a id="l00800" name="l00800"></a><span class="lineno">  800</span> </div>
-<div class="line"><a id="l00801" name="l00801"></a><span class="lineno">  801</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Set source location in diagram element.">process_comment</a>(*rec, record);</div>
+<div class="line"><a id="l00801" name="l00801"></a><span class="lineno">  801</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Process comment directives in comment attached to a declaration.">process_comment</a>(*rec, record);</div>
 <div class="line"><a id="l00802" name="l00802"></a><span class="lineno">  802</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437" title="Set source location in diagram element.">set_source_location</a>(*rec, record);</div>
 <div class="line"><a id="l00803" name="l00803"></a><span class="lineno">  803</span> </div>
 <div class="line"><a id="l00804" name="l00804"></a><span class="lineno">  804</span>    <span class="keyword">const</span> <span class="keyword">auto</span> record_full_name = record_ptr-&gt;full_name(<span class="keyword">false</span>);</div>
@@ -964,7 +964,7 @@ $(function() {
 <div class="line"><a id="l00837" name="l00837"></a><span class="lineno">  837</span> </div>
 <div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span>    c.is_struct(cls-&gt;isStruct());</div>
 <div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span> </div>
-<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Set source location in diagram element.">process_comment</a>(*cls, c);</div>
+<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0b26fd2d97a4ae6d275a4b458c13878d" title="Process comment directives in comment attached to a declaration.">process_comment</a>(*cls, c);</div>
 <div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0fe1c667413cbce18d9aa29a95d06437" title="Set source location in diagram element.">set_source_location</a>(*cls, c);</div>
 <div class="line"><a id="l00842" name="l00842"></a><span class="lineno">  842</span> </div>
 <div class="line"><a id="l00843" name="l00843"></a><span class="lineno">  843</span>    <span class="keywordflow">if</span> (c.skip())</div>

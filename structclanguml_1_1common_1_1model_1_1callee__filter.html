@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.0</span>
+       <span id="projectnumber">0.4.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -206,11 +206,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00368">368</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  370</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#aace2767e1c46b12082faba1e38dd7bc3">filter_visitor</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>}</div>
-<div class="line"><span class="lineno">  371</span>    , <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1callee__filter.html#a5d40c8e3823a0342403bb83fcbe01d28">callee_types_</a>{std::move(callee_types)}</div>
-<div class="line"><span class="lineno">  372</span>{</div>
-<div class="line"><span class="lineno">  373</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00357">357</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  359</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#aace2767e1c46b12082faba1e38dd7bc3">filter_visitor</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>}</div>
+<div class="line"><span class="lineno">  360</span>    , <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1callee__filter.html#a5d40c8e3823a0342403bb83fcbe01d28">callee_types_</a>{std::move(callee_types)}</div>
+<div class="line"><span class="lineno">  361</span>{</div>
+<div class="line"><span class="lineno">  362</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -276,58 +276,58 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a449efc12d41637d0dcc4cfdbc06bb180">clanguml::common::model::filter_visitor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00375">375</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  377</span>{</div>
-<div class="line"><span class="lineno">  378</span>    <span class="keyword">using </span>sequence_diagram::model::class_;</div>
-<div class="line"><span class="lineno">  379</span>    <span class="keyword">using </span>sequence_diagram::model::function;</div>
-<div class="line"><span class="lineno">  380</span>    <span class="keyword">using </span>sequence_diagram::model::method;</div>
-<div class="line"><span class="lineno">  381</span>    <span class="keyword">using </span>sequence_diagram::model::participant;</div>
-<div class="line"><span class="lineno">  382</span> </div>
-<div class="line"><span class="lineno">  383</span>    <span class="keyword">auto</span> is_lambda = [&amp;d](<span class="keyword">const</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a> &amp;m) {</div>
-<div class="line"><span class="lineno">  384</span>        <span class="keyword">auto</span> class_participant =</div>
-<div class="line"><span class="lineno">  385</span>            <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>sequence_diagram::model::diagram &amp;<span class="keyword">&gt;</span>(d)</div>
-<div class="line"><span class="lineno">  386</span>                .get_participant&lt;class_&gt;(m.class_id());</div>
-<div class="line"><span class="lineno">  387</span>        <span class="keywordflow">if</span> (!class_participant)</div>
-<div class="line"><span class="lineno">  388</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  389</span> </div>
-<div class="line"><span class="lineno">  390</span>        <span class="keywordflow">return</span> class_participant.value().is_lambda();</div>
-<div class="line"><span class="lineno">  391</span>    };</div>
-<div class="line"><span class="lineno">  392</span> </div>
-<div class="line"><span class="lineno">  393</span>    <a class="code hl_typedef" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a8ea774655992e61b0bfd766fe38981fc">tvl::value_t</a> res = <a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#aa07645c27199ad641a77953e1fc86f64">tvl::any_of</a>(</div>
-<div class="line"><span class="lineno">  394</span>        <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1callee__filter.html#a5d40c8e3823a0342403bb83fcbe01d28">callee_types_</a>.begin(), <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1callee__filter.html#a5d40c8e3823a0342403bb83fcbe01d28">callee_types_</a>.end(), [&amp;p, is_lambda](<span class="keyword">auto</span> ct) {</div>
-<div class="line"><span class="lineno">  395</span>            auto is_function = [](const participant *p) {</div>
-<div class="line"><span class="lineno">  396</span>                return dynamic_cast&lt;const function *&gt;(p) != nullptr;</div>
-<div class="line"><span class="lineno">  397</span>            };</div>
-<div class="line"><span class="lineno">  398</span> </div>
-<div class="line"><span class="lineno">  399</span>            <span class="keywordflow">switch</span> (ct) {</div>
-<div class="line"><span class="lineno">  400</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">config::callee_type::method</a>:</div>
-<div class="line"><span class="lineno">  401</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span>;</div>
-<div class="line"><span class="lineno">  402</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca6ca268371eeb5d93eefeb68f96157666">config::callee_type::constructor</a>:</div>
-<div class="line"><span class="lineno">  403</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp;</div>
-<div class="line"><span class="lineno">  404</span>                    ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a> &amp;)p).is_constructor();</div>
-<div class="line"><span class="lineno">  405</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caafb7bbeb1adca3d11f0bfb38e1f7f856">config::callee_type::assignment</a>:</div>
-<div class="line"><span class="lineno">  406</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp;</div>
-<div class="line"><span class="lineno">  407</span>                    ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a> &amp;)p).is_assignment();</div>
-<div class="line"><span class="lineno">  408</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca52d76f4231073ba56a413274f8e5a437">config::callee_type::operator_</a>:</div>
-<div class="line"><span class="lineno">  409</span>                <span class="keywordflow">return</span> is_function(&amp;p) &amp;&amp; ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">function</a> &amp;)p).is_operator();</div>
-<div class="line"><span class="lineno">  410</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca09ecb6438e46ddb2614bc58b9e2a8b41">config::callee_type::defaulted</a>:</div>
-<div class="line"><span class="lineno">  411</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp;</div>
-<div class="line"><span class="lineno">  412</span>                    ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a> &amp;)p).is_defaulted();</div>
-<div class="line"><span class="lineno">  413</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca2ae039feee6db3ba2cd0659217850e5f">config::callee_type::static_</a>:</div>
-<div class="line"><span class="lineno">  414</span>                <span class="keywordflow">return</span> is_function(&amp;p) &amp;&amp; ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">function</a> &amp;)p).is_static();</div>
-<div class="line"><span class="lineno">  415</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">config::callee_type::function</a>:</div>
-<div class="line"><span class="lineno">  416</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;function&quot;</span>;</div>
-<div class="line"><span class="lineno">  417</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cab9a142c3d28005309dc864c41e53a39d">config::callee_type::function_template</a>:</div>
-<div class="line"><span class="lineno">  418</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;function_template&quot;</span>;</div>
-<div class="line"><span class="lineno">  419</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca945f3fc449518a73b9f5f32868db466c">config::callee_type::lambda</a>:</div>
-<div class="line"><span class="lineno">  420</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp; is_lambda((method &amp;)p);</div>
-<div class="line"><span class="lineno">  421</span>            }</div>
-<div class="line"><span class="lineno">  422</span> </div>
-<div class="line"><span class="lineno">  423</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  424</span>        });</div>
-<div class="line"><span class="lineno">  425</span> </div>
-<div class="line"><span class="lineno">  426</span>    <span class="keywordflow">return</span> res;</div>
-<div class="line"><span class="lineno">  427</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00364">364</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  366</span>{</div>
+<div class="line"><span class="lineno">  367</span>    <span class="keyword">using </span>sequence_diagram::model::class_;</div>
+<div class="line"><span class="lineno">  368</span>    <span class="keyword">using </span>sequence_diagram::model::function;</div>
+<div class="line"><span class="lineno">  369</span>    <span class="keyword">using </span>sequence_diagram::model::method;</div>
+<div class="line"><span class="lineno">  370</span>    <span class="keyword">using </span>sequence_diagram::model::participant;</div>
+<div class="line"><span class="lineno">  371</span> </div>
+<div class="line"><span class="lineno">  372</span>    <span class="keyword">auto</span> is_lambda = [&amp;d](<span class="keyword">const</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a> &amp;m) {</div>
+<div class="line"><span class="lineno">  373</span>        <span class="keyword">auto</span> class_participant =</div>
+<div class="line"><span class="lineno">  374</span>            <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>sequence_diagram::model::diagram &amp;<span class="keyword">&gt;</span>(d)</div>
+<div class="line"><span class="lineno">  375</span>                .get_participant&lt;class_&gt;(m.class_id());</div>
+<div class="line"><span class="lineno">  376</span>        <span class="keywordflow">if</span> (!class_participant)</div>
+<div class="line"><span class="lineno">  377</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  378</span> </div>
+<div class="line"><span class="lineno">  379</span>        <span class="keywordflow">return</span> class_participant.value().is_lambda();</div>
+<div class="line"><span class="lineno">  380</span>    };</div>
+<div class="line"><span class="lineno">  381</span> </div>
+<div class="line"><span class="lineno">  382</span>    <a class="code hl_typedef" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a8ea774655992e61b0bfd766fe38981fc">tvl::value_t</a> res = <a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#aa07645c27199ad641a77953e1fc86f64">tvl::any_of</a>(</div>
+<div class="line"><span class="lineno">  383</span>        <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1callee__filter.html#a5d40c8e3823a0342403bb83fcbe01d28">callee_types_</a>.begin(), <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1callee__filter.html#a5d40c8e3823a0342403bb83fcbe01d28">callee_types_</a>.end(), [&amp;p, is_lambda](<span class="keyword">auto</span> ct) {</div>
+<div class="line"><span class="lineno">  384</span>            auto is_function = [](const participant *p) {</div>
+<div class="line"><span class="lineno">  385</span>                return dynamic_cast&lt;const function *&gt;(p) != nullptr;</div>
+<div class="line"><span class="lineno">  386</span>            };</div>
+<div class="line"><span class="lineno">  387</span> </div>
+<div class="line"><span class="lineno">  388</span>            <span class="keywordflow">switch</span> (ct) {</div>
+<div class="line"><span class="lineno">  389</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">config::callee_type::method</a>:</div>
+<div class="line"><span class="lineno">  390</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span>;</div>
+<div class="line"><span class="lineno">  391</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca6ca268371eeb5d93eefeb68f96157666">config::callee_type::constructor</a>:</div>
+<div class="line"><span class="lineno">  392</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp;</div>
+<div class="line"><span class="lineno">  393</span>                    ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a> &amp;)p).is_constructor();</div>
+<div class="line"><span class="lineno">  394</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caafb7bbeb1adca3d11f0bfb38e1f7f856">config::callee_type::assignment</a>:</div>
+<div class="line"><span class="lineno">  395</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp;</div>
+<div class="line"><span class="lineno">  396</span>                    ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a> &amp;)p).is_assignment();</div>
+<div class="line"><span class="lineno">  397</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca52d76f4231073ba56a413274f8e5a437">config::callee_type::operator_</a>:</div>
+<div class="line"><span class="lineno">  398</span>                <span class="keywordflow">return</span> is_function(&amp;p) &amp;&amp; ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">function</a> &amp;)p).is_operator();</div>
+<div class="line"><span class="lineno">  399</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca09ecb6438e46ddb2614bc58b9e2a8b41">config::callee_type::defaulted</a>:</div>
+<div class="line"><span class="lineno">  400</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp;</div>
+<div class="line"><span class="lineno">  401</span>                    ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a> &amp;)p).is_defaulted();</div>
+<div class="line"><span class="lineno">  402</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca2ae039feee6db3ba2cd0659217850e5f">config::callee_type::static_</a>:</div>
+<div class="line"><span class="lineno">  403</span>                <span class="keywordflow">return</span> is_function(&amp;p) &amp;&amp; ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">function</a> &amp;)p).is_static();</div>
+<div class="line"><span class="lineno">  404</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">config::callee_type::function</a>:</div>
+<div class="line"><span class="lineno">  405</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;function&quot;</span>;</div>
+<div class="line"><span class="lineno">  406</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cab9a142c3d28005309dc864c41e53a39d">config::callee_type::function_template</a>:</div>
+<div class="line"><span class="lineno">  407</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;function_template&quot;</span>;</div>
+<div class="line"><span class="lineno">  408</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca945f3fc449518a73b9f5f32868db466c">config::callee_type::lambda</a>:</div>
+<div class="line"><span class="lineno">  409</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp; is_lambda((method &amp;)p);</div>
+<div class="line"><span class="lineno">  410</span>            }</div>
+<div class="line"><span class="lineno">  411</span> </div>
+<div class="line"><span class="lineno">  412</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  413</span>        });</div>
+<div class="line"><span class="lineno">  414</span> </div>
+<div class="line"><span class="lineno">  415</span>    <span class="keywordflow">return</span> res;</div>
+<div class="line"><span class="lineno">  416</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

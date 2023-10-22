@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.0</span>
+       <span id="projectnumber">0.4.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -206,11 +206,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00429">429</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  431</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#aace2767e1c46b12082faba1e38dd7bc3">filter_visitor</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>}</div>
-<div class="line"><span class="lineno">  432</span>    , <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1subclass__filter.html#afdb4bc3328c9956fa38b36536d2bd8bd">roots_</a>{std::move(roots)}</div>
-<div class="line"><span class="lineno">  433</span>{</div>
-<div class="line"><span class="lineno">  434</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00418">418</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  420</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#aace2767e1c46b12082faba1e38dd7bc3">filter_visitor</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>}</div>
+<div class="line"><span class="lineno">  421</span>    , <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1subclass__filter.html#afdb4bc3328c9956fa38b36536d2bd8bd">roots_</a>{std::move(roots)}</div>
+<div class="line"><span class="lineno">  422</span>{</div>
+<div class="line"><span class="lineno">  423</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -276,48 +276,48 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a359c04491fd76fed5a5a2c657529160b">clanguml::common::model::filter_visitor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00436">436</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  437</span>{</div>
-<div class="line"><span class="lineno">  438</span>    <span class="keywordflow">if</span> (d.type() != <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffaca5f49c58b1ea579a3ed3e0bc6a0d176">diagram_t::kClass</a>)</div>
-<div class="line"><span class="lineno">  439</span>        <span class="keywordflow">return</span> {};</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00425">425</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  426</span>{</div>
+<div class="line"><span class="lineno">  427</span>    <span class="keywordflow">if</span> (d.type() != <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffaca5f49c58b1ea579a3ed3e0bc6a0d176">diagram_t::kClass</a>)</div>
+<div class="line"><span class="lineno">  428</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  429</span> </div>
+<div class="line"><span class="lineno">  430</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1subclass__filter.html#afdb4bc3328c9956fa38b36536d2bd8bd">roots_</a>.empty())</div>
+<div class="line"><span class="lineno">  431</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  432</span> </div>
+<div class="line"><span class="lineno">  433</span>    <span class="keywordflow">if</span> (!d.complete())</div>
+<div class="line"><span class="lineno">  434</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  435</span> </div>
+<div class="line"><span class="lineno">  436</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;cd = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>class_diagram::model::diagram &amp;<span class="keyword">&gt;</span>(d);</div>
+<div class="line"><span class="lineno">  437</span> </div>
+<div class="line"><span class="lineno">  438</span>    <span class="comment">// First get all parents of element e</span></div>
+<div class="line"><span class="lineno">  439</span>    <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#a742408c40cde58190d01351dda001ffa">clanguml::common::reference_set&lt;class_diagram::model::class_&gt;</a> parents;</div>
 <div class="line"><span class="lineno">  440</span> </div>
-<div class="line"><span class="lineno">  441</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1subclass__filter.html#afdb4bc3328c9956fa38b36536d2bd8bd">roots_</a>.empty())</div>
-<div class="line"><span class="lineno">  442</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  441</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;fn = e.full_name(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  442</span>    <span class="keyword">auto</span> class_ref = cd.find&lt;class_diagram::model::class_&gt;(fn);</div>
 <div class="line"><span class="lineno">  443</span> </div>
-<div class="line"><span class="lineno">  444</span>    <span class="keywordflow">if</span> (!d.complete())</div>
-<div class="line"><span class="lineno">  445</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  444</span>    <span class="keywordflow">if</span> (!class_ref.has_value())</div>
+<div class="line"><span class="lineno">  445</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  446</span> </div>
-<div class="line"><span class="lineno">  447</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;cd = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>class_diagram::model::diagram &amp;<span class="keyword">&gt;</span>(d);</div>
+<div class="line"><span class="lineno">  447</span>    parents.emplace(class_ref.value());</div>
 <div class="line"><span class="lineno">  448</span> </div>
-<div class="line"><span class="lineno">  449</span>    <span class="comment">// First get all parents of element e</span></div>
-<div class="line"><span class="lineno">  450</span>    <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#a742408c40cde58190d01351dda001ffa">clanguml::common::reference_set&lt;class_diagram::model::class_&gt;</a> parents;</div>
-<div class="line"><span class="lineno">  451</span> </div>
-<div class="line"><span class="lineno">  452</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;fn = e.full_name(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  453</span>    <span class="keyword">auto</span> class_ref = cd.find&lt;class_diagram::model::class_&gt;(fn);</div>
+<div class="line"><span class="lineno">  449</span>    cd.get_parents(parents);</div>
+<div class="line"><span class="lineno">  450</span> </div>
+<div class="line"><span class="lineno">  451</span>    std::vector&lt;std::string&gt; parents_names;</div>
+<div class="line"><span class="lineno">  452</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> p : parents)</div>
+<div class="line"><span class="lineno">  453</span>        parents_names.push_back(p.<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1detail.html#ab85530bb0d21b93200e8f36a322b8b73">get</a>().full_name(false));</div>
 <div class="line"><span class="lineno">  454</span> </div>
-<div class="line"><span class="lineno">  455</span>    <span class="keywordflow">if</span> (!class_ref.has_value())</div>
-<div class="line"><span class="lineno">  456</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  457</span> </div>
-<div class="line"><span class="lineno">  458</span>    parents.emplace(class_ref.value());</div>
-<div class="line"><span class="lineno">  459</span> </div>
-<div class="line"><span class="lineno">  460</span>    cd.get_parents(parents);</div>
-<div class="line"><span class="lineno">  461</span> </div>
-<div class="line"><span class="lineno">  462</span>    std::vector&lt;std::string&gt; parents_names;</div>
-<div class="line"><span class="lineno">  463</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> p : parents)</div>
-<div class="line"><span class="lineno">  464</span>        parents_names.push_back(p.<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1detail.html#ab85530bb0d21b93200e8f36a322b8b73">get</a>().full_name(false));</div>
-<div class="line"><span class="lineno">  465</span> </div>
-<div class="line"><span class="lineno">  466</span>    <span class="comment">// Now check if any of the parents matches the roots specified in the</span></div>
-<div class="line"><span class="lineno">  467</span>    <span class="comment">// filter config</span></div>
-<div class="line"><span class="lineno">  468</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;root : <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1subclass__filter.html#afdb4bc3328c9956fa38b36536d2bd8bd">roots_</a>) {</div>
-<div class="line"><span class="lineno">  469</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;parent : parents) {</div>
-<div class="line"><span class="lineno">  470</span>            <span class="keyword">auto</span> full_name = parent.get().full_name(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  471</span>            <span class="keywordflow">if</span> (root == full_name)</div>
-<div class="line"><span class="lineno">  472</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  473</span>        }</div>
-<div class="line"><span class="lineno">  474</span>    }</div>
-<div class="line"><span class="lineno">  475</span> </div>
-<div class="line"><span class="lineno">  476</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  477</span>}</div>
+<div class="line"><span class="lineno">  455</span>    <span class="comment">// Now check if any of the parents matches the roots specified in the</span></div>
+<div class="line"><span class="lineno">  456</span>    <span class="comment">// filter config</span></div>
+<div class="line"><span class="lineno">  457</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;root : <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1subclass__filter.html#afdb4bc3328c9956fa38b36536d2bd8bd">roots_</a>) {</div>
+<div class="line"><span class="lineno">  458</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;parent : parents) {</div>
+<div class="line"><span class="lineno">  459</span>            <span class="keyword">auto</span> full_name = parent.get().full_name(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  460</span>            <span class="keywordflow">if</span> (root == full_name)</div>
+<div class="line"><span class="lineno">  461</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  462</span>        }</div>
+<div class="line"><span class="lineno">  463</span>    }</div>
+<div class="line"><span class="lineno">  464</span> </div>
+<div class="line"><span class="lineno">  465</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  466</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

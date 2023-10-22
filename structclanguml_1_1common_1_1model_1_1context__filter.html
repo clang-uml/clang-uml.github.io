@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.0</span>
+       <span id="projectnumber">0.4.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -206,11 +206,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00548">548</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  550</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#aace2767e1c46b12082faba1e38dd7bc3">filter_visitor</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>}</div>
-<div class="line"><span class="lineno">  551</span>    , <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1context__filter.html#a7c2539ecd496accbc261b1208e83c5bc">context_</a>{std::move(context)}</div>
-<div class="line"><span class="lineno">  552</span>{</div>
-<div class="line"><span class="lineno">  553</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00537">537</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  539</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#aace2767e1c46b12082faba1e38dd7bc3">filter_visitor</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>}</div>
+<div class="line"><span class="lineno">  540</span>    , <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1context__filter.html#a7c2539ecd496accbc261b1208e83c5bc">context_</a>{std::move(context)}</div>
+<div class="line"><span class="lineno">  541</span>{</div>
+<div class="line"><span class="lineno">  542</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -276,64 +276,64 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a359c04491fd76fed5a5a2c657529160b">clanguml::common::model::filter_visitor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00555">555</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  556</span>{</div>
-<div class="line"><span class="lineno">  557</span>    <span class="keywordflow">if</span> (d.type() != <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffaca5f49c58b1ea579a3ed3e0bc6a0d176">diagram_t::kClass</a>)</div>
-<div class="line"><span class="lineno">  558</span>        <span class="keywordflow">return</span> {};</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00544">544</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  545</span>{</div>
+<div class="line"><span class="lineno">  546</span>    <span class="keywordflow">if</span> (d.type() != <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffaca5f49c58b1ea579a3ed3e0bc6a0d176">diagram_t::kClass</a>)</div>
+<div class="line"><span class="lineno">  547</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  548</span> </div>
+<div class="line"><span class="lineno">  549</span>    <span class="comment">// Running this filter makes sense only after the entire diagram is</span></div>
+<div class="line"><span class="lineno">  550</span>    <span class="comment">// generated - i.e. during diagram generation</span></div>
+<div class="line"><span class="lineno">  551</span>    <span class="keywordflow">if</span> (!d.complete())</div>
+<div class="line"><span class="lineno">  552</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  553</span> </div>
+<div class="line"><span class="lineno">  554</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#aa07645c27199ad641a77953e1fc86f64">tvl::any_of</a>(<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1context__filter.html#a7c2539ecd496accbc261b1208e83c5bc">context_</a>.begin(), <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1context__filter.html#a7c2539ecd496accbc261b1208e83c5bc">context_</a>.end(),</div>
+<div class="line"><span class="lineno">  555</span>        [&amp;e, &amp;d](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;context_root_pattern) {</div>
+<div class="line"><span class="lineno">  556</span>            const auto &amp;context_roots =</div>
+<div class="line"><span class="lineno">  557</span>                static_cast&lt;const class_diagram::model::diagram &amp;&gt;(d)</div>
+<div class="line"><span class="lineno">  558</span>                    .find&lt;class_diagram::model::class_&gt;(context_root_pattern);</div>
 <div class="line"><span class="lineno">  559</span> </div>
-<div class="line"><span class="lineno">  560</span>    <span class="comment">// Running this filter makes sense only after the entire diagram is</span></div>
-<div class="line"><span class="lineno">  561</span>    <span class="comment">// generated - i.e. during diagram generation</span></div>
-<div class="line"><span class="lineno">  562</span>    <span class="keywordflow">if</span> (!d.complete())</div>
-<div class="line"><span class="lineno">  563</span>        <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  564</span> </div>
-<div class="line"><span class="lineno">  565</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#aa07645c27199ad641a77953e1fc86f64">tvl::any_of</a>(<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1context__filter.html#a7c2539ecd496accbc261b1208e83c5bc">context_</a>.begin(), <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1context__filter.html#a7c2539ecd496accbc261b1208e83c5bc">context_</a>.end(),</div>
-<div class="line"><span class="lineno">  566</span>        [&amp;e, &amp;d](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;context_root_pattern) {</div>
-<div class="line"><span class="lineno">  567</span>            const auto &amp;context_roots =</div>
-<div class="line"><span class="lineno">  568</span>                static_cast&lt;const class_diagram::model::diagram &amp;&gt;(d)</div>
-<div class="line"><span class="lineno">  569</span>                    .find&lt;class_diagram::model::class_&gt;(context_root_pattern);</div>
-<div class="line"><span class="lineno">  570</span> </div>
-<div class="line"><span class="lineno">  571</span>            for (auto &amp;context_root : context_roots) {</div>
-<div class="line"><span class="lineno">  572</span>                if (context_root.has_value()) {</div>
-<div class="line"><span class="lineno">  573</span>                    <span class="comment">// This is a direct match to the context root</span></div>
-<div class="line"><span class="lineno">  574</span>                    if (context_root.value().id() == e.id())</div>
-<div class="line"><span class="lineno">  575</span>                        return true;</div>
-<div class="line"><span class="lineno">  576</span> </div>
-<div class="line"><span class="lineno">  577</span>                    <span class="comment">// Return a positive match if the element e is in a direct</span></div>
-<div class="line"><span class="lineno">  578</span>                    <span class="comment">// relationship with any of the context_root&#39;s</span></div>
-<div class="line"><span class="lineno">  579</span>                    for (const relationship &amp;rel :</div>
-<div class="line"><span class="lineno">  580</span>                        context_root.value().relationships()) {</div>
-<div class="line"><span class="lineno">  581</span>                        if (d.should_include(rel.type()) &amp;&amp;</div>
-<div class="line"><span class="lineno">  582</span>                            rel.destination() == e.id())</div>
-<div class="line"><span class="lineno">  583</span>                            return true;</div>
-<div class="line"><span class="lineno">  584</span>                    }</div>
-<div class="line"><span class="lineno">  585</span>                    for (const relationship &amp;rel : e.relationships()) {</div>
-<div class="line"><span class="lineno">  586</span>                        if (d.should_include(rel.type()) &amp;&amp;</div>
-<div class="line"><span class="lineno">  587</span>                            rel.destination() == context_root.value().id())</div>
-<div class="line"><span class="lineno">  588</span>                            return true;</div>
-<div class="line"><span class="lineno">  589</span>                    }</div>
-<div class="line"><span class="lineno">  590</span> </div>
-<div class="line"><span class="lineno">  591</span>                    <span class="comment">// Return a positive match if the context_root is a parent</span></div>
-<div class="line"><span class="lineno">  592</span>                    <span class="comment">// of the element</span></div>
-<div class="line"><span class="lineno">  593</span>                    for (const class_diagram::model::class_parent &amp;p :</div>
-<div class="line"><span class="lineno">  594</span>                        context_root.value().parents()) {</div>
-<div class="line"><span class="lineno">  595</span>                        if (p.name() == e.full_name(false))</div>
-<div class="line"><span class="lineno">  596</span>                            return true;</div>
-<div class="line"><span class="lineno">  597</span>                    }</div>
-<div class="line"><span class="lineno">  598</span>                    if (dynamic_cast&lt;const class_diagram::model::class_ *&gt;(</div>
-<div class="line"><span class="lineno">  599</span>                            &amp;e) != nullptr) {</div>
-<div class="line"><span class="lineno">  600</span>                        for (const class_diagram::model::class_parent &amp;p :</div>
-<div class="line"><span class="lineno">  601</span>                            static_cast&lt;const class_diagram::model::class_ &amp;&gt;(e)</div>
-<div class="line"><span class="lineno">  602</span>                                .parents()) {</div>
-<div class="line"><span class="lineno">  603</span>                            if (p.name() ==</div>
-<div class="line"><span class="lineno">  604</span>                                context_root.value().full_name(false))</div>
-<div class="line"><span class="lineno">  605</span>                                return true;</div>
-<div class="line"><span class="lineno">  606</span>                        }</div>
-<div class="line"><span class="lineno">  607</span>                    }</div>
-<div class="line"><span class="lineno">  608</span>                }</div>
-<div class="line"><span class="lineno">  609</span>            }</div>
-<div class="line"><span class="lineno">  610</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  611</span>        });</div>
-<div class="line"><span class="lineno">  612</span>}</div>
+<div class="line"><span class="lineno">  560</span>            for (auto &amp;context_root : context_roots) {</div>
+<div class="line"><span class="lineno">  561</span>                if (context_root.has_value()) {</div>
+<div class="line"><span class="lineno">  562</span>                    <span class="comment">// This is a direct match to the context root</span></div>
+<div class="line"><span class="lineno">  563</span>                    if (context_root.value().id() == e.id())</div>
+<div class="line"><span class="lineno">  564</span>                        return true;</div>
+<div class="line"><span class="lineno">  565</span> </div>
+<div class="line"><span class="lineno">  566</span>                    <span class="comment">// Return a positive match if the element e is in a direct</span></div>
+<div class="line"><span class="lineno">  567</span>                    <span class="comment">// relationship with any of the context_root&#39;s</span></div>
+<div class="line"><span class="lineno">  568</span>                    for (const relationship &amp;rel :</div>
+<div class="line"><span class="lineno">  569</span>                        context_root.value().relationships()) {</div>
+<div class="line"><span class="lineno">  570</span>                        if (d.should_include(rel.type()) &amp;&amp;</div>
+<div class="line"><span class="lineno">  571</span>                            rel.destination() == e.id())</div>
+<div class="line"><span class="lineno">  572</span>                            return true;</div>
+<div class="line"><span class="lineno">  573</span>                    }</div>
+<div class="line"><span class="lineno">  574</span>                    for (const relationship &amp;rel : e.relationships()) {</div>
+<div class="line"><span class="lineno">  575</span>                        if (d.should_include(rel.type()) &amp;&amp;</div>
+<div class="line"><span class="lineno">  576</span>                            rel.destination() == context_root.value().id())</div>
+<div class="line"><span class="lineno">  577</span>                            return true;</div>
+<div class="line"><span class="lineno">  578</span>                    }</div>
+<div class="line"><span class="lineno">  579</span> </div>
+<div class="line"><span class="lineno">  580</span>                    <span class="comment">// Return a positive match if the context_root is a parent</span></div>
+<div class="line"><span class="lineno">  581</span>                    <span class="comment">// of the element</span></div>
+<div class="line"><span class="lineno">  582</span>                    for (const class_diagram::model::class_parent &amp;p :</div>
+<div class="line"><span class="lineno">  583</span>                        context_root.value().parents()) {</div>
+<div class="line"><span class="lineno">  584</span>                        if (p.name() == e.full_name(false))</div>
+<div class="line"><span class="lineno">  585</span>                            return true;</div>
+<div class="line"><span class="lineno">  586</span>                    }</div>
+<div class="line"><span class="lineno">  587</span>                    if (dynamic_cast&lt;const class_diagram::model::class_ *&gt;(</div>
+<div class="line"><span class="lineno">  588</span>                            &amp;e) != nullptr) {</div>
+<div class="line"><span class="lineno">  589</span>                        for (const class_diagram::model::class_parent &amp;p :</div>
+<div class="line"><span class="lineno">  590</span>                            static_cast&lt;const class_diagram::model::class_ &amp;&gt;(e)</div>
+<div class="line"><span class="lineno">  591</span>                                .parents()) {</div>
+<div class="line"><span class="lineno">  592</span>                            if (p.name() ==</div>
+<div class="line"><span class="lineno">  593</span>                                context_root.value().full_name(false))</div>
+<div class="line"><span class="lineno">  594</span>                                return true;</div>
+<div class="line"><span class="lineno">  595</span>                        }</div>
+<div class="line"><span class="lineno">  596</span>                    }</div>
+<div class="line"><span class="lineno">  597</span>                }</div>
+<div class="line"><span class="lineno">  598</span>            }</div>
+<div class="line"><span class="lineno">  599</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  600</span>        });</div>
+<div class="line"><span class="lineno">  601</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

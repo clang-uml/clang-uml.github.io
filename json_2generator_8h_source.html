@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.0</span>
+       <span id="projectnumber">0.4.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -237,27 +237,30 @@ $(function() {
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    nlohmann::json j;</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    j[<span class="stringliteral">&quot;name&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">generators::generator&lt;C, D&gt;::model</a>().name();</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    j[<span class="stringliteral">&quot;diagram_type&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1common.html#a659755e7071d306be3669c69c45aed9d">to_string</a>(<a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1generator.html" title="Common diagram generator interface.">generators::generator&lt;C, D&gt;::model</a>().type());</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#a0ef69f6eb49777dc6a91a0f03edfa9f0" title="Generate a single diagram.">generate_diagram</a>(j);</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    generate_metadata(j);</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    ostr &lt;&lt; j;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>}</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1generator.html" title="Common diagram generator interface.">generators::generator&lt;C, D&gt;::config</a>().title) {</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        j[<span class="stringliteral">&quot;title&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">generators::generator&lt;C, D&gt;::config</a>().title();</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    }</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#a0ef69f6eb49777dc6a91a0f03edfa9f0" title="Generate a single diagram.">generate_diagram</a>(j);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    generate_metadata(j);</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> C, <span class="keyword">typename</span> D&gt;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1generators_1_1json_1_1generator.html#a008908f14285024b0ea08ea0c2186388">  122</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1json_1_1generator.html#a008908f14285024b0ea08ea0c2186388" title="Generate metadata element with diagram metadata.">generator&lt;C, D&gt;::generate_metadata</a>(nlohmann::json &amp;parent)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1generator.html" title="Common diagram generator interface.">generators::generator&lt;C, D&gt;::config</a>().generate_metadata()) {</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        parent[<span class="stringliteral">&quot;metadata&quot;</span>][<span class="stringliteral">&quot;clang_uml_version&quot;</span>] =</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            clanguml::version::CLANG_UML_VERSION;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        parent[<span class="stringliteral">&quot;metadata&quot;</span>][<span class="stringliteral">&quot;schema_version&quot;</span>] =</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            clanguml::version::CLANG_UML_JSON_GENERATOR_SCHEMA_VERSION;</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        parent[<span class="stringliteral">&quot;metadata&quot;</span>][<span class="stringliteral">&quot;llvm_version&quot;</span>] = clang::getClangFullVersion();</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    }</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>}</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>} <span class="comment">// namespace clanguml::common::generators::json</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    ostr &lt;&lt; j;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>}</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> C, <span class="keyword">typename</span> D&gt;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1generators_1_1json_1_1generator.html#a008908f14285024b0ea08ea0c2186388">  125</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1json_1_1generator.html#a008908f14285024b0ea08ea0c2186388" title="Generate metadata element with diagram metadata.">generator&lt;C, D&gt;::generate_metadata</a>(nlohmann::json &amp;parent)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1generator.html" title="Common diagram generator interface.">generators::generator&lt;C, D&gt;::config</a>().generate_metadata()) {</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        parent[<span class="stringliteral">&quot;metadata&quot;</span>][<span class="stringliteral">&quot;clang_uml_version&quot;</span>] =</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            clanguml::version::CLANG_UML_VERSION;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        parent[<span class="stringliteral">&quot;metadata&quot;</span>][<span class="stringliteral">&quot;schema_version&quot;</span>] =</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            clanguml::version::CLANG_UML_JSON_GENERATOR_SCHEMA_VERSION;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        parent[<span class="stringliteral">&quot;metadata&quot;</span>][<span class="stringliteral">&quot;llvm_version&quot;</span>] = clang::getClangFullVersion();</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    }</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>}</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>} <span class="comment">// namespace clanguml::common::generators::json</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->
