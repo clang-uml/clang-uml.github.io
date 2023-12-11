@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.1</span>
+       <span id="projectnumber">0.4.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -236,7 +236,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html#l00026">26</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
 <div class="fragment DoxyCode"><div class="line"><span class="lineno">   28</span>    : <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>{sm}</div>
-<div class="line"><span class="lineno">   29</span>    , <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a2823a7c198790695b9b3afcc3513a362">relative_to_path_</a>{config.<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#aa2bbc9923b17e697e97a4224499a2899">relative_to</a>()}</div>
+<div class="line"><span class="lineno">   29</span>    , <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a2823a7c198790695b9b3afcc3513a362">relative_to_path_</a>{config.<a class="code hl_function" href="structclanguml_1_1config_1_1diagram.html#a016e53083be67629dda6ad6c6bf47323" title="Returns absolute path of the relative_to option.">root_directory</a>()}</div>
 <div class="line"><span class="lineno">   30</span>{</div>
 <div class="line"><span class="lineno">   31</span>    <span class="keywordflow">if</span> (config.<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ad75d03a8da88603f5f1941bfa44c7b69">comment_parser</a>() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a8cfc1e2c5f2ed7b26e5153eb2bce1facaac7938d40cfc2307e2bf325d28e7884e">config::comment_parser_t::plain</a>) {</div>
 <div class="line"><span class="lineno">   32</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a1ca34c3f3ef707fcc26878dd015dc898">comment_visitor_</a> =</div>
@@ -524,45 +524,58 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html#l00107">107</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
 <div class="fragment DoxyCode"><div class="line"><span class="lineno">  110</span>{</div>
-<div class="line"><span class="lineno">  111</span>    std::string file;</div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordtype">unsigned</span> line{};</div>
-<div class="line"><span class="lineno">  113</span>    <span class="keywordtype">unsigned</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892a1afd32818d1c9525f82aff4c09efd254">column</a>{};</div>
-<div class="line"><span class="lineno">  114</span> </div>
-<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">if</span> (location.isValid()) {</div>
-<div class="line"><span class="lineno">  116</span>        file = <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>.getFilename(location).str();</div>
-<div class="line"><span class="lineno">  117</span>        line = <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>.getSpellingLineNumber(location);</div>
-<div class="line"><span class="lineno">  118</span>        <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892a1afd32818d1c9525f82aff4c09efd254">column</a> = <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>.getSpellingColumnNumber(location);</div>
-<div class="line"><span class="lineno">  119</span> </div>
-<div class="line"><span class="lineno">  120</span>        <span class="keywordflow">if</span> (file.empty()) {</div>
-<div class="line"><span class="lineno">  121</span>            <span class="comment">// Why do I have to do this?</span></div>
-<div class="line"><span class="lineno">  122</span>            <a class="code hl_function" href="namespaceclanguml_1_1common.html#a8d7db842880bf1063b0c8b9041b6a899">parse_source_location</a>(</div>
-<div class="line"><span class="lineno">  123</span>                location.printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a08aba222e4ab1d11c942de1aac0ce255" title="Get clang::SourceManager.">source_manager</a>()), file, line, column);</div>
-<div class="line"><span class="lineno">  124</span>        }</div>
-<div class="line"><span class="lineno">  125</span>    }</div>
-<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  127</span>        <span class="keyword">auto</span> success = <a class="code hl_function" href="namespaceclanguml_1_1common.html#a8d7db842880bf1063b0c8b9041b6a899">parse_source_location</a>(</div>
-<div class="line"><span class="lineno">  128</span>            location.printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a08aba222e4ab1d11c942de1aac0ce255" title="Get clang::SourceManager.">source_manager</a>()), file, line, column);</div>
-<div class="line"><span class="lineno">  129</span>        <span class="keywordflow">if</span> (!success) {</div>
-<div class="line"><span class="lineno">  130</span>            <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Failed to extract source location for element from {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  131</span>                location.printToString(<a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>));</div>
-<div class="line"><span class="lineno">  132</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  133</span>        }</div>
-<div class="line"><span class="lineno">  134</span>    }</div>
-<div class="line"><span class="lineno">  135</span> </div>
-<div class="line"><span class="lineno">  136</span>    <span class="keywordflow">if</span> (std::filesystem::path file_path{file}; !file_path.is_absolute()) {</div>
-<div class="line"><span class="lineno">  137</span>        file_path =</div>
-<div class="line"><span class="lineno">  138</span>            std::filesystem::canonical(std::filesystem::absolute(file_path));</div>
-<div class="line"><span class="lineno">  139</span>        file = file_path.string();</div>
-<div class="line"><span class="lineno">  140</span>    }</div>
-<div class="line"><span class="lineno">  141</span> </div>
-<div class="line"><span class="lineno">  142</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#aec3793735a334061998533cf24ed5e93">set_file</a>(file);</div>
-<div class="line"><span class="lineno">  143</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a41e5371c246850fa75c507069da22512">set_file_relative</a>(<a class="code hl_function" href="namespaceclanguml_1_1util.html#ac14a702d02537113e5610149ed91d0e0" title="Convert filesystem path to url path.">util::path_to_url</a>(</div>
-<div class="line"><span class="lineno">  144</span>        std::filesystem::relative(element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#afef560523e23f8911498ba519da86be7">file</a>(), <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a2823a7c198790695b9b3afcc3513a362">relative_to_path_</a>).string()));</div>
-<div class="line"><span class="lineno">  145</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#aac84bd3ae927ce51254c1e5f57b5c650">set_translation_unit</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4eb6f4cd43bb361929ea0767cb99d13b" title="Return relative path to current translation unit.">tu_path</a>().<span class="keywordtype">string</span>());</div>
-<div class="line"><span class="lineno">  146</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a9179112cf251651f04fddcacb0fb3ea1">set_line</a>(line);</div>
-<div class="line"><span class="lineno">  147</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a2de2361ac5c5e0c1e2d81612dd043df6">set_column</a>(column);</div>
-<div class="line"><span class="lineno">  148</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a82cf4e440646111ebfebcc88c89ae3f4">set_location_id</a>(location.getHashValue());</div>
-<div class="line"><span class="lineno">  149</span>}</div>
+<div class="line"><span class="lineno">  111</span>    <span class="keyword">namespace </span>fs = std::filesystem;</div>
+<div class="line"><span class="lineno">  112</span> </div>
+<div class="line"><span class="lineno">  113</span>    std::string file;</div>
+<div class="line"><span class="lineno">  114</span>    <span class="keywordtype">unsigned</span> line{};</div>
+<div class="line"><span class="lineno">  115</span>    <span class="keywordtype">unsigned</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892a1afd32818d1c9525f82aff4c09efd254">column</a>{};</div>
+<div class="line"><span class="lineno">  116</span> </div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">if</span> (location.isValid()) {</div>
+<div class="line"><span class="lineno">  118</span>        file = <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>.getFilename(location).str();</div>
+<div class="line"><span class="lineno">  119</span>        line = <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>.getSpellingLineNumber(location);</div>
+<div class="line"><span class="lineno">  120</span>        <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892a1afd32818d1c9525f82aff4c09efd254">column</a> = <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>.getSpellingColumnNumber(location);</div>
+<div class="line"><span class="lineno">  121</span> </div>
+<div class="line"><span class="lineno">  122</span>        <span class="keywordflow">if</span> (file.empty()) {</div>
+<div class="line"><span class="lineno">  123</span>            <span class="comment">// Why do I have to do this?</span></div>
+<div class="line"><span class="lineno">  124</span>            <a class="code hl_function" href="namespaceclanguml_1_1common.html#a8d7db842880bf1063b0c8b9041b6a899">parse_source_location</a>(</div>
+<div class="line"><span class="lineno">  125</span>                location.printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a08aba222e4ab1d11c942de1aac0ce255" title="Get clang::SourceManager.">source_manager</a>()), file, line, column);</div>
+<div class="line"><span class="lineno">  126</span>        }</div>
+<div class="line"><span class="lineno">  127</span>    }</div>
+<div class="line"><span class="lineno">  128</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  129</span>        <span class="keyword">auto</span> success = <a class="code hl_function" href="namespaceclanguml_1_1common.html#a8d7db842880bf1063b0c8b9041b6a899">parse_source_location</a>(</div>
+<div class="line"><span class="lineno">  130</span>            location.printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a08aba222e4ab1d11c942de1aac0ce255" title="Get clang::SourceManager.">source_manager</a>()), file, line, column);</div>
+<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">if</span> (!success) {</div>
+<div class="line"><span class="lineno">  132</span>            <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Failed to extract source location for element from {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  133</span>                location.printToString(<a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a8450ee9a2363b20ce866a8243c301d67">source_manager_</a>));</div>
+<div class="line"><span class="lineno">  134</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  135</span>        }</div>
+<div class="line"><span class="lineno">  136</span>    }</div>
+<div class="line"><span class="lineno">  137</span> </div>
+<div class="line"><span class="lineno">  138</span>    <span class="comment">// ensure the path is absolute</span></div>
+<div class="line"><span class="lineno">  139</span>    fs::path file_path{file};</div>
+<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">if</span> (!file_path.is_absolute()) {</div>
+<div class="line"><span class="lineno">  141</span>        file_path = fs::absolute(file_path);</div>
+<div class="line"><span class="lineno">  142</span>    }</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>    file_path = fs::canonical(file_path);</div>
+<div class="line"><span class="lineno">  145</span> </div>
+<div class="line"><span class="lineno">  146</span>    file = file_path.string();</div>
+<div class="line"><span class="lineno">  147</span> </div>
+<div class="line"><span class="lineno">  148</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#aec3793735a334061998533cf24ed5e93">set_file</a>(file);</div>
+<div class="line"><span class="lineno">  149</span> </div>
+<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1util.html#a6246754ef2cfd4a5dd6cd3be8dbfb762" title="Check if a given path is relative to another path.">util::is_relative_to</a>(file_path, <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a2823a7c198790695b9b3afcc3513a362">relative_to_path_</a>)) {</div>
+<div class="line"><span class="lineno">  151</span>        element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a41e5371c246850fa75c507069da22512">set_file_relative</a>(<a class="code hl_function" href="namespaceclanguml_1_1util.html#ac14a702d02537113e5610149ed91d0e0" title="Convert filesystem path to url path.">util::path_to_url</a>(</div>
+<div class="line"><span class="lineno">  152</span>            fs::relative(element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#afef560523e23f8911498ba519da86be7">file</a>(), <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a2823a7c198790695b9b3afcc3513a362">relative_to_path_</a>).string()));</div>
+<div class="line"><span class="lineno">  153</span>    }</div>
+<div class="line"><span class="lineno">  154</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  155</span>        element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a41e5371c246850fa75c507069da22512">set_file_relative</a>(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  156</span>    }</div>
+<div class="line"><span class="lineno">  157</span> </div>
+<div class="line"><span class="lineno">  158</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#aac84bd3ae927ce51254c1e5f57b5c650">set_translation_unit</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4eb6f4cd43bb361929ea0767cb99d13b" title="Return relative path to current translation unit.">tu_path</a>().<span class="keywordtype">string</span>());</div>
+<div class="line"><span class="lineno">  159</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a9179112cf251651f04fddcacb0fb3ea1">set_line</a>(line);</div>
+<div class="line"><span class="lineno">  160</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a2de2361ac5c5e0c1e2d81612dd043df6">set_column</a>(column);</div>
+<div class="line"><span class="lineno">  161</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a82cf4e440646111ebfebcc88c89ae3f4">set_location_id</a>(location.getHashValue());</div>
+<div class="line"><span class="lineno">  162</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

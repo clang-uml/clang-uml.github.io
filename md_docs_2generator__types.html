@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.1</span>
+       <span id="projectnumber">0.4.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -128,7 +128,7 @@ $(function() {
 <li><a class="el" href="md_docs_2generator__types.html#json">JSON</a></li>
 </ul>
 <p>Currently, there are 3 types of diagram generators: <code>plantuml</code>, <code>mermaid</code> and <code>json</code>.</p>
-<p>To specify, which generators should be used on the command line use option <code>-g</code>. For instance to generate both types of diagrams run <code>clang-uml</code> as follows:</p>
+<p>To specify, which generators should be used on the command line use option <code>-g</code>. For instance to generate all types of diagrams run <code>clang-uml</code> as follows:</p>
 <div class="fragment language-bash"><div class="line">clang-uml -g plantuml -g mermaid -g json</div>
 </div><!-- fragment --><p>By default, only <code>plantuml</code> diagrams are generated.</p>
 <h1><a class="anchor" id="plantuml"></a>
@@ -143,7 +143,9 @@ PlantUML</h1>
 <div class="line">    - &#39;note left of {{ alias(&quot;inheritable_diagram_options&quot;) }}: Options common to all diagram types.&#39;</div>
 <div class="line">    - &#39;note right of {{ alias(&quot;config&quot;) }}: General options not used by diagrams.&#39;</div>
 </div><!-- fragment --><p>will add before the diagram contents (right after <code>@startuml</code>) the title and direction hint, and after each diagram contents (right before <code>@enduml</code>) 2 notes attached to elements.</p>
-<p>An example PlantUML diagram is presented below:</p>
+<p>This generator also accepts a <code>cmd</code> parameter to specify a command to execute on the generated PlantUML source file to generate actual diagram image, for instance: </p><div class="fragment language-yaml"><div class="line">plantuml:</div>
+<div class="line">  cmd: &quot;/usr/bin/plantuml -tsvg \&quot;diagrams/{}.puml\&quot;&quot;</div>
+</div><!-- fragment --><p>An example PlantUML diagram is presented below:</p>
 <div class="fragment language-cpp"><div class="line">@startuml</div>
 <div class="line">class &quot;A&quot; as C_0001371951663534295727</div>
 <div class="line">class C_0001371951663534295727 [[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L7{A}]] {</div>
@@ -199,7 +201,9 @@ MermaidJS</h1>
 <div class="line">    - &#39;note for {{ alias(&quot;inheritable_diagram_options&quot;) }} &quot;Options common to all diagram types.&quot;&#39;</div>
 <div class="line">    - &#39;note for {{ alias(&quot;config&quot;) }} &quot;General options not used by diagrams.&quot;&#39;</div>
 </div><!-- fragment --><p>will add before the diagram contents (right after diagram type, e.g. <code>classDiagram</code>) diagram direction hint, and after each diagram contents 2 notes attached to elements.</p>
-<p>An example MermaidJS diagram is presented below:</p>
+<p>This generator also accepts a <code>cmd</code> parameter to specify a command to execute on the generated MermaidJS source file to generate actual diagram image, for instance: </p><div class="fragment language-yaml"><div class="line">mermaid:</div>
+<div class="line">  cmd: &quot;mmdc -i \&quot;diagrams/{}.mmd\&quot; -o \&quot;diagrams/{}_mermaid.svg\&quot;&quot;</div>
+</div><!-- fragment --><p>An example MermaidJS diagram is presented below:</p>
 <div class="fragment language-cpp"><div class="line">classDiagram</div>
 <div class="line">    class C_0001371951663534295727[&quot;A&quot;]</div>
 <div class="line">    class C_0001371951663534295727 {</div>

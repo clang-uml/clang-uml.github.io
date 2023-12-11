@@ -11,7 +11,7 @@ var searchData=
   ['index_8',['index',['../structclanguml_1_1common_1_1generators_1_1progress__indicator_1_1progress__state.html#a6c005f463a1418dfd643fb1c94c65ff5',1,'clanguml::common::generators::progress_indicator::progress_state']]],
   ['inheritance_5fmode_9',['inheritance_mode',['../structclanguml_1_1config_1_1option.html#a6dff0154193958944d08d72383ab00a1',1,'clanguml::config::option']]],
   ['initialize_10',['initialize',['../classclanguml_1_1cli_1_1cli__handler.html#a010ceceacc823dda04806fddfa9a71c2',1,'clanguml::cli::cli_handler']]],
-  ['initialized_5f_11',['initialized_',['../structclanguml_1_1common_1_1model_1_1edge__traversal__filter.html#a49944c5e7dbeec46e2d7e66940f25889',1,'clanguml::common::model::edge_traversal_filter']]],
+  ['initialized_5f_11',['initialized_',['../structclanguml_1_1common_1_1model_1_1edge__traversal__filter.html#a49944c5e7dbeec46e2d7e66940f25889',1,'clanguml::common::model::edge_traversal_filter::initialized_'],['../structclanguml_1_1common_1_1model_1_1context__filter.html#a9868a6aa3e3db2935601db5879102d3b',1,'clanguml::common::model::context_filter::initialized_']]],
   ['is_5fabsolute_5f_12',['is_absolute_',['../classclanguml_1_1common_1_1model_1_1source__file.html#a812359d4c6a3d0b020dd9ac869fba461',1,'clanguml::common::model::source_file']]],
   ['is_5falias_5f_13',['is_alias_',['../structclanguml_1_1sequence__diagram_1_1model_1_1class__.html#ac5523132a0ab25e6dada51e24a7f3722',1,'clanguml::sequence_diagram::model::class_']]],
   ['is_5farray_5f_14',['is_array_',['../classclanguml_1_1common_1_1model_1_1template__parameter.html#accae983cfc94889123f4eaf7dfff44e4',1,'clanguml::common::model::template_parameter']]],

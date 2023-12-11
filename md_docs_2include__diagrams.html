@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.1</span>
+       <span id="projectnumber">0.4.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -125,13 +125,8 @@ $(function() {
 <ul>
 <li><a class="el" href="md_docs_2include__diagrams.html#tracking-system-headers-directly-included-by-project-sources">Tracking system headers directly included by project sources</a></li>
 </ul>
-<p>Include diagrams allow to document the include dependencies among different parts of the project. This can be very useful for instance to detect that a file was included from a module directory, on which specific part of the project should not ever depend.</p>
-<p>The minimal config required to generate an include diagram is presented below: </p><div class="fragment language-yaml"><div class="line"># Path to the directory where `compile_commands.json` can be found</div>
-<div class="line">compilation_database_dir: _build</div>
-<div class="line"># Output directory for the diagrams</div>
-<div class="line">output_directory: diagrams</div>
-<div class="line"># Diagrams definitions</div>
-<div class="line">diagrams:</div>
+<p>Include diagrams allow to document the include dependencies among different parts of the project. This can be very useful for instance to detect that a file was included from a module directory, on which specific part of the project should never depend.</p>
+<p>The minimal config required to generate an include diagram is presented below: </p><div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  # Diagram name</div>
 <div class="line">  my_class_diagram:</div>
 <div class="line">    # Type of diagram (has to be `include`)</div>
@@ -139,8 +134,6 @@ $(function() {
 <div class="line">    # Include only translation units matching the following patterns</div>
 <div class="line">    glob:</div>
 <div class="line">      - src/*.cc</div>
-<div class="line">    # Render the paths relative to this directory</div>
-<div class="line">    relative_to: src</div>
 <div class="line">    # Include also external system headers</div>
 <div class="line">    generate_system_headers: true</div>
 <div class="line">    # Include only classes and functions from files in `src` directory</div>
@@ -152,17 +145,17 @@ $(function() {
 <p>The following table presents the PlantUML arrows representing relationships in the include diagrams.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">UML   </th><th class="markdownTableHeadNone">PlantUML    </th></tr>
+<th class="markdownTableHeadNone">UML   </th><th class="markdownTableHeadNone">PlantUML   </th><th class="markdownTableHeadNone">MermaidJS    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Include (local)   </td><td class="markdownTableBodyNone"><img src="puml_association.png" alt="" class="inline" title="association"/>       </td></tr>
+<td class="markdownTableBodyNone">Include (local)   </td><td class="markdownTableBodyNone"><img src="puml_association.png" alt="" class="inline" title="association"/>      </td><td class="markdownTableBodyNone"><img src="mermaid_association.png" alt="" class="inline" title="association"/>       </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Include (system)   </td><td class="markdownTableBodyNone"><img src="puml_dependency.png" alt="" class="inline" title="dependency"/>      </td></tr>
+<td class="markdownTableBodyNone">Include (system)   </td><td class="markdownTableBodyNone"><img src="puml_dependency.png" alt="" class="inline" title="dependency"/>      </td><td class="markdownTableBodyNone"><img src="mermaid_dependency.png" alt="" class="inline" title="association"/>      </td></tr>
 </table>
 <h1><a class="anchor" id="tracking-system-headers-directly-included-by-project-sources"></a>
 Tracking system headers directly included by project sources</h1>
-<p>In case you would like to include the information about what system headers your projects file include simply add the following option to the diagram:</p>
+<p>In case you would like to include the information about what system headers your project files include simply add the following option to the diagram:</p>
 <div class="fragment language-yaml"><div class="line">generate_system_headers: true</div>
-</div><!-- fragment --><p>This will include only system headers directly included from the projects source files (matched by <code>glob</code>) and not their dependencies, for example:</p>
+</div><!-- fragment --><p>This will include only system headers directly included from the project's source files (matched by <code>glob</code>) and not their dependencies, for example:</p>
 <div class="image">
 <embed type="image/svg+xml" src="t40001_include.svg"></embed>
 </div>

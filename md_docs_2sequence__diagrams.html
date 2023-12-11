@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.1</span>
+       <span id="projectnumber">0.4.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -164,15 +164,15 @@ Sequence diagram overview</h1>
 </div>
     <p><code>clang-uml</code> generated sequence diagrams are not strictly speaking conforming to the UML specification. In order to make them more useful for documenting modern C++ code, the following assumptions were made:</p><ul>
 <li>Free functions are included in the sequence diagrams as standalone participants (in fact <code>clang-uml</code> can be used to generate sequence diagrams from plain old C code). Functions can also be aggregated into file participants, based on their place of declaration</li>
-<li>Call expressions in conditional expressions in block statements (e.g. <code>if</code> or <code>while</code>) are rendered inside the PlantUML <code>alt</code> or <code>loop</code> blocks but wrapped in <code>[</code>, <code>]</code> brackets</li>
+<li>Call expressions in conditional expressions in block statements (e.g. <code>if</code> or <code>while</code>) are rendered inside the PlantUML or MermaidJS <code>alt</code> or <code>loop</code> blocks but wrapped in <code>[</code>, <code>]</code> brackets</li>
 <li>Lambda expressions are generated as standalone participants, whose name comprises the parent context where they are defined and the exact source code location</li>
 </ul>
 <h1><a class="anchor" id="specifying-diagram-location-constraints"></a>
 Specifying diagram location constraints</h1>
-<p>Sequence diagrams require a specification of location constraints in order to determine, which call chains should be included in the diagram. Currently, there are 3 types of constraints:</p><ul>
-<li><code>from</code> - will include all message call chains which start at the locations specified in this constraint (this was previously named <code>start_from</code>)</li>
-<li><code>to</code> - will include all message call chains which end at the specified locations</li>
-<li><code>from_to</code> - will include all call chains which start and end at the specified location constraints</li>
+<p>Sequence diagrams require specification of location constraints in order to determine, which call chains should be included in the diagram. Currently, there are 3 types of constraints:</p><ul>
+<li><code>from</code> - will include all message call chains, which start at the locations specified in this constraint (this was previously named <code>start_from</code>)</li>
+<li><code>to</code> - will include all message call chains, which end at the specified locations</li>
+<li><code>from_to</code> - will include all call chains, which start and end at the specified locations</li>
 </ul>
 <p>Currently, the constraints can be a method or a free function, both specified using the full signature of the function, e.g.</p>
 <div class="fragment language-yaml"><div class="line">from:</div>
@@ -183,7 +183,7 @@ Specifying diagram location constraints</h1>
 <p>In case of the <code>from_to</code> constraint, it is necessary to provide both <code>from</code> and <code>to</code> locations as follows: </p><div class="fragment language-yaml"><div class="line">from_to:</div>
 <div class="line">  - [function: &quot;clanguml::t20034::D::d2()&quot;,</div>
 <div class="line">     function: &quot;clanguml::t20034::A::a2()&quot;]</div>
-</div><!-- fragment --><p>To find the exact function signature which can be used as a <code>from</code> location, run <code>clang-uml</code> as follows:</p>
+</div><!-- fragment --><p>To find the exact function signature which, can be used as a <code>from</code> location, run <code>clang-uml</code> as follows:</p>
 <div class="fragment language-bash"><div class="line">clang-uml --print-from -n main_sequence | grep main</div>
 </div><!-- fragment --><p>or to get all possible <code>to</code> locations, run:</p>
 <div class="fragment language-bash"><div class="line">clang-uml --print-to -n main_sequence | grep main</div>
@@ -308,13 +308,11 @@ Lambda expressions in sequence diagrams</h1>
     <h1><a class="anchor" id="customizing-participants-order"></a>
 Customizing participants order</h1>
 <p>The default participant order in the sequence diagram can be suboptimal in the sense that consecutive calls can go right, then left, then right again depending on the specific call chain in the code. It is however possible to override this order in the diagram definition using <code>participants_order</code> property, for instance like this test case:</p>
-<div class="fragment language-yaml"><div class="line">compilation_database_dir: ..</div>
-<div class="line">output_directory: diagrams</div>
-<div class="line">diagrams:</div>
+<div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  t20029_sequence:</div>
 <div class="line">    type: sequence</div>
 <div class="line">    glob:</div>
-<div class="line">      - ../../tests/t20029/t20029.cc</div>
+<div class="line">      - t20029.cc</div>
 <div class="line">    include:</div>
 <div class="line">      namespaces:</div>
 <div class="line">        - clanguml::t20029</div>
@@ -335,7 +333,7 @@ Generating return types</h1>
 <p>By default, return messages do not contain the return type information from the function or method. Instead, if the result is void there is no return arrow from the activity representing the function body.</p>
 <p>It is however possible to enable rendering of return types, by adding the following configuration option:</p>
 <div class="fragment language-yaml"><div class="line">generate_return_types: true</div>
-</div><!-- fragment --><p>This option only affects the <code>plantuml</code> generation, in <code>json</code> generator <code>return_type</code> property is always present in the message nodes.</p>
+</div><!-- fragment --><p>This option only affects the <code>plantuml</code> and <code>mermaid</code> generators, in <code>json</code> generator <code>return_type</code> property is always present in the message nodes.</p>
 <p>The diagram below presents what it looks like in a PlantUML generated diagram: </p><div class="image">
 <embed type="image/svg+xml" src="t20032_sequence.svg"></embed>
 </div>
@@ -350,7 +348,8 @@ Generating condition statements</h1>
     <h1><a class="anchor" id="injecting-call-expressions-manually-through-comments"></a>
 Injecting call expressions manually through comments</h1>
 <p>In some cases, <code>clang-uml</code> is not yet able to discover a call expression target in some line of code. This can include passing function or method address to some executor (e.g. thread), async calls etc.</p>
-<p>However, a call expression can be injected manually through a comment directive ``, when placed just before such line of code, for example:</p>
+<p>However, a call expression can be injected manually through a comment directive </p><div class="fragment language-cpp"><div class="line"><span class="comment">// \uml{note CALLEE}</span></div>
+</div><!-- fragment --><p>It should be placed in the comment just before such line of code, for example:</p>
 <div class="fragment language-cpp"><div class="line"><span class="comment">// \uml{call clanguml::t20038::B::bbb()}</span></div>
 <div class="line"><span class="keyword">auto</span> bbb_future = std::async(std::launch::deferred, &amp;B::bbb, b);</div>
 </div><!-- fragment --><p>also see the <a class="el" href="md_docs_2test__cases_2t20038.html">t20038</a> test case.</p>
@@ -361,7 +360,7 @@ Injecting call expressions manually through comments</h1>
 </div><!-- fragment --><p>otherwise Clang will skip these comments during AST traversal.</p>
 <h1><a class="anchor" id="including-comments-in-sequence-diagrams"></a>
 Including comments in sequence diagrams</h1>
-<p><code>clang-uml</code> can add code comments placed directly before are next to a call expression as notes in the diagram (see for instance <a href="test_cases/t20038_sequence.svg">t20038</a>).</p>
+<p><code>clang-uml</code> can add code comments placed directly before or next to a call expression as notes in the diagram (see for instance <a href="test_cases/t20038_sequence.svg">t20038</a>).</p>
 <p>This however is not enabled by default. In order to enable this feature it is necessary to first of all force Clang to parse all comments in the source code by adding the following compile flag at the top of <code>.clang-uml</code>:</p>
 <div class="fragment language-yaml"><div class="line">add_compile_flags:</div>
 <div class="line">  - -fparse-all-comments</div>

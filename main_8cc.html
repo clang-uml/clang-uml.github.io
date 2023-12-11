@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.1</span>
+       <span id="projectnumber">0.4.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -196,7 +196,7 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   67</span>        <span class="keyword">const</span> <span class="keyword">auto</span> compilation_database_files = db-&gt;getAllFiles();</div>
 <div class="line"><span class="lineno">   68</span> </div>
 <div class="line"><span class="lineno">   69</span>        std::map&lt;std::string <span class="comment">/* diagram name */</span>,</div>
-<div class="line"><span class="lineno">   70</span>            std::vector&lt;std::string&gt; <span class="comment">/*translation units*/</span>&gt;</div>
+<div class="line"><span class="lineno">   70</span>            std::vector&lt;std::string&gt; <span class="comment">/* translation units */</span>&gt;</div>
 <div class="line"><span class="lineno">   71</span>            translation_units_map;</div>
 <div class="line"><span class="lineno">   72</span> </div>
 <div class="line"><span class="lineno">   73</span>        <span class="comment">// We have to generate the translation units list for each diagram</span></div>
@@ -206,25 +206,24 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   77</span>            cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1a62953d1a35a794599c9c30324f7725">diagram_names</a>, cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">config</a>, compilation_database_files,</div>
 <div class="line"><span class="lineno">   78</span>            translation_units_map);</div>
 <div class="line"><span class="lineno">   79</span> </div>
-<div class="line"><span class="lineno">   80</span>        <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#ad7bf9954e0f9945b6b55ac9f1d043be4" title="Generate diagrams.">common::generators::generate_diagrams</a>(cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1a62953d1a35a794599c9c30324f7725">diagram_names</a>, cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">config</a>,</div>
-<div class="line"><span class="lineno">   81</span>            cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#aa5cb76911510d25e3c5f21e0a260a44f">effective_output_directory</a>, db, cli.<a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#a5f776e036fb1741ec5fdb9798f9bd1e8" title="Combines runtime configuration parameters into a single structure.">get_runtime_config</a>(),</div>
-<div class="line"><span class="lineno">   82</span>            translation_units_map);</div>
-<div class="line"><span class="lineno">   83</span>    }</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">catch</span> (<a class="code hl_class" href="classclanguml_1_1error_1_1compilation__database__error.html">error::compilation_database_error</a> &amp;e) {</div>
-<div class="line"><span class="lineno">   85</span>        <a class="code hl_define" href="util_8h.html#a9c6217ffa4d9c4bf446f272b471e91ce">LOG_ERROR</a>(<span class="stringliteral">&quot;Failed to load compilation database from {} due to: {}&quot;</span>,</div>
-<div class="line"><span class="lineno">   86</span>            cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">config</a>.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a9d79bf1d8ede01e54ceea94923125f6a">compilation_database_dir</a>(), e.what());</div>
-<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">   88</span>    }</div>
-<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">catch</span> (<a class="code hl_class" href="classclanguml_1_1error_1_1query__driver__no__paths.html">error::query_driver_no_paths</a> &amp;e) {</div>
-<div class="line"><span class="lineno">   90</span>        <a class="code hl_define" href="util_8h.html#a9c6217ffa4d9c4bf446f272b471e91ce">LOG_ERROR</a>(<span class="stringliteral">&quot;Quering provided compiler driver {} did not provide any &quot;</span></div>
-<div class="line"><span class="lineno">   91</span>                  <span class="stringliteral">&quot;paths, please make sure the path is correct and that your &quot;</span></div>
-<div class="line"><span class="lineno">   92</span>                  <span class="stringliteral">&quot;compiler is GCC-compatible: {}&quot;</span>,</div>
-<div class="line"><span class="lineno">   93</span>            cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">config</a>.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#abde13ead9b9cbdce8159d274a207cc41">query_driver</a>(), e.what());</div>
-<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">   95</span>    }</div>
-<div class="line"><span class="lineno">   96</span> </div>
-<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   98</span>}</div>
+<div class="line"><span class="lineno">   80</span>        <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#a537119c579720a9aca4cc9e185612f48" title="Generate diagrams.">common::generators::generate_diagrams</a>(cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1a62953d1a35a794599c9c30324f7725">diagram_names</a>, cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">config</a>, db,</div>
+<div class="line"><span class="lineno">   81</span>            cli.<a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#a5f776e036fb1741ec5fdb9798f9bd1e8" title="Combines runtime configuration parameters into a single structure.">get_runtime_config</a>(), translation_units_map);</div>
+<div class="line"><span class="lineno">   82</span>    }</div>
+<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">catch</span> (<a class="code hl_class" href="classclanguml_1_1error_1_1compilation__database__error.html">error::compilation_database_error</a> &amp;e) {</div>
+<div class="line"><span class="lineno">   84</span>        <a class="code hl_define" href="util_8h.html#a9c6217ffa4d9c4bf446f272b471e91ce">LOG_ERROR</a>(<span class="stringliteral">&quot;Failed to load compilation database from {} due to: {}&quot;</span>,</div>
+<div class="line"><span class="lineno">   85</span>            cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">config</a>.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a9d79bf1d8ede01e54ceea94923125f6a">compilation_database_dir</a>(), e.what());</div>
+<div class="line"><span class="lineno">   86</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">   87</span>    }</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">catch</span> (<a class="code hl_class" href="classclanguml_1_1error_1_1query__driver__no__paths.html">error::query_driver_no_paths</a> &amp;e) {</div>
+<div class="line"><span class="lineno">   89</span>        <a class="code hl_define" href="util_8h.html#a9c6217ffa4d9c4bf446f272b471e91ce">LOG_ERROR</a>(<span class="stringliteral">&quot;Querying provided compiler driver {} did not provide any &quot;</span></div>
+<div class="line"><span class="lineno">   90</span>                  <span class="stringliteral">&quot;paths, please make sure the path is correct and that your &quot;</span></div>
+<div class="line"><span class="lineno">   91</span>                  <span class="stringliteral">&quot;compiler is GCC-compatible: {}&quot;</span>,</div>
+<div class="line"><span class="lineno">   92</span>            cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">config</a>.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#abde13ead9b9cbdce8159d274a207cc41">query_driver</a>(), e.what());</div>
+<div class="line"><span class="lineno">   93</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">   94</span>    }</div>
+<div class="line"><span class="lineno">   95</span> </div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   97</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

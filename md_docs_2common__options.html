@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.1</span>
+       <span id="projectnumber">0.4.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -137,7 +137,7 @@ $(function() {
 </ul>
 <h1><a class="anchor" id="overall-configuration-file-structure"></a>
 Overall configuration file structure</h1>
-<p>By default, <code>clang-uml</code> will look for file <code>.clang-uml</code> in the projects directory and read all diagrams definitions from it. The file must be specified in <a class="el" href="namespaceYAML.html">YAML</a> and it's overall structure is as follows:</p>
+<p>By default, <code>clang-uml</code> will look for file <code>.clang-uml</code> in the project's directory and read all diagrams definitions configuration from it. The file must be specified in <a class="el" href="namespaceYAML.html">YAML</a> and it's overall structure is as follows:</p>
 <div class="fragment language-yaml"><div class="line"># common options for all diagrams</div>
 <div class="line">...</div>
 <div class="line">diagrams:</div>
@@ -168,11 +168,11 @@ Translation unit glob patterns</h1>
 <div class="fragment language-yaml"><div class="line">glob:</div>
 <div class="line">  - src/dir1/*.cc</div>
 <div class="line">  - src/dir3/*.cc</div>
-</div><!-- fragment --><p>The glob patterns only need to match the translation units, which are also in the <code>compile_commands.json</code> file, i.e. any files that match the glob patterns but are not in <code>compile_commands.json</code> will be ignored. In case the <code>glob</code> pattern set does not match any translation units an error will be printed on the standard output.</p>
-<p>For small projects, the <code>glob</code> property can be omitted, which will result in <code>clang-uml</code> parsing all translation units from <code>compile_commands.json</code> for the diagram. However for large projects, constraining the number of translation units for each diagram to absolute minimum will significantly decrease the diagram generation times.</p>
+</div><!-- fragment --><p>The glob patterns only need to match the translation units, which are also in the <code>compile_commands.json</code> file, i.e. any files that match the glob patterns, but are not in <code>compile_commands.json</code> will be ignored. In case the <code>glob</code> pattern set does not match any translation units an error will be printed on the standard output.</p>
+<p>For small projects, the <code>glob</code> property can be omitted, which will result in <code>clang-uml</code> parsing all translation units from <code>compile_commands.json</code> for the diagram. However, for large projects, constraining the number of translation units for each diagram to absolute minimum will significantly decrease the diagram generation times.</p>
 <h1><a class="anchor" id="custom-directives"></a>
 Custom directives</h1>
-<p>In case it's necessary to add some custom PlantUML or MermaidJS declarations before or after the generated diagram content, it can be achieved simply using the <code>plantuml</code> or <code>mermaid</code> configuration properties, for instance for PlantUML:</p>
+<p>In case it's necessary to add some custom PlantUML or MermaidJS declarations before or after the generated diagram content, it can be achieved using the <code>plantuml</code> or <code>mermaid</code> configuration properties, for instance for PlantUML:</p>
 <div class="fragment language-yaml"><div class="line">plantuml:</div>
 <div class="line">  before:</div>
 <div class="line">    - left to right direction</div>
@@ -184,8 +184,8 @@ Custom directives</h1>
 <div class="line">    - direction LR</div>
 <div class="line">  after:</div>
 <div class="line">    - note for {{ alias(&quot;ns1::ns2::MyClass&quot;) }} &quot;This is my class.&quot; </div>
-</div><!-- fragment --><p>These directive are useful for instance for adding notes to elements in the diagrams or customizing diagram layout or style.</p>
-<p>Please note that when referring to diagram elements in the PlantUML directives, they must be added using Jinja templates <code>alias</code> command as in the example above.</p>
+</div><!-- fragment --><p>These directives are useful for instance for adding notes to elements in the diagrams or customizing diagram layout and style.</p>
+<p>Please note that when referring to diagram elements in PlantUML or MermaidJS directives, they must be added using Jinja templates <code>alias</code> command as in the example above.</p>
 <p>More options can be found in the official docs for each respective generator:</p><ul>
 <li><a href="https://plantuml.com/">PlantUML</a></li>
 <li><a href="https://mermaid.js.org/intro/">MermaidJS</a></li>
@@ -217,7 +217,7 @@ Use '–query-driver' command line option</h2>
 <div class="fragment language-bash"><div class="line">clang-uml --query-driver arm-none-eabi-gcc</div>
 </div><!-- fragment --><p>the following options are appended to each command line after <code>argv[0]</code> of the command:</p>
 <div class="fragment language-bash"><div class="line">--target=arm-none-eabi -isystem /usr/lib/gcc/arm-none-eabi/10.3.1/include -isystem /usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed -isystem /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include</div>
-</div><!-- fragment --><p>If you want to include the system headers reported by the compiler specified already as <code>argv[0]</code> in your <code>compile_commands.json</code>, you can simply invoke <code>clang-uml</code> as:</p>
+</div><!-- fragment --><p>If you want to include the system headers reported by the compiler specified already as first argument of each compile command in your <code>compile_commands.json</code>, you can simply invoke <code>clang-uml</code> as:</p>
 <div class="fragment language-bash"><div class="line">clang-uml --query-driver .</div>
 </div><!-- fragment --><p>however please make sure that the <code>compile_commands.json</code> contains a command, which is safe to execute.</p>
 <h2><a class="anchor" id="manually-add-and-remove-compile-flags-from-the-compilation-database"></a>

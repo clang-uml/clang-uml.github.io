@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.1</span>
+       <span id="projectnumber">0.4.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -147,7 +147,7 @@ $(function() {
 <div class="line">  namespaces:</div>
 <div class="line">    - ns1::ns2::detail</div>
 </div><!-- fragment --><p>Some filters accept either specified exact values, some support regular expressions while some except glob patterns.</p>
-<p>For filters which accept regular expressions, the regular expression has to be provided as a map &lsquo;r: 'pattern&rsquo;<code>due to the fact the pointer (</code>*<code>) otherwise would have to be escaped in situations such as</code>mycontainer&lt;char*&gt;<code>, so for instance to specify that the diagram should exclude all classes containing the word</code>test` simply add the following filter:</p>
+<p>For filters which accept regular expressions, the regular expression has to be provided as a map <code>r: 'pattern'</code> due to the fact the pointer (<code>*</code>) otherwise would have to be escaped in situations such as <code>mycontainer&lt;char*&gt;</code>, so for instance to specify that the diagram should exclude all classes containing the word <code>test</code> simply add the following filter:</p>
 <div class="fragment language-yaml"><div class="line">exclude:</div>
 <div class="line">  elements:</div>
 <div class="line">    - r: &#39;.*test.*&#39;</div>
@@ -185,11 +185,17 @@ $(function() {
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>callee_types</code>   </td><td class="markdownTableBodyNone">Callee types in sequence diagrams   </td><td class="markdownTableBodyNone"><code>constructor</code>, <code>assignment</code>, <code>operator</code>, <code>defaulted</code>, <code>static</code>, <code>method</code>, <code>function</code>, <code>function_template</code>, <code>lambda</code>   </td></tr>
 </table>
-<p>The following filters are available.</p>
+<p>The following filters are available:</p>
 <h1><a class="anchor" id="namespaces"></a>
 namespaces</h1>
 <p>Allows to include or exclude entities from specific namespaces.</p>
-<h1><a class="anchor" id="elements"></a>
+<div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  namespaces:</div>
+<div class="line">    - ns1::ns2</div>
+<div class="line">exclude:</div>
+<div class="line">  namespaces:</div>
+<div class="line">    - ns1::ns2::detail</div>
+</div><!-- fragment --><h1><a class="anchor" id="elements"></a>
 elements</h1>
 <p>Allows to directly include or exclude specific entities from the diagrams, for instance to exclude a specific class from an included namespace:</p>
 <div class="fragment language-yaml"><div class="line">include:</div>
@@ -210,20 +216,31 @@ paths</h1>
 <div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  t00061_class:</div>
 <div class="line">    type: class</div>
-<div class="line">    relative_to: ../../tests/t00061</div>
-<div class="line">    glob: [t00061.cc]</div>
+<div class="line">    glob: </div>
+<div class="line">      - t00061.cc</div>
 <div class="line">    include:</div>
-<div class="line">      paths: [include/t00061_a.h]</div>
+<div class="line">      paths:</div>
+<div class="line">        - include/t00061_a.h</div>
 <div class="line">    using_namespace:</div>
 <div class="line">      - clanguml::t00061</div>
 </div><!-- fragment --><p>Currently, this filter does not allow any globbing or wildcards, however paths to directories can be specified.</p>
 <h1><a class="anchor" id="context"></a>
 context</h1>
-<p>This filter allows to limit the diagram elements only to classes which are in direct relationship (of any kind) with the specified class:</p>
+<p>This filter allows to limit the diagram elements only to classes which are in direct relationship (of any kind) with the specified class, enum or concept:</p>
 <div class="fragment language-yaml"><div class="line">include:</div>
 <div class="line">  context:</div>
 <div class="line">    - ns1::ns2::MyClass</div>
-</div><!-- fragment --><h1><a class="anchor" id="relationships-1"></a>
+</div><!-- fragment --><p>By default, the filter will only include or exclude items in direct relationship (radius 1). It is however possible to define the context filter and provide a custom radius:</p>
+<div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  context:</div>
+<div class="line">    - match:</div>
+<div class="line">        radius: 3</div>
+<div class="line">        pattern: ns1::ns2::MyClass</div>
+<div class="line">    - match:</div>
+<div class="line">        radius: 2</div>
+<div class="line">        pattern: ns1::ns2::MyOtherClass</div>
+</div><!-- fragment --><p>Please note that you can specify multiple context filters in a single diagram with different radius. Radius set to 0 will match only the given element.</p>
+<h1><a class="anchor" id="relationships-1"></a>
 relationships</h1>
 <p>This filter allows to include or exclude specific types of relationships from the diagram, for instance to only include inheritance and template specialization/instantiation relationships add the following to the diagram:</p>
 <div class="fragment language-yaml"><div class="line">include:</div>
@@ -231,14 +248,14 @@ relationships</h1>
 <div class="line">    - inheritance</div>
 <div class="line">    - instantiation</div>
 </div><!-- fragment --><p>The following relationships can be used in this filter:</p><ul>
-<li>inheritance</li>
-<li>composition</li>
-<li>aggregation</li>
-<li>ownership</li>
-<li>association</li>
-<li>instantiation</li>
-<li>friendship</li>
-<li>dependency</li>
+<li><code>inheritance</code></li>
+<li><code>composition</code></li>
+<li><code>aggregation</code></li>
+<li><code>ownership</code></li>
+<li><code>association</code></li>
+<li><code>instantiation</code></li>
+<li><code>friendship</code></li>
+<li><code>dependency</code></li>
 </ul>
 <h1><a class="anchor" id="subclasses"></a>
 subclasses</h1>
@@ -260,28 +277,28 @@ access</h1>
 <h1><a class="anchor" id="method_types"></a>
 method_types</h1>
 <p>This filter allows to include or exclude various method types from the class diagram, allowed values ar:</p><ul>
-<li>constructor</li>
-<li>destructor</li>
-<li>assignment</li>
-<li>operator</li>
-<li>defaulted</li>
-<li>deleted</li>
-<li>static</li>
+<li><code>constructor</code></li>
+<li><code>destructor</code></li>
+<li><code>assignment</code></li>
+<li><code>operator</code></li>
+<li><code>defaulted</code></li>
+<li><code>deleted</code></li>
+<li><code>static</code></li>
 </ul>
 <p>This filter is independent of the <code>access</code> filter, which controls which methods are included based on access scope (e.g. <code>public</code>).</p>
 <h1><a class="anchor" id="callee_types"></a>
 callee_types</h1>
 <p>This filter is specific for <code>sequence diagrams</code> and allows to control, which types of callees should be included/excluded from the diagram. In a sequence diagram, a <code>callee</code> is the receiver of a message, and this filter specifies which types of receivers should match.</p>
 <p>The following callee types are supported:</p><ul>
-<li>constructor</li>
-<li>assignment</li>
-<li>operator</li>
-<li>defaulted</li>
-<li>static</li>
-<li>method</li>
-<li>function</li>
-<li>function_template</li>
-<li>lambda</li>
+<li><code>constructor</code></li>
+<li><code>assignment</code></li>
+<li><code>operator</code></li>
+<li><code>defaulted</code></li>
+<li><code>static</code></li>
+<li><code>method</code></li>
+<li><code>function</code></li>
+<li><code>function_template</code></li>
+<li><code>lambda</code></li>
 </ul>
 <h1><a class="anchor" id="dependants-and-dependencies"></a>
 dependants and dependencies</h1>
