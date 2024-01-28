@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.2</span>
+       <span id="projectnumber">0.5.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -132,7 +132,7 @@ $(function() {
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Match elements based on their source location, whether it matches to a specified file paths. </p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00521">521</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00550">550</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -216,51 +216,51 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00702">702</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  704</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#aace2767e1c46b12082faba1e38dd7bc3">filter_visitor</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>}</div>
-<div class="line"><span class="lineno">  705</span>    , <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#abbee6a4459d57ef1a3effba2bf014bf5">root_</a>{root}</div>
-<div class="line"><span class="lineno">  706</span>{</div>
-<div class="line"><span class="lineno">  707</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;path : p) {</div>
-<div class="line"><span class="lineno">  708</span>        std::filesystem::path absolute_path;</div>
-<div class="line"><span class="lineno">  709</span> </div>
-<div class="line"><span class="lineno">  710</span>        <span class="keywordflow">if</span> (path.empty() || path == <span class="stringliteral">&quot;.&quot;</span>)</div>
-<div class="line"><span class="lineno">  711</span>            absolute_path = root;</div>
-<div class="line"><span class="lineno">  712</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (std::filesystem::path{path}.is_relative())</div>
-<div class="line"><span class="lineno">  713</span>            absolute_path = root / path;</div>
-<div class="line"><span class="lineno">  714</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  715</span>            absolute_path = path;</div>
-<div class="line"><span class="lineno">  716</span> </div>
-<div class="line"><span class="lineno">  717</span>        <span class="keywordtype">bool</span> match_successful{<span class="keyword">false</span>};</div>
-<div class="line"><span class="lineno">  718</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;resolved_glob_path :</div>
-<div class="line"><span class="lineno">  719</span>            glob::glob(absolute_path.string(), true)) {</div>
-<div class="line"><span class="lineno">  720</span>            <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">  721</span>                <span class="keyword">auto</span> resolved_absolute_path = absolute(resolved_glob_path);</div>
-<div class="line"><span class="lineno">  722</span>                resolved_absolute_path =</div>
-<div class="line"><span class="lineno">  723</span>                    canonical(resolved_absolute_path.lexically_normal());</div>
-<div class="line"><span class="lineno">  724</span> </div>
-<div class="line"><span class="lineno">  725</span>                resolved_absolute_path.make_preferred();</div>
-<div class="line"><span class="lineno">  726</span> </div>
-<div class="line"><span class="lineno">  727</span>                <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Added path {} to paths_filter&quot;</span>,</div>
-<div class="line"><span class="lineno">  728</span>                    resolved_absolute_path.string());</div>
-<div class="line"><span class="lineno">  729</span> </div>
-<div class="line"><span class="lineno">  730</span>                <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#a2b2835d2fd4550dd43ad5b768a2c440e">paths_</a>.emplace_back(std::move(resolved_absolute_path));</div>
-<div class="line"><span class="lineno">  731</span> </div>
-<div class="line"><span class="lineno">  732</span>                match_successful = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  733</span>            }</div>
-<div class="line"><span class="lineno">  734</span>            <span class="keywordflow">catch</span> (std::filesystem::filesystem_error &amp;e) {</div>
-<div class="line"><span class="lineno">  735</span>                <a class="code hl_define" href="util_8h.html#adc3f150ee758fe400c09b5292028a759">LOG_WARN</a>(<span class="stringliteral">&quot;Cannot add non-existent path {} to &quot;</span></div>
-<div class="line"><span class="lineno">  736</span>                         <span class="stringliteral">&quot;paths filter&quot;</span>,</div>
-<div class="line"><span class="lineno">  737</span>                    absolute_path.string());</div>
-<div class="line"><span class="lineno">  738</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  739</span>            }</div>
-<div class="line"><span class="lineno">  740</span>        }</div>
-<div class="line"><span class="lineno">  741</span> </div>
-<div class="line"><span class="lineno">  742</span>        <span class="keywordflow">if</span> (!match_successful)</div>
-<div class="line"><span class="lineno">  743</span>            <a class="code hl_define" href="util_8h.html#adc3f150ee758fe400c09b5292028a759">LOG_WARN</a>(<span class="stringliteral">&quot;Paths filter pattern &#39;{}&#39; did not match &quot;</span></div>
-<div class="line"><span class="lineno">  744</span>                     <span class="stringliteral">&quot;any files relative to &#39;{}&#39;&quot;</span>,</div>
-<div class="line"><span class="lineno">  745</span>                path, <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#abbee6a4459d57ef1a3effba2bf014bf5">root_</a>.string());</div>
-<div class="line"><span class="lineno">  746</span>    }</div>
-<div class="line"><span class="lineno">  747</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00769">769</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  771</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#aace2767e1c46b12082faba1e38dd7bc3">filter_visitor</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>}</div>
+<div class="line"><span class="lineno">  772</span>    , <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#abbee6a4459d57ef1a3effba2bf014bf5">root_</a>{root}</div>
+<div class="line"><span class="lineno">  773</span>{</div>
+<div class="line"><span class="lineno">  774</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;path : p) {</div>
+<div class="line"><span class="lineno">  775</span>        std::filesystem::path absolute_path;</div>
+<div class="line"><span class="lineno">  776</span> </div>
+<div class="line"><span class="lineno">  777</span>        <span class="keywordflow">if</span> (path.empty() || path == <span class="stringliteral">&quot;.&quot;</span>)</div>
+<div class="line"><span class="lineno">  778</span>            absolute_path = root;</div>
+<div class="line"><span class="lineno">  779</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (std::filesystem::path{path}.is_relative())</div>
+<div class="line"><span class="lineno">  780</span>            absolute_path = root / path;</div>
+<div class="line"><span class="lineno">  781</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  782</span>            absolute_path = path;</div>
+<div class="line"><span class="lineno">  783</span> </div>
+<div class="line"><span class="lineno">  784</span>        <span class="keywordtype">bool</span> match_successful{<span class="keyword">false</span>};</div>
+<div class="line"><span class="lineno">  785</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;resolved_glob_path :</div>
+<div class="line"><span class="lineno">  786</span>            glob::glob(absolute_path.string(), true)) {</div>
+<div class="line"><span class="lineno">  787</span>            <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno">  788</span>                <span class="keyword">auto</span> resolved_absolute_path = absolute(resolved_glob_path);</div>
+<div class="line"><span class="lineno">  789</span>                resolved_absolute_path =</div>
+<div class="line"><span class="lineno">  790</span>                    canonical(resolved_absolute_path.lexically_normal());</div>
+<div class="line"><span class="lineno">  791</span> </div>
+<div class="line"><span class="lineno">  792</span>                resolved_absolute_path.make_preferred();</div>
+<div class="line"><span class="lineno">  793</span> </div>
+<div class="line"><span class="lineno">  794</span>                <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Added path {} to paths_filter&quot;</span>,</div>
+<div class="line"><span class="lineno">  795</span>                    resolved_absolute_path.string());</div>
+<div class="line"><span class="lineno">  796</span> </div>
+<div class="line"><span class="lineno">  797</span>                <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#a2b2835d2fd4550dd43ad5b768a2c440e">paths_</a>.emplace_back(std::move(resolved_absolute_path));</div>
+<div class="line"><span class="lineno">  798</span> </div>
+<div class="line"><span class="lineno">  799</span>                match_successful = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  800</span>            }</div>
+<div class="line"><span class="lineno">  801</span>            <span class="keywordflow">catch</span> (std::filesystem::filesystem_error &amp;e) {</div>
+<div class="line"><span class="lineno">  802</span>                <a class="code hl_define" href="util_8h.html#adc3f150ee758fe400c09b5292028a759">LOG_WARN</a>(<span class="stringliteral">&quot;Cannot add non-existent path {} to &quot;</span></div>
+<div class="line"><span class="lineno">  803</span>                         <span class="stringliteral">&quot;paths filter&quot;</span>,</div>
+<div class="line"><span class="lineno">  804</span>                    absolute_path.string());</div>
+<div class="line"><span class="lineno">  805</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  806</span>            }</div>
+<div class="line"><span class="lineno">  807</span>        }</div>
+<div class="line"><span class="lineno">  808</span> </div>
+<div class="line"><span class="lineno">  809</span>        <span class="keywordflow">if</span> (!match_successful)</div>
+<div class="line"><span class="lineno">  810</span>            <a class="code hl_define" href="util_8h.html#adc3f150ee758fe400c09b5292028a759">LOG_WARN</a>(<span class="stringliteral">&quot;Paths filter pattern &#39;{}&#39; did not match &quot;</span></div>
+<div class="line"><span class="lineno">  811</span>                     <span class="stringliteral">&quot;any files relative to &#39;{}&#39;&quot;</span>,</div>
+<div class="line"><span class="lineno">  812</span>                path, <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#abbee6a4459d57ef1a3effba2bf014bf5">root_</a>.string());</div>
+<div class="line"><span class="lineno">  813</span>    }</div>
+<div class="line"><span class="lineno">  814</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -326,28 +326,28 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#af6f2cab595f2a73d57a985533651d554">clanguml::common::model::filter_visitor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00749">749</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  751</span>{</div>
-<div class="line"><span class="lineno">  752</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#a2b2835d2fd4550dd43ad5b768a2c440e">paths_</a>.empty()) {</div>
-<div class="line"><span class="lineno">  753</span>        <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  754</span>    }</div>
-<div class="line"><span class="lineno">  755</span> </div>
-<div class="line"><span class="lineno">  756</span>    <span class="comment">// Matching source paths doesn&#39;t make sens if they are not absolute</span></div>
-<div class="line"><span class="lineno">  757</span>    <span class="keywordflow">if</span> (!p.is_absolute()) {</div>
-<div class="line"><span class="lineno">  758</span>        <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  759</span>    }</div>
-<div class="line"><span class="lineno">  760</span> </div>
-<div class="line"><span class="lineno">  761</span>    <span class="keyword">auto</span> pp = p.fs_path(<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#abbee6a4459d57ef1a3effba2bf014bf5">root_</a>);</div>
-<div class="line"><span class="lineno">  762</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;path : <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#a2b2835d2fd4550dd43ad5b768a2c440e">paths_</a>) {</div>
-<div class="line"><span class="lineno">  763</span>        <span class="keywordflow">if</span> (pp.root_name().string() == path.root_name().string() &amp;&amp;</div>
-<div class="line"><span class="lineno">  764</span>            <a class="code hl_function" href="namespaceclanguml_1_1util.html#ac843d642a89078b156b7253979c32637">util::starts_with</a>(pp.relative_path(), path.relative_path())) {</div>
-<div class="line"><span class="lineno">  765</span> </div>
-<div class="line"><span class="lineno">  766</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  767</span>        }</div>
-<div class="line"><span class="lineno">  768</span>    }</div>
-<div class="line"><span class="lineno">  769</span> </div>
-<div class="line"><span class="lineno">  770</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  771</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00816">816</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  818</span>{</div>
+<div class="line"><span class="lineno">  819</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#a2b2835d2fd4550dd43ad5b768a2c440e">paths_</a>.empty()) {</div>
+<div class="line"><span class="lineno">  820</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  821</span>    }</div>
+<div class="line"><span class="lineno">  822</span> </div>
+<div class="line"><span class="lineno">  823</span>    <span class="comment">// Matching source paths doesn&#39;t make sens if they are not absolute</span></div>
+<div class="line"><span class="lineno">  824</span>    <span class="keywordflow">if</span> (!p.is_absolute()) {</div>
+<div class="line"><span class="lineno">  825</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  826</span>    }</div>
+<div class="line"><span class="lineno">  827</span> </div>
+<div class="line"><span class="lineno">  828</span>    <span class="keyword">auto</span> pp = p.fs_path(<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#abbee6a4459d57ef1a3effba2bf014bf5">root_</a>);</div>
+<div class="line"><span class="lineno">  829</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;path : <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#a2b2835d2fd4550dd43ad5b768a2c440e">paths_</a>) {</div>
+<div class="line"><span class="lineno">  830</span>        <span class="keywordflow">if</span> (pp.root_name().string() == path.root_name().string() &amp;&amp;</div>
+<div class="line"><span class="lineno">  831</span>            <a class="code hl_function" href="namespaceclanguml_1_1util.html#ac843d642a89078b156b7253979c32637">util::starts_with</a>(pp.relative_path(), path.relative_path())) {</div>
+<div class="line"><span class="lineno">  832</span> </div>
+<div class="line"><span class="lineno">  833</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  834</span>        }</div>
+<div class="line"><span class="lineno">  835</span>    }</div>
+<div class="line"><span class="lineno">  836</span> </div>
+<div class="line"><span class="lineno">  837</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  838</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -387,30 +387,30 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a0399bbcb6ac169673581b74d64fc8a6a">clanguml::common::model::filter_visitor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00773">773</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  775</span>{</div>
-<div class="line"><span class="lineno">  776</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#a2b2835d2fd4550dd43ad5b768a2c440e">paths_</a>.empty()) {</div>
-<div class="line"><span class="lineno">  777</span>        <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  778</span>    }</div>
-<div class="line"><span class="lineno">  779</span> </div>
-<div class="line"><span class="lineno">  780</span>    <span class="keyword">auto</span> sl_path = std::filesystem::path{p.file()};</div>
-<div class="line"><span class="lineno">  781</span> </div>
-<div class="line"><span class="lineno">  782</span>    <span class="comment">// Matching source paths doesn&#39;t make sens if they are not absolute or</span></div>
-<div class="line"><span class="lineno">  783</span>    <span class="comment">// empty</span></div>
-<div class="line"><span class="lineno">  784</span>    <span class="keywordflow">if</span> (p.file().empty() || sl_path.is_relative()) {</div>
-<div class="line"><span class="lineno">  785</span>        <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  786</span>    }</div>
-<div class="line"><span class="lineno">  787</span> </div>
-<div class="line"><span class="lineno">  788</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;path : <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#a2b2835d2fd4550dd43ad5b768a2c440e">paths_</a>) {</div>
-<div class="line"><span class="lineno">  789</span>        <span class="keywordflow">if</span> (sl_path.root_name().string() == path.root_name().string() &amp;&amp;</div>
-<div class="line"><span class="lineno">  790</span>            <a class="code hl_function" href="namespaceclanguml_1_1util.html#ac843d642a89078b156b7253979c32637">util::starts_with</a>(sl_path.relative_path(), path.relative_path())) {</div>
-<div class="line"><span class="lineno">  791</span> </div>
-<div class="line"><span class="lineno">  792</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  793</span>        }</div>
-<div class="line"><span class="lineno">  794</span>    }</div>
-<div class="line"><span class="lineno">  795</span> </div>
-<div class="line"><span class="lineno">  796</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  797</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00840">840</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  842</span>{</div>
+<div class="line"><span class="lineno">  843</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#a2b2835d2fd4550dd43ad5b768a2c440e">paths_</a>.empty()) {</div>
+<div class="line"><span class="lineno">  844</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  845</span>    }</div>
+<div class="line"><span class="lineno">  846</span> </div>
+<div class="line"><span class="lineno">  847</span>    <span class="keyword">auto</span> sl_path = std::filesystem::path{p.file()};</div>
+<div class="line"><span class="lineno">  848</span> </div>
+<div class="line"><span class="lineno">  849</span>    <span class="comment">// Matching source paths doesn&#39;t make sens if they are not absolute or</span></div>
+<div class="line"><span class="lineno">  850</span>    <span class="comment">// empty</span></div>
+<div class="line"><span class="lineno">  851</span>    <span class="keywordflow">if</span> (p.file().empty() || sl_path.is_relative()) {</div>
+<div class="line"><span class="lineno">  852</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  853</span>    }</div>
+<div class="line"><span class="lineno">  854</span> </div>
+<div class="line"><span class="lineno">  855</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;path : <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#a2b2835d2fd4550dd43ad5b768a2c440e">paths_</a>) {</div>
+<div class="line"><span class="lineno">  856</span>        <span class="keywordflow">if</span> (sl_path.root_name().string() == path.root_name().string() &amp;&amp;</div>
+<div class="line"><span class="lineno">  857</span>            <a class="code hl_function" href="namespaceclanguml_1_1util.html#ac843d642a89078b156b7253979c32637">util::starts_with</a>(sl_path.relative_path(), path.relative_path())) {</div>
+<div class="line"><span class="lineno">  858</span> </div>
+<div class="line"><span class="lineno">  859</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  860</span>        }</div>
+<div class="line"><span class="lineno">  861</span>    }</div>
+<div class="line"><span class="lineno">  862</span> </div>
+<div class="line"><span class="lineno">  863</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  864</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -435,7 +435,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00534">534</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00563">563</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
 
 </div>
 </div>
@@ -459,7 +459,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00535">535</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00564">564</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
 
 </div>
 </div>

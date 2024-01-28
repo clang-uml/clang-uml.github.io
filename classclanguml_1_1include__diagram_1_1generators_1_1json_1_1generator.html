@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.2</span>
+       <span id="projectnumber">0.5.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -277,11 +277,14 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   78</span> </div>
 <div class="line"><span class="lineno">   79</span>            j[<span class="stringliteral">&quot;type&quot;</span>] = <span class="stringliteral">&quot;file&quot;</span>;</div>
 <div class="line"><span class="lineno">   80</span>            j[<span class="stringliteral">&quot;file_kind&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1common.html#a659755e7071d306be3669c69c45aed9d">to_string</a>(f.type());</div>
-<div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span>            parent[<span class="stringliteral">&quot;elements&quot;</span>].push_back(std::move(j));</div>
-<div class="line"><span class="lineno">   83</span>        }</div>
-<div class="line"><span class="lineno">   84</span>    }</div>
-<div class="line"><span class="lineno">   85</span>}</div>
+<div class="line"><span class="lineno">   81</span>            <span class="keywordflow">if</span> (f.type() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a9cef6e67dbb09df835c263f0610058b2">common::model::source_file_t::kHeader</a>) {</div>
+<div class="line"><span class="lineno">   82</span>                j[<span class="stringliteral">&quot;is_system&quot;</span>] = f.is_system_header();</div>
+<div class="line"><span class="lineno">   83</span>            }</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>            parent[<span class="stringliteral">&quot;elements&quot;</span>].push_back(std::move(j));</div>
+<div class="line"><span class="lineno">   86</span>        }</div>
+<div class="line"><span class="lineno">   87</span>    }</div>
+<div class="line"><span class="lineno">   88</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -320,21 +323,21 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="classclanguml_1_1common_1_1generators_1_1json_1_1generator.html#a249df5b5cbd7b373482b66f971036f79">clanguml::common::generators::json::generator&lt; ConfigType, DiagramType &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="json_2include__diagram__generator_8cc_source.html#l00087">87</a> of file <a class="el" href="json_2include__diagram__generator_8cc_source.html">include_diagram_generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   88</span>{</div>
-<div class="line"><span class="lineno">   89</span>    parent[<span class="stringliteral">&quot;elements&quot;</span>] = std::vector&lt;nlohmann::json&gt;{};</div>
-<div class="line"><span class="lineno">   90</span>    parent[<span class="stringliteral">&quot;relationships&quot;</span>] = std::vector&lt;nlohmann::json&gt;{};</div>
-<div class="line"><span class="lineno">   91</span> </div>
-<div class="line"><span class="lineno">   92</span>    <span class="comment">// Generate files and folders</span></div>
-<div class="line"><span class="lineno">   93</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#aafa2dc00b4617002d0b49cc610d828de">util::for_each</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>(), [<span class="keyword">this</span>, &amp;parent](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;f) {</div>
-<div class="line"><span class="lineno">   94</span>        <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1generators_1_1json_1_1generator.html#a34e9d2544bab0e3fb4ef6f3f26413193" title="Generate diagram element.">generate</a>(<span class="keyword">dynamic_cast&lt;</span>source_file &amp;<span class="keyword">&gt;</span>(*f), parent);</div>
-<div class="line"><span class="lineno">   95</span>    });</div>
-<div class="line"><span class="lineno">   96</span> </div>
-<div class="line"><span class="lineno">   97</span>    <span class="comment">// Process file include relationships</span></div>
-<div class="line"><span class="lineno">   98</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#aafa2dc00b4617002d0b49cc610d828de">util::for_each</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>(), [<span class="keyword">this</span>, &amp;parent](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;f) {</div>
-<div class="line"><span class="lineno">   99</span>        <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1generators_1_1json_1_1generator.html#a2d45398dd1bf7e8b69a9dd79c0a5c09d" title="Generate relationships originating from source_file f">generate_relationships</a>(<span class="keyword">dynamic_cast&lt;</span>source_file &amp;<span class="keyword">&gt;</span>(*f), parent);</div>
-<div class="line"><span class="lineno">  100</span>    });</div>
-<div class="line"><span class="lineno">  101</span>}</div>
+<p class="definition">Definition at line <a class="el" href="json_2include__diagram__generator_8cc_source.html#l00090">90</a> of file <a class="el" href="json_2include__diagram__generator_8cc_source.html">include_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   91</span>{</div>
+<div class="line"><span class="lineno">   92</span>    parent[<span class="stringliteral">&quot;elements&quot;</span>] = std::vector&lt;nlohmann::json&gt;{};</div>
+<div class="line"><span class="lineno">   93</span>    parent[<span class="stringliteral">&quot;relationships&quot;</span>] = std::vector&lt;nlohmann::json&gt;{};</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>    <span class="comment">// Generate files and folders</span></div>
+<div class="line"><span class="lineno">   96</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#aafa2dc00b4617002d0b49cc610d828de">util::for_each</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>(), [<span class="keyword">this</span>, &amp;parent](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;f) {</div>
+<div class="line"><span class="lineno">   97</span>        <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1generators_1_1json_1_1generator.html#a34e9d2544bab0e3fb4ef6f3f26413193" title="Generate diagram element.">generate</a>(<span class="keyword">dynamic_cast&lt;</span>source_file &amp;<span class="keyword">&gt;</span>(*f), parent);</div>
+<div class="line"><span class="lineno">   98</span>    });</div>
+<div class="line"><span class="lineno">   99</span> </div>
+<div class="line"><span class="lineno">  100</span>    <span class="comment">// Process file include relationships</span></div>
+<div class="line"><span class="lineno">  101</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#aafa2dc00b4617002d0b49cc610d828de">util::for_each</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>(), [<span class="keyword">this</span>, &amp;parent](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;f) {</div>
+<div class="line"><span class="lineno">  102</span>        <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1generators_1_1json_1_1generator.html#a2d45398dd1bf7e8b69a9dd79c0a5c09d" title="Generate relationships originating from source_file f">generate_relationships</a>(<span class="keyword">dynamic_cast&lt;</span>source_file &amp;<span class="keyword">&gt;</span>(*f), parent);</div>
+<div class="line"><span class="lineno">  103</span>    });</div>
+<div class="line"><span class="lineno">  104</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

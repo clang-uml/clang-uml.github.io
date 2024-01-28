@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.2</span>
+       <span id="projectnumber">0.5.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -126,8 +126,9 @@ $(function() {
 <p>For instance to generate links to GitHub repository directly for most diagram elements simply add this to your <code>.clang-uml</code> file:</p>
 <div class="fragment language-yaml"><div class="line">generate_links:</div>
 <div class="line">  link: &#39;https://github.com/myorg/myrepo/blob/{{ git.commit }}/{{ element.source.path }}#L{{ element.source.line }}&#39;</div>
-<div class="line">  tooltip: &#39;{% if &quot;comment&quot; in element %}{{ abbrv(trim(replace(element.comment, &quot;\n+&quot;, &quot; &quot;)), 256) }}{% else %}{{ element.name }}{% endif %}&#39;</div>
-</div><!-- fragment --><p>You can open example diagram <a href="https://raw.githubusercontent.com/bkryza/clang-uml/master/docs/test_cases/t00014_class.svg">here</a> to see how it works in action. </p>
+<div class="line">  tooltip: &#39;{% if &quot;comment&quot; in element %}{{ abbrv(trim(replace(element.comment.formatted, &quot;\n+&quot;, &quot; &quot;)), 256) }}{% else %}{{ element.name }}{% endif %}&#39;</div>
+</div><!-- fragment --><p>You can open example diagram <a href="https://raw.githubusercontent.com/bkryza/clang-uml/master/docs/test_cases/t00014_class.svg">here</a> to see how it works in action.</p>
+<p>Full documentation on how to use the <a href="https://github.com/pantor/inja">inja</a> template engine in <code>clang-uml</code> configuration files can be found <a class="el" href="md_docs_2jinja__templates.html">here</a>. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- HTML footer for doxygen 1.9.1-->

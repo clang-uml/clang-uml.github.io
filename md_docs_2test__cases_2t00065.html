@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.2</span>
+       <span id="projectnumber">0.5.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -137,7 +137,7 @@ Config</h1>
 <div class="line">    using_namespace: clanguml::t00065</div>
 </div><!-- fragment --> <h1><a class="anchor" id="source-code-63"></a>
 Source code</h1>
-<p>File t00065.cc </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &quot;module1/module1.h&quot;</span></div>
+<p>File <code>tests/t00065/t00065.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &quot;module1/module1.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;module2/module2.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
@@ -147,6 +147,68 @@ Source code</h1>
 <div class="line">    C&lt;B&gt; c;</div>
 <div class="line">    D&lt;B&gt; d;</div>
 <div class="line">};</div>
+<div class="line">}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t00065/module2/module2.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;concepts/concepts.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
+<div class="line"><span class="keyword">namespace </span>t00065 {</div>
+<div class="line"><span class="keyword">struct </span>B {</div>
+<div class="line">    B() = <span class="keywordflow">default</span>;</div>
+<div class="line">    <span class="keywordtype">void</span> b() { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">struct </span>C {</div>
+<div class="line">    T *t;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;bconcept T&gt; <span class="keyword">struct </span>D {</div>
+<div class="line">    T t;</div>
+<div class="line">    C&lt;int&gt; c;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t00065/module2/concepts/concepts.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
+<div class="line"><span class="keyword">namespace </span>t00065 {</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><span class="keyword">concept </span>bconcept = <span class="keyword">requires</span>(T t) {</div>
+<div class="line">                       T{};</div>
+<div class="line">                       t.b();</div>
+<div class="line">                   };</div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t00065/module1/module1.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &quot;submodule1a/submodule1a.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
+<div class="line"><span class="keyword">namespace </span>t00065 {</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">enum class</span> ABC { a, b, c };</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">enum</span> XYZ { x, y, z };</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>A {</div>
+<div class="line">    ABC abc;</div>
+<div class="line">    XYZ xyz;</div>
+<div class="line">    detail::AImpl *pimpl;</div>
+<div class="line">};</div>
+<div class="line">}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t00065/module1/submodule1a/submodule1a.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
+<div class="line"><span class="keyword">namespace </span>t00065 {</div>
+<div class="line"><span class="keyword">namespace </span>detail {</div>
+<div class="line"><span class="keyword">struct </span>AImpl { };</div>
+<div class="line">}</div>
 <div class="line">}</div>
 <div class="line">}</div>
 </div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-63"></a>
@@ -168,11 +230,11 @@ Generated JSON models</h1>
 <div class="line">      &quot;display_name&quot;: &quot;module1&quot;,</div>
 <div class="line">      &quot;elements&quot;: [</div>
 <div class="line">        {</div>
-<div class="line">          &quot;display_name&quot;: &quot;module1::submodule1a&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;submodule1a&quot;,</div>
 <div class="line">          &quot;elements&quot;: [</div>
 <div class="line">            {</div>
 <div class="line">              &quot;bases&quot;: [],</div>
-<div class="line">              &quot;display_name&quot;: &quot;clanguml::t00065::detail::AImpl&quot;,</div>
+<div class="line">              &quot;display_name&quot;: &quot;detail::AImpl&quot;,</div>
 <div class="line">              &quot;id&quot;: &quot;674757414308736755&quot;,</div>
 <div class="line">              &quot;is_abstract&quot;: false,</div>
 <div class="line">              &quot;is_nested&quot;: false,</div>
@@ -202,7 +264,7 @@ Generated JSON models</h1>
 <div class="line">            &quot;b&quot;,</div>
 <div class="line">            &quot;c&quot;</div>
 <div class="line">          ],</div>
-<div class="line">          &quot;display_name&quot;: &quot;clanguml::t00065::ABC&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;ABC&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;2145362985538918973&quot;,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
 <div class="line">          &quot;name&quot;: &quot;ABC&quot;,</div>
@@ -221,7 +283,7 @@ Generated JSON models</h1>
 <div class="line">            &quot;y&quot;,</div>
 <div class="line">            &quot;z&quot;</div>
 <div class="line">          ],</div>
-<div class="line">          &quot;display_name&quot;: &quot;clanguml::t00065::XYZ&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;XYZ&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;1435940218810141944&quot;,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
 <div class="line">          &quot;name&quot;: &quot;XYZ&quot;,</div>
@@ -236,7 +298,7 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;clanguml::t00065::A&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;A&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;1178194542408300737&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
@@ -301,10 +363,10 @@ Generated JSON models</h1>
 <div class="line">      &quot;display_name&quot;: &quot;module2&quot;,</div>
 <div class="line">      &quot;elements&quot;: [</div>
 <div class="line">        {</div>
-<div class="line">          &quot;display_name&quot;: &quot;module2::concepts&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;concepts&quot;,</div>
 <div class="line">          &quot;elements&quot;: [</div>
 <div class="line">            {</div>
-<div class="line">              &quot;display_name&quot;: &quot;clanguml::t00065::bconcept&lt;T&gt;&quot;,</div>
+<div class="line">              &quot;display_name&quot;: &quot;bconcept&lt;T&gt;&quot;,</div>
 <div class="line">              &quot;id&quot;: &quot;1325475407133721370&quot;,</div>
 <div class="line">              &quot;name&quot;: &quot;bconcept&quot;,</div>
 <div class="line">              &quot;namespace&quot;: &quot;clanguml::t00065&quot;,</div>
@@ -332,7 +394,7 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;clanguml::t00065::B&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;B&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;1651810571114530033&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
@@ -348,6 +410,7 @@ Generated JSON models</h1>
 <div class="line">              &quot;is_constexpr&quot;: false,</div>
 <div class="line">              &quot;is_constructor&quot;: true,</div>
 <div class="line">              &quot;is_copy_assignment&quot;: false,</div>
+<div class="line">              &quot;is_coroutine&quot;: false,</div>
 <div class="line">              &quot;is_defaulted&quot;: true,</div>
 <div class="line">              &quot;is_deleted&quot;: false,</div>
 <div class="line">              &quot;is_move_assignment&quot;: false,</div>
@@ -373,6 +436,7 @@ Generated JSON models</h1>
 <div class="line">              &quot;is_constexpr&quot;: false,</div>
 <div class="line">              &quot;is_constructor&quot;: false,</div>
 <div class="line">              &quot;is_copy_assignment&quot;: false,</div>
+<div class="line">              &quot;is_coroutine&quot;: false,</div>
 <div class="line">              &quot;is_defaulted&quot;: false,</div>
 <div class="line">              &quot;is_deleted&quot;: false,</div>
 <div class="line">              &quot;is_move_assignment&quot;: false,</div>
@@ -405,7 +469,7 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;clanguml::t00065::C&lt;T&gt;&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;C&lt;T&gt;&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;1157378014768957235&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
@@ -447,7 +511,7 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;clanguml::t00065::C&lt;int&gt;&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;C&lt;int&gt;&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;580575003920044707&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
@@ -476,7 +540,7 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;clanguml::t00065::D&lt;clanguml::t00065::bconcept T&gt;&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;D&lt;bconcept T&gt;&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;1719752929087851944&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
@@ -530,7 +594,7 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;clanguml::t00065::C&lt;clanguml::t00065::B&gt;&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;C&lt;B&gt;&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;1373403346245688670&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
@@ -559,7 +623,7 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;clanguml::t00065::D&lt;clanguml::t00065::B&gt;&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;D&lt;B&gt;&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;2024276012622729482&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
@@ -592,7 +656,7 @@ Generated JSON models</h1>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;bases&quot;: [],</div>
-<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00065::R&quot;,</div>
+<div class="line">      &quot;display_name&quot;: &quot;R&quot;,</div>
 <div class="line">      &quot;id&quot;: &quot;1082111961413727438&quot;,</div>
 <div class="line">      &quot;is_abstract&quot;: false,</div>
 <div class="line">      &quot;is_nested&quot;: false,</div>
@@ -651,6 +715,7 @@ Generated JSON models</h1>
 <div class="line">    }</div>
 <div class="line">  ],</div>
 <div class="line">  &quot;name&quot;: &quot;t00065_class&quot;,</div>
+<div class="line">  &quot;package_type&quot;: &quot;directory&quot;,</div>
 <div class="line">  &quot;relationships&quot;: [</div>
 <div class="line">    {</div>
 <div class="line">      &quot;access&quot;: &quot;public&quot;,</div>

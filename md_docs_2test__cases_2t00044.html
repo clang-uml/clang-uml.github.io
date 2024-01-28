@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.2</span>
+       <span id="projectnumber">0.5.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -136,12 +136,12 @@ Config</h1>
 <div class="line">        - clanguml::t00044</div>
 </div><!-- fragment --> <h1><a class="anchor" id="source-code-42"></a>
 Source code</h1>
-<p>File t00044.cc </p><div class="fragment language-cpp"><div class="line"><span class="comment">// Inspired by skypjack/entt signal handlers</span></div>
+<p>File <code>tests/t00044/t00044.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="comment">// Inspired by skypjack/entt signal handlers</span></div>
 <div class="line"><span class="keyword">namespace </span>clanguml::t00044 {</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">class </span>sink;</div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> A&gt; <span class="keyword">class </span>signal_handler;</div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> A&gt; <span class="keyword">struct </span>signal_handler;</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Ret, <span class="keyword">typename</span>... Args, <span class="keyword">typename</span> A&gt;</div>
 <div class="line"><span class="keyword">class </span>sink&lt;signal_handler&lt;Ret(Args...), A&gt;&gt; {</div>
@@ -160,7 +160,7 @@ Source code</h1>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Ret, <span class="keyword">typename</span>... Args, <span class="keyword">typename</span> A&gt;</div>
-<div class="line"><span class="keyword">class </span>signal_handler&lt;Ret(Args...), A&gt; { };</div>
+<div class="line"><span class="keyword">struct </span>signal_handler&lt;Ret(Args...), A&gt; { };</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Ret, <span class="keyword">typename</span>... Args, <span class="keyword">typename</span> A&gt;</div>
 <div class="line">sink(signal_handler&lt;Ret(Args...), A&gt; &amp;)</div>
@@ -190,11 +190,11 @@ Generated JSON models</h1>
 <div class="line">  &quot;elements&quot;: [</div>
 <div class="line">    {</div>
 <div class="line">      &quot;bases&quot;: [],</div>
-<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00044::signal_handler&lt;Ret(Args...),A&gt;&quot;,</div>
+<div class="line">      &quot;display_name&quot;: &quot;signal_handler&lt;Ret(Args...),A&gt;&quot;,</div>
 <div class="line">      &quot;id&quot;: &quot;1591729735727316875&quot;,</div>
 <div class="line">      &quot;is_abstract&quot;: false,</div>
 <div class="line">      &quot;is_nested&quot;: false,</div>
-<div class="line">      &quot;is_struct&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: true,</div>
 <div class="line">      &quot;is_template&quot;: true,</div>
 <div class="line">      &quot;is_union&quot;: false,</div>
 <div class="line">      &quot;members&quot;: [],</div>
@@ -237,7 +237,7 @@ Generated JSON models</h1>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;bases&quot;: [],</div>
-<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00044::sink&lt;clanguml::t00044::signal_handler&lt;Ret(Args...),A&gt;&gt;&quot;,</div>
+<div class="line">      &quot;display_name&quot;: &quot;sink&lt;signal_handler&lt;Ret(Args...),A&gt;&gt;&quot;,</div>
 <div class="line">      &quot;id&quot;: &quot;559574389062594251&quot;,</div>
 <div class="line">      &quot;is_abstract&quot;: false,</div>
 <div class="line">      &quot;is_nested&quot;: false,</div>
@@ -266,6 +266,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;is_constexpr&quot;: false,</div>
 <div class="line">          &quot;is_constructor&quot;: true,</div>
 <div class="line">          &quot;is_copy_assignment&quot;: false,</div>
+<div class="line">          &quot;is_coroutine&quot;: false,</div>
 <div class="line">          &quot;is_defaulted&quot;: false,</div>
 <div class="line">          &quot;is_deleted&quot;: false,</div>
 <div class="line">          &quot;is_move_assignment&quot;: false,</div>
@@ -296,6 +297,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;is_constexpr&quot;: false,</div>
 <div class="line">          &quot;is_constructor&quot;: false,</div>
 <div class="line">          &quot;is_copy_assignment&quot;: false,</div>
+<div class="line">          &quot;is_coroutine&quot;: false,</div>
 <div class="line">          &quot;is_defaulted&quot;: false,</div>
 <div class="line">          &quot;is_deleted&quot;: false,</div>
 <div class="line">          &quot;is_move_assignment&quot;: false,</div>
@@ -354,11 +356,11 @@ Generated JSON models</h1>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;bases&quot;: [],</div>
-<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00044::signal_handler&lt;void(int),bool&gt;&quot;,</div>
+<div class="line">      &quot;display_name&quot;: &quot;signal_handler&lt;void(int),bool&gt;&quot;,</div>
 <div class="line">      &quot;id&quot;: &quot;103559998624864011&quot;,</div>
 <div class="line">      &quot;is_abstract&quot;: false,</div>
 <div class="line">      &quot;is_nested&quot;: false,</div>
-<div class="line">      &quot;is_struct&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: true,</div>
 <div class="line">      &quot;is_template&quot;: true,</div>
 <div class="line">      &quot;is_union&quot;: false,</div>
 <div class="line">      &quot;members&quot;: [],</div>
@@ -401,7 +403,7 @@ Generated JSON models</h1>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;bases&quot;: [],</div>
-<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00044::sink&lt;clanguml::t00044::signal_handler&lt;void(int),bool&gt;&gt;&quot;,</div>
+<div class="line">      &quot;display_name&quot;: &quot;sink&lt;signal_handler&lt;void(int),bool&gt;&gt;&quot;,</div>
 <div class="line">      &quot;id&quot;: &quot;1718007222067272862&quot;,</div>
 <div class="line">      &quot;is_abstract&quot;: false,</div>
 <div class="line">      &quot;is_nested&quot;: false,</div>
@@ -455,7 +457,7 @@ Generated JSON models</h1>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;bases&quot;: [],</div>
-<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00044::R&quot;,</div>
+<div class="line">      &quot;display_name&quot;: &quot;R&quot;,</div>
 <div class="line">      &quot;id&quot;: &quot;1644484569399365272&quot;,</div>
 <div class="line">      &quot;is_abstract&quot;: false,</div>
 <div class="line">      &quot;is_nested&quot;: false,</div>
@@ -490,11 +492,11 @@ Generated JSON models</h1>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;bases&quot;: [],</div>
-<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00044::signal_handler&lt;T,A&gt;&quot;,</div>
+<div class="line">      &quot;display_name&quot;: &quot;signal_handler&lt;T,A&gt;&quot;,</div>
 <div class="line">      &quot;id&quot;: &quot;276594465967577895&quot;,</div>
 <div class="line">      &quot;is_abstract&quot;: false,</div>
 <div class="line">      &quot;is_nested&quot;: false,</div>
-<div class="line">      &quot;is_struct&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: true,</div>
 <div class="line">      &quot;is_template&quot;: true,</div>
 <div class="line">      &quot;is_union&quot;: false,</div>
 <div class="line">      &quot;members&quot;: [],</div>
@@ -502,7 +504,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;name&quot;: &quot;signal_handler&quot;,</div>
 <div class="line">      &quot;namespace&quot;: &quot;clanguml::t00044&quot;,</div>
 <div class="line">      &quot;source_location&quot;: {</div>
-<div class="line">        &quot;column&quot;: 41,</div>
+<div class="line">        &quot;column&quot;: 42,</div>
 <div class="line">        &quot;file&quot;: &quot;t00044.cc&quot;,</div>
 <div class="line">        &quot;line&quot;: 6,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t00044.cc&quot;</div>
@@ -525,7 +527,7 @@ Generated JSON models</h1>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;bases&quot;: [],</div>
-<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00044::sink&lt;T&gt;&quot;,</div>
+<div class="line">      &quot;display_name&quot;: &quot;sink&lt;T&gt;&quot;,</div>
 <div class="line">      &quot;id&quot;: &quot;1759724482769288325&quot;,</div>
 <div class="line">      &quot;is_abstract&quot;: false,</div>
 <div class="line">      &quot;is_nested&quot;: false,</div>
@@ -554,6 +556,7 @@ Generated JSON models</h1>
 <div class="line">    }</div>
 <div class="line">  ],</div>
 <div class="line">  &quot;name&quot;: &quot;t00044_class&quot;,</div>
+<div class="line">  &quot;package_type&quot;: &quot;namespace&quot;,</div>
 <div class="line">  &quot;relationships&quot;: [</div>
 <div class="line">    {</div>
 <div class="line">      &quot;access&quot;: &quot;public&quot;,</div>

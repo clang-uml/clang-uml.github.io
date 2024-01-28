@@ -8,7 +8,7 @@ var searchData=
   ['common_5',['common',['../namespaceclanguml_1_1common.html',1,'clanguml']]],
   ['config_6',['config',['../namespaceclanguml_1_1config.html',1,'clanguml']]],
   ['decorators_7',['decorators',['../namespaceclanguml_1_1decorators.html',1,'clanguml']]],
-  ['detail_8',['detail',['../namespaceclanguml_1_1class__diagram_1_1visitor_1_1detail.html',1,'clanguml::class_diagram::visitor::detail'],['../namespaceclanguml_1_1common_1_1generators_1_1detail.html',1,'clanguml::common::generators::detail'],['../namespaceclanguml_1_1common_1_1model_1_1detail.html',1,'clanguml::common::model::detail']]],
+  ['detail_8',['detail',['../namespaceclanguml_1_1common_1_1generators_1_1detail.html',1,'clanguml::common::generators::detail'],['../namespaceclanguml_1_1common_1_1model_1_1detail.html',1,'clanguml::common::model::detail'],['../namespaceclanguml_1_1common_1_1visitor_1_1detail.html',1,'clanguml::common::visitor::detail']]],
   ['error_9',['error',['../namespaceclanguml_1_1error.html',1,'clanguml']]],
   ['generators_10',['generators',['../namespaceclanguml_1_1class__diagram_1_1generators.html',1,'clanguml::class_diagram::generators'],['../namespaceclanguml_1_1common_1_1generators.html',1,'clanguml::common::generators'],['../namespaceclanguml_1_1include__diagram_1_1generators.html',1,'clanguml::include_diagram::generators'],['../namespaceclanguml_1_1package__diagram_1_1generators.html',1,'clanguml::package_diagram::generators'],['../namespaceclanguml_1_1sequence__diagram_1_1generators.html',1,'clanguml::sequence_diagram::generators']]],
   ['include_5fdiagram_11',['include_diagram',['../namespaceclanguml_1_1include__diagram.html',1,'clanguml']]],

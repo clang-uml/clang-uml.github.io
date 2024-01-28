@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.2</span>
+       <span id="projectnumber">0.5.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -247,21 +247,25 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   39</span>        indicators::option::BarWidth{kBarWidth},</div>
 <div class="line"><span class="lineno">   40</span>        indicators::option::ForegroundColor{color},</div>
 <div class="line"><span class="lineno">   41</span>        indicators::option::ShowElapsedTime{<span class="keyword">true</span>},</div>
-<div class="line"><span class="lineno">   42</span>        indicators::option::Fill{<span class="stringliteral">&quot;█&quot;</span>}, indicators::option::Lead{<span class="stringliteral">&quot;█&quot;</span>},</div>
-<div class="line"><span class="lineno">   43</span>        indicators::option::Remainder{<span class="stringliteral">&quot;-&quot;</span>},</div>
-<div class="line"><span class="lineno">   44</span>        indicators::option::PrefixText{</div>
-<div class="line"><span class="lineno">   45</span>            fmt::format(<span class="stringliteral">&quot;{:&lt;25}&quot;</span>, <a class="code hl_function" href="namespaceclanguml_1_1util.html#adf6942da4dfaa5a500acf2ceef1a142c" title="Abbreviate string to max_length, and replace last 3 characters with ellipsis.">util::abbreviate</a>(name, kPrefixTextWidth))},</div>
-<div class="line"><span class="lineno">   46</span>        indicators::option::PostfixText{postfix_text});</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.lock();</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#adf0ff2a349b62979d213687aa1d0bf19">progress_bars_</a>.push_back(*bar);</div>
-<div class="line"><span class="lineno">   51</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#a4ab582db6a202745f9baba6bb811e66b">bars_</a>.push_back(bar);</div>
-<div class="line"><span class="lineno">   52</span>    <span class="keyword">auto</span> bar_index = <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#a4ab582db6a202745f9baba6bb811e66b">bars_</a>.size() - 1;</div>
-<div class="line"><span class="lineno">   53</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#af1c0a0336c18b5ba5a1b52942f1bf8a3">progress_bar_index_</a>.emplace(name, progress_state{bar_index, 0, max});</div>
-<div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.unlock();</div>
-<div class="line"><span class="lineno">   56</span>}</div>
+<div class="line"><span class="lineno">   42</span><span class="preprocessor">#if _MSC_VER</span></div>
+<div class="line"><span class="lineno">   43</span>        indicators::option::Fill{<span class="stringliteral">&quot;=&quot;</span>}, indicators::option::Lead{<span class="stringliteral">&quot;&gt;&quot;</span>},</div>
+<div class="line"><span class="lineno">   44</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">   45</span>        indicators::option::Fill{<span class="stringliteral">&quot;█&quot;</span>}, indicators::option::Lead{<span class="stringliteral">&quot;█&quot;</span>},</div>
+<div class="line"><span class="lineno">   46</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">   47</span>        indicators::option::Remainder{<span class="stringliteral">&quot;-&quot;</span>},</div>
+<div class="line"><span class="lineno">   48</span>        indicators::option::PrefixText{</div>
+<div class="line"><span class="lineno">   49</span>            fmt::format(<span class="stringliteral">&quot;{:&lt;25}&quot;</span>, <a class="code hl_function" href="namespaceclanguml_1_1util.html#adf6942da4dfaa5a500acf2ceef1a142c" title="Abbreviate string to max_length, and replace last 3 characters with ellipsis.">util::abbreviate</a>(name, kPrefixTextWidth))},</div>
+<div class="line"><span class="lineno">   50</span>        indicators::option::PostfixText{postfix_text});</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.lock();</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#adf0ff2a349b62979d213687aa1d0bf19">progress_bars_</a>.push_back(*bar);</div>
+<div class="line"><span class="lineno">   55</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#a4ab582db6a202745f9baba6bb811e66b">bars_</a>.push_back(bar);</div>
+<div class="line"><span class="lineno">   56</span>    <span class="keyword">auto</span> bar_index = <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#a4ab582db6a202745f9baba6bb811e66b">bars_</a>.size() - 1;</div>
+<div class="line"><span class="lineno">   57</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#af1c0a0336c18b5ba5a1b52942f1bf8a3">progress_bar_index_</a>.emplace(name, progress_state{bar_index, 0, max});</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.unlock();</div>
+<div class="line"><span class="lineno">   60</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -288,29 +292,33 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="progress__indicator_8cc_source.html#l00090">90</a> of file <a class="el" href="progress__indicator_8cc_source.html">progress_indicator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   91</span>{</div>
-<div class="line"><span class="lineno">   92</span>    <span class="keyword">const</span> <span class="keyword">auto</span> kCompleteProgressPercent = 100U;</div>
-<div class="line"><span class="lineno">   93</span> </div>
-<div class="line"><span class="lineno">   94</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.lock();</div>
-<div class="line"><span class="lineno">   95</span> </div>
-<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#af1c0a0336c18b5ba5a1b52942f1bf8a3">progress_bar_index_</a>.count(name) == 0) {</div>
-<div class="line"><span class="lineno">   97</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.unlock();</div>
-<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   99</span>    }</div>
-<div class="line"><span class="lineno">  100</span> </div>
-<div class="line"><span class="lineno">  101</span>    <span class="keyword">auto</span> &amp;p = <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#af1c0a0336c18b5ba5a1b52942f1bf8a3">progress_bar_index_</a>.at(name);</div>
-<div class="line"><span class="lineno">  102</span>    <span class="keyword">auto</span> &amp;bar = <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#adf0ff2a349b62979d213687aa1d0bf19">progress_bars_</a>[p.index];</div>
-<div class="line"><span class="lineno">  103</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.unlock();</div>
+<p class="definition">Definition at line <a class="el" href="progress__indicator_8cc_source.html#l00094">94</a> of file <a class="el" href="progress__indicator_8cc_source.html">progress_indicator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   95</span>{</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keyword">const</span> <span class="keyword">auto</span> kCompleteProgressPercent = 100U;</div>
+<div class="line"><span class="lineno">   97</span> </div>
+<div class="line"><span class="lineno">   98</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.lock();</div>
+<div class="line"><span class="lineno">   99</span> </div>
+<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#af1c0a0336c18b5ba5a1b52942f1bf8a3">progress_bar_index_</a>.count(name) == 0) {</div>
+<div class="line"><span class="lineno">  101</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.unlock();</div>
+<div class="line"><span class="lineno">  102</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  103</span>    }</div>
 <div class="line"><span class="lineno">  104</span> </div>
-<div class="line"><span class="lineno">  105</span>    bar.set_progress(kCompleteProgressPercent);</div>
-<div class="line"><span class="lineno">  106</span> </div>
-<div class="line"><span class="lineno">  107</span>    bar.set_option(indicators::option::PostfixText{</div>
-<div class="line"><span class="lineno">  108</span>        fmt::format(<span class="stringliteral">&quot;{}/{} ✔&quot;</span>, p.progress, p.max)});</div>
-<div class="line"><span class="lineno">  109</span>    bar.set_option(</div>
-<div class="line"><span class="lineno">  110</span>        indicators::option::ForegroundColor{indicators::Color::green});</div>
-<div class="line"><span class="lineno">  111</span>    bar.mark_as_completed();</div>
-<div class="line"><span class="lineno">  112</span>}</div>
+<div class="line"><span class="lineno">  105</span>    <span class="keyword">auto</span> &amp;p = <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#af1c0a0336c18b5ba5a1b52942f1bf8a3">progress_bar_index_</a>.at(name);</div>
+<div class="line"><span class="lineno">  106</span>    <span class="keyword">auto</span> &amp;bar = <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#adf0ff2a349b62979d213687aa1d0bf19">progress_bars_</a>[p.index];</div>
+<div class="line"><span class="lineno">  107</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.unlock();</div>
+<div class="line"><span class="lineno">  108</span> </div>
+<div class="line"><span class="lineno">  109</span>    bar.set_progress(kCompleteProgressPercent);</div>
+<div class="line"><span class="lineno">  110</span> </div>
+<div class="line"><span class="lineno">  111</span><span class="preprocessor">#if _MSC_VER</span></div>
+<div class="line"><span class="lineno">  112</span>    <span class="keyword">const</span> <span class="keyword">auto</span> postfix_text = fmt::format(<span class="stringliteral">&quot;{}/{} OK&quot;</span>, p.progress, p.max);</div>
+<div class="line"><span class="lineno">  113</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">  114</span>    <span class="keyword">const</span> <span class="keyword">auto</span> postfix_text = fmt::format(<span class="stringliteral">&quot;{}/{} ✔&quot;</span>, p.progress, p.max);</div>
+<div class="line"><span class="lineno">  115</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  116</span>    bar.set_option(indicators::option::PostfixText{postfix_text});</div>
+<div class="line"><span class="lineno">  117</span>    bar.set_option(</div>
+<div class="line"><span class="lineno">  118</span>        indicators::option::ForegroundColor{indicators::Color::green});</div>
+<div class="line"><span class="lineno">  119</span>    bar.mark_as_completed();</div>
+<div class="line"><span class="lineno">  120</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -337,18 +345,22 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="progress__indicator_8cc_source.html#l00114">114</a> of file <a class="el" href="progress__indicator_8cc_source.html">progress_indicator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  115</span>{</div>
-<div class="line"><span class="lineno">  116</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.lock();</div>
-<div class="line"><span class="lineno">  117</span>    <span class="keyword">auto</span> &amp;p = <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#af1c0a0336c18b5ba5a1b52942f1bf8a3">progress_bar_index_</a>.at(name);</div>
-<div class="line"><span class="lineno">  118</span>    <span class="keyword">auto</span> &amp;bar = <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#adf0ff2a349b62979d213687aa1d0bf19">progress_bars_</a>[p.index];</div>
-<div class="line"><span class="lineno">  119</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.unlock();</div>
-<div class="line"><span class="lineno">  120</span> </div>
-<div class="line"><span class="lineno">  121</span>    bar.set_option(indicators::option::ForegroundColor{indicators::Color::red});</div>
-<div class="line"><span class="lineno">  122</span>    bar.set_option(indicators::option::PostfixText{</div>
-<div class="line"><span class="lineno">  123</span>        fmt::format(<span class="stringliteral">&quot;{}/{} ✗&quot;</span>, p.progress, p.max)});</div>
-<div class="line"><span class="lineno">  124</span>    bar.mark_as_completed();</div>
-<div class="line"><span class="lineno">  125</span>}</div>
+<p class="definition">Definition at line <a class="el" href="progress__indicator_8cc_source.html#l00122">122</a> of file <a class="el" href="progress__indicator_8cc_source.html">progress_indicator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  123</span>{</div>
+<div class="line"><span class="lineno">  124</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.lock();</div>
+<div class="line"><span class="lineno">  125</span>    <span class="keyword">auto</span> &amp;p = <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#af1c0a0336c18b5ba5a1b52942f1bf8a3">progress_bar_index_</a>.at(name);</div>
+<div class="line"><span class="lineno">  126</span>    <span class="keyword">auto</span> &amp;bar = <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#adf0ff2a349b62979d213687aa1d0bf19">progress_bars_</a>[p.index];</div>
+<div class="line"><span class="lineno">  127</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.unlock();</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span><span class="preprocessor">#if _MSC_VER</span></div>
+<div class="line"><span class="lineno">  130</span>    <span class="keyword">const</span> <span class="keyword">auto</span> postfix_text = fmt::format(<span class="stringliteral">&quot;{}/{} FAILED&quot;</span>, p.progress, p.max);</div>
+<div class="line"><span class="lineno">  131</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">  132</span>    <span class="keyword">const</span> <span class="keyword">auto</span> postfix_text = fmt::format(<span class="stringliteral">&quot;{}/{} ✗&quot;</span>, p.progress, p.max);</div>
+<div class="line"><span class="lineno">  133</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  134</span>    bar.set_option(indicators::option::ForegroundColor{indicators::Color::red});</div>
+<div class="line"><span class="lineno">  135</span>    bar.set_option(indicators::option::PostfixText{postfix_text});</div>
+<div class="line"><span class="lineno">  136</span>    bar.mark_as_completed();</div>
+<div class="line"><span class="lineno">  137</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -375,26 +387,26 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="progress__indicator_8cc_source.html#l00058">58</a> of file <a class="el" href="progress__indicator_8cc_source.html">progress_indicator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   59</span>{</div>
-<div class="line"><span class="lineno">   60</span>    <span class="keyword">const</span> <span class="keyword">auto</span> kASTTraverseProgressPercent = 95U;</div>
-<div class="line"><span class="lineno">   61</span> </div>
-<div class="line"><span class="lineno">   62</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.lock();</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#af1c0a0336c18b5ba5a1b52942f1bf8a3">progress_bar_index_</a>.count(name) == 0) {</div>
-<div class="line"><span class="lineno">   65</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.unlock();</div>
-<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   67</span>    }</div>
-<div class="line"><span class="lineno">   68</span> </div>
-<div class="line"><span class="lineno">   69</span>    <span class="keyword">auto</span> &amp;p = <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#af1c0a0336c18b5ba5a1b52942f1bf8a3">progress_bar_index_</a>.at(name);</div>
-<div class="line"><span class="lineno">   70</span>    <span class="keyword">auto</span> &amp;bar = <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#adf0ff2a349b62979d213687aa1d0bf19">progress_bars_</a>[p.index];</div>
-<div class="line"><span class="lineno">   71</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.unlock();</div>
+<p class="definition">Definition at line <a class="el" href="progress__indicator_8cc_source.html#l00062">62</a> of file <a class="el" href="progress__indicator_8cc_source.html">progress_indicator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   63</span>{</div>
+<div class="line"><span class="lineno">   64</span>    <span class="keyword">const</span> <span class="keyword">auto</span> kASTTraverseProgressPercent = 95U;</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.lock();</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#af1c0a0336c18b5ba5a1b52942f1bf8a3">progress_bar_index_</a>.count(name) == 0) {</div>
+<div class="line"><span class="lineno">   69</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.unlock();</div>
+<div class="line"><span class="lineno">   70</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   71</span>    }</div>
 <div class="line"><span class="lineno">   72</span> </div>
-<div class="line"><span class="lineno">   73</span>    p.progress++;</div>
-<div class="line"><span class="lineno">   74</span>    bar.set_progress((p.progress * kASTTraverseProgressPercent) / p.max);</div>
-<div class="line"><span class="lineno">   75</span>    bar.set_option(indicators::option::PostfixText{</div>
-<div class="line"><span class="lineno">   76</span>        fmt::format(<span class="stringliteral">&quot;{}/{}&quot;</span>, p.progress, p.max)});</div>
-<div class="line"><span class="lineno">   77</span>}</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keyword">auto</span> &amp;p = <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#af1c0a0336c18b5ba5a1b52942f1bf8a3">progress_bar_index_</a>.at(name);</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keyword">auto</span> &amp;bar = <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#adf0ff2a349b62979d213687aa1d0bf19">progress_bars_</a>[p.index];</div>
+<div class="line"><span class="lineno">   75</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.unlock();</div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span>    p.progress++;</div>
+<div class="line"><span class="lineno">   78</span>    bar.set_progress((p.progress * kASTTraverseProgressPercent) / p.max);</div>
+<div class="line"><span class="lineno">   79</span>    bar.set_option(indicators::option::PostfixText{</div>
+<div class="line"><span class="lineno">   80</span>        fmt::format(<span class="stringliteral">&quot;{}/{}&quot;</span>, p.progress, p.max)});</div>
+<div class="line"><span class="lineno">   81</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -414,16 +426,16 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Stop all the progress bars. </p>
 
-<p class="definition">Definition at line <a class="el" href="progress__indicator_8cc_source.html#l00079">79</a> of file <a class="el" href="progress__indicator_8cc_source.html">progress_indicator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   80</span>{</div>
-<div class="line"><span class="lineno">   81</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.lock();</div>
-<div class="line"><span class="lineno">   82</span> </div>
-<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;[name, p] : <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#af1c0a0336c18b5ba5a1b52942f1bf8a3">progress_bar_index_</a>) {</div>
-<div class="line"><span class="lineno">   84</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#adf0ff2a349b62979d213687aa1d0bf19">progress_bars_</a>[p.index].mark_as_completed();</div>
-<div class="line"><span class="lineno">   85</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="progress__indicator_8cc_source.html#l00083">83</a> of file <a class="el" href="progress__indicator_8cc_source.html">progress_indicator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   84</span>{</div>
+<div class="line"><span class="lineno">   85</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.lock();</div>
 <div class="line"><span class="lineno">   86</span> </div>
-<div class="line"><span class="lineno">   87</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.unlock();</div>
-<div class="line"><span class="lineno">   88</span>}</div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;[name, p] : <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#af1c0a0336c18b5ba5a1b52942f1bf8a3">progress_bar_index_</a>) {</div>
+<div class="line"><span class="lineno">   88</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#adf0ff2a349b62979d213687aa1d0bf19">progress_bars_</a>[p.index].mark_as_completed();</div>
+<div class="line"><span class="lineno">   89</span>    }</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#ace612004c78a9dcef060672bdec123ee">progress_bars_mutex_</a>.unlock();</div>
+<div class="line"><span class="lineno">   92</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

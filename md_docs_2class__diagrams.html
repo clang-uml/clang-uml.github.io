@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.2</span>
+       <span id="projectnumber">0.5.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -132,7 +132,12 @@ $(function() {
 </ul>
 </li>
 <li><a class="el" href="md_docs_2class__diagrams.html#inheritance-diagrams">Inheritance diagrams</a></li>
-<li><a class="el" href="md_docs_2class__diagrams.html#generating-uml-packages-in-the-diagram">Generating UML packages in the diagram</a></li>
+<li><a class="el" href="md_docs_2class__diagrams.html#generating-uml-packages-in-the-diagram">Generating UML packages in the diagram</a><ul>
+<li><a class="el" href="md_docs_2class__diagrams.html#namespace-packages">Namespace packages</a></li>
+<li><a class="el" href="md_docs_2class__diagrams.html#directory-packages">Directory packages</a></li>
+<li>Module packages</li>
+</ul>
+</li>
 <li><a class="el" href="md_docs_2class__diagrams.html#class-context-diagram">Class context diagram</a></li>
 <li><a class="el" href="md_docs_2class__diagrams.html#disabling-dependency-relationships">Disabling dependency relationships</a></li>
 </ul>
@@ -224,21 +229,42 @@ Inheritance diagrams</h1>
 <div class="line">    - inheritance</div>
 </div><!-- fragment --><h1><a class="anchor" id="generating-uml-packages-in-the-diagram"></a>
 Generating UML packages in the diagram</h1>
+<p><code>clang-uml</code> supports 3 sources for generating UML packages in a diagram:</p><ul>
+<li><code>namespace</code> - default</li>
+<li><code>directory</code> - based on relative directory paths within the project source tree</li>
+<li><code>module</code> - based on C++20 modules</li>
+</ul>
+<p>Currently, a specific diagram can only contain packages of one of the above types.</p>
+<h2><a class="anchor" id="namespace-packages"></a>
+Namespace packages</h2>
 <p>By default, <code>clang-uml</code> will render all element names including a namespace (relative to <code>using_namespace</code> property), e.g. <code>ns1::ns2::MyClass</code>. In order to generate packages in the diagram for each namespace instead, the following option must be set to <code>true</code>:</p>
 <div class="fragment language-yaml"><div class="line">generate_packages: true</div>
 </div><!-- fragment --><p>which results in the following diagram:</p>
 <div class="image">
 <embed type="image/svg+xml" src="t00036_class.svg"></embed>
 </div>
-    <p>In case the code base is structured based on subdirectory instead of namespaces (or this is a C project, where namespaces are not available), packages can be generated based on the location of a given declaration in the filesystem tree, by adding also the following option:</p>
+    <h2><a class="anchor" id="directory-packages"></a>
+Directory packages</h2>
+<p>In case the code base is structured based on subdirectory instead of namespaces (or this is a C project, where namespaces are not available), packages can be generated based on the location of a given declaration in the filesystem tree, by adding also the following option:</p>
 <div class="fragment language-yaml"><div class="line">package_type: directory</div>
 </div><!-- fragment --><p>which results in the following diagram:</p>
 <div class="image">
 <embed type="image/svg+xml" src="t00065_class.svg"></embed>
 </div>
     <blockquote class="doxtable">
-<p>&zwj;In this case make sure that the root path of the configuration file is properly configured for your project, if necessary add <code>relative_to</code> option to denote the root path against which all relative paths in the config file are calculated. </p>
+<p>&zwj;In this case make sure that the root path of the configuration file is properly configured for your project, if necessary add <code>relative_to</code> option to denote the root path against which all relative paths in the config file are calculated.</p>
+<p></p>
 </blockquote>
+<p>### Module packages Finally, to generate UML packages in the diagram based on C++20 modules, use the following option:</p>
+<div class="fragment language-yaml"><div class="line">package_type: module</div>
+</div><!-- fragment --><p>which can produce the following diagram:</p>
+<div class="image">
+<embed type="image/svg+xml" src="t00071_class.svg"></embed>
+</div>
+    <p>Packages from modules support internal module partitions, which are represented by <code>:</code> prefix in the name as well as conventional submodules separated by <code>.</code>.</p>
+<p>Module paths can be rendered relative to a specific parent module, to enable this add the following option: </p><div class="fragment language-yaml"><div class="line">using_module: mod1.mod2</div>
+</div><!-- fragment --><p> which will render modules relative to <code>mod1.mod2</code>.</p>
+<p>For examples of this feature check out the following test cases documentation: <a class="el" href="md_docs_2test__cases_2t00072.html">t00071</a> and <a class="el" href="md_docs_2test__cases_2t00072.html">t00072</a>.</p>
 <h1><a class="anchor" id="class-context-diagram"></a>
 Class context diagram</h1>
 <p>Sometimes it's helpful to generate a class diagram depicting only direct relationships of a given class, e.g. within the classes' documentation page, this can be easily achieved using <code>context</code> inclusion filter:</p>

@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.2</span>
+       <span id="projectnumber">0.5.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -124,6 +124,7 @@ $(function() {
 <div class="textblock"><p><a class="anchor" id="diagram-filters-1"></a></p>
 <ul>
 <li><a class="el" href="md_docs_2diagram__filters.html#namespaces">namespaces</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#modules">modules</a></li>
 <li><a class="el" href="md_docs_2diagram__filters.html#elements">elements</a></li>
 <li><a class="el" href="md_docs_2diagram__filters.html#element_types">element_types</a></li>
 <li><a class="el" href="md_docs_2configuration__file.html#paths">paths</a></li>
@@ -133,6 +134,7 @@ $(function() {
 <li><a class="el" href="md_docs_2diagram__filters.html#parents">parents</a></li>
 <li><a class="el" href="md_docs_2diagram__filters.html#specializations">specializations</a></li>
 <li><a class="el" href="md_docs_2diagram__filters.html#access">access</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#module_access">module_access</a></li>
 <li><a class="el" href="md_docs_2diagram__filters.html#method_types">method_types</a></li>
 <li><a class="el" href="md_docs_2diagram__filters.html#callee_types">callee_types</a></li>
 <li><a class="el" href="md_docs_2diagram__filters.html#dependants-and-dependencies">dependants and dependencies</a></li>
@@ -159,23 +161,27 @@ $(function() {
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>namespaces</code>   </td><td class="markdownTableBodyNone">Qualified name or regex   </td><td class="markdownTableBodyNone"><code>ns1::ns2::ClassA</code>, <code>r: '.*detail.*'</code>    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>modules</code>   </td><td class="markdownTableBodyNone">Qualified name or regex   </td><td class="markdownTableBodyNone"><code>mod1.mod2:par1</code>, <code>r: '.*impl.*'</code>    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>elements</code>   </td><td class="markdownTableBodyNone">Qualified name or regex   </td><td class="markdownTableBodyNone"><code>ns1::ns2::ClassA</code>, <code>r: '.*detail.*'</code>    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>element_types</code>   </td><td class="markdownTableBodyNone">Types of diagram elements   </td><td class="markdownTableBodyNone"><code>class</code>, <code>enum</code>, <code>concept</code>    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>paths</code>   </td><td class="markdownTableBodyNone">File or dir path or glob pattern   </td><td class="markdownTableBodyNone"><code>src/dir1</code>, <code>src/dir2/a.cpp</code>, <code>src/dir3/*.cpp</code>    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>context</code>   </td><td class="markdownTableBodyNone">Qualified name or regex   </td><td class="markdownTableBodyNone"><code>ns1::ns2::ClassA</code>, <code>r: 'ns1::ns2::ClassA.+'</code>    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>relationships</code>   </td><td class="markdownTableBodyNone">Type of relationship   </td><td class="markdownTableBodyNone"><code>inheritance</code>, <code>composition</code>, <code>aggregation</code>, <code>ownership</code>, <code>association</code>, <code>instantiation</code>, <code>friendship</code>, <code>dependency</code>    </td></tr>
-<tr class="markdownTableRowOdd">
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>subclasses</code>   </td><td class="markdownTableBodyNone">Qualified name or regex   </td><td class="markdownTableBodyNone"><code>ns1::ns2::ClassA</code>, <code>r: 'ns1::ns2::ClassA.+'</code>    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>parents</code>   </td><td class="markdownTableBodyNone">Qualified name or regex   </td><td class="markdownTableBodyNone"><code>ns1::ns2::ClassA</code>, <code>r: 'ns1::ns2::ClassA.+'</code>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>specializations</code>   </td><td class="markdownTableBodyNone">Qualified name or regex   </td><td class="markdownTableBodyNone"><code>ns1::ns2::ClassA</code>, <code>r: 'ns1::ns2::ClassA.+'</code>    </td></tr>
+<td class="markdownTableBodyNone"><code>parents</code>   </td><td class="markdownTableBodyNone">Qualified name or regex   </td><td class="markdownTableBodyNone"><code>ns1::ns2::ClassA</code>, <code>r: 'ns1::ns2::ClassA.+'</code>    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>specializations</code>   </td><td class="markdownTableBodyNone">Qualified name or regex   </td><td class="markdownTableBodyNone"><code>ns1::ns2::ClassA</code>, <code>r: 'ns1::ns2::ClassA.+'</code>    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>access</code>   </td><td class="markdownTableBodyNone">Method or member access scope   </td><td class="markdownTableBodyNone"><code>public</code>, <code>protected</code>, <code>private</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>module_access</code>   </td><td class="markdownTableBodyNone">Module access scope   </td><td class="markdownTableBodyNone"><code>public</code>, <code>private</code>    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>method_types</code>   </td><td class="markdownTableBodyNone">Type of class method   </td><td class="markdownTableBodyNone"><code>constructor</code>, <code>destructor</code>, <code>assignment</code>, <code>operator</code>, <code>defaulted</code>, <code>deleted</code>, <code>static</code>    </td></tr>
 <tr class="markdownTableRowEven">
@@ -195,6 +201,15 @@ namespaces</h1>
 <div class="line">exclude:</div>
 <div class="line">  namespaces:</div>
 <div class="line">    - ns1::ns2::detail</div>
+</div><!-- fragment --><h1><a class="anchor" id="modules"></a>
+modules</h1>
+<p>Allows to include or exclude entities from specific C++20 module.</p>
+<div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  modules:</div>
+<div class="line">    - mod1.mod2</div>
+<div class="line">exclude:</div>
+<div class="line">  modules:</div>
+<div class="line">    - r: &quot;.*impl.*&quot;</div>
 </div><!-- fragment --><h1><a class="anchor" id="elements"></a>
 elements</h1>
 <p>Allows to directly include or exclude specific entities from the diagrams, for instance to exclude a specific class from an included namespace:</p>
@@ -268,15 +283,22 @@ specializations</h1>
 <p>This filter allows to include or exclude specializations and instantiations of a specific template from the diagram.</p>
 <h1><a class="anchor" id="access"></a>
 access</h1>
-<p>This filter allows to include or exclude class methods and members based on their access scope, allowed values ar:</p>
+<p>This filter allows to include or exclude class methods and members based on their access scope, allowed values are:</p>
 <ul>
 <li><code>public</code></li>
 <li><code>protected</code></li>
 <li><code>private</code></li>
 </ul>
+<h1><a class="anchor" id="module_access"></a>
+module_access</h1>
+<p>This filter allows to include or exclude diagram elements based on the module in which they are declared, allowed values are:</p>
+<ul>
+<li><code>public</code></li>
+<li><code>private</code></li>
+</ul>
 <h1><a class="anchor" id="method_types"></a>
 method_types</h1>
-<p>This filter allows to include or exclude various method types from the class diagram, allowed values ar:</p><ul>
+<p>This filter allows to include or exclude various method types from the class diagram, allowed values are:</p><ul>
 <li><code>constructor</code></li>
 <li><code>destructor</code></li>
 <li><code>assignment</code></li>

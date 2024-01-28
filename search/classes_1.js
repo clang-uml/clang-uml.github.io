@@ -35,13 +35,14 @@ var searchData=
   ['convert_3c_20layout_5fhint_20_3e_32',['convert&lt; layout_hint &gt;',['../structYAML_1_1convert_3_01layout__hint_01_4.html',1,'YAML']]],
   ['convert_3c_20mermaid_20_3e_33',['convert&lt; mermaid &gt;',['../structYAML_1_1convert_3_01mermaid_01_4.html',1,'YAML']]],
   ['convert_3c_20method_5ftype_20_3e_34',['convert&lt; method_type &gt;',['../structYAML_1_1convert_3_01method__type_01_4.html',1,'YAML']]],
-  ['convert_3c_20namespace_5for_5fregex_20_3e_35',['convert&lt; namespace_or_regex &gt;',['../structYAML_1_1convert_3_01namespace__or__regex_01_4.html',1,'YAML']]],
-  ['convert_3c_20package_5fdiagram_20_3e_36',['convert&lt; package_diagram &gt;',['../structYAML_1_1convert_3_01package__diagram_01_4.html',1,'YAML']]],
-  ['convert_3c_20plantuml_20_3e_37',['convert&lt; plantuml &gt;',['../structYAML_1_1convert_3_01plantuml_01_4.html',1,'YAML']]],
-  ['convert_3c_20relationship_5fhint_5ft_20_3e_38',['convert&lt; relationship_hint_t &gt;',['../structYAML_1_1convert_3_01relationship__hint__t_01_4.html',1,'YAML']]],
-  ['convert_3c_20relationship_5ft_20_3e_39',['convert&lt; relationship_t &gt;',['../structYAML_1_1convert_3_01relationship__t_01_4.html',1,'YAML']]],
-  ['convert_3c_20sequence_5fdiagram_20_3e_40',['convert&lt; sequence_diagram &gt;',['../structYAML_1_1convert_3_01sequence__diagram_01_4.html',1,'YAML']]],
-  ['convert_3c_20std_3a_3afilesystem_3a_3apath_20_3e_41',['convert&lt; std::filesystem::path &gt;',['../structYAML_1_1convert_3_01std_1_1filesystem_1_1path_01_4.html',1,'YAML']]],
-  ['convert_3c_20std_3a_3avector_3c_20source_5flocation_20_3e_20_3e_42',['convert&lt; std::vector&lt; source_location &gt; &gt;',['../structYAML_1_1convert_3_01std_1_1vector_3_01source__location_01_4_01_4.html',1,'YAML']]],
-  ['convert_3c_20string_5for_5fregex_20_3e_43',['convert&lt; string_or_regex &gt;',['../structYAML_1_1convert_3_01string__or__regex_01_4.html',1,'YAML']]]
+  ['convert_3c_20module_5faccess_5ft_20_3e_35',['convert&lt; module_access_t &gt;',['../structYAML_1_1convert_3_01module__access__t_01_4.html',1,'YAML']]],
+  ['convert_3c_20namespace_5for_5fregex_20_3e_36',['convert&lt; namespace_or_regex &gt;',['../structYAML_1_1convert_3_01namespace__or__regex_01_4.html',1,'YAML']]],
+  ['convert_3c_20package_5fdiagram_20_3e_37',['convert&lt; package_diagram &gt;',['../structYAML_1_1convert_3_01package__diagram_01_4.html',1,'YAML']]],
+  ['convert_3c_20plantuml_20_3e_38',['convert&lt; plantuml &gt;',['../structYAML_1_1convert_3_01plantuml_01_4.html',1,'YAML']]],
+  ['convert_3c_20relationship_5fhint_5ft_20_3e_39',['convert&lt; relationship_hint_t &gt;',['../structYAML_1_1convert_3_01relationship__hint__t_01_4.html',1,'YAML']]],
+  ['convert_3c_20relationship_5ft_20_3e_40',['convert&lt; relationship_t &gt;',['../structYAML_1_1convert_3_01relationship__t_01_4.html',1,'YAML']]],
+  ['convert_3c_20sequence_5fdiagram_20_3e_41',['convert&lt; sequence_diagram &gt;',['../structYAML_1_1convert_3_01sequence__diagram_01_4.html',1,'YAML']]],
+  ['convert_3c_20std_3a_3afilesystem_3a_3apath_20_3e_42',['convert&lt; std::filesystem::path &gt;',['../structYAML_1_1convert_3_01std_1_1filesystem_1_1path_01_4.html',1,'YAML']]],
+  ['convert_3c_20std_3a_3avector_3c_20source_5flocation_20_3e_20_3e_43',['convert&lt; std::vector&lt; source_location &gt; &gt;',['../structYAML_1_1convert_3_01std_1_1vector_3_01source__location_01_4_01_4.html',1,'YAML']]],
+  ['convert_3c_20string_5for_5fregex_20_3e_44',['convert&lt; string_or_regex &gt;',['../structYAML_1_1convert_3_01string__or__regex_01_4.html',1,'YAML']]]
 ];

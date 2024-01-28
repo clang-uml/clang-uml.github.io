@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.2</span>
+       <span id="projectnumber">0.5.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -122,7 +122,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="t30010---package-diagram-with-packages-from-directory-structure"></a></p>
-<h1><a class="anchor" id="config-114"></a>
+<h1><a class="anchor" id="config-119"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  t30010_package:</div>
@@ -136,9 +136,9 @@ Config</h1>
 <div class="line">        - app</div>
 <div class="line">        - libraries</div>
 <div class="line">    using_namespace: clanguml::t30010</div>
-</div><!-- fragment --> <h1><a class="anchor" id="source-code-114"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-119"></a>
 Source code</h1>
-<p>File t30010.cc </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &quot;app/app.h&quot;</span></div>
+<p>File <code>tests/t30010/t30010.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &quot;app/app.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
 <div class="line"><span class="keyword">namespace </span>t30010 {</div>
@@ -147,17 +147,83 @@ Source code</h1>
 <div class="line"> </div>
 <div class="line">} <span class="comment">// namespace t30002</span></div>
 <div class="line">} <span class="comment">// namespace clanguml</span></div>
-</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-114"></a>
+</div><!-- fragment --><p> File <code>tests/t30010/libraries/lib1/lib1.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
+<div class="line"><span class="keyword">namespace </span>t30010 {</div>
+<div class="line"><span class="keyword">namespace </span>library1 {</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>A { };</div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="line">}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t30010/libraries/lib2/lib2.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
+<div class="line"><span class="keyword">namespace </span>t30010 {</div>
+<div class="line"><span class="keyword">namespace </span>library2 {</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">struct </span>B {</div>
+<div class="line">    T b;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="line">}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t30010/libraries/lib3/lib3.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
+<div class="line"><span class="keyword">namespace </span>t30010 {</div>
+<div class="line"><span class="keyword">namespace </span>library3 {</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">enum</span> E { e1, e2, e3 };</div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="line">}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t30010/libraries/lib4/lib4.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
+<div class="line"><span class="keyword">namespace </span>t30010 {</div>
+<div class="line"><span class="keyword">namespace </span>library4 {</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>C { };</div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="line">}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t30010/app/app.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;../libraries/lib1/lib1.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;../libraries/lib2/lib2.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;../libraries/lib3/lib3.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;../libraries/lib4/lib4.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
+<div class="line"><span class="keyword">namespace </span>t30010 {</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>App {</div>
+<div class="line">    library1::A *a;</div>
+<div class="line">    library2::B&lt;int&gt; *b;</div>
+<div class="line">    library3::E e;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> c(library4::C *) { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="line">}</div>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-119"></a>
 Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t30010_package.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-mermaid-diagrams-114"></a>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-119"></a>
 Generated Mermaid diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t30010_package_mermaid.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-json-models-114"></a>
+     <h1><a class="anchor" id="generated-json-models-119"></a>
 Generated JSON models</h1>
 <div class="fragment language-json"><div class="line">{</div>
 <div class="line">  &quot;diagram_type&quot;: &quot;package&quot;,</div>
@@ -170,74 +236,81 @@ Generated JSON models</h1>
 <div class="line">          &quot;id&quot;: &quot;879212264535378961&quot;,</div>
 <div class="line">          &quot;is_deprecated&quot;: false,</div>
 <div class="line">          &quot;name&quot;: &quot;lib1&quot;,</div>
+<div class="line">          &quot;path&quot;: &quot;&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 8,</div>
 <div class="line">            &quot;file&quot;: &quot;libraries/lib1/lib1.h&quot;,</div>
 <div class="line">            &quot;line&quot;: 7,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t30010.cc&quot;</div>
 <div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;namespace&quot;</div>
+<div class="line">          &quot;type&quot;: &quot;directory&quot;</div>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;display_name&quot;: &quot;lib2&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;1522606219626203424&quot;,</div>
 <div class="line">          &quot;is_deprecated&quot;: false,</div>
 <div class="line">          &quot;name&quot;: &quot;lib2&quot;,</div>
+<div class="line">          &quot;path&quot;: &quot;&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 30,</div>
 <div class="line">            &quot;file&quot;: &quot;libraries/lib2/lib2.h&quot;,</div>
 <div class="line">            &quot;line&quot;: 7,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t30010.cc&quot;</div>
 <div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;namespace&quot;</div>
+<div class="line">          &quot;type&quot;: &quot;directory&quot;</div>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;display_name&quot;: &quot;lib3&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;2263709579652581325&quot;,</div>
 <div class="line">          &quot;is_deprecated&quot;: false,</div>
 <div class="line">          &quot;name&quot;: &quot;lib3&quot;,</div>
+<div class="line">          &quot;path&quot;: &quot;&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 6,</div>
 <div class="line">            &quot;file&quot;: &quot;libraries/lib3/lib3.h&quot;,</div>
 <div class="line">            &quot;line&quot;: 7,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t30010.cc&quot;</div>
 <div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;namespace&quot;</div>
+<div class="line">          &quot;type&quot;: &quot;directory&quot;</div>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;display_name&quot;: &quot;lib4&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;1103453030023410219&quot;,</div>
 <div class="line">          &quot;is_deprecated&quot;: false,</div>
 <div class="line">          &quot;name&quot;: &quot;lib4&quot;,</div>
+<div class="line">          &quot;path&quot;: &quot;&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 8,</div>
 <div class="line">            &quot;file&quot;: &quot;libraries/lib4/lib4.h&quot;,</div>
 <div class="line">            &quot;line&quot;: 7,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t30010.cc&quot;</div>
 <div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;namespace&quot;</div>
+<div class="line">          &quot;type&quot;: &quot;directory&quot;</div>
 <div class="line">        }</div>
 <div class="line">      ],</div>
 <div class="line">      &quot;id&quot;: &quot;879401191375500756&quot;,</div>
 <div class="line">      &quot;is_deprecated&quot;: false,</div>
 <div class="line">      &quot;name&quot;: &quot;libraries&quot;,</div>
-<div class="line">      &quot;type&quot;: &quot;namespace&quot;</div>
+<div class="line">      &quot;path&quot;: &quot;&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;directory&quot;</div>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;display_name&quot;: &quot;app&quot;,</div>
 <div class="line">      &quot;id&quot;: &quot;2001320261642080149&quot;,</div>
 <div class="line">      &quot;is_deprecated&quot;: false,</div>
 <div class="line">      &quot;name&quot;: &quot;app&quot;,</div>
+<div class="line">      &quot;path&quot;: &quot;&quot;,</div>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 8,</div>
 <div class="line">        &quot;file&quot;: &quot;app/app.h&quot;,</div>
 <div class="line">        &quot;line&quot;: 11,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t30010.cc&quot;</div>
 <div class="line">      },</div>
-<div class="line">      &quot;type&quot;: &quot;namespace&quot;</div>
+<div class="line">      &quot;type&quot;: &quot;directory&quot;</div>
 <div class="line">    }</div>
 <div class="line">  ],</div>
 <div class="line">  &quot;name&quot;: &quot;t30010_package&quot;,</div>
+<div class="line">  &quot;package_type&quot;: &quot;directory&quot;,</div>
 <div class="line">  &quot;relationships&quot;: [</div>
 <div class="line">    {</div>
 <div class="line">      &quot;destination&quot;: &quot;879212264535378961&quot;,</div>

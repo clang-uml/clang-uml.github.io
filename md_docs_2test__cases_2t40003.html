@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.2</span>
+       <span id="projectnumber">0.5.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -122,7 +122,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="t40003---dependants-and-dependencies-include-diagram-filter-test"></a></p>
-<h1><a class="anchor" id="config-118"></a>
+<h1><a class="anchor" id="config-127"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  t40003_include:</div>
@@ -143,19 +143,96 @@ Config</h1>
 <div class="line">    plantuml:</div>
 <div class="line">      before:</div>
 <div class="line">        - &quot;&#39; t40003 test include diagram&quot;</div>
-</div><!-- fragment --> <h1><a class="anchor" id="source-code-118"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-127"></a>
 Source code</h1>
-<h1><a class="anchor" id="generated-plantuml-diagrams-118"></a>
+<p>File <code>tests/t40003/src/dependencies/t2.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &quot;../../include/dependencies/t3.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;../../include/dependencies/t5.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40003::dependencies {</div>
+<div class="line"><span class="keywordtype">void</span> t()</div>
+<div class="line">{</div>
+<div class="line">    t3();</div>
+<div class="line">    t5();</div>
+<div class="line">}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t40003/src/dependants/t1.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &quot;../../include/dependants/t3.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;../../include/dependants/t4.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40003::dependants {</div>
+<div class="line"><span class="keywordtype">void</span> t()</div>
+<div class="line">{</div>
+<div class="line">    t3();</div>
+<div class="line">    t4();</div>
+<div class="line">}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t40003/include/dependencies/t3.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;t2.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40003::dependencies {</div>
+<div class="line"><span class="keywordtype">void</span> t3() { t2(); }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t40003/include/dependencies/t1.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40003::dependencies {</div>
+<div class="line"><span class="keywordtype">void</span> t1() { }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t40003/include/dependencies/t6.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;t1.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40003::dependencies {</div>
+<div class="line"><span class="keywordtype">void</span> t6() { t1(); }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t40003/include/dependencies/t5.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;t1.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40003::dependencies {</div>
+<div class="line"><span class="keywordtype">void</span> t5() { t1(); }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t40003/include/dependencies/t2.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;t1.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40003::dependencies {</div>
+<div class="line"><span class="keywordtype">void</span> t2() { t1(); }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t40003/include/dependants/t3.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;t2.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40003::dependants {</div>
+<div class="line"><span class="keywordtype">void</span> t3() { t2(); }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t40003/include/dependants/t4.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40003::dependants {</div>
+<div class="line"><span class="keywordtype">void</span> t4() { }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t40003/include/dependants/t1.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40003::dependants {</div>
+<div class="line"><span class="keywordtype">void</span> t1() { }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t40003/include/dependants/t2.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;t1.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40003::dependants {</div>
+<div class="line"><span class="keywordtype">void</span> t2() { t1(); }</div>
+<div class="line">}</div>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-127"></a>
 Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t40003_include.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-mermaid-diagrams-118"></a>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-127"></a>
 Generated Mermaid diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t40003_include_mermaid.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-json-models-118"></a>
+     <h1><a class="anchor" id="generated-json-models-127"></a>
 Generated JSON models</h1>
 <div class="fragment language-json"><div class="line">{</div>
 <div class="line">  &quot;diagram_type&quot;: &quot;include&quot;,</div>
@@ -208,6 +285,7 @@ Generated JSON models</h1>
 <div class="line">              &quot;display_name&quot;: &quot;include/dependants/t3.h&quot;,</div>
 <div class="line">              &quot;file_kind&quot;: &quot;header&quot;,</div>
 <div class="line">              &quot;id&quot;: &quot;60001020671836182&quot;,</div>
+<div class="line">              &quot;is_system&quot;: false,</div>
 <div class="line">              &quot;name&quot;: &quot;t3.h&quot;,</div>
 <div class="line">              &quot;type&quot;: &quot;file&quot;</div>
 <div class="line">            },</div>
@@ -215,6 +293,7 @@ Generated JSON models</h1>
 <div class="line">              &quot;display_name&quot;: &quot;include/dependants/t2.h&quot;,</div>
 <div class="line">              &quot;file_kind&quot;: &quot;header&quot;,</div>
 <div class="line">              &quot;id&quot;: &quot;1921842892192045013&quot;,</div>
+<div class="line">              &quot;is_system&quot;: false,</div>
 <div class="line">              &quot;name&quot;: &quot;t2.h&quot;,</div>
 <div class="line">              &quot;type&quot;: &quot;file&quot;</div>
 <div class="line">            },</div>
@@ -222,6 +301,7 @@ Generated JSON models</h1>
 <div class="line">              &quot;display_name&quot;: &quot;include/dependants/t1.h&quot;,</div>
 <div class="line">              &quot;file_kind&quot;: &quot;header&quot;,</div>
 <div class="line">              &quot;id&quot;: &quot;2295271780650013565&quot;,</div>
+<div class="line">              &quot;is_system&quot;: false,</div>
 <div class="line">              &quot;name&quot;: &quot;t1.h&quot;,</div>
 <div class="line">              &quot;type&quot;: &quot;file&quot;</div>
 <div class="line">            }</div>
@@ -237,6 +317,7 @@ Generated JSON models</h1>
 <div class="line">              &quot;display_name&quot;: &quot;include/dependencies/t3.h&quot;,</div>
 <div class="line">              &quot;file_kind&quot;: &quot;header&quot;,</div>
 <div class="line">              &quot;id&quot;: &quot;1226843223635488673&quot;,</div>
+<div class="line">              &quot;is_system&quot;: false,</div>
 <div class="line">              &quot;name&quot;: &quot;t3.h&quot;,</div>
 <div class="line">              &quot;type&quot;: &quot;file&quot;</div>
 <div class="line">            },</div>
@@ -244,6 +325,7 @@ Generated JSON models</h1>
 <div class="line">              &quot;display_name&quot;: &quot;include/dependencies/t2.h&quot;,</div>
 <div class="line">              &quot;file_kind&quot;: &quot;header&quot;,</div>
 <div class="line">              &quot;id&quot;: &quot;1849348825646635129&quot;,</div>
+<div class="line">              &quot;is_system&quot;: false,</div>
 <div class="line">              &quot;name&quot;: &quot;t2.h&quot;,</div>
 <div class="line">              &quot;type&quot;: &quot;file&quot;</div>
 <div class="line">            },</div>
@@ -251,6 +333,7 @@ Generated JSON models</h1>
 <div class="line">              &quot;display_name&quot;: &quot;include/dependencies/t1.h&quot;,</div>
 <div class="line">              &quot;file_kind&quot;: &quot;header&quot;,</div>
 <div class="line">              &quot;id&quot;: &quot;1120257488305564427&quot;,</div>
+<div class="line">              &quot;is_system&quot;: false,</div>
 <div class="line">              &quot;name&quot;: &quot;t1.h&quot;,</div>
 <div class="line">              &quot;type&quot;: &quot;file&quot;</div>
 <div class="line">            },</div>
@@ -258,6 +341,7 @@ Generated JSON models</h1>
 <div class="line">              &quot;display_name&quot;: &quot;include/dependencies/t5.h&quot;,</div>
 <div class="line">              &quot;file_kind&quot;: &quot;header&quot;,</div>
 <div class="line">              &quot;id&quot;: &quot;2106129159239499468&quot;,</div>
+<div class="line">              &quot;is_system&quot;: false,</div>
 <div class="line">              &quot;name&quot;: &quot;t5.h&quot;,</div>
 <div class="line">              &quot;type&quot;: &quot;file&quot;</div>
 <div class="line">            }</div>

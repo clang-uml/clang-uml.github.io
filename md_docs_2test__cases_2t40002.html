@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.4.2</span>
+       <span id="projectnumber">0.5.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -122,7 +122,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="t40002---cyclic-include-graph-diagram-test-case"></a></p>
-<h1><a class="anchor" id="config-117"></a>
+<h1><a class="anchor" id="config-126"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  t40002_include:</div>
@@ -144,19 +144,89 @@ Config</h1>
 <div class="line">    plantuml:</div>
 <div class="line">      before:</div>
 <div class="line">        - &quot;&#39; t40002 test include diagram&quot;</div>
-</div><!-- fragment --> <h1><a class="anchor" id="source-code-117"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-126"></a>
 Source code</h1>
-<h1><a class="anchor" id="generated-plantuml-diagrams-117"></a>
+<p>File <code>tests/t40002/src/t40002.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &quot;../include/lib1/lib1.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;../include/lib2/lib2.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40002 {</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> foo() { <span class="keywordflow">return</span> lib1::foo() + lib2::foo(); }</div>
+<div class="line"> </div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t40002/src/lib1/lib1.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &quot;../../include/lib1/lib1.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40002::lib1 {</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> foo0() { <span class="keywordflow">return</span> 0; }</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> foo1() { <span class="keywordflow">return</span> 1; }</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> foo() { <span class="keywordflow">return</span> foo1(); }</div>
+<div class="line"> </div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t40002/src/lib2/lib2.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &quot;../../include/lib2/lib2.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;../../include/lib2/lib2_detail.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40002::lib2 {</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> foo0() { <span class="keywordflow">return</span> 0; }</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> foo1() { <span class="keywordflow">return</span> 1; }</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> foo() { <span class="keywordflow">return</span> foo1(); }</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> foo22() { <span class="keywordflow">return</span> 22; }</div>
+<div class="line"> </div>
+<div class="line">} <span class="comment">// namespace clanguml::t40002::lib2</span></div>
+</div><!-- fragment --><p> File <code>tests/t40002/include/lib1/lib1.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;../lib2/lib2.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40002::lib1 {</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> foo0();</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> foo1();</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> foo();</div>
+<div class="line"> </div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t40002/include/lib2/lib2_detail.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40002::lib2::detail {</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> foo22();</div>
+<div class="line"> </div>
+<div class="line">}</div>
+</div><!-- fragment --><p> File <code>tests/t40002/include/lib2/lib2.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#pragma once</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;lib2_detail.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>clanguml::t40002::lib2 {</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> foo2();</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> foo3();</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> foo();</div>
+<div class="line"> </div>
+<div class="line">}</div>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-126"></a>
 Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t40002_include.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-mermaid-diagrams-117"></a>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-126"></a>
 Generated Mermaid diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t40002_include_mermaid.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-json-models-117"></a>
+     <h1><a class="anchor" id="generated-json-models-126"></a>
 Generated JSON models</h1>
 <div class="fragment language-json"><div class="line">{</div>
 <div class="line">  &quot;diagram_type&quot;: &quot;include&quot;,</div>
@@ -216,6 +286,7 @@ Generated JSON models</h1>
 <div class="line">              &quot;display_name&quot;: &quot;include/lib1/lib1.h&quot;,</div>
 <div class="line">              &quot;file_kind&quot;: &quot;header&quot;,</div>
 <div class="line">              &quot;id&quot;: &quot;2193549214042244690&quot;,</div>
+<div class="line">              &quot;is_system&quot;: false,</div>
 <div class="line">              &quot;name&quot;: &quot;lib1.h&quot;,</div>
 <div class="line">              &quot;type&quot;: &quot;file&quot;</div>
 <div class="line">            }</div>
@@ -231,6 +302,7 @@ Generated JSON models</h1>
 <div class="line">              &quot;display_name&quot;: &quot;include/lib2/lib2.h&quot;,</div>
 <div class="line">              &quot;file_kind&quot;: &quot;header&quot;,</div>
 <div class="line">              &quot;id&quot;: &quot;1969674835696841438&quot;,</div>
+<div class="line">              &quot;is_system&quot;: false,</div>
 <div class="line">              &quot;name&quot;: &quot;lib2.h&quot;,</div>
 <div class="line">              &quot;type&quot;: &quot;file&quot;</div>
 <div class="line">            }</div>
