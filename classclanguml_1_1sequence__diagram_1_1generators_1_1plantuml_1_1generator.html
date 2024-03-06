@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.0</span>
+       <span id="projectnumber">0.5.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -183,6 +183,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a48ee1b56980799353eab64ab6a904a80 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a48ee1b56980799353eab64ab6a904a80">generate_notes</a> (std::ostream &amp;ostr, const <a class="el" href="classclanguml_1_1common_1_1model_1_1element.html">model::element</a> &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1element.html">element</a>) const</td></tr>
 <tr class="memdesc:a48ee1b56980799353eab64ab6a904a80 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate diagram notes.  <br /></td></tr>
 <tr class="separator:a48ee1b56980799353eab64ab6a904a80 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8864a5be307dbe678d808f4ee83ad23 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#aa8864a5be307dbe678d808f4ee83ad23">generate_style</a> (std::ostream &amp;ostr, const std::string &amp;element_type, const <a class="el" href="classclanguml_1_1common_1_1model_1_1stylable__element.html">model::stylable_element</a> &amp;el) const</td></tr>
+<tr class="memdesc:aa8864a5be307dbe678d808f4ee83ad23 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate diagram element PlantUML style.  <br /></td></tr>
+<tr class="separator:aa8864a5be307dbe678d808f4ee83ad23 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b37bb8718a488b6916de75a0cb953f8 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a1b37bb8718a488b6916de75a0cb953f8">generate_metadata</a> (std::ostream &amp;ostr) const</td></tr>
 <tr class="memdesc:a1b37bb8718a488b6916de75a0cb953f8 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate comment with diagram metadata.  <br /></td></tr>
 <tr class="separator:a1b37bb8718a488b6916de75a0cb953f8 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -605,7 +608,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   86</span>    <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a25e9f43f5bc579fa8552f63f6f0e4070" title="Generate message call note.">generate_message_comment</a>(ostr, m);</div>
 <div class="line"><span class="lineno">   87</span> </div>
 <div class="line"><span class="lineno">   88</span>    ostr &lt;&lt; from_alias &lt;&lt; <span class="stringliteral">&quot; &quot;</span></div>
-<div class="line"><span class="lineno">   89</span>         &lt;&lt; <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators_1_1plantuml.html#a33dd4a6eae184e2fca90ee7b64e23a12">common::generators::plantuml::to_plantuml</a>(message_t::kCall) &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><span class="lineno">   89</span>         &lt;&lt; <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators_1_1plantuml.html#a89ebf58d8a90ab10242d099737ea2619">common::generators::plantuml::to_plantuml</a>(message_t::kCall) &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
 <div class="line"><span class="lineno">   90</span> </div>
 <div class="line"><span class="lineno">   91</span>    ostr &lt;&lt; to_alias;</div>
 <div class="line"><span class="lineno">   92</span> </div>
@@ -691,150 +694,165 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  483</span>        <span class="keywordflow">if</span> (from_activity_id == 0 || to_activity_id == 0)</div>
 <div class="line"><span class="lineno">  484</span>            <span class="keywordflow">continue</span>;</div>
 <div class="line"><span class="lineno">  485</span> </div>
-<div class="line"><span class="lineno">  486</span>        <span class="keyword">auto</span> message_chains_unique = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get_all_from_to_message_chains(</div>
-<div class="line"><span class="lineno">  487</span>            from_activity_id, to_activity_id);</div>
+<div class="line"><span class="lineno">  486</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().participants().count(from_activity_id) == 0)</div>
+<div class="line"><span class="lineno">  487</span>            <span class="keywordflow">continue</span>;</div>
 <div class="line"><span class="lineno">  488</span> </div>
-<div class="line"><span class="lineno">  489</span>        <span class="keywordtype">bool</span> first_separator_skipped{<span class="keyword">false</span>};</div>
-<div class="line"><span class="lineno">  490</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;mc : message_chains_unique) {</div>
-<div class="line"><span class="lineno">  491</span>            <span class="keywordflow">if</span> (!first_separator_skipped)</div>
-<div class="line"><span class="lineno">  492</span>                first_separator_skipped = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  493</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  494</span>                ostr &lt;&lt; <span class="stringliteral">&quot;====\n&quot;</span>;</div>
-<div class="line"><span class="lineno">  495</span> </div>
-<div class="line"><span class="lineno">  496</span>            <span class="keyword">const</span> <span class="keyword">auto</span> &amp;from =</div>
-<div class="line"><span class="lineno">  497</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get_participant&lt;model::function&gt;(from_activity_id);</div>
-<div class="line"><span class="lineno">  498</span> </div>
-<div class="line"><span class="lineno">  499</span>            <span class="keywordflow">if</span> (from.value().type_name() == <span class="stringliteral">&quot;method&quot;</span> ||</div>
-<div class="line"><span class="lineno">  500</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().combine_free_functions_into_file_participants()) {</div>
-<div class="line"><span class="lineno">  501</span>                <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a8c65b85a59250ad2be5abca3d19b9945" title="Generate sequence diagram participant.">generate_participant</a>(ostr, from_activity_id);</div>
-<div class="line"><span class="lineno">  502</span>                ostr &lt;&lt; <span class="stringliteral">&quot;[-&gt;&quot;</span></div>
-<div class="line"><span class="lineno">  503</span>                     &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a0665431efdc292d2b4fecf700a89d9b3" title="Generate PlantUML alias for participant.">generate_alias</a>(from.value()) &lt;&lt; <span class="stringliteral">&quot; : &quot;</span></div>
-<div class="line"><span class="lineno">  504</span>                     &lt;&lt; from.value().message_name(</div>
-<div class="line"><span class="lineno">  505</span>                            <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a5b8013f8ee3f106a8f9cf0eaa3e88f5e" title="Convert config to model message render mode.">select_method_arguments_render_mode</a>())</div>
-<div class="line"><span class="lineno">  506</span>                     &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><span class="lineno">  507</span>            }</div>
-<div class="line"><span class="lineno">  508</span> </div>
-<div class="line"><span class="lineno">  509</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;m : mc) {</div>
-<div class="line"><span class="lineno">  510</span>                <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a8ccff0e91a4a96fdfcdf74a5f8ce750d" title="Generate sequence diagram message.">generate_call</a>(m, ostr);</div>
-<div class="line"><span class="lineno">  511</span>            }</div>
-<div class="line"><span class="lineno">  512</span>        }</div>
-<div class="line"><span class="lineno">  513</span>    }</div>
+<div class="line"><span class="lineno">  489</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().participants().count(to_activity_id) == 0)</div>
+<div class="line"><span class="lineno">  490</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  491</span> </div>
+<div class="line"><span class="lineno">  492</span>        <span class="keyword">auto</span> message_chains_unique = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get_all_from_to_message_chains(</div>
+<div class="line"><span class="lineno">  493</span>            from_activity_id, to_activity_id);</div>
+<div class="line"><span class="lineno">  494</span> </div>
+<div class="line"><span class="lineno">  495</span>        <span class="keywordtype">bool</span> first_separator_skipped{<span class="keyword">false</span>};</div>
+<div class="line"><span class="lineno">  496</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;mc : message_chains_unique) {</div>
+<div class="line"><span class="lineno">  497</span>            <span class="keywordflow">if</span> (!first_separator_skipped)</div>
+<div class="line"><span class="lineno">  498</span>                first_separator_skipped = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  499</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  500</span>                ostr &lt;&lt; <span class="stringliteral">&quot;====\n&quot;</span>;</div>
+<div class="line"><span class="lineno">  501</span> </div>
+<div class="line"><span class="lineno">  502</span>            <span class="keyword">const</span> <span class="keyword">auto</span> &amp;from =</div>
+<div class="line"><span class="lineno">  503</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get_participant&lt;model::function&gt;(from_activity_id);</div>
+<div class="line"><span class="lineno">  504</span> </div>
+<div class="line"><span class="lineno">  505</span>            <span class="keywordflow">if</span> (from.value().type_name() == <span class="stringliteral">&quot;method&quot;</span> ||</div>
+<div class="line"><span class="lineno">  506</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().combine_free_functions_into_file_participants()) {</div>
+<div class="line"><span class="lineno">  507</span>                <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a8c65b85a59250ad2be5abca3d19b9945" title="Generate sequence diagram participant.">generate_participant</a>(ostr, from_activity_id);</div>
+<div class="line"><span class="lineno">  508</span>                ostr &lt;&lt; <span class="stringliteral">&quot;[-&gt;&quot;</span></div>
+<div class="line"><span class="lineno">  509</span>                     &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a0665431efdc292d2b4fecf700a89d9b3" title="Generate PlantUML alias for participant.">generate_alias</a>(from.value()) &lt;&lt; <span class="stringliteral">&quot; : &quot;</span></div>
+<div class="line"><span class="lineno">  510</span>                     &lt;&lt; from.value().message_name(</div>
+<div class="line"><span class="lineno">  511</span>                            <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a5b8013f8ee3f106a8f9cf0eaa3e88f5e" title="Convert config to model message render mode.">select_method_arguments_render_mode</a>())</div>
+<div class="line"><span class="lineno">  512</span>                     &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><span class="lineno">  513</span>            }</div>
 <div class="line"><span class="lineno">  514</span> </div>
-<div class="line"><span class="lineno">  515</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;to_location : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().to()) {</div>
-<div class="line"><span class="lineno">  516</span>        <span class="keyword">auto</span> to_activity_id = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get_to_activity_id(to_location);</div>
-<div class="line"><span class="lineno">  517</span> </div>
-<div class="line"><span class="lineno">  518</span>        <span class="keywordflow">if</span> (to_activity_id == 0)</div>
-<div class="line"><span class="lineno">  519</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  515</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;m : mc) {</div>
+<div class="line"><span class="lineno">  516</span>                <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a8ccff0e91a4a96fdfcdf74a5f8ce750d" title="Generate sequence diagram message.">generate_call</a>(m, ostr);</div>
+<div class="line"><span class="lineno">  517</span>            }</div>
+<div class="line"><span class="lineno">  518</span>        }</div>
+<div class="line"><span class="lineno">  519</span>    }</div>
 <div class="line"><span class="lineno">  520</span> </div>
-<div class="line"><span class="lineno">  521</span>        <span class="keyword">auto</span> message_chains_unique =</div>
-<div class="line"><span class="lineno">  522</span>            <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get_all_from_to_message_chains(0, to_activity_id);</div>
+<div class="line"><span class="lineno">  521</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;to_location : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().to()) {</div>
+<div class="line"><span class="lineno">  522</span>        <span class="keyword">auto</span> to_activity_id = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get_to_activity_id(to_location);</div>
 <div class="line"><span class="lineno">  523</span> </div>
-<div class="line"><span class="lineno">  524</span>        <span class="keywordtype">bool</span> first_separator_skipped{<span class="keyword">false</span>};</div>
-<div class="line"><span class="lineno">  525</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;mc : message_chains_unique) {</div>
-<div class="line"><span class="lineno">  526</span>            <span class="keywordflow">if</span> (!first_separator_skipped)</div>
-<div class="line"><span class="lineno">  527</span>                first_separator_skipped = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  528</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  529</span>                ostr &lt;&lt; <span class="stringliteral">&quot;====\n&quot;</span>;</div>
-<div class="line"><span class="lineno">  530</span> </div>
-<div class="line"><span class="lineno">  531</span>            <span class="keyword">const</span> <span class="keyword">auto</span> from_activity_id = mc.front().from();</div>
-<div class="line"><span class="lineno">  532</span> </div>
-<div class="line"><span class="lineno">  533</span>            <span class="keyword">const</span> <span class="keyword">auto</span> &amp;from =</div>
-<div class="line"><span class="lineno">  534</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get_participant&lt;model::function&gt;(from_activity_id);</div>
-<div class="line"><span class="lineno">  535</span> </div>
-<div class="line"><span class="lineno">  536</span>            <span class="keywordflow">if</span> (from.value().type_name() == <span class="stringliteral">&quot;method&quot;</span> ||</div>
-<div class="line"><span class="lineno">  537</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().combine_free_functions_into_file_participants()) {</div>
-<div class="line"><span class="lineno">  538</span>                <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a8c65b85a59250ad2be5abca3d19b9945" title="Generate sequence diagram participant.">generate_participant</a>(ostr, from_activity_id);</div>
-<div class="line"><span class="lineno">  539</span>                ostr &lt;&lt; <span class="stringliteral">&quot;[-&gt;&quot;</span></div>
-<div class="line"><span class="lineno">  540</span>                     &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a0665431efdc292d2b4fecf700a89d9b3" title="Generate PlantUML alias for participant.">generate_alias</a>(from.value()) &lt;&lt; <span class="stringliteral">&quot; : &quot;</span></div>
-<div class="line"><span class="lineno">  541</span>                     &lt;&lt; from.value().message_name(</div>
-<div class="line"><span class="lineno">  542</span>                            <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a5b8013f8ee3f106a8f9cf0eaa3e88f5e" title="Convert config to model message render mode.">select_method_arguments_render_mode</a>())</div>
-<div class="line"><span class="lineno">  543</span>                     &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><span class="lineno">  544</span>            }</div>
-<div class="line"><span class="lineno">  545</span> </div>
-<div class="line"><span class="lineno">  546</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;m : mc) {</div>
-<div class="line"><span class="lineno">  547</span>                <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a8ccff0e91a4a96fdfcdf74a5f8ce750d" title="Generate sequence diagram message.">generate_call</a>(m, ostr);</div>
-<div class="line"><span class="lineno">  548</span>            }</div>
-<div class="line"><span class="lineno">  549</span>        }</div>
-<div class="line"><span class="lineno">  550</span>    }</div>
-<div class="line"><span class="lineno">  551</span> </div>
-<div class="line"><span class="lineno">  552</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;sf : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().from()) {</div>
-<div class="line"><span class="lineno">  553</span>        <span class="keywordflow">if</span> (sf.location_type == location_t::function) {</div>
-<div class="line"><span class="lineno">  554</span>            <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">common::id_t</a> start_from{0};</div>
-<div class="line"><span class="lineno">  555</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[k, v] : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().sequences()) {</div>
-<div class="line"><span class="lineno">  556</span>                <span class="keyword">const</span> <span class="keyword">auto</span> &amp;caller = *<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().participants().at(v.from());</div>
-<div class="line"><span class="lineno">  557</span>                std::string vfrom = caller.full_name(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  558</span>                <span class="keywordflow">if</span> (vfrom == sf.location) {</div>
-<div class="line"><span class="lineno">  559</span>                    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Found sequence diagram start point: {}&quot;</span>, k);</div>
-<div class="line"><span class="lineno">  560</span>                    start_from = k;</div>
-<div class="line"><span class="lineno">  561</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  562</span>                }</div>
-<div class="line"><span class="lineno">  563</span>            }</div>
-<div class="line"><span class="lineno">  564</span> </div>
-<div class="line"><span class="lineno">  565</span>            <span class="keywordflow">if</span> (start_from == 0) {</div>
-<div class="line"><span class="lineno">  566</span>                <a class="code hl_define" href="util_8h.html#adc3f150ee758fe400c09b5292028a759">LOG_WARN</a>(<span class="stringliteral">&quot;Failed to find participant with {} for start_from &quot;</span></div>
-<div class="line"><span class="lineno">  567</span>                         <span class="stringliteral">&quot;condition&quot;</span>,</div>
-<div class="line"><span class="lineno">  568</span>                    sf.location);</div>
-<div class="line"><span class="lineno">  569</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  570</span>            }</div>
-<div class="line"><span class="lineno">  571</span> </div>
-<div class="line"><span class="lineno">  572</span>            <span class="comment">// Use this to break out of recurrent loops</span></div>
-<div class="line"><span class="lineno">  573</span>            std::vector&lt;common::id_t&gt; visited_participants;</div>
-<div class="line"><span class="lineno">  574</span> </div>
-<div class="line"><span class="lineno">  575</span>            <span class="keyword">const</span> <span class="keyword">auto</span> &amp;from =</div>
-<div class="line"><span class="lineno">  576</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get_participant&lt;model::function&gt;(start_from);</div>
-<div class="line"><span class="lineno">  577</span> </div>
-<div class="line"><span class="lineno">  578</span>            <span class="keywordflow">if</span> (!from.has_value()) {</div>
-<div class="line"><span class="lineno">  579</span>                <a class="code hl_define" href="util_8h.html#adc3f150ee758fe400c09b5292028a759">LOG_WARN</a>(<span class="stringliteral">&quot;Failed to find participant {} for start_from &quot;</span></div>
-<div class="line"><span class="lineno">  580</span>                         <span class="stringliteral">&quot;condition&quot;</span>,</div>
-<div class="line"><span class="lineno">  581</span>                    sf.location);</div>
-<div class="line"><span class="lineno">  582</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  583</span>            }</div>
-<div class="line"><span class="lineno">  584</span> </div>
-<div class="line"><span class="lineno">  585</span>            <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a8c65b85a59250ad2be5abca3d19b9945" title="Generate sequence diagram participant.">generate_participant</a>(ostr, start_from);</div>
+<div class="line"><span class="lineno">  524</span>        <span class="keywordflow">if</span> (to_activity_id == 0)</div>
+<div class="line"><span class="lineno">  525</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  526</span> </div>
+<div class="line"><span class="lineno">  527</span>        <span class="keyword">auto</span> message_chains_unique =</div>
+<div class="line"><span class="lineno">  528</span>            <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get_all_from_to_message_chains(0, to_activity_id);</div>
+<div class="line"><span class="lineno">  529</span> </div>
+<div class="line"><span class="lineno">  530</span>        <span class="keywordtype">bool</span> first_separator_skipped{<span class="keyword">false</span>};</div>
+<div class="line"><span class="lineno">  531</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;mc : message_chains_unique) {</div>
+<div class="line"><span class="lineno">  532</span>            <span class="keywordflow">if</span> (!first_separator_skipped)</div>
+<div class="line"><span class="lineno">  533</span>                first_separator_skipped = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  534</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  535</span>                ostr &lt;&lt; <span class="stringliteral">&quot;====\n&quot;</span>;</div>
+<div class="line"><span class="lineno">  536</span> </div>
+<div class="line"><span class="lineno">  537</span>            <span class="keyword">const</span> <span class="keyword">auto</span> from_activity_id = mc.front().from();</div>
+<div class="line"><span class="lineno">  538</span> </div>
+<div class="line"><span class="lineno">  539</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().participants().count(from_activity_id) == 0)</div>
+<div class="line"><span class="lineno">  540</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  541</span> </div>
+<div class="line"><span class="lineno">  542</span>            <span class="keyword">const</span> <span class="keyword">auto</span> &amp;from =</div>
+<div class="line"><span class="lineno">  543</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get_participant&lt;model::function&gt;(from_activity_id);</div>
+<div class="line"><span class="lineno">  544</span> </div>
+<div class="line"><span class="lineno">  545</span>            <span class="keywordflow">if</span> (from.value().type_name() == <span class="stringliteral">&quot;method&quot;</span> ||</div>
+<div class="line"><span class="lineno">  546</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().combine_free_functions_into_file_participants()) {</div>
+<div class="line"><span class="lineno">  547</span>                <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a8c65b85a59250ad2be5abca3d19b9945" title="Generate sequence diagram participant.">generate_participant</a>(ostr, from_activity_id);</div>
+<div class="line"><span class="lineno">  548</span>                ostr &lt;&lt; <span class="stringliteral">&quot;[-&gt;&quot;</span></div>
+<div class="line"><span class="lineno">  549</span>                     &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a0665431efdc292d2b4fecf700a89d9b3" title="Generate PlantUML alias for participant.">generate_alias</a>(from.value()) &lt;&lt; <span class="stringliteral">&quot; : &quot;</span></div>
+<div class="line"><span class="lineno">  550</span>                     &lt;&lt; from.value().message_name(</div>
+<div class="line"><span class="lineno">  551</span>                            <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a5b8013f8ee3f106a8f9cf0eaa3e88f5e" title="Convert config to model message render mode.">select_method_arguments_render_mode</a>())</div>
+<div class="line"><span class="lineno">  552</span>                     &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><span class="lineno">  553</span>            }</div>
+<div class="line"><span class="lineno">  554</span> </div>
+<div class="line"><span class="lineno">  555</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;m : mc) {</div>
+<div class="line"><span class="lineno">  556</span>                <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a8ccff0e91a4a96fdfcdf74a5f8ce750d" title="Generate sequence diagram message.">generate_call</a>(m, ostr);</div>
+<div class="line"><span class="lineno">  557</span>            }</div>
+<div class="line"><span class="lineno">  558</span>        }</div>
+<div class="line"><span class="lineno">  559</span>    }</div>
+<div class="line"><span class="lineno">  560</span> </div>
+<div class="line"><span class="lineno">  561</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;sf : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().from()) {</div>
+<div class="line"><span class="lineno">  562</span>        <span class="keywordflow">if</span> (sf.location_type == location_t::function) {</div>
+<div class="line"><span class="lineno">  563</span>            <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">common::id_t</a> start_from{0};</div>
+<div class="line"><span class="lineno">  564</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[k, v] : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().sequences()) {</div>
+<div class="line"><span class="lineno">  565</span>                <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().participants().count(v.from()) == 0)</div>
+<div class="line"><span class="lineno">  566</span>                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  567</span> </div>
+<div class="line"><span class="lineno">  568</span>                <span class="keyword">const</span> <span class="keyword">auto</span> &amp;caller = *<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().participants().at(v.from());</div>
+<div class="line"><span class="lineno">  569</span>                std::string vfrom = caller.full_name(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  570</span>                <span class="keywordflow">if</span> (vfrom == sf.location) {</div>
+<div class="line"><span class="lineno">  571</span>                    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Found sequence diagram start point: {}&quot;</span>, k);</div>
+<div class="line"><span class="lineno">  572</span>                    start_from = k;</div>
+<div class="line"><span class="lineno">  573</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  574</span>                }</div>
+<div class="line"><span class="lineno">  575</span>            }</div>
+<div class="line"><span class="lineno">  576</span> </div>
+<div class="line"><span class="lineno">  577</span>            <span class="keywordflow">if</span> (start_from == 0) {</div>
+<div class="line"><span class="lineno">  578</span>                <a class="code hl_define" href="util_8h.html#adc3f150ee758fe400c09b5292028a759">LOG_WARN</a>(<span class="stringliteral">&quot;Failed to find participant with {} for start_from &quot;</span></div>
+<div class="line"><span class="lineno">  579</span>                         <span class="stringliteral">&quot;condition&quot;</span>,</div>
+<div class="line"><span class="lineno">  580</span>                    sf.location);</div>
+<div class="line"><span class="lineno">  581</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  582</span>            }</div>
+<div class="line"><span class="lineno">  583</span> </div>
+<div class="line"><span class="lineno">  584</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().participants().count(start_from) == 0)</div>
+<div class="line"><span class="lineno">  585</span>                <span class="keywordflow">continue</span>;</div>
 <div class="line"><span class="lineno">  586</span> </div>
-<div class="line"><span class="lineno">  587</span>            std::string from_alias = <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a0665431efdc292d2b4fecf700a89d9b3" title="Generate PlantUML alias for participant.">generate_alias</a>(from.value());</div>
-<div class="line"><span class="lineno">  588</span> </div>
-<div class="line"><span class="lineno">  589</span>            <a class="code hl_enumeration" href="structclanguml_1_1sequence__diagram_1_1model_1_1function.html#a57b16a050a25f697af8c5ae70e62ed9b">model::function::message_render_mode</a> render_mode =</div>
-<div class="line"><span class="lineno">  590</span>                <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a5b8013f8ee3f106a8f9cf0eaa3e88f5e" title="Convert config to model message render mode.">select_method_arguments_render_mode</a>();</div>
-<div class="line"><span class="lineno">  591</span> </div>
-<div class="line"><span class="lineno">  592</span>            <span class="comment">// For methods or functions in diagrams where they are combined into</span></div>
-<div class="line"><span class="lineno">  593</span>            <span class="comment">// file participants, we need to add an &#39;entry&#39; point call to know</span></div>
-<div class="line"><span class="lineno">  594</span>            <span class="comment">// which method relates to the first activity for this &#39;start_from&#39;</span></div>
-<div class="line"><span class="lineno">  595</span>            <span class="comment">// condition</span></div>
-<div class="line"><span class="lineno">  596</span>            <span class="keywordflow">if</span> (from.value().type_name() == <span class="stringliteral">&quot;method&quot;</span> ||</div>
-<div class="line"><span class="lineno">  597</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().combine_free_functions_into_file_participants()) {</div>
-<div class="line"><span class="lineno">  598</span>                ostr &lt;&lt; <span class="stringliteral">&quot;[-&gt;&quot;</span></div>
-<div class="line"><span class="lineno">  599</span>                     &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; from_alias &lt;&lt; <span class="stringliteral">&quot; : &quot;</span></div>
-<div class="line"><span class="lineno">  600</span>                     &lt;&lt; from.value().message_name(render_mode) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><span class="lineno">  601</span>            }</div>
-<div class="line"><span class="lineno">  602</span> </div>
-<div class="line"><span class="lineno">  603</span>            ostr &lt;&lt; <span class="stringliteral">&quot;activate &quot;</span> &lt;&lt; from_alias &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><span class="lineno">  604</span> </div>
-<div class="line"><span class="lineno">  605</span>            <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a13a2a12d7012c427f5e2e3f8d3892671" title="Generate sequence diagram activity.">generate_activity</a>(</div>
-<div class="line"><span class="lineno">  606</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get_activity(start_from), ostr, visited_participants);</div>
-<div class="line"><span class="lineno">  607</span> </div>
-<div class="line"><span class="lineno">  608</span>            <span class="keywordflow">if</span> (from.value().type_name() == <span class="stringliteral">&quot;method&quot;</span> ||</div>
-<div class="line"><span class="lineno">  609</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().combine_free_functions_into_file_participants()) {</div>
-<div class="line"><span class="lineno">  610</span> </div>
-<div class="line"><span class="lineno">  611</span>                <span class="keywordflow">if</span> (!from.value().is_void()) {</div>
-<div class="line"><span class="lineno">  612</span>                    ostr &lt;&lt; <span class="stringliteral">&quot;[&lt;--&quot;</span></div>
-<div class="line"><span class="lineno">  613</span>                         &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; from_alias;</div>
-<div class="line"><span class="lineno">  614</span> </div>
-<div class="line"><span class="lineno">  615</span>                    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().generate_return_types())</div>
-<div class="line"><span class="lineno">  616</span>                        ostr &lt;&lt; <span class="stringliteral">&quot; : //&quot;</span> &lt;&lt; from.value().return_type() &lt;&lt; <span class="stringliteral">&quot;//&quot;</span>;</div>
+<div class="line"><span class="lineno">  587</span>            <span class="comment">// Use this to break out of recurrent loops</span></div>
+<div class="line"><span class="lineno">  588</span>            std::vector&lt;common::id_t&gt; visited_participants;</div>
+<div class="line"><span class="lineno">  589</span> </div>
+<div class="line"><span class="lineno">  590</span>            <span class="keyword">const</span> <span class="keyword">auto</span> &amp;from =</div>
+<div class="line"><span class="lineno">  591</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get_participant&lt;model::function&gt;(start_from);</div>
+<div class="line"><span class="lineno">  592</span> </div>
+<div class="line"><span class="lineno">  593</span>            <span class="keywordflow">if</span> (!from.has_value()) {</div>
+<div class="line"><span class="lineno">  594</span>                <a class="code hl_define" href="util_8h.html#adc3f150ee758fe400c09b5292028a759">LOG_WARN</a>(<span class="stringliteral">&quot;Failed to find participant {} for start_from &quot;</span></div>
+<div class="line"><span class="lineno">  595</span>                         <span class="stringliteral">&quot;condition&quot;</span>,</div>
+<div class="line"><span class="lineno">  596</span>                    sf.location);</div>
+<div class="line"><span class="lineno">  597</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  598</span>            }</div>
+<div class="line"><span class="lineno">  599</span> </div>
+<div class="line"><span class="lineno">  600</span>            <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a8c65b85a59250ad2be5abca3d19b9945" title="Generate sequence diagram participant.">generate_participant</a>(ostr, start_from);</div>
+<div class="line"><span class="lineno">  601</span> </div>
+<div class="line"><span class="lineno">  602</span>            std::string from_alias = <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a0665431efdc292d2b4fecf700a89d9b3" title="Generate PlantUML alias for participant.">generate_alias</a>(from.value());</div>
+<div class="line"><span class="lineno">  603</span> </div>
+<div class="line"><span class="lineno">  604</span>            <a class="code hl_enumeration" href="structclanguml_1_1sequence__diagram_1_1model_1_1function.html#a57b16a050a25f697af8c5ae70e62ed9b">model::function::message_render_mode</a> render_mode =</div>
+<div class="line"><span class="lineno">  605</span>                <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a5b8013f8ee3f106a8f9cf0eaa3e88f5e" title="Convert config to model message render mode.">select_method_arguments_render_mode</a>();</div>
+<div class="line"><span class="lineno">  606</span> </div>
+<div class="line"><span class="lineno">  607</span>            <span class="comment">// For methods or functions in diagrams where they are combined into</span></div>
+<div class="line"><span class="lineno">  608</span>            <span class="comment">// file participants, we need to add an &#39;entry&#39; point call to know</span></div>
+<div class="line"><span class="lineno">  609</span>            <span class="comment">// which method relates to the first activity for this &#39;start_from&#39;</span></div>
+<div class="line"><span class="lineno">  610</span>            <span class="comment">// condition</span></div>
+<div class="line"><span class="lineno">  611</span>            <span class="keywordflow">if</span> (from.value().type_name() == <span class="stringliteral">&quot;method&quot;</span> ||</div>
+<div class="line"><span class="lineno">  612</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().combine_free_functions_into_file_participants()) {</div>
+<div class="line"><span class="lineno">  613</span>                ostr &lt;&lt; <span class="stringliteral">&quot;[-&gt;&quot;</span></div>
+<div class="line"><span class="lineno">  614</span>                     &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; from_alias &lt;&lt; <span class="stringliteral">&quot; : &quot;</span></div>
+<div class="line"><span class="lineno">  615</span>                     &lt;&lt; from.value().message_name(render_mode) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><span class="lineno">  616</span>            }</div>
 <div class="line"><span class="lineno">  617</span> </div>
-<div class="line"><span class="lineno">  618</span>                    ostr &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><span class="lineno">  619</span>                }</div>
-<div class="line"><span class="lineno">  620</span>            }</div>
-<div class="line"><span class="lineno">  621</span> </div>
-<div class="line"><span class="lineno">  622</span>            ostr &lt;&lt; <span class="stringliteral">&quot;deactivate &quot;</span> &lt;&lt; from_alias &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><span class="lineno">  623</span>        }</div>
-<div class="line"><span class="lineno">  624</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  625</span>            <span class="comment">// TODO: Add support for other sequence start location types</span></div>
-<div class="line"><span class="lineno">  626</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  627</span>        }</div>
-<div class="line"><span class="lineno">  628</span>    }</div>
-<div class="line"><span class="lineno">  629</span>}</div>
+<div class="line"><span class="lineno">  618</span>            ostr &lt;&lt; <span class="stringliteral">&quot;activate &quot;</span> &lt;&lt; from_alias &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><span class="lineno">  619</span> </div>
+<div class="line"><span class="lineno">  620</span>            <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a13a2a12d7012c427f5e2e3f8d3892671" title="Generate sequence diagram activity.">generate_activity</a>(</div>
+<div class="line"><span class="lineno">  621</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get_activity(start_from), ostr, visited_participants);</div>
+<div class="line"><span class="lineno">  622</span> </div>
+<div class="line"><span class="lineno">  623</span>            <span class="keywordflow">if</span> (from.value().type_name() == <span class="stringliteral">&quot;method&quot;</span> ||</div>
+<div class="line"><span class="lineno">  624</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().combine_free_functions_into_file_participants()) {</div>
+<div class="line"><span class="lineno">  625</span> </div>
+<div class="line"><span class="lineno">  626</span>                <span class="keywordflow">if</span> (!from.value().is_void()) {</div>
+<div class="line"><span class="lineno">  627</span>                    ostr &lt;&lt; <span class="stringliteral">&quot;[&lt;--&quot;</span></div>
+<div class="line"><span class="lineno">  628</span>                         &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; from_alias;</div>
+<div class="line"><span class="lineno">  629</span> </div>
+<div class="line"><span class="lineno">  630</span>                    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().generate_return_types())</div>
+<div class="line"><span class="lineno">  631</span>                        ostr &lt;&lt; <span class="stringliteral">&quot; : //&quot;</span> &lt;&lt; from.value().return_type() &lt;&lt; <span class="stringliteral">&quot;//&quot;</span>;</div>
+<div class="line"><span class="lineno">  632</span> </div>
+<div class="line"><span class="lineno">  633</span>                    ostr &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><span class="lineno">  634</span>                }</div>
+<div class="line"><span class="lineno">  635</span>            }</div>
+<div class="line"><span class="lineno">  636</span> </div>
+<div class="line"><span class="lineno">  637</span>            ostr &lt;&lt; <span class="stringliteral">&quot;deactivate &quot;</span> &lt;&lt; from_alias &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><span class="lineno">  638</span>        }</div>
+<div class="line"><span class="lineno">  639</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  640</span>            <span class="comment">// TODO: Add support for other sequence start location types</span></div>
+<div class="line"><span class="lineno">  641</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  642</span>        }</div>
+<div class="line"><span class="lineno">  643</span>    }</div>
+<div class="line"><span class="lineno">  644</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1171,7 +1189,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  122</span>        <span class="keyword">const</span> std::string to_alias = <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a0665431efdc292d2b4fecf700a89d9b3" title="Generate PlantUML alias for participant.">generate_alias</a>(to.value());</div>
 <div class="line"><span class="lineno">  123</span> </div>
 <div class="line"><span class="lineno">  124</span>        ostr &lt;&lt; to_alias &lt;&lt; <span class="stringliteral">&quot; &quot;</span></div>
-<div class="line"><span class="lineno">  125</span>             &lt;&lt; <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators_1_1plantuml.html#a33dd4a6eae184e2fca90ee7b64e23a12">common::generators::plantuml::to_plantuml</a>(message_t::kReturn)</div>
+<div class="line"><span class="lineno">  125</span>             &lt;&lt; <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators_1_1plantuml.html#a89ebf58d8a90ab10242d099737ea2619">common::generators::plantuml::to_plantuml</a>(message_t::kReturn)</div>
 <div class="line"><span class="lineno">  126</span>             &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; from_alias;</div>
 <div class="line"><span class="lineno">  127</span> </div>
 <div class="line"><span class="lineno">  128</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().generate_return_types()) {</div>
@@ -1294,17 +1312,17 @@ Additional Inherited Members</h2></td></tr>
 <p>Convert config to model message render mode. </p>
 <dl class="section return"><dt>Returns</dt><dd>Method render mode. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="plantuml_2sequence__diagram__generator_8cc_source.html#l00632">632</a> of file <a class="el" href="plantuml_2sequence__diagram__generator_8cc_source.html">sequence_diagram_generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  633</span>{</div>
-<div class="line"><span class="lineno">  634</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().generate_method_arguments() ==</div>
-<div class="line"><span class="lineno">  635</span>        <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a47e1ea2110a20783e35007c3927dd958a32a218f05db198fc10c9206836aaa17a">config::method_arguments::abbreviated</a>)</div>
-<div class="line"><span class="lineno">  636</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="structclanguml_1_1sequence__diagram_1_1model_1_1function.html#a57b16a050a25f697af8c5ae70e62ed9ba32a218f05db198fc10c9206836aaa17a">model::function::message_render_mode::abbreviated</a>;</div>
-<div class="line"><span class="lineno">  637</span> </div>
-<div class="line"><span class="lineno">  638</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().generate_method_arguments() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a47e1ea2110a20783e35007c3927dd958a334c4a4c42fdb79d7ebc3e73b517e6f8">config::method_arguments::none</a>)</div>
-<div class="line"><span class="lineno">  639</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="structclanguml_1_1sequence__diagram_1_1model_1_1function.html#a57b16a050a25f697af8c5ae70e62ed9ba9d0f44b23cb19883e3208e72ccc3cacf">model::function::message_render_mode::no_arguments</a>;</div>
-<div class="line"><span class="lineno">  640</span> </div>
-<div class="line"><span class="lineno">  641</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="structclanguml_1_1sequence__diagram_1_1model_1_1function.html#a57b16a050a25f697af8c5ae70e62ed9bae9dc924f238fa6cc29465942875fe8f0">model::function::message_render_mode::full</a>;</div>
-<div class="line"><span class="lineno">  642</span>}</div>
+<p class="definition">Definition at line <a class="el" href="plantuml_2sequence__diagram__generator_8cc_source.html#l00647">647</a> of file <a class="el" href="plantuml_2sequence__diagram__generator_8cc_source.html">sequence_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  648</span>{</div>
+<div class="line"><span class="lineno">  649</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().generate_method_arguments() ==</div>
+<div class="line"><span class="lineno">  650</span>        <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a47e1ea2110a20783e35007c3927dd958a32a218f05db198fc10c9206836aaa17a">config::method_arguments::abbreviated</a>)</div>
+<div class="line"><span class="lineno">  651</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="structclanguml_1_1sequence__diagram_1_1model_1_1function.html#a57b16a050a25f697af8c5ae70e62ed9ba32a218f05db198fc10c9206836aaa17a">model::function::message_render_mode::abbreviated</a>;</div>
+<div class="line"><span class="lineno">  652</span> </div>
+<div class="line"><span class="lineno">  653</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().generate_method_arguments() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a47e1ea2110a20783e35007c3927dd958a334c4a4c42fdb79d7ebc3e73b517e6f8">config::method_arguments::none</a>)</div>
+<div class="line"><span class="lineno">  654</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="structclanguml_1_1sequence__diagram_1_1model_1_1function.html#a57b16a050a25f697af8c5ae70e62ed9ba9d0f44b23cb19883e3208e72ccc3cacf">model::function::message_render_mode::no_arguments</a>;</div>
+<div class="line"><span class="lineno">  655</span> </div>
+<div class="line"><span class="lineno">  656</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="structclanguml_1_1sequence__diagram_1_1model_1_1function.html#a57b16a050a25f697af8c5ae70e62ed9bae9dc924f238fa6cc29465942875fe8f0">model::function::message_render_mode::full</a>;</div>
+<div class="line"><span class="lineno">  657</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

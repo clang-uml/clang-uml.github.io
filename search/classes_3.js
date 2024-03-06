@@ -10,5 +10,6 @@ var searchData=
   ['element_5fview_3c_20enum_5f_20_3e_7',['element_view&lt; enum_ &gt;',['../classclanguml_1_1common_1_1model_1_1element__view.html',1,'clanguml::common::model']]],
   ['element_5fview_3c_20package_20_3e_8',['element_view&lt; package &gt;',['../classclanguml_1_1common_1_1model_1_1element__view.html',1,'clanguml::common::model']]],
   ['element_5fview_3c_20source_5ffile_20_3e_9',['element_view&lt; source_file &gt;',['../classclanguml_1_1common_1_1model_1_1element__view.html',1,'clanguml::common::model']]],
-  ['enum_5f_10',['enum_',['../classclanguml_1_1class__diagram_1_1model_1_1enum__.html',1,'clanguml::class_diagram::model']]]
+  ['empty_5fdiagram_5ferror_10',['empty_diagram_error',['../classclanguml_1_1error_1_1empty__diagram__error.html',1,'clanguml::error']]],
+  ['enum_5f_11',['enum_',['../classclanguml_1_1class__diagram_1_1model_1_1enum__.html',1,'clanguml::class_diagram::model']]]
 ];

@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.0</span>
+       <span id="projectnumber">0.5.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -566,8 +566,8 @@ template&lt;&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="json_2class__diagram__generator_8cc_source.html#l00026">26</a> of file <a class="el" href="json_2class__diagram__generator_8cc_source.html">class_diagram_generator.cc</a>.</p>
 <div class="fragment DoxyCode"><div class="line"><span class="lineno">   27</span>{</div>
-<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">if</span> (e.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#a1b01a5872ec827a47b195a7c513fc517">module</a>()) {</div>
-<div class="line"><span class="lineno">   29</span>        j[<span class="stringliteral">&quot;module&quot;</span>][<span class="stringliteral">&quot;name&quot;</span>] = e.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#a1b01a5872ec827a47b195a7c513fc517">module</a>().value();</div>
+<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;maybe_module = e.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#a1b01a5872ec827a47b195a7c513fc517">module</a>(); maybe_module) {</div>
+<div class="line"><span class="lineno">   29</span>        j[<span class="stringliteral">&quot;module&quot;</span>][<span class="stringliteral">&quot;name&quot;</span>] = *maybe_module;</div>
 <div class="line"><span class="lineno">   30</span>        j[<span class="stringliteral">&quot;module&quot;</span>][<span class="stringliteral">&quot;is_private&quot;</span>] = e.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#a35a82a66d2589d10f9a85e22cec18bf0">module_private</a>();</div>
 <div class="line"><span class="lineno">   31</span>    }</div>
 <div class="line"><span class="lineno">   32</span>}</div>

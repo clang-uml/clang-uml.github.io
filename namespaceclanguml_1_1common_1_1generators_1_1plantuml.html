@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.0</span>
+       <span id="projectnumber">0.5.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -137,8 +137,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a33dd4a6eae184e2fca90ee7b64e23a12"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1plantuml.html#a33dd4a6eae184e2fca90ee7b64e23a12">to_plantuml</a> (relationship_t r, const std::string &amp;style)</td></tr>
-<tr class="separator:a33dd4a6eae184e2fca90ee7b64e23a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89ebf58d8a90ab10242d099737ea2619"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1plantuml.html#a89ebf58d8a90ab10242d099737ea2619">to_plantuml</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">relationship</a> &amp;r, const <a class="el" href="structclanguml_1_1config_1_1diagram.html">config::diagram</a> &amp;cfg)</td></tr>
+<tr class="separator:a89ebf58d8a90ab10242d099737ea2619"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a083bfac8ef9460cdfa82cd197fc635"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1plantuml.html#a5a083bfac8ef9460cdfa82cd197fc635">to_plantuml</a> (access_t scope)</td></tr>
 <tr class="separator:a5a083bfac8ef9460cdfa82cd197fc635"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45b10b6e9a2b8e431f074470ddb38cdf"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1plantuml.html#a45b10b6e9a2b8e431f074470ddb38cdf">to_plantuml</a> (message_t r)</td></tr>
@@ -176,11 +176,11 @@ template&lt;typename DiagramModel , typename DiagramConfig &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="plantuml_2generator_8h_source.html#l00536">536</a> of file <a class="el" href="plantuml_2generator_8h_source.html">generator.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  538</span>{</div>
-<div class="line"><span class="lineno">  539</span>    g.<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#aed28541f15430a86500093ac1be063a7" title="Generate diagram.">generate</a>(os);</div>
-<div class="line"><span class="lineno">  540</span>    <span class="keywordflow">return</span> os;</div>
-<div class="line"><span class="lineno">  541</span>}</div>
+<p class="definition">Definition at line <a class="el" href="plantuml_2generator_8h_source.html#l00575">575</a> of file <a class="el" href="plantuml_2generator_8h_source.html">generator.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  577</span>{</div>
+<div class="line"><span class="lineno">  578</span>    g.<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#aed28541f15430a86500093ac1be063a7" title="Generate diagram.">generate</a>(os);</div>
+<div class="line"><span class="lineno">  579</span>    <span class="keywordflow">return</span> os;</div>
+<div class="line"><span class="lineno">  580</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -200,24 +200,99 @@ template&lt;typename DiagramModel , typename DiagramConfig &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="plantuml_2generator_8cc_source.html#l00049">49</a> of file <a class="el" href="plantuml_2generator_8cc_source.html">generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   50</span>{</div>
-<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">switch</span> (scope) {</div>
-<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">case</span> access_t::kPublic:</div>
-<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;+&quot;</span>;</div>
-<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">case</span> access_t::kProtected:</div>
-<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;#&quot;</span>;</div>
-<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">case</span> access_t::kPrivate:</div>
-<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;-&quot;</span>;</div>
-<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">   60</span>    }</div>
-<div class="line"><span class="lineno">   61</span>}</div>
+<p class="definition">Definition at line <a class="el" href="plantuml_2generator_8cc_source.html#l00069">69</a> of file <a class="el" href="plantuml_2generator_8cc_source.html">generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   70</span>{</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">switch</span> (scope) {</div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">case</span> access_t::kPublic:</div>
+<div class="line"><span class="lineno">   73</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;+&quot;</span>;</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">case</span> access_t::kProtected:</div>
+<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;#&quot;</span>;</div>
+<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">case</span> access_t::kPrivate:</div>
+<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;-&quot;</span>;</div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">   79</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">   80</span>    }</div>
+<div class="line"><span class="lineno">   81</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a89ebf58d8a90ab10242d099737ea2619" name="a89ebf58d8a90ab10242d099737ea2619"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89ebf58d8a90ab10242d099737ea2619">&#9670;&#160;</a></span>to_plantuml() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::common::generators::plantuml::to_plantuml </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">relationship</a> &amp;&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structclanguml_1_1config_1_1diagram.html">config::diagram</a> &amp;&#160;</td>
+          <td class="paramname"><em>cfg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="plantuml_2generator_8cc_source.html#l00022">22</a> of file <a class="el" href="plantuml_2generator_8cc_source.html">generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   23</span>{</div>
+<div class="line"><span class="lineno">   24</span>    <span class="keyword">using </span><a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">common::model::relationship_t</a>;</div>
+<div class="line"><span class="lineno">   25</span> </div>
+<div class="line"><span class="lineno">   26</span>    std::string style;</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;inline_style = r.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1stylable__element.html#aa42882dea83188915a641bcdb7413581">style</a>();</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">if</span> (inline_style &amp;&amp; !inline_style.value().empty()) {</div>
+<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">if</span> (inline_style &amp;&amp; inline_style.value().back() == <span class="charliteral">&#39;]&#39;</span>)</div>
+<div class="line"><span class="lineno">   32</span>            style = *inline_style;</div>
+<div class="line"><span class="lineno">   33</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   34</span>            style = fmt::format(<span class="stringliteral">&quot;[{}]&quot;</span>, inline_style.value());</div>
+<div class="line"><span class="lineno">   35</span>    }</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">if</span> (style.empty() &amp;&amp; cfg.<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a2e96e8de1b0968cec58a9586012e3d50">puml</a>) {</div>
+<div class="line"><span class="lineno">   38</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> config_style = cfg.<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a2e96e8de1b0968cec58a9586012e3d50">puml</a>().get_style(r.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1relationship.html#a914f3fd7e9aecd8479c9bb45cf18f951">type</a>());</div>
+<div class="line"><span class="lineno">   39</span>            config_style.has_value()) {</div>
+<div class="line"><span class="lineno">   40</span>            style = config_style.value();</div>
+<div class="line"><span class="lineno">   41</span>        }</div>
+<div class="line"><span class="lineno">   42</span>    }</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">switch</span> (r.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1relationship.html#a914f3fd7e9aecd8479c9bb45cf18f951">type</a>()) {</div>
+<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">case</span> relationship_t::kOwnership:</div>
+<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">case</span> relationship_t::kComposition:</div>
+<div class="line"><span class="lineno">   47</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;*--&quot;</span> : fmt::format(<span class="stringliteral">&quot;*-{}-&quot;</span>, style);</div>
+<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">case</span> relationship_t::kAggregation:</div>
+<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;o--&quot;</span> : fmt::format(<span class="stringliteral">&quot;o-{}-&quot;</span>, style);</div>
+<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">case</span> relationship_t::kContainment:</div>
+<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;--+&quot;</span> : fmt::format(<span class="stringliteral">&quot;-{}-+&quot;</span>, style);</div>
+<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">case</span> relationship_t::kAssociation:</div>
+<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;--&gt;&quot;</span> : fmt::format(<span class="stringliteral">&quot;-{}-&gt;&quot;</span>, style);</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">case</span> relationship_t::kInstantiation:</div>
+<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;..|&gt;&quot;</span> : fmt::format(<span class="stringliteral">&quot;.{}.|&gt;&quot;</span>, style);</div>
+<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">case</span> relationship_t::kFriendship:</div>
+<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;&lt;..&quot;</span> : fmt::format(<span class="stringliteral">&quot;&lt;.{}.&quot;</span>, style);</div>
+<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">case</span> relationship_t::kDependency:</div>
+<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;..&gt;&quot;</span> : fmt::format(<span class="stringliteral">&quot;.{}.&gt;&quot;</span>, style);</div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">case</span> relationship_t::kConstraint:</div>
+<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;..&gt;&quot;</span> : fmt::format(<span class="stringliteral">&quot;.{}.&gt;&quot;</span>, style);</div>
+<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">case</span> relationship_t::kAlias:</div>
+<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;..&quot;</span> : fmt::format(<span class="stringliteral">&quot;.{}.&quot;</span>, style);</div>
+<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">   66</span>    }</div>
+<div class="line"><span class="lineno">   67</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a45b10b6e9a2b8e431f074470ddb38cdf" name="a45b10b6e9a2b8e431f074470ddb38cdf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45b10b6e9a2b8e431f074470ddb38cdf">&#9670;&#160;</a></span>to_plantuml() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a45b10b6e9a2b8e431f074470ddb38cdf">&#9670;&#160;</a></span>to_plantuml() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -232,72 +307,17 @@ template&lt;typename DiagramModel , typename DiagramConfig &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="plantuml_2generator_8cc_source.html#l00063">63</a> of file <a class="el" href="plantuml_2generator_8cc_source.html">generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   64</span>{</div>
-<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">switch</span> (r) {</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">case</span> message_t::kCall:</div>
-<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;-&gt;&quot;</span>;</div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">case</span> message_t::kReturn:</div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;--&gt;&quot;</span>;</div>
-<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">   72</span>    }</div>
-<div class="line"><span class="lineno">   73</span>}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a33dd4a6eae184e2fca90ee7b64e23a12" name="a33dd4a6eae184e2fca90ee7b64e23a12"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33dd4a6eae184e2fca90ee7b64e23a12">&#9670;&#160;</a></span>to_plantuml() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string clanguml::common::generators::plantuml::to_plantuml </td>
-          <td>(</td>
-          <td class="paramtype">relationship_t&#160;</td>
-          <td class="paramname"><em>r</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>style</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="plantuml_2generator_8cc_source.html#l00022">22</a> of file <a class="el" href="plantuml_2generator_8cc_source.html">generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   23</span>{</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">switch</span> (r) {</div>
-<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">case</span> relationship_t::kOwnership:</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">case</span> relationship_t::kComposition:</div>
-<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;*--&quot;</span> : fmt::format(<span class="stringliteral">&quot;*-[{}]-&quot;</span>, style);</div>
-<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">case</span> relationship_t::kAggregation:</div>
-<div class="line"><span class="lineno">   29</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;o--&quot;</span> : fmt::format(<span class="stringliteral">&quot;o-[{}]-&quot;</span>, style);</div>
-<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">case</span> relationship_t::kContainment:</div>
-<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;--+&quot;</span> : fmt::format(<span class="stringliteral">&quot;-[{}]-+&quot;</span>, style);</div>
-<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">case</span> relationship_t::kAssociation:</div>
-<div class="line"><span class="lineno">   33</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;--&gt;&quot;</span> : fmt::format(<span class="stringliteral">&quot;-[{}]-&gt;&quot;</span>, style);</div>
-<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">case</span> relationship_t::kInstantiation:</div>
-<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;..|&gt;&quot;</span> : fmt::format(<span class="stringliteral">&quot;.[{}].|&gt;&quot;</span>, style);</div>
-<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">case</span> relationship_t::kFriendship:</div>
-<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;&lt;..&quot;</span> : fmt::format(<span class="stringliteral">&quot;&lt;.[{}].&quot;</span>, style);</div>
-<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">case</span> relationship_t::kDependency:</div>
-<div class="line"><span class="lineno">   39</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;..&gt;&quot;</span> : fmt::format(<span class="stringliteral">&quot;.[{}].&gt;&quot;</span>, style);</div>
-<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">case</span> relationship_t::kConstraint:</div>
-<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;..&gt;&quot;</span> : fmt::format(<span class="stringliteral">&quot;.[{}].&gt;&quot;</span>, style);</div>
-<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">case</span> relationship_t::kAlias:</div>
-<div class="line"><span class="lineno">   43</span>        <span class="keywordflow">return</span> style.empty() ? <span class="stringliteral">&quot;..&quot;</span> : fmt::format(<span class="stringliteral">&quot;.[{}].&quot;</span>, style);</div>
-<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">   46</span>    }</div>
-<div class="line"><span class="lineno">   47</span>}</div>
+<p class="definition">Definition at line <a class="el" href="plantuml_2generator_8cc_source.html#l00083">83</a> of file <a class="el" href="plantuml_2generator_8cc_source.html">generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   84</span>{</div>
+<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">switch</span> (r) {</div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">case</span> message_t::kCall:</div>
+<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;-&gt;&quot;</span>;</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">case</span> message_t::kReturn:</div>
+<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;--&gt;&quot;</span>;</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">   91</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">   92</span>    }</div>
+<div class="line"><span class="lineno">   93</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

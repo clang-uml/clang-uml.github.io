@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.0</span>
+       <span id="projectnumber">0.5.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -145,6 +145,15 @@ PlantUML</h1>
 </div><!-- fragment --><p>will add before the diagram contents (right after <code>@startuml</code>) the title and direction hint, and after each diagram contents (right before <code>@enduml</code>) 2 notes attached to elements.</p>
 <p>This generator also accepts a <code>cmd</code> parameter to specify a command to execute on the generated PlantUML source file to generate actual diagram image, for instance: </p><div class="fragment language-yaml"><div class="line">plantuml:</div>
 <div class="line">  cmd: &quot;/usr/bin/plantuml -tsvg \&quot;diagrams/{}.puml\&quot;&quot;</div>
+</div><!-- fragment --><p>Furthermore, <code>plantuml</code> generator accepts basic styling options for customizing diagram look and layout, e.g.: </p><div class="fragment language-yaml"><div class="line">plantuml:</div>
+<div class="line">  style:</div>
+<div class="line">    # Apply this style to all classes in the diagram</div>
+<div class="line">    class: &quot;#aliceblue;line:blue;line.dotted;text:blue&quot;</div>
+<div class="line">    # Apply this style to all packages in the diagram</div>
+<div class="line">    package: &quot;#back:grey&quot;</div>
+<div class="line">    # Make all template instantiation relations point upwards and draw them</div>
+<div class="line">    # as green and dotted lines</div>
+<div class="line">    instantiation: &quot;up[#green,dotted]&quot;</div>
 </div><!-- fragment --><p>An example PlantUML diagram is presented below:</p>
 <div class="fragment language-cpp"><div class="line">@startuml</div>
 <div class="line">class &quot;A&quot; as C_0001371951663534295727</div>
@@ -200,7 +209,7 @@ MermaidJS</h1>
 <div class="line">  after:</div>
 <div class="line">    - &#39;note for {{ alias(&quot;inheritable_diagram_options&quot;) }} &quot;Options common to all diagram types.&quot;&#39;</div>
 <div class="line">    - &#39;note for {{ alias(&quot;config&quot;) }} &quot;General options not used by diagrams.&quot;&#39;</div>
-</div><!-- fragment --><p>will add before the diagram contents (right after diagram type, e.g. <code>classDiagram</code>) diagram direction hint, and after each diagram contents 2 notes attached to elements.</p>
+</div><!-- fragment --><p>will add a diagram direction hint before the diagram contents (right after diagram type, e.g. <code>classDiagram</code>), and after each diagram contents 2 notes attached to classes <code>inheritable_diagram_options</code> and <code>config</code>.</p>
 <p>This generator also accepts a <code>cmd</code> parameter to specify a command to execute on the generated MermaidJS source file to generate actual diagram image, for instance: </p><div class="fragment language-yaml"><div class="line">mermaid:</div>
 <div class="line">  cmd: &quot;mmdc -i \&quot;diagrams/{}.mmd\&quot; -o \&quot;diagrams/{}_mermaid.svg\&quot;&quot;</div>
 </div><!-- fragment --><p>An example MermaidJS diagram is presented below:</p>

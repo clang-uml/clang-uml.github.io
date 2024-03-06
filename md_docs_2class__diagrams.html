@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.0</span>
+       <span id="projectnumber">0.5.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -135,7 +135,7 @@ $(function() {
 <li><a class="el" href="md_docs_2class__diagrams.html#generating-uml-packages-in-the-diagram">Generating UML packages in the diagram</a><ul>
 <li><a class="el" href="md_docs_2class__diagrams.html#namespace-packages">Namespace packages</a></li>
 <li><a class="el" href="md_docs_2class__diagrams.html#directory-packages">Directory packages</a></li>
-<li>Module packages</li>
+<li><a class="el" href="md_docs_2class__diagrams.html#module-packages">Module packages</a></li>
 </ul>
 </li>
 <li><a class="el" href="md_docs_2class__diagrams.html#class-context-diagram">Class context diagram</a></li>
@@ -200,7 +200,8 @@ Relationships</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Nesting (inner class/enum)   </td><td class="markdownTableBodyNone"><img src="puml_nested.png" alt="" class="inline" title="nesting"/>      </td><td class="markdownTableBodyNone"><img src="mermaid_nested.png" alt="" class="inline" title="extension"/>      </td></tr>
 </table>
-<p>By default, a member from which a relationship has been added to the diagram between 2 classes will also be rendered inside the class. This behaviour can be however disabled by adding the following option to the diagram definition: </p><div class="fragment language-yaml"><div class="line">include_relations_also_as_members: false</div>
+<p>By default, a member from which a relationship has been added to the diagram between 2 classes will also be rendered inside as a property inside the class box. This behaviour can be however disabled by adding the following option to the diagram definition:</p>
+<div class="fragment language-yaml"><div class="line">include_relations_also_as_members: false</div>
 </div><!-- fragment --><h2><a class="anchor" id="relationships-to-classes-in-containers-or-smart-pointers"></a>
 Relationships to classes in containers or smart pointers</h2>
 <p><code>clang-uml</code> will automatically detect class members as well as method arguments, which reference or own values of types relevant for a given diagram but wrapped in smart pointers or containers and still generate relationship between these classes, for instance the following code:</p>
@@ -245,17 +246,18 @@ Namespace packages</h2>
 </div>
     <h2><a class="anchor" id="directory-packages"></a>
 Directory packages</h2>
-<p>In case the code base is structured based on subdirectory instead of namespaces (or this is a C project, where namespaces are not available), packages can be generated based on the location of a given declaration in the filesystem tree, by adding also the following option:</p>
+<p>In case the code base is structured based on subdirectories instead of namespaces (or this is a C project, where namespaces are not available), packages can be generated based on the location of a given declaration in the filesystem tree, by adding also the following option:</p>
 <div class="fragment language-yaml"><div class="line">package_type: directory</div>
 </div><!-- fragment --><p>which results in the following diagram:</p>
 <div class="image">
 <embed type="image/svg+xml" src="t00065_class.svg"></embed>
 </div>
     <blockquote class="doxtable">
-<p>&zwj;In this case make sure that the root path of the configuration file is properly configured for your project, if necessary add <code>relative_to</code> option to denote the root path against which all relative paths in the config file are calculated.</p>
-<p></p>
+<p>&zwj;In this case make sure that the root path of the configuration file is properly configured for your project, if necessary add <code>relative_to</code> option to denote the root path against which all relative paths in the config file are calculated. </p>
 </blockquote>
-<p>### Module packages Finally, to generate UML packages in the diagram based on C++20 modules, use the following option:</p>
+<h2><a class="anchor" id="module-packages"></a>
+Module packages</h2>
+<p>Finally, to generate UML packages in the diagram based on C++20 modules, use the following option:</p>
 <div class="fragment language-yaml"><div class="line">package_type: module</div>
 </div><!-- fragment --><p>which can produce the following diagram:</p>
 <div class="image">
@@ -271,7 +273,7 @@ Class context diagram</h1>
 <div class="fragment language-yaml"><div class="line">include:</div>
 <div class="line">  context:</div>
 <div class="line">    - ns1::MyClass</div>
-</div><!-- fragment --><p>By default, the diagram will include only elements in direct relationship to <code>ns1::MyClass</code>, but an addition option called <code>radius</code> can be added to this filter, which will extend the context to elements related to <code>ns1::MyClass</code> through at most N relationships, e.g:</p>
+</div><!-- fragment --><p>By default, the diagram will include only elements in direct relationship to <code>ns1::MyClass</code>, but an additional option called <code>radius</code> can be added to this filter, which will extend the context to elements related to <code>ns1::MyClass</code> through at most N relationships, e.g:</p>
 <div class="fragment language-yaml"><div class="line">include:</div>
 <div class="line">  context:</div>
 <div class="line">    - match:</div>

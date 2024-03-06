@@ -10,6 +10,7 @@ var searchData=
   ['plain_5fvisitor_7',['plain_visitor',['../classclanguml_1_1common_1_1visitor_1_1comment_1_1plain__visitor.html',1,'clanguml::common::visitor::comment']]],
   ['plantuml_8',['plantuml',['../structclanguml_1_1config_1_1plantuml.html',1,'clanguml::config']]],
   ['plantuml_5fgenerator_5ftag_9',['plantuml_generator_tag',['../structclanguml_1_1common_1_1generators_1_1plantuml__generator__tag.html',1,'clanguml::common::generators']]],
-  ['progress_5findicator_10',['progress_indicator',['../classclanguml_1_1common_1_1generators_1_1progress__indicator.html',1,'clanguml::common::generators']]],
-  ['progress_5fstate_11',['progress_state',['../structclanguml_1_1common_1_1generators_1_1progress__indicator_1_1progress__state.html',1,'clanguml::common::generators::progress_indicator']]]
+  ['plantuml_5fkeyword_5fmapping_5ft_10',['plantuml_keyword_mapping_t',['../structclanguml_1_1config_1_1plantuml__keyword__mapping__t.html',1,'clanguml::config']]],
+  ['progress_5findicator_11',['progress_indicator',['../classclanguml_1_1common_1_1generators_1_1progress__indicator.html',1,'clanguml::common::generators']]],
+  ['progress_5fstate_12',['progress_state',['../structclanguml_1_1common_1_1generators_1_1progress__indicator_1_1progress__state.html',1,'clanguml::common::generators::progress_indicator']]]
 ];

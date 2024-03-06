@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.0</span>
+       <span id="projectnumber">0.5.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -176,6 +176,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a48ee1b56980799353eab64ab6a904a80 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a48ee1b56980799353eab64ab6a904a80">generate_notes</a> (std::ostream &amp;ostr, const <a class="el" href="classclanguml_1_1common_1_1model_1_1element.html">model::element</a> &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1element.html">element</a>) const</td></tr>
 <tr class="memdesc:a48ee1b56980799353eab64ab6a904a80 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate diagram notes.  <br /></td></tr>
 <tr class="separator:a48ee1b56980799353eab64ab6a904a80 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8864a5be307dbe678d808f4ee83ad23 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#aa8864a5be307dbe678d808f4ee83ad23">generate_style</a> (std::ostream &amp;ostr, const std::string &amp;element_type, const <a class="el" href="classclanguml_1_1common_1_1model_1_1stylable__element.html">model::stylable_element</a> &amp;el) const</td></tr>
+<tr class="memdesc:aa8864a5be307dbe678d808f4ee83ad23 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate diagram element PlantUML style.  <br /></td></tr>
+<tr class="separator:aa8864a5be307dbe678d808f4ee83ad23 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b37bb8718a488b6916de75a0cb953f8 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a1b37bb8718a488b6916de75a0cb953f8">generate_metadata</a> (std::ostream &amp;ostr) const</td></tr>
 <tr class="memdesc:a1b37bb8718a488b6916de75a0cb953f8 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate comment with diagram metadata.  <br /></td></tr>
 <tr class="separator:a1b37bb8718a488b6916de75a0cb953f8 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -323,37 +326,36 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   89</span>            <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#af3949f8a75519d4161e817d041fcc306" title="Generate hyper link to element.">generate_link</a>(ostr, p);</div>
 <div class="line"><span class="lineno">   90</span>        }</div>
 <div class="line"><span class="lineno">   91</span> </div>
-<div class="line"><span class="lineno">   92</span>        <span class="keywordflow">if</span> (!p.style().empty())</div>
-<div class="line"><span class="lineno">   93</span>            ostr &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; p.style();</div>
-<div class="line"><span class="lineno">   94</span> </div>
-<div class="line"><span class="lineno">   95</span>        ostr &lt;&lt; <span class="stringliteral">&quot; {&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><span class="lineno">   96</span>    }</div>
-<div class="line"><span class="lineno">   97</span> </div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;subpackage : p) {</div>
-<div class="line"><span class="lineno">   99</span>        <span class="keyword">auto</span> &amp;pkg = <span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*subpackage);</div>
-<div class="line"><span class="lineno">  100</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(pkg)) {</div>
-<div class="line"><span class="lineno">  101</span>            <span class="keyword">auto</span> together_group =</div>
-<div class="line"><span class="lineno">  102</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().get_together_group(pkg.full_name(<span class="keyword">false</span>));</div>
-<div class="line"><span class="lineno">  103</span>            <span class="keywordflow">if</span> (together_group) {</div>
-<div class="line"><span class="lineno">  104</span>                <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.group_together(</div>
-<div class="line"><span class="lineno">  105</span>                    together_group.value(), &amp;pkg);</div>
-<div class="line"><span class="lineno">  106</span>            }</div>
-<div class="line"><span class="lineno">  107</span>            <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  108</span>                <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a7abcbd0f8ecb26ed7076f1d3a5281a15" title="Generate diagram package element.">generate</a>(pkg, ostr);</div>
-<div class="line"><span class="lineno">  109</span>            }</div>
-<div class="line"><span class="lineno">  110</span>        }</div>
-<div class="line"><span class="lineno">  111</span>    }</div>
-<div class="line"><span class="lineno">  112</span> </div>
-<div class="line"><span class="lineno">  113</span>    <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#abf2d2755f0f27e8c8003c19285d096e8" title="Generate package elements grouped using together PlantUML tag.">generate_groups</a>(ostr);</div>
-<div class="line"><span class="lineno">  114</span> </div>
-<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">if</span> (!uns.starts_with({p.full_name(false)})) {</div>
-<div class="line"><span class="lineno">  116</span>        ostr &lt;&lt; <span class="stringliteral">&quot;}&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><span class="lineno">  117</span>    }</div>
-<div class="line"><span class="lineno">  118</span> </div>
-<div class="line"><span class="lineno">  119</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a48ee1b56980799353eab64ab6a904a80" title="Generate diagram notes.">generate_notes</a>(ostr, p);</div>
-<div class="line"><span class="lineno">  120</span> </div>
-<div class="line"><span class="lineno">  121</span>    <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.leave();</div>
-<div class="line"><span class="lineno">  122</span>}</div>
+<div class="line"><span class="lineno">   92</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#aa8864a5be307dbe678d808f4ee83ad23" title="Generate diagram element PlantUML style.">generate_style</a>(ostr, p.type_name(), p);</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>        ostr &lt;&lt; <span class="stringliteral">&quot; {&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><span class="lineno">   95</span>    }</div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;subpackage : p) {</div>
+<div class="line"><span class="lineno">   98</span>        <span class="keyword">auto</span> &amp;pkg = <span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*subpackage);</div>
+<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(pkg)) {</div>
+<div class="line"><span class="lineno">  100</span>            <span class="keyword">auto</span> together_group =</div>
+<div class="line"><span class="lineno">  101</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().get_together_group(pkg.full_name(<span class="keyword">false</span>));</div>
+<div class="line"><span class="lineno">  102</span>            <span class="keywordflow">if</span> (together_group) {</div>
+<div class="line"><span class="lineno">  103</span>                <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.group_together(</div>
+<div class="line"><span class="lineno">  104</span>                    together_group.value(), &amp;pkg);</div>
+<div class="line"><span class="lineno">  105</span>            }</div>
+<div class="line"><span class="lineno">  106</span>            <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  107</span>                <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a7abcbd0f8ecb26ed7076f1d3a5281a15" title="Generate diagram package element.">generate</a>(pkg, ostr);</div>
+<div class="line"><span class="lineno">  108</span>            }</div>
+<div class="line"><span class="lineno">  109</span>        }</div>
+<div class="line"><span class="lineno">  110</span>    }</div>
+<div class="line"><span class="lineno">  111</span> </div>
+<div class="line"><span class="lineno">  112</span>    <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#abf2d2755f0f27e8c8003c19285d096e8" title="Generate package elements grouped using together PlantUML tag.">generate_groups</a>(ostr);</div>
+<div class="line"><span class="lineno">  113</span> </div>
+<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">if</span> (!uns.starts_with({p.full_name(false)})) {</div>
+<div class="line"><span class="lineno">  115</span>        ostr &lt;&lt; <span class="stringliteral">&quot;}&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><span class="lineno">  116</span>    }</div>
+<div class="line"><span class="lineno">  117</span> </div>
+<div class="line"><span class="lineno">  118</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a48ee1b56980799353eab64ab6a904a80" title="Generate diagram notes.">generate_notes</a>(ostr, p);</div>
+<div class="line"><span class="lineno">  119</span> </div>
+<div class="line"><span class="lineno">  120</span>    <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.leave();</div>
+<div class="line"><span class="lineno">  121</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -392,33 +394,33 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a0bb139f4ec6bb7b38edf53a8292475f0">clanguml::common::generators::plantuml::generator&lt; ConfigType, DiagramType &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html#l00138">138</a> of file <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  139</span>{</div>
-<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>()) {</div>
-<div class="line"><span class="lineno">  141</span>        <span class="keyword">auto</span> &amp;pkg = <span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p);</div>
-<div class="line"><span class="lineno">  142</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(pkg)) {</div>
-<div class="line"><span class="lineno">  143</span>            <span class="keyword">auto</span> together_group =</div>
-<div class="line"><span class="lineno">  144</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().get_together_group(pkg.full_name(<span class="keyword">false</span>));</div>
-<div class="line"><span class="lineno">  145</span>            <span class="keywordflow">if</span> (together_group) {</div>
-<div class="line"><span class="lineno">  146</span>                <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.group_together(</div>
-<div class="line"><span class="lineno">  147</span>                    together_group.value(), &amp;pkg);</div>
-<div class="line"><span class="lineno">  148</span>            }</div>
-<div class="line"><span class="lineno">  149</span>            <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  150</span>                <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a7abcbd0f8ecb26ed7076f1d3a5281a15" title="Generate diagram package element.">generate</a>(pkg, ostr);</div>
-<div class="line"><span class="lineno">  151</span>            }</div>
-<div class="line"><span class="lineno">  152</span>        }</div>
-<div class="line"><span class="lineno">  153</span>    }</div>
-<div class="line"><span class="lineno">  154</span> </div>
-<div class="line"><span class="lineno">  155</span>    <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#abf2d2755f0f27e8c8003c19285d096e8" title="Generate package elements grouped using together PlantUML tag.">generate_groups</a>(ostr);</div>
-<div class="line"><span class="lineno">  156</span> </div>
-<div class="line"><span class="lineno">  157</span>    <span class="comment">// Process package relationships</span></div>
-<div class="line"><span class="lineno">  158</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>()) {</div>
-<div class="line"><span class="lineno">  159</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(<span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p)))</div>
-<div class="line"><span class="lineno">  160</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a45f65da158e15590af36ee886fa2c22f" title="Generate relationships originating from package p">generate_relationships</a>(<span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p), ostr);</div>
-<div class="line"><span class="lineno">  161</span>    }</div>
-<div class="line"><span class="lineno">  162</span> </div>
-<div class="line"><span class="lineno">  163</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a17dc3b9d931293c76526e0b1dad83559" title="Generate diagram layout hints.">generate_config_layout_hints</a>(ostr);</div>
-<div class="line"><span class="lineno">  164</span>}</div>
+<p class="definition">Definition at line <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html#l00137">137</a> of file <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  138</span>{</div>
+<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>()) {</div>
+<div class="line"><span class="lineno">  140</span>        <span class="keyword">auto</span> &amp;pkg = <span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p);</div>
+<div class="line"><span class="lineno">  141</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(pkg)) {</div>
+<div class="line"><span class="lineno">  142</span>            <span class="keyword">auto</span> together_group =</div>
+<div class="line"><span class="lineno">  143</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().get_together_group(pkg.full_name(<span class="keyword">false</span>));</div>
+<div class="line"><span class="lineno">  144</span>            <span class="keywordflow">if</span> (together_group) {</div>
+<div class="line"><span class="lineno">  145</span>                <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.group_together(</div>
+<div class="line"><span class="lineno">  146</span>                    together_group.value(), &amp;pkg);</div>
+<div class="line"><span class="lineno">  147</span>            }</div>
+<div class="line"><span class="lineno">  148</span>            <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  149</span>                <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a7abcbd0f8ecb26ed7076f1d3a5281a15" title="Generate diagram package element.">generate</a>(pkg, ostr);</div>
+<div class="line"><span class="lineno">  150</span>            }</div>
+<div class="line"><span class="lineno">  151</span>        }</div>
+<div class="line"><span class="lineno">  152</span>    }</div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span>    <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#abf2d2755f0f27e8c8003c19285d096e8" title="Generate package elements grouped using together PlantUML tag.">generate_groups</a>(ostr);</div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span>    <span class="comment">// Process package relationships</span></div>
+<div class="line"><span class="lineno">  157</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>()) {</div>
+<div class="line"><span class="lineno">  158</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(<span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p)))</div>
+<div class="line"><span class="lineno">  159</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a45f65da158e15590af36ee886fa2c22f" title="Generate relationships originating from package p">generate_relationships</a>(<span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p), ostr);</div>
+<div class="line"><span class="lineno">  160</span>    }</div>
+<div class="line"><span class="lineno">  161</span> </div>
+<div class="line"><span class="lineno">  162</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a17dc3b9d931293c76526e0b1dad83559" title="Generate diagram layout hints.">generate_config_layout_hints</a>(ostr);</div>
+<div class="line"><span class="lineno">  163</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -446,19 +448,19 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html#l00124">124</a> of file <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  125</span>{</div>
-<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[group_name, group_elements] :</div>
-<div class="line"><span class="lineno">  127</span>        <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.get_current_groups()) {</div>
-<div class="line"><span class="lineno">  128</span>        ostr &lt;&lt; <span class="stringliteral">&quot;together {\n&quot;</span>;</div>
-<div class="line"><span class="lineno">  129</span> </div>
-<div class="line"><span class="lineno">  130</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> *pkg : group_elements) {</div>
-<div class="line"><span class="lineno">  131</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a7abcbd0f8ecb26ed7076f1d3a5281a15" title="Generate diagram package element.">generate</a>(*pkg, ostr);</div>
-<div class="line"><span class="lineno">  132</span>        }</div>
-<div class="line"><span class="lineno">  133</span> </div>
-<div class="line"><span class="lineno">  134</span>        ostr &lt;&lt; <span class="stringliteral">&quot;}\n&quot;</span>;</div>
-<div class="line"><span class="lineno">  135</span>    }</div>
-<div class="line"><span class="lineno">  136</span>}</div>
+<p class="definition">Definition at line <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html#l00123">123</a> of file <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  124</span>{</div>
+<div class="line"><span class="lineno">  125</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[group_name, group_elements] :</div>
+<div class="line"><span class="lineno">  126</span>        <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.get_current_groups()) {</div>
+<div class="line"><span class="lineno">  127</span>        ostr &lt;&lt; <span class="stringliteral">&quot;together {\n&quot;</span>;</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> *pkg : group_elements) {</div>
+<div class="line"><span class="lineno">  130</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a7abcbd0f8ecb26ed7076f1d3a5281a15" title="Generate diagram package element.">generate</a>(*pkg, ostr);</div>
+<div class="line"><span class="lineno">  131</span>        }</div>
+<div class="line"><span class="lineno">  132</span> </div>
+<div class="line"><span class="lineno">  133</span>        ostr &lt;&lt; <span class="stringliteral">&quot;}\n&quot;</span>;</div>
+<div class="line"><span class="lineno">  134</span>    }</div>
+<div class="line"><span class="lineno">  135</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

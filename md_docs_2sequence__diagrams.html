@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.0</span>
+       <span id="projectnumber">0.5.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -174,7 +174,7 @@ Specifying diagram location constraints</h1>
 <li><code>to</code> - will include all message call chains, which end at the specified locations</li>
 <li><code>from_to</code> - will include all call chains, which start and end at the specified locations</li>
 </ul>
-<p>Currently, the constraints can be a method or a free function, both specified using the full signature of the function, e.g.</p>
+<p>Currently, the constraints can be a method or a free function, both specified using the full signature of the function, e.g.:</p>
 <div class="fragment language-yaml"><div class="line">from:</div>
 <div class="line">  - function: &quot;main(int,const char**)&quot;</div>
 </div><!-- fragment --><p> or </p><div class="fragment language-yaml"><div class="line">to:</div>
@@ -183,11 +183,11 @@ Specifying diagram location constraints</h1>
 <p>In case of the <code>from_to</code> constraint, it is necessary to provide both <code>from</code> and <code>to</code> locations as follows: </p><div class="fragment language-yaml"><div class="line">from_to:</div>
 <div class="line">  - [function: &quot;clanguml::t20034::D::d2()&quot;,</div>
 <div class="line">     function: &quot;clanguml::t20034::A::a2()&quot;]</div>
-</div><!-- fragment --><p>To find the exact function signature which, can be used as a <code>from</code> location, run <code>clang-uml</code> as follows:</p>
+</div><!-- fragment --><p>To find the exact function signature, which can be used as a <code>from</code> location, run <code>clang-uml</code> as follows (assuming the function of interest is called <code>main</code>):</p>
 <div class="fragment language-bash"><div class="line">clang-uml --print-from -n main_sequence | grep main</div>
 </div><!-- fragment --><p>or to get all possible <code>to</code> locations, run:</p>
 <div class="fragment language-bash"><div class="line">clang-uml --print-to -n main_sequence | grep main</div>
-</div><!-- fragment --><p>Command line flags <code>--print-from</code> and <code>--print-to</code> will print on stdout all functions and methods available in the diagram model, and each line of this output can be directly used as a value of <code>start_from</code>, <code>from_to</code> or <code>to</code> properties in the config file.</p>
+</div><!-- fragment --><p>Command line flags <code>--print-from</code> and <code>--print-to</code> will print on stdout all functions and methods available in the diagram model, and each line of this output can be directly used as a value of <code>from</code>, <code>from_to</code> or <code>to</code> properties in the config file.</p>
 <p>Since that list can be quite large, it's best to filter the output to limit the number of lines to a subset of possible candidates.</p>
 <h1><a class="anchor" id="grouping-free-functions-by-file"></a>
 Grouping free functions by file</h1>
@@ -202,7 +202,7 @@ Lambda expressions in sequence diagrams</h1>
 <p>Lambda expressions in sequence diagrams are... tricky. There is currently tentative support, which follows the following rules:</p><ul>
 <li>If lambda expression is called within the scope of the diagram, the calls from the lambda will be placed at the lambda invocation and not declaration</li>
 <li>If lambda expression is passed to some function or method, which is outside the scope of the diagram (e.g. used in <code>std::transform</code> call) the call will not be generated</li>
-<li>If the lambda is passed as template parameter in instantiation it will not be generated</li>
+<li>If the lambda is passed as template argument in instantiation it will not be generated</li>
 </ul>
 <p>Another issue is the naming of lambda participants. Currently, each lambda is rendered in the diagram as a separate class whose name is composed of the lambda location in the code (the only unique way of identifying lambdas I was able to find). For example the following code:</p>
 <div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
@@ -307,7 +307,7 @@ Lambda expressions in sequence diagrams</h1>
 </div>
     <h1><a class="anchor" id="customizing-participants-order"></a>
 Customizing participants order</h1>
-<p>The default participant order in the sequence diagram can be suboptimal in the sense that consecutive calls can go right, then left, then right again depending on the specific call chain in the code. It is however possible to override this order in the diagram definition using <code>participants_order</code> property, for instance like this test case:</p>
+<p>The default participant order in the sequence diagram can be suboptimal in the sense that consecutive calls can go right, then left, then right again depending on the specific call chain in the code. It is however possible to override this order in the diagram definition using <code>participants_order</code> property, for instance like this:</p>
 <div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  t20029_sequence:</div>
 <div class="line">    type: sequence</div>
@@ -368,7 +368,7 @@ Including comments in sequence diagrams</h1>
 <p>Another option needed to generate these comments in the diagram is to set</p>
 <div class="fragment language-yaml"><div class="line">generate_message_comments: true</div>
 </div><!-- fragment --><p>for each sequence diagram, which should include these comments.</p>
-<p>In case only selected messages should have some specific comments, instead of enabling the <code>generate_message_comments</code> option, it is possible to use `` directive in the comment above the expression, see <a href="test_cases/t20001_sequence.svg">t20001</a>. </p>
+<p>In case only selected messages should have some specific comments, instead of enabling the <code>generate_message_comments</code> option, it is possible to use <code>\\uml{note TEXT}</code> directive in the comment above the expression, see <a href="test_cases/t20001_sequence.svg">t20001</a>. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- HTML footer for doxygen 1.9.1-->

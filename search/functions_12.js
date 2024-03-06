@@ -21,5 +21,6 @@ var searchData=
   ['resolve_5flocal_5fto_5fglobal_5fids_18',['resolve_local_to_global_ids',['../classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a6e5ebeb2d0e2f11dbec41c593ea54322',1,'clanguml::class_diagram::visitor::translation_unit_visitor']]],
   ['return_5ftype_19',['return_type',['../structclanguml_1_1sequence__diagram_1_1model_1_1function.html#ad818d376014ad5f5e837b454de6ddf59',1,'clanguml::sequence_diagram::model::function::return_type() const'],['../structclanguml_1_1sequence__diagram_1_1model_1_1function.html#a3cfb6b0a31934531c974671076c6c09b',1,'clanguml::sequence_diagram::model::function::return_type(const std::string &amp;rt)'],['../classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a5ad7ff649bdd4bb82361bfe5884f9ab0',1,'clanguml::sequence_diagram::model::message::return_type()']]],
   ['root_5fdirectory_20',['root_directory',['../structclanguml_1_1config_1_1diagram.html#a016e53083be67629dda6ad6c6bf47323',1,'clanguml::config::diagram']]],
-  ['rtrim_21',['rtrim',['../namespaceclanguml_1_1util.html#abbf8d7e28042cb0c1a43ea8e8bbbef06',1,'clanguml::util']]]
+  ['rtrim_21',['rtrim',['../namespaceclanguml_1_1util.html#abbf8d7e28042cb0c1a43ea8e8bbbef06',1,'clanguml::util']]],
+  ['run_5fgit_5fcommand_22',['run_git_command',['../namespaceclanguml_1_1util.html#aa218b8b24bb061d0808d16c15fc212dd',1,'clanguml::util']]]
 ];

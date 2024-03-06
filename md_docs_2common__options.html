@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.0</span>
+       <span id="projectnumber">0.5.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -137,19 +137,21 @@ $(function() {
 </ul>
 <h1><a class="anchor" id="overall-configuration-file-structure"></a>
 Overall configuration file structure</h1>
-<p>By default, <code>clang-uml</code> will look for file <code>.clang-uml</code> in the project's directory and read all diagrams definitions configuration from it. The file must be specified in <a class="el" href="namespaceYAML.html">YAML</a> and it's overall structure is as follows:</p>
-<div class="fragment language-yaml"><div class="line"># common options for all diagrams</div>
-<div class="line">...</div>
+<p>By default, <code>clang-uml</code> will look for file <code>.clang-uml</code> in the project's directory and read all diagram definitions configuration from it. The file must be specified in <a class="el" href="namespaceYAML.html">YAML</a> and it's overall structure is as follows:</p>
+<div class="fragment language-yaml"><div class="line"># Common options for all diagrams</div>
+<div class="line"># ...</div>
+<div class="line"># Diagram definitions</div>
 <div class="line">diagrams:</div>
 <div class="line">  first_diagram_name:</div>
 <div class="line">    type: class|sequence|package|include</div>
-<div class="line">    # diagram specific options</div>
-<div class="line">    ...</div>
+<div class="line">    # Diagram specific options</div>
+<div class="line">    # ...</div>
 <div class="line">  second_diagram_name:</div>
 <div class="line">    type: class|sequence|package|include</div>
-<div class="line">    # diagram specific options</div>
-<div class="line">    ...</div>
-<div class="line">  ...</div>
+<div class="line">    # Diagram specific options</div>
+<div class="line">    # ...</div>
+<div class="line">  # More diagrams</div>
+<div class="line">  # ...</div>
 </div><!-- fragment --><p>The top level common options are inherited by specific diagrams, if the option is applicable to them and they themselves do not override this option.</p>
 <p>For detailed reference of all configuration options see <a class="el" href="md_docs_2configuration__file.html">here</a>.</p>
 <p>Effective configuration, including default values can be printed out in <a class="el" href="namespaceYAML.html">YAML</a> format using the following option:</p>
@@ -169,7 +171,7 @@ Translation unit glob patterns</h1>
 <div class="line">  - src/dir1/*.cc</div>
 <div class="line">  - src/dir3/*.cc</div>
 </div><!-- fragment --><p>The glob patterns only need to match the translation units, which are also in the <code>compile_commands.json</code> file, i.e. any files that match the glob patterns, but are not in <code>compile_commands.json</code> will be ignored. In case the <code>glob</code> pattern set does not match any translation units an error will be printed on the standard output.</p>
-<p>For small projects, the <code>glob</code> property can be omitted, which will result in <code>clang-uml</code> parsing all translation units from <code>compile_commands.json</code> for the diagram. However, for large projects, constraining the number of translation units for each diagram to absolute minimum will significantly decrease the diagram generation times.</p>
+<p>For small projects, the <code>glob</code> property can be omitted, which will result in <code>clang-uml</code> parsing all translation units from <code>compile_commands.json</code> for the diagram. However, for large projects, constraining the number of translation units for each diagram to minimum necessary to discover all necessary diagram elements will significantly decrease the diagram generation times.</p>
 <h1><a class="anchor" id="custom-directives"></a>
 Custom directives</h1>
 <p>In case it's necessary to add some custom PlantUML or MermaidJS declarations before or after the generated diagram content, it can be achieved using the <code>plantuml</code> or <code>mermaid</code> configuration properties, for instance for PlantUML:</p>
@@ -197,9 +199,9 @@ Adding debug information in the generated diagrams</h1>
 </div><!-- fragment --><p>the generated PlantUML diagram will contain comments before each line containing the source location of the specific diagram element.</p>
 <h1><a class="anchor" id="resolving-include-path-and-compiler-flags-issues"></a>
 Resolving include path and compiler flags issues</h1>
-<p>Due to the fact, that your project can be compiled with different compilers and toolchains, the system paths and compilation flags detected by the Clang version linked to your <code>clang-uml</code> installation might differ from the ones actually used to compile your project.</p>
+<p>Due to the fact, that a project can be compiled with different compilers and toolchains, the system paths and compilation flags detected by the Clang version linked to your <code>clang-uml</code> installation might differ from the ones actually used to compile your project.</p>
 <blockquote class="doxtable">
-<p>&zwj;This is often an issue on macOS, when <code>clang-uml</code> uses Homebrew version of LLVM and your project was built using system Apple Clang </p>
+<p>&zwj;This is often an issue on macOS, when <code>clang-uml</code> uses Homebrew version of LLVM and a project was built using system Apple Clang. </p>
 </blockquote>
 <p>Typically, this results in error messages on the console during diagram generation, such as:</p>
 <div class="fragment language-cpp"><div class="line">... fatal: &#39;stddef.h&#39; file not found</div>

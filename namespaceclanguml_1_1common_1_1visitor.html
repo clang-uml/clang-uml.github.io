@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.0</span>
+       <span id="projectnumber">0.5.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -176,7 +176,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="template__builder_8h_source.html#l00032">32</a> of file <a class="el" href="template__builder_8h_source.html">template_builder.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="template__builder_8h_source.html#l00033">33</a> of file <a class="el" href="template__builder_8h_source.html">template_builder.h</a>.</p>
 
 </div>
 </div>
@@ -207,28 +207,28 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="template__builder_8cc_source.html#l00588">588</a> of file <a class="el" href="template__builder_8cc_source.html">template_builder.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  590</span>{</div>
-<div class="line"><span class="lineno">  591</span>    <span class="keywordflow">if</span> (type_parameter.find(<span class="stringliteral">&quot;type-parameter-&quot;</span>) != 0)</div>
-<div class="line"><span class="lineno">  592</span>        <span class="keywordflow">return</span> type_parameter;</div>
-<div class="line"><span class="lineno">  593</span> </div>
-<div class="line"><span class="lineno">  594</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *template_decl =</div>
-<div class="line"><span class="lineno">  595</span>            llvm::dyn_cast&lt;clang::ClassTemplateSpecializationDecl&gt;(decl);</div>
-<div class="line"><span class="lineno">  596</span>        template_decl != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  597</span>        <span class="keywordflow">return</span> detail::map_type_parameter_to_template_parameter(</div>
-<div class="line"><span class="lineno">  598</span>            template_decl, type_parameter);</div>
-<div class="line"><span class="lineno">  599</span>    }</div>
-<div class="line"><span class="lineno">  600</span> </div>
-<div class="line"><span class="lineno">  601</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *alias_decl =</div>
-<div class="line"><span class="lineno">  602</span>            llvm::dyn_cast&lt;clang::TypeAliasTemplateDecl&gt;(decl);</div>
-<div class="line"><span class="lineno">  603</span>        alias_decl != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  604</span>        <span class="keywordflow">return</span> detail::map_type_parameter_to_template_parameter(</div>
-<div class="line"><span class="lineno">  605</span>            alias_decl, type_parameter);</div>
-<div class="line"><span class="lineno">  606</span>    }</div>
-<div class="line"><span class="lineno">  607</span> </div>
-<div class="line"><span class="lineno">  608</span>    <span class="comment">// Fallback</span></div>
-<div class="line"><span class="lineno">  609</span>    <span class="keywordflow">return</span> type_parameter;</div>
-<div class="line"><span class="lineno">  610</span>}</div>
+<p class="definition">Definition at line <a class="el" href="template__builder_8cc_source.html#l00062">62</a> of file <a class="el" href="template__builder_8cc_source.html">template_builder.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   64</span>{</div>
+<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">if</span> (type_parameter.find(<span class="stringliteral">&quot;type-parameter-&quot;</span>) != 0)</div>
+<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">return</span> type_parameter;</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *template_decl =</div>
+<div class="line"><span class="lineno">   69</span>            llvm::dyn_cast&lt;clang::ClassTemplateSpecializationDecl&gt;(decl);</div>
+<div class="line"><span class="lineno">   70</span>        template_decl != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">return</span> detail::map_type_parameter_to_template_parameter(</div>
+<div class="line"><span class="lineno">   72</span>            template_decl, type_parameter);</div>
+<div class="line"><span class="lineno">   73</span>    }</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *alias_decl =</div>
+<div class="line"><span class="lineno">   76</span>            llvm::dyn_cast&lt;clang::TypeAliasTemplateDecl&gt;(decl);</div>
+<div class="line"><span class="lineno">   77</span>        alias_decl != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">return</span> detail::map_type_parameter_to_template_parameter(</div>
+<div class="line"><span class="lineno">   79</span>            alias_decl, type_parameter);</div>
+<div class="line"><span class="lineno">   80</span>    }</div>
+<div class="line"><span class="lineno">   81</span> </div>
+<div class="line"><span class="lineno">   82</span>    <span class="comment">// Fallback</span></div>
+<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">return</span> type_parameter;</div>
+<div class="line"><span class="lineno">   84</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

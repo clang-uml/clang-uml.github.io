@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.0</span>
+       <span id="projectnumber">0.5.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -215,62 +215,77 @@ $(function() {
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordflow">return</span> <span class="stringliteral">&quot;c++&quot;</span>;</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1compilation__database.html#a2f3eb003ce1dad6e666c3e260edbbb09">   91</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a2f3eb003ce1dad6e666c3e260edbbb09">compilation_database::adjust_compilation_database</a>(</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    std::vector&lt;clang::tooling::CompileCommand&gt; &amp;commands)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1compilation__database.html#af8797ed9d17d0374d60cc1827df54afc">   91</a></span><span class="keywordtype">long</span> <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#af8797ed9d17d0374d60cc1827df54afc">compilation_database::count_matching_commands</a>(</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;files)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#if !defined(_WIN32)</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().query_driver &amp;&amp; !<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().query_driver().empty()) {</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;compile_command : commands) {</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            <span class="keyword">auto</span> argv0 = <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#abde13ead9b9cbdce8159d274a207cc41">query_driver</a>() == <span class="stringliteral">&quot;.&quot;</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                ? compile_command.CommandLine.at(0)</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                : <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#abde13ead9b9cbdce8159d274a207cc41">query_driver</a>();</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <a class="code hl_class" href="classclanguml_1_1util_1_1query__driver__output__extractor.html" title="Executed compiler frontend and extract default system paths.">util::query_driver_output_extractor</a> extractor{</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                argv0, <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a477d4b4f0abe3774450a6f4706d2bf6d">guess_language_from_filename</a>(compile_command.Filename)};</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            extractor.execute();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">auto</span> result{0L};</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keyword">auto</span> commands = <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ad8ef48a4fd84b555723e09ae67fbd98e">base</a>().getAllCompileCommands();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;command : commands) {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        result += std::count_if(files.begin(), files.end(),</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            [&amp;command](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;file) { return command.Filename == file; });</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            std::vector&lt;std::string&gt; system_header_args;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;path : extractor.system_include_paths()) {</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                system_header_args.emplace_back(<span class="stringliteral">&quot;-isystem&quot;</span>);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                system_header_args.emplace_back(path);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            }</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            compile_command.CommandLine.insert(</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                compile_command.CommandLine.begin() + 1,</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                system_header_args.begin(), system_header_args.end());</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1compilation__database.html#a2f3eb003ce1dad6e666c3e260edbbb09">  106</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a2f3eb003ce1dad6e666c3e260edbbb09">compilation_database::adjust_compilation_database</a>(</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    std::vector&lt;clang::tooling::CompileCommand&gt; &amp;commands)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">#if !defined(_WIN32)</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().query_driver &amp;&amp; !<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().query_driver().empty()) {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;compile_command : commands) {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <span class="keyword">auto</span> argv0 = <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#abde13ead9b9cbdce8159d274a207cc41">query_driver</a>() == <span class="stringliteral">&quot;.&quot;</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                ? compile_command.CommandLine.at(0)</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                : <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#abde13ead9b9cbdce8159d274a207cc41">query_driver</a>();</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            <span class="keywordflow">if</span> (!extractor.target().empty()) {</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                compile_command.CommandLine.insert(</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                    compile_command.CommandLine.begin() + 1,</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                    fmt::format(<span class="stringliteral">&quot;--target={}&quot;</span>, extractor.target()));</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            }</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        }</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    }</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a4963b2dad5d2aab0bd1ff08579a1c2ad">add_compile_flags</a> &amp;&amp; !<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a4963b2dad5d2aab0bd1ff08579a1c2ad">add_compile_flags</a>().empty()) {</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;compile_command : commands) {</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            <a class="code hl_class" href="classclanguml_1_1util_1_1query__driver__output__extractor.html" title="Executed compiler frontend and extract default system paths.">util::query_driver_output_extractor</a> extractor{</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                argv0, <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a477d4b4f0abe3774450a6f4706d2bf6d">guess_language_from_filename</a>(compile_command.Filename)};</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            extractor.execute();</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            std::vector&lt;std::string&gt; system_header_args;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;path : extractor.system_include_paths()) {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                system_header_args.emplace_back(<span class="stringliteral">&quot;-isystem&quot;</span>);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                system_header_args.emplace_back(path);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            }</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            compile_command.CommandLine.insert(</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                <span class="comment">// Add flags after argv[0]</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                compile_command.CommandLine.begin() + 1,</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a4963b2dad5d2aab0bd1ff08579a1c2ad">add_compile_flags</a>().begin(),</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a4963b2dad5d2aab0bd1ff08579a1c2ad">add_compile_flags</a>().end());</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        }</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    }</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#aef019892269e371cf90fb5fc0697e984">remove_compile_flags</a> &amp;&amp;</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        !<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#aef019892269e371cf90fb5fc0697e984">remove_compile_flags</a>().empty()) {</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;compile_command : commands) {</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;flag : <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#aef019892269e371cf90fb5fc0697e984">remove_compile_flags</a>()) {</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                <a class="code hl_function" href="namespaceclanguml_1_1util.html#ad0188dcbd54a723d6fbe5a06fc30d10b" title="Remove and erase elements from a vector.">util::erase_if</a>(compile_command.CommandLine,</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>                    [&amp;flag](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;arg) { return flag == arg; });</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>            }</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        }</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    }</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>}</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>} <span class="comment">// namespace clanguml::common</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                compile_command.CommandLine.begin() + 1,</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                system_header_args.begin(), system_header_args.end());</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            <span class="keywordflow">if</span> (!extractor.target().empty()) {</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                compile_command.CommandLine.insert(</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                    compile_command.CommandLine.begin() + 1,</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                    fmt::format(<span class="stringliteral">&quot;--target={}&quot;</span>, extractor.target()));</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>            }</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        }</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    }</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a4963b2dad5d2aab0bd1ff08579a1c2ad">add_compile_flags</a> &amp;&amp; !<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a4963b2dad5d2aab0bd1ff08579a1c2ad">add_compile_flags</a>().empty()) {</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;compile_command : commands) {</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            compile_command.CommandLine.insert(</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                <span class="comment">// Add flags after argv[0]</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                compile_command.CommandLine.begin() + 1,</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a4963b2dad5d2aab0bd1ff08579a1c2ad">add_compile_flags</a>().begin(),</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a4963b2dad5d2aab0bd1ff08579a1c2ad">add_compile_flags</a>().end());</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        }</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    }</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#aef019892269e371cf90fb5fc0697e984">remove_compile_flags</a> &amp;&amp;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        !<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#aef019892269e371cf90fb5fc0697e984">remove_compile_flags</a>().empty()) {</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;compile_command : commands) {</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;flag : <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#aef019892269e371cf90fb5fc0697e984">remove_compile_flags</a>()) {</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                <a class="code hl_function" href="namespaceclanguml_1_1util.html#ad0188dcbd54a723d6fbe5a06fc30d10b" title="Remove and erase elements from a vector.">util::erase_if</a>(compile_command.CommandLine,</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                    [&amp;flag](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;arg) { return flag == arg; });</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            }</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        }</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    }</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>}</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>} <span class="comment">// namespace clanguml::common</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.0</span>
+       <span id="projectnumber">0.5.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -136,12 +136,16 @@ $(function() {
 <div class="textblock"><p>PlantUML diagram config section. </p>
 <p>This configuration option can be used to add any PlantUML directives before or after the generated diagram, such as diagram name, or custom notes. </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00119">119</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00124">124</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="config_8h_source.html">config.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:afb207070d9e85681d776565f94bc11a4"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1plantuml.html#afb207070d9e85681d776565f94bc11a4">get_style</a> (<a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">common::model::relationship_t</a> relationship_type) const</td></tr>
+<tr class="separator:afb207070d9e85681d776565f94bc11a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ded660f39ea09d3b170851eae93a480"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1plantuml.html#a5ded660f39ea09d3b170851eae93a480">get_style</a> (const std::string &amp;element_type) const</td></tr>
+<tr class="separator:a5ded660f39ea09d3b170851eae93a480"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e174a08cfeb3eb0eb85a171e8c88319"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1plantuml.html#a5e174a08cfeb3eb0eb85a171e8c88319">append</a> (const <a class="el" href="structclanguml_1_1config_1_1plantuml.html">plantuml</a> &amp;r)</td></tr>
 <tr class="separator:a5e174a08cfeb3eb0eb85a171e8c88319"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -153,6 +157,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ad611c91f95819377cbd7d70eb2420b6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad818595adcf6092f33e3a403c2c6470a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1plantuml.html#ad818595adcf6092f33e3a403c2c6470a">cmd</a></td></tr>
 <tr class="separator:ad818595adcf6092f33e3a403c2c6470a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a130349517be076be85773dc349ddcf7a"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1plantuml.html#a130349517be076be85773dc349ddcf7a">style</a></td></tr>
+<tr class="separator:a130349517be076be85773dc349ddcf7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a5e174a08cfeb3eb0eb85a171e8c88319" name="a5e174a08cfeb3eb0eb85a171e8c88319"></a>
@@ -171,13 +177,65 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00189">189</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  190</span>{</div>
+<div class="line"><span class="lineno">  191</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#aca7b1a3532273337b463257cd01a1716">before</a>.insert(<a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#aca7b1a3532273337b463257cd01a1716">before</a>.end(), r.before.begin(), r.before.end());</div>
+<div class="line"><span class="lineno">  192</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#ad611c91f95819377cbd7d70eb2420b6b">after</a>.insert(<a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#ad611c91f95819377cbd7d70eb2420b6b">after</a>.end(), r.after.begin(), r.after.end());</div>
+<div class="line"><span class="lineno">  193</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#ad818595adcf6092f33e3a403c2c6470a">cmd</a>.empty())</div>
+<div class="line"><span class="lineno">  194</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#ad818595adcf6092f33e3a403c2c6470a">cmd</a> = r.cmd;</div>
+<div class="line"><span class="lineno">  195</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="afb207070d9e85681d776565f94bc11a4" name="afb207070d9e85681d776565f94bc11a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb207070d9e85681d776565f94bc11a4">&#9670;&#160;</a></span>get_style() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::string &gt; clanguml::config::plantuml::get_style </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">common::model::relationship_t</a>&#160;</td>
+          <td class="paramname"><em>relationship_type</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 <p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00171">171</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  172</span>{</div>
-<div class="line"><span class="lineno">  173</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#aca7b1a3532273337b463257cd01a1716">before</a>.insert(<a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#aca7b1a3532273337b463257cd01a1716">before</a>.end(), r.before.begin(), r.before.end());</div>
-<div class="line"><span class="lineno">  174</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#ad611c91f95819377cbd7d70eb2420b6b">after</a>.insert(<a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#ad611c91f95819377cbd7d70eb2420b6b">after</a>.end(), r.after.begin(), r.after.end());</div>
-<div class="line"><span class="lineno">  175</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#ad818595adcf6092f33e3a403c2c6470a">cmd</a>.empty())</div>
-<div class="line"><span class="lineno">  176</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#ad818595adcf6092f33e3a403c2c6470a">cmd</a> = r.cmd;</div>
-<div class="line"><span class="lineno">  177</span>}</div>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  173</span>{</div>
+<div class="line"><span class="lineno">  174</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#a130349517be076be85773dc349ddcf7a">style</a>.count(<a class="code hl_function" href="namespaceclanguml_1_1config.html#a151481cbc2ad3e232610830346d14d10">to_string</a>(relationship_type)) == 0)</div>
+<div class="line"><span class="lineno">  175</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  176</span> </div>
+<div class="line"><span class="lineno">  177</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#a130349517be076be85773dc349ddcf7a">style</a>.at(<a class="code hl_function" href="namespaceclanguml_1_1config.html#a151481cbc2ad3e232610830346d14d10">to_string</a>(relationship_type));</div>
+<div class="line"><span class="lineno">  178</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5ded660f39ea09d3b170851eae93a480" name="a5ded660f39ea09d3b170851eae93a480"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ded660f39ea09d3b170851eae93a480">&#9670;&#160;</a></span>get_style() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::string &gt; clanguml::config::plantuml::get_style </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>element_type</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00180">180</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  182</span>{</div>
+<div class="line"><span class="lineno">  183</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#a130349517be076be85773dc349ddcf7a">style</a>.count(element_type) == 0)</div>
+<div class="line"><span class="lineno">  184</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  185</span> </div>
+<div class="line"><span class="lineno">  186</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1config_1_1plantuml.html#a130349517be076be85773dc349ddcf7a">style</a>.at(element_type);</div>
+<div class="line"><span class="lineno">  187</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -195,7 +253,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>List of directives to add before diagram </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00123">123</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00128">128</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -212,7 +270,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>List of directives to add before diagram </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00121">121</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00126">126</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -229,7 +287,24 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Command template to render diagram using PlantUML </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00125">125</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00130">130</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a130349517be076be85773dc349ddcf7a" name="a130349517be076be85773dc349ddcf7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a130349517be076be85773dc349ddcf7a">&#9670;&#160;</a></span>style</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::string&gt; clanguml::config::plantuml::style</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Provide customized styles for various elements </p>
+
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00132">132</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>

@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.0</span>
+       <span id="projectnumber">0.5.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -124,7 +124,7 @@ $(function() {
 <div class="textblock"><p><a class="anchor" id="troubleshooting"></a></p>
 <ul>
 <li><a class="el" href="md_docs_2troubleshooting.html#general-issues">General issues</a><ul>
-<li><a class="el" href="md_docs_2troubleshooting.html#clang-uml-crashes-when-generating-diagram">clang-uml crashes when generating diagram</a></li>
+<li><a class="el" href="md_docs_2troubleshooting.html#clang-uml-crashes-when-generating-a-diagram">clang-uml crashes when generating a diagram</a></li>
 <li><a class="el" href="md_docs_2troubleshooting.html#diagram-generation-is-very-slow">Diagram generation is very slow</a></li>
 <li><a class="el" href="md_docs_2troubleshooting.html#diagram-generated-with-plantuml-is-cropped">Diagram generated with PlantUML is cropped</a></li>
 <li><a class="el" href="md_docs_2troubleshooting.html#clang-produces-several-warnings-during-diagram-generation">Clang produces several warnings during diagram generation</a></li>
@@ -147,8 +147,8 @@ $(function() {
 </ul>
 <h1><a class="anchor" id="general-issues"></a>
 General issues</h1>
-<h2><a class="anchor" id="clang-uml-crashes-when-generating-diagram"></a>
-clang-uml crashes when generating diagram</h2>
+<h2><a class="anchor" id="clang-uml-crashes-when-generating-a-diagram"></a>
+clang-uml crashes when generating a diagram</h2>
 <p>If <code>clang-uml</code> crashes with a segmentation fault, it is possible to trace the exact stack trace of the fault using the following steps:</p>
 <p>First, build <code>clang-uml</code> from source in debug mode, i.e.:</p>
 <div class="fragment language-bash"><div class="line">make debug</div>
@@ -287,7 +287,7 @@ Generated diagram is empty</h2>
 </div><!-- fragment --><p>which means that either you have a typo in the function signature in the configuration file, or that the function was not defined in the translation units you specified in the <code>glob</code> patterns for this diagram.</p>
 <p>Except for simplest methods and functions, it is unlikely to write by hand the exact string representation of the function signature as seen by <code>clang-uml</code>.</p>
 <p>To find the exact function signature run <code>clang-uml</code> as follows:</p>
-<div class="fragment language-bash"><div class="line">clang-uml -n my_sequence_diagram --print-start-from | grep foo</div>
+<div class="fragment language-bash"><div class="line">clang-uml -n my_sequence_diagram --print-from | grep foo</div>
 </div><!-- fragment --><p>Command line flag <code>--print-from</code> will print on stdout all functions and methods available in the diagram model which can be used as starting points for a sequence diagram (similarly <code>--print-to</code> can be used to list all valid functions to be used as call chain end constraints).</p>
 <h2><a class="anchor" id="generated-diagram-contains-several-empty-control-blocks-or-calls-which-should-not-be-there"></a>
 Generated diagram contains several empty control blocks or calls which should not be there</h2>

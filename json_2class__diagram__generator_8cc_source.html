@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.0</span>
+       <span id="projectnumber">0.5.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -152,8 +152,8 @@ $(function() {
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1class__diagram_1_1model.html#ada183f27ee95ae5f565447f527e4a417">   26</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespaceclanguml_1_1class__diagram_1_1model.html#ada183f27ee95ae5f565447f527e4a417">set_module</a>(nlohmann::json &amp;j, <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1element.html" title="Base class for any element qualified by namespace.">common::model::element</a> &amp;e)</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordflow">if</span> (e.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#a1b01a5872ec827a47b195a7c513fc517">module</a>()) {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        j[<span class="stringliteral">&quot;module&quot;</span>][<span class="stringliteral">&quot;name&quot;</span>] = e.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#a1b01a5872ec827a47b195a7c513fc517">module</a>().value();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;maybe_module = e.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#a1b01a5872ec827a47b195a7c513fc517">module</a>(); maybe_module) {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        j[<span class="stringliteral">&quot;module&quot;</span>][<span class="stringliteral">&quot;name&quot;</span>] = *maybe_module;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        j[<span class="stringliteral">&quot;module&quot;</span>][<span class="stringliteral">&quot;is_private&quot;</span>] = e.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element.html#a35a82a66d2589d10f9a85e22cec18bf0">module_private</a>();</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
