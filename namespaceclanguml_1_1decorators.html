@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.1</span>
+       <span id="projectnumber">0.5.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -166,19 +166,19 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a86df136afe66fb69f18320c135a96aa3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="structclanguml_1_1decorators_1_1decorator.html">decorator</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1decorators.html#a86df136afe66fb69f18320c135a96aa3">parse</a> (std::string documentation_block, const std::string &amp;clanguml_tag=&quot;uml&quot;)</td></tr>
-<tr class="memdesc:a86df136afe66fb69f18320c135a96aa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a documentation block and extract all clang-uml decorators.  <br /></td></tr>
-<tr class="separator:a86df136afe66fb69f18320c135a96aa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada6807fa66c4ec4680cd8c7634cf5d08"><td class="memItemLeft" align="right" valign="top">std::pair&lt; std::vector&lt; std::shared_ptr&lt; <a class="el" href="structclanguml_1_1decorators_1_1decorator.html">decorator</a> &gt; &gt;, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1decorators.html#ada6807fa66c4ec4680cd8c7634cf5d08">parse</a> (std::string documentation_block, const std::string &amp;clanguml_tag=&quot;uml&quot;)</td></tr>
+<tr class="memdesc:ada6807fa66c4ec4680cd8c7634cf5d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a documentation block and extract all clang-uml decorators.  <br /></td></tr>
+<tr class="separator:ada6807fa66c4ec4680cd8c7634cf5d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a86df136afe66fb69f18320c135a96aa3" name="a86df136afe66fb69f18320c135a96aa3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86df136afe66fb69f18320c135a96aa3">&#9670;&#160;</a></span>parse()</h2>
+<a id="ada6807fa66c4ec4680cd8c7634cf5d08" name="ada6807fa66c4ec4680cd8c7634cf5d08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada6807fa66c4ec4680cd8c7634cf5d08">&#9670;&#160;</a></span>parse()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::shared_ptr&lt; <a class="el" href="structclanguml_1_1decorators_1_1decorator.html">decorator</a> &gt; &gt; clanguml::decorators::parse </td>
+          <td class="memname">std::pair&lt; std::vector&lt; std::shared_ptr&lt; <a class="el" href="structclanguml_1_1decorators_1_1decorator.html">decorator</a> &gt; &gt;, std::string &gt; clanguml::decorators::parse </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>documentation_block</em>, </td>
@@ -205,40 +205,55 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>List of clang-uml decorators extracted from comment </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pair of: a list of clang-uml decorators extracted from comment and a comment stripped of any uml directives </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="decorators_8cc_source.html#l00190">190</a> of file <a class="el" href="decorators_8cc_source.html">decorators.cc</a>.</p>
 <div class="fragment DoxyCode"><div class="line"><span class="lineno">  192</span>{</div>
 <div class="line"><span class="lineno">  193</span>    std::vector&lt;std::shared_ptr&lt;decorator&gt;&gt; res;</div>
-<div class="line"><span class="lineno">  194</span>    <span class="keyword">const</span> std::string begin_tag{<span class="stringliteral">&quot;@&quot;</span> + clanguml_tag};</div>
-<div class="line"><span class="lineno">  195</span>    <span class="keyword">const</span> <span class="keyword">auto</span> begin_tag_size = begin_tag.size();</div>
-<div class="line"><span class="lineno">  196</span> </div>
-<div class="line"><span class="lineno">  197</span>    <span class="comment">// First replace all \uml occurences with @uml</span></div>
-<div class="line"><span class="lineno">  198</span>    util::replace_all(</div>
-<div class="line"><span class="lineno">  199</span>        documentation_block, <span class="stringliteral">&quot;\\&quot;</span> + clanguml_tag, <span class="stringliteral">&quot;@&quot;</span> + clanguml_tag);</div>
-<div class="line"><span class="lineno">  200</span>    documentation_block = util::trim(documentation_block);</div>
-<div class="line"><span class="lineno">  201</span> </div>
-<div class="line"><span class="lineno">  202</span>    <span class="keyword">const</span> std::string_view block_view{documentation_block};</div>
+<div class="line"><span class="lineno">  194</span>    std::string stripped_comment;</div>
+<div class="line"><span class="lineno">  195</span> </div>
+<div class="line"><span class="lineno">  196</span>    <span class="keyword">const</span> std::string begin_tag{<span class="stringliteral">&quot;@&quot;</span> + clanguml_tag};</div>
+<div class="line"><span class="lineno">  197</span>    <span class="keyword">const</span> <span class="keyword">auto</span> begin_tag_size = begin_tag.size();</div>
+<div class="line"><span class="lineno">  198</span> </div>
+<div class="line"><span class="lineno">  199</span>    <span class="comment">// First replace all \uml occurences with @uml</span></div>
+<div class="line"><span class="lineno">  200</span>    util::replace_all(</div>
+<div class="line"><span class="lineno">  201</span>        documentation_block, <span class="stringliteral">&quot;\\&quot;</span> + clanguml_tag, <span class="stringliteral">&quot;@&quot;</span> + clanguml_tag);</div>
+<div class="line"><span class="lineno">  202</span>    documentation_block = util::trim(documentation_block);</div>
 <div class="line"><span class="lineno">  203</span> </div>
-<div class="line"><span class="lineno">  204</span>    <span class="keyword">auto</span> pos = block_view.find(<span class="stringliteral">&quot;@&quot;</span> + clanguml_tag + <span class="stringliteral">&quot;{&quot;</span>);</div>
-<div class="line"><span class="lineno">  205</span>    <span class="keywordflow">while</span> (pos &lt; documentation_block.size()) {</div>
-<div class="line"><span class="lineno">  206</span>        <span class="keyword">auto</span> c_begin = pos + begin_tag_size;</div>
-<div class="line"><span class="lineno">  207</span>        <span class="keyword">auto</span> c_end = documentation_block.find(<span class="charliteral">&#39;}&#39;</span>, c_begin);</div>
-<div class="line"><span class="lineno">  208</span> </div>
-<div class="line"><span class="lineno">  209</span>        <span class="keywordflow">if</span> (c_end == std::string::npos)</div>
-<div class="line"><span class="lineno">  210</span>            <span class="keywordflow">return</span> res;</div>
-<div class="line"><span class="lineno">  211</span> </div>
-<div class="line"><span class="lineno">  212</span>        <span class="keyword">auto</span> com =</div>
-<div class="line"><span class="lineno">  213</span>            decorator::from_string(block_view.substr(c_begin + 1, c_end - 2));</div>
-<div class="line"><span class="lineno">  214</span> </div>
-<div class="line"><span class="lineno">  215</span>        <span class="keywordflow">if</span> (com)</div>
-<div class="line"><span class="lineno">  216</span>            res.emplace_back(std::move(com));</div>
+<div class="line"><span class="lineno">  204</span>    <span class="keyword">const</span> std::string_view block_view{documentation_block};</div>
+<div class="line"><span class="lineno">  205</span> </div>
+<div class="line"><span class="lineno">  206</span>    <span class="keyword">auto</span> pos = block_view.find(<span class="stringliteral">&quot;@&quot;</span> + clanguml_tag + <span class="stringliteral">&quot;{&quot;</span>);</div>
+<div class="line"><span class="lineno">  207</span> </div>
+<div class="line"><span class="lineno">  208</span>    <span class="keywordflow">if</span> (pos == std::string::npos) {</div>
+<div class="line"><span class="lineno">  209</span>        <span class="comment">// This comment had no uml directives</span></div>
+<div class="line"><span class="lineno">  210</span>        <span class="keywordflow">return</span> {{}, util::trim(documentation_block)};</div>
+<div class="line"><span class="lineno">  211</span>    }</div>
+<div class="line"><span class="lineno">  212</span> </div>
+<div class="line"><span class="lineno">  213</span>    <span class="keywordtype">size_t</span> last_end_pos{0};</div>
+<div class="line"><span class="lineno">  214</span>    <span class="keywordflow">while</span> (pos &lt; documentation_block.size()) {</div>
+<div class="line"><span class="lineno">  215</span>        <span class="keyword">auto</span> c_begin = pos + begin_tag_size;</div>
+<div class="line"><span class="lineno">  216</span>        <span class="keyword">auto</span> c_end = block_view.find(<span class="charliteral">&#39;}&#39;</span>, c_begin);</div>
 <div class="line"><span class="lineno">  217</span> </div>
-<div class="line"><span class="lineno">  218</span>        pos = block_view.find(<span class="stringliteral">&quot;@&quot;</span> + clanguml_tag + <span class="stringliteral">&quot;{&quot;</span>, c_end);</div>
-<div class="line"><span class="lineno">  219</span>    }</div>
-<div class="line"><span class="lineno">  220</span> </div>
-<div class="line"><span class="lineno">  221</span>    <span class="keywordflow">return</span> res;</div>
-<div class="line"><span class="lineno">  222</span>};</div>
+<div class="line"><span class="lineno">  218</span>        <span class="keywordflow">if</span> (c_end == std::string::npos) {</div>
+<div class="line"><span class="lineno">  219</span>            <span class="keywordflow">return</span> {res, util::trim(stripped_comment)};</div>
+<div class="line"><span class="lineno">  220</span>        }</div>
+<div class="line"><span class="lineno">  221</span> </div>
+<div class="line"><span class="lineno">  222</span>        <span class="keyword">auto</span> com =</div>
+<div class="line"><span class="lineno">  223</span>            decorator::from_string(block_view.substr(c_begin + 1, c_end - 2));</div>
+<div class="line"><span class="lineno">  224</span> </div>
+<div class="line"><span class="lineno">  225</span>        <span class="keywordflow">if</span> (com)</div>
+<div class="line"><span class="lineno">  226</span>            res.emplace_back(std::move(com));</div>
+<div class="line"><span class="lineno">  227</span> </div>
+<div class="line"><span class="lineno">  228</span>        <span class="keyword">const</span> <span class="keyword">auto</span> in_between_length = pos - last_end_pos;</div>
+<div class="line"><span class="lineno">  229</span>        stripped_comment += block_view.substr(last_end_pos, in_between_length);</div>
+<div class="line"><span class="lineno">  230</span> </div>
+<div class="line"><span class="lineno">  231</span>        last_end_pos = pos + (c_end - c_begin + begin_tag_size + 1);</div>
+<div class="line"><span class="lineno">  232</span> </div>
+<div class="line"><span class="lineno">  233</span>        pos = block_view.find(<span class="stringliteral">&quot;@&quot;</span> + clanguml_tag + <span class="stringliteral">&quot;{&quot;</span>, c_end);</div>
+<div class="line"><span class="lineno">  234</span>    }</div>
+<div class="line"><span class="lineno">  235</span> </div>
+<div class="line"><span class="lineno">  236</span>    <span class="keywordflow">return</span> {res, util::trim(stripped_comment)};</div>
+<div class="line"><span class="lineno">  237</span>};</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -1,0 +1,491 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: t20046 - Test case for call expressions in nested lambdas</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.5.2</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">t20046 - Test case for call expressions in nested lambdas</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="t20046---test-case-for-call-expressions-in-nested-lambdas"></a></p>
+<h1><a class="anchor" id="config-119"></a>
+Config</h1>
+<div class="fragment language-yaml"><div class="line">add_compile_flags:</div>
+<div class="line">  - -fparse-all-comments</div>
+<div class="line">diagrams:</div>
+<div class="line">  t20046_sequence:</div>
+<div class="line">    type: sequence</div>
+<div class="line">    glob:</div>
+<div class="line">      - t20046.cc</div>
+<div class="line">    include:</div>
+<div class="line">      namespaces:</div>
+<div class="line">        - clanguml::t20046</div>
+<div class="line">    using_namespace: clanguml::t20046</div>
+<div class="line">    from:</div>
+<div class="line">      - function: &quot;clanguml::t20046::tmain()&quot;</div>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-119"></a>
+Source code</h1>
+<p>File <code>tests/t20046/t20046.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
+<div class="line"><span class="keyword">namespace </span>t20046 {</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> F&gt; <span class="keywordtype">int</span> a1(F &amp;&amp;f) { <span class="keywordflow">return</span> f(42); }</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> a2(<span class="keywordtype">int</span> x) { <span class="keywordflow">return</span> 2; }</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> a3(<span class="keywordtype">int</span> x) { <span class="keywordflow">return</span> 3; }</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> tmain()</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// Call expression in a nested lambda</span></div>
+<div class="line">    <span class="keyword">auto</span> v1 = [](<span class="keyword">auto</span> &amp;&amp;arg1) {</div>
+<div class="line">        <span class="keywordflow">return</span> [](<span class="keyword">auto</span> &amp;&amp;arg2) { <span class="keywordflow">return</span> a2(arg2); }(arg1);</div>
+<div class="line">    }(0);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Call expression in a nested lambda in call expression</span></div>
+<div class="line">    <span class="keyword">auto</span> v4 = a1(</div>
+<div class="line">        [](<span class="keyword">auto</span> &amp;&amp;arg1) { <span class="keywordflow">return</span> [](<span class="keyword">auto</span> &amp;&amp;arg2) { <span class="keywordflow">return</span> a3(arg2); }(arg1); });</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line">}</div>
+<div class="line">}</div>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-119"></a>
+Generated PlantUML diagrams</h1>
+<div class="image">
+<embed type="image/svg+xml" src="t20046_sequence.svg"></embed>
+</div>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-119"></a>
+Generated Mermaid diagrams</h1>
+<div class="image">
+<embed type="image/svg+xml" src="t20046_sequence_mermaid.svg"></embed>
+</div>
+     <h1><a class="anchor" id="generated-json-models-119"></a>
+Generated JSON models</h1>
+<div class="fragment language-json"><div class="line">{</div>
+<div class="line">  &quot;diagram_type&quot;: &quot;sequence&quot;,</div>
+<div class="line">  &quot;name&quot;: &quot;t20046_sequence&quot;,</div>
+<div class="line">  &quot;participants&quot;: [</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;tmain()&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1092597347191364515&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;tmain&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20046&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 5,</div>
+<div class="line">        &quot;file&quot;: &quot;t20046.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 10,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20046.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;function&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;activities&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;display_name&quot;: &quot;operator()(auto &amp;&amp;) const&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;174997669781821772&quot;,</div>
+<div class="line">          &quot;name&quot;: &quot;operator()&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;type&quot;: &quot;method&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;display_name&quot;: &quot;tmain()::(lambda t20046.cc:13:15)&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1868201491114557068&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;tmain()::(lambda t20046.cc:13:15)&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20046&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 15,</div>
+<div class="line">        &quot;file&quot;: &quot;t20046.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 13,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20046.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;lambda&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;activities&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;display_name&quot;: &quot;operator()(auto &amp;&amp;) const&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;771372907204554082&quot;,</div>
+<div class="line">          &quot;name&quot;: &quot;operator()&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;type&quot;: &quot;method&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;display_name&quot;: &quot;tmain()::(lambda t20046.cc:13:15)::(lambda t20046.cc:14:16)&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;163480314503646451&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;clanguml::t20046::tmain()::(lambda t20046.cc:13:15)::(lambda t20046.cc:14:16)&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20046&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 16,</div>
+<div class="line">        &quot;file&quot;: &quot;t20046.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 14,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20046.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;lambda&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;a2(int)&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;267222823829967475&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;a2&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20046&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 5,</div>
+<div class="line">        &quot;file&quot;: &quot;t20046.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 6,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20046.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;function&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;a1&lt;(lambda at t20046.cc:19:9)&gt;((lambda at /home/bartek/devel/clang-uml/tests/t20046/t20046.cc:19:9) &amp;&amp;)&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;404852580994337987&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;a1&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20046&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 27,</div>
+<div class="line">        &quot;file&quot;: &quot;t20046.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 4,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20046.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;function_template&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;activities&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;display_name&quot;: &quot;operator()(auto &amp;&amp;) const&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;326496579896748789&quot;,</div>
+<div class="line">          &quot;name&quot;: &quot;operator()&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;type&quot;: &quot;method&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;display_name&quot;: &quot;tmain()::(lambda t20046.cc:19:9)&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1833526997995356163&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;tmain()::(lambda t20046.cc:19:9)&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20046&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 9,</div>
+<div class="line">        &quot;file&quot;: &quot;t20046.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 19,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20046.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;lambda&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;activities&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;display_name&quot;: &quot;operator()(auto &amp;&amp;) const&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;1093593470536515636&quot;,</div>
+<div class="line">          &quot;name&quot;: &quot;operator()&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;type&quot;: &quot;method&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;display_name&quot;: &quot;tmain()::(lambda t20046.cc:19:9)::(lambda t20046.cc:19:34)&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;2177951153338850159&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;clanguml::t20046::tmain()::(lambda t20046.cc:19:9)::(lambda t20046.cc:19:34)&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20046&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 34,</div>
+<div class="line">        &quot;file&quot;: &quot;t20046.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 19,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20046.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;lambda&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;a3(int)&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1043774975066033521&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;a3&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20046&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 5,</div>
+<div class="line">        &quot;file&quot;: &quot;t20046.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 8,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20046.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;function&quot;</div>
+<div class="line">    }</div>
+<div class="line">  ],</div>
+<div class="line">  &quot;sequences&quot;: [</div>
+<div class="line">    {</div>
+<div class="line">      &quot;messages&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;comment&quot;: &quot;Call expression in a nested lambda&quot;,</div>
+<div class="line">          &quot;from&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1092597347191364515&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1092597347191364515&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;operator()(auto &amp;&amp;) const&quot;,</div>
+<div class="line">          &quot;return_type&quot;: &quot;auto&quot;,</div>
+<div class="line">          &quot;scope&quot;: &quot;normal&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 15,</div>
+<div class="line">            &quot;file&quot;: &quot;t20046.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 13,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t20046.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;to&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;174997669781821772&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1868201491114557068&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;message&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;from&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;174997669781821772&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1868201491114557068&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;operator()(auto &amp;&amp;) const&quot;,</div>
+<div class="line">          &quot;return_type&quot;: &quot;auto&quot;,</div>
+<div class="line">          &quot;scope&quot;: &quot;normal&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 16,</div>
+<div class="line">            &quot;file&quot;: &quot;t20046.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 14,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t20046.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;to&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;771372907204554082&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;163480314503646451&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;message&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;from&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;771372907204554082&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;163480314503646451&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;return_type&quot;: &quot;int&quot;,</div>
+<div class="line">          &quot;scope&quot;: &quot;normal&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 41,</div>
+<div class="line">            &quot;file&quot;: &quot;t20046.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 14,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t20046.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;to&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;267222823829967475&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;267222823829967475&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;message&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;comment&quot;: &quot;Call expression in a nested lambda in call expression&quot;,</div>
+<div class="line">          &quot;from&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1092597347191364515&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1092597347191364515&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;return_type&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;scope&quot;: &quot;normal&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 15,</div>
+<div class="line">            &quot;file&quot;: &quot;t20046.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 18,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t20046.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;to&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;404852580994337987&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;404852580994337987&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;message&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;from&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;404852580994337987&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;404852580994337987&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;operator()(auto &amp;&amp;) const&quot;,</div>
+<div class="line">          &quot;return_type&quot;: &quot;auto&quot;,</div>
+<div class="line">          &quot;scope&quot;: &quot;normal&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 46,</div>
+<div class="line">            &quot;file&quot;: &quot;t20046.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 4,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t20046.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;to&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;326496579896748789&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1833526997995356163&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;message&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;from&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;326496579896748789&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1833526997995356163&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;operator()(auto &amp;&amp;) const&quot;,</div>
+<div class="line">          &quot;return_type&quot;: &quot;auto&quot;,</div>
+<div class="line">          &quot;scope&quot;: &quot;normal&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 34,</div>
+<div class="line">            &quot;file&quot;: &quot;t20046.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 19,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t20046.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;to&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1093593470536515636&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;2177951153338850159&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;message&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;from&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1093593470536515636&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;2177951153338850159&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;return_type&quot;: &quot;int&quot;,</div>
+<div class="line">          &quot;scope&quot;: &quot;normal&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 59,</div>
+<div class="line">            &quot;file&quot;: &quot;t20046.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 19,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t20046.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;to&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1043774975066033521&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1043774975066033521&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;message&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;start_from&quot;: {</div>
+<div class="line">        &quot;id&quot;: 1092597347191364515,</div>
+<div class="line">        &quot;location&quot;: &quot;clanguml::t20046::tmain()&quot;</div>
+<div class="line">      }</div>
+<div class="line">    }</div>
+<div class="line">  ],</div>
+<div class="line">  &quot;using_namespace&quot;: &quot;clanguml::t20046&quot;</div>
+<div class="line">}</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer">
+    <small>
+        <span class="copyright">&#160;&#160;Copyright &copy; 2022-present <a href="https://github.com/bkryza">Bartek Kryza</a>
+        </span>
+    Generated by&#160;
+    <a href="https://www.doxygen.org/index.html">
+        <img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/>
+    </a> 1.9.7
+</small></address>
+</body>
+</html>

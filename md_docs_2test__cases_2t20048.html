@@ -1,0 +1,517 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: t20048 - Test case for message comments</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp code blocks
+            if (!$node.hasClass("language-cpp")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.5.2</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">t20048 - Test case for message comments</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="t20048---test-case-for-message-comments"></a></p>
+<h1><a class="anchor" id="config-121"></a>
+Config</h1>
+<div class="fragment language-yaml"><div class="line">add_compile_flags:</div>
+<div class="line">  - -fparse-all-comments</div>
+<div class="line">diagrams:</div>
+<div class="line">  t20048_sequence:</div>
+<div class="line">    type: sequence</div>
+<div class="line">    glob:</div>
+<div class="line">      - t20048.cc</div>
+<div class="line">    generate_message_comments: true</div>
+<div class="line">    include:</div>
+<div class="line">      namespaces:</div>
+<div class="line">        - clanguml::t20048</div>
+<div class="line">    using_namespace: clanguml::t20048</div>
+<div class="line">    from:</div>
+<div class="line">      - function: &quot;clanguml::t20048::tmain()&quot;</div>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-121"></a>
+Source code</h1>
+<p>File <code>tests/t20048/t20048.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &lt;future&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
+<div class="line"><span class="keyword">namespace </span>t20048 {</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> a1(<span class="keywordtype">int</span> x) { <span class="keywordflow">return</span> x + 1; }</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> a2(<span class="keywordtype">int</span> x) { <span class="keywordflow">return</span> x + 2; }</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> a3(<span class="keywordtype">int</span> x) { <span class="keywordflow">return</span> x + 3; }</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> a4(<span class="keywordtype">int</span> x) { <span class="keywordflow">return</span> x + 4; }</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> a5(<span class="keywordtype">int</span> x) { <span class="keywordflow">return</span> x + 5; }</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> a6(<span class="keywordtype">int</span> x) { <span class="keywordflow">return</span> x + 6; }</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> a7(<span class="keywordtype">int</span> x) { <span class="keywordflow">return</span> x + 7; }</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> tmain()</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// a1() adds `1` to the result of a2()</span></div>
+<div class="line">    <span class="keyword">auto</span> res = a1(a2(a3(0)));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// This lambda calls a4() which adds `4` to it&#39;s argument</span></div>
+<div class="line">    res = [](<span class="keyword">auto</span> &amp;&amp;x) { <span class="keywordflow">return</span> a4(x); }(0);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// a5() adds `1` to the result of a6()</span></div>
+<div class="line">    res = a5(</div>
+<div class="line">        <span class="comment">// a6() adds `1` to its argument</span></div>
+<div class="line">        a6(0));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// a7() is called via add std::async</span></div>
+<div class="line">    <span class="comment">// \uml{call clanguml::t20048::a7(int)}</span></div>
+<div class="line">    res = std::async(a7, 10).get();</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line">}</div>
+<div class="line">}</div>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-121"></a>
+Generated PlantUML diagrams</h1>
+<div class="image">
+<embed type="image/svg+xml" src="t20048_sequence.svg"></embed>
+</div>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-121"></a>
+Generated Mermaid diagrams</h1>
+<div class="image">
+<embed type="image/svg+xml" src="t20048_sequence_mermaid.svg"></embed>
+</div>
+     <h1><a class="anchor" id="generated-json-models-121"></a>
+Generated JSON models</h1>
+<div class="fragment language-json"><div class="line">{</div>
+<div class="line">  &quot;diagram_type&quot;: &quot;sequence&quot;,</div>
+<div class="line">  &quot;name&quot;: &quot;t20048_sequence&quot;,</div>
+<div class="line">  &quot;participants&quot;: [</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;tmain()&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1438172520221545830&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;tmain&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20048&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 5,</div>
+<div class="line">        &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 20,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;function&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;a3(int)&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1592723040639512239&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;a3&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20048&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 5,</div>
+<div class="line">        &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 10,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;function&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;a2(int)&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1494883525267049301&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;a2&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20048&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 5,</div>
+<div class="line">        &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 8,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;function&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;a1(int)&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;1139681416936587734&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;a1&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20048&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 5,</div>
+<div class="line">        &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 6,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;function&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;activities&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;display_name&quot;: &quot;operator()(auto &amp;&amp;) const&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;1272214062049882942&quot;,</div>
+<div class="line">          &quot;name&quot;: &quot;operator()&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;type&quot;: &quot;method&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;display_name&quot;: &quot;tmain()::(lambda t20048.cc:26:11)&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;794500632550538124&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;tmain()::(lambda t20048.cc:26:11)&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20048&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 11,</div>
+<div class="line">        &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 26,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;lambda&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;a4(int)&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;986710377344543262&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;a4&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20048&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 5,</div>
+<div class="line">        &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 12,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;function&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;a6(int)&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;372194568810958399&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;a6&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20048&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 5,</div>
+<div class="line">        &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 16,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;function&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;a5(int)&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;473170110460301705&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;a5&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20048&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 5,</div>
+<div class="line">        &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 14,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;function&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;a7(int)&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;156504678810211848&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;a7&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t20048&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 5,</div>
+<div class="line">        &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 18,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;function&quot;</div>
+<div class="line">    }</div>
+<div class="line">  ],</div>
+<div class="line">  &quot;sequences&quot;: [</div>
+<div class="line">    {</div>
+<div class="line">      &quot;messages&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;from&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1438172520221545830&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1438172520221545830&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;return_type&quot;: &quot;int&quot;,</div>
+<div class="line">          &quot;scope&quot;: &quot;normal&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 22,</div>
+<div class="line">            &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 23,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;to&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1592723040639512239&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1592723040639512239&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;message&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;from&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1438172520221545830&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1438172520221545830&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;return_type&quot;: &quot;int&quot;,</div>
+<div class="line">          &quot;scope&quot;: &quot;normal&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 19,</div>
+<div class="line">            &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 23,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;to&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1494883525267049301&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1494883525267049301&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;message&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;comment&quot;: &quot;a1() adds `1` to the result of a2()&quot;,</div>
+<div class="line">          &quot;from&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1438172520221545830&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1438172520221545830&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;return_type&quot;: &quot;int&quot;,</div>
+<div class="line">          &quot;scope&quot;: &quot;normal&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 16,</div>
+<div class="line">            &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 23,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;to&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1139681416936587734&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1139681416936587734&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;message&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;comment&quot;: &quot;This lambda calls a4() which adds `4` to it&#39;s argument&quot;,</div>
+<div class="line">          &quot;from&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1438172520221545830&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1438172520221545830&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;operator()(auto &amp;&amp;) const&quot;,</div>
+<div class="line">          &quot;return_type&quot;: &quot;auto&quot;,</div>
+<div class="line">          &quot;scope&quot;: &quot;normal&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 11,</div>
+<div class="line">            &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 26,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;to&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1272214062049882942&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;794500632550538124&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;message&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;from&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1272214062049882942&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;794500632550538124&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;return_type&quot;: &quot;int&quot;,</div>
+<div class="line">          &quot;scope&quot;: &quot;normal&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 33,</div>
+<div class="line">            &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 26,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;to&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;986710377344543262&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;986710377344543262&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;message&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;comment&quot;: &quot;a6() adds `1` to its argument&quot;,</div>
+<div class="line">          &quot;from&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1438172520221545830&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1438172520221545830&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;return_type&quot;: &quot;int&quot;,</div>
+<div class="line">          &quot;scope&quot;: &quot;normal&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 9,</div>
+<div class="line">            &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 31,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;to&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;372194568810958399&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;372194568810958399&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;message&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;comment&quot;: &quot;a5() adds `1` to the result of a6()&quot;,</div>
+<div class="line">          &quot;from&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1438172520221545830&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1438172520221545830&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;return_type&quot;: &quot;int&quot;,</div>
+<div class="line">          &quot;scope&quot;: &quot;normal&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 11,</div>
+<div class="line">            &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 29,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;to&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;473170110460301705&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;473170110460301705&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;message&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;comment&quot;: &quot;a7() is called via add std::async&quot;,</div>
+<div class="line">          &quot;from&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;1438172520221545830&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;1438172520221545830&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;return_type&quot;: &quot;int&quot;,</div>
+<div class="line">          &quot;scope&quot;: &quot;normal&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 11,</div>
+<div class="line">            &quot;file&quot;: &quot;t20048.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 35,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t20048.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;to&quot;: {</div>
+<div class="line">            &quot;activity_id&quot;: &quot;156504678810211848&quot;,</div>
+<div class="line">            &quot;participant_id&quot;: &quot;156504678810211848&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;message&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;start_from&quot;: {</div>
+<div class="line">        &quot;id&quot;: 1438172520221545830,</div>
+<div class="line">        &quot;location&quot;: &quot;clanguml::t20048::tmain()&quot;</div>
+<div class="line">      }</div>
+<div class="line">    }</div>
+<div class="line">  ],</div>
+<div class="line">  &quot;using_namespace&quot;: &quot;clanguml::t20048&quot;</div>
+<div class="line">}</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer">
+    <small>
+        <span class="copyright">&#160;&#160;Copyright &copy; 2022-present <a href="https://github.com/bkryza">Bartek Kryza</a>
+        </span>
+    Generated by&#160;
+    <a href="https://www.doxygen.org/index.html">
+        <img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/>
+    </a> 1.9.7
+</small></address>
+</body>
+</html>

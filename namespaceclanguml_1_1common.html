@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.1</span>
+       <span id="projectnumber">0.5.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -314,6 +314,8 @@ Functions</h2></td></tr>
 <tr class="separator:ac81f6cef0f69e529f0740d33e576b513"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a195b92f84c04221d2b923f549915c64f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#a195b92f84c04221d2b923f549915c64f">is_struct</a> (const clang::NamedDecl *decl)</td></tr>
 <tr class="separator:a195b92f84c04221d2b923f549915c64f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a2574185aa30977a6efe503f30d1daa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#a8a2574185aa30977a6efe503f30d1daa">has_attr</a> (const clang::FunctionDecl *decl, clang::attr::Kind function_attr)</td></tr>
+<tr class="separator:a8a2574185aa30977a6efe503f30d1daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f6b3f1cb4c3c8572404cb8e205c034e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a1f6b3f1cb4c3c8572404cb8e205c034e"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#a1f6b3f1cb4c3c8572404cb8e205c034e">get_qualified_name</a> (const T &amp;declaration)</td></tr>
 <tr class="memdesc:a1f6b3f1cb4c3c8572404cb8e205c034e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get qualified name of some Clang declaration.  <br /></td></tr>
@@ -1441,6 +1443,50 @@ template&lt;typename T &gt; </div>
 <div class="line"><span class="lineno">   80</span> </div>
 <div class="line"><span class="lineno">   81</span>    <span class="keywordflow">return</span> ns;</div>
 <div class="line"><span class="lineno">   82</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8a2574185aa30977a6efe503f30d1daa" name="a8a2574185aa30977a6efe503f30d1daa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a2574185aa30977a6efe503f30d1daa">&#9670;&#160;</a></span>has_attr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::common::has_attr </td>
+          <td>(</td>
+          <td class="paramtype">const clang::FunctionDecl *&#160;</td>
+          <td class="paramname"><em>decl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">clang::attr::Kind&#160;</td>
+          <td class="paramname"><em>function_attr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Check if function declaration contains specified attributed</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">decl</td><td>Function declaration </td></tr>
+    <tr><td class="paramname">function_attr</td><td>Clang function attribute </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True, if decl contains specified function attribute </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="clang__utils_8cc_source.html#l00947">947</a> of file <a class="el" href="clang__utils_8cc_source.html">clang_utils.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  948</span>{</div>
+<div class="line"><span class="lineno">  949</span>    <span class="keywordflow">return</span> std::any_of(decl-&gt;attrs().begin(), decl-&gt;attrs().end(),</div>
+<div class="line"><span class="lineno">  950</span>        [function_attr](</div>
+<div class="line"><span class="lineno">  951</span>            <span class="keyword">auto</span> &amp;&amp;attr) { return attr-&gt;getKind() == function_attr; });</div>
+<div class="line"><span class="lineno">  952</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.1</span>
+       <span id="projectnumber">0.5.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -299,35 +299,49 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  455</span>                return dynamic_cast&lt;const function *&gt;(p) != nullptr;</div>
 <div class="line"><span class="lineno">  456</span>            };</div>
 <div class="line"><span class="lineno">  457</span> </div>
-<div class="line"><span class="lineno">  458</span>            <span class="keywordflow">switch</span> (ct) {</div>
-<div class="line"><span class="lineno">  459</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">config::callee_type::method</a>:</div>
-<div class="line"><span class="lineno">  460</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span>;</div>
-<div class="line"><span class="lineno">  461</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca6ca268371eeb5d93eefeb68f96157666">config::callee_type::constructor</a>:</div>
-<div class="line"><span class="lineno">  462</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp;</div>
-<div class="line"><span class="lineno">  463</span>                    ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a> &amp;)p).is_constructor();</div>
-<div class="line"><span class="lineno">  464</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caafb7bbeb1adca3d11f0bfb38e1f7f856">config::callee_type::assignment</a>:</div>
-<div class="line"><span class="lineno">  465</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp;</div>
-<div class="line"><span class="lineno">  466</span>                    ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a> &amp;)p).is_assignment();</div>
-<div class="line"><span class="lineno">  467</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca52d76f4231073ba56a413274f8e5a437">config::callee_type::operator_</a>:</div>
-<div class="line"><span class="lineno">  468</span>                <span class="keywordflow">return</span> is_function(&amp;p) &amp;&amp; ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">function</a> &amp;)p).is_operator();</div>
-<div class="line"><span class="lineno">  469</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca09ecb6438e46ddb2614bc58b9e2a8b41">config::callee_type::defaulted</a>:</div>
-<div class="line"><span class="lineno">  470</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp;</div>
-<div class="line"><span class="lineno">  471</span>                    ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a> &amp;)p).is_defaulted();</div>
-<div class="line"><span class="lineno">  472</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca2ae039feee6db3ba2cd0659217850e5f">config::callee_type::static_</a>:</div>
-<div class="line"><span class="lineno">  473</span>                <span class="keywordflow">return</span> is_function(&amp;p) &amp;&amp; ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">function</a> &amp;)p).is_static();</div>
-<div class="line"><span class="lineno">  474</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">config::callee_type::function</a>:</div>
-<div class="line"><span class="lineno">  475</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;function&quot;</span>;</div>
-<div class="line"><span class="lineno">  476</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cab9a142c3d28005309dc864c41e53a39d">config::callee_type::function_template</a>:</div>
-<div class="line"><span class="lineno">  477</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;function_template&quot;</span>;</div>
-<div class="line"><span class="lineno">  478</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca945f3fc449518a73b9f5f32868db466c">config::callee_type::lambda</a>:</div>
-<div class="line"><span class="lineno">  479</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp; is_lambda((method &amp;)p);</div>
-<div class="line"><span class="lineno">  480</span>            }</div>
-<div class="line"><span class="lineno">  481</span> </div>
-<div class="line"><span class="lineno">  482</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  483</span>        });</div>
-<div class="line"><span class="lineno">  484</span> </div>
-<div class="line"><span class="lineno">  485</span>    <span class="keywordflow">return</span> res;</div>
-<div class="line"><span class="lineno">  486</span>}</div>
+<div class="line"><span class="lineno">  458</span>            <span class="keyword">auto</span> is_cuda_kernel = [](<span class="keyword">const</span> participant *p) {</div>
+<div class="line"><span class="lineno">  459</span>                <span class="keyword">const</span> <span class="keyword">auto</span> *f = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span><a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">function</a> *<span class="keyword">&gt;</span>(p);</div>
+<div class="line"><span class="lineno">  460</span>                <span class="keywordflow">return</span> (f != <span class="keyword">nullptr</span>) &amp;&amp; (f-&gt;is_cuda_kernel());</div>
+<div class="line"><span class="lineno">  461</span>            };</div>
+<div class="line"><span class="lineno">  462</span> </div>
+<div class="line"><span class="lineno">  463</span>            <span class="keyword">auto</span> is_cuda_device = [](<span class="keyword">const</span> participant *p) {</div>
+<div class="line"><span class="lineno">  464</span>                <span class="keyword">const</span> <span class="keyword">auto</span> *f = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span><a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">function</a> *<span class="keyword">&gt;</span>(p);</div>
+<div class="line"><span class="lineno">  465</span>                <span class="keywordflow">return</span> (f != <span class="keyword">nullptr</span>) &amp;&amp; (f-&gt;is_cuda_device());</div>
+<div class="line"><span class="lineno">  466</span>            };</div>
+<div class="line"><span class="lineno">  467</span> </div>
+<div class="line"><span class="lineno">  468</span>            <span class="keywordflow">switch</span> (ct) {</div>
+<div class="line"><span class="lineno">  469</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">config::callee_type::method</a>:</div>
+<div class="line"><span class="lineno">  470</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span>;</div>
+<div class="line"><span class="lineno">  471</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca6ca268371eeb5d93eefeb68f96157666">config::callee_type::constructor</a>:</div>
+<div class="line"><span class="lineno">  472</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp;</div>
+<div class="line"><span class="lineno">  473</span>                    ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a> &amp;)p).is_constructor();</div>
+<div class="line"><span class="lineno">  474</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caafb7bbeb1adca3d11f0bfb38e1f7f856">config::callee_type::assignment</a>:</div>
+<div class="line"><span class="lineno">  475</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp;</div>
+<div class="line"><span class="lineno">  476</span>                    ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a> &amp;)p).is_assignment();</div>
+<div class="line"><span class="lineno">  477</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca52d76f4231073ba56a413274f8e5a437">config::callee_type::operator_</a>:</div>
+<div class="line"><span class="lineno">  478</span>                <span class="keywordflow">return</span> is_function(&amp;p) &amp;&amp; ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">function</a> &amp;)p).is_operator();</div>
+<div class="line"><span class="lineno">  479</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca09ecb6438e46ddb2614bc58b9e2a8b41">config::callee_type::defaulted</a>:</div>
+<div class="line"><span class="lineno">  480</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp;</div>
+<div class="line"><span class="lineno">  481</span>                    ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a> &amp;)p).is_defaulted();</div>
+<div class="line"><span class="lineno">  482</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca2ae039feee6db3ba2cd0659217850e5f">config::callee_type::static_</a>:</div>
+<div class="line"><span class="lineno">  483</span>                <span class="keywordflow">return</span> is_function(&amp;p) &amp;&amp; ((<a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">function</a> &amp;)p).is_static();</div>
+<div class="line"><span class="lineno">  484</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">config::callee_type::function</a>:</div>
+<div class="line"><span class="lineno">  485</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;function&quot;</span>;</div>
+<div class="line"><span class="lineno">  486</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cab9a142c3d28005309dc864c41e53a39d">config::callee_type::function_template</a>:</div>
+<div class="line"><span class="lineno">  487</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;function_template&quot;</span>;</div>
+<div class="line"><span class="lineno">  488</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca945f3fc449518a73b9f5f32868db466c">config::callee_type::lambda</a>:</div>
+<div class="line"><span class="lineno">  489</span>                <span class="keywordflow">return</span> p.type_name() == <span class="stringliteral">&quot;method&quot;</span> &amp;&amp; is_lambda((method &amp;)p);</div>
+<div class="line"><span class="lineno">  490</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca2d4dd19f6a1931b8435bb5ab568c4978">config::callee_type::cuda_kernel</a>:</div>
+<div class="line"><span class="lineno">  491</span>                <span class="keywordflow">return</span> is_cuda_kernel(&amp;p);</div>
+<div class="line"><span class="lineno">  492</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca0a8188fbb7b03cfb894875ab86eeeec0">config::callee_type::cuda_device</a>:</div>
+<div class="line"><span class="lineno">  493</span>                <span class="keywordflow">return</span> is_cuda_device(&amp;p);</div>
+<div class="line"><span class="lineno">  494</span>            }</div>
+<div class="line"><span class="lineno">  495</span> </div>
+<div class="line"><span class="lineno">  496</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  497</span>        });</div>
+<div class="line"><span class="lineno">  498</span> </div>
+<div class="line"><span class="lineno">  499</span>    <span class="keywordflow">return</span> res;</div>
+<div class="line"><span class="lineno">  500</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
