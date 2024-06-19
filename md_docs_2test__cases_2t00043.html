@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.2</span>
+       <span id="projectnumber">0.5.3</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -138,6 +138,11 @@ Config</h1>
 <div class="line">        - clanguml::t00043::dependencies::J</div>
 <div class="line">      relationships:</div>
 <div class="line">        - dependency</div>
+<div class="line">    exclude:</div>
+<div class="line">      dependants:</div>
+<div class="line">        - clanguml::t00043::dependants::EE</div>
+<div class="line">      dependencies:</div>
+<div class="line">        - clanguml::t00043::dependencies::II</div>
 </div><!-- fragment --> <h1><a class="anchor" id="source-code-41"></a>
 Source code</h1>
 <p>File <code>tests/t00043/t00043.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="keyword">namespace </span>clanguml::t00043 {</div>
@@ -166,6 +171,14 @@ Source code</h1>
 <div class="line">    <span class="keywordtype">void</span> e(D *d) { }</div>
 <div class="line">};</div>
 <div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>EE {</div>
+<div class="line">    <span class="keywordtype">void</span> ee(E *e) { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>EEE {</div>
+<div class="line">    <span class="keywordtype">void</span> eee(EE *e) { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
 <div class="line"><span class="keyword">struct </span>F { };</div>
 <div class="line">} <span class="comment">// namespace dependants</span></div>
 <div class="line"> </div>
@@ -188,8 +201,18 @@ Source code</h1>
 <div class="line">    <span class="keywordtype">void</span> i(H *h) { }</div>
 <div class="line">};</div>
 <div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>II;</div>
+<div class="line"><span class="keyword">struct </span>III {</div>
+<div class="line">    <span class="keywordtype">void</span> iii(II *i) { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>II {</div>
+<div class="line">    <span class="keywordtype">void</span> ii() { }</div>
+<div class="line">};</div>
+<div class="line"> </div>
 <div class="line"><span class="keyword">struct </span>J {</div>
 <div class="line">    <span class="keywordtype">void</span> i(I *i) { }</div>
+<div class="line">    <span class="keywordtype">void</span> ii(II *ii) { }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">} <span class="comment">// namespace dependencies</span></div>
@@ -214,8 +237,8 @@ Generated JSON models</h1>
 <div class="line">      &quot;elements&quot;: [</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;dependants::A&quot;,</div>
-<div class="line">          &quot;id&quot;: &quot;1454679300998460550&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;A&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;11637434407987684404&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
 <div class="line">          &quot;is_struct&quot;: true,</div>
@@ -236,8 +259,8 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;dependants::B&quot;,</div>
-<div class="line">          &quot;id&quot;: &quot;1972977265990430931&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;B&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;15783818127923447452&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
 <div class="line">          &quot;is_struct&quot;: true,</div>
@@ -247,6 +270,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;methods&quot;: [</div>
 <div class="line">            {</div>
 <div class="line">              &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">              &quot;display_name&quot;: &quot;b&quot;,</div>
 <div class="line">              &quot;is_const&quot;: false,</div>
 <div class="line">              &quot;is_consteval&quot;: false,</div>
 <div class="line">              &quot;is_constexpr&quot;: false,</div>
@@ -274,6 +298,7 @@ Generated JSON models</h1>
 <div class="line">                &quot;line&quot;: 7,</div>
 <div class="line">                &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
 <div class="line">              },</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
 <div class="line">              &quot;type&quot;: &quot;void&quot;</div>
 <div class="line">            }</div>
 <div class="line">          ],</div>
@@ -290,8 +315,8 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;dependants::BB&quot;,</div>
-<div class="line">          &quot;id&quot;: &quot;1906291555025945295&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;BB&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;15250332440207562361&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
 <div class="line">          &quot;is_struct&quot;: true,</div>
@@ -301,6 +326,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;methods&quot;: [</div>
 <div class="line">            {</div>
 <div class="line">              &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">              &quot;display_name&quot;: &quot;bb&quot;,</div>
 <div class="line">              &quot;is_const&quot;: false,</div>
 <div class="line">              &quot;is_consteval&quot;: false,</div>
 <div class="line">              &quot;is_constexpr&quot;: false,</div>
@@ -328,6 +354,7 @@ Generated JSON models</h1>
 <div class="line">                &quot;line&quot;: 11,</div>
 <div class="line">                &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
 <div class="line">              },</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
 <div class="line">              &quot;type&quot;: &quot;void&quot;</div>
 <div class="line">            }</div>
 <div class="line">          ],</div>
@@ -344,8 +371,8 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;dependants::C&quot;,</div>
-<div class="line">          &quot;id&quot;: &quot;823759225351121534&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;C&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;6590073802808972273&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
 <div class="line">          &quot;is_struct&quot;: true,</div>
@@ -355,6 +382,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;methods&quot;: [</div>
 <div class="line">            {</div>
 <div class="line">              &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">              &quot;display_name&quot;: &quot;c&quot;,</div>
 <div class="line">              &quot;is_const&quot;: false,</div>
 <div class="line">              &quot;is_consteval&quot;: false,</div>
 <div class="line">              &quot;is_constexpr&quot;: false,</div>
@@ -382,6 +410,7 @@ Generated JSON models</h1>
 <div class="line">                &quot;line&quot;: 15,</div>
 <div class="line">                &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
 <div class="line">              },</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
 <div class="line">              &quot;type&quot;: &quot;void&quot;</div>
 <div class="line">            }</div>
 <div class="line">          ],</div>
@@ -398,8 +427,8 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;dependants::D&quot;,</div>
-<div class="line">          &quot;id&quot;: &quot;2277976215348279426&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;D&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;18223809722786235409&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
 <div class="line">          &quot;is_struct&quot;: true,</div>
@@ -409,6 +438,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;methods&quot;: [</div>
 <div class="line">            {</div>
 <div class="line">              &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">              &quot;display_name&quot;: &quot;d&quot;,</div>
 <div class="line">              &quot;is_const&quot;: false,</div>
 <div class="line">              &quot;is_consteval&quot;: false,</div>
 <div class="line">              &quot;is_constexpr&quot;: false,</div>
@@ -436,10 +466,12 @@ Generated JSON models</h1>
 <div class="line">                &quot;line&quot;: 19,</div>
 <div class="line">                &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
 <div class="line">              },</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
 <div class="line">              &quot;type&quot;: &quot;void&quot;</div>
 <div class="line">            },</div>
 <div class="line">            {</div>
 <div class="line">              &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">              &quot;display_name&quot;: &quot;dd&quot;,</div>
 <div class="line">              &quot;is_const&quot;: false,</div>
 <div class="line">              &quot;is_consteval&quot;: false,</div>
 <div class="line">              &quot;is_constexpr&quot;: false,</div>
@@ -467,6 +499,7 @@ Generated JSON models</h1>
 <div class="line">                &quot;line&quot;: 20,</div>
 <div class="line">                &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
 <div class="line">              },</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
 <div class="line">              &quot;type&quot;: &quot;void&quot;</div>
 <div class="line">            }</div>
 <div class="line">          ],</div>
@@ -483,8 +516,8 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;dependants::E&quot;,</div>
-<div class="line">          &quot;id&quot;: &quot;1694685540293810116&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;E&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;13557484322350480935&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
 <div class="line">          &quot;is_struct&quot;: true,</div>
@@ -494,6 +527,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;methods&quot;: [</div>
 <div class="line">            {</div>
 <div class="line">              &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">              &quot;display_name&quot;: &quot;e&quot;,</div>
 <div class="line">              &quot;is_const&quot;: false,</div>
 <div class="line">              &quot;is_consteval&quot;: false,</div>
 <div class="line">              &quot;is_constexpr&quot;: false,</div>
@@ -521,6 +555,7 @@ Generated JSON models</h1>
 <div class="line">                &quot;line&quot;: 24,</div>
 <div class="line">                &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
 <div class="line">              },</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
 <div class="line">              &quot;type&quot;: &quot;void&quot;</div>
 <div class="line">            }</div>
 <div class="line">          ],</div>
@@ -544,8 +579,8 @@ Generated JSON models</h1>
 <div class="line">      &quot;elements&quot;: [</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;dependencies::G&quot;,</div>
-<div class="line">          &quot;id&quot;: &quot;736400571183204899&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;G&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;5891204569465639198&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
 <div class="line">          &quot;is_struct&quot;: true,</div>
@@ -558,7 +593,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 8,</div>
 <div class="line">            &quot;file&quot;: &quot;t00043.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 32,</div>
+<div class="line">            &quot;line&quot;: 40,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;template_parameters&quot;: [],</div>
@@ -566,8 +601,8 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;dependencies::GG&quot;,</div>
-<div class="line">          &quot;id&quot;: &quot;1522297681294871411&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;GG&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;12178381450358971290&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
 <div class="line">          &quot;is_struct&quot;: true,</div>
@@ -580,7 +615,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 8,</div>
 <div class="line">            &quot;file&quot;: &quot;t00043.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 34,</div>
+<div class="line">            &quot;line&quot;: 42,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;template_parameters&quot;: [],</div>
@@ -588,8 +623,8 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;dependencies::H&quot;,</div>
-<div class="line">          &quot;id&quot;: &quot;1534191494825314170&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;H&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;12273531958602513366&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
 <div class="line">          &quot;is_struct&quot;: true,</div>
@@ -599,6 +634,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;methods&quot;: [</div>
 <div class="line">            {</div>
 <div class="line">              &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">              &quot;display_name&quot;: &quot;h&quot;,</div>
 <div class="line">              &quot;is_const&quot;: false,</div>
 <div class="line">              &quot;is_consteval&quot;: false,</div>
 <div class="line">              &quot;is_constexpr&quot;: false,</div>
@@ -623,13 +659,15 @@ Generated JSON models</h1>
 <div class="line">              &quot;source_location&quot;: {</div>
 <div class="line">                &quot;column&quot;: 10,</div>
 <div class="line">                &quot;file&quot;: &quot;t00043.cc&quot;,</div>
-<div class="line">                &quot;line&quot;: 37,</div>
+<div class="line">                &quot;line&quot;: 45,</div>
 <div class="line">                &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
 <div class="line">              },</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
 <div class="line">              &quot;type&quot;: &quot;void&quot;</div>
 <div class="line">            },</div>
 <div class="line">            {</div>
 <div class="line">              &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">              &quot;display_name&quot;: &quot;hh&quot;,</div>
 <div class="line">              &quot;is_const&quot;: false,</div>
 <div class="line">              &quot;is_consteval&quot;: false,</div>
 <div class="line">              &quot;is_constexpr&quot;: false,</div>
@@ -654,9 +692,10 @@ Generated JSON models</h1>
 <div class="line">              &quot;source_location&quot;: {</div>
 <div class="line">                &quot;column&quot;: 10,</div>
 <div class="line">                &quot;file&quot;: &quot;t00043.cc&quot;,</div>
-<div class="line">                &quot;line&quot;: 38,</div>
+<div class="line">                &quot;line&quot;: 46,</div>
 <div class="line">                &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
 <div class="line">              },</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
 <div class="line">              &quot;type&quot;: &quot;void&quot;</div>
 <div class="line">            }</div>
 <div class="line">          ],</div>
@@ -665,7 +704,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 8,</div>
 <div class="line">            &quot;file&quot;: &quot;t00043.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 36,</div>
+<div class="line">            &quot;line&quot;: 44,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;template_parameters&quot;: [],</div>
@@ -673,8 +712,8 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;dependencies::I&quot;,</div>
-<div class="line">          &quot;id&quot;: &quot;97422543769740359&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;I&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;779380350157922875&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
 <div class="line">          &quot;is_struct&quot;: true,</div>
@@ -684,6 +723,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;methods&quot;: [</div>
 <div class="line">            {</div>
 <div class="line">              &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">              &quot;display_name&quot;: &quot;i&quot;,</div>
 <div class="line">              &quot;is_const&quot;: false,</div>
 <div class="line">              &quot;is_consteval&quot;: false,</div>
 <div class="line">              &quot;is_constexpr&quot;: false,</div>
@@ -708,9 +748,10 @@ Generated JSON models</h1>
 <div class="line">              &quot;source_location&quot;: {</div>
 <div class="line">                &quot;column&quot;: 10,</div>
 <div class="line">                &quot;file&quot;: &quot;t00043.cc&quot;,</div>
-<div class="line">                &quot;line&quot;: 46,</div>
+<div class="line">                &quot;line&quot;: 54,</div>
 <div class="line">                &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
 <div class="line">              },</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
 <div class="line">              &quot;type&quot;: &quot;void&quot;</div>
 <div class="line">            }</div>
 <div class="line">          ],</div>
@@ -719,7 +760,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 8,</div>
 <div class="line">            &quot;file&quot;: &quot;t00043.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 45,</div>
+<div class="line">            &quot;line&quot;: 53,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;template_parameters&quot;: [],</div>
@@ -727,8 +768,8 @@ Generated JSON models</h1>
 <div class="line">        },</div>
 <div class="line">        {</div>
 <div class="line">          &quot;bases&quot;: [],</div>
-<div class="line">          &quot;display_name&quot;: &quot;dependencies::J&quot;,</div>
-<div class="line">          &quot;id&quot;: &quot;1498530043106438011&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;J&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;11988240344851504088&quot;,</div>
 <div class="line">          &quot;is_abstract&quot;: false,</div>
 <div class="line">          &quot;is_nested&quot;: false,</div>
 <div class="line">          &quot;is_struct&quot;: true,</div>
@@ -738,6 +779,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;methods&quot;: [</div>
 <div class="line">            {</div>
 <div class="line">              &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">              &quot;display_name&quot;: &quot;i&quot;,</div>
 <div class="line">              &quot;is_const&quot;: false,</div>
 <div class="line">              &quot;is_consteval&quot;: false,</div>
 <div class="line">              &quot;is_constexpr&quot;: false,</div>
@@ -762,9 +804,43 @@ Generated JSON models</h1>
 <div class="line">              &quot;source_location&quot;: {</div>
 <div class="line">                &quot;column&quot;: 10,</div>
 <div class="line">                &quot;file&quot;: &quot;t00043.cc&quot;,</div>
-<div class="line">                &quot;line&quot;: 50,</div>
+<div class="line">                &quot;line&quot;: 67,</div>
 <div class="line">                &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
 <div class="line">              },</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
+<div class="line">              &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">            },</div>
+<div class="line">            {</div>
+<div class="line">              &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">              &quot;display_name&quot;: &quot;ii&quot;,</div>
+<div class="line">              &quot;is_const&quot;: false,</div>
+<div class="line">              &quot;is_consteval&quot;: false,</div>
+<div class="line">              &quot;is_constexpr&quot;: false,</div>
+<div class="line">              &quot;is_constructor&quot;: false,</div>
+<div class="line">              &quot;is_copy_assignment&quot;: false,</div>
+<div class="line">              &quot;is_coroutine&quot;: false,</div>
+<div class="line">              &quot;is_defaulted&quot;: false,</div>
+<div class="line">              &quot;is_deleted&quot;: false,</div>
+<div class="line">              &quot;is_move_assignment&quot;: false,</div>
+<div class="line">              &quot;is_noexcept&quot;: false,</div>
+<div class="line">              &quot;is_operator&quot;: false,</div>
+<div class="line">              &quot;is_pure_virtual&quot;: false,</div>
+<div class="line">              &quot;is_static&quot;: false,</div>
+<div class="line">              &quot;is_virtual&quot;: false,</div>
+<div class="line">              &quot;name&quot;: &quot;ii&quot;,</div>
+<div class="line">              &quot;parameters&quot;: [</div>
+<div class="line">                {</div>
+<div class="line">                  &quot;name&quot;: &quot;ii&quot;,</div>
+<div class="line">                  &quot;type&quot;: &quot;II *&quot;</div>
+<div class="line">                }</div>
+<div class="line">              ],</div>
+<div class="line">              &quot;source_location&quot;: {</div>
+<div class="line">                &quot;column&quot;: 10,</div>
+<div class="line">                &quot;file&quot;: &quot;t00043.cc&quot;,</div>
+<div class="line">                &quot;line&quot;: 68,</div>
+<div class="line">                &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
+<div class="line">              },</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
 <div class="line">              &quot;type&quot;: &quot;void&quot;</div>
 <div class="line">            }</div>
 <div class="line">          ],</div>
@@ -773,7 +849,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 8,</div>
 <div class="line">            &quot;file&quot;: &quot;t00043.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 49,</div>
+<div class="line">            &quot;line&quot;: 66,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t00043.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;template_parameters&quot;: [],</div>
@@ -789,62 +865,68 @@ Generated JSON models</h1>
 <div class="line">  &quot;relationships&quot;: [</div>
 <div class="line">    {</div>
 <div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">      &quot;destination&quot;: &quot;1454679300998460550&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;1972977265990430931&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;11637434407987684404&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;15783818127923447452&quot;,</div>
 <div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">      &quot;destination&quot;: &quot;1454679300998460550&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;1906291555025945295&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;11637434407987684404&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;15250332440207562361&quot;,</div>
 <div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">      &quot;destination&quot;: &quot;1972977265990430931&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;823759225351121534&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;15783818127923447452&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;6590073802808972273&quot;,</div>
 <div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">      &quot;destination&quot;: &quot;823759225351121534&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;2277976215348279426&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;6590073802808972273&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;18223809722786235409&quot;,</div>
 <div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">      &quot;destination&quot;: &quot;1906291555025945295&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;2277976215348279426&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;15250332440207562361&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;18223809722786235409&quot;,</div>
 <div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">      &quot;destination&quot;: &quot;2277976215348279426&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;1694685540293810116&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;18223809722786235409&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;13557484322350480935&quot;,</div>
 <div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">      &quot;destination&quot;: &quot;736400571183204899&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;1534191494825314170&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;5891204569465639198&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;12273531958602513366&quot;,</div>
 <div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">      &quot;destination&quot;: &quot;1522297681294871411&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;1534191494825314170&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;12178381450358971290&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;12273531958602513366&quot;,</div>
 <div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">      &quot;destination&quot;: &quot;1534191494825314170&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;97422543769740359&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;12273531958602513366&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;779380350157922875&quot;,</div>
 <div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
 <div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">      &quot;destination&quot;: &quot;97422543769740359&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;1498530043106438011&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;779380350157922875&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;11988240344851504088&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;1112226203938309888&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;11988240344851504088&quot;,</div>
 <div class="line">      &quot;type&quot;: &quot;dependency&quot;</div>
 <div class="line">    }</div>
 <div class="line">  ],</div>

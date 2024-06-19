@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.2</span>
+       <span id="projectnumber">0.5.3</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -126,9 +126,9 @@ $(function() {
 <dd><a class="anchor" id="_todo000001"></a>Maybe it would be good to refactor this into a regular relationship. We could drop the '<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__parent.html" title="Class parent relationship model.">class_parent</a>' class completely... </dd>
 <dt>Class <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__parent.html">clanguml::class_diagram::model::class_parent</a>  </dt>
 <dd><a class="anchor" id="_todo000002"></a>Consider refactoring this class to a regular relationship.  </dd>
-<dt>Member <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#a7bf6f4f90e103938e9855531152fbf9d">clanguml::class_diagram::model::diagram::has_element</a>  (<a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">common::id_t</a> id) const override</dt>
+<dt>Member <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#a0b08812696412ae235a504a3d72a596b">clanguml::class_diagram::model::diagram::has_element</a>  (eid_t id) const override</dt>
 <dd><a class="anchor" id="_todo000004"></a>Remove in favour of 'contains' </dd>
-<dt>Member <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#af7af98900061f58c5dfe406ede0867b7">clanguml::class_diagram::model::diagram::to_alias</a>  (<a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">common::id_t</a> id) const</dt>
+<dt>Member <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#a5a0d45f8e882cd047cf395e1f217d9cd">clanguml::class_diagram::model::diagram::to_alias</a>  (eid_t id) const</dt>
 <dd><a class="anchor" id="_todo000003"></a>This method does not belong here - refactor to PlantUML specific code. </dd>
 <dt>Member <a class="el" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#afbb88ed04ba6e69eadc07728ffc8ee3b">clanguml::class_diagram::visitor::translation_unit_visitor::processed_template_qualified_names_</a>  </dt>
 <dd><a class="anchor" id="_todo000005"></a>There must be a better way to do this...  </dd>
@@ -138,16 +138,14 @@ $(function() {
 <dd><a class="anchor" id="_todo000006"></a>This is a PlantUML specific method - it shouldn't be here. </dd>
 <dt>Member <a class="el" href="classclanguml_1_1common_1_1model_1_1template__parameter.html#ad35541b96af3fb283abf133c273fe43e">clanguml::common::model::template_parameter::calculate_specialization_match</a>  (const <a class="el" href="classclanguml_1_1common_1_1model_1_1template__parameter.html" title="Represents template parameter, template arguments or concept constraints.">template_parameter</a> &amp;base_template_parameter) const</dt>
 <dd><a class="anchor" id="_todo000008"></a>This is not scientific - there probably is more strict way to calculate this... </dd>
-<dt>Member <a class="el" href="classclanguml_1_1include__diagram_1_1model_1_1diagram.html#a1ff74ed1c96a76662d7679ad28d6e5d3">clanguml::include_diagram::model::diagram::to_alias</a>  (const std::string &amp;full_name) const</dt>
-<dd><a class="anchor" id="_todo000009"></a>This method does not belong here - refactor to PlantUML specific code. </dd>
 <dt>Member <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a63f579cc4a61bf555a330ca643ea6678">clanguml::sequence_diagram::model::diagram::to_alias</a>  (const std::string &amp;full_name) const</dt>
-<dd><a class="anchor" id="_todo000010"></a>This method does not belong here - refactor to PlantUML specific code. </dd>
+<dd><a class="anchor" id="_todo000009"></a>This method does not belong here - refactor to PlantUML specific code. </dd>
 <dt>Member <a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1method.html#a695de172f4faa49e4da497d91033853b">clanguml::sequence_diagram::model::method::alias</a>  () const override</dt>
-<dd><a class="anchor" id="_todo000011"></a>This method does not belong here - refactor to PlantUML specific code. </dd>
-<dt>Member <a class="el" href="classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#a30f5387ac39535a34013f11565049268">clanguml::sequence_diagram::visitor::translation_unit_visitor::local_ast_id_map_</a>  </dt>
-<dd><a class="anchor" id="_todo000013"></a>Refactor to ast_id_mapper  </dd>
-<dt>Member <a class="el" href="classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#a55bd03ac31fb5135bbebb7bb63663147">clanguml::sequence_diagram::visitor::translation_unit_visitor::set_unique_id</a>  (int64_t local_id, <a class="el" href="namespaceclanguml_1_1common.html#aa855834984cd709213e39e58e3e4a54d">common::id_t</a> global_id)</dt>
-<dd><a class="anchor" id="_todo000012"></a>Refactor to ast_id_mapper</dd>
+<dd><a class="anchor" id="_todo000010"></a>This method does not belong here - refactor to PlantUML specific code. </dd>
+<dt>Member <a class="el" href="classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#aa14056065377e644bb8b61221fbacfff">clanguml::sequence_diagram::visitor::translation_unit_visitor::local_ast_id_map_</a>  </dt>
+<dd><a class="anchor" id="_todo000012"></a>Refactor to ast_id_mapper  </dd>
+<dt>Member <a class="el" href="classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#a80206cb5a907dd04745508f5bbc49927">clanguml::sequence_diagram::visitor::translation_unit_visitor::set_unique_id</a>  (int64_t local_id, eid_t global_id)</dt>
+<dd><a class="anchor" id="_todo000011"></a>Refactor to ast_id_mapper</dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

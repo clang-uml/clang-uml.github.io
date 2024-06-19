@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.2</span>
+       <span id="projectnumber">0.5.3</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -252,7 +252,7 @@ Public Member Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="json_2include__diagram__generator_8cc_source.html#l00053">53</a> of file <a class="el" href="json_2include__diagram__generator_8cc_source.html">include_diagram_generator.cc</a>.</p>
 <div class="fragment DoxyCode"><div class="line"><span class="lineno">   54</span>{</div>
 <div class="line"><span class="lineno">   55</span>    nlohmann::json j;</div>
-<div class="line"><span class="lineno">   56</span>    j[<span class="stringliteral">&quot;id&quot;</span>] = std::to_string(f.id());</div>
+<div class="line"><span class="lineno">   56</span>    j[<span class="stringliteral">&quot;id&quot;</span>] = std::to_string(f.id().value());</div>
 <div class="line"><span class="lineno">   57</span>    j[<span class="stringliteral">&quot;name&quot;</span>] = f.name();</div>
 <div class="line"><span class="lineno">   58</span>    <span class="keyword">auto</span> display_name = f.full_name(<span class="keyword">false</span>);</div>
 <div class="line"><span class="lineno">   59</span><span class="preprocessor">#if defined(_MSC_VER)</span></div>
@@ -276,7 +276,7 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   77</span>            <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Generating file {}&quot;</span>, f.name());</div>
 <div class="line"><span class="lineno">   78</span> </div>
 <div class="line"><span class="lineno">   79</span>            j[<span class="stringliteral">&quot;type&quot;</span>] = <span class="stringliteral">&quot;file&quot;</span>;</div>
-<div class="line"><span class="lineno">   80</span>            j[<span class="stringliteral">&quot;file_kind&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1common.html#a659755e7071d306be3669c69c45aed9d">to_string</a>(f.type());</div>
+<div class="line"><span class="lineno">   80</span>            j[<span class="stringliteral">&quot;file_kind&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1common.html#ad11805ecb3506d346f09498024687f9e">to_string</a>(f.type());</div>
 <div class="line"><span class="lineno">   81</span>            <span class="keywordflow">if</span> (f.type() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a9cef6e67dbb09df835c263f0610058b2">common::model::source_file_t::kHeader</a>) {</div>
 <div class="line"><span class="lineno">   82</span>                j[<span class="stringliteral">&quot;is_system&quot;</span>] = f.is_system_header();</div>
 <div class="line"><span class="lineno">   83</span>            }</div>
@@ -392,7 +392,7 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   44</span>            [<span class="keyword">this</span>](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;r) { return model().should_include(r.type()); },</div>
 <div class="line"><span class="lineno">   45</span>            [&amp;f, &amp;parent](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;r) {</div>
 <div class="line"><span class="lineno">   46</span>                nlohmann::json rel = r;</div>
-<div class="line"><span class="lineno">   47</span>                rel[<span class="stringliteral">&quot;source&quot;</span>] = std::to_string(f.id());</div>
+<div class="line"><span class="lineno">   47</span>                rel[<span class="stringliteral">&quot;source&quot;</span>] = std::to_string(f.id().value());</div>
 <div class="line"><span class="lineno">   48</span>                parent[<span class="stringliteral">&quot;relationships&quot;</span>].push_back(std::move(rel));</div>
 <div class="line"><span class="lineno">   49</span>            });</div>
 <div class="line"><span class="lineno">   50</span>    }</div>

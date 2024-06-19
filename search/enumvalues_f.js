@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['static_5f_0',['static_',['../namespaceclanguml_1_1config.html#aefa47da9b10ffcc1ca7c08a9b9839f87a2ae039feee6db3ba2cd0659217850e5f',1,'clanguml::config::static_'],['../namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca2ae039feee6db3ba2cd0659217850e5f',1,'clanguml::config::static_']]]
+  ['right_0',['right',['../namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892a7c4f29407893c334a6cb7a87bf045c0d',1,'clanguml::config']]],
+  ['row_1',['row',['../namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892af1965a857bc285d26fe22023aa5ab50d',1,'clanguml::config']]]
 ];

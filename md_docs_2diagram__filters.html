@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.2</span>
+       <span id="projectnumber">0.5.3</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -128,7 +128,12 @@ $(function() {
 <li><a class="el" href="md_docs_2diagram__filters.html#elements">elements</a></li>
 <li><a class="el" href="md_docs_2diagram__filters.html#element_types">element_types</a></li>
 <li><a class="el" href="md_docs_2configuration__file.html#paths">paths</a></li>
-<li><a class="el" href="md_docs_2diagram__filters.html#context">context</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#context">context</a><ul>
+<li><a class="el" href="md_docs_2diagram__filters.html#context-radius">context radius</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#context-direction">context direction</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#context-relationships">context relationships</a></li>
+</ul>
+</li>
 <li><a class="el" href="md_docs_2class__diagrams.html#relationships">relationships</a></li>
 <li><a class="el" href="md_docs_2diagram__filters.html#subclasses">subclasses</a></li>
 <li><a class="el" href="md_docs_2diagram__filters.html#parents">parents</a></li>
@@ -240,11 +245,13 @@ paths</h1>
 </div><!-- fragment --><p>Currently, this filter does not allow any globbing or wildcards, however paths to directories can be specified.</p>
 <h1><a class="anchor" id="context"></a>
 context</h1>
-<p>This filter allows to limit the diagram elements only to classes which are in direct relationship (of any kind) with the specified class, enum or concept:</p>
+<p>This filter allows to limit the diagram elements only to classes which are in direct relationship (of any kind) with the specified <code>class</code>, <code>enum</code> or <code>concept</code>:</p>
 <div class="fragment language-yaml"><div class="line">include:</div>
 <div class="line">  context:</div>
 <div class="line">    - ns1::ns2::MyClass</div>
-</div><!-- fragment --><p>By default, the filter will only include or exclude items in direct relationship (radius 1). It is however possible to define the context filter and provide a custom radius:</p>
+</div><!-- fragment --><h2><a class="anchor" id="context-radius"></a>
+context radius</h2>
+<p>By default, the filter will only include or exclude items in direct relationship (radius 1). It is however possible to define the context filter and provide a custom radius:</p>
 <div class="fragment language-yaml"><div class="line">include:</div>
 <div class="line">  context:</div>
 <div class="line">    - match:</div>
@@ -254,6 +261,30 @@ context</h1>
 <div class="line">        radius: 2</div>
 <div class="line">        pattern: ns1::ns2::MyOtherClass</div>
 </div><!-- fragment --><p>Please note that you can specify multiple context filters in a single diagram with different radius. Radius set to 0 will match only the given element.</p>
+<h2><a class="anchor" id="context-direction"></a>
+context direction</h2>
+<p>Sometimes we may be interested only in relationships pointing outward from a specific element, or inward. For instance we may want to see which elements depend through any relationship on a specified element. For this purpose the context filter has a <code>direction</code> option, which can have one of 3 values:</p><ul>
+<li><code>any</code> (default)</li>
+<li><code>inward</code> - only relationships pointing toward the specified class are considered in calculating the context</li>
+<li><code>outward</code> - only relationships pointing toward the specified class are considered in calculating the context</li>
+</ul>
+<p>For example, the following filter: </p><div class="fragment language-yaml"><div class="line">context:</div>
+<div class="line">  - match:</div>
+<div class="line">      radius: 2</div>
+<div class="line">      pattern: clanguml::t00076::B</div>
+<div class="line">      direction: inward</div>
+</div><!-- fragment --><p> will include all elements related to class <code>B</code> through relationships pointing toward <code>B</code> within a radius of maximum 2 relationships (see test case <a class="el" href="md_docs_2test__cases_2t00076.html">t00076</a>).</p>
+<h2><a class="anchor" id="context-relationships"></a>
+context relationships</h2>
+<p>Another way to customize the context of a specified element is to declare which relationships should be considered when calculating the elements' context.</p>
+<p>For example, the following filter: </p><div class="fragment language-yaml"><div class="line">context:</div>
+<div class="line">  - match:</div>
+<div class="line">      radius: 1</div>
+<div class="line">      pattern: clanguml::t00078::A</div>
+<div class="line">      relationships:</div>
+<div class="line">        - inheritance</div>
+<div class="line">        - aggregation</div>
+</div><!-- fragment --><p> will only include elements related to class <code>A</code> through inheritance or aggregation relationship (see test case <a class="el" href="md_docs_2test__cases_2t00078.html">t00076</a>).</p>
 <h1><a class="anchor" id="relationships-1"></a>
 relationships</h1>
 <p>This filter allows to include or exclude specific types of relationships from the diagram, for instance to only include inheritance and template specialization/instantiation relationships add the following to the diagram:</p>

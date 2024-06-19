@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['participant_0',['participant',['../structclanguml_1_1sequence__diagram_1_1model_1_1participant.html#abb6ebde8d57450afcc41fed1edc9f1e8ae42db0f9a183ac066bdec45b0c0cf2c7',1,'clanguml::sequence_diagram::model::participant']]],
-  ['plain_1',['plain',['../namespaceclanguml_1_1config.html#a8cfc1e2c5f2ed7b26e5153eb2bce1facaac7938d40cfc2307e2bf325d28e7884e',1,'clanguml::config']]],
-  ['plantuml_2',['plantuml',['../namespaceclanguml_1_1common.html#ad9e84a71a64680dc9618e3dfb3fd6788ad5ae37e34fa67717c36f0e9a4e35f022',1,'clanguml::common']]]
+  ['operator_5f_0',['operator_',['../namespaceclanguml_1_1config.html#aefa47da9b10ffcc1ca7c08a9b9839f87a52d76f4231073ba56a413274f8e5a437',1,'clanguml::config::operator_'],['../namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580ca52d76f4231073ba56a413274f8e5a437',1,'clanguml::config::operator_']]],
+  ['outward_1',['outward',['../namespaceclanguml_1_1config.html#ab2f149212123911eba44b79825a7dfe5afa81a44128f0ecd72e34491eeaa5fb17',1,'clanguml::config']]]
 ];

@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.2</span>
+       <span id="projectnumber">0.5.3</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -132,6 +132,7 @@ $(function() {
 <li><a class="el" href="md_docs_2common__options.html#use---query-driver-command-line-option">Use '--query-driver' command line option</a></li>
 <li><a class="el" href="md_docs_2common__options.html#manually-add-and-remove-compile-flags-from-the-compilation-database">Manually add and remove compile flags from the compilation database</a></li>
 <li><a class="el" href="md_docs_2common__options.html#using-cmake_cxx_implicit_include_directories">Using 'CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES'</a></li>
+<li><a class="el" href="md_docs_2common__options.html#nix-wrapper">Nix wrapper</a></li>
 </ul>
 </li>
 </ul>
@@ -237,7 +238,11 @@ Manually add and remove compile flags from the compilation database</h2>
 Using 'CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES'</h2>
 <p>Yet another option, for CMake based projects, is to use the following CMake option:</p>
 <div class="fragment language-cmake"><div class="line">set(CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES ${CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES})</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- fragment --><h2><a class="anchor" id="nix-wrapper"></a>
+Nix wrapper</h2>
+<p>On NixOS or when using <code>nix</code>, <code>clang-uml</code> uses a wrapper script, which builds and exports <code>CPATH</code> and <code>CPLUS_INCLUDE_PATH</code> environment variables before running <code>clang-uml</code>, which contain valid system header Clang paths for the current Nix environment.</p>
+<p>If you want to use an unwrapped version, the <code>clang-uml-unwrapped</code> binary can be called the same way as <code>clang-uml</code>. </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

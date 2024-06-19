@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.2</span>
+       <span id="projectnumber">0.5.3</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -147,20 +147,25 @@ $(function() {
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common_1_1visitor.html">   21</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1common_1_1visitor.html">clanguml::common::visitor</a> {</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a35a271cc1d85a33f099c56198a09850e">   23</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a35a271cc1d85a33f099c56198a09850e">ast_id_mapper::add</a>(int64_t ast_id, <a class="code hl_typedef" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#adaa8cfa25f6265af056109d546d3f9ab">id_t</a> global_id)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8f58bd6012e3a3d0bedd309213f55d9c">   23</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8f58bd6012e3a3d0bedd309213f55d9c">ast_id_mapper::add</a>(int64_t ast_id, <a class="code hl_class" href="classclanguml_1_1common_1_1eid__t.html" title="Universal class for representing all kinds of Id&#39;s in the diagram model.">eid_t</a> global_id)</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a42141228f39647893a7d45c2fc8c664c">id_map_</a>.emplace(ast_id, global_id);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8b4f61a4ac641305cc54d08a51a50eb5">id_map_</a>.emplace(ast_id, global_id);</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a28a38f0c1e4c2c0d4667247fbb048bb2">   28</a></span>std::optional&lt;id_t&gt; <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a28a38f0c1e4c2c0d4667247fbb048bb2">ast_id_mapper::get_global_id</a>(int64_t ast_id)</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#aaf01d66276484f817ad8464bbab364e8">   28</a></span>std::optional&lt;eid_t&gt; <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#aaf01d66276484f817ad8464bbab364e8">ast_id_mapper::get_global_id</a>(<a class="code hl_class" href="classclanguml_1_1common_1_1eid__t.html" title="Universal class for representing all kinds of Id&#39;s in the diagram model.">eid_t</a> ast_id)</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a42141228f39647893a7d45c2fc8c664c">id_map_</a>.count(ast_id) == 0)</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordflow">return</span> {};</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a42141228f39647893a7d45c2fc8c664c">id_map_</a>.at(ast_id);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>} <span class="comment">// namespace clanguml::common::visitor</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    assert(!ast_id.<a class="code hl_function" href="classclanguml_1_1common_1_1eid__t.html#a57824eea26a59638c9118cad59ae501a">is_global</a>());</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">if</span> (ast_id.<a class="code hl_function" href="classclanguml_1_1common_1_1eid__t.html#a57824eea26a59638c9118cad59ae501a">is_global</a>())</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8b4f61a4ac641305cc54d08a51a50eb5">id_map_</a>.count(ast_id.<a class="code hl_function" href="classclanguml_1_1common_1_1eid__t.html#a35393db79aaaf9abd0372808600957f3">ast_local_value</a>()) == 0)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8b4f61a4ac641305cc54d08a51a50eb5">id_map_</a>.at(ast_id.<a class="code hl_function" href="classclanguml_1_1common_1_1eid__t.html#a35393db79aaaf9abd0372808600957f3">ast_local_value</a>());</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>} <span class="comment">// namespace clanguml::common::visitor</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

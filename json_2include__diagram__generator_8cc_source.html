@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.2</span>
+       <span id="projectnumber">0.5.3</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -171,7 +171,7 @@ $(function() {
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            [<span class="keyword">this</span>](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;r) { return model().should_include(r.type()); },</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            [&amp;f, &amp;parent](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;r) {</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                nlohmann::json rel = r;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                rel[<span class="stringliteral">&quot;source&quot;</span>] = std::to_string(f.id());</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                rel[<span class="stringliteral">&quot;source&quot;</span>] = std::to_string(f.id().value());</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                parent[<span class="stringliteral">&quot;relationships&quot;</span>].push_back(std::move(rel));</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            });</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
@@ -180,7 +180,7 @@ $(function() {
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classclanguml_1_1include__diagram_1_1generators_1_1json_1_1generator.html#a34e9d2544bab0e3fb4ef6f3f26413193">   53</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1generators_1_1json_1_1generator.html#a34e9d2544bab0e3fb4ef6f3f26413193" title="Generate diagram element.">generator::generate</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1source__file.html" title="Diagram element representing some file or directory.">source_file</a> &amp;f, nlohmann::json &amp;parent)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword"></span>{</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    nlohmann::json j;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    j[<span class="stringliteral">&quot;id&quot;</span>] = std::to_string(f.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a692ee8b2308d222f6778ada5d68111da" title="Returns diagram element id.">id</a>());</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    j[<span class="stringliteral">&quot;id&quot;</span>] = std::to_string(f.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a30674ba6de6f9949f8587ecc629161b6" title="Returns diagram element id.">id</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1eid__t.html#ae59b71c0bf7ba62e49657c395b640e7e">value</a>());</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    j[<span class="stringliteral">&quot;name&quot;</span>] = f.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a738ce54aa464c34ebbe6a5bb6ddecaec">name</a>();</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">auto</span> display_name = f.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__file.html#adbe4a70a47fdac605a91b6e17d13c29b">full_name</a>(<span class="keyword">false</span>);</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#if defined(_MSC_VER)</span></div>

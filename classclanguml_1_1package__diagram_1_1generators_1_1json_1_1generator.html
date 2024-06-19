@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.2</span>
+       <span id="projectnumber">0.5.3</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -256,9 +256,9 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   63</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;uns = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().using_namespace();</div>
 <div class="line"><span class="lineno">   64</span>    <span class="keywordflow">if</span> (!uns.starts_with({p.full_name(false)})) {</div>
 <div class="line"><span class="lineno">   65</span>        nlohmann::json j;</div>
-<div class="line"><span class="lineno">   66</span>        j[<span class="stringliteral">&quot;id&quot;</span>] = std::to_string(p.id());</div>
+<div class="line"><span class="lineno">   66</span>        j[<span class="stringliteral">&quot;id&quot;</span>] = std::to_string(p.id().value());</div>
 <div class="line"><span class="lineno">   67</span>        j[<span class="stringliteral">&quot;name&quot;</span>] = p.name();</div>
-<div class="line"><span class="lineno">   68</span>        j[<span class="stringliteral">&quot;type&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1common.html#a659755e7071d306be3669c69c45aed9d">to_string</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().package_type());</div>
+<div class="line"><span class="lineno">   68</span>        j[<span class="stringliteral">&quot;type&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1common.html#ad11805ecb3506d346f09498024687f9e">to_string</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().package_type());</div>
 <div class="line"><span class="lineno">   69</span>        j[<span class="stringliteral">&quot;display_name&quot;</span>] = p.name();</div>
 <div class="line"><span class="lineno">   70</span>        <span class="keywordflow">switch</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().package_type()) {</div>
 <div class="line"><span class="lineno">   71</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a14a4eb84ab50b17d18f341eeb99f1343aa28886f1e6b46d18364aa513e58413c7">config::package_type_t::kNamespace</a>:</div>
@@ -344,7 +344,7 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  114</span> </div>
 <div class="line"><span class="lineno">  115</span>    parent[<span class="stringliteral">&quot;name&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().name();</div>
 <div class="line"><span class="lineno">  116</span>    parent[<span class="stringliteral">&quot;diagram_type&quot;</span>] = <span class="stringliteral">&quot;package&quot;</span>;</div>
-<div class="line"><span class="lineno">  117</span>    parent[<span class="stringliteral">&quot;package_type&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1common.html#a659755e7071d306be3669c69c45aed9d">to_string</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().package_type());</div>
+<div class="line"><span class="lineno">  117</span>    parent[<span class="stringliteral">&quot;package_type&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1common.html#ad11805ecb3506d346f09498024687f9e">to_string</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().package_type());</div>
 <div class="line"><span class="lineno">  118</span>    parent[<span class="stringliteral">&quot;elements&quot;</span>] = std::vector&lt;nlohmann::json&gt;{};</div>
 <div class="line"><span class="lineno">  119</span>    parent[<span class="stringliteral">&quot;relationships&quot;</span>] = std::vector&lt;nlohmann::json&gt;{};</div>
 <div class="line"><span class="lineno">  120</span> </div>
@@ -415,7 +415,7 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   44</span>                    <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>package &amp;<span class="keyword">&gt;</span>(*destination_package)))</div>
 <div class="line"><span class="lineno">   45</span>                <span class="keywordflow">continue</span>;</div>
 <div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>            rel[<span class="stringliteral">&quot;source&quot;</span>] = std::to_string(p.id());</div>
+<div class="line"><span class="lineno">   47</span>            rel[<span class="stringliteral">&quot;source&quot;</span>] = std::to_string(p.id().value());</div>
 <div class="line"><span class="lineno">   48</span>            parent[<span class="stringliteral">&quot;relationships&quot;</span>].push_back(std::move(rel));</div>
 <div class="line"><span class="lineno">   49</span>        }</div>
 <div class="line"><span class="lineno">   50</span>    }</div>

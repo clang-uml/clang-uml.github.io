@@ -69,7 +69,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.2</span>
+       <span id="projectnumber">0.5.3</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -2344,7 +2344,7 @@ template&lt;typename T , typename S &gt; </div>
 <p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00164">164</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 <div class="fragment DoxyCode"><div class="line"><span class="lineno">  165</span>{</div>
 <div class="line"><span class="lineno">  166</span>    <span class="keywordflow">if</span> (T *<span class="keyword">const</span> converted = <span class="keyword">dynamic_cast&lt;</span>T *<span class="keyword">&gt;</span>(p.get())) {</div>
-<div class="line"><span class="lineno">  167</span>        p.release(); <span class="comment">// NOLINT</span></div>
+<div class="line"><span class="lineno">  167</span>        std::move(p).release(); <span class="comment">// NOLINT</span></div>
 <div class="line"><span class="lineno">  168</span>        <span class="keywordflow">return</span> std::unique_ptr&lt;T&gt;{converted};</div>
 <div class="line"><span class="lineno">  169</span>    }</div>
 <div class="line"><span class="lineno">  170</span> </div>
