@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -130,7 +132,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="generator_8h_source.html">common/generators/generator.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="diagram__filter_8h_source.html">common/model/diagram_filter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="diagram__filter_8h_source.html">common/model/filters/diagram_filter.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="config_8h_source.html">config/config.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="error_8h_source.html">util/error.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="util_8h_source.html">util/util.h</a>&quot;</code><br />
@@ -171,8 +173,10 @@ Functions</h2></td></tr>
 <tr class="separator:a9e1820d48d46e6dc501947282f6639bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00489ee67cef5f41c918d87beb90d322"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1mermaid.html#a00489ee67cef5f41c918d87beb90d322">clanguml::common::generators::mermaid::indent</a> (const unsigned level)</td></tr>
 <tr class="separator:a00489ee67cef5f41c918d87beb90d322"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3e9589c5eaae9638b0f0e76ce80aa47"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1mermaid.html#ab3e9589c5eaae9638b0f0e76ce80aa47">clanguml::common::generators::mermaid::render_name</a> (std::string name, bool round_brackets)</td></tr>
-<tr class="separator:ab3e9589c5eaae9638b0f0e76ce80aa47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5724bf5a241f09e796f62ee82b9a8506"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1mermaid.html#a5724bf5a241f09e796f62ee82b9a8506">clanguml::common::generators::mermaid::render_name</a> (std::string name)</td></tr>
+<tr class="separator:a5724bf5a241f09e796f62ee82b9a8506"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abea56c56e1218a75df3156b3c0263f2e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1mermaid.html#abea56c56e1218a75df3156b3c0263f2e">clanguml::common::generators::mermaid::escape_name</a> (std::string name, bool round_brackets)</td></tr>
+<tr class="separator:abea56c56e1218a75df3156b3c0263f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b49309e9ebc17d247c06775db784aa9"><td class="memTemplParams" colspan="2">template&lt;typename DiagramModel , typename DiagramConfig &gt; </td></tr>
 <tr class="memitem:a9b49309e9ebc17d247c06775db784aa9"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1mermaid.html#a9b49309e9ebc17d247c06775db784aa9">clanguml::common::generators::mermaid::operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classclanguml_1_1common_1_1generators_1_1mermaid_1_1generator.html">generator</a>&lt; DiagramModel, DiagramConfig &gt; &amp;g)</td></tr>
 <tr class="separator:a9b49309e9ebc17d247c06775db784aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>

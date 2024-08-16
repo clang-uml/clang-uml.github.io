@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -122,7 +124,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="t40003---dependants-and-dependencies-include-diagram-filter-test"></a></p>
-<h1><a class="anchor" id="config-149"></a>
+<h1><a class="anchor" id="config-154"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  t40003_include:</div>
@@ -150,7 +152,7 @@ Config</h1>
 <div class="line">    plantuml:</div>
 <div class="line">      before:</div>
 <div class="line">        - &quot;&#39; t40003 test include diagram&quot;</div>
-</div><!-- fragment --> <h1><a class="anchor" id="source-code-149"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-154"></a>
 Source code</h1>
 <p>File <code>tests/t40003/src/dependencies/t2.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &quot;../../include/dependencies/t3.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;../../include/dependencies/t5.h&quot;</span></div>
@@ -261,17 +263,17 @@ Source code</h1>
 <div class="line"><span class="keyword">namespace </span>clanguml::t40003::dependants {</div>
 <div class="line"><span class="keywordtype">void</span> t2() { t1(); }</div>
 <div class="line">}</div>
-</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-149"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-154"></a>
 Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t40003_include.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-mermaid-diagrams-149"></a>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-154"></a>
 Generated Mermaid diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t40003_include_mermaid.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-json-models-149"></a>
+     <h1><a class="anchor" id="generated-json-models-154"></a>
 Generated JSON models</h1>
 <div class="fragment language-json"><div class="line">{</div>
 <div class="line">  &quot;diagram_type&quot;: &quot;include&quot;,</div>
@@ -403,11 +405,6 @@ Generated JSON models</h1>
 <div class="line">      &quot;type&quot;: &quot;association&quot;</div>
 <div class="line">    },</div>
 <div class="line">    {</div>
-<div class="line">      &quot;destination&quot;: &quot;15063527289428202824&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;9722595473477539496&quot;,</div>
-<div class="line">      &quot;type&quot;: &quot;association&quot;</div>
-<div class="line">    },</div>
-<div class="line">    {</div>
 <div class="line">      &quot;destination&quot;: &quot;9814745789083909391&quot;,</div>
 <div class="line">      &quot;source&quot;: &quot;17726793412846848469&quot;,</div>
 <div class="line">      &quot;type&quot;: &quot;association&quot;</div>
@@ -440,16 +437,6 @@ Generated JSON models</h1>
 <div class="line">    {</div>
 <div class="line">      &quot;destination&quot;: &quot;8962059906444515418&quot;,</div>
 <div class="line">      &quot;source&quot;: &quot;16849033273915995749&quot;,</div>
-<div class="line">      &quot;type&quot;: &quot;association&quot;</div>
-<div class="line">    },</div>
-<div class="line">    {</div>
-<div class="line">      &quot;destination&quot;: &quot;15065692964616746228&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;16849033273915995749&quot;,</div>
-<div class="line">      &quot;type&quot;: &quot;association&quot;</div>
-<div class="line">    },</div>
-<div class="line">    {</div>
-<div class="line">      &quot;destination&quot;: &quot;7559120824700944250&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;15065692964616746228&quot;,</div>
 <div class="line">      &quot;type&quot;: &quot;association&quot;</div>
 <div class="line">    }</div>
 <div class="line">  ]</div>

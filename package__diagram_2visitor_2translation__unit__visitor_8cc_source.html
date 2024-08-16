@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -180,7 +182,7 @@ $(function() {
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">auto</span> qualified_name = <a class="code hl_function" href="namespaceclanguml_1_1common.html#a1f6b3f1cb4c3c8572404cb8e205c034e" title="Get qualified name of some Clang declaration.">common::get_qualified_name</a>(*ns);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a417397f022290ec9c7635e7116fc0fc9" title="Check if the diagram should include a declaration.">should_include</a>(namespace_{qualified_name}))</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(namespace_{qualified_name}))</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Visiting namespace declaration: {}&quot;</span>, qualified_name);</div>
@@ -207,7 +209,7 @@ $(function() {
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    assert(p-&gt;id().value() &gt; 0);</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a417397f022290ec9c7635e7116fc0fc9" title="Check if the diagram should include a declaration.">should_include</a>(*p) &amp;&amp; !<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().get(p-&gt;id())) {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(*p) &amp;&amp; !<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().get(p-&gt;id())) {</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a2b2d5393a3a1b89058376b7f12de983e" title="Process comment directives in comment attached to a declaration.">process_comment</a>(*ns, *p);</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        p-&gt;set_style(p-&gt;style_spec());</div>

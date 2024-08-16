@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -134,11 +136,13 @@ $(function() {
 <li>add_package_diagram&#160;:&#160;<a class="el" href="classclanguml_1_1cli_1_1cli__handler.html#add0bc0bddd725a34dcb4f6875c15e750">clanguml::cli::cli_handler</a></li>
 <li>add_sequence_diagram&#160;:&#160;<a class="el" href="classclanguml_1_1cli_1_1cli__handler.html#a47efe66598ab2901d7af98dea020b8a3">clanguml::cli::cli_handler</a></li>
 <li>after&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1mermaid.html#a5374980b0ae61b478231e35b53fe526c">clanguml::config::mermaid</a>, <a class="el" href="structclanguml_1_1config_1_1plantuml.html#ad611c91f95819377cbd7d70eb2420b6b">clanguml::config::plantuml</a></li>
+<li>allof&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1filter.html#a8ef82d42292ffed3638e9b89a8207360">clanguml::config::filter</a></li>
 <li>allow_empty_diagrams&#160;:&#160;<a class="el" href="classclanguml_1_1cli_1_1cli__handler.html#a4155910280c2027352c06961ccb25d1a">clanguml::cli::cli_handler</a>, <a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a67b8d34bdaa5ee604cfe4f4886cae527">clanguml::config::inheritable_diagram_options</a></li>
 <li>already_generated_in_static_context_&#160;:&#160;<a class="el" href="classclanguml_1_1sequence__diagram_1_1generators_1_1json_1_1generator.html#ad3dae11339d53e9410ac718ead28f7f4">clanguml::sequence_diagram::generators::json::generator</a>, <a class="el" href="classclanguml_1_1sequence__diagram_1_1generators_1_1mermaid_1_1generator.html#af05c5e86386b323163bcd5a89e7328e8">clanguml::sequence_diagram::generators::mermaid::generator</a>, <a class="el" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a484ae8c33841ab0a19cd427ff9bed2f9">clanguml::sequence_diagram::generators::plantuml::generator</a></li>
 <li>already_visited_in_static_declaration_&#160;:&#160;<a class="el" href="classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#a639b69c3acad11f345b2a11be926985b">clanguml::sequence_diagram::visitor::translation_unit_visitor</a></li>
 <li>alternate_names&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1option.html#aaf358476a4dab0a4e33f55e2b9485607">clanguml::config::option&lt; T &gt;</a></li>
 <li>anonymous_struct_relationships_&#160;:&#160;<a class="el" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a665d283f4a97f595abf94d3a642502ec">clanguml::class_diagram::visitor::translation_unit_visitor</a>, <a class="el" href="classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#afc0dbe7e3169f3577b04ded868796a65">clanguml::sequence_diagram::visitor::translation_unit_visitor</a></li>
+<li>anyof&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1filter.html#a7428eda7758fbcfd11ea2bd8f0d48e67">clanguml::config::filter</a></li>
 <li>app&#160;:&#160;<a class="el" href="classclanguml_1_1cli_1_1cli__handler.html#ad860e0feeda1100e8db2e5a98e55d150">clanguml::cli::cli_handler</a></li>
 <li>argument_hints&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1relationship__hint__t.html#a02788e85836c48a7bea039fd4d87fc9e">clanguml::config::relationship_hint_t</a></li>
 </ul>

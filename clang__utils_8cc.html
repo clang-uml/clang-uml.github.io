@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -263,6 +265,10 @@ Functions</h2></td></tr>
 <tr class="memitem:ae74e2f508627cbebb578082dfd7c98e1"><td class="memItemLeft" align="right" valign="top">clang::RawComment *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#ae74e2f508627cbebb578082dfd7c98e1">clanguml::common::get_expression_raw_comment</a> (const clang::SourceManager &amp;sm, const clang::ASTContext &amp;context, const clang::Stmt *stmt)</td></tr>
 <tr class="memdesc:ae74e2f508627cbebb578082dfd7c98e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract a comment before or next to a statement.  <br /></td></tr>
 <tr class="separator:ae74e2f508627cbebb578082dfd7c98e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada60ba5a27f7420f98f7fc5fd3af46ea"><td class="memItemLeft" align="right" valign="top">clang::RawComment *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#ada60ba5a27f7420f98f7fc5fd3af46ea">clanguml::common::get_declaration_raw_comment</a> (const clang::SourceManager &amp;sm, const clang::ASTContext &amp;context, const clang::Decl *decl)</td></tr>
+<tr class="separator:ada60ba5a27f7420f98f7fc5fd3af46ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6633fc46028d5d9d26a23000e7ebc9ff"><td class="memItemLeft" align="right" valign="top">clang::RawComment *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#a6633fc46028d5d9d26a23000e7ebc9ff">clanguml::common::get_raw_comment</a> (const clang::SourceManager &amp;sm, const clang::ASTContext &amp;context, const clang::SourceRange &amp;source_range)</td></tr>
+<tr class="separator:a6633fc46028d5d9d26a23000e7ebc9ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac81f6cef0f69e529f0740d33e576b513"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#ac81f6cef0f69e529f0740d33e576b513">clanguml::common::is_coroutine</a> (const clang::FunctionDecl &amp;decl)</td></tr>
 <tr class="separator:ac81f6cef0f69e529f0740d33e576b513"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a195b92f84c04221d2b923f549915c64f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#a195b92f84c04221d2b923f549915c64f">clanguml::common::is_struct</a> (const clang::NamedDecl *decl)</td></tr>

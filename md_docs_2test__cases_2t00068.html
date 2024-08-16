@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -226,14 +228,7 @@ Generated JSON models</h1>
 <div class="line">  &quot;diagram_type&quot;: &quot;class&quot;,</div>
 <div class="line">  &quot;elements&quot;: [</div>
 <div class="line">    {</div>
-<div class="line">      &quot;bases&quot;: [</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;id&quot;: &quot;4623850284883436621&quot;,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;clanguml::t00068::AA&quot;</div>
-<div class="line">        }</div>
-<div class="line">      ],</div>
+<div class="line">      &quot;bases&quot;: [],</div>
 <div class="line">      &quot;display_name&quot;: &quot;AAA&quot;,</div>
 <div class="line">      &quot;id&quot;: &quot;11878554252076959348&quot;,</div>
 <div class="line">      &quot;is_abstract&quot;: false,</div>
@@ -282,28 +277,7 @@ Generated JSON models</h1>
 <div class="line">  ],</div>
 <div class="line">  &quot;name&quot;: &quot;t00068_r0_class&quot;,</div>
 <div class="line">  &quot;package_type&quot;: &quot;namespace&quot;,</div>
-<div class="line">  &quot;relationships&quot;: [</div>
-<div class="line">    {</div>
-<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">      &quot;destination&quot;: &quot;11421192930710045248&quot;,</div>
-<div class="line">      &quot;label&quot;: &quot;bb&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;11878554252076959348&quot;,</div>
-<div class="line">      &quot;type&quot;: &quot;association&quot;</div>
-<div class="line">    },</div>
-<div class="line">    {</div>
-<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">      &quot;destination&quot;: &quot;15107428292598946277&quot;,</div>
-<div class="line">      &quot;label&quot;: &quot;akind&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;11878554252076959348&quot;,</div>
-<div class="line">      &quot;type&quot;: &quot;aggregation&quot;</div>
-<div class="line">    },</div>
-<div class="line">    {</div>
-<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">      &quot;destination&quot;: &quot;4623850284883436621&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;11878554252076959348&quot;,</div>
-<div class="line">      &quot;type&quot;: &quot;extension&quot;</div>
-<div class="line">    }</div>
-<div class="line">  ],</div>
+<div class="line">  &quot;relationships&quot;: [],</div>
 <div class="line">  &quot;title&quot;: &quot;AAA context of radius 0&quot;,</div>
 <div class="line">  &quot;using_namespace&quot;: &quot;clanguml::t00068&quot;</div>
 <div class="line">}</div>
@@ -365,14 +339,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;type&quot;: &quot;enum&quot;</div>
 <div class="line">    },</div>
 <div class="line">    {</div>
-<div class="line">      &quot;bases&quot;: [</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;id&quot;: &quot;10379518537157600457&quot;,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;clanguml::t00068::A&quot;</div>
-<div class="line">        }</div>
-<div class="line">      ],</div>
+<div class="line">      &quot;bases&quot;: [],</div>
 <div class="line">      &quot;display_name&quot;: &quot;AA&quot;,</div>
 <div class="line">      &quot;id&quot;: &quot;4623850284883436621&quot;,</div>
 <div class="line">      &quot;is_abstract&quot;: false,</div>
@@ -486,19 +453,6 @@ Generated JSON models</h1>
 <div class="line">  &quot;name&quot;: &quot;t00068_r1_class&quot;,</div>
 <div class="line">  &quot;package_type&quot;: &quot;namespace&quot;,</div>
 <div class="line">  &quot;relationships&quot;: [</div>
-<div class="line">    {</div>
-<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">      &quot;destination&quot;: &quot;2873470995533754050&quot;,</div>
-<div class="line">      &quot;label&quot;: &quot;b&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;11421192930710045248&quot;,</div>
-<div class="line">      &quot;type&quot;: &quot;aggregation&quot;</div>
-<div class="line">    },</div>
-<div class="line">    {</div>
-<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">      &quot;destination&quot;: &quot;10379518537157600457&quot;,</div>
-<div class="line">      &quot;source&quot;: &quot;4623850284883436621&quot;,</div>
-<div class="line">      &quot;type&quot;: &quot;extension&quot;</div>
-<div class="line">    },</div>
 <div class="line">    {</div>
 <div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
 <div class="line">      &quot;destination&quot;: &quot;11421192930710045248&quot;,</div>

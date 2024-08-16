@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -129,15 +131,16 @@ $(function() {
 <p>This is the complete list of members for <a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a>, including all inherited members.</p>
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#a6ede3babbc45659da1ab1da82bc3e71c">get</a>() const</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#a75f77e229de33f664e5631a261c28bb8">operator=</a>(const T &amp;v)</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#ae5161d2b164233338313c7aecce597e1">operator=</a>(const regex &amp;v)</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#a8cec411fec6fc7f223ab6726a08488dd">operator==</a>(const T &amp;v) const</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#ae86f52dbb21cf8269049b44ee69e748e">or_regex</a>()=default</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#a778b07813759079ec517279e0abe3e74">or_regex</a>(T v)</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#a115e63d56d8ca66ffeb96b3cd2d12908">or_regex</a>(std::regex r, std::string p)</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#ae5acff02a7a1dd76f08a12aaa4f0c153">to_string</a>() const</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#add6e63262675d09c1231860148f5516b">value</a>() const</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#a5e25130a3afdcc7c1b3526b13c8643d3">value_</a></td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#acc347f512fe2ccf58b94726209dc93fd">is_regex</a>() const</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#a75f77e229de33f664e5631a261c28bb8">operator=</a>(const T &amp;v)</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#ae5161d2b164233338313c7aecce597e1">operator=</a>(const regex &amp;v)</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#a8cec411fec6fc7f223ab6726a08488dd">operator==</a>(const T &amp;v) const</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#ae86f52dbb21cf8269049b44ee69e748e">or_regex</a>()=default</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#a778b07813759079ec517279e0abe3e74">or_regex</a>(T v)</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#a115e63d56d8ca66ffeb96b3cd2d12908">or_regex</a>(std::regex r, std::string p)</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#ae5acff02a7a1dd76f08a12aaa4f0c153">to_string</a>() const</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#add6e63262675d09c1231860148f5516b">value</a>() const</td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html#a5e25130a3afdcc7c1b3526b13c8643d3">value_</a></td><td class="entry"><a class="el" href="structclanguml_1_1common_1_1or__regex.html">clanguml::common::or_regex&lt; T &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
 </table></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -123,7 +125,9 @@ $(function() {
 <h3><a id="index_n" name="index_n"></a>- n -</h3><ul>
 <li>namespace_&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">clanguml::common::model</a></li>
 <li>namespace_or_regex&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common.html#a7f2ff23bf13dd6c367c6a18d8ba9d52b">clanguml::common</a></li>
-<li>nested_trait_ns&#160;:&#160;<a class="el" href="namespaceclanguml_1_1class__diagram_1_1model.html#a7e2c32f2b01e36ce336be6fff13bb2b6">clanguml::class_diagram::model</a></li>
+<li>nested_trait_fspath&#160;:&#160;<a class="el" href="namespaceclanguml_1_1include__diagram_1_1model.html#ae5f01e479f77592bbf796ae7d9c56068">clanguml::include_diagram::model</a></li>
+<li>nested_trait_ns&#160;:&#160;<a class="el" href="namespaceclanguml_1_1class__diagram_1_1model.html#a7e2c32f2b01e36ce336be6fff13bb2b6">clanguml::class_diagram::model</a>, <a class="el" href="namespaceclanguml_1_1package__diagram_1_1model.html#a47d2841a047b9731e4ba632bf6acddb2">clanguml::package_diagram::model</a></li>
+<li>normalize_relative_path()&#160;:&#160;<a class="el" href="namespaceclanguml_1_1util.html#a0c5431640de3949316f7588d81d590b2">clanguml::util</a></li>
 </ul>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->

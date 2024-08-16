@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -308,6 +310,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a58dcff9ce67d47ece03b6e922c0bb406 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a58dcff9ce67d47ece03b6e922c0bb406">is_empty</a> () const =0</td></tr>
 <tr class="memdesc:a58dcff9ce67d47ece03b6e922c0bb406 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether the diagram is empty.  <br /></td></tr>
 <tr class="separator:a58dcff9ce67d47ece03b6e922c0bb406 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5c96e6b1a0b9f0fa4951bedca033196 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#ac5c96e6b1a0b9f0fa4951bedca033196">apply_filter</a> ()</td></tr>
+<tr class="separator:ac5c96e6b1a0b9f0fa4951bedca033196 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -768,90 +772,90 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#aee3fe01850b19130f7778a034a277a87">clanguml::common::model::diagram</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00590">590</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  591</span>{</div>
-<div class="line"><span class="lineno">  592</span>    <span class="comment">// Apply diagram filters and remove any empty block statements</span></div>
-<div class="line"><span class="lineno">  593</span>    <span class="keyword">using </span><a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#ab50863f913728634c047047145dd828b" title="Types of sequence diagram activity elements.">common::model::message_t</a>;</div>
-<div class="line"><span class="lineno">  594</span> </div>
-<div class="line"><span class="lineno">  595</span>    <span class="comment">// First in each sequence (activity) filter out any remaining</span></div>
-<div class="line"><span class="lineno">  596</span>    <span class="comment">// uninteresting calls</span></div>
-<div class="line"><span class="lineno">  597</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;[<span class="keywordtype">id</span>, act] : <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a30795b6db39647a5aad2214c2203f1ff">activities_</a>) {</div>
-<div class="line"><span class="lineno">  598</span>        <a class="code hl_function" href="namespaceclanguml_1_1util.html#ad0188dcbd54a723d6fbe5a06fc30d10b" title="Remove and erase elements from a vector.">util::erase_if</a>(act.messages(), [<span class="keyword">this</span>](<span class="keyword">auto</span> &amp;m) {</div>
-<div class="line"><span class="lineno">  599</span>            if (m.type() != message_t::kCall)</div>
-<div class="line"><span class="lineno">  600</span>                return false;</div>
-<div class="line"><span class="lineno">  601</span> </div>
-<div class="line"><span class="lineno">  602</span>            const auto &amp;to = get_participant&lt;model::participant&gt;(m.to());</div>
-<div class="line"><span class="lineno">  603</span>            if (!to || to.value().skip())</div>
-<div class="line"><span class="lineno">  604</span>                return true;</div>
-<div class="line"><span class="lineno">  605</span> </div>
-<div class="line"><span class="lineno">  606</span>            if (!should_include(to.value())) {</div>
-<div class="line"><span class="lineno">  607</span>                LOG_DBG(<span class="stringliteral">&quot;Excluding call from [{}] to {} [{}]&quot;</span>, m.from(),</div>
-<div class="line"><span class="lineno">  608</span>                    to.value().full_name(false), m.to());</div>
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00595">595</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  596</span>{</div>
+<div class="line"><span class="lineno">  597</span>    <span class="comment">// Apply diagram filters and remove any empty block statements</span></div>
+<div class="line"><span class="lineno">  598</span>    <span class="keyword">using </span><a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#ab50863f913728634c047047145dd828b" title="Types of sequence diagram activity elements.">common::model::message_t</a>;</div>
+<div class="line"><span class="lineno">  599</span> </div>
+<div class="line"><span class="lineno">  600</span>    <span class="comment">// First in each sequence (activity) filter out any remaining</span></div>
+<div class="line"><span class="lineno">  601</span>    <span class="comment">// uninteresting calls</span></div>
+<div class="line"><span class="lineno">  602</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;[<span class="keywordtype">id</span>, act] : <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a30795b6db39647a5aad2214c2203f1ff">activities_</a>) {</div>
+<div class="line"><span class="lineno">  603</span>        <a class="code hl_function" href="namespaceclanguml_1_1util.html#ad0188dcbd54a723d6fbe5a06fc30d10b" title="Remove and erase elements from a vector.">util::erase_if</a>(act.messages(), [<span class="keyword">this</span>](<span class="keyword">auto</span> &amp;m) {</div>
+<div class="line"><span class="lineno">  604</span>            if (m.type() != message_t::kCall)</div>
+<div class="line"><span class="lineno">  605</span>                return false;</div>
+<div class="line"><span class="lineno">  606</span> </div>
+<div class="line"><span class="lineno">  607</span>            const auto &amp;to = get_participant&lt;model::participant&gt;(m.to());</div>
+<div class="line"><span class="lineno">  608</span>            if (!to || to.value().skip())</div>
 <div class="line"><span class="lineno">  609</span>                return true;</div>
-<div class="line"><span class="lineno">  610</span>            }</div>
-<div class="line"><span class="lineno">  611</span> </div>
-<div class="line"><span class="lineno">  612</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  613</span>        });</div>
-<div class="line"><span class="lineno">  614</span>    }</div>
-<div class="line"><span class="lineno">  615</span> </div>
-<div class="line"><span class="lineno">  616</span>    <span class="comment">// Now remove any empty block statements, e.g. if/endif</span></div>
-<div class="line"><span class="lineno">  617</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;[<span class="keywordtype">id</span>, act] : <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a30795b6db39647a5aad2214c2203f1ff">activities_</a>) {</div>
-<div class="line"><span class="lineno">  618</span>        int64_t block_nest_level{0};</div>
-<div class="line"><span class="lineno">  619</span>        std::vector&lt;std::vector&lt;message&gt;&gt; block_message_stack;</div>
-<div class="line"><span class="lineno">  620</span>        <span class="comment">// Add first stack level - this level will contain the filtered</span></div>
-<div class="line"><span class="lineno">  621</span>        <span class="comment">// message sequence</span></div>
-<div class="line"><span class="lineno">  622</span>        block_message_stack.emplace_back();</div>
-<div class="line"><span class="lineno">  623</span> </div>
-<div class="line"><span class="lineno">  624</span>        <span class="comment">// First create a recursive stack from the messages and</span></div>
-<div class="line"><span class="lineno">  625</span>        <span class="comment">// message blocks (e.g. if statements)</span></div>
-<div class="line"><span class="lineno">  626</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;m : act.messages()) {</div>
-<div class="line"><span class="lineno">  627</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a514de579db512fa8a29d350349ac10e3">is_begin_block_message</a>(m.type())) {</div>
-<div class="line"><span class="lineno">  628</span>                block_nest_level++;</div>
-<div class="line"><span class="lineno">  629</span>                block_message_stack.push_back({m});</div>
-<div class="line"><span class="lineno">  630</span>            }</div>
-<div class="line"><span class="lineno">  631</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a4969ac600bed46bb21a57140528b444d">is_end_block_message</a>(m.type())) {</div>
-<div class="line"><span class="lineno">  632</span>                block_nest_level--;</div>
-<div class="line"><span class="lineno">  633</span> </div>
-<div class="line"><span class="lineno">  634</span>                block_message_stack.back().push_back(m);</div>
-<div class="line"><span class="lineno">  635</span> </div>
-<div class="line"><span class="lineno">  636</span>                <span class="comment">// Check the last stack for any calls, if yes, collapse it</span></div>
-<div class="line"><span class="lineno">  637</span>                <span class="comment">// on the previous stack</span></div>
-<div class="line"><span class="lineno">  638</span>                <span class="keywordflow">if</span> (std::count_if(block_message_stack.back().begin(),</div>
-<div class="line"><span class="lineno">  639</span>                        block_message_stack.back().end(), [](<span class="keyword">auto</span> &amp;m) {</div>
-<div class="line"><span class="lineno">  640</span>                            return m.type() == message_t::kCall;</div>
-<div class="line"><span class="lineno">  641</span>                        }) &gt; 0) {</div>
-<div class="line"><span class="lineno">  642</span>                    std::copy(block_message_stack.back().begin(),</div>
-<div class="line"><span class="lineno">  643</span>                        block_message_stack.back().end(),</div>
-<div class="line"><span class="lineno">  644</span>                        std::back_inserter(</div>
-<div class="line"><span class="lineno">  645</span>                            block_message_stack.at(block_nest_level)));</div>
-<div class="line"><span class="lineno">  646</span>                }</div>
-<div class="line"><span class="lineno">  647</span> </div>
-<div class="line"><span class="lineno">  648</span>                block_message_stack.pop_back();</div>
-<div class="line"><span class="lineno">  649</span> </div>
-<div class="line"><span class="lineno">  650</span>                assert(block_nest_level &gt;= 0);</div>
-<div class="line"><span class="lineno">  651</span>            }</div>
-<div class="line"><span class="lineno">  652</span>            <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  653</span>                <span class="keywordflow">if</span> (m.type() == message_t::kCall) {</div>
-<div class="line"><span class="lineno">  654</span>                    <span class="comment">// Set the message return type based on the callee return</span></div>
-<div class="line"><span class="lineno">  655</span>                    <span class="comment">// type</span></div>
-<div class="line"><span class="lineno">  656</span>                    <span class="keyword">auto</span> to_participant =</div>
-<div class="line"><span class="lineno">  657</span>                        get_participant&lt;sequence_diagram::model::function&gt;(</div>
-<div class="line"><span class="lineno">  658</span>                            m.to());</div>
-<div class="line"><span class="lineno">  659</span>                    <span class="keywordflow">if</span> (to_participant.has_value()) {</div>
-<div class="line"><span class="lineno">  660</span>                        m.set_return_type(to_participant.value().return_type());</div>
-<div class="line"><span class="lineno">  661</span>                    }</div>
-<div class="line"><span class="lineno">  662</span>                }</div>
-<div class="line"><span class="lineno">  663</span>                block_message_stack.back().push_back(m);</div>
-<div class="line"><span class="lineno">  664</span>            }</div>
-<div class="line"><span class="lineno">  665</span>        }</div>
-<div class="line"><span class="lineno">  666</span> </div>
-<div class="line"><span class="lineno">  667</span>        act.messages().clear();</div>
-<div class="line"><span class="lineno">  668</span> </div>
-<div class="line"><span class="lineno">  669</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;m : block_message_stack[0]) {</div>
-<div class="line"><span class="lineno">  670</span>            act.add_message(m);</div>
-<div class="line"><span class="lineno">  671</span>        }</div>
-<div class="line"><span class="lineno">  672</span>    }</div>
-<div class="line"><span class="lineno">  673</span>}</div>
+<div class="line"><span class="lineno">  610</span> </div>
+<div class="line"><span class="lineno">  611</span>            if (!should_include(to.value())) {</div>
+<div class="line"><span class="lineno">  612</span>                LOG_DBG(<span class="stringliteral">&quot;Excluding call from [{}] to {} [{}]&quot;</span>, m.from(),</div>
+<div class="line"><span class="lineno">  613</span>                    to.value().full_name(false), m.to());</div>
+<div class="line"><span class="lineno">  614</span>                return true;</div>
+<div class="line"><span class="lineno">  615</span>            }</div>
+<div class="line"><span class="lineno">  616</span> </div>
+<div class="line"><span class="lineno">  617</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  618</span>        });</div>
+<div class="line"><span class="lineno">  619</span>    }</div>
+<div class="line"><span class="lineno">  620</span> </div>
+<div class="line"><span class="lineno">  621</span>    <span class="comment">// Now remove any empty block statements, e.g. if/endif</span></div>
+<div class="line"><span class="lineno">  622</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;[<span class="keywordtype">id</span>, act] : <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a30795b6db39647a5aad2214c2203f1ff">activities_</a>) {</div>
+<div class="line"><span class="lineno">  623</span>        int64_t block_nest_level{0};</div>
+<div class="line"><span class="lineno">  624</span>        std::vector&lt;std::vector&lt;message&gt;&gt; block_message_stack;</div>
+<div class="line"><span class="lineno">  625</span>        <span class="comment">// Add first stack level - this level will contain the filtered</span></div>
+<div class="line"><span class="lineno">  626</span>        <span class="comment">// message sequence</span></div>
+<div class="line"><span class="lineno">  627</span>        block_message_stack.emplace_back();</div>
+<div class="line"><span class="lineno">  628</span> </div>
+<div class="line"><span class="lineno">  629</span>        <span class="comment">// First create a recursive stack from the messages and</span></div>
+<div class="line"><span class="lineno">  630</span>        <span class="comment">// message blocks (e.g. if statements)</span></div>
+<div class="line"><span class="lineno">  631</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;m : act.messages()) {</div>
+<div class="line"><span class="lineno">  632</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a514de579db512fa8a29d350349ac10e3">is_begin_block_message</a>(m.type())) {</div>
+<div class="line"><span class="lineno">  633</span>                block_nest_level++;</div>
+<div class="line"><span class="lineno">  634</span>                block_message_stack.push_back({m});</div>
+<div class="line"><span class="lineno">  635</span>            }</div>
+<div class="line"><span class="lineno">  636</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a4969ac600bed46bb21a57140528b444d">is_end_block_message</a>(m.type())) {</div>
+<div class="line"><span class="lineno">  637</span>                block_nest_level--;</div>
+<div class="line"><span class="lineno">  638</span> </div>
+<div class="line"><span class="lineno">  639</span>                block_message_stack.back().push_back(m);</div>
+<div class="line"><span class="lineno">  640</span> </div>
+<div class="line"><span class="lineno">  641</span>                <span class="comment">// Check the last stack for any calls, if yes, collapse it</span></div>
+<div class="line"><span class="lineno">  642</span>                <span class="comment">// on the previous stack</span></div>
+<div class="line"><span class="lineno">  643</span>                <span class="keywordflow">if</span> (std::count_if(block_message_stack.back().begin(),</div>
+<div class="line"><span class="lineno">  644</span>                        block_message_stack.back().end(), [](<span class="keyword">auto</span> &amp;m) {</div>
+<div class="line"><span class="lineno">  645</span>                            return m.type() == message_t::kCall;</div>
+<div class="line"><span class="lineno">  646</span>                        }) &gt; 0) {</div>
+<div class="line"><span class="lineno">  647</span>                    std::copy(block_message_stack.back().begin(),</div>
+<div class="line"><span class="lineno">  648</span>                        block_message_stack.back().end(),</div>
+<div class="line"><span class="lineno">  649</span>                        std::back_inserter(</div>
+<div class="line"><span class="lineno">  650</span>                            block_message_stack.at(block_nest_level)));</div>
+<div class="line"><span class="lineno">  651</span>                }</div>
+<div class="line"><span class="lineno">  652</span> </div>
+<div class="line"><span class="lineno">  653</span>                block_message_stack.pop_back();</div>
+<div class="line"><span class="lineno">  654</span> </div>
+<div class="line"><span class="lineno">  655</span>                assert(block_nest_level &gt;= 0);</div>
+<div class="line"><span class="lineno">  656</span>            }</div>
+<div class="line"><span class="lineno">  657</span>            <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  658</span>                <span class="keywordflow">if</span> (m.type() == message_t::kCall) {</div>
+<div class="line"><span class="lineno">  659</span>                    <span class="comment">// Set the message return type based on the callee return</span></div>
+<div class="line"><span class="lineno">  660</span>                    <span class="comment">// type</span></div>
+<div class="line"><span class="lineno">  661</span>                    <span class="keyword">auto</span> to_participant =</div>
+<div class="line"><span class="lineno">  662</span>                        get_participant&lt;sequence_diagram::model::function&gt;(</div>
+<div class="line"><span class="lineno">  663</span>                            m.to());</div>
+<div class="line"><span class="lineno">  664</span>                    <span class="keywordflow">if</span> (to_participant.has_value()) {</div>
+<div class="line"><span class="lineno">  665</span>                        m.set_return_type(to_participant.value().return_type());</div>
+<div class="line"><span class="lineno">  666</span>                    }</div>
+<div class="line"><span class="lineno">  667</span>                }</div>
+<div class="line"><span class="lineno">  668</span>                block_message_stack.back().push_back(m);</div>
+<div class="line"><span class="lineno">  669</span>            }</div>
+<div class="line"><span class="lineno">  670</span>        }</div>
+<div class="line"><span class="lineno">  671</span> </div>
+<div class="line"><span class="lineno">  672</span>        act.messages().clear();</div>
+<div class="line"><span class="lineno">  673</span> </div>
+<div class="line"><span class="lineno">  674</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;m : block_message_stack[0]) {</div>
+<div class="line"><span class="lineno">  675</span>            act.add_message(m);</div>
+<div class="line"><span class="lineno">  676</span>        }</div>
+<div class="line"><span class="lineno">  677</span>    }</div>
+<div class="line"><span class="lineno">  678</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -905,28 +909,28 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00565">565</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  568</span>{</div>
-<div class="line"><span class="lineno">  569</span>    <span class="keywordtype">bool</span> is_empty_statement{<span class="keyword">true</span>};</div>
-<div class="line"><span class="lineno">  570</span> </div>
-<div class="line"><span class="lineno">  571</span>    <span class="keyword">auto</span> rit = current_messages.rbegin();</div>
-<div class="line"><span class="lineno">  572</span>    <span class="keywordflow">for</span> (; rit != current_messages.rend(); rit++) {</div>
-<div class="line"><span class="lineno">  573</span>        <span class="keywordflow">if</span> (rit-&gt;type() == statement_begin) {</div>
-<div class="line"><span class="lineno">  574</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  575</span>        }</div>
-<div class="line"><span class="lineno">  576</span>        <span class="keywordflow">if</span> (rit-&gt;type() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#ab50863f913728634c047047145dd828ba4ff0cb81f1d2d093837e39bbf48501c8">common::model::message_t::kCall</a>) {</div>
-<div class="line"><span class="lineno">  577</span>            is_empty_statement = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  578</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  579</span>        }</div>
-<div class="line"><span class="lineno">  580</span>    }</div>
-<div class="line"><span class="lineno">  581</span> </div>
-<div class="line"><span class="lineno">  582</span>    <span class="keywordflow">if</span> (is_empty_statement) {</div>
-<div class="line"><span class="lineno">  583</span>        current_messages.erase((rit + 1).base(), current_messages.end());</div>
-<div class="line"><span class="lineno">  584</span>    }</div>
-<div class="line"><span class="lineno">  585</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  586</span>        current_messages.emplace_back(std::move(m));</div>
-<div class="line"><span class="lineno">  587</span>    }</div>
-<div class="line"><span class="lineno">  588</span>}</div>
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00570">570</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  573</span>{</div>
+<div class="line"><span class="lineno">  574</span>    <span class="keywordtype">bool</span> is_empty_statement{<span class="keyword">true</span>};</div>
+<div class="line"><span class="lineno">  575</span> </div>
+<div class="line"><span class="lineno">  576</span>    <span class="keyword">auto</span> rit = current_messages.rbegin();</div>
+<div class="line"><span class="lineno">  577</span>    <span class="keywordflow">for</span> (; rit != current_messages.rend(); rit++) {</div>
+<div class="line"><span class="lineno">  578</span>        <span class="keywordflow">if</span> (rit-&gt;type() == statement_begin) {</div>
+<div class="line"><span class="lineno">  579</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  580</span>        }</div>
+<div class="line"><span class="lineno">  581</span>        <span class="keywordflow">if</span> (rit-&gt;type() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#ab50863f913728634c047047145dd828ba4ff0cb81f1d2d093837e39bbf48501c8">common::model::message_t::kCall</a>) {</div>
+<div class="line"><span class="lineno">  582</span>            is_empty_statement = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  583</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  584</span>        }</div>
+<div class="line"><span class="lineno">  585</span>    }</div>
+<div class="line"><span class="lineno">  586</span> </div>
+<div class="line"><span class="lineno">  587</span>    <span class="keywordflow">if</span> (is_empty_statement) {</div>
+<div class="line"><span class="lineno">  588</span>        current_messages.erase((rit + 1).base(), current_messages.end());</div>
+<div class="line"><span class="lineno">  589</span>    }</div>
+<div class="line"><span class="lineno">  590</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  591</span>        current_messages.emplace_back(std::move(m));</div>
+<div class="line"><span class="lineno">  592</span>    }</div>
+<div class="line"><span class="lineno">  593</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1940,16 +1944,21 @@ template&lt;typename T &gt; </div>
 <div class="line"><span class="lineno">  551</span>            <span class="keywordflow">else</span> {</div>
 <div class="line"><span class="lineno">  552</span>                <span class="keyword">const</span> <span class="keyword">auto</span> &amp;to_participant = *<a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a2d4ddfc37da71b211bdaa14f937fa72e">participants_</a>.at(message.to());</div>
 <div class="line"><span class="lineno">  553</span> </div>
-<div class="line"><span class="lineno">  554</span>                <a class="code hl_define" href="util_8h.html#ade9905ed13f48ef2c9c596fa7a86d7a9">LOG_TRACE</a>(<span class="stringliteral">&quot;       Message from={}, from_id={}, &quot;</span></div>
-<div class="line"><span class="lineno">  555</span>                          <span class="stringliteral">&quot;to={}, to_id={}, name={}, type={}, comment={}&quot;</span>,</div>
-<div class="line"><span class="lineno">  556</span>                    from_participant.full_name(<span class="keyword">false</span>), from_participant.id(),</div>
-<div class="line"><span class="lineno">  557</span>                    to_participant.full_name(<span class="keyword">false</span>), to_participant.id(),</div>
-<div class="line"><span class="lineno">  558</span>                    message.message_name(), <a class="code hl_function" href="namespaceclanguml_1_1common.html#ad11805ecb3506d346f09498024687f9e">to_string</a>(message.type()),</div>
-<div class="line"><span class="lineno">  559</span>                    message.comment().value_or(<span class="stringliteral">&quot;None&quot;</span>));</div>
-<div class="line"><span class="lineno">  560</span>            }</div>
-<div class="line"><span class="lineno">  561</span>        }</div>
-<div class="line"><span class="lineno">  562</span>    }</div>
-<div class="line"><span class="lineno">  563</span>}</div>
+<div class="line"><span class="lineno">  554</span>                std::string message_comment{<span class="stringliteral">&quot;None&quot;</span>};</div>
+<div class="line"><span class="lineno">  555</span>                <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;cmt = message.comment(); cmt.has_value()) {</div>
+<div class="line"><span class="lineno">  556</span>                    message_comment = cmt.value().at(<span class="stringliteral">&quot;comment&quot;</span>);</div>
+<div class="line"><span class="lineno">  557</span>                }</div>
+<div class="line"><span class="lineno">  558</span> </div>
+<div class="line"><span class="lineno">  559</span>                <a class="code hl_define" href="util_8h.html#ade9905ed13f48ef2c9c596fa7a86d7a9">LOG_TRACE</a>(<span class="stringliteral">&quot;       Message from={}, from_id={}, &quot;</span></div>
+<div class="line"><span class="lineno">  560</span>                          <span class="stringliteral">&quot;to={}, to_id={}, name={}, type={}, comment={}&quot;</span>,</div>
+<div class="line"><span class="lineno">  561</span>                    from_participant.full_name(<span class="keyword">false</span>), from_participant.id(),</div>
+<div class="line"><span class="lineno">  562</span>                    to_participant.full_name(<span class="keyword">false</span>), to_participant.id(),</div>
+<div class="line"><span class="lineno">  563</span>                    message.message_name(), <a class="code hl_function" href="namespaceclanguml_1_1common.html#ad11805ecb3506d346f09498024687f9e">to_string</a>(message.type()),</div>
+<div class="line"><span class="lineno">  564</span>                    message_comment);</div>
+<div class="line"><span class="lineno">  565</span>            }</div>
+<div class="line"><span class="lineno">  566</span>        }</div>
+<div class="line"><span class="lineno">  567</span>    }</div>
+<div class="line"><span class="lineno">  568</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

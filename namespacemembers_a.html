@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -130,6 +132,7 @@ $(function() {
 <li>append()&#160;:&#160;<a class="el" href="namespaceclanguml_1_1util.html#a2cbb2067e8bbbd0e8f7542fc883db3ed">clanguml::util</a></li>
 <li>append_value()&#160;:&#160;<a class="el" href="namespaceclanguml_1_1config.html#ad152453ab1cbe552ec5e5b0888395069">clanguml::config</a></li>
 <li>append_value&lt; plantuml &gt;()&#160;:&#160;<a class="el" href="namespaceclanguml_1_1config.html#ad5617c5022c048d2d4ad45a552258aa5">clanguml::config</a></li>
+<li>apply_filter()&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common_1_1model.html#ac808fd515ae45c38bf30e34106a89682">clanguml::common::model</a></li>
 </ul>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->

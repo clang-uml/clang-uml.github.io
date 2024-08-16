@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -171,7 +173,9 @@ Translation unit glob patterns</h1>
 <div class="fragment language-yaml"><div class="line">glob:</div>
 <div class="line">  - src/dir1/*.cc</div>
 <div class="line">  - src/dir3/*.cc</div>
+<div class="line">  - r: &quot;.*test.*cpp$&quot;</div>
 </div><!-- fragment --><p>The glob patterns only need to match the translation units, which are also in the <code>compile_commands.json</code> file, i.e. any files that match the glob patterns, but are not in <code>compile_commands.json</code> will be ignored. In case the <code>glob</code> pattern set does not match any translation units an error will be printed on the standard output.</p>
+<p>For more advanced control over the <code>glob</code> pattern, instead of simple glob style pattern, a full regular expression can be provided as an object with a single key <code>r</code>. In such case, the pattern will not be checked against file system at all but will only filter the compile commands database entries. This can significantly improve performance on projects with tens of thousands of translation units.</p>
 <p>For small projects, the <code>glob</code> property can be omitted, which will result in <code>clang-uml</code> parsing all translation units from <code>compile_commands.json</code> for the diagram. However, for large projects, constraining the number of translation units for each diagram to minimum necessary to discover all necessary diagram elements will significantly decrease the diagram generation times.</p>
 <h1><a class="anchor" id="custom-directives"></a>
 Custom directives</h1>
@@ -231,6 +235,9 @@ Manually add and remove compile flags from the compilation database</h2>
 <div class="line">  - -I/opt/my_toolchain/include</div>
 <div class="line">remove_compile_flags:</div>
 <div class="line">  - -I/usr/include</div>
+</div><!-- fragment --><p><code>remove_compile_flags</code> also accepts regular expression, so a single entry can remove a whole set of flags, e.g.:</p>
+<div class="fragment language-yaml"><div class="line">remove_compile_flags:</div>
+<div class="line">  - r: &quot;-m.*&quot;</div>
 </div><!-- fragment --><p>These options can be also passed on the command line, for instance:</p>
 <div class="fragment language-bash"><div class="line">clang-uml --add-compile-flag -I/opt/my_toolchain/include \</div>
 <div class="line">          --remove-compile-flag -I/usr/include ...</div>

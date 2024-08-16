@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['layout_5fhint_0',['layout_hint',['../structclanguml_1_1config_1_1layout__hint.html',1,'clanguml::config']]]
+  ['json_5fgenerator_5ftag_0',['json_generator_tag',['../structclanguml_1_1common_1_1generators_1_1json__generator__tag.html',1,'clanguml::common::generators']]]
 ];

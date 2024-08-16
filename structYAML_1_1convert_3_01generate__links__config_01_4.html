@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -130,7 +132,7 @@ $(function() {
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00593">593</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00616">616</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -172,16 +174,24 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00594">594</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  595</span>    {</div>
-<div class="line"><span class="lineno">  596</span>        <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;link&quot;</span>])</div>
-<div class="line"><span class="lineno">  597</span>            rhs.link = node[<span class="stringliteral">&quot;link&quot;</span>].as&lt;<span class="keyword">decltype</span>(rhs.link)&gt;();</div>
-<div class="line"><span class="lineno">  598</span> </div>
-<div class="line"><span class="lineno">  599</span>        <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;tooltip&quot;</span>])</div>
-<div class="line"><span class="lineno">  600</span>            rhs.tooltip = node[<span class="stringliteral">&quot;tooltip&quot;</span>].as&lt;<span class="keyword">decltype</span>(rhs.tooltip)&gt;();</div>
-<div class="line"><span class="lineno">  601</span> </div>
-<div class="line"><span class="lineno">  602</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  603</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00617">617</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  618</span>    {</div>
+<div class="line"><span class="lineno">  619</span>        <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;link&quot;</span>]) {</div>
+<div class="line"><span class="lineno">  620</span>            <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;link&quot;</span>].IsMap())</div>
+<div class="line"><span class="lineno">  621</span>                rhs.link = node[<span class="stringliteral">&quot;link&quot;</span>].as&lt;<span class="keyword">decltype</span>(rhs.link)&gt;();</div>
+<div class="line"><span class="lineno">  622</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  623</span>                rhs.link.emplace(<span class="stringliteral">&quot;.&quot;</span>, node[<span class="stringliteral">&quot;link&quot;</span>].as&lt;std::string&gt;());</div>
+<div class="line"><span class="lineno">  624</span>        }</div>
+<div class="line"><span class="lineno">  625</span> </div>
+<div class="line"><span class="lineno">  626</span>        <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;tooltip&quot;</span>]) {</div>
+<div class="line"><span class="lineno">  627</span>            <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;tooltip&quot;</span>].IsMap())</div>
+<div class="line"><span class="lineno">  628</span>                rhs.tooltip = node[<span class="stringliteral">&quot;tooltip&quot;</span>].as&lt;<span class="keyword">decltype</span>(rhs.tooltip)&gt;();</div>
+<div class="line"><span class="lineno">  629</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  630</span>                rhs.tooltip.emplace(<span class="stringliteral">&quot;.&quot;</span>, node[<span class="stringliteral">&quot;tooltip&quot;</span>].as&lt;std::string&gt;());</div>
+<div class="line"><span class="lineno">  631</span>        }</div>
+<div class="line"><span class="lineno">  632</span> </div>
+<div class="line"><span class="lineno">  633</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  634</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>

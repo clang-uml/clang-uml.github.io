@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -133,6 +135,7 @@ $(function() {
 <li><a class="el" href="md_docs_2troubleshooting.html#yaml-anchors-and-aliases-are-not-fully-supported">YAML anchors and aliases are not fully supported</a></li>
 <li><a class="el" href="md_docs_2troubleshooting.html#schema-validation-error-is-thrown-but-the-configuration-file-is-correct">Schema validation error is thrown, but the configuration file is correct</a></li>
 <li><a class="el" href="md_docs_2troubleshooting.html#fatal-error-stddefh-file-not-found">&quot;fatal error: 'stddef.h' file not found&quot;</a></li>
+<li><a class="el" href="md_docs_2troubleshooting.html#error-unknown-pragma-ignored">&quot;error: unknown pragma ignored&quot;</a></li>
 </ul>
 </li>
 <li><a class="el" href="md_docs_2test__cases.html#class-diagrams">Class diagrams</a><ul>
@@ -200,6 +203,9 @@ Clang produces several warnings during diagram generation</h2>
 <div class="line">  - -Wno-shadow</div>
 <div class="line">remove_compile_flags:</div>
 <div class="line">  - -Wshadow</div>
+</div><!-- fragment --><p>If you don't care about warnings in general during the diagram generation, a more convenient option is to ignore all warnings:</p>
+<div class="fragment language-yaml"><div class="line">add_compile_flags:</div>
+<div class="line">  - -Wno-unknown-warning-option</div>
 </div><!-- fragment --><h2><a class="anchor" id="errors-with-c20-modules-and-llvm-18"></a>
 Errors with C++20 modules and LLVM 18</h2>
 <p>When running <code>clang-uml</code> on code using C++20 modules, the LLVM version used to build the project must be compatible with the LLVM version linked to <code>clang-uml</code>, otherwise you'll get error like this: </p><div class="fragment language-cpp"><div class="line">fatal error: malformed or corrupted AST file: &#39;malformed block record in AST file&#39;</div>
@@ -248,18 +254,24 @@ Schema validation error is thrown, but the configuration file is correct</h2>
 </div><!-- fragment --><p>If this doesn't help to include paths can be customized using config options:</p>
 <ul>
 <li><code>add_compile_flags</code> - which adds a list of compile flags such as include paths to each entry of the compilation database</li>
-<li><code>remove_compile_flags</code> - which removes existing compile flags from each entry of the compilation database</li>
+<li><code>remove_compile_flags</code> - which removes existing compile flags from each entry of the compilation database, it can be provided as a regular string that must match the entire flag or as an object with <code>r:</code> key, which can contain a regular expression that will match a set of flags</li>
 </ul>
 <p>For instance:</p>
 <div class="fragment language-yaml"><div class="line">add_compile_flags:</div>
 <div class="line">  - -I/opt/my_toolchain/include</div>
 <div class="line">remove_compile_flags:</div>
 <div class="line">  - -I/usr/include</div>
+<div class="line">  - r: &quot;-m.*&quot;</div>
 </div><!-- fragment --><p>These options can be also passed on the command line, for instance:</p>
 <div class="fragment language-bash"><div class="line">clang-uml --add-compile-flag -I/opt/my_toolchain/include \</div>
 <div class="line">          --remove-compile-flag -I/usr/include ...</div>
 </div><!-- fragment --><p>Also see <a href="./md_docs_2common__options.html#resolving-include-path-and-compiler-flags-issues">here</a>.</p>
-<h1><a class="anchor" id="class-diagrams-1"></a>
+<h2><a class="anchor" id="error-unknown-pragma-ignored"></a>
+"error: unknown pragma ignored"</h2>
+<p>If your code bases uses some non-standard pragmas declarations or you are using older LLVM version, which does not yet support a specific pragma, the warning can be ignore by adding the following compilation flag in the <code>.clang-uml</code> config:</p>
+<div class="fragment language-yaml"><div class="line">add_compile_flags:</div>
+<div class="line">  - -Wno-unknown-pragmas</div>
+</div><!-- fragment --><h1><a class="anchor" id="class-diagrams-1"></a>
 Class diagrams</h1>
 <h2><a class="anchor" id="how-can-i-generate-class-diagram-of-my-entire-project"></a>
 How can I generate class diagram of my entire project</h2>

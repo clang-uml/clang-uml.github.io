@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -121,6 +123,8 @@ $(function() {
 <div class="textblock">Here is a list of all namespace typedefs with links to the namespace documentation for each typedef:</div>
 
 <h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
+<li>class_dependants_filter_t&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common_1_1model.html#af2317029d0f7006229b1e912ef308e05">clanguml::common::model</a></li>
+<li>class_dependencies_filter_t&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common_1_1model.html#abfda17521acf70f777e9e434e793c50a">clanguml::common::model</a></li>
 <li>comment_t&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">clanguml::common::model</a></li>
 <li>common_generator&#160;:&#160;<a class="el" href="namespaceclanguml_1_1class__diagram_1_1generators_1_1json.html#a79c7b8bbc2cb14a4237024f258dbc555">clanguml::class_diagram::generators::json</a>, <a class="el" href="namespaceclanguml_1_1class__diagram_1_1generators_1_1mermaid.html#a9b38db600901c739111ccec63f4d17b5">clanguml::class_diagram::generators::mermaid</a>, <a class="el" href="namespaceclanguml_1_1class__diagram_1_1generators_1_1plantuml.html#a6a65cf2ce9aebe50b80819c8a686ca9a">clanguml::class_diagram::generators::plantuml</a>, <a class="el" href="namespaceclanguml_1_1include__diagram_1_1generators_1_1json.html#a41029dac9d221c5808ad244ca25ef472">clanguml::include_diagram::generators::json</a>, <a class="el" href="namespaceclanguml_1_1include__diagram_1_1generators_1_1mermaid.html#a9008e3220e567c0ba2c7d3b267f88268">clanguml::include_diagram::generators::mermaid</a>, <a class="el" href="namespaceclanguml_1_1include__diagram_1_1generators_1_1plantuml.html#abec3b5d69fbb9427747ca6fde287738d">clanguml::include_diagram::generators::plantuml</a>, <a class="el" href="namespaceclanguml_1_1package__diagram_1_1generators_1_1json.html#ae4337e289162aeba09d4668e72a33f6f">clanguml::package_diagram::generators::json</a>, <a class="el" href="namespaceclanguml_1_1package__diagram_1_1generators_1_1mermaid.html#a649c5a439e21a2461192337b8feb8d33">clanguml::package_diagram::generators::mermaid</a>, <a class="el" href="namespaceclanguml_1_1package__diagram_1_1generators_1_1plantuml.html#a87a6bbad0edf1022f68f8a6b7b0d900a">clanguml::package_diagram::generators::plantuml</a>, <a class="el" href="namespaceclanguml_1_1sequence__diagram_1_1generators_1_1json.html#ade7d16971fc0d8edebe6b441ebc7a65e">clanguml::sequence_diagram::generators::json</a>, <a class="el" href="namespaceclanguml_1_1sequence__diagram_1_1generators_1_1mermaid.html#a749423c5a5d08561f4f92d1f886658b5">clanguml::sequence_diagram::generators::mermaid</a>, <a class="el" href="namespaceclanguml_1_1sequence__diagram_1_1generators_1_1plantuml.html#a621242940adf266053ba1ca017c5d47f">clanguml::sequence_diagram::generators::plantuml</a></li>
 <li>compilation_database_ptr&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common.html#ab2fd0ae19e35871dab2dd583f7683587">clanguml::common</a></li>
@@ -153,12 +157,19 @@ $(function() {
 <h3><a id="index_n" name="index_n"></a>- n -</h3><ul>
 <li>namespace_&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">clanguml::common::model</a></li>
 <li>namespace_or_regex&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common.html#a7f2ff23bf13dd6c367c6a18d8ba9d52b">clanguml::common</a></li>
-<li>nested_trait_ns&#160;:&#160;<a class="el" href="namespaceclanguml_1_1class__diagram_1_1model.html#a7e2c32f2b01e36ce336be6fff13bb2b6">clanguml::class_diagram::model</a></li>
+<li>nested_trait_fspath&#160;:&#160;<a class="el" href="namespaceclanguml_1_1include__diagram_1_1model.html#ae5f01e479f77592bbf796ae7d9c56068">clanguml::include_diagram::model</a></li>
+<li>nested_trait_ns&#160;:&#160;<a class="el" href="namespaceclanguml_1_1class__diagram_1_1model.html#a7e2c32f2b01e36ce336be6fff13bb2b6">clanguml::class_diagram::model</a>, <a class="el" href="namespaceclanguml_1_1package__diagram_1_1model.html#a47d2841a047b9731e4ba632bf6acddb2">clanguml::package_diagram::model</a></li>
 </ul>
 
 
 <h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
 <li>opt_ref&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common.html#a1580b9ca61896bdf6b4c96db61f167a4">clanguml::common</a></li>
+</ul>
+
+
+<h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
+<li>package_dependants_filter_t&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common_1_1model.html#a388386b372d8ced9db56af66b2851fbe">clanguml::common::model</a></li>
+<li>package_dependencies_filter_t&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa7b6de9aaa62c90d4af839e8ef0c066d">clanguml::common::model</a></li>
 </ul>
 
 
@@ -170,6 +181,8 @@ $(function() {
 
 
 <h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
+<li>source_file_dependency_filter_t&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common_1_1model.html#a620b88a30a688ba5f491b8fedc4e9f91">clanguml::common::model</a></li>
+<li>specializations_filter_t&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common_1_1model.html#a9233ebd0a5dcde7a5c1132b4546835ea">clanguml::common::model</a></li>
 <li>string_or_regex&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common.html#ae721081846956d4e338e399019f9bd6f">clanguml::common</a></li>
 </ul>
 

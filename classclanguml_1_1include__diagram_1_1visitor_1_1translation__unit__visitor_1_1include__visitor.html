@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -193,9 +195,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3c462afec21512f6c7de07a6c9415ffe inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a3c462afec21512f6c7de07a6c9415ffe">process_comment</a> (const clang::RawComment *comment, clang::DiagnosticsEngine &amp;de, <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">clanguml::common::model::decorated_element</a> &amp;e)</td></tr>
 <tr class="memdesc:a3c462afec21512f6c7de07a6c9415ffe inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process comment directives in raw comment.  <br /></td></tr>
 <tr class="separator:a3c462afec21512f6c7de07a6c9415ffe inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a417397f022290ec9c7635e7116fc0fc9 inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a417397f022290ec9c7635e7116fc0fc9">should_include</a> (const clang::NamedDecl *decl)</td></tr>
-<tr class="memdesc:a417397f022290ec9c7635e7116fc0fc9 inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the diagram should include a declaration.  <br /></td></tr>
-<tr class="separator:a417397f022290ec9c7635e7116fc0fc9 inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85f2f57affe522bdd3b736095a76a859 inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a85f2f57affe522bdd3b736095a76a859">skip_system_header_decl</a> (const clang::NamedDecl *decl) const</td></tr>
+<tr class="separator:a85f2f57affe522bdd3b736095a76a859 inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a204e950467fdc079972911f311d07e3e inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e">should_include</a> (const clang::NamedDecl *decl) const</td></tr>
+<tr class="memdesc:a204e950467fdc079972911f311d07e3e inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the diagram should include a declaration.  <br /></td></tr>
+<tr class="separator:a204e950467fdc079972911f311d07e3e inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fb1b62c0c0ce8ef645c9308e2111369 inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="memItemLeft" align="right" valign="top">DiagramT &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369">diagram</a> ()</td></tr>
 <tr class="memdesc:a4fb1b62c0c0ce8ef645c9308e2111369 inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get diagram model reference.  <br /></td></tr>
 <tr class="separator:a4fb1b62c0c0ce8ef645c9308e2111369 inherit pub_methods_classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -410,7 +414,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  100</span>    <span class="keyword">auto</span> relative_include_path =</div>
 <div class="line"><span class="lineno">  101</span>        std::filesystem::relative(include_path, <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().root_directory());</div>
 <div class="line"><span class="lineno">  102</span> </div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a417397f022290ec9c7635e7116fc0fc9" title="Check if the diagram should include a declaration.">should_include</a>(source_file{include_path})) {</div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(source_file{include_path})) {</div>
 <div class="line"><span class="lineno">  104</span>        <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1visitor_1_1translation__unit__visitor_1_1include__visitor.html#a76738682e4d49471252ed3c63688e2e0" title="Handle internal header include directive.">process_internal_header</a>(include_path,</div>
 <div class="line"><span class="lineno">  105</span>            file_type != clang::SrcMgr::CharacteristicKind::C_User,</div>
 <div class="line"><span class="lineno">  106</span>            current_file_id.value());</div>
@@ -612,7 +616,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  198</span> </div>
 <div class="line"><span class="lineno">  199</span>    file_path = file_path.lexically_normal();</div>
 <div class="line"><span class="lineno">  200</span> </div>
-<div class="line"><span class="lineno">  201</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a417397f022290ec9c7635e7116fc0fc9" title="Check if the diagram should include a declaration.">should_include</a>(source_file{file_path})) {</div>
+<div class="line"><span class="lineno">  201</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(source_file{file_path})) {</div>
 <div class="line"><span class="lineno">  202</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Processing source file {}&quot;</span>, file.string());</div>
 <div class="line"><span class="lineno">  203</span> </div>
 <div class="line"><span class="lineno">  204</span>        <span class="comment">// Relativize the path with respect to effective root directory</span></div>

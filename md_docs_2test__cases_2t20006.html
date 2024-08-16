@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -122,7 +124,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="t20006---class-template-specialization-basic-sequence-diagram"></a></p>
-<h1><a class="anchor" id="config-83"></a>
+<h1><a class="anchor" id="config-87"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  t20006_sequence:</div>
@@ -135,7 +137,7 @@ Config</h1>
 <div class="line">    using_namespace: clanguml::t20006</div>
 <div class="line">    from:</div>
 <div class="line">      - function: &quot;clanguml::t20006::tmain()&quot;</div>
-</div><!-- fragment --> <h1><a class="anchor" id="source-code-83"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-87"></a>
 Source code</h1>
 <p>File <code>tests/t20006/t20006.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"> </div>
@@ -216,17 +218,17 @@ Source code</h1>
 <div class="line">}</div>
 <div class="line">}</div>
 <div class="line">}</div>
-</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-83"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-87"></a>
 Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t20006_sequence.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-mermaid-diagrams-83"></a>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-87"></a>
 Generated Mermaid diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t20006_sequence_mermaid.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-json-models-83"></a>
+     <h1><a class="anchor" id="generated-json-models-87"></a>
 Generated JSON models</h1>
 <div class="fragment language-json"><div class="line">{</div>
 <div class="line">  &quot;diagram_type&quot;: &quot;sequence&quot;,</div>
@@ -253,7 +255,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20006::B&lt;int&gt;::b(int)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;2001977743110748701&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;b&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20006&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 7,</div>
 <div class="line">            &quot;file&quot;: &quot;t20006.cc&quot;,</div>
@@ -283,7 +285,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20006::A&lt;int&gt;::a1(int)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;1571123903899165357&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a1&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20006&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 7,</div>
 <div class="line">            &quot;file&quot;: &quot;t20006.cc&quot;,</div>
@@ -313,7 +315,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20006::B&lt;std::string&gt;::b(std::string)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;104397060422969259&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;b&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20006::B&lt;std&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 17,</div>
 <div class="line">            &quot;file&quot;: &quot;t20006.cc&quot;,</div>
@@ -343,7 +345,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20006::A&lt;std::string&gt;::a2(std::string)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;94100708992903256&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a2&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20006::A&lt;std&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 7,</div>
 <div class="line">            &quot;file&quot;: &quot;t20006.cc&quot;,</div>
@@ -373,7 +375,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20006::BB&lt;int,std::string&gt;::BB(AA&lt;int&gt; *)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;3053863014462091843&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;BB&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20006::BB&lt;int, std&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 5,</div>
 <div class="line">            &quot;file&quot;: &quot;t20006.cc&quot;,</div>
@@ -387,7 +389,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20006::BB&lt;int,std::string&gt;::bb1(int,std::string)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;8502992045696113005&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;bb1&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20006::BB&lt;int, std&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20006.cc&quot;,</div>
@@ -401,7 +403,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20006::BB&lt;int,std::string&gt;::bb2(int,std::string)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;6301641519958225878&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;bb2&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20006::BB&lt;int, std&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20006.cc&quot;,</div>
@@ -431,7 +433,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20006::BB&lt;int,float&gt;::BB(AA&lt;int&gt; &amp;)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;8408105624578590737&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;BB&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20006&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 5,</div>
 <div class="line">            &quot;file&quot;: &quot;t20006.cc&quot;,</div>
@@ -445,7 +447,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20006::BB&lt;int,float&gt;::bb1(int,float)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;11705510764579885710&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;bb1&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20006&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20006.cc&quot;,</div>
@@ -459,7 +461,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20006::BB&lt;int,float&gt;::bb2(int,float)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;5858901370635215228&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;bb2&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20006&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20006.cc&quot;,</div>
@@ -489,7 +491,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20006::BB&lt;int,int&gt;::bb1(int,int)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;9710920974634781233&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;bb1&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20006&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20006.cc&quot;,</div>
@@ -503,7 +505,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20006::BB&lt;int,int&gt;::bb2(int,int)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;2893200991334342837&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;bb2&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20006&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20006.cc&quot;,</div>
@@ -533,7 +535,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20006::AA&lt;int&gt;::aa1(int)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;9883425311925361535&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;aa1&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20006&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20006.cc&quot;,</div>
@@ -547,7 +549,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20006::AA&lt;int&gt;::aa2(int)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;4656782618682138323&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;aa2&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20006&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20006.cc&quot;,</div>

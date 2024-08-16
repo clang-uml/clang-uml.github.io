@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -160,6 +162,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0313c071b64522eea1b8e740c88af69a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element__view.html#a0313c071b64522eea1b8e740c88af69a">is_empty</a> () const</td></tr>
 <tr class="memdesc:a0313c071b64522eea1b8e740c88af69a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether the element view is empty.  <br /></td></tr>
 <tr class="separator:a0313c071b64522eea1b8e740c88af69a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40c57b96e79b704a7c0d4fe92707054f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element__view.html#a40c57b96e79b704a7c0d4fe92707054f">remove</a> (const std::set&lt; <a class="el" href="classclanguml_1_1common_1_1eid__t.html">eid_t</a> &gt; &amp;element_ids)</td></tr>
+<tr class="separator:a40c57b96e79b704a7c0d4fe92707054f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -289,6 +293,43 @@ template&lt;typename T &gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a40c57b96e79b704a7c0d4fe92707054f" name="a40c57b96e79b704a7c0d4fe92707054f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40c57b96e79b704a7c0d4fe92707054f">&#9670;&#160;</a></span>remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classclanguml_1_1common_1_1model_1_1element__view.html">clanguml::common::model::element_view</a>&lt; T &gt;::remove </td>
+          <td>(</td>
+          <td class="paramtype">const std::set&lt; <a class="el" href="classclanguml_1_1common_1_1eid__t.html">eid_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>element_ids</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="element__view_8h_source.html#l00081">81</a> of file <a class="el" href="element__view_8h_source.html">element_view.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   82</span>    {</div>
+<div class="line"><span class="lineno">   83</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">elements_</a>.erase(std::remove_if(<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">elements_</a>.begin(), <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">elements_</a>.end(),</div>
+<div class="line"><span class="lineno">   84</span>                            [&amp;element_ids](<span class="keyword">auto</span> &amp;&amp;e) {</div>
+<div class="line"><span class="lineno">   85</span>                                return element_ids.count(e.get().id()) &gt; 0;</div>
+<div class="line"><span class="lineno">   86</span>                            }),</div>
+<div class="line"><span class="lineno">   87</span>            <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">elements_</a>.end());</div>
+<div class="line"><span class="lineno">   88</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="ac33b72254c9b81c9cb0d78cac2a35976" name="ac33b72254c9b81c9cb0d78cac2a35976"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac33b72254c9b81c9cb0d78cac2a35976">&#9670;&#160;</a></span>view() <span class="overload">[1/2]</span></h2>
 
@@ -378,7 +419,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="element__view_8h_source.html#l00082">82</a> of file <a class="el" href="element__view_8h_source.html">element_view.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="element__view_8h_source.html#l00091">91</a> of file <a class="el" href="element__view_8h_source.html">element_view.h</a>.</p>
 
 </div>
 </div>

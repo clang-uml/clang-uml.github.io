@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -179,12 +181,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5ad7ff649bdd4bb82361bfe5884f9ab0"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a5ad7ff649bdd4bb82361bfe5884f9ab0">return_type</a> () const</td></tr>
 <tr class="memdesc:a5ad7ff649bdd4bb82361bfe5884f9ab0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the return message type label.  <br /></td></tr>
 <tr class="separator:a5ad7ff649bdd4bb82361bfe5884f9ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abafb54ae5961314e36c880672729f277"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#abafb54ae5961314e36c880672729f277">comment</a> () const</td></tr>
-<tr class="separator:abafb54ae5961314e36c880672729f277"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affdac545410ce75ebefaa71154569f52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#affdac545410ce75ebefaa71154569f52">set_comment</a> (std::string c)</td></tr>
-<tr class="separator:affdac545410ce75ebefaa71154569f52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31ffff632a98c09325133558e515b83a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a31ffff632a98c09325133558e515b83a">set_comment</a> (const std::optional&lt; std::string &gt; &amp;c)</td></tr>
-<tr class="separator:a31ffff632a98c09325133558e515b83a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f7d97dfcf1d366fdf392504719e93e3"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">common::model::comment_t</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a7f7d97dfcf1d366fdf392504719e93e3">comment</a> () const</td></tr>
+<tr class="separator:a7f7d97dfcf1d366fdf392504719e93e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00f22a922a7788167ace8e9cbf1b4b03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a00f22a922a7788167ace8e9cbf1b4b03">set_comment</a> (std::optional&lt; std::pair&lt; unsigned int, std::string &gt; &gt; <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a7f7d97dfcf1d366fdf392504719e93e3">comment</a>)</td></tr>
+<tr class="separator:a00f22a922a7788167ace8e9cbf1b4b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23f2a4fed8c7dd3e645d5971d028de66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a23f2a4fed8c7dd3e645d5971d028de66">set_comment</a> (unsigned int <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a30674ba6de6f9949f8587ecc629161b6">id</a>, std::string <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a7f7d97dfcf1d366fdf392504719e93e3">comment</a>)</td></tr>
+<tr class="separator:a23f2a4fed8c7dd3e645d5971d028de66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10730ee7ba7953934e00b2fa7ed9b86c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a10730ee7ba7953934e00b2fa7ed9b86c">set_comment</a> (<a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">common::model::comment_t</a> c)</td></tr>
+<tr class="separator:a10730ee7ba7953934e00b2fa7ed9b86c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2229d0b14826eae8582b16e184e2bd99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a2229d0b14826eae8582b16e184e2bd99">set_comment</a> (const std::optional&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">common::model::comment_t</a> &gt; &amp;c)</td></tr>
+<tr class="separator:a2229d0b14826eae8582b16e184e2bd99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96586d92775bd4153606da74073d0209"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a96586d92775bd4153606da74073d0209">set_message_scope</a> (<a class="el" href="namespaceclanguml_1_1common_1_1model.html#aabfbdd888658c52c6ef6d99a4f2d67a8">common::model::message_scope_t</a> scope)</td></tr>
 <tr class="memdesc:a96586d92775bd4153606da74073d0209"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set message scope.  <br /></td></tr>
 <tr class="separator:a96586d92775bd4153606da74073d0209"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -245,6 +251,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aadd359f2c41fb1b22dc8e026cc373501 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1eb47d88573c740255526c4c47d8a033 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a1eb47d88573c740255526c4c47d8a033">complete</a> (bool completed)</td></tr>
 <tr class="separator:a1eb47d88573c740255526c4c47d8a033 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36c41b1fa4fcb8f40184be8406943a36 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a36c41b1fa4fcb8f40184be8406943a36">apply_filter</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">diagram_filter</a> &amp;filter, const std::set&lt; <a class="el" href="classclanguml_1_1common_1_1eid__t.html">eid_t</a> &gt; &amp;removed)</td></tr>
+<tr class="separator:a36c41b1fa4fcb8f40184be8406943a36 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">clanguml::common::model::decorated_element</a></td></tr>
 <tr class="memitem:a9b7061ca0eaafc09ba77d864dda7f079 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a9b7061ca0eaafc09ba77d864dda7f079">~decorated_element</a> ()=default</td></tr>
 <tr class="separator:a9b7061ca0eaafc09ba77d864dda7f079 inherit pub_methods_classclanguml_1_1common_1_1model_1_1decorated__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -314,8 +322,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:ac9ef8c98c546e3876562631d9e3edc92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6713e309c699fb07945b3892aeb51862"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a6713e309c699fb07945b3892aeb51862">condition_text_</a></td></tr>
 <tr class="separator:a6713e309c699fb07945b3892aeb51862"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55b669dd18ffd9c10d577b96edb0e75f"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a55b669dd18ffd9c10d577b96edb0e75f">comment_</a></td></tr>
-<tr class="separator:a55b669dd18ffd9c10d577b96edb0e75f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac4f0a5b87c3d1e5efe22300da2d1833"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">common::model::comment_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#aac4f0a5b87c3d1e5efe22300da2d1833">comment_</a></td></tr>
+<tr class="separator:aac4f0a5b87c3d1e5efe22300da2d1833"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44405631a3fdf547307c4fcc4fbbefee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a44405631a3fdf547307c4fcc4fbbefee">in_static_declaration_context_</a> {false}</td></tr>
 <tr class="separator:a44405631a3fdf547307c4fcc4fbbefee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -389,14 +397,14 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="abafb54ae5961314e36c880672729f277" name="abafb54ae5961314e36c880672729f277"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abafb54ae5961314e36c880672729f277">&#9670;&#160;</a></span>comment()</h2>
+<a id="a7f7d97dfcf1d366fdf392504719e93e3" name="a7f7d97dfcf1d366fdf392504719e93e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f7d97dfcf1d366fdf392504719e93e3">&#9670;&#160;</a></span>comment()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::optional&lt; std::string &gt; &amp; clanguml::sequence_diagram::model::message::comment </td>
+          <td class="memname">const std::optional&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">common::model::comment_t</a> &gt; &amp; clanguml::sequence_diagram::model::message::comment </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -405,7 +413,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00060">60</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   60</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a55b669dd18ffd9c10d577b96edb0e75f">comment_</a>; }</div>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   61</span>{</div>
+<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#aac4f0a5b87c3d1e5efe22300da2d1833">comment_</a>;</div>
+<div class="line"><span class="lineno">   63</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -427,10 +437,10 @@ Private Attributes</h2></td></tr>
 <p>Get condition text. </p>
 <dl class="section return"><dt>Returns</dt><dd>Block statement condition text </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00089">89</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   90</span>{</div>
-<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a6713e309c699fb07945b3892aeb51862">condition_text_</a>;</div>
-<div class="line"><span class="lineno">   92</span>}</div>
+<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00112">112</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  113</span>{</div>
+<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a6713e309c699fb07945b3892aeb51862">condition_text_</a>;</div>
+<div class="line"><span class="lineno">  115</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -458,13 +468,13 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00081">81</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   82</span>{</div>
-<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a88306028f8b0a5515edd790dd0a57b94" title="Get condition text.">condition_text</a>.empty())</div>
-<div class="line"><span class="lineno">   84</span>        <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a6713e309c699fb07945b3892aeb51862">condition_text_</a> = std::nullopt;</div>
-<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   86</span>        <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a6713e309c699fb07945b3892aeb51862">condition_text_</a> = <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a88306028f8b0a5515edd790dd0a57b94" title="Get condition text.">condition_text</a>;</div>
-<div class="line"><span class="lineno">   87</span>}</div>
+<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00104">104</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  105</span>{</div>
+<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a88306028f8b0a5515edd790dd0a57b94" title="Get condition text.">condition_text</a>.empty())</div>
+<div class="line"><span class="lineno">  107</span>        <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a6713e309c699fb07945b3892aeb51862">condition_text_</a> = std::nullopt;</div>
+<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  109</span>        <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a6713e309c699fb07945b3892aeb51862">condition_text_</a> = <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a88306028f8b0a5515edd790dd0a57b94" title="Get condition text.">condition_text</a>;</div>
+<div class="line"><span class="lineno">  110</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -506,10 +516,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00094">94</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   95</span>{</div>
-<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a44405631a3fdf547307c4fcc4fbbefee">in_static_declaration_context_</a>;</div>
-<div class="line"><span class="lineno">   97</span>}</div>
+<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00117">117</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  118</span>{</div>
+<div class="line"><span class="lineno">  119</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a44405631a3fdf547307c4fcc4fbbefee">in_static_declaration_context_</a>;</div>
+<div class="line"><span class="lineno">  120</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -529,10 +539,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00099">99</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  100</span>{</div>
-<div class="line"><span class="lineno">  101</span>    <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a44405631a3fdf547307c4fcc4fbbefee">in_static_declaration_context_</a> = v;</div>
-<div class="line"><span class="lineno">  102</span>}</div>
+<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00122">122</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  123</span>{</div>
+<div class="line"><span class="lineno">  124</span>    <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a44405631a3fdf547307c4fcc4fbbefee">in_static_declaration_context_</a> = v;</div>
+<div class="line"><span class="lineno">  125</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -577,8 +587,8 @@ Private Attributes</h2></td></tr>
 <p>Get message scope. </p>
 <dl class="section return"><dt>Returns</dt><dd>Message scope </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00079">79</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   79</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#aefd2eb8b2a86c679c2ec4bb4f7b103c7">scope_</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00102">102</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  102</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#aefd2eb8b2a86c679c2ec4bb4f7b103c7">scope_</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -620,7 +630,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   31</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a974fc19e9507e9b319ef223e6068eece">from_</a> == other.from_ &amp;&amp; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a978cdbf8e51aab5e65ef7a87a51e3166">to_</a> == other.to_ &amp;&amp; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a86e28468d12bac3483ec19ace68d3628">type_</a> == other.type_ &amp;&amp;</div>
 <div class="line"><span class="lineno">   32</span>        <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#aefd2eb8b2a86c679c2ec4bb4f7b103c7">scope_</a> == other.scope_ &amp;&amp; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a6651871a284dde481f028c945d803906">message_name_</a> == other.message_name_ &amp;&amp;</div>
 <div class="line"><span class="lineno">   33</span>        <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#ac9ef8c98c546e3876562631d9e3edc92">return_type_</a> == other.return_type_ &amp;&amp;</div>
-<div class="line"><span class="lineno">   34</span>        <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a6713e309c699fb07945b3892aeb51862">condition_text_</a> == other.condition_text_;</div>
+<div class="line"><span class="lineno">   34</span>        <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a6713e309c699fb07945b3892aeb51862">condition_text_</a> == other.condition_text_ &amp;&amp; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#aac4f0a5b87c3d1e5efe22300da2d1833">comment_</a> == other.comment_;</div>
 <div class="line"><span class="lineno">   35</span>}</div>
 </div><!-- fragment -->
 </div>
@@ -648,8 +658,8 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a31ffff632a98c09325133558e515b83a" name="a31ffff632a98c09325133558e515b83a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31ffff632a98c09325133558e515b83a">&#9670;&#160;</a></span>set_comment() <span class="overload">[1/2]</span></h2>
+<a id="a10730ee7ba7953934e00b2fa7ed9b86c" name="a10730ee7ba7953934e00b2fa7ed9b86c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10730ee7ba7953934e00b2fa7ed9b86c">&#9670;&#160;</a></span>set_comment() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -657,23 +667,23 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void clanguml::sequence_diagram::model::message::set_comment </td>
           <td>(</td>
-          <td class="paramtype">const std::optional&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">common::model::comment_t</a>&#160;</td>
           <td class="paramname"><em>c</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00068">68</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   69</span>{</div>
-<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">if</span> (c)</div>
-<div class="line"><span class="lineno">   71</span>        <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#affdac545410ce75ebefaa71154569f52">set_comment</a>(c.value());</div>
-<div class="line"><span class="lineno">   72</span>}</div>
+<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00085">85</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   86</span>{</div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">if</span> (!c.empty())</div>
+<div class="line"><span class="lineno">   88</span>        <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#aac4f0a5b87c3d1e5efe22300da2d1833">comment_</a> = std::move(c);</div>
+<div class="line"><span class="lineno">   89</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="affdac545410ce75ebefaa71154569f52" name="affdac545410ce75ebefaa71154569f52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affdac545410ce75ebefaa71154569f52">&#9670;&#160;</a></span>set_comment() <span class="overload">[2/2]</span></h2>
+<a id="a2229d0b14826eae8582b16e184e2bd99" name="a2229d0b14826eae8582b16e184e2bd99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2229d0b14826eae8582b16e184e2bd99">&#9670;&#160;</a></span>set_comment() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -681,18 +691,83 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void clanguml::sequence_diagram::model::message::set_comment </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
+          <td class="paramtype">const std::optional&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">common::model::comment_t</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>c</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00062">62</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   63</span>{</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">if</span> (!c.empty())</div>
-<div class="line"><span class="lineno">   65</span>        <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a55b669dd18ffd9c10d577b96edb0e75f">comment_</a> = std::move(c);</div>
-<div class="line"><span class="lineno">   66</span>}</div>
+<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00091">91</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   92</span>{</div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">if</span> (c)</div>
+<div class="line"><span class="lineno">   94</span>        <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a00f22a922a7788167ace8e9cbf1b4b03">set_comment</a>(c.value());</div>
+<div class="line"><span class="lineno">   95</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a00f22a922a7788167ace8e9cbf1b4b03" name="a00f22a922a7788167ace8e9cbf1b4b03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00f22a922a7788167ace8e9cbf1b4b03">&#9670;&#160;</a></span>set_comment() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::model::message::set_comment </td>
+          <td>(</td>
+          <td class="paramtype">std::optional&lt; std::pair&lt; unsigned int, std::string &gt; &gt;&#160;</td>
+          <td class="paramname"><em>comment</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00065">65</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   67</span>{</div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a7f7d97dfcf1d366fdf392504719e93e3">comment</a>.has_value()) {</div>
+<div class="line"><span class="lineno">   69</span>        <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a00f22a922a7788167ace8e9cbf1b4b03">set_comment</a>(<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a7f7d97dfcf1d366fdf392504719e93e3">comment</a>.value().first, <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a7f7d97dfcf1d366fdf392504719e93e3">comment</a>.value().second);</div>
+<div class="line"><span class="lineno">   70</span>    }</div>
+<div class="line"><span class="lineno">   71</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a23f2a4fed8c7dd3e645d5971d028de66" name="a23f2a4fed8c7dd3e645d5971d028de66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23f2a4fed8c7dd3e645d5971d028de66">&#9670;&#160;</a></span>set_comment() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::sequence_diagram::model::message::set_comment </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>comment</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00073">73</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   74</span>{</div>
+<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a7f7d97dfcf1d366fdf392504719e93e3">comment</a>.empty())</div>
+<div class="line"><span class="lineno">   76</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>    <a class="code hl_typedef" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">common::model::comment_t</a> c;</div>
+<div class="line"><span class="lineno">   79</span>    c[<span class="stringliteral">&quot;id&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a30674ba6de6f9949f8587ecc629161b6" title="Returns diagram element id.">id</a>;</div>
+<div class="line"><span class="lineno">   80</span>    c[<span class="stringliteral">&quot;comment&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a7f7d97dfcf1d366fdf392504719e93e3">comment</a>;</div>
+<div class="line"><span class="lineno">   81</span> </div>
+<div class="line"><span class="lineno">   82</span>    <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a00f22a922a7788167ace8e9cbf1b4b03">set_comment</a>(std::move(c));</div>
+<div class="line"><span class="lineno">   83</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -781,10 +856,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00074">74</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   75</span>{</div>
-<div class="line"><span class="lineno">   76</span>    <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#aefd2eb8b2a86c679c2ec4bb4f7b103c7">scope_</a> = scope;</div>
-<div class="line"><span class="lineno">   77</span>}</div>
+<p class="definition">Definition at line <a class="el" href="message_8cc_source.html#l00097">97</a> of file <a class="el" href="message_8cc_source.html">message.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   98</span>{</div>
+<div class="line"><span class="lineno">   99</span>    <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#aefd2eb8b2a86c679c2ec4bb4f7b103c7">scope_</a> = scope;</div>
+<div class="line"><span class="lineno">  100</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -922,8 +997,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a55b669dd18ffd9c10d577b96edb0e75f" name="a55b669dd18ffd9c10d577b96edb0e75f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55b669dd18ffd9c10d577b96edb0e75f">&#9670;&#160;</a></span>comment_</h2>
+<a id="aac4f0a5b87c3d1e5efe22300da2d1833" name="aac4f0a5b87c3d1e5efe22300da2d1833"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac4f0a5b87c3d1e5efe22300da2d1833">&#9670;&#160;</a></span>comment_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -932,7 +1007,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt;std::string&gt; clanguml::sequence_diagram::model::message::comment_</td>
+          <td class="memname">std::optional&lt;<a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1da15c80f69fa00564f3f268148383d8">common::model::comment_t</a>&gt; clanguml::sequence_diagram::model::message::comment_</td>
         </tr>
       </table>
   </td>
@@ -942,7 +1017,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00180">180</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00185">185</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -966,7 +1041,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00178">178</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00183">183</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -990,7 +1065,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00165">165</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00170">170</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -1014,7 +1089,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00182">182</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00187">187</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -1038,7 +1113,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00174">174</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00179">179</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -1062,7 +1137,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00176">176</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00181">181</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -1088,7 +1163,7 @@ Private Attributes</h2></td></tr>
 <b>Initial value:</b><div class="fragment DoxyCode"><div class="line">{</div>
 <div class="line">        <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#aabfbdd888658c52c6ef6d99a4f2d67a8a07fa7a19aa722c635a15e94cb7f50416">common::model::message_scope_t::kNormal</a>}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00169">169</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00174">174</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -1112,7 +1187,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00167">167</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00172">172</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -1136,7 +1211,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00163">163</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="message_8h_source.html#l00168">168</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>

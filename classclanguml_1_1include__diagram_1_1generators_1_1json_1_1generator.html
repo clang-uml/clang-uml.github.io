@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -178,6 +180,33 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af86cc2bb63f292fd7076909b9b7eba63 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">const DiagramType &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63">model</a> () const</td></tr>
 <tr class="memdesc:af86cc2bb63f292fd7076909b9b7eba63 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get reference to diagram model.  <br /></td></tr>
 <tr class="separator:af86cc2bb63f292fd7076909b9b7eba63 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e0c5aac92cb0dc31543c94a7591ae79 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memTemplParams" colspan="2">template&lt;typename E &gt; </td></tr>
+<tr class="memitem:a3e0c5aac92cb0dc31543c94a7591ae79 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memTemplItemLeft" align="right" valign="top">inja::json&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a3e0c5aac92cb0dc31543c94a7591ae79">element_context</a> (const E &amp;e) const</td></tr>
+<tr class="separator:a3e0c5aac92cb0dc31543c94a7591ae79 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d89e22a950645c55dd12eea43585fde inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a4d89e22a950645c55dd12eea43585fde">get_link_pattern</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">common::model::source_location</a> &amp;sl) const</td></tr>
+<tr class="separator:a4d89e22a950645c55dd12eea43585fde inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedc6c7ed91c9c08ddcedcfb22b79999e inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#aedc6c7ed91c9c08ddcedcfb22b79999e">get_tooltip_pattern</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">common::model::source_location</a> &amp;sl) const</td></tr>
+<tr class="separator:aedc6c7ed91c9c08ddcedcfb22b79999e inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf7e8ebbb99cd5d9ffcd776f570a1cc5 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#adf7e8ebbb99cd5d9ffcd776f570a1cc5">init_context</a> ()</td></tr>
+<tr class="memdesc:adf7e8ebbb99cd5d9ffcd776f570a1cc5 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize diagram Jinja context.  <br /></td></tr>
+<tr class="separator:adf7e8ebbb99cd5d9ffcd776f570a1cc5 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1735ea1d89620ac2d64a7c0a5274c155 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a1735ea1d89620ac2d64a7c0a5274c155">update_context</a> () const</td></tr>
+<tr class="memdesc:a1735ea1d89620ac2d64a7c0a5274c155 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update diagram Jinja context.  <br /></td></tr>
+<tr class="separator:a1735ea1d89620ac2d64a7c0a5274c155 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adca9d79ebb6878689f747ff31f980e77 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#adca9d79ebb6878689f747ff31f980e77">init_env</a> ()</td></tr>
+<tr class="separator:adca9d79ebb6878689f747ff31f980e77 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65cda034a41e2f0206b42df72bbcfe32 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">const inja::json &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a65cda034a41e2f0206b42df72bbcfe32">context</a> () const</td></tr>
+<tr class="separator:a65cda034a41e2f0206b42df72bbcfe32 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f1edb989505ccc4439365050c084430 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">inja::Environment &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a5f1edb989505ccc4439365050c084430">env</a> () const</td></tr>
+<tr class="separator:a5f1edb989505ccc4439365050c084430 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_attribs_classclanguml_1_1common_1_1generators_1_1generator"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classclanguml_1_1common_1_1generators_1_1generator')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html">clanguml::common::generators::generator&lt; ConfigType, DiagramType &gt;</a></td></tr>
+<tr class="memitem:a56438896c0f92c83bf893575cb9cd7d4 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">inja::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a56438896c0f92c83bf893575cb9cd7d4">m_context</a></td></tr>
+<tr class="separator:a56438896c0f92c83bf893575cb9cd7d4 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff8ab3e989bf84dbb2dd080881771809 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">inja::Environment&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#aff8ab3e989bf84dbb2dd080881771809">m_env</a></td></tr>
+<tr class="separator:aff8ab3e989bf84dbb2dd080881771809 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3b12ce26dba00bc498e3c8e715ed9079" name="a3b12ce26dba00bc498e3c8e715ed9079"></a>
@@ -249,42 +278,40 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="json_2include__diagram__generator_8cc_source.html#l00053">53</a> of file <a class="el" href="json_2include__diagram__generator_8cc_source.html">include_diagram_generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   54</span>{</div>
-<div class="line"><span class="lineno">   55</span>    nlohmann::json j;</div>
-<div class="line"><span class="lineno">   56</span>    j[<span class="stringliteral">&quot;id&quot;</span>] = std::to_string(f.id().value());</div>
-<div class="line"><span class="lineno">   57</span>    j[<span class="stringliteral">&quot;name&quot;</span>] = f.name();</div>
-<div class="line"><span class="lineno">   58</span>    <span class="keyword">auto</span> display_name = f.full_name(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   59</span><span class="preprocessor">#if defined(_MSC_VER)</span></div>
-<div class="line"><span class="lineno">   60</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#af03f03692e01199e8c12a3c60db21754" title="Find and replace in string.">util::replace_all</a>(display_name, <span class="stringliteral">&quot;\\&quot;</span>, <span class="stringliteral">&quot;/&quot;</span>);</div>
-<div class="line"><span class="lineno">   61</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">   62</span>    j[<span class="stringliteral">&quot;display_name&quot;</span>] = std::move(display_name);</div>
+<p class="definition">Definition at line <a class="el" href="json_2include__diagram__generator_8cc_source.html#l00050">50</a> of file <a class="el" href="json_2include__diagram__generator_8cc_source.html">include_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   51</span>{</div>
+<div class="line"><span class="lineno">   52</span>    nlohmann::json j;</div>
+<div class="line"><span class="lineno">   53</span>    j[<span class="stringliteral">&quot;id&quot;</span>] = std::to_string(f.id().value());</div>
+<div class="line"><span class="lineno">   54</span>    j[<span class="stringliteral">&quot;name&quot;</span>] = f.name();</div>
+<div class="line"><span class="lineno">   55</span>    <span class="keyword">auto</span> display_name = f.full_name(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   56</span><span class="preprocessor">#if defined(_MSC_VER)</span></div>
+<div class="line"><span class="lineno">   57</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#af03f03692e01199e8c12a3c60db21754" title="Find and replace in string.">util::replace_all</a>(display_name, <span class="stringliteral">&quot;\\&quot;</span>, <span class="stringliteral">&quot;/&quot;</span>);</div>
+<div class="line"><span class="lineno">   58</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">   59</span>    j[<span class="stringliteral">&quot;display_name&quot;</span>] = std::move(display_name);</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">if</span> (f.type() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a76d424355601791a04e7f55c4276cd87">common::model::source_file_t::kDirectory</a>) {</div>
+<div class="line"><span class="lineno">   62</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Generating directory {}&quot;</span>, f.name());</div>
 <div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">if</span> (f.type() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a76d424355601791a04e7f55c4276cd87">common::model::source_file_t::kDirectory</a>) {</div>
-<div class="line"><span class="lineno">   65</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Generating directory {}&quot;</span>, f.name());</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>        j[<span class="stringliteral">&quot;type&quot;</span>] = <span class="stringliteral">&quot;folder&quot;</span>;</div>
-<div class="line"><span class="lineno">   68</span> </div>
-<div class="line"><span class="lineno">   69</span>        <a class="code hl_function" href="namespaceclanguml_1_1util.html#aafa2dc00b4617002d0b49cc610d828de">util::for_each</a>(f, [<span class="keyword">this</span>, &amp;j](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;file) {</div>
-<div class="line"><span class="lineno">   70</span>            <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1generators_1_1json_1_1generator.html#a34e9d2544bab0e3fb4ef6f3f26413193" title="Generate diagram element.">generate</a>(<span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>source_file &amp;<span class="keyword">&gt;</span>(*file), j);</div>
-<div class="line"><span class="lineno">   71</span>        });</div>
-<div class="line"><span class="lineno">   72</span> </div>
-<div class="line"><span class="lineno">   73</span>        parent[<span class="stringliteral">&quot;elements&quot;</span>].push_back(std::move(j));</div>
-<div class="line"><span class="lineno">   74</span>    }</div>
-<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   76</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(f)) {</div>
-<div class="line"><span class="lineno">   77</span>            <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Generating file {}&quot;</span>, f.name());</div>
-<div class="line"><span class="lineno">   78</span> </div>
-<div class="line"><span class="lineno">   79</span>            j[<span class="stringliteral">&quot;type&quot;</span>] = <span class="stringliteral">&quot;file&quot;</span>;</div>
-<div class="line"><span class="lineno">   80</span>            j[<span class="stringliteral">&quot;file_kind&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1common.html#ad11805ecb3506d346f09498024687f9e">to_string</a>(f.type());</div>
-<div class="line"><span class="lineno">   81</span>            <span class="keywordflow">if</span> (f.type() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a9cef6e67dbb09df835c263f0610058b2">common::model::source_file_t::kHeader</a>) {</div>
-<div class="line"><span class="lineno">   82</span>                j[<span class="stringliteral">&quot;is_system&quot;</span>] = f.is_system_header();</div>
-<div class="line"><span class="lineno">   83</span>            }</div>
-<div class="line"><span class="lineno">   84</span> </div>
-<div class="line"><span class="lineno">   85</span>            parent[<span class="stringliteral">&quot;elements&quot;</span>].push_back(std::move(j));</div>
-<div class="line"><span class="lineno">   86</span>        }</div>
-<div class="line"><span class="lineno">   87</span>    }</div>
-<div class="line"><span class="lineno">   88</span>}</div>
+<div class="line"><span class="lineno">   64</span>        j[<span class="stringliteral">&quot;type&quot;</span>] = <span class="stringliteral">&quot;folder&quot;</span>;</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>        <a class="code hl_function" href="namespaceclanguml_1_1util.html#aafa2dc00b4617002d0b49cc610d828de">util::for_each</a>(f, [<span class="keyword">this</span>, &amp;j](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;file) {</div>
+<div class="line"><span class="lineno">   67</span>            <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1generators_1_1json_1_1generator.html#a34e9d2544bab0e3fb4ef6f3f26413193" title="Generate diagram element.">generate</a>(<span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>source_file &amp;<span class="keyword">&gt;</span>(*file), j);</div>
+<div class="line"><span class="lineno">   68</span>        });</div>
+<div class="line"><span class="lineno">   69</span> </div>
+<div class="line"><span class="lineno">   70</span>        parent[<span class="stringliteral">&quot;elements&quot;</span>].push_back(std::move(j));</div>
+<div class="line"><span class="lineno">   71</span>    }</div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   73</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Generating file {}&quot;</span>, f.name());</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>        j[<span class="stringliteral">&quot;type&quot;</span>] = <span class="stringliteral">&quot;file&quot;</span>;</div>
+<div class="line"><span class="lineno">   76</span>        j[<span class="stringliteral">&quot;file_kind&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1common.html#ad11805ecb3506d346f09498024687f9e">to_string</a>(f.type());</div>
+<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">if</span> (f.type() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a9cef6e67dbb09df835c263f0610058b2">common::model::source_file_t::kHeader</a>) {</div>
+<div class="line"><span class="lineno">   78</span>            j[<span class="stringliteral">&quot;is_system&quot;</span>] = f.is_system_header();</div>
+<div class="line"><span class="lineno">   79</span>        }</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>        parent[<span class="stringliteral">&quot;elements&quot;</span>].push_back(std::move(j));</div>
+<div class="line"><span class="lineno">   82</span>    }</div>
+<div class="line"><span class="lineno">   83</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -323,21 +350,21 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="classclanguml_1_1common_1_1generators_1_1json_1_1generator.html#a249df5b5cbd7b373482b66f971036f79">clanguml::common::generators::json::generator&lt; ConfigType, DiagramType &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="json_2include__diagram__generator_8cc_source.html#l00090">90</a> of file <a class="el" href="json_2include__diagram__generator_8cc_source.html">include_diagram_generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   91</span>{</div>
-<div class="line"><span class="lineno">   92</span>    parent[<span class="stringliteral">&quot;elements&quot;</span>] = std::vector&lt;nlohmann::json&gt;{};</div>
-<div class="line"><span class="lineno">   93</span>    parent[<span class="stringliteral">&quot;relationships&quot;</span>] = std::vector&lt;nlohmann::json&gt;{};</div>
+<p class="definition">Definition at line <a class="el" href="json_2include__diagram__generator_8cc_source.html#l00085">85</a> of file <a class="el" href="json_2include__diagram__generator_8cc_source.html">include_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   86</span>{</div>
+<div class="line"><span class="lineno">   87</span>    parent[<span class="stringliteral">&quot;elements&quot;</span>] = std::vector&lt;nlohmann::json&gt;{};</div>
+<div class="line"><span class="lineno">   88</span>    parent[<span class="stringliteral">&quot;relationships&quot;</span>] = std::vector&lt;nlohmann::json&gt;{};</div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span>    <span class="comment">// Generate files and folders</span></div>
+<div class="line"><span class="lineno">   91</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#aafa2dc00b4617002d0b49cc610d828de">util::for_each</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>(), [<span class="keyword">this</span>, &amp;parent](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;f) {</div>
+<div class="line"><span class="lineno">   92</span>        <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1generators_1_1json_1_1generator.html#a34e9d2544bab0e3fb4ef6f3f26413193" title="Generate diagram element.">generate</a>(<span class="keyword">dynamic_cast&lt;</span>source_file &amp;<span class="keyword">&gt;</span>(*f), parent);</div>
+<div class="line"><span class="lineno">   93</span>    });</div>
 <div class="line"><span class="lineno">   94</span> </div>
-<div class="line"><span class="lineno">   95</span>    <span class="comment">// Generate files and folders</span></div>
+<div class="line"><span class="lineno">   95</span>    <span class="comment">// Process file include relationships</span></div>
 <div class="line"><span class="lineno">   96</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#aafa2dc00b4617002d0b49cc610d828de">util::for_each</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>(), [<span class="keyword">this</span>, &amp;parent](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;f) {</div>
-<div class="line"><span class="lineno">   97</span>        <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1generators_1_1json_1_1generator.html#a34e9d2544bab0e3fb4ef6f3f26413193" title="Generate diagram element.">generate</a>(<span class="keyword">dynamic_cast&lt;</span>source_file &amp;<span class="keyword">&gt;</span>(*f), parent);</div>
+<div class="line"><span class="lineno">   97</span>        <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1generators_1_1json_1_1generator.html#a2d45398dd1bf7e8b69a9dd79c0a5c09d" title="Generate relationships originating from source_file f">generate_relationships</a>(<span class="keyword">dynamic_cast&lt;</span>source_file &amp;<span class="keyword">&gt;</span>(*f), parent);</div>
 <div class="line"><span class="lineno">   98</span>    });</div>
-<div class="line"><span class="lineno">   99</span> </div>
-<div class="line"><span class="lineno">  100</span>    <span class="comment">// Process file include relationships</span></div>
-<div class="line"><span class="lineno">  101</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#aafa2dc00b4617002d0b49cc610d828de">util::for_each</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>(), [<span class="keyword">this</span>, &amp;parent](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;f) {</div>
-<div class="line"><span class="lineno">  102</span>        <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1generators_1_1json_1_1generator.html#a2d45398dd1bf7e8b69a9dd79c0a5c09d" title="Generate relationships originating from source_file f">generate_relationships</a>(<span class="keyword">dynamic_cast&lt;</span>source_file &amp;<span class="keyword">&gt;</span>(*f), parent);</div>
-<div class="line"><span class="lineno">  103</span>    });</div>
-<div class="line"><span class="lineno">  104</span>}</div>
+<div class="line"><span class="lineno">   99</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -387,16 +414,13 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   39</span>        });</div>
 <div class="line"><span class="lineno">   40</span>    }</div>
 <div class="line"><span class="lineno">   41</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   42</span>        <a class="code hl_function" href="namespaceclanguml_1_1util.html#a726261b1359af27522785f6c0a129279">util::for_each_if</a>(</div>
-<div class="line"><span class="lineno">   43</span>            f.relationships(),</div>
-<div class="line"><span class="lineno">   44</span>            [<span class="keyword">this</span>](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;r) { return model().should_include(r.type()); },</div>
-<div class="line"><span class="lineno">   45</span>            [&amp;f, &amp;parent](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;r) {</div>
-<div class="line"><span class="lineno">   46</span>                nlohmann::json rel = r;</div>
-<div class="line"><span class="lineno">   47</span>                rel[<span class="stringliteral">&quot;source&quot;</span>] = std::to_string(f.id().value());</div>
-<div class="line"><span class="lineno">   48</span>                parent[<span class="stringliteral">&quot;relationships&quot;</span>].push_back(std::move(rel));</div>
-<div class="line"><span class="lineno">   49</span>            });</div>
-<div class="line"><span class="lineno">   50</span>    }</div>
-<div class="line"><span class="lineno">   51</span>}</div>
+<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;r : f.relationships()) {</div>
+<div class="line"><span class="lineno">   43</span>            nlohmann::json rel = r;</div>
+<div class="line"><span class="lineno">   44</span>            rel[<span class="stringliteral">&quot;source&quot;</span>] = std::to_string(f.id().value());</div>
+<div class="line"><span class="lineno">   45</span>            parent[<span class="stringliteral">&quot;relationships&quot;</span>].push_back(std::move(rel));</div>
+<div class="line"><span class="lineno">   46</span>        }</div>
+<div class="line"><span class="lineno">   47</span>    }</div>
+<div class="line"><span class="lineno">   48</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

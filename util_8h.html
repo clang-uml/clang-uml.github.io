@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -135,6 +137,8 @@ $(function() {
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;cstring&gt;</code><br />
 <code>#include &lt;filesystem&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
+<code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;type_traits&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
@@ -297,6 +301,10 @@ Functions</h2></td></tr>
 <tr class="separator:a6246754ef2cfd4a5dd6cd3be8dbfb762"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a5e0743cab8f3cd4d5bd19103e8387f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1util.html#a8a5e0743cab8f3cd4d5bd19103e8387f">clanguml::util::format_message_comment</a> (const std::string &amp;comment, unsigned width)</td></tr>
 <tr class="separator:a8a5e0743cab8f3cd4d5bd19103e8387f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a649c404838722943880bf2a6429900c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1util.html#a649c404838722943880bf2a6429900c1">clanguml::util::is_subpath</a> (const std::filesystem::path &amp;path, const std::filesystem::path &amp;base)</td></tr>
+<tr class="separator:a649c404838722943880bf2a6429900c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae79638ec52e13bea5ff7688bee897655"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1util.html#ae79638ec52e13bea5ff7688bee897655">clanguml::util::find_entry_by_path_prefix</a> (const std::map&lt; std::string, std::string &gt; &amp;m, const std::string &amp;path)</td></tr>
+<tr class="separator:ae79638ec52e13bea5ff7688bee897655"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -316,7 +324,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00057">57</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00059">59</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -349,7 +357,7 @@ Variables</h2></td></tr>
 <div class="line">        -&gt;debug(fmt::runtime(std::string(<span class="stringliteral">&quot;[{}:{}] &quot;</span>) + fmt__), <a class="code hl_define" href="util_8h.html#ad4ede63b4ecc7a0e803f351055b700a9">FILENAME_</a>,      \</div>
 <div class="line">            __LINE__, ##__VA_ARGS__)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00045">45</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00047">47</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -382,7 +390,7 @@ Variables</h2></td></tr>
 <div class="line">        -&gt;error(fmt::runtime(std::string(<span class="stringliteral">&quot;[{}:{}] &quot;</span>) + fmt__), <a class="code hl_define" href="util_8h.html#ad4ede63b4ecc7a0e803f351055b700a9">FILENAME_</a>,      \</div>
 <div class="line">            __LINE__, ##__VA_ARGS__)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00030">30</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00032">32</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -415,7 +423,7 @@ Variables</h2></td></tr>
 <div class="line">        -&gt;info(fmt::runtime(std::string(<span class="stringliteral">&quot;[{}:{}] &quot;</span>) + fmt__), <a class="code hl_define" href="util_8h.html#ad4ede63b4ecc7a0e803f351055b700a9">FILENAME_</a>,       \</div>
 <div class="line">            __LINE__, ##__VA_ARGS__)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00040">40</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00042">42</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -448,7 +456,7 @@ Variables</h2></td></tr>
 <div class="line">        -&gt;trace(fmt::runtime(std::string(<span class="stringliteral">&quot;[{}:{}] &quot;</span>) + fmt__), <a class="code hl_define" href="util_8h.html#ad4ede63b4ecc7a0e803f351055b700a9">FILENAME_</a>,      \</div>
 <div class="line">            __LINE__, ##__VA_ARGS__)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00050">50</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00052">52</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>
@@ -481,7 +489,7 @@ Variables</h2></td></tr>
 <div class="line">        -&gt;warn(fmt::runtime(std::string(<span class="stringliteral">&quot;[{}:{}] &quot;</span>) + fmt__), <a class="code hl_define" href="util_8h.html#ad4ede63b4ecc7a0e803f351055b700a9">FILENAME_</a>,       \</div>
 <div class="line">            __LINE__, ##__VA_ARGS__)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00035">35</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00037">37</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>

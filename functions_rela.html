@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -119,6 +121,7 @@ $(function() {
 
 <div class="contents">
 <div class="textblock">Here is a list of all related symbols with links to the classes they belong to:</div><ul>
+<li>diagram_filter_factory&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a5818ca9d8be3ea1aa52de6b516b89612">clanguml::common::model::diagram_filter</a></li>
 <li>operator!=&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1eid__t.html#ae26ae457484f33989998ae039aa96597">clanguml::common::eid_t</a></li>
 <li>operator&lt;&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1eid__t.html#a6fe7932cb6e1417e17db99806aff5f9f">clanguml::common::eid_t</a>, <a class="el" href="classclanguml_1_1common_1_1model_1_1path.html#a2094d9422a2b1adfc15f1779c19170ef">clanguml::common::model::path</a></li>
 <li>operator&lt;&lt;&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#ab7f8683d65668b373b6730ddb79dce6d">clanguml::common::model::diagram_element</a>, <a class="el" href="classclanguml_1_1common_1_1model_1_1element.html#a1714432029ddf190a711f5ce7a9ffbdd">clanguml::common::model::element</a>, <a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a1b92ad9d4ff3c8dd023767058fe3ebb2">clanguml::config::inheritable_diagram_options</a></li>

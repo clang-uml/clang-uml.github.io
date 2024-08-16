@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -149,6 +151,7 @@ $(function() {
 <li>add_enum()&#160;:&#160;<a class="el" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a5eb9c2a963b479358fc4cb5be6d7e581">clanguml::class_diagram::visitor::translation_unit_visitor</a></li>
 <li>add_exclusive_filter()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a083d3bfe6dd8b151e96f3d60bff8a705">clanguml::common::model::diagram_filter</a></li>
 <li>add_file()&#160;:&#160;<a class="el" href="classclanguml_1_1include__diagram_1_1model_1_1diagram.html#aec72d8a9aac7def1f20a09e5ef10afe9">clanguml::include_diagram::model::diagram</a></li>
+<li>add_filter()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1advanced__diagram__filter__initializer.html#aa60bcda86ba9098f4918f5c6806403d0">clanguml::common::model::advanced_diagram_filter_initializer</a>, <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#aa56764393ba1868e1ed7c11edd7bce99">clanguml::common::model::diagram_filter</a></li>
 <li>add_include_diagram&#160;:&#160;<a class="el" href="classclanguml_1_1cli_1_1cli__handler.html#a49fe88dcc4b7866178e1eb98204d711e">clanguml::cli::cli_handler</a></li>
 <li>add_inclusive_filter()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a98d6fb531583b2d453f1ebe821d12102">clanguml::common::model::diagram_filter</a></li>
 <li>add_incomplete_forward_declarations()&#160;:&#160;<a class="el" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a900154836805a0aad3ddab7b1cca9b7f">clanguml::class_diagram::visitor::translation_unit_visitor</a></li>
@@ -167,7 +170,7 @@ $(function() {
 <li>add_sequence_diagram&#160;:&#160;<a class="el" href="classclanguml_1_1cli_1_1cli__handler.html#a47efe66598ab2901d7af98dea020b8a3">clanguml::cli::cli_handler</a></li>
 <li>add_statement()&#160;:&#160;<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1concept__.html#a302e381c1a1340035790ba2e128ad50e">clanguml::class_diagram::model::concept_</a></li>
 <li>add_template()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1template__trait.html#afa5c310434c38b89b8edfd04a07ca8b9">clanguml::common::model::template_trait</a></li>
-<li>add_template_param()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1template__parameter.html#abcc013ccf0624e12842c409255996150">clanguml::common::model::template_parameter</a></li>
+<li>add_template_param()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1template__parameter.html#ab6ded46091df976388c5222981b232df">clanguml::common::model::template_parameter</a></li>
 <li>add_with_filesystem_path()&#160;:&#160;<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#a1b518d894381a1852116bd815b8a30db">clanguml::class_diagram::model::diagram</a>, <a class="el" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#ad2157eb1629e31c061814df289d09d10">clanguml::package_diagram::model::diagram</a></li>
 <li>add_with_module_path()&#160;:&#160;<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#a1be4be7f689eae41b024b7df49a5d9f5">clanguml::class_diagram::model::diagram</a>, <a class="el" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a28e455990cbeff19a5b57148c6d1cf26">clanguml::package_diagram::model::diagram</a></li>
 <li>add_with_namespace_path()&#160;:&#160;<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#ae6e1de82fa15687db3db8d8e174a0c4b">clanguml::class_diagram::model::diagram</a>, <a class="el" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a79f3459030ef8cab38df0f51d1aba0b7">clanguml::package_diagram::model::diagram</a></li>
@@ -175,15 +178,19 @@ $(function() {
 <li>after&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1mermaid.html#a5374980b0ae61b478231e35b53fe526c">clanguml::config::mermaid</a>, <a class="el" href="structclanguml_1_1config_1_1plantuml.html#ad611c91f95819377cbd7d70eb2420b6b">clanguml::config::plantuml</a></li>
 <li>alias()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a7ba55023c4791661e2470aa57b3f54d7">clanguml::common::model::diagram_element</a>, <a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1method.html#a695de172f4faa49e4da497d91033853b">clanguml::sequence_diagram::model::method</a></li>
 <li>all_of()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#af09afb10989077543138c700767694fb">clanguml::common::model::nested_trait&lt; T, Path &gt;</a></li>
+<li>allof&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1filter.html#a8ef82d42292ffed3638e9b89a8207360">clanguml::config::filter</a></li>
+<li>allof_filter()&#160;:&#160;<a class="el" href="structclanguml_1_1common_1_1model_1_1allof__filter.html#ae8a144e92b22e2b5d036e0cccaff5796">clanguml::common::model::allof_filter</a></li>
 <li>allow_empty_diagrams&#160;:&#160;<a class="el" href="classclanguml_1_1cli_1_1cli__handler.html#a4155910280c2027352c06961ccb25d1a">clanguml::cli::cli_handler</a>, <a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a67b8d34bdaa5ee604cfe4f4886cae527">clanguml::config::inheritable_diagram_options</a></li>
 <li>already_generated_in_static_context_&#160;:&#160;<a class="el" href="classclanguml_1_1sequence__diagram_1_1generators_1_1json_1_1generator.html#ad3dae11339d53e9410ac718ead28f7f4">clanguml::sequence_diagram::generators::json::generator</a>, <a class="el" href="classclanguml_1_1sequence__diagram_1_1generators_1_1mermaid_1_1generator.html#af05c5e86386b323163bcd5a89e7328e8">clanguml::sequence_diagram::generators::mermaid::generator</a>, <a class="el" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a484ae8c33841ab0a19cd427ff9bed2f9">clanguml::sequence_diagram::generators::plantuml::generator</a></li>
 <li>already_visited_in_static_declaration_&#160;:&#160;<a class="el" href="classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#a639b69c3acad11f345b2a11be926985b">clanguml::sequence_diagram::visitor::translation_unit_visitor</a></li>
 <li>alternate_names&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1option.html#aaf358476a4dab0a4e33f55e2b9485607">clanguml::config::option&lt; T &gt;</a></li>
 <li>anonymous_struct_relationships_&#160;:&#160;<a class="el" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a665d283f4a97f595abf94d3a642502ec">clanguml::class_diagram::visitor::translation_unit_visitor</a>, <a class="el" href="classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#afc0dbe7e3169f3577b04ded868796a65">clanguml::sequence_diagram::visitor::translation_unit_visitor</a></li>
+<li>anyof&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1filter.html#a7428eda7758fbcfd11ea2bd8f0d48e67">clanguml::config::filter</a></li>
 <li>anyof_filter()&#160;:&#160;<a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html#ad0359538a502a9bb0611bc2b66a283ce">clanguml::common::model::anyof_filter</a></li>
 <li>app&#160;:&#160;<a class="el" href="classclanguml_1_1cli_1_1cli__handler.html#ad860e0feeda1100e8db2e5a98e55d150">clanguml::cli::cli_handler</a></li>
 <li>append()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#a12b8a15be5d9bffe765c4beb8b6144ba">clanguml::common::model::decorated_element</a>, <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a81ce102758a0196032e031d9a91d44f3">clanguml::common::model::diagram_element</a>, <a class="el" href="classclanguml_1_1common_1_1model_1_1path.html#adf8c79cb47a4e581cbccea401c102eef">clanguml::common::model::path</a>, <a class="el" href="structclanguml_1_1config_1_1mermaid.html#ac575c91f5ef033cdf06b0a15070c2e37">clanguml::config::mermaid</a>, <a class="el" href="structclanguml_1_1config_1_1plantuml.html#a5e174a08cfeb3eb0eb85a171e8c88319">clanguml::config::plantuml</a></li>
 <li>applies_to_diagram()&#160;:&#160;<a class="el" href="structclanguml_1_1decorators_1_1decorator.html#a2253eb4691c72805ec99eaa40bc2b687">clanguml::decorators::decorator</a></li>
+<li>apply_filter()&#160;:&#160;<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__.html#aff338e3891fc335c6d0e499474b05bb5">clanguml::class_diagram::model::class_</a>, <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#a6102158a37ed07c70e85a3bb3540e54a">clanguml::class_diagram::model::diagram</a>, <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#ac5c96e6b1a0b9f0fa4951bedca033196">clanguml::common::model::diagram</a>, <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a36c41b1fa4fcb8f40184be8406943a36">clanguml::common::model::diagram_element</a>, <a class="el" href="classclanguml_1_1include__diagram_1_1model_1_1diagram.html#a2317dfdd0dad04448e1a7688d637cc2f">clanguml::include_diagram::model::diagram</a>, <a class="el" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a87b4d29ad0d05670555df1bd09261d64">clanguml::package_diagram::model::diagram</a></li>
 <li>argument_hints&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1relationship__hint__t.html#a02788e85836c48a7bea039fd4d87fc9e">clanguml::config::relationship_hint_t</a></li>
 <li>argument_process_dispatch()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1visitor_1_1template__builder.html#a28415f65f6da4eda8ecf7424254cd988">clanguml::common::visitor::template_builder&lt; VisitorT &gt;</a></li>
 <li>ast_id_mapper()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8e0a63405e69e11d50821c80c09475c0">clanguml::common::visitor::ast_id_mapper</a></li>

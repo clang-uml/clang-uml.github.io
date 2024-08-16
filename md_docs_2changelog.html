@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -122,6 +124,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="changelog"></a> </p>
+<h2><a class="anchor" id="autotoc_md054"></a>
+0.5.4</h2>
+<ul>
+<li>Updated thirdparty dependencies (#306)</li>
+<li>Added regular expression support to remove_compile_flags (#303)</li>
+<li>Fixed repeated comments in sequence diagrams (#301)</li>
+<li>Added regular expression support to glob patterns (#299)</li>
+<li>Enabled relative link patterns in generate_links option (#297)</li>
+<li>Added advanced diagram filter config with anyof and allof operators (#289)</li>
+<li>Added CLANG_UML_ENABLE_BACKTRACE CMake option (#292)</li>
+</ul>
 <h2><a class="anchor" id="autotoc_md053"></a>
 0.5.3</h2>
 <ul>

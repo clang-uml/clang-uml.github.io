@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -134,7 +136,7 @@ $(function() {
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Package diagram configuration. </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00694">694</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00719">719</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="config_8h_source.html">config.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -149,9 +151,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac12ef3419395fbda1c0b4894a4545302 inherit pub_methods_structclanguml_1_1config_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab138d098ec3884f332103bc8b427fc16 inherit pub_methods_structclanguml_1_1config_1_1diagram"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">common::model::diagram_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1diagram.html#ab138d098ec3884f332103bc8b427fc16">type</a> () const =0</td></tr>
 <tr class="separator:ab138d098ec3884f332103bc8b427fc16 inherit pub_methods_structclanguml_1_1config_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a646b61afe1738d11e6a2327c13f3b3 inherit pub_methods_structclanguml_1_1config_1_1diagram"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1diagram.html#a8a646b61afe1738d11e6a2327c13f3b3">get_translation_units</a> () const</td></tr>
-<tr class="memdesc:a8a646b61afe1738d11e6a2327c13f3b3 inherit pub_methods_structclanguml_1_1config_1_1diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns list of translation unit paths.  <br /></td></tr>
-<tr class="separator:a8a646b61afe1738d11e6a2327c13f3b3 inherit pub_methods_structclanguml_1_1config_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33f0f65364a643864f54acdfd4bed0e9 inherit pub_methods_structclanguml_1_1config_1_1diagram"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1diagram.html#a33f0f65364a643864f54acdfd4bed0e9">glob_translation_units</a> (const std::vector&lt; std::string &gt; &amp;compilation_database_files) const</td></tr>
+<tr class="memdesc:a33f0f65364a643864f54acdfd4bed0e9 inherit pub_methods_structclanguml_1_1config_1_1diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter translation units based on glob patterns.  <br /></td></tr>
+<tr class="separator:a33f0f65364a643864f54acdfd4bed0e9 inherit pub_methods_structclanguml_1_1config_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add1789c19d21e2fdfe8ad294714aa573 inherit pub_methods_structclanguml_1_1config_1_1diagram"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1diagram.html#add1789c19d21e2fdfe8ad294714aa573">make_path_relative</a> (const std::filesystem::path &amp;p) const</td></tr>
 <tr class="memdesc:add1789c19d21e2fdfe8ad294714aa573 inherit pub_methods_structclanguml_1_1config_1_1diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make path relative to the <code>relative_to</code> config option.  <br /></td></tr>
 <tr class="separator:add1789c19d21e2fdfe8ad294714aa573 inherit pub_methods_structclanguml_1_1config_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -188,14 +190,18 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a9e9bbe3c9b89241fc44ec5a44567559c inherit pub_attribs_structclanguml_1_1config_1_1diagram"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1diagram.html#a9e9bbe3c9b89241fc44ec5a44567559c">title</a> {&quot;title&quot;}</td></tr>
 <tr class="separator:a9e9bbe3c9b89241fc44ec5a44567559c inherit pub_attribs_structclanguml_1_1config_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html">clanguml::config::inheritable_diagram_options</a></td></tr>
-<tr class="memitem:ac54db8cfd5ef06c9963f2158f0494cf0 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; std::vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ac54db8cfd5ef06c9963f2158f0494cf0">glob</a> {&quot;glob&quot;}</td></tr>
-<tr class="separator:ac54db8cfd5ef06c9963f2158f0494cf0 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abceda689b2a67bc8b4aec42da936e98d inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; std::vector&lt; <a class="el" href="namespaceclanguml_1_1common.html#ae721081846956d4e338e399019f9bd6f">common::string_or_regex</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#abceda689b2a67bc8b4aec42da936e98d">glob</a> {&quot;glob&quot;}</td></tr>
+<tr class="separator:abceda689b2a67bc8b4aec42da936e98d inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cabfc23ebde9c79d5f413fce219ec54 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">common::model::namespace_</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a6cabfc23ebde9c79d5f413fce219ec54">using_namespace</a> {&quot;using_namespace&quot;}</td></tr>
 <tr class="separator:a6cabfc23ebde9c79d5f413fce219ec54 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5657181a074e42fa2828fba049f5e01 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ae5657181a074e42fa2828fba049f5e01">using_module</a> {&quot;using_module&quot;}</td></tr>
 <tr class="separator:ae5657181a074e42fa2828fba049f5e01 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82a375af97c191998f84350c2bc8f6fa inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a82a375af97c191998f84350c2bc8f6fa">include_relations_also_as_members</a></td></tr>
 <tr class="separator:a82a375af97c191998f84350c2bc8f6fa inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8db6ae78f02e4b1b063ec18d410781f9 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; <a class="el" href="namespaceclanguml_1_1config.html#a1f0af361c663cf793ff0a28fa477da6d">filter_mode_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a8db6ae78f02e4b1b063ec18d410781f9">filter_mode</a> {&quot;filter_mode&quot;, <a class="el" href="namespaceclanguml_1_1config.html#a1f0af361c663cf793ff0a28fa477da6daf17aaabc20bfe045075927934fed52d2">filter_mode_t::basic</a>}</td></tr>
+<tr class="separator:a8db6ae78f02e4b1b063ec18d410781f9 inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62ed3367d1547288ea49fee091dd2d4c inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a62ed3367d1547288ea49fee091dd2d4c">include_system_headers</a> {&quot;include_system_headers&quot;, false}</td></tr>
+<tr class="separator:a62ed3367d1547288ea49fee091dd2d4c inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdfa6efcb97352a3ded3ad6dfb222cab inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; <a class="el" href="structclanguml_1_1config_1_1filter.html">filter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#afdfa6efcb97352a3ded3ad6dfb222cab">include</a> {&quot;include&quot;}</td></tr>
 <tr class="separator:afdfa6efcb97352a3ded3ad6dfb222cab inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a28253a6d95190f35a9a46aef76ca5e inherit pub_attribs_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; <a class="el" href="structclanguml_1_1config_1_1filter.html">filter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a2a28253a6d95190f35a9a46aef76ca5e">exclude</a> {&quot;exclude&quot;}</td></tr>
@@ -312,10 +318,10 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="structclanguml_1_1config_1_1diagram.html#ab138d098ec3884f332103bc8b427fc16">clanguml::config::diagram</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00425">425</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  426</span>{</div>
-<div class="line"><span class="lineno">  427</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffabb0cb7a283263408d77d35d2e034bb77">common::model::diagram_t::kPackage</a>;</div>
-<div class="line"><span class="lineno">  428</span>}</div>
+<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00465">465</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  466</span>{</div>
+<div class="line"><span class="lineno">  467</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffabb0cb7a283263408d77d35d2e034bb77">common::model::diagram_t::kPackage</a>;</div>
+<div class="line"><span class="lineno">  468</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

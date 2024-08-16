@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -145,13 +147,57 @@ Functions</h2></td></tr>
 <tr class="separator:a9e1820d48d46e6dc501947282f6639bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00489ee67cef5f41c918d87beb90d322"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1mermaid.html#a00489ee67cef5f41c918d87beb90d322">indent</a> (const unsigned level)</td></tr>
 <tr class="separator:a00489ee67cef5f41c918d87beb90d322"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3e9589c5eaae9638b0f0e76ce80aa47"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1mermaid.html#ab3e9589c5eaae9638b0f0e76ce80aa47">render_name</a> (std::string name, bool round_brackets)</td></tr>
-<tr class="separator:ab3e9589c5eaae9638b0f0e76ce80aa47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5724bf5a241f09e796f62ee82b9a8506"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1mermaid.html#a5724bf5a241f09e796f62ee82b9a8506">render_name</a> (std::string name)</td></tr>
+<tr class="separator:a5724bf5a241f09e796f62ee82b9a8506"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abea56c56e1218a75df3156b3c0263f2e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1mermaid.html#abea56c56e1218a75df3156b3c0263f2e">escape_name</a> (std::string name, bool round_brackets)</td></tr>
+<tr class="separator:abea56c56e1218a75df3156b3c0263f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b49309e9ebc17d247c06775db784aa9"><td class="memTemplParams" colspan="2">template&lt;typename DiagramModel , typename DiagramConfig &gt; </td></tr>
 <tr class="memitem:a9b49309e9ebc17d247c06775db784aa9"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1mermaid.html#a9b49309e9ebc17d247c06775db784aa9">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classclanguml_1_1common_1_1generators_1_1mermaid_1_1generator.html">generator</a>&lt; DiagramModel, DiagramConfig &gt; &amp;g)</td></tr>
 <tr class="separator:a9b49309e9ebc17d247c06775db784aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="abea56c56e1218a75df3156b3c0263f2e" name="abea56c56e1218a75df3156b3c0263f2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abea56c56e1218a75df3156b3c0263f2e">&#9670;&#160;</a></span>escape_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clanguml::common::generators::mermaid::escape_name </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>round_brackets</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="mermaid_2generator_8cc_source.html#l00088">88</a> of file <a class="el" href="mermaid_2generator_8cc_source.html">generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   89</span>{</div>
+<div class="line"><span class="lineno">   90</span>    util::replace_all(name, <span class="stringliteral">&quot;&lt;&quot;</span>, <span class="stringliteral">&quot;&amp;lt;&quot;</span>);</div>
+<div class="line"><span class="lineno">   91</span>    util::replace_all(name, <span class="stringliteral">&quot;&gt;&quot;</span>, <span class="stringliteral">&quot;&amp;gt;&quot;</span>);</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">if</span> (round_brackets) {</div>
+<div class="line"><span class="lineno">   93</span>        util::replace_all(name, <span class="stringliteral">&quot;(&quot;</span>, <span class="stringliteral">&quot;&amp;lpar;&quot;</span>);</div>
+<div class="line"><span class="lineno">   94</span>        util::replace_all(name, <span class="stringliteral">&quot;)&quot;</span>, <span class="stringliteral">&quot;&amp;rpar;&quot;</span>);</div>
+<div class="line"><span class="lineno">   95</span>    }</div>
+<div class="line"><span class="lineno">   96</span>    util::replace_all(name, <span class="stringliteral">&quot;{&quot;</span>, <span class="stringliteral">&quot;&amp;lbrace;&quot;</span>);</div>
+<div class="line"><span class="lineno">   97</span>    util::replace_all(name, <span class="stringliteral">&quot;}&quot;</span>, <span class="stringliteral">&quot;&amp;rbrace;&quot;</span>);</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">return</span> name;</div>
+<div class="line"><span class="lineno">  100</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a00489ee67cef5f41c918d87beb90d322" name="a00489ee67cef5f41c918d87beb90d322"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a00489ee67cef5f41c918d87beb90d322">&#9670;&#160;</a></span>indent()</h2>
 
@@ -204,16 +250,16 @@ template&lt;typename DiagramModel , typename DiagramConfig &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mermaid_2generator_8h_source.html#l00449">449</a> of file <a class="el" href="mermaid_2generator_8h_source.html">generator.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  451</span>{</div>
-<div class="line"><span class="lineno">  452</span>    g.<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1mermaid_1_1generator.html#acb20cee0de09a5bf39d81de63efcbfd5" title="Generate diagram.">generate</a>(os);</div>
-<div class="line"><span class="lineno">  453</span>    <span class="keywordflow">return</span> os;</div>
-<div class="line"><span class="lineno">  454</span>}</div>
+<p class="definition">Definition at line <a class="el" href="mermaid_2generator_8h_source.html#l00388">388</a> of file <a class="el" href="mermaid_2generator_8h_source.html">generator.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  390</span>{</div>
+<div class="line"><span class="lineno">  391</span>    g.<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1mermaid_1_1generator.html#acb20cee0de09a5bf39d81de63efcbfd5" title="Generate diagram.">generate</a>(os);</div>
+<div class="line"><span class="lineno">  392</span>    <span class="keywordflow">return</span> os;</div>
+<div class="line"><span class="lineno">  393</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ab3e9589c5eaae9638b0f0e76ce80aa47" name="ab3e9589c5eaae9638b0f0e76ce80aa47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3e9589c5eaae9638b0f0e76ce80aa47">&#9670;&#160;</a></span>render_name()</h2>
+<a id="a5724bf5a241f09e796f62ee82b9a8506" name="a5724bf5a241f09e796f62ee82b9a8506"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5724bf5a241f09e796f62ee82b9a8506">&#9670;&#160;</a></span>render_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,36 +268,18 @@ template&lt;typename DiagramModel , typename DiagramConfig &gt; </div>
           <td class="memname">std::string clanguml::common::generators::mermaid::render_name </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>name</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>round_brackets</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="mermaid_2generator_8cc_source.html#l00081">81</a> of file <a class="el" href="mermaid_2generator_8cc_source.html">generator.cc</a>.</p>
 <div class="fragment DoxyCode"><div class="line"><span class="lineno">   82</span>{</div>
-<div class="line"><span class="lineno">   83</span>    util::replace_all(name, <span class="stringliteral">&quot;&lt;&quot;</span>, <span class="stringliteral">&quot;&amp;lt;&quot;</span>);</div>
-<div class="line"><span class="lineno">   84</span>    util::replace_all(name, <span class="stringliteral">&quot;&gt;&quot;</span>, <span class="stringliteral">&quot;&amp;gt;&quot;</span>);</div>
-<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">if</span> (round_brackets) {</div>
-<div class="line"><span class="lineno">   86</span>        util::replace_all(name, <span class="stringliteral">&quot;(&quot;</span>, <span class="stringliteral">&quot;&amp;lpar;&quot;</span>);</div>
-<div class="line"><span class="lineno">   87</span>        util::replace_all(name, <span class="stringliteral">&quot;)&quot;</span>, <span class="stringliteral">&quot;&amp;rpar;&quot;</span>);</div>
-<div class="line"><span class="lineno">   88</span>    }</div>
-<div class="line"><span class="lineno">   89</span>    util::replace_all(name, <span class="stringliteral">&quot;##&quot;</span>, <span class="stringliteral">&quot;::&quot;</span>);</div>
-<div class="line"><span class="lineno">   90</span>    util::replace_all(name, <span class="stringliteral">&quot;{&quot;</span>, <span class="stringliteral">&quot;&amp;lbrace;&quot;</span>);</div>
-<div class="line"><span class="lineno">   91</span>    util::replace_all(name, <span class="stringliteral">&quot;}&quot;</span>, <span class="stringliteral">&quot;&amp;rbrace;&quot;</span>);</div>
-<div class="line"><span class="lineno">   92</span> </div>
-<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">return</span> name;</div>
-<div class="line"><span class="lineno">   94</span>}</div>
+<div class="line"><span class="lineno">   83</span>    util::replace_all(name, <span class="stringliteral">&quot;##&quot;</span>, <span class="stringliteral">&quot;::&quot;</span>);</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">return</span> name;</div>
+<div class="line"><span class="lineno">   86</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

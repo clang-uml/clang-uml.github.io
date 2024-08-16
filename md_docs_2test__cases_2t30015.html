@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -122,7 +124,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="t30015---c20-modules-package-diagram-test-with-partition-dependencies"></a></p>
-<h1><a class="anchor" id="config-146"></a>
+<h1><a class="anchor" id="config-151"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  t30015_package:</div>
@@ -134,7 +136,7 @@ Config</h1>
 <div class="line">      modules:</div>
 <div class="line">        - t30015</div>
 <div class="line">    using_module: t30015</div>
-</div><!-- fragment --> <h1><a class="anchor" id="source-code-146"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-151"></a>
 Source code</h1>
 <p>File <code>tests/t30015/t30015.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="keyword">import</span> t30015.app;</div>
 <div class="line"> </div>
@@ -187,25 +189,6 @@ Source code</h1>
 <div class="line"> </div>
 <div class="line">export module t30015.app;</div>
 <div class="line"><span class="keyword">import</span> t30015.lib1;</div>
-<div class="line"> </div>
-<div class="line"><span class="comment">// import t30015.app;</span></div>
-<div class="line"><span class="comment">// import t30015.mod2;</span></div>
-<div class="line"><span class="comment">// import t30015.mod3;</span></div>
-<div class="line"><span class="comment">// import t30015.mod4;</span></div>
-<div class="line"><span class="comment">// import t30015.mod5;</span></div>
-<div class="line"><span class="comment">// import t30015.mod6;</span></div>
-<div class="line"><span class="comment">// import t30015.mod7;</span></div>
-<div class="line"><span class="comment">// import t30015.mod8;</span></div>
-<div class="line"><span class="comment">// import t30015.mod9;</span></div>
-<div class="line"><span class="comment">// import t30015.mod10;</span></div>
-<div class="line"><span class="comment">// import t30015.mod11;</span></div>
-<div class="line"><span class="comment">// import t30015.mod12;</span></div>
-<div class="line"><span class="comment">// import t30015.mod13;</span></div>
-<div class="line"><span class="comment">// import t30015.mod14;</span></div>
-<div class="line"><span class="comment">// import t30015.mod15;</span></div>
-<div class="line"><span class="comment">// import t30015.mod16;</span></div>
-<div class="line"><span class="comment">// import t30015.mod17;</span></div>
-<div class="line"><span class="comment">// import t30015.mod18;</span></div>
 <div class="line"> </div>
 <div class="line">export <span class="keyword">namespace </span>clanguml::t30015 {</div>
 <div class="line"> </div>
@@ -330,17 +313,17 @@ Source code</h1>
 <div class="line">export <span class="keyword">namespace </span>clanguml::t30015 {</div>
 <div class="line"><span class="keyword">struct </span>CO { };</div>
 <div class="line">}</div>
-</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-146"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-151"></a>
 Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t30015_package.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-mermaid-diagrams-146"></a>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-151"></a>
 Generated Mermaid diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t30015_package_mermaid.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-json-models-146"></a>
+     <h1><a class="anchor" id="generated-json-models-151"></a>
 Generated JSON models</h1>
 <div class="fragment language-json"><div class="line">{</div>
 <div class="line">  &quot;diagram_type&quot;: &quot;package&quot;,</div>
@@ -616,7 +599,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 7,</div>
 <div class="line">        &quot;file&quot;: &quot;src/app.cppm&quot;,</div>
-<div class="line">        &quot;line&quot;: 33,</div>
+<div class="line">        &quot;line&quot;: 14,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t30015.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;type&quot;: &quot;module&quot;</div>

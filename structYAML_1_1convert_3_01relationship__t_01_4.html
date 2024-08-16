@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -130,7 +132,7 @@ $(function() {
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00349">349</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00364">364</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -172,47 +174,47 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00350">350</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  351</span>    {</div>
-<div class="line"><span class="lineno">  352</span>        assert(node.Type() == NodeType::Scalar);</div>
-<div class="line"><span class="lineno">  353</span> </div>
-<div class="line"><span class="lineno">  354</span>        <span class="keyword">auto</span> relationship_name = node.as&lt;std::string&gt;();</div>
-<div class="line"><span class="lineno">  355</span>        <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;extension&quot;</span> ||</div>
-<div class="line"><span class="lineno">  356</span>            relationship_name == <span class="stringliteral">&quot;inheritance&quot;</span>) {</div>
-<div class="line"><span class="lineno">  357</span>            rhs = relationship_t::kExtension;</div>
-<div class="line"><span class="lineno">  358</span>        }</div>
-<div class="line"><span class="lineno">  359</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;composition&quot;</span>) {</div>
-<div class="line"><span class="lineno">  360</span>            rhs = relationship_t::kComposition;</div>
-<div class="line"><span class="lineno">  361</span>        }</div>
-<div class="line"><span class="lineno">  362</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;aggregation&quot;</span>) {</div>
-<div class="line"><span class="lineno">  363</span>            rhs = relationship_t::kAggregation;</div>
-<div class="line"><span class="lineno">  364</span>        }</div>
-<div class="line"><span class="lineno">  365</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;containment&quot;</span>) {</div>
-<div class="line"><span class="lineno">  366</span>            rhs = relationship_t::kContainment;</div>
-<div class="line"><span class="lineno">  367</span>        }</div>
-<div class="line"><span class="lineno">  368</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;ownership&quot;</span>) {</div>
-<div class="line"><span class="lineno">  369</span>            rhs = relationship_t::kOwnership;</div>
-<div class="line"><span class="lineno">  370</span>        }</div>
-<div class="line"><span class="lineno">  371</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;association&quot;</span>) {</div>
-<div class="line"><span class="lineno">  372</span>            rhs = relationship_t::kAssociation;</div>
+<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00365">365</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  366</span>    {</div>
+<div class="line"><span class="lineno">  367</span>        assert(node.Type() == NodeType::Scalar);</div>
+<div class="line"><span class="lineno">  368</span> </div>
+<div class="line"><span class="lineno">  369</span>        <span class="keyword">auto</span> relationship_name = node.as&lt;std::string&gt;();</div>
+<div class="line"><span class="lineno">  370</span>        <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;extension&quot;</span> ||</div>
+<div class="line"><span class="lineno">  371</span>            relationship_name == <span class="stringliteral">&quot;inheritance&quot;</span>) {</div>
+<div class="line"><span class="lineno">  372</span>            rhs = relationship_t::kExtension;</div>
 <div class="line"><span class="lineno">  373</span>        }</div>
-<div class="line"><span class="lineno">  374</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;instantiation&quot;</span>) {</div>
-<div class="line"><span class="lineno">  375</span>            rhs = relationship_t::kInstantiation;</div>
+<div class="line"><span class="lineno">  374</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;composition&quot;</span>) {</div>
+<div class="line"><span class="lineno">  375</span>            rhs = relationship_t::kComposition;</div>
 <div class="line"><span class="lineno">  376</span>        }</div>
-<div class="line"><span class="lineno">  377</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;friendship&quot;</span>) {</div>
-<div class="line"><span class="lineno">  378</span>            rhs = relationship_t::kFriendship;</div>
+<div class="line"><span class="lineno">  377</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;aggregation&quot;</span>) {</div>
+<div class="line"><span class="lineno">  378</span>            rhs = relationship_t::kAggregation;</div>
 <div class="line"><span class="lineno">  379</span>        }</div>
-<div class="line"><span class="lineno">  380</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;dependency&quot;</span>) {</div>
-<div class="line"><span class="lineno">  381</span>            rhs = relationship_t::kDependency;</div>
+<div class="line"><span class="lineno">  380</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;containment&quot;</span>) {</div>
+<div class="line"><span class="lineno">  381</span>            rhs = relationship_t::kContainment;</div>
 <div class="line"><span class="lineno">  382</span>        }</div>
-<div class="line"><span class="lineno">  383</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;none&quot;</span>) {</div>
-<div class="line"><span class="lineno">  384</span>            rhs = relationship_t::kNone;</div>
+<div class="line"><span class="lineno">  383</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;ownership&quot;</span>) {</div>
+<div class="line"><span class="lineno">  384</span>            rhs = relationship_t::kOwnership;</div>
 <div class="line"><span class="lineno">  385</span>        }</div>
-<div class="line"><span class="lineno">  386</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  387</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  388</span> </div>
-<div class="line"><span class="lineno">  389</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  390</span>    }</div>
+<div class="line"><span class="lineno">  386</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;association&quot;</span>) {</div>
+<div class="line"><span class="lineno">  387</span>            rhs = relationship_t::kAssociation;</div>
+<div class="line"><span class="lineno">  388</span>        }</div>
+<div class="line"><span class="lineno">  389</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;instantiation&quot;</span>) {</div>
+<div class="line"><span class="lineno">  390</span>            rhs = relationship_t::kInstantiation;</div>
+<div class="line"><span class="lineno">  391</span>        }</div>
+<div class="line"><span class="lineno">  392</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;friendship&quot;</span>) {</div>
+<div class="line"><span class="lineno">  393</span>            rhs = relationship_t::kFriendship;</div>
+<div class="line"><span class="lineno">  394</span>        }</div>
+<div class="line"><span class="lineno">  395</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;dependency&quot;</span>) {</div>
+<div class="line"><span class="lineno">  396</span>            rhs = relationship_t::kDependency;</div>
+<div class="line"><span class="lineno">  397</span>        }</div>
+<div class="line"><span class="lineno">  398</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (relationship_name == <span class="stringliteral">&quot;none&quot;</span>) {</div>
+<div class="line"><span class="lineno">  399</span>            rhs = relationship_t::kNone;</div>
+<div class="line"><span class="lineno">  400</span>        }</div>
+<div class="line"><span class="lineno">  401</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  402</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  403</span> </div>
+<div class="line"><span class="lineno">  404</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  405</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>

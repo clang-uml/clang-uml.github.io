@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -137,7 +139,7 @@ $(function() {
 <p>This class acts as a visitor for diagram elements. It provides a set of common methods which can be overriden by specific filters. If a filter does not implement a specific method, it is ignored through the 3 value logic implemented in </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html">clanguml::common::model::tvl</a></dd></dl>
 <p> <embed src="filter_visitor_hierarchy_class.svg"/>  </p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00078">78</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00080">80</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -149,6 +151,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6e33335c4a72e1e89f76868d2260776a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a359c04491fd76fed5a5a2c657529160b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a8ea774655992e61b0bfd766fe38981fc">tvl::value_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a359c04491fd76fed5a5a2c657529160b">match</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">diagram</a> &amp;d, const <a class="el" href="classclanguml_1_1common_1_1model_1_1element.html">common::model::element</a> &amp;e) const</td></tr>
 <tr class="separator:a359c04491fd76fed5a5a2c657529160b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c20d368f4e78edca3c8cdf1de758b92"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a8ea774655992e61b0bfd766fe38981fc">tvl::value_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a6c20d368f4e78edca3c8cdf1de758b92">match</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">diagram</a> &amp;d, const <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">common::model::relationship</a> &amp;r) const</td></tr>
+<tr class="separator:a6c20d368f4e78edca3c8cdf1de758b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a395e5c2adbed5d0d697af6b63d24a2b5"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a8ea774655992e61b0bfd766fe38981fc">tvl::value_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a395e5c2adbed5d0d697af6b63d24a2b5">match</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">diagram</a> &amp;d, const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">common::model::relationship_t</a> &amp;r) const</td></tr>
 <tr class="separator:a395e5c2adbed5d0d697af6b63d24a2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44a4f292b95952ca4e5eafe8dbf0457a"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a8ea774655992e61b0bfd766fe38981fc">tvl::value_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a44a4f292b95952ca4e5eafe8dbf0457a">match</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">diagram</a> &amp;d, const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6">common::model::access_t</a> &amp;a) const</td></tr>
@@ -171,11 +175,17 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0c08c5a36a6d087d5c145c6e628871d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9aed0d7260c6f28f9c54be7d3439bd24"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#afe243616df93135040843770261a81db">filter_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a> () const</td></tr>
 <tr class="separator:a9aed0d7260c6f28f9c54be7d3439bd24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7135a32c96b414644b78bbd186c4e5c5"><td class="memItemLeft" align="right" valign="top">filter_mode_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a7135a32c96b414644b78bbd186c4e5c5">mode</a> () const</td></tr>
+<tr class="separator:a7135a32c96b414644b78bbd186c4e5c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af28268c596e1ccf5a980637e4e57ed34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#af28268c596e1ccf5a980637e4e57ed34">set_mode</a> (filter_mode_t <a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a7135a32c96b414644b78bbd186c4e5c5">mode</a>)</td></tr>
+<tr class="separator:af28268c596e1ccf5a980637e4e57ed34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a620913904564a0f50c80932c8b50620d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#afe243616df93135040843770261a81db">filter_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a620913904564a0f50c80932c8b50620d">type_</a></td></tr>
 <tr class="separator:a620913904564a0f50c80932c8b50620d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a436c4e36c46f54ecc816055848f6204a"><td class="memItemLeft" align="right" valign="top">filter_mode_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a436c4e36c46f54ecc816055848f6204a">mode_</a> {filter_mode_t::basic}</td></tr>
+<tr class="separator:a436c4e36c46f54ecc816055848f6204a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aace2767e1c46b12082faba1e38dd7bc3" name="aace2767e1c46b12082faba1e38dd7bc3"></a>
@@ -242,10 +252,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00155">155</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  156</span>{</div>
-<div class="line"><span class="lineno">  157</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a620913904564a0f50c80932c8b50620d">type_</a> == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afe243616df93135040843770261a81dba9d38b79e17ebc3239ca19ba517174b5b">filter_t::kExclusive</a>;</div>
-<div class="line"><span class="lineno">  158</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00161">161</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  162</span>{</div>
+<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a620913904564a0f50c80932c8b50620d">type_</a> == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afe243616df93135040843770261a81dba9d38b79e17ebc3239ca19ba517174b5b">filter_t::kExclusive</a>;</div>
+<div class="line"><span class="lineno">  164</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -264,15 +274,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00150">150</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  151</span>{</div>
-<div class="line"><span class="lineno">  152</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a620913904564a0f50c80932c8b50620d">type_</a> == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afe243616df93135040843770261a81dba54c3eebad0b2c60f078dfee1d0659c89">filter_t::kInclusive</a>;</div>
-<div class="line"><span class="lineno">  153</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00156">156</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  157</span>{</div>
+<div class="line"><span class="lineno">  158</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a620913904564a0f50c80932c8b50620d">type_</a> == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afe243616df93135040843770261a81dba54c3eebad0b2c60f078dfee1d0659c89">filter_t::kInclusive</a>;</div>
+<div class="line"><span class="lineno">  159</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a2d1d7458b4722699b6e8afe90bede92e" name="a2d1d7458b4722699b6e8afe90bede92e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d1d7458b4722699b6e8afe90bede92e">&#9670;&#160;</a></span>match() <span class="overload">[1/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d1d7458b4722699b6e8afe90bede92e">&#9670;&#160;</a></span>match() <span class="overload">[1/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -305,17 +315,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1class__member__filter.html#ab956a366145d9fda6c577f4c68d07b98">clanguml::common::model::class_member_filter</a>.</p>
+<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html#af46faac95a73a824762cef2be49ffdd6">clanguml::common::model::anyof_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1allof__filter.html#ac32fa843114385e3ecb07c704e9818d6">clanguml::common::model::allof_filter</a>, and <a class="el" href="structclanguml_1_1common_1_1model_1_1class__member__filter.html#ab956a366145d9fda6c577f4c68d07b98">clanguml::common::model::class_member_filter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00138">138</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  140</span>{</div>
-<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a359c04491fd76fed5a5a2c657529160b">match</a>(d, m.access());</div>
-<div class="line"><span class="lineno">  142</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00144">144</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  146</span>{</div>
+<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a359c04491fd76fed5a5a2c657529160b">match</a>(d, m.access());</div>
+<div class="line"><span class="lineno">  148</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a808869584cac26b310d157a2ece75971" name="a808869584cac26b310d157a2ece75971"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a808869584cac26b310d157a2ece75971">&#9670;&#160;</a></span>match() <span class="overload">[2/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a808869584cac26b310d157a2ece75971">&#9670;&#160;</a></span>match() <span class="overload">[2/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -348,17 +358,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1method__type__filter.html#a9e3393ccf19ae33179ca40e23b05c6dc">clanguml::common::model::method_type_filter</a>, and <a class="el" href="structclanguml_1_1common_1_1model_1_1class__method__filter.html#ac93fb6b3faf5f1a9a6daaf5a3e687adb">clanguml::common::model::class_method_filter</a>.</p>
+<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1method__type__filter.html#a9e3393ccf19ae33179ca40e23b05c6dc">clanguml::common::model::method_type_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html#a85a9b7a4dc1e1dfeb7df7934270abbe2">clanguml::common::model::anyof_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1allof__filter.html#a5b1e9327cf3d84d2ea234a469050fe42">clanguml::common::model::allof_filter</a>, and <a class="el" href="structclanguml_1_1common_1_1model_1_1class__method__filter.html#ac93fb6b3faf5f1a9a6daaf5a3e687adb">clanguml::common::model::class_method_filter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00132">132</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  134</span>{</div>
-<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a359c04491fd76fed5a5a2c657529160b">match</a>(d, m.access());</div>
-<div class="line"><span class="lineno">  136</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00138">138</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  140</span>{</div>
+<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a359c04491fd76fed5a5a2c657529160b">match</a>(d, m.access());</div>
+<div class="line"><span class="lineno">  142</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a44a4f292b95952ca4e5eafe8dbf0457a" name="a44a4f292b95952ca4e5eafe8dbf0457a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a44a4f292b95952ca4e5eafe8dbf0457a">&#9670;&#160;</a></span>match() <span class="overload">[3/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a44a4f292b95952ca4e5eafe8dbf0457a">&#9670;&#160;</a></span>match() <span class="overload">[3/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -391,17 +401,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1access__filter.html#a700aaa3ac4b0729180c369125c211d31">clanguml::common::model::access_filter</a>.</p>
+<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1access__filter.html#a700aaa3ac4b0729180c369125c211d31">clanguml::common::model::access_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html#a28986ed810670efccb52df7092f253d5">clanguml::common::model::anyof_filter</a>, and <a class="el" href="structclanguml_1_1common_1_1model_1_1allof__filter.html#ae6d0549925b47a68ea2dd4aaa3c45783">clanguml::common::model::allof_filter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00108">108</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  110</span>{</div>
-<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  112</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00114">114</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  116</span>{</div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  118</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a359c04491fd76fed5a5a2c657529160b" name="a359c04491fd76fed5a5a2c657529160b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a359c04491fd76fed5a5a2c657529160b">&#9670;&#160;</a></span>match() <span class="overload">[4/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a359c04491fd76fed5a5a2c657529160b">&#9670;&#160;</a></span>match() <span class="overload">[4/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -434,7 +444,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html#a96dde15be6f858b2cb98f3d82da224d2">clanguml::common::model::anyof_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1module__access__filter.html#a300cdf6c248a77e2b2137a2f1eeaa901">clanguml::common::model::module_access_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1namespace__filter.html#a380c5174c978002385bf79aed246e0fd">clanguml::common::model::namespace_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1modules__filter.html#a51d4c54ff1f71e1f59e554527e37e34a">clanguml::common::model::modules_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1element__filter.html#af44098e1d69e6b4d139749c15fbdcd5a">clanguml::common::model::element_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1element__type__filter.html#a936050af7c0718a471badd075abf9a3a">clanguml::common::model::element_type_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1subclass__filter.html#a1148fd8fed50e599e6d62f2d04744f14">clanguml::common::model::subclass_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1parents__filter.html#a9530df003f7a7851e39ca69a1d8e71de">clanguml::common::model::parents_filter</a>, and <a class="el" href="structclanguml_1_1common_1_1model_1_1context__filter.html#a42b3454c81734aef4d2e1afe603356c0">clanguml::common::model::context_filter</a>.</p>
+<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html#a96dde15be6f858b2cb98f3d82da224d2">clanguml::common::model::anyof_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1allof__filter.html#adf536d87827b468ab93e04ca65fc2e81">clanguml::common::model::allof_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1module__access__filter.html#a300cdf6c248a77e2b2137a2f1eeaa901">clanguml::common::model::module_access_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1namespace__filter.html#a380c5174c978002385bf79aed246e0fd">clanguml::common::model::namespace_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1modules__filter.html#a51d4c54ff1f71e1f59e554527e37e34a">clanguml::common::model::modules_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1element__filter.html#af44098e1d69e6b4d139749c15fbdcd5a">clanguml::common::model::element_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1element__type__filter.html#a936050af7c0718a471badd075abf9a3a">clanguml::common::model::element_type_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1subclass__filter.html#a1148fd8fed50e599e6d62f2d04744f14">clanguml::common::model::subclass_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1parents__filter.html#a9530df003f7a7851e39ca69a1d8e71de">clanguml::common::model::parents_filter</a>, and <a class="el" href="structclanguml_1_1common_1_1model_1_1context__filter.html#a42b3454c81734aef4d2e1afe603356c0">clanguml::common::model::context_filter</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00096">96</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
 <div class="fragment DoxyCode"><div class="line"><span class="lineno">   98</span>{</div>
@@ -444,7 +454,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a1dddae4f63eba3f9e10ce90dfe5e60bf" name="a1dddae4f63eba3f9e10ce90dfe5e60bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1dddae4f63eba3f9e10ce90dfe5e60bf">&#9670;&#160;</a></span>match() <span class="overload">[5/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dddae4f63eba3f9e10ce90dfe5e60bf">&#9670;&#160;</a></span>match() <span class="overload">[5/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -477,17 +487,58 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1namespace__filter.html#a901cf597ae1f4f764b8621fef1aea714">clanguml::common::model::namespace_filter</a>.</p>
+<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html#a29f06f2d72ca118fe3b83598274500dc">clanguml::common::model::anyof_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1allof__filter.html#ad262596c4643c3fad1dcfaf41e36f1df">clanguml::common::model::allof_filter</a>, and <a class="el" href="structclanguml_1_1common_1_1model_1_1namespace__filter.html#a901cf597ae1f4f764b8621fef1aea714">clanguml::common::model::namespace_filter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00114">114</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  116</span>{</div>
-<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  118</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00120">120</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  122</span>{</div>
+<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  124</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6c20d368f4e78edca3c8cdf1de758b92" name="a6c20d368f4e78edca3c8cdf1de758b92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c20d368f4e78edca3c8cdf1de758b92">&#9670;&#160;</a></span>match() <span class="overload">[6/10]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a8ea774655992e61b0bfd766fe38981fc">tvl::value_t</a> clanguml::common::model::filter_visitor::match </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">diagram</a> &amp;&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">common::model::relationship</a> &amp;&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00102">102</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  104</span>{</div>
+<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a359c04491fd76fed5a5a2c657529160b">match</a>(d, r.type());</div>
+<div class="line"><span class="lineno">  106</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a395e5c2adbed5d0d697af6b63d24a2b5" name="a395e5c2adbed5d0d697af6b63d24a2b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a395e5c2adbed5d0d697af6b63d24a2b5">&#9670;&#160;</a></span>match() <span class="overload">[6/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a395e5c2adbed5d0d697af6b63d24a2b5">&#9670;&#160;</a></span>match() <span class="overload">[7/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -520,17 +571,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1relationship__filter.html#abe7dfb0cf1d3e7893204efa638d7c2cc">clanguml::common::model::relationship_filter</a>.</p>
+<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html#af0b56c6ff5bc637d3ee8e76945e8cdff">clanguml::common::model::anyof_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1allof__filter.html#a2f8e1bad67e5276c980ffe36a80536e1">clanguml::common::model::allof_filter</a>, and <a class="el" href="structclanguml_1_1common_1_1model_1_1relationship__filter.html#abe7dfb0cf1d3e7893204efa638d7c2cc">clanguml::common::model::relationship_filter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00102">102</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  104</span>{</div>
-<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  106</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00108">108</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  110</span>{</div>
+<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  112</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="af6f2cab595f2a73d57a985533651d554" name="af6f2cab595f2a73d57a985533651d554"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6f2cab595f2a73d57a985533651d554">&#9670;&#160;</a></span>match() <span class="overload">[7/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af6f2cab595f2a73d57a985533651d554">&#9670;&#160;</a></span>match() <span class="overload">[8/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -563,17 +614,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html#ad7da7bbc87f5f3058a122a74f1a25bc6">clanguml::common::model::anyof_filter</a>, and <a class="el" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#a1b3ef051af8c38e55304270c4eda125f">clanguml::common::model::paths_filter</a>.</p>
+<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html#a0b651d8e00d938162c33e0c897b3d034">clanguml::common::model::anyof_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1allof__filter.html#a2c6c8eb963f51d82b4e868c4f6344387">clanguml::common::model::allof_filter</a>, and <a class="el" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#a1b3ef051af8c38e55304270c4eda125f">clanguml::common::model::paths_filter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00120">120</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  122</span>{</div>
-<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  124</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00126">126</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  128</span>{</div>
+<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  130</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a0399bbcb6ac169673581b74d64fc8a6a" name="a0399bbcb6ac169673581b74d64fc8a6a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0399bbcb6ac169673581b74d64fc8a6a">&#9670;&#160;</a></span>match() <span class="overload">[8/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0399bbcb6ac169673581b74d64fc8a6a">&#9670;&#160;</a></span>match() <span class="overload">[9/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -606,17 +657,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#af5730f23a42aec496775147de4fbf797">clanguml::common::model::paths_filter</a>.</p>
+<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html#ad7d6be5ff14fb559ab511650194d49e3">clanguml::common::model::anyof_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1allof__filter.html#ac51c5c893fe0b68f4d42f563d34c72ef">clanguml::common::model::allof_filter</a>, and <a class="el" href="structclanguml_1_1common_1_1model_1_1paths__filter.html#af5730f23a42aec496775147de4fbf797">clanguml::common::model::paths_filter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00126">126</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  128</span>{</div>
-<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  130</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00132">132</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  134</span>{</div>
+<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  136</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a449efc12d41637d0dcc4cfdbc06bb180" name="a449efc12d41637d0dcc4cfdbc06bb180"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a449efc12d41637d0dcc4cfdbc06bb180">&#9670;&#160;</a></span>match() <span class="overload">[9/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a449efc12d41637d0dcc4cfdbc06bb180">&#9670;&#160;</a></span>match() <span class="overload">[10/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -649,12 +700,53 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html#aa037a76db951d6ec5d4d5fbd104fc06f">clanguml::common::model::anyof_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1element__filter.html#a68d73cce69afea98546f23d09070b8f9">clanguml::common::model::element_filter</a>, and <a class="el" href="structclanguml_1_1common_1_1model_1_1callee__filter.html#aa9e83c45b7e60dce837d23a10d5931ff">clanguml::common::model::callee_filter</a>.</p>
+<p>Reimplemented in <a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html#aa037a76db951d6ec5d4d5fbd104fc06f">clanguml::common::model::anyof_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1allof__filter.html#a9a20dc5339abf243a3db6cb58e8fb3e5">clanguml::common::model::allof_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1namespace__filter.html#a34b4fdfb2e1efba11b2668c307bc8f7d">clanguml::common::model::namespace_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1element__filter.html#a68d73cce69afea98546f23d09070b8f9">clanguml::common::model::element_filter</a>, and <a class="el" href="structclanguml_1_1common_1_1model_1_1callee__filter.html#aa9e83c45b7e60dce837d23a10d5931ff">clanguml::common::model::callee_filter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00144">144</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  146</span>{</div>
-<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  148</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00150">150</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  152</span>{</div>
+<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  154</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7135a32c96b414644b78bbd186c4e5c5" name="a7135a32c96b414644b78bbd186c4e5c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7135a32c96b414644b78bbd186c4e5c5">&#9670;&#160;</a></span>mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">filter_mode_t clanguml::common::model::filter_visitor::mode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00168">168</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  168</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a436c4e36c46f54ecc816055848f6204a">mode_</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af28268c596e1ccf5a980637e4e57ed34" name="af28268c596e1ccf5a980637e4e57ed34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af28268c596e1ccf5a980637e4e57ed34">&#9670;&#160;</a></span>set_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::model::filter_visitor::set_mode </td>
+          <td>(</td>
+          <td class="paramtype">filter_mode_t&#160;</td>
+          <td class="paramname"><em>mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00170">170</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  170</span>{ <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a436c4e36c46f54ecc816055848f6204a">mode_</a> = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a7135a32c96b414644b78bbd186c4e5c5">mode</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -673,12 +765,36 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00160">160</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  160</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a620913904564a0f50c80932c8b50620d">type_</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00166">166</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  166</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a620913904564a0f50c80932c8b50620d">type_</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a436c4e36c46f54ecc816055848f6204a" name="a436c4e36c46f54ecc816055848f6204a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a436c4e36c46f54ecc816055848f6204a">&#9670;&#160;</a></span>mode_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">filter_mode_t clanguml::common::model::filter_visitor::mode_ {filter_mode_t::basic}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00125">125</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
+
+</div>
+</div>
 <a id="a620913904564a0f50c80932c8b50620d" name="a620913904564a0f50c80932c8b50620d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a620913904564a0f50c80932c8b50620d">&#9670;&#160;</a></span>type_</h2>
 
@@ -699,13 +815,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00117">117</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00124">124</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/common/model/<a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a></li>
-<li>src/common/model/<a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a></li>
+<li>src/common/model/filters/<a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a></li>
+<li>src/common/model/filters/<a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a></li>
 </ul>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->

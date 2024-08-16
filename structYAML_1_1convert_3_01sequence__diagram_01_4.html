@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -130,7 +132,7 @@ $(function() {
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00684">684</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00717">717</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -172,30 +174,30 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00685">685</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  686</span>    {</div>
-<div class="line"><span class="lineno">  687</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceYAML.html#aab88bdb1d3efad629c87307b6a6b3f3c">decode_diagram</a>(node, rhs))</div>
-<div class="line"><span class="lineno">  688</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  689</span> </div>
-<div class="line"><span class="lineno">  690</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.from);</div>
-<div class="line"><span class="lineno">  691</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.from_to);</div>
-<div class="line"><span class="lineno">  692</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.to);</div>
-<div class="line"><span class="lineno">  693</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.combine_free_functions_into_file_participants);</div>
-<div class="line"><span class="lineno">  694</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.inline_lambda_messages);</div>
-<div class="line"><span class="lineno">  695</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.generate_return_types);</div>
-<div class="line"><span class="lineno">  696</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.generate_condition_statements);</div>
-<div class="line"><span class="lineno">  697</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.participants_order);</div>
-<div class="line"><span class="lineno">  698</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.generate_method_arguments);</div>
-<div class="line"><span class="lineno">  699</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.generate_message_comments);</div>
-<div class="line"><span class="lineno">  700</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.message_comment_width);</div>
-<div class="line"><span class="lineno">  701</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.type_aliases);</div>
-<div class="line"><span class="lineno">  702</span> </div>
-<div class="line"><span class="lineno">  703</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.get_relative_to());</div>
-<div class="line"><span class="lineno">  704</span> </div>
-<div class="line"><span class="lineno">  705</span>        rhs.initialize_type_aliases();</div>
-<div class="line"><span class="lineno">  706</span> </div>
-<div class="line"><span class="lineno">  707</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  708</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00718">718</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  719</span>    {</div>
+<div class="line"><span class="lineno">  720</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceYAML.html#aab88bdb1d3efad629c87307b6a6b3f3c">decode_diagram</a>(node, rhs))</div>
+<div class="line"><span class="lineno">  721</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  722</span> </div>
+<div class="line"><span class="lineno">  723</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.from);</div>
+<div class="line"><span class="lineno">  724</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.from_to);</div>
+<div class="line"><span class="lineno">  725</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.to);</div>
+<div class="line"><span class="lineno">  726</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.combine_free_functions_into_file_participants);</div>
+<div class="line"><span class="lineno">  727</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.inline_lambda_messages);</div>
+<div class="line"><span class="lineno">  728</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.generate_return_types);</div>
+<div class="line"><span class="lineno">  729</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.generate_condition_statements);</div>
+<div class="line"><span class="lineno">  730</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.participants_order);</div>
+<div class="line"><span class="lineno">  731</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.generate_method_arguments);</div>
+<div class="line"><span class="lineno">  732</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.generate_message_comments);</div>
+<div class="line"><span class="lineno">  733</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.message_comment_width);</div>
+<div class="line"><span class="lineno">  734</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.type_aliases);</div>
+<div class="line"><span class="lineno">  735</span> </div>
+<div class="line"><span class="lineno">  736</span>        <a class="code hl_function" href="namespaceYAML.html#a42e98e39679e71100793534b5fb50ab8">get_option</a>(node, rhs.get_relative_to());</div>
+<div class="line"><span class="lineno">  737</span> </div>
+<div class="line"><span class="lineno">  738</span>        rhs.initialize_type_aliases();</div>
+<div class="line"><span class="lineno">  739</span> </div>
+<div class="line"><span class="lineno">  740</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  741</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>

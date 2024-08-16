@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -205,11 +207,20 @@ $(function() {
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">     */</span></div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1element__view.html#a0313c071b64522eea1b8e740c88af69a">   79</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a0313c071b64522eea1b8e740c88af69a" title="Check whether the element view is empty.">is_empty</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">elements_</a>.empty(); }</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">   82</a></span>    <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#a890433df3c41bd4c468dbce1711eb02f">reference_vector&lt;T&gt;</a> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">elements_</a>;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>};</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>} <span class="comment">// namespace clanguml::common::model</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1element__view.html#a40c57b96e79b704a7c0d4fe92707054f">   81</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a40c57b96e79b704a7c0d4fe92707054f">remove</a>(<span class="keyword">const</span> std::set&lt;eid_t&gt; &amp;element_ids)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">elements_</a>.erase(std::remove_if(<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">elements_</a>.begin(), <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">elements_</a>.end(),</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                            [&amp;element_ids](<span class="keyword">auto</span> &amp;&amp;e) {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                                return element_ids.count(e.get().id()) &gt; 0;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                            }),</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">elements_</a>.end());</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">   91</a></span>    <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#a890433df3c41bd4c468dbce1711eb02f">reference_vector&lt;T&gt;</a> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">elements_</a>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>};</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>} <span class="comment">// namespace clanguml::common::model</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

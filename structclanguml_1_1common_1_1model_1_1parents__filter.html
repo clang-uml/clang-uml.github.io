@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -132,7 +134,7 @@ $(function() {
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Match element based on whether it is a parent of a set of children, or one of them. </p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00254">254</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00339">339</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -151,6 +153,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6e33335c4a72e1e89f76868d2260776a inherit pub_methods_classclanguml_1_1common_1_1model_1_1filter__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a359c04491fd76fed5a5a2c657529160b inherit pub_methods_classclanguml_1_1common_1_1model_1_1filter__visitor"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a8ea774655992e61b0bfd766fe38981fc">tvl::value_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a359c04491fd76fed5a5a2c657529160b">match</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">diagram</a> &amp;d, const <a class="el" href="classclanguml_1_1common_1_1model_1_1element.html">common::model::element</a> &amp;e) const</td></tr>
 <tr class="separator:a359c04491fd76fed5a5a2c657529160b inherit pub_methods_classclanguml_1_1common_1_1model_1_1filter__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c20d368f4e78edca3c8cdf1de758b92 inherit pub_methods_classclanguml_1_1common_1_1model_1_1filter__visitor"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a8ea774655992e61b0bfd766fe38981fc">tvl::value_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a6c20d368f4e78edca3c8cdf1de758b92">match</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">diagram</a> &amp;d, const <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">common::model::relationship</a> &amp;r) const</td></tr>
+<tr class="separator:a6c20d368f4e78edca3c8cdf1de758b92 inherit pub_methods_classclanguml_1_1common_1_1model_1_1filter__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a395e5c2adbed5d0d697af6b63d24a2b5 inherit pub_methods_classclanguml_1_1common_1_1model_1_1filter__visitor"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a8ea774655992e61b0bfd766fe38981fc">tvl::value_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a395e5c2adbed5d0d697af6b63d24a2b5">match</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">diagram</a> &amp;d, const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086">common::model::relationship_t</a> &amp;r) const</td></tr>
 <tr class="separator:a395e5c2adbed5d0d697af6b63d24a2b5 inherit pub_methods_classclanguml_1_1common_1_1model_1_1filter__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44a4f292b95952ca4e5eafe8dbf0457a inherit pub_methods_classclanguml_1_1common_1_1model_1_1filter__visitor"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a8ea774655992e61b0bfd766fe38981fc">tvl::value_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a44a4f292b95952ca4e5eafe8dbf0457a">match</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">diagram</a> &amp;d, const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6">common::model::access_t</a> &amp;a) const</td></tr>
@@ -173,6 +177,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0c08c5a36a6d087d5c145c6e628871d6 inherit pub_methods_classclanguml_1_1common_1_1model_1_1filter__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9aed0d7260c6f28f9c54be7d3439bd24 inherit pub_methods_classclanguml_1_1common_1_1model_1_1filter__visitor"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#afe243616df93135040843770261a81db">filter_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a> () const</td></tr>
 <tr class="separator:a9aed0d7260c6f28f9c54be7d3439bd24 inherit pub_methods_classclanguml_1_1common_1_1model_1_1filter__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7135a32c96b414644b78bbd186c4e5c5 inherit pub_methods_classclanguml_1_1common_1_1model_1_1filter__visitor"><td class="memItemLeft" align="right" valign="top">filter_mode_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a7135a32c96b414644b78bbd186c4e5c5">mode</a> () const</td></tr>
+<tr class="separator:a7135a32c96b414644b78bbd186c4e5c5 inherit pub_methods_classclanguml_1_1common_1_1model_1_1filter__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af28268c596e1ccf5a980637e4e57ed34 inherit pub_methods_classclanguml_1_1common_1_1model_1_1filter__visitor"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#af28268c596e1ccf5a980637e4e57ed34">set_mode</a> (filter_mode_t <a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a7135a32c96b414644b78bbd186c4e5c5">mode</a>)</td></tr>
+<tr class="separator:af28268c596e1ccf5a980637e4e57ed34 inherit pub_methods_classclanguml_1_1common_1_1model_1_1filter__visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -206,11 +214,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00553">553</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  555</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#aace2767e1c46b12082faba1e38dd7bc3">filter_visitor</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>}</div>
-<div class="line"><span class="lineno">  556</span>    , <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1parents__filter.html#aab54bd434c6d8f4bccb8015b45e7bd1f">children_</a>{std::move(children)}</div>
-<div class="line"><span class="lineno">  557</span>{</div>
-<div class="line"><span class="lineno">  558</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00663">663</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  665</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#aace2767e1c46b12082faba1e38dd7bc3">filter_visitor</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>}</div>
+<div class="line"><span class="lineno">  666</span>    , <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1parents__filter.html#aab54bd434c6d8f4bccb8015b45e7bd1f">children_</a>{std::move(children)}</div>
+<div class="line"><span class="lineno">  667</span>{</div>
+<div class="line"><span class="lineno">  668</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -276,40 +284,40 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a359c04491fd76fed5a5a2c657529160b">clanguml::common::model::filter_visitor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00560">560</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  561</span>{</div>
-<div class="line"><span class="lineno">  562</span>    <span class="keywordflow">if</span> (d.type() != <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffaca5f49c58b1ea579a3ed3e0bc6a0d176">diagram_t::kClass</a>)</div>
-<div class="line"><span class="lineno">  563</span>        <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  564</span> </div>
-<div class="line"><span class="lineno">  565</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1parents__filter.html#aab54bd434c6d8f4bccb8015b45e7bd1f">children_</a>.empty())</div>
-<div class="line"><span class="lineno">  566</span>        <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  567</span> </div>
-<div class="line"><span class="lineno">  568</span>    <span class="keywordflow">if</span> (!d.complete())</div>
-<div class="line"><span class="lineno">  569</span>        <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  570</span> </div>
-<div class="line"><span class="lineno">  571</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;cd = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>class_diagram::model::diagram &amp;<span class="keyword">&gt;</span>(d);</div>
-<div class="line"><span class="lineno">  572</span> </div>
-<div class="line"><span class="lineno">  573</span>    <span class="comment">// First get all parents of element e</span></div>
-<div class="line"><span class="lineno">  574</span>    <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#a742408c40cde58190d01351dda001ffa">clanguml::common::reference_set&lt;class_diagram::model::class_&gt;</a> parents;</div>
-<div class="line"><span class="lineno">  575</span> </div>
-<div class="line"><span class="lineno">  576</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;child_pattern : <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1parents__filter.html#aab54bd434c6d8f4bccb8015b45e7bd1f">children_</a>) {</div>
-<div class="line"><span class="lineno">  577</span>        <span class="keyword">auto</span> child_refs = cd.find&lt;class_diagram::model::class_&gt;(child_pattern);</div>
-<div class="line"><span class="lineno">  578</span> </div>
-<div class="line"><span class="lineno">  579</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;child : child_refs) {</div>
-<div class="line"><span class="lineno">  580</span>            <span class="keywordflow">if</span> (child.has_value())</div>
-<div class="line"><span class="lineno">  581</span>                parents.emplace(child.value());</div>
-<div class="line"><span class="lineno">  582</span>        }</div>
-<div class="line"><span class="lineno">  583</span>    }</div>
-<div class="line"><span class="lineno">  584</span> </div>
-<div class="line"><span class="lineno">  585</span>    cd.get_parents(parents);</div>
-<div class="line"><span class="lineno">  586</span> </div>
-<div class="line"><span class="lineno">  587</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;parent : parents) {</div>
-<div class="line"><span class="lineno">  588</span>        <span class="keywordflow">if</span> (e == parent.get())</div>
-<div class="line"><span class="lineno">  589</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  590</span>    }</div>
-<div class="line"><span class="lineno">  591</span> </div>
-<div class="line"><span class="lineno">  592</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  593</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00670">670</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  671</span>{</div>
+<div class="line"><span class="lineno">  672</span>    <span class="keywordflow">if</span> (d.type() != <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffaca5f49c58b1ea579a3ed3e0bc6a0d176">diagram_t::kClass</a>)</div>
+<div class="line"><span class="lineno">  673</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  674</span> </div>
+<div class="line"><span class="lineno">  675</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1parents__filter.html#aab54bd434c6d8f4bccb8015b45e7bd1f">children_</a>.empty())</div>
+<div class="line"><span class="lineno">  676</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  677</span> </div>
+<div class="line"><span class="lineno">  678</span>    <span class="keywordflow">if</span> (!d.complete())</div>
+<div class="line"><span class="lineno">  679</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  680</span> </div>
+<div class="line"><span class="lineno">  681</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;cd = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>class_diagram::model::diagram &amp;<span class="keyword">&gt;</span>(d);</div>
+<div class="line"><span class="lineno">  682</span> </div>
+<div class="line"><span class="lineno">  683</span>    <span class="comment">// First get all parents of element e</span></div>
+<div class="line"><span class="lineno">  684</span>    <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#a742408c40cde58190d01351dda001ffa">clanguml::common::reference_set&lt;class_diagram::model::class_&gt;</a> parents;</div>
+<div class="line"><span class="lineno">  685</span> </div>
+<div class="line"><span class="lineno">  686</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;child_pattern : <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1parents__filter.html#aab54bd434c6d8f4bccb8015b45e7bd1f">children_</a>) {</div>
+<div class="line"><span class="lineno">  687</span>        <span class="keyword">auto</span> child_refs = cd.find&lt;class_diagram::model::class_&gt;(child_pattern);</div>
+<div class="line"><span class="lineno">  688</span> </div>
+<div class="line"><span class="lineno">  689</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;child : child_refs) {</div>
+<div class="line"><span class="lineno">  690</span>            <span class="keywordflow">if</span> (child.has_value())</div>
+<div class="line"><span class="lineno">  691</span>                parents.emplace(child.value());</div>
+<div class="line"><span class="lineno">  692</span>        }</div>
+<div class="line"><span class="lineno">  693</span>    }</div>
+<div class="line"><span class="lineno">  694</span> </div>
+<div class="line"><span class="lineno">  695</span>    cd.get_parents(parents);</div>
+<div class="line"><span class="lineno">  696</span> </div>
+<div class="line"><span class="lineno">  697</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;parent : parents) {</div>
+<div class="line"><span class="lineno">  698</span>        <span class="keywordflow">if</span> (e == parent.get())</div>
+<div class="line"><span class="lineno">  699</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  700</span>    }</div>
+<div class="line"><span class="lineno">  701</span> </div>
+<div class="line"><span class="lineno">  702</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  703</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -334,13 +342,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00262">262</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00347">347</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li>src/common/model/<a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a></li>
-<li>src/common/model/<a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a></li>
+<li>src/common/model/filters/<a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a></li>
+<li>src/common/model/filters/<a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a></li>
 </ul>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->

@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -145,7 +147,7 @@ $(function() {
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="sequence__diagram_2model_2diagram_8h.html">diagram.h</a>&quot;</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="diagram__filter_8h.html">common/model/diagram_filter.h</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="diagram__filter_8h.html">common/model/filters/diagram_filter.h</a>&quot;</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="error_8h.html">util/error.h</a>&quot;</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="util_8h.html">util/util.h</a>&quot;</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
@@ -383,20 +385,53 @@ $(function() {
 <div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    }</div>
 <div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>}</div>
 <div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#a8211cafd40447360b5bcca728f5fa2f2">  259</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#a8211cafd40447360b5bcca728f5fa2f2" title="Check whether the diagram is empty.">diagram::is_empty</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a0313c071b64522eea1b8e740c88af69a" title="Check whether the element view is empty.">element_view&lt;class_&gt;::is_empty</a>() &amp;&amp;</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a0313c071b64522eea1b8e740c88af69a" title="Check whether the element view is empty.">element_view&lt;enum_&gt;::is_empty</a>() &amp;&amp; <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a0313c071b64522eea1b8e740c88af69a" title="Check whether the element view is empty.">element_view&lt;concept_&gt;::is_empty</a>();</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>}</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>} <span class="comment">// namespace clanguml::class_diagram::model</span></div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common.html">  266</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1common_1_1model.html">clanguml::common::model</a> {</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common_1_1model.html#ab9de28b2bc311397be96f438af489f70">  268</a></span><span class="keywordtype">bool</span> check_diagram_type&lt;clanguml::class_diagram::model::diagram&gt;(<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">diagram_t</a> t)</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>{</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    <span class="keywordflow">return</span> t == diagram_t::kClass;</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>}</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>}</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#a6102158a37ed07c70e85a3bb3540e54a">  259</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#a6102158a37ed07c70e85a3bb3540e54a">diagram::apply_filter</a>()</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>{</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="comment">// First find all element ids which should be removed</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    std::set&lt;eid_t&gt; to_remove;</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;c : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a4ebcaf3cc89e0b529561328958b044e5" title="Get collection of reference to diagram elements.">element_view&lt;class_&gt;::view</a>())</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#aa481d90d5c8046c6de6795bd0891d66b">filter</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a580ec916b00e3bbd4ded10364a9c8698">should_include</a>(c.get()))</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>            to_remove.emplace(c.get().id());</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span> </div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;e : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a4ebcaf3cc89e0b529561328958b044e5" title="Get collection of reference to diagram elements.">element_view&lt;enum_&gt;::view</a>())</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#aa481d90d5c8046c6de6795bd0891d66b">filter</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a580ec916b00e3bbd4ded10364a9c8698">should_include</a>(e.get()))</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>            to_remove.emplace(e.get().id());</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;c : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a4ebcaf3cc89e0b529561328958b044e5" title="Get collection of reference to diagram elements.">element_view&lt;concept_&gt;::view</a>())</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#aa481d90d5c8046c6de6795bd0891d66b">filter</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a580ec916b00e3bbd4ded10364a9c8698">should_include</a>(c.get()))</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>            to_remove.emplace(c.get().id());</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a40c57b96e79b704a7c0d4fe92707054f">element_view&lt;class_&gt;::remove</a>(to_remove);</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a40c57b96e79b704a7c0d4fe92707054f">element_view&lt;enum_&gt;::remove</a>(to_remove);</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a40c57b96e79b704a7c0d4fe92707054f">element_view&lt;concept_&gt;::remove</a>(to_remove);</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a6ee8e2fdbe67073a044d0f1289dad4f3">nested_trait_ns::remove</a>(to_remove);</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;c : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a4ebcaf3cc89e0b529561328958b044e5" title="Get collection of reference to diagram elements.">element_view&lt;class_&gt;::view</a>())</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        c.get().apply_filter(<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#aa481d90d5c8046c6de6795bd0891d66b">filter</a>(), to_remove);</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;e : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a4ebcaf3cc89e0b529561328958b044e5" title="Get collection of reference to diagram elements.">element_view&lt;enum_&gt;::view</a>())</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        e.get().apply_filter(<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#aa481d90d5c8046c6de6795bd0891d66b">filter</a>(), to_remove);</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span> </div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;c : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a4ebcaf3cc89e0b529561328958b044e5" title="Get collection of reference to diagram elements.">element_view&lt;concept_&gt;::view</a>())</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        c.get().apply_filter(<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#aa481d90d5c8046c6de6795bd0891d66b">filter</a>(), to_remove);</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>}</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#a8211cafd40447360b5bcca728f5fa2f2">  292</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#a8211cafd40447360b5bcca728f5fa2f2" title="Check whether the diagram is empty.">diagram::is_empty</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a0313c071b64522eea1b8e740c88af69a" title="Check whether the element view is empty.">element_view&lt;class_&gt;::is_empty</a>() &amp;&amp;</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a0313c071b64522eea1b8e740c88af69a" title="Check whether the element view is empty.">element_view&lt;enum_&gt;::is_empty</a>() &amp;&amp; <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a0313c071b64522eea1b8e740c88af69a" title="Check whether the element view is empty.">element_view&lt;concept_&gt;::is_empty</a>();</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>}</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>} <span class="comment">// namespace clanguml::class_diagram::model</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1common_1_1model.html">clanguml::common::model</a> {</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common_1_1model.html#ab9de28b2bc311397be96f438af489f70">  301</a></span><span class="keywordtype">bool</span> check_diagram_type&lt;clanguml::class_diagram::model::diagram&gt;(<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">diagram_t</a> t)</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>{</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    <span class="keywordflow">return</span> t == diagram_t::kClass;</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>}</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

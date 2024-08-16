@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -129,10 +131,9 @@ $(function() {
 <li>increment()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1generators_1_1progress__indicator.html#a99fb192b8e52b53e6c446d8dc665a815">clanguml::common::generators::progress_indicator</a></li>
 <li>inherit()&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1config.html#a5c14390bb5b6246061e54169425638c0">clanguml::config::config</a>, <a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a69002cb0e1c5f4457c2da26e9b23556e">clanguml::config::inheritable_diagram_options</a></li>
 <li>init()&#160;:&#160;<a class="el" href="structclanguml_1_1common_1_1model_1_1edge__traversal__filter.html#a719bd693359cca4d6cc65f8e7b24f38f">clanguml::common::model::edge_traversal_filter&lt; DiagramT, ElementT, ConfigEntryT, MatchOverrideT &gt;</a></li>
-<li>init_context()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1generators_1_1mermaid_1_1generator.html#ad54862337529764b06e5f2d733a8e15f">clanguml::common::generators::mermaid::generator&lt; ConfigType, DiagramType &gt;</a>, <a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#ab24bb80a5bf9fc117827ae04a51e6657">clanguml::common::generators::plantuml::generator&lt; ConfigType, DiagramType &gt;</a></li>
-<li>init_env()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1generators_1_1mermaid_1_1generator.html#af3b9cb2964d837daf61da3b10b1dfe83">clanguml::common::generators::mermaid::generator&lt; ConfigType, DiagramType &gt;</a>, <a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#ac9c8e8d90fdfe6405abf4bdb5f286e12">clanguml::common::generators::plantuml::generator&lt; ConfigType, DiagramType &gt;</a></li>
-<li>init_filters()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a13d7f2d8155423a095406be18f0cdef0">clanguml::common::model::diagram_filter</a></li>
-<li>initialize()&#160;:&#160;<a class="el" href="structclanguml_1_1common_1_1model_1_1context__filter.html#a7028c52b6b8373fe848a109f982dd5ed">clanguml::common::model::context_filter</a></li>
+<li>init_context()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#adf7e8ebbb99cd5d9ffcd776f570a1cc5">clanguml::common::generators::generator&lt; ConfigType, DiagramType &gt;</a></li>
+<li>init_env()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#adca9d79ebb6878689f747ff31f980e77">clanguml::common::generators::generator&lt; ConfigType, DiagramType &gt;</a></li>
+<li>initialize()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1advanced__diagram__filter__initializer.html#accd1dc49ca26d5c7046279cdcaee3c0d">clanguml::common::model::advanced_diagram_filter_initializer</a>, <a class="el" href="classclanguml_1_1common_1_1model_1_1basic__diagram__filter__initializer.html#aad2147c20b36adadb43d0c3aff6b379d">clanguml::common::model::basic_diagram_filter_initializer</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1context__filter.html#a7028c52b6b8373fe848a109f982dd5ed">clanguml::common::model::context_filter</a>, <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter__initializer.html#aa51ffc6dd0d729aea70fb7cd7b56a5c2">clanguml::common::model::diagram_filter_initializer</a></li>
 <li>initialize_diagram_templates()&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1config.html#a2895be874b2875e251d6aeade392786e">clanguml::config::config</a></li>
 <li>initialize_effective_context()&#160;:&#160;<a class="el" href="structclanguml_1_1common_1_1model_1_1context__filter.html#a2160c1bd0f10eeb69f81020044072931">clanguml::common::model::context_filter</a></li>
 <li>initialize_relationship_hints()&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1class__diagram.html#a2bf391662534036ba18fccef43ecb1ec">clanguml::config::class_diagram</a></li>
@@ -170,7 +171,7 @@ $(function() {
 <li>is_inclusive()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a4c0012c66ed99ea1500ee48ec5a197a7">clanguml::common::model::filter_visitor</a></li>
 <li>is_inward()&#160;:&#160;<a class="el" href="structclanguml_1_1common_1_1model_1_1context__filter.html#a63d7f5570a11e2acaf17f9bd8959d6a0">clanguml::common::model::context_filter</a></li>
 <li>is_lambda()&#160;:&#160;<a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1class__.html#a984df0dde5c2ba4909daf4f799ec8ca5">clanguml::sequence_diagram::model::class_</a></li>
-<li>is_member_pointer()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1template__parameter.html#a9920539d0c10cfbb1b48492cd87ef7e0">clanguml::common::model::template_parameter</a></li>
+<li>is_member_pointer()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1template__parameter.html#ad44fe02b9f7077806d01f714e9af50bb">clanguml::common::model::template_parameter</a></li>
 <li>is_move_assignment()&#160;:&#160;<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__method.html#a3595e8aaf32c0e8c34f91895e5da122f">clanguml::class_diagram::model::class_method</a></li>
 <li>is_nested()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a56305d990c475970d0aed44a1944787f">clanguml::common::model::diagram_element</a></li>
 <li>is_noexcept()&#160;:&#160;<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__method.html#ab74152b953792cf5cae81ad794f0dd8e">clanguml::class_diagram::model::class_method</a></li>
@@ -178,6 +179,7 @@ $(function() {
 <li>is_outward()&#160;:&#160;<a class="el" href="structclanguml_1_1common_1_1model_1_1context__filter.html#a4c5a543fd2c71e66bdabd14d986d0c37">clanguml::common::model::context_filter</a></li>
 <li>is_participant_generated()&#160;:&#160;<a class="el" href="classclanguml_1_1sequence__diagram_1_1generators_1_1json_1_1generator.html#a5b3869714e7dfe89b29379e65801ec9e">clanguml::sequence_diagram::generators::json::generator</a>, <a class="el" href="classclanguml_1_1sequence__diagram_1_1generators_1_1mermaid_1_1generator.html#a8deec9517dc39b5a3353021c616efa66">clanguml::sequence_diagram::generators::mermaid::generator</a>, <a class="el" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#aa928478b43538cad917be585aca45d03">clanguml::sequence_diagram::generators::plantuml::generator</a></li>
 <li>is_pure_virtual()&#160;:&#160;<a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1class__method.html#af6e878b0509e937a57f6d5e4defd3b9a">clanguml::class_diagram::model::class_method</a></li>
+<li>is_regex()&#160;:&#160;<a class="el" href="structclanguml_1_1common_1_1or__regex.html#acc347f512fe2ccf58b94726209dc93fd">clanguml::common::or_regex&lt; T &gt;</a></li>
 <li>is_same_specialization()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1template__parameter.html#ae02b12d5c5ce993562440a0ebc78042d">clanguml::common::model::template_parameter</a></li>
 <li>is_smart_pointer()&#160;:&#160;<a class="el" href="classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#a4d3e54fc8cebfffa26fe04480be0d1e9">clanguml::sequence_diagram::visitor::translation_unit_visitor</a></li>
 <li>is_specialization()&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1template__parameter.html#a9ed2c859beea1108839e683b93f9fe6c">clanguml::common::model::template_parameter</a></li>

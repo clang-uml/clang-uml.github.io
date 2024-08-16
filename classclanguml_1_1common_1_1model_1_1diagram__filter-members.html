@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -129,14 +131,15 @@ $(function() {
 <p>This is the complete list of members for <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a>, including all inherited members.</p>
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a083d3bfe6dd8b151e96f3d60bff8a705">add_exclusive_filter</a>(std::unique_ptr&lt; filter_visitor &gt; fv)</td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a98d6fb531583b2d453f1ebe821d12102">add_inclusive_filter</a>(std::unique_ptr&lt; filter_visitor &gt; fv)</td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a0291bd561cefd24860e31f02cdcefc2b">diagram_</a></td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#adec370a917c1a7b480d24a27ab461918">diagram_filter</a>(const common::model::diagram &amp;d, const config::diagram &amp;c)</td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#aa56764393ba1868e1ed7c11edd7bce99">add_filter</a>(filter_t filter_type, std::unique_ptr&lt; filter_visitor &gt; fv)</td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a98d6fb531583b2d453f1ebe821d12102">add_inclusive_filter</a>(std::unique_ptr&lt; filter_visitor &gt; fv)</td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a0291bd561cefd24860e31f02cdcefc2b">diagram_</a></td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a82f575e7db6b5f116f91d225a264f14f">diagram_filter</a>(const common::model::diagram &amp;d, const config::diagram &amp;c, private_constructor_tag_t unused)</td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a5818ca9d8be3ea1aa52de6b516b89612">diagram_filter_factory</a></td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#ab7d6e3b8bf7a367e46e589e997414196">exclusive_</a></td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a252830b453314731f2e5c3bdffba8e28">inclusive_</a></td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a13d7f2d8155423a095406be18f0cdef0">init_filters</a>(const config::diagram &amp;c)</td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a580ec916b00e3bbd4ded10364a9c8698">should_include</a>(const namespace_ &amp;ns, const std::string &amp;name) const</td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#ad7995f3f592293111d59bef5e62f78e7">should_include</a>(const T &amp;e) const</td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a580ec916b00e3bbd4ded10364a9c8698">should_include</a>(const namespace_ &amp;ns, const std::string &amp;name) const</td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#ad7995f3f592293111d59bef5e62f78e7">should_include</a>(const T &amp;e) const</td><td class="entry"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
 </table></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

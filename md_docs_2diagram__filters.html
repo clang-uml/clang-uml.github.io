@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -143,6 +145,8 @@ $(function() {
 <li><a class="el" href="md_docs_2diagram__filters.html#method_types">method_types</a></li>
 <li><a class="el" href="md_docs_2diagram__filters.html#callee_types">callee_types</a></li>
 <li><a class="el" href="md_docs_2diagram__filters.html#dependants-and-dependencies">dependants and dependencies</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#anyof">anyof</a></li>
+<li><a class="el" href="md_docs_2diagram__filters.html#allof">allof</a></li>
 </ul>
 <p>Diagram filters are at the core of generating diagrams with <code>clang-uml</code>, as they allow to fine tune the scope of each diagram, and thus provide you with a several small, but readable diagrams instead of a single huge diagram that cannot be effectively browsed, printed or included in an online documentation of your project.</p>
 <p>Filters can be specified separate for each diagram, and they can be added as either <code>include</code> or <code>exclude</code> filters, depending on which is more appropriate for a given diagram.</p>
@@ -193,7 +197,11 @@ $(function() {
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>dependencies</code>   </td><td class="markdownTableBodyNone">Qualified name or regex   </td><td class="markdownTableBodyNone"><code>ns1::ns2::ClassA</code>, <code>r: 'ns1::ns2::ClassA.+'</code>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>callee_types</code>   </td><td class="markdownTableBodyNone">Callee types in sequence diagrams   </td><td class="markdownTableBodyNone"><code>constructor</code>, <code>assignment</code>, <code>operator</code>, <code>defaulted</code>, <code>static</code>, <code>method</code>, <code>function</code>, <code>function_template</code>, <code>lambda</code>   </td></tr>
+<td class="markdownTableBodyNone"><code>callee_types</code>   </td><td class="markdownTableBodyNone">Callee types in sequence diagrams   </td><td class="markdownTableBodyNone"><code>constructor</code>, <code>assignment</code>, <code>operator</code>, <code>defaulted</code>, <code>static</code>, <code>method</code>, <code>function</code>, <code>function_template</code>, <code>lambda</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>anyof</code>   </td><td class="markdownTableBodyNone">Match any of the nested filters   </td><td class="markdownTableBodyNone">Logical operator, which returns true if any of its nested filters match (requires <code>filter_mode: advanced</code> option)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>allof</code>   </td><td class="markdownTableBodyNone">Match all of the nested filters   </td><td class="markdownTableBodyNone">Logical operator, which returns true if all of its nested filters match (requires <code>filter_mode: advanced</code> option)   </td></tr>
 </table>
 <p>The following filters are available:</p>
 <h1><a class="anchor" id="namespaces"></a>
@@ -421,7 +429,39 @@ dependants and dependencies</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t00043_class.svg"></embed>
 </div>
-     </div></div><!-- contents -->
+    <h1><a class="anchor" id="anyof"></a>
+anyof</h1>
+<blockquote class="doxtable">
+<p>&zwj;Requires setting <code>filter_mode: advanced</code> in diagram config </p>
+</blockquote>
+<p>This filter is in fact a logical operator, which allows to gain more control over how the specific diagram filters are combined. Consider for instance a case where you want to include all elements from a specific namespace, as well as some other elements from another namespace. With basic filter this is not possible, as the <code>namespaces</code> filter will only allow elements from the namespaces lister. However when using <code>anyof</code> it's possible to specify them as an alternative, i.e. any element matching any of the <code>anyof</code> subfilters will be included. For example:</p>
+<div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  anyof:</div>
+<div class="line">    subclasses:</div>
+<div class="line">      - ns1::nsA::A1</div>
+<div class="line">    namespaces:</div>
+<div class="line">      - ns2::nsB</div>
+<div class="line">    context:</div>
+<div class="line">      - ns3::nsC::B3</div>
+</div><!-- fragment --><p>will include all subclasses of <code>ns1::nsA::A1</code>, all elements in the <code>ns2::nsB</code> namespace as well as all elements in the context of element <code>ns3::nsC::B3</code>.</p>
+<p>For more examples of this checkout test cases t00082 and t00083.</p>
+<h1><a class="anchor" id="allof"></a>
+allof</h1>
+<blockquote class="doxtable">
+<p>&zwj;Requires setting <code>filter_mode: advanced</code> in diagram config </p>
+</blockquote>
+<p>This filter logical operator is complementary to the <code>anyof</code>. It matches all diagram elements, which match all of it's subfilters. For instance the following filter:</p>
+<div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  allof:</div>
+<div class="line">    namespaces:</div>
+<div class="line">      - clanguml</div>
+<div class="line">      - std</div>
+<div class="line">    context:</div>
+<div class="line">      - match:</div>
+<div class="line">          radius: 2</div>
+<div class="line">          pattern: clanguml::A</div>
+</div><!-- fragment --><p>which will include all elements that are in the context of element <code>clanguml::A</code> not farther than 2 relationships away and also they belong to either <code>clanguml</code> or <code>std</code> namespace. </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

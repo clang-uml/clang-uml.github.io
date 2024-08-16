@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -122,7 +124,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="t20023---trycatch-statement-sequence-diagram-test-case"></a></p>
-<h1><a class="anchor" id="config-100"></a>
+<h1><a class="anchor" id="config-104"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  t20023_sequence:</div>
@@ -135,7 +137,7 @@ Config</h1>
 <div class="line">    using_namespace: clanguml::t20023</div>
 <div class="line">    from:</div>
 <div class="line">      - function: &quot;clanguml::t20023::tmain()&quot;</div>
-</div><!-- fragment --> <h1><a class="anchor" id="source-code-100"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-104"></a>
 Source code</h1>
 <p>File <code>tests/t20023/t20023.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
 <div class="line"> </div>
@@ -177,17 +179,17 @@ Source code</h1>
 <div class="line">}</div>
 <div class="line">}</div>
 <div class="line">}</div>
-</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-100"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-104"></a>
 Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t20023_sequence.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-mermaid-diagrams-100"></a>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-104"></a>
 Generated Mermaid diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t20023_sequence_mermaid.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-json-models-100"></a>
+     <h1><a class="anchor" id="generated-json-models-104"></a>
 Generated JSON models</h1>
 <div class="fragment language-json"><div class="line">{</div>
 <div class="line">  &quot;diagram_type&quot;: &quot;sequence&quot;,</div>
@@ -214,7 +216,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20023::A::a()&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;4245210562217509581&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20023&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20023.cc&quot;,</div>
@@ -228,7 +230,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20023::A::a1()&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;753080911460153665&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a1&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20023&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20023.cc&quot;,</div>
@@ -242,7 +244,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20023::A::a2()&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;16483505431192115726&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a2&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20023&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20023.cc&quot;,</div>
@@ -256,7 +258,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20023::A::a3()&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;14215418076972824143&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a3&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20023&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20023.cc&quot;,</div>
@@ -270,7 +272,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20023::A::a4()&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;8660701586993990509&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a4&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20023&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20023.cc&quot;,</div>

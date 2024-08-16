@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -192,9 +194,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6634df7b00bd7ba027f6ce8a334c3203 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a6634df7b00bd7ba027f6ce8a334c3203">print_debug</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">common::model::source_location</a> &amp;e, std::ostream &amp;ostr) const</td></tr>
 <tr class="memdesc:a6634df7b00bd7ba027f6ce8a334c3203 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print debug information in diagram comments.  <br /></td></tr>
 <tr class="separator:a6634df7b00bd7ba027f6ce8a334c3203 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf6b739aaa80a08a2527510d413d21fb inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#adf6b739aaa80a08a2527510d413d21fb">update_context</a> () const</td></tr>
-<tr class="memdesc:adf6b739aaa80a08a2527510d413d21fb inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update diagram Jinja context.  <br /></td></tr>
-<tr class="separator:adf6b739aaa80a08a2527510d413d21fb inherit pub_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1generators_1_1generator')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html">clanguml::common::generators::generator&lt; ConfigType, DiagramType &gt;</a></td></tr>
 <tr class="memitem:a52c02a5ce1fc9d387987e1187d39d541 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a52c02a5ce1fc9d387987e1187d39d541">generator</a> (ConfigType &amp;<a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a">config</a>, DiagramType &amp;<a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63">model</a>)</td></tr>
 <tr class="memdesc:a52c02a5ce1fc9d387987e1187d39d541 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <br /></td></tr>
@@ -210,6 +209,25 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af86cc2bb63f292fd7076909b9b7eba63 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">const DiagramType &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63">model</a> () const</td></tr>
 <tr class="memdesc:af86cc2bb63f292fd7076909b9b7eba63 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get reference to diagram model.  <br /></td></tr>
 <tr class="separator:af86cc2bb63f292fd7076909b9b7eba63 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e0c5aac92cb0dc31543c94a7591ae79 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memTemplParams" colspan="2">template&lt;typename E &gt; </td></tr>
+<tr class="memitem:a3e0c5aac92cb0dc31543c94a7591ae79 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memTemplItemLeft" align="right" valign="top">inja::json&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a3e0c5aac92cb0dc31543c94a7591ae79">element_context</a> (const E &amp;e) const</td></tr>
+<tr class="separator:a3e0c5aac92cb0dc31543c94a7591ae79 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d89e22a950645c55dd12eea43585fde inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a4d89e22a950645c55dd12eea43585fde">get_link_pattern</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">common::model::source_location</a> &amp;sl) const</td></tr>
+<tr class="separator:a4d89e22a950645c55dd12eea43585fde inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedc6c7ed91c9c08ddcedcfb22b79999e inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#aedc6c7ed91c9c08ddcedcfb22b79999e">get_tooltip_pattern</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">common::model::source_location</a> &amp;sl) const</td></tr>
+<tr class="separator:aedc6c7ed91c9c08ddcedcfb22b79999e inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf7e8ebbb99cd5d9ffcd776f570a1cc5 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#adf7e8ebbb99cd5d9ffcd776f570a1cc5">init_context</a> ()</td></tr>
+<tr class="memdesc:adf7e8ebbb99cd5d9ffcd776f570a1cc5 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize diagram Jinja context.  <br /></td></tr>
+<tr class="separator:adf7e8ebbb99cd5d9ffcd776f570a1cc5 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1735ea1d89620ac2d64a7c0a5274c155 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a1735ea1d89620ac2d64a7c0a5274c155">update_context</a> () const</td></tr>
+<tr class="memdesc:a1735ea1d89620ac2d64a7c0a5274c155 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update diagram Jinja context.  <br /></td></tr>
+<tr class="separator:a1735ea1d89620ac2d64a7c0a5274c155 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adca9d79ebb6878689f747ff31f980e77 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#adca9d79ebb6878689f747ff31f980e77">init_env</a> ()</td></tr>
+<tr class="separator:adca9d79ebb6878689f747ff31f980e77 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65cda034a41e2f0206b42df72bbcfe32 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">const inja::json &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a65cda034a41e2f0206b42df72bbcfe32">context</a> () const</td></tr>
+<tr class="separator:a65cda034a41e2f0206b42df72bbcfe32 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f1edb989505ccc4439365050c084430 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">inja::Environment &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a5f1edb989505ccc4439365050c084430">env</a> () const</td></tr>
+<tr class="separator:a5f1edb989505ccc4439365050c084430 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -218,21 +236,14 @@ Private Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pro_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html">clanguml::common::generators::plantuml::generator&lt; ConfigType, DiagramType &gt;</a></td></tr>
-<tr class="memitem:adf0ae15ee5f990f1cdaace5ca8a07f2b inherit pro_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memItemLeft" align="right" valign="top">const inja::json &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#adf0ae15ee5f990f1cdaace5ca8a07f2b">context</a> () const</td></tr>
-<tr class="separator:adf0ae15ee5f990f1cdaace5ca8a07f2b inherit pro_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3caa1fe787d36326a8b59e116b7f8eb9 inherit pro_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memItemLeft" align="right" valign="top">inja::Environment &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a3caa1fe787d36326a8b59e116b7f8eb9">env</a> () const</td></tr>
-<tr class="separator:a3caa1fe787d36326a8b59e116b7f8eb9 inherit pro_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67a36945e644d30bfce6e391fe3002f3 inherit pro_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memTemplParams" colspan="2">template&lt;typename E &gt; </td></tr>
-<tr class="memitem:a67a36945e644d30bfce6e391fe3002f3 inherit pro_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memTemplItemLeft" align="right" valign="top">inja::json&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a67a36945e644d30bfce6e391fe3002f3">element_context</a> (const E &amp;e) const</td></tr>
-<tr class="separator:a67a36945e644d30bfce6e391fe3002f3 inherit pro_methods_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html">clanguml::common::generators::plantuml::generator&lt; ConfigType, DiagramType &gt;</a></td></tr>
 <tr class="memitem:a558d1dc02fa379eb17f58bb40099f01a inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memItemLeft" align="right" valign="top">std::set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a558d1dc02fa379eb17f58bb40099f01a">m_generated_aliases</a></td></tr>
 <tr class="separator:a558d1dc02fa379eb17f58bb40099f01a inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a876ec28cf25be51195b4cfc288eb3d8f inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memItemLeft" align="right" valign="top">inja::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a876ec28cf25be51195b4cfc288eb3d8f">m_context</a></td></tr>
-<tr class="separator:a876ec28cf25be51195b4cfc288eb3d8f inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99f9723b6acd97e8f5450170db755f02 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memItemLeft" align="right" valign="top">inja::Environment&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a99f9723b6acd97e8f5450170db755f02">m_env</a></td></tr>
-<tr class="separator:a99f9723b6acd97e8f5450170db755f02 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classclanguml_1_1common_1_1generators_1_1generator"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classclanguml_1_1common_1_1generators_1_1generator')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html">clanguml::common::generators::generator&lt; ConfigType, DiagramType &gt;</a></td></tr>
+<tr class="memitem:a56438896c0f92c83bf893575cb9cd7d4 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">inja::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a56438896c0f92c83bf893575cb9cd7d4">m_context</a></td></tr>
+<tr class="separator:a56438896c0f92c83bf893575cb9cd7d4 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff8ab3e989bf84dbb2dd080881771809 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">inja::Environment&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#aff8ab3e989bf84dbb2dd080881771809">m_env</a></td></tr>
+<tr class="separator:aff8ab3e989bf84dbb2dd080881771809 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9ddc03a8b76daedf3cbadbacee43ae49" name="a9ddc03a8b76daedf3cbadbacee43ae49"></a>
@@ -305,57 +316,53 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html#l00071">71</a> of file <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   72</span>{</div>
-<div class="line"><span class="lineno">   73</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Generating package {}&quot;</span>, p.name());</div>
+<p class="definition">Definition at line <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html#l00067">67</a> of file <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   68</span>{</div>
+<div class="line"><span class="lineno">   69</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Generating package {}&quot;</span>, p.name());</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>    <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.enter();</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;uns = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().using_namespace();</div>
 <div class="line"><span class="lineno">   74</span> </div>
-<div class="line"><span class="lineno">   75</span>    <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.enter();</div>
-<div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;uns = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().using_namespace();</div>
-<div class="line"><span class="lineno">   78</span> </div>
-<div class="line"><span class="lineno">   79</span>    <span class="comment">// Don&#39;t generate packages from namespaces filtered out by</span></div>
-<div class="line"><span class="lineno">   80</span>    <span class="comment">// using_namespace</span></div>
-<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">if</span> (!uns.starts_with({p.full_name(false)})) {</div>
-<div class="line"><span class="lineno">   82</span>        ostr &lt;&lt; <span class="stringliteral">&quot;package [&quot;</span> &lt;&lt; p.name() &lt;&lt; <span class="stringliteral">&quot;] &quot;</span>;</div>
-<div class="line"><span class="lineno">   83</span>        ostr &lt;&lt; <span class="stringliteral">&quot;as &quot;</span> &lt;&lt; p.alias();</div>
-<div class="line"><span class="lineno">   84</span> </div>
-<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">if</span> (p.is_deprecated())</div>
-<div class="line"><span class="lineno">   86</span>            ostr &lt;&lt; <span class="stringliteral">&quot; &lt;&lt;deprecated&gt;&gt;&quot;</span>;</div>
+<div class="line"><span class="lineno">   75</span>    <span class="comment">// Don&#39;t generate packages from namespaces filtered out by</span></div>
+<div class="line"><span class="lineno">   76</span>    <span class="comment">// using_namespace</span></div>
+<div class="line"><span class="lineno">   77</span>    <span class="keywordflow">if</span> (!uns.starts_with({p.full_name(false)})) {</div>
+<div class="line"><span class="lineno">   78</span>        ostr &lt;&lt; <span class="stringliteral">&quot;package [&quot;</span> &lt;&lt; p.name() &lt;&lt; <span class="stringliteral">&quot;] &quot;</span>;</div>
+<div class="line"><span class="lineno">   79</span>        ostr &lt;&lt; <span class="stringliteral">&quot;as &quot;</span> &lt;&lt; p.alias();</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>        <span class="keywordflow">if</span> (p.is_deprecated())</div>
+<div class="line"><span class="lineno">   82</span>            ostr &lt;&lt; <span class="stringliteral">&quot; &lt;&lt;deprecated&gt;&gt;&quot;</span>;</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().generate_links) {</div>
+<div class="line"><span class="lineno">   85</span>            <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#af3949f8a75519d4161e817d041fcc306" title="Generate hyper link to element.">generate_link</a>(ostr, p);</div>
+<div class="line"><span class="lineno">   86</span>        }</div>
 <div class="line"><span class="lineno">   87</span> </div>
-<div class="line"><span class="lineno">   88</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().generate_links) {</div>
-<div class="line"><span class="lineno">   89</span>            <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#af3949f8a75519d4161e817d041fcc306" title="Generate hyper link to element.">generate_link</a>(ostr, p);</div>
-<div class="line"><span class="lineno">   90</span>        }</div>
-<div class="line"><span class="lineno">   91</span> </div>
-<div class="line"><span class="lineno">   92</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#aa8864a5be307dbe678d808f4ee83ad23" title="Generate diagram element PlantUML style.">generate_style</a>(ostr, p.type_name(), p);</div>
-<div class="line"><span class="lineno">   93</span> </div>
-<div class="line"><span class="lineno">   94</span>        ostr &lt;&lt; <span class="stringliteral">&quot; {&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><span class="lineno">   95</span>    }</div>
-<div class="line"><span class="lineno">   96</span> </div>
-<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;subpackage : p) {</div>
-<div class="line"><span class="lineno">   98</span>        <span class="keyword">auto</span> &amp;pkg = <span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*subpackage);</div>
-<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(pkg)) {</div>
-<div class="line"><span class="lineno">  100</span>            <span class="keyword">auto</span> together_group =</div>
-<div class="line"><span class="lineno">  101</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().get_together_group(pkg.full_name(<span class="keyword">false</span>));</div>
-<div class="line"><span class="lineno">  102</span>            <span class="keywordflow">if</span> (together_group) {</div>
-<div class="line"><span class="lineno">  103</span>                <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.group_together(</div>
-<div class="line"><span class="lineno">  104</span>                    together_group.value(), &amp;pkg);</div>
-<div class="line"><span class="lineno">  105</span>            }</div>
-<div class="line"><span class="lineno">  106</span>            <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  107</span>                <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a7abcbd0f8ecb26ed7076f1d3a5281a15" title="Generate diagram package element.">generate</a>(pkg, ostr);</div>
-<div class="line"><span class="lineno">  108</span>            }</div>
-<div class="line"><span class="lineno">  109</span>        }</div>
-<div class="line"><span class="lineno">  110</span>    }</div>
+<div class="line"><span class="lineno">   88</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#aa8864a5be307dbe678d808f4ee83ad23" title="Generate diagram element PlantUML style.">generate_style</a>(ostr, p.type_name(), p);</div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span>        ostr &lt;&lt; <span class="stringliteral">&quot; {&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><span class="lineno">   91</span>    }</div>
+<div class="line"><span class="lineno">   92</span> </div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;subpackage : p) {</div>
+<div class="line"><span class="lineno">   94</span>        <span class="keyword">auto</span> &amp;pkg = <span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*subpackage);</div>
+<div class="line"><span class="lineno">   95</span>        <span class="keyword">auto</span> together_group = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().get_together_group(pkg.full_name(<span class="keyword">false</span>));</div>
+<div class="line"><span class="lineno">   96</span>        <span class="keywordflow">if</span> (together_group) {</div>
+<div class="line"><span class="lineno">   97</span>            <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.group_together(together_group.value(), &amp;pkg);</div>
+<div class="line"><span class="lineno">   98</span>        }</div>
+<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  100</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a7abcbd0f8ecb26ed7076f1d3a5281a15" title="Generate diagram package element.">generate</a>(pkg, ostr);</div>
+<div class="line"><span class="lineno">  101</span>        }</div>
+<div class="line"><span class="lineno">  102</span>    }</div>
+<div class="line"><span class="lineno">  103</span> </div>
+<div class="line"><span class="lineno">  104</span>    <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#abf2d2755f0f27e8c8003c19285d096e8" title="Generate package elements grouped using together PlantUML tag.">generate_groups</a>(ostr);</div>
+<div class="line"><span class="lineno">  105</span> </div>
+<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">if</span> (!uns.starts_with({p.full_name(false)})) {</div>
+<div class="line"><span class="lineno">  107</span>        ostr &lt;&lt; <span class="stringliteral">&quot;}&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><span class="lineno">  108</span>    }</div>
+<div class="line"><span class="lineno">  109</span> </div>
+<div class="line"><span class="lineno">  110</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a48ee1b56980799353eab64ab6a904a80" title="Generate diagram notes.">generate_notes</a>(ostr, p);</div>
 <div class="line"><span class="lineno">  111</span> </div>
-<div class="line"><span class="lineno">  112</span>    <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#abf2d2755f0f27e8c8003c19285d096e8" title="Generate package elements grouped using together PlantUML tag.">generate_groups</a>(ostr);</div>
-<div class="line"><span class="lineno">  113</span> </div>
-<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">if</span> (!uns.starts_with({p.full_name(false)})) {</div>
-<div class="line"><span class="lineno">  115</span>        ostr &lt;&lt; <span class="stringliteral">&quot;}&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><span class="lineno">  116</span>    }</div>
-<div class="line"><span class="lineno">  117</span> </div>
-<div class="line"><span class="lineno">  118</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a48ee1b56980799353eab64ab6a904a80" title="Generate diagram notes.">generate_notes</a>(ostr, p);</div>
-<div class="line"><span class="lineno">  119</span> </div>
-<div class="line"><span class="lineno">  120</span>    <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.leave();</div>
-<div class="line"><span class="lineno">  121</span>}</div>
+<div class="line"><span class="lineno">  112</span>    <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.leave();</div>
+<div class="line"><span class="lineno">  113</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -394,33 +401,28 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a0bb139f4ec6bb7b38edf53a8292475f0">clanguml::common::generators::plantuml::generator&lt; ConfigType, DiagramType &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html#l00137">137</a> of file <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  138</span>{</div>
-<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>()) {</div>
-<div class="line"><span class="lineno">  140</span>        <span class="keyword">auto</span> &amp;pkg = <span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p);</div>
-<div class="line"><span class="lineno">  141</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(pkg)) {</div>
-<div class="line"><span class="lineno">  142</span>            <span class="keyword">auto</span> together_group =</div>
-<div class="line"><span class="lineno">  143</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().get_together_group(pkg.full_name(<span class="keyword">false</span>));</div>
-<div class="line"><span class="lineno">  144</span>            <span class="keywordflow">if</span> (together_group) {</div>
-<div class="line"><span class="lineno">  145</span>                <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.group_together(</div>
-<div class="line"><span class="lineno">  146</span>                    together_group.value(), &amp;pkg);</div>
-<div class="line"><span class="lineno">  147</span>            }</div>
-<div class="line"><span class="lineno">  148</span>            <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  149</span>                <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a7abcbd0f8ecb26ed7076f1d3a5281a15" title="Generate diagram package element.">generate</a>(pkg, ostr);</div>
-<div class="line"><span class="lineno">  150</span>            }</div>
-<div class="line"><span class="lineno">  151</span>        }</div>
-<div class="line"><span class="lineno">  152</span>    }</div>
-<div class="line"><span class="lineno">  153</span> </div>
-<div class="line"><span class="lineno">  154</span>    <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#abf2d2755f0f27e8c8003c19285d096e8" title="Generate package elements grouped using together PlantUML tag.">generate_groups</a>(ostr);</div>
-<div class="line"><span class="lineno">  155</span> </div>
-<div class="line"><span class="lineno">  156</span>    <span class="comment">// Process package relationships</span></div>
-<div class="line"><span class="lineno">  157</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>()) {</div>
-<div class="line"><span class="lineno">  158</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(<span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p)))</div>
-<div class="line"><span class="lineno">  159</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a45f65da158e15590af36ee886fa2c22f" title="Generate relationships originating from package p">generate_relationships</a>(<span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p), ostr);</div>
-<div class="line"><span class="lineno">  160</span>    }</div>
-<div class="line"><span class="lineno">  161</span> </div>
-<div class="line"><span class="lineno">  162</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a17dc3b9d931293c76526e0b1dad83559" title="Generate diagram layout hints.">generate_config_layout_hints</a>(ostr);</div>
-<div class="line"><span class="lineno">  163</span>}</div>
+<p class="definition">Definition at line <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html#l00129">129</a> of file <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  130</span>{</div>
+<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>()) {</div>
+<div class="line"><span class="lineno">  132</span>        <span class="keyword">auto</span> &amp;pkg = <span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p);</div>
+<div class="line"><span class="lineno">  133</span>        <span class="keyword">auto</span> together_group = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().get_together_group(pkg.full_name(<span class="keyword">false</span>));</div>
+<div class="line"><span class="lineno">  134</span>        <span class="keywordflow">if</span> (together_group) {</div>
+<div class="line"><span class="lineno">  135</span>            <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.group_together(together_group.value(), &amp;pkg);</div>
+<div class="line"><span class="lineno">  136</span>        }</div>
+<div class="line"><span class="lineno">  137</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  138</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a7abcbd0f8ecb26ed7076f1d3a5281a15" title="Generate diagram package element.">generate</a>(pkg, ostr);</div>
+<div class="line"><span class="lineno">  139</span>        }</div>
+<div class="line"><span class="lineno">  140</span>    }</div>
+<div class="line"><span class="lineno">  141</span> </div>
+<div class="line"><span class="lineno">  142</span>    <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#abf2d2755f0f27e8c8003c19285d096e8" title="Generate package elements grouped using together PlantUML tag.">generate_groups</a>(ostr);</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>    <span class="comment">// Process package relationships</span></div>
+<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>()) {</div>
+<div class="line"><span class="lineno">  146</span>        <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a45f65da158e15590af36ee886fa2c22f" title="Generate relationships originating from package p">generate_relationships</a>(<span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p), ostr);</div>
+<div class="line"><span class="lineno">  147</span>    }</div>
+<div class="line"><span class="lineno">  148</span> </div>
+<div class="line"><span class="lineno">  149</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1plantuml_1_1generator.html#a17dc3b9d931293c76526e0b1dad83559" title="Generate diagram layout hints.">generate_config_layout_hints</a>(ostr);</div>
+<div class="line"><span class="lineno">  150</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -448,19 +450,19 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html#l00123">123</a> of file <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  124</span>{</div>
-<div class="line"><span class="lineno">  125</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[group_name, group_elements] :</div>
-<div class="line"><span class="lineno">  126</span>        <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.get_current_groups()) {</div>
-<div class="line"><span class="lineno">  127</span>        ostr &lt;&lt; <span class="stringliteral">&quot;together {\n&quot;</span>;</div>
-<div class="line"><span class="lineno">  128</span> </div>
-<div class="line"><span class="lineno">  129</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> *pkg : group_elements) {</div>
-<div class="line"><span class="lineno">  130</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a7abcbd0f8ecb26ed7076f1d3a5281a15" title="Generate diagram package element.">generate</a>(*pkg, ostr);</div>
-<div class="line"><span class="lineno">  131</span>        }</div>
-<div class="line"><span class="lineno">  132</span> </div>
-<div class="line"><span class="lineno">  133</span>        ostr &lt;&lt; <span class="stringliteral">&quot;}\n&quot;</span>;</div>
-<div class="line"><span class="lineno">  134</span>    }</div>
-<div class="line"><span class="lineno">  135</span>}</div>
+<p class="definition">Definition at line <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html#l00115">115</a> of file <a class="el" href="plantuml_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  116</span>{</div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[group_name, group_elements] :</div>
+<div class="line"><span class="lineno">  118</span>        <a class="code hl_variable" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#af0f83b956b51dc70ccedcd341eb35be0">together_group_stack_</a>.get_current_groups()) {</div>
+<div class="line"><span class="lineno">  119</span>        ostr &lt;&lt; <span class="stringliteral">&quot;together {\n&quot;</span>;</div>
+<div class="line"><span class="lineno">  120</span> </div>
+<div class="line"><span class="lineno">  121</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> *pkg : group_elements) {</div>
+<div class="line"><span class="lineno">  122</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a7abcbd0f8ecb26ed7076f1d3a5281a15" title="Generate diagram package element.">generate</a>(*pkg, ostr);</div>
+<div class="line"><span class="lineno">  123</span>        }</div>
+<div class="line"><span class="lineno">  124</span> </div>
+<div class="line"><span class="lineno">  125</span>        ostr &lt;&lt; <span class="stringliteral">&quot;}\n&quot;</span>;</div>
+<div class="line"><span class="lineno">  126</span>    }</div>
+<div class="line"><span class="lineno">  127</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -509,34 +511,30 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   39</span>            std::stringstream relstr;</div>
 <div class="line"><span class="lineno">   40</span>            <span class="keywordflow">try</span> {</div>
 <div class="line"><span class="lineno">   41</span>                <span class="keyword">auto</span> destination_package = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().get(r.destination());</div>
-<div class="line"><span class="lineno">   42</span> </div>
-<div class="line"><span class="lineno">   43</span>                <span class="keywordflow">if</span> (!destination_package ||</div>
-<div class="line"><span class="lineno">   44</span>                    !<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(</div>
-<div class="line"><span class="lineno">   45</span>                        <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>package &amp;<span class="keyword">&gt;</span>(*destination_package)))</div>
-<div class="line"><span class="lineno">   46</span>                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>                <span class="keyword">auto</span> destination_alias = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().to_alias(r.destination());</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>                <span class="keywordflow">if</span> (!destination_alias.empty()) {</div>
-<div class="line"><span class="lineno">   51</span>                    relstr &lt;&lt; p.alias() &lt;&lt; <span class="stringliteral">&quot; ..&gt; &quot;</span> &lt;&lt; destination_alias &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><span class="lineno">   52</span>                    ostr &lt;&lt; relstr.str();</div>
-<div class="line"><span class="lineno">   53</span>                }</div>
-<div class="line"><span class="lineno">   54</span>            }</div>
-<div class="line"><span class="lineno">   55</span>            <span class="keywordflow">catch</span> (error::uml_alias_missing &amp;e) {</div>
-<div class="line"><span class="lineno">   56</span>                <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;=== Skipping dependency relation from {} to {} due &quot;</span></div>
-<div class="line"><span class="lineno">   57</span>                        <span class="stringliteral">&quot;to: {}&quot;</span>,</div>
-<div class="line"><span class="lineno">   58</span>                    p.full_name(<span class="keyword">false</span>), r.destination(), e.what());</div>
-<div class="line"><span class="lineno">   59</span>            }</div>
-<div class="line"><span class="lineno">   60</span>        }</div>
-<div class="line"><span class="lineno">   61</span>    }</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>    <span class="comment">// Process it&#39;s subpackages relationships</span></div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;subpackage : p) {</div>
-<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().should_include(<span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>package &amp;<span class="keyword">&gt;</span>(*subpackage)))</div>
-<div class="line"><span class="lineno">   66</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a45f65da158e15590af36ee886fa2c22f" title="Generate relationships originating from package p">generate_relationships</a>(</div>
-<div class="line"><span class="lineno">   67</span>                <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>package &amp;<span class="keyword">&gt;</span>(*subpackage), ostr);</div>
-<div class="line"><span class="lineno">   68</span>    }</div>
-<div class="line"><span class="lineno">   69</span>}</div>
+<div class="line"><span class="lineno">   42</span>                <span class="keywordflow">if</span> (!destination_package)</div>
+<div class="line"><span class="lineno">   43</span>                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>                <span class="keyword">auto</span> destination_alias = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().to_alias(r.destination());</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>                <span class="keywordflow">if</span> (!destination_alias.empty()) {</div>
+<div class="line"><span class="lineno">   48</span>                    relstr &lt;&lt; p.alias() &lt;&lt; <span class="stringliteral">&quot; ..&gt; &quot;</span> &lt;&lt; destination_alias &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><span class="lineno">   49</span>                    ostr &lt;&lt; relstr.str();</div>
+<div class="line"><span class="lineno">   50</span>                }</div>
+<div class="line"><span class="lineno">   51</span>            }</div>
+<div class="line"><span class="lineno">   52</span>            <span class="keywordflow">catch</span> (error::uml_alias_missing &amp;e) {</div>
+<div class="line"><span class="lineno">   53</span>                <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;=== Skipping dependency relation from {} to {} due &quot;</span></div>
+<div class="line"><span class="lineno">   54</span>                        <span class="stringliteral">&quot;to: {}&quot;</span>,</div>
+<div class="line"><span class="lineno">   55</span>                    p.full_name(<span class="keyword">false</span>), r.destination(), e.what());</div>
+<div class="line"><span class="lineno">   56</span>            }</div>
+<div class="line"><span class="lineno">   57</span>        }</div>
+<div class="line"><span class="lineno">   58</span>    }</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>    <span class="comment">// Process it&#39;s subpackages relationships</span></div>
+<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;subpackage : p) {</div>
+<div class="line"><span class="lineno">   62</span>        <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1plantuml_1_1generator.html#a45f65da158e15590af36ee886fa2c22f" title="Generate relationships originating from package p">generate_relationships</a>(</div>
+<div class="line"><span class="lineno">   63</span>            <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>package &amp;<span class="keyword">&gt;</span>(*subpackage), ostr);</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
+<div class="line"><span class="lineno">   65</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

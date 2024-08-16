@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -121,6 +123,7 @@ $(function() {
 <div class="textblock">Here is a list of all namespace members with links to the namespace documentation for each member:</div>
 
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
+<li>make_context_source_relative()&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common_1_1generators.html#a1986bca6747e950f512e89eab8f60b07">clanguml::common::generators</a></li>
 <li>map()&#160;:&#160;<a class="el" href="namespaceclanguml_1_1util.html#a3a86dfa439160e40d234c574c64772e5">clanguml::util</a></li>
 <li>map_type_parameter_to_template_parameter()&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common_1_1visitor_1_1detail.html#a255c5da365f5db3356b3382538f35cc0">clanguml::common::visitor::detail</a></li>
 <li>map_type_parameter_to_template_parameter_name()&#160;:&#160;<a class="el" href="namespaceclanguml_1_1common_1_1visitor.html#ae6e9cfc7df789c9761c631465abc1651">clanguml::common::visitor</a></li>

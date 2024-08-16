@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -124,6 +126,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classclanguml_1_1common_1_1generators_1_1generator-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">clanguml::common::generators::generator&lt; ConfigType, DiagramType &gt; Class Template Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
@@ -137,7 +140,7 @@ $(function() {
 class clanguml::common::generators::generator&lt; ConfigType, DiagramType &gt;</div><p>Common diagram generator interface. </p>
 <p>This class defines common interface for all diagram generators. </p>
 
-<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00029">29</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00041">41</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="generator_8h_source.html">generator.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -157,6 +160,32 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af86cc2bb63f292fd7076909b9b7eba63"><td class="memItemLeft" align="right" valign="top">const DiagramType &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63">model</a> () const</td></tr>
 <tr class="memdesc:af86cc2bb63f292fd7076909b9b7eba63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get reference to diagram model.  <br /></td></tr>
 <tr class="separator:af86cc2bb63f292fd7076909b9b7eba63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e0c5aac92cb0dc31543c94a7591ae79"><td class="memTemplParams" colspan="2">template&lt;typename E &gt; </td></tr>
+<tr class="memitem:a3e0c5aac92cb0dc31543c94a7591ae79"><td class="memTemplItemLeft" align="right" valign="top">inja::json&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a3e0c5aac92cb0dc31543c94a7591ae79">element_context</a> (const E &amp;e) const</td></tr>
+<tr class="separator:a3e0c5aac92cb0dc31543c94a7591ae79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d89e22a950645c55dd12eea43585fde"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a4d89e22a950645c55dd12eea43585fde">get_link_pattern</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">common::model::source_location</a> &amp;sl) const</td></tr>
+<tr class="separator:a4d89e22a950645c55dd12eea43585fde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedc6c7ed91c9c08ddcedcfb22b79999e"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#aedc6c7ed91c9c08ddcedcfb22b79999e">get_tooltip_pattern</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">common::model::source_location</a> &amp;sl) const</td></tr>
+<tr class="separator:aedc6c7ed91c9c08ddcedcfb22b79999e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf7e8ebbb99cd5d9ffcd776f570a1cc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#adf7e8ebbb99cd5d9ffcd776f570a1cc5">init_context</a> ()</td></tr>
+<tr class="memdesc:adf7e8ebbb99cd5d9ffcd776f570a1cc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize diagram Jinja context.  <br /></td></tr>
+<tr class="separator:adf7e8ebbb99cd5d9ffcd776f570a1cc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1735ea1d89620ac2d64a7c0a5274c155"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a1735ea1d89620ac2d64a7c0a5274c155">update_context</a> () const</td></tr>
+<tr class="memdesc:a1735ea1d89620ac2d64a7c0a5274c155"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update diagram Jinja context.  <br /></td></tr>
+<tr class="separator:a1735ea1d89620ac2d64a7c0a5274c155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adca9d79ebb6878689f747ff31f980e77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#adca9d79ebb6878689f747ff31f980e77">init_env</a> ()</td></tr>
+<tr class="separator:adca9d79ebb6878689f747ff31f980e77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65cda034a41e2f0206b42df72bbcfe32"><td class="memItemLeft" align="right" valign="top">const inja::json &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a65cda034a41e2f0206b42df72bbcfe32">context</a> () const</td></tr>
+<tr class="separator:a65cda034a41e2f0206b42df72bbcfe32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f1edb989505ccc4439365050c084430"><td class="memItemLeft" align="right" valign="top">inja::Environment &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a5f1edb989505ccc4439365050c084430">env</a> () const</td></tr>
+<tr class="separator:a5f1edb989505ccc4439365050c084430"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a56438896c0f92c83bf893575cb9cd7d4"><td class="memItemLeft" align="right" valign="top">inja::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a56438896c0f92c83bf893575cb9cd7d4">m_context</a></td></tr>
+<tr class="separator:a56438896c0f92c83bf893575cb9cd7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff8ab3e989bf84dbb2dd080881771809"><td class="memItemLeft" align="right" valign="top">inja::Environment&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#aff8ab3e989bf84dbb2dd080881771809">m_env</a></td></tr>
+<tr class="separator:aff8ab3e989bf84dbb2dd080881771809"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -210,11 +239,13 @@ template&lt;typename ConfigType , typename DiagramType &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00037">37</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   38</span>        : <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#ab2fbf191ce2aee7b6df1578588cd3f9f">config_</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>}</div>
-<div class="line"><span class="lineno">   39</span>        , <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#afdfbe70e6c8770fe713135d49dfdc541">model_</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>}</div>
-<div class="line"><span class="lineno">   40</span>    {</div>
-<div class="line"><span class="lineno">   41</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00049">49</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   50</span>        : <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#ab2fbf191ce2aee7b6df1578588cd3f9f">config_</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>}</div>
+<div class="line"><span class="lineno">   51</span>        , <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#afdfbe70e6c8770fe713135d49dfdc541">model_</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>}</div>
+<div class="line"><span class="lineno">   52</span>    {</div>
+<div class="line"><span class="lineno">   53</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#adf7e8ebbb99cd5d9ffcd776f570a1cc5" title="Initialize diagram Jinja context.">init_context</a>();</div>
+<div class="line"><span class="lineno">   54</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#adca9d79ebb6878689f747ff31f980e77">init_env</a>();</div>
+<div class="line"><span class="lineno">   55</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -276,8 +307,124 @@ template&lt;typename ConfigType , typename DiagramType &gt; </div>
 <p>Get reference to diagram config. </p>
 <dl class="section return"><dt>Returns</dt><dd>Diagram config </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00062">62</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   62</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#ab2fbf191ce2aee7b6df1578588cd3f9f">config_</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00076">76</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   76</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#ab2fbf191ce2aee7b6df1578588cd3f9f">config_</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a65cda034a41e2f0206b42df72bbcfe32" name="a65cda034a41e2f0206b42df72bbcfe32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65cda034a41e2f0206b42df72bbcfe32">&#9670;&#160;</a></span>context()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename C , typename D &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const inja::json &amp; <a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html">clanguml::common::generators::generator</a>&lt; C, D &gt;::context</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00140">140</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  141</span>{</div>
+<div class="line"><span class="lineno">  142</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#a56438896c0f92c83bf893575cb9cd7d4">m_context</a>;</div>
+<div class="line"><span class="lineno">  143</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3e0c5aac92cb0dc31543c94a7591ae79" name="a3e0c5aac92cb0dc31543c94a7591ae79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e0c5aac92cb0dc31543c94a7591ae79">&#9670;&#160;</a></span>element_context()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename C , typename D &gt; </div>
+<div class="memtemplate">
+template&lt;typename E &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">inja::json <a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html">clanguml::common::generators::generator</a>&lt; C, D &gt;::element_context </td>
+          <td>(</td>
+          <td class="paramtype">const E &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00259">259</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  260</span>{</div>
+<div class="line"><span class="lineno">  261</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;diagram_context = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#a65cda034a41e2f0206b42df72bbcfe32">context</a>();</div>
+<div class="line"><span class="lineno">  262</span> </div>
+<div class="line"><span class="lineno">  263</span>    inja::json ctx;</div>
+<div class="line"><span class="lineno">  264</span>    ctx[<span class="stringliteral">&quot;element&quot;</span>] = e.context();</div>
+<div class="line"><span class="lineno">  265</span><span class="preprocessor">#if _MSC_VER</span></div>
+<div class="line"><span class="lineno">  266</span>    <span class="keywordflow">if</span> (ctx.contains(<span class="stringliteral">&quot;git&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  267</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">  268</span>    <span class="keywordflow">if</span> (diagram_context.template <a class="code hl_function" href="namespaceclanguml_1_1util.html#a3846efe63ca7c81994f57ae243eb496a">contains</a>(<span class="stringliteral">&quot;git&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  269</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  270</span>        ctx[<span class="stringliteral">&quot;git&quot;</span>] = diagram_context[<span class="stringliteral">&quot;git&quot;</span>];</div>
+<div class="line"><span class="lineno">  271</span>    }</div>
+<div class="line"><span class="lineno">  272</span> </div>
+<div class="line"><span class="lineno">  273</span>    <span class="keywordflow">if</span> (!e.file().empty()) {</div>
+<div class="line"><span class="lineno">  274</span>        std::filesystem::path file{e.file()};</div>
+<div class="line"><span class="lineno">  275</span>        std::string git_relative_path = file.string();</div>
+<div class="line"><span class="lineno">  276</span>        <span class="keywordflow">if</span> (!e.file_relative().empty()) {</div>
+<div class="line"><span class="lineno">  277</span><span class="preprocessor">#if _MSC_VER</span></div>
+<div class="line"><span class="lineno">  278</span>            <span class="keywordflow">if</span> (file.is_absolute() &amp;&amp; ctx.contains(<span class="stringliteral">&quot;git&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  279</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">  280</span>            <span class="keywordflow">if</span> (file.is_absolute() &amp;&amp;</div>
+<div class="line"><span class="lineno">  281</span>                diagram_context.template <a class="code hl_function" href="namespaceclanguml_1_1util.html#a3846efe63ca7c81994f57ae243eb496a">contains</a>(<span class="stringliteral">&quot;git&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  282</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  283</span>                git_relative_path = std::filesystem::relative(</div>
+<div class="line"><span class="lineno">  284</span>                    file, diagram_context[<span class="stringliteral">&quot;git&quot;</span>][<span class="stringliteral">&quot;toplevel&quot;</span>])</div>
+<div class="line"><span class="lineno">  285</span>                                        .string();</div>
+<div class="line"><span class="lineno">  286</span>                ctx[<span class="stringliteral">&quot;element&quot;</span>][<span class="stringliteral">&quot;source&quot;</span>][<span class="stringliteral">&quot;path&quot;</span>] =</div>
+<div class="line"><span class="lineno">  287</span>                    <a class="code hl_function" href="namespaceclanguml_1_1util.html#ac14a702d02537113e5610149ed91d0e0" title="Convert filesystem path to url path.">util::path_to_url</a>(git_relative_path);</div>
+<div class="line"><span class="lineno">  288</span>            }</div>
+<div class="line"><span class="lineno">  289</span>            <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  290</span>                ctx[<span class="stringliteral">&quot;element&quot;</span>][<span class="stringliteral">&quot;source&quot;</span>][<span class="stringliteral">&quot;path&quot;</span>] = e.file();</div>
+<div class="line"><span class="lineno">  291</span>            }</div>
+<div class="line"><span class="lineno">  292</span>        }</div>
+<div class="line"><span class="lineno">  293</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  294</span>            git_relative_path = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  295</span>            ctx[<span class="stringliteral">&quot;element&quot;</span>][<span class="stringliteral">&quot;source&quot;</span>][<span class="stringliteral">&quot;path&quot;</span>] = e.file();</div>
+<div class="line"><span class="lineno">  296</span>        }</div>
+<div class="line"><span class="lineno">  297</span> </div>
+<div class="line"><span class="lineno">  298</span>        ctx[<span class="stringliteral">&quot;element&quot;</span>][<span class="stringliteral">&quot;source&quot;</span>][<span class="stringliteral">&quot;full_path&quot;</span>] = file.string();</div>
+<div class="line"><span class="lineno">  299</span>        ctx[<span class="stringliteral">&quot;element&quot;</span>][<span class="stringliteral">&quot;source&quot;</span>][<span class="stringliteral">&quot;name&quot;</span>] = file.filename().string();</div>
+<div class="line"><span class="lineno">  300</span>        ctx[<span class="stringliteral">&quot;element&quot;</span>][<span class="stringliteral">&quot;source&quot;</span>][<span class="stringliteral">&quot;line&quot;</span>] = e.line();</div>
+<div class="line"><span class="lineno">  301</span>    }</div>
+<div class="line"><span class="lineno">  302</span> </div>
+<div class="line"><span class="lineno">  303</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;maybe_comment = e.comment();</div>
+<div class="line"><span class="lineno">  304</span>    <span class="keywordflow">if</span> (maybe_comment) {</div>
+<div class="line"><span class="lineno">  305</span>        ctx[<span class="stringliteral">&quot;element&quot;</span>][<span class="stringliteral">&quot;comment&quot;</span>] = maybe_comment.value();</div>
+<div class="line"><span class="lineno">  306</span>    }</div>
+<div class="line"><span class="lineno">  307</span> </div>
+<div class="line"><span class="lineno">  308</span>    <span class="keywordflow">return</span> ctx;</div>
+<div class="line"><span class="lineno">  309</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5f1edb989505ccc4439365050c084430" name="a5f1edb989505ccc4439365050c084430"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f1edb989505ccc4439365050c084430">&#9670;&#160;</a></span>env()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename C , typename D &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">inja::Environment &amp; <a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html">clanguml::common::generators::generator</a>&lt; C, D &gt;::env</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00146">146</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  147</span>{</div>
+<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#aff8ab3e989bf84dbb2dd080881771809">m_env</a>;</div>
+<div class="line"><span class="lineno">  149</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -320,6 +467,216 @@ template&lt;typename ConfigType , typename DiagramType &gt; </div>
 
 </div>
 </div>
+<a id="a4d89e22a950645c55dd12eea43585fde" name="a4d89e22a950645c55dd12eea43585fde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d89e22a950645c55dd12eea43585fde">&#9670;&#160;</a></span>get_link_pattern()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename C , typename D &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt; <a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html">clanguml::common::generators::generator</a>&lt; C, D &gt;::get_link_pattern </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">common::model::source_location</a> &amp;&#160;</td>
+          <td class="paramname"><em>sl</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00313">313</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  315</span>{</div>
+<div class="line"><span class="lineno">  316</span>    <span class="keywordflow">if</span> (sl.file_relative().empty()) {</div>
+<div class="line"><span class="lineno">  317</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().generate_links().get_link_pattern(sl.file());</div>
+<div class="line"><span class="lineno">  318</span>    }</div>
+<div class="line"><span class="lineno">  319</span> </div>
+<div class="line"><span class="lineno">  320</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().generate_links().get_link_pattern(sl.file_relative());</div>
+<div class="line"><span class="lineno">  321</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aedc6c7ed91c9c08ddcedcfb22b79999e" name="aedc6c7ed91c9c08ddcedcfb22b79999e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedc6c7ed91c9c08ddcedcfb22b79999e">&#9670;&#160;</a></span>get_tooltip_pattern()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename C , typename D &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt; <a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html">clanguml::common::generators::generator</a>&lt; C, D &gt;::get_tooltip_pattern </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">common::model::source_location</a> &amp;&#160;</td>
+          <td class="paramname"><em>sl</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00325">325</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  327</span>{</div>
+<div class="line"><span class="lineno">  328</span>    <span class="keywordflow">if</span> (sl.file_relative().empty()) {</div>
+<div class="line"><span class="lineno">  329</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().generate_links().get_tooltip_pattern(sl.file());</div>
+<div class="line"><span class="lineno">  330</span>    }</div>
+<div class="line"><span class="lineno">  331</span> </div>
+<div class="line"><span class="lineno">  332</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().generate_links().get_tooltip_pattern(sl.file_relative());</div>
+<div class="line"><span class="lineno">  333</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adf7e8ebbb99cd5d9ffcd776f570a1cc5" name="adf7e8ebbb99cd5d9ffcd776f570a1cc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf7e8ebbb99cd5d9ffcd776f570a1cc5">&#9670;&#160;</a></span>init_context()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename C , typename D &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html">clanguml::common::generators::generator</a>&lt; C, D &gt;::init_context</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize diagram Jinja context. </p>
+
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00122">122</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  123</span>{</div>
+<div class="line"><span class="lineno">  124</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a> = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">generators::generator&lt;C, D&gt;::config</a>();</div>
+<div class="line"><span class="lineno">  125</span> </div>
+<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>.git) {</div>
+<div class="line"><span class="lineno">  127</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#a56438896c0f92c83bf893575cb9cd7d4">m_context</a>[<span class="stringliteral">&quot;git&quot;</span>][<span class="stringliteral">&quot;branch&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>.git().branch;</div>
+<div class="line"><span class="lineno">  128</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#a56438896c0f92c83bf893575cb9cd7d4">m_context</a>[<span class="stringliteral">&quot;git&quot;</span>][<span class="stringliteral">&quot;revision&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>.git().revision;</div>
+<div class="line"><span class="lineno">  129</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#a56438896c0f92c83bf893575cb9cd7d4">m_context</a>[<span class="stringliteral">&quot;git&quot;</span>][<span class="stringliteral">&quot;commit&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>.git().commit;</div>
+<div class="line"><span class="lineno">  130</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#a56438896c0f92c83bf893575cb9cd7d4">m_context</a>[<span class="stringliteral">&quot;git&quot;</span>][<span class="stringliteral">&quot;toplevel&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>.git().toplevel;</div>
+<div class="line"><span class="lineno">  131</span>    }</div>
+<div class="line"><span class="lineno">  132</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adca9d79ebb6878689f747ff31f980e77" name="adca9d79ebb6878689f747ff31f980e77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adca9d79ebb6878689f747ff31f980e77">&#9670;&#160;</a></span>init_env()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename C , typename D &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html">clanguml::common::generators::generator</a>&lt; C, D &gt;::init_env</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00151">151</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  152</span>{</div>
+<div class="line"><span class="lineno">  153</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a> = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">generators::generator&lt;C, D&gt;::model</a>();</div>
+<div class="line"><span class="lineno">  154</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a> = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">generators::generator&lt;C, D&gt;::config</a>();</div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span>    <span class="comment">//</span></div>
+<div class="line"><span class="lineno">  157</span>    <span class="comment">// Add basic string functions to inja environment</span></div>
+<div class="line"><span class="lineno">  158</span>    <span class="comment">//</span></div>
+<div class="line"><span class="lineno">  159</span> </div>
+<div class="line"><span class="lineno">  160</span>    <span class="comment">// Check if string is empty</span></div>
+<div class="line"><span class="lineno">  161</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#aff8ab3e989bf84dbb2dd080881771809">m_env</a>.add_callback(<span class="stringliteral">&quot;empty&quot;</span>, 1, [](inja::Arguments &amp;args) {</div>
+<div class="line"><span class="lineno">  162</span>        <span class="keywordflow">return</span> args.at(0)-&gt;get&lt;std::string&gt;().empty();</div>
+<div class="line"><span class="lineno">  163</span>    });</div>
+<div class="line"><span class="lineno">  164</span> </div>
+<div class="line"><span class="lineno">  165</span>    <span class="comment">// Remove spaces from the left of a string</span></div>
+<div class="line"><span class="lineno">  166</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#aff8ab3e989bf84dbb2dd080881771809">m_env</a>.add_callback(<span class="stringliteral">&quot;ltrim&quot;</span>, 1, [](inja::Arguments &amp;args) {</div>
+<div class="line"><span class="lineno">  167</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceclanguml_1_1util.html#aef706b51794c83f0052435fae6e381ea" title="Left trim a string.">util::ltrim</a>(args.at(0)-&gt;get&lt;std::string&gt;());</div>
+<div class="line"><span class="lineno">  168</span>    });</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>    <span class="comment">// Remove trailing spaces from a string</span></div>
+<div class="line"><span class="lineno">  171</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#aff8ab3e989bf84dbb2dd080881771809">m_env</a>.add_callback(<span class="stringliteral">&quot;rtrim&quot;</span>, 1, [](inja::Arguments &amp;args) {</div>
+<div class="line"><span class="lineno">  172</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceclanguml_1_1util.html#abbf8d7e28042cb0c1a43ea8e8bbbef06" title="Right trim a string.">util::rtrim</a>(args.at(0)-&gt;get&lt;std::string&gt;());</div>
+<div class="line"><span class="lineno">  173</span>    });</div>
+<div class="line"><span class="lineno">  174</span> </div>
+<div class="line"><span class="lineno">  175</span>    <span class="comment">// Remove spaces before and after a string</span></div>
+<div class="line"><span class="lineno">  176</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#aff8ab3e989bf84dbb2dd080881771809">m_env</a>.add_callback(<span class="stringliteral">&quot;trim&quot;</span>, 1, [](inja::Arguments &amp;args) {</div>
+<div class="line"><span class="lineno">  177</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceclanguml_1_1util.html#a4f706d06a72614c26db333274520418e" title="Trim a string.">util::trim</a>(args.at(0)-&gt;get&lt;std::string&gt;());</div>
+<div class="line"><span class="lineno">  178</span>    });</div>
+<div class="line"><span class="lineno">  179</span> </div>
+<div class="line"><span class="lineno">  180</span>    <span class="comment">// Make a string shorted with a limit to</span></div>
+<div class="line"><span class="lineno">  181</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#aff8ab3e989bf84dbb2dd080881771809">m_env</a>.add_callback(<span class="stringliteral">&quot;abbrv&quot;</span>, 2, [](inja::Arguments &amp;args) {</div>
+<div class="line"><span class="lineno">  182</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceclanguml_1_1util.html#adf6942da4dfaa5a500acf2ceef1a142c" title="Abbreviate string to max_length, and replace last 3 characters with ellipsis.">util::abbreviate</a>(</div>
+<div class="line"><span class="lineno">  183</span>            args.at(0)-&gt;get&lt;std::string&gt;(), args.at(1)-&gt;get&lt;<span class="keywordtype">unsigned</span>&gt;());</div>
+<div class="line"><span class="lineno">  184</span>    });</div>
+<div class="line"><span class="lineno">  185</span> </div>
+<div class="line"><span class="lineno">  186</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#aff8ab3e989bf84dbb2dd080881771809">m_env</a>.add_callback(<span class="stringliteral">&quot;replace&quot;</span>, 3, [](inja::Arguments &amp;args) {</div>
+<div class="line"><span class="lineno">  187</span>        std::string result = args[0]-&gt;get&lt;std::string&gt;();</div>
+<div class="line"><span class="lineno">  188</span>        std::regex pattern(args[1]-&gt;get&lt;std::string&gt;());</div>
+<div class="line"><span class="lineno">  189</span>        <span class="keywordflow">return</span> std::regex_replace(result, pattern, args[2]-&gt;get&lt;std::string&gt;());</div>
+<div class="line"><span class="lineno">  190</span>    });</div>
+<div class="line"><span class="lineno">  191</span> </div>
+<div class="line"><span class="lineno">  192</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#aff8ab3e989bf84dbb2dd080881771809">m_env</a>.add_callback(<span class="stringliteral">&quot;split&quot;</span>, 2, [](inja::Arguments &amp;args) {</div>
+<div class="line"><span class="lineno">  193</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceclanguml_1_1util.html#a5db2bb4750585e6c7953792f137c47ab" title="Split a string using delimiter.">util::split</a>(</div>
+<div class="line"><span class="lineno">  194</span>            args[0]-&gt;get&lt;std::string&gt;(), args[1]-&gt;get&lt;std::string&gt;());</div>
+<div class="line"><span class="lineno">  195</span>    });</div>
+<div class="line"><span class="lineno">  196</span> </div>
+<div class="line"><span class="lineno">  197</span>    <span class="comment">//</span></div>
+<div class="line"><span class="lineno">  198</span>    <span class="comment">// Add PlantUML specific functions</span></div>
+<div class="line"><span class="lineno">  199</span>    <span class="comment">//</span></div>
+<div class="line"><span class="lineno">  200</span> </div>
+<div class="line"><span class="lineno">  201</span>    <span class="comment">// Return the entire element JSON context based on element name</span></div>
+<div class="line"><span class="lineno">  202</span>    <span class="comment">// e.g.:</span></div>
+<div class="line"><span class="lineno">  203</span>    <span class="comment">//   {{ element(&quot;clanguml::t00050::A&quot;).comment }}</span></div>
+<div class="line"><span class="lineno">  204</span>    <span class="comment">//</span></div>
+<div class="line"><span class="lineno">  205</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#aff8ab3e989bf84dbb2dd080881771809">m_env</a>.add_callback(<span class="stringliteral">&quot;element&quot;</span>, 1, [&amp;<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>, &amp;<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>](inja::Arguments &amp;args) {</div>
+<div class="line"><span class="lineno">  206</span>        inja::json res{};</div>
+<div class="line"><span class="lineno">  207</span>        <span class="keyword">auto</span> element_opt = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>.get_with_namespace(</div>
+<div class="line"><span class="lineno">  208</span>            args[0]-&gt;get&lt;std::string&gt;(), <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>.using_namespace());</div>
+<div class="line"><span class="lineno">  209</span> </div>
+<div class="line"><span class="lineno">  210</span>        <span class="keywordflow">if</span> (element_opt.has_value())</div>
+<div class="line"><span class="lineno">  211</span>            res = element_opt.value().context();</div>
+<div class="line"><span class="lineno">  212</span> </div>
+<div class="line"><span class="lineno">  213</span>        <span class="keywordflow">return</span> res;</div>
+<div class="line"><span class="lineno">  214</span>    });</div>
+<div class="line"><span class="lineno">  215</span> </div>
+<div class="line"><span class="lineno">  216</span>    <span class="comment">// Convert C++ entity to PlantUML alias, e.g.</span></div>
+<div class="line"><span class="lineno">  217</span>    <span class="comment">//   &quot;note left of {{ alias(&quot;A&quot;) }}: This is a note&quot;</span></div>
+<div class="line"><span class="lineno">  218</span>    <span class="comment">// Shortcut to:</span></div>
+<div class="line"><span class="lineno">  219</span>    <span class="comment">//   {{ element(&quot;A&quot;).alias }}</span></div>
+<div class="line"><span class="lineno">  220</span>    <span class="comment">//</span></div>
+<div class="line"><span class="lineno">  221</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#aff8ab3e989bf84dbb2dd080881771809">m_env</a>.add_callback(<span class="stringliteral">&quot;alias&quot;</span>, 1, [&amp;<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>, &amp;<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>](inja::Arguments &amp;args) {</div>
+<div class="line"><span class="lineno">  222</span>        <span class="keyword">auto</span> element_opt = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>.get_with_namespace(</div>
+<div class="line"><span class="lineno">  223</span>            args[0]-&gt;get&lt;std::string&gt;(), <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>.using_namespace());</div>
+<div class="line"><span class="lineno">  224</span> </div>
+<div class="line"><span class="lineno">  225</span>        <span class="keywordflow">if</span> (!element_opt.has_value())</div>
+<div class="line"><span class="lineno">  226</span>            <span class="keywordflow">throw</span> <a class="code hl_struct" href="structclanguml_1_1error_1_1uml__alias__missing.html">clanguml::error::uml_alias_missing</a>(</div>
+<div class="line"><span class="lineno">  227</span>                args[0]-&gt;get&lt;std::string&gt;());</div>
+<div class="line"><span class="lineno">  228</span> </div>
+<div class="line"><span class="lineno">  229</span>        <span class="keywordflow">return</span> element_opt.value().alias();</div>
+<div class="line"><span class="lineno">  230</span>    });</div>
+<div class="line"><span class="lineno">  231</span> </div>
+<div class="line"><span class="lineno">  232</span>    <span class="comment">// Get elements&#39; comment:</span></div>
+<div class="line"><span class="lineno">  233</span>    <span class="comment">//   &quot;note left of {{ alias(&quot;A&quot;) }}: {{ comment(&quot;A&quot;) }}&quot;</span></div>
+<div class="line"><span class="lineno">  234</span>    <span class="comment">// Shortcut to:</span></div>
+<div class="line"><span class="lineno">  235</span>    <span class="comment">//   {{ element(&quot;A&quot;).comment }}</span></div>
+<div class="line"><span class="lineno">  236</span>    <span class="comment">//</span></div>
+<div class="line"><span class="lineno">  237</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#aff8ab3e989bf84dbb2dd080881771809">m_env</a>.add_callback(<span class="stringliteral">&quot;comment&quot;</span>, 1, [&amp;<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>, &amp;<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>](inja::Arguments &amp;args) {</div>
+<div class="line"><span class="lineno">  238</span>        inja::json res{};</div>
+<div class="line"><span class="lineno">  239</span>        <span class="keyword">auto</span> element_opt = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>.get_with_namespace(</div>
+<div class="line"><span class="lineno">  240</span>            args[0]-&gt;get&lt;std::string&gt;(), <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>.using_namespace());</div>
+<div class="line"><span class="lineno">  241</span> </div>
+<div class="line"><span class="lineno">  242</span>        <span class="keywordflow">if</span> (!element_opt.has_value())</div>
+<div class="line"><span class="lineno">  243</span>            <span class="keywordflow">throw</span> <a class="code hl_struct" href="structclanguml_1_1error_1_1uml__alias__missing.html">clanguml::error::uml_alias_missing</a>(</div>
+<div class="line"><span class="lineno">  244</span>                args[0]-&gt;get&lt;std::string&gt;());</div>
+<div class="line"><span class="lineno">  245</span> </div>
+<div class="line"><span class="lineno">  246</span>        <span class="keyword">auto</span> comment = element_opt.value().comment();</div>
+<div class="line"><span class="lineno">  247</span> </div>
+<div class="line"><span class="lineno">  248</span>        <span class="keywordflow">if</span> (comment.has_value()) {</div>
+<div class="line"><span class="lineno">  249</span>            assert(comment.value().is_object());</div>
+<div class="line"><span class="lineno">  250</span>            res = comment.value();</div>
+<div class="line"><span class="lineno">  251</span>        }</div>
+<div class="line"><span class="lineno">  252</span> </div>
+<div class="line"><span class="lineno">  253</span>        <span class="keywordflow">return</span> res;</div>
+<div class="line"><span class="lineno">  254</span>    });</div>
+<div class="line"><span class="lineno">  255</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="af86cc2bb63f292fd7076909b9b7eba63" name="af86cc2bb63f292fd7076909b9b7eba63"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af86cc2bb63f292fd7076909b9b7eba63">&#9670;&#160;</a></span>model()</h2>
 
@@ -348,8 +705,32 @@ template&lt;typename ConfigType , typename DiagramType &gt; </div>
 <p>Get reference to diagram model. </p>
 <dl class="section return"><dt>Returns</dt><dd>Diagram model </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00069">69</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   69</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#afdfbe70e6c8770fe713135d49dfdc541">model_</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00083">83</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   83</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#afdfbe70e6c8770fe713135d49dfdc541">model_</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1735ea1d89620ac2d64a7c0a5274c155" name="a1735ea1d89620ac2d64a7c0a5274c155"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1735ea1d89620ac2d64a7c0a5274c155">&#9670;&#160;</a></span>update_context()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename C , typename D &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html">clanguml::common::generators::generator</a>&lt; C, D &gt;::update_context</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update diagram Jinja context. </p>
+<p>This method updates the diagram context with models properties which can be used to render Jinja templates in the diagram (e.g. in notes or links) </p>
+
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00134">134</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  135</span>{</div>
+<div class="line"><span class="lineno">  136</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1generators_1_1generator.html#a56438896c0f92c83bf893575cb9cd7d4">m_context</a>[<span class="stringliteral">&quot;diagram&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>().context();</div>
+<div class="line"><span class="lineno">  137</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -376,7 +757,59 @@ template&lt;typename ConfigType , typename DiagramType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00072">72</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00118">118</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+
+</div>
+</div>
+<a id="a56438896c0f92c83bf893575cb9cd7d4" name="a56438896c0f92c83bf893575cb9cd7d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56438896c0f92c83bf893575cb9cd7d4">&#9670;&#160;</a></span>m_context</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConfigType , typename DiagramType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">inja::json <a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html">clanguml::common::generators::generator</a>&lt; ConfigType, DiagramType &gt;::m_context</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00114">114</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+
+</div>
+</div>
+<a id="aff8ab3e989bf84dbb2dd080881771809" name="aff8ab3e989bf84dbb2dd080881771809"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff8ab3e989bf84dbb2dd080881771809">&#9670;&#160;</a></span>m_env</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConfigType , typename DiagramType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">inja::Environment <a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html">clanguml::common::generators::generator</a>&lt; ConfigType, DiagramType &gt;::m_env</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00115">115</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
 
 </div>
 </div>
@@ -402,7 +835,7 @@ template&lt;typename ConfigType , typename DiagramType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00073">73</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generator_8h_source.html#l00119">119</a> of file <a class="el" href="generator_8h_source.html">generator.h</a>.</p>
 
 </div>
 </div>

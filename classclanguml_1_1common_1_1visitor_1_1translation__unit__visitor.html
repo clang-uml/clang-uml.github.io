@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -191,9 +193,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3c462afec21512f6c7de07a6c9415ffe"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a3c462afec21512f6c7de07a6c9415ffe">process_comment</a> (const clang::RawComment *comment, clang::DiagnosticsEngine &amp;de, <a class="el" href="classclanguml_1_1common_1_1model_1_1decorated__element.html">clanguml::common::model::decorated_element</a> &amp;e)</td></tr>
 <tr class="memdesc:a3c462afec21512f6c7de07a6c9415ffe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process comment directives in raw comment.  <br /></td></tr>
 <tr class="separator:a3c462afec21512f6c7de07a6c9415ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a417397f022290ec9c7635e7116fc0fc9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a417397f022290ec9c7635e7116fc0fc9">should_include</a> (const clang::NamedDecl *decl)</td></tr>
-<tr class="memdesc:a417397f022290ec9c7635e7116fc0fc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the diagram should include a declaration.  <br /></td></tr>
-<tr class="separator:a417397f022290ec9c7635e7116fc0fc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85f2f57affe522bdd3b736095a76a859"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a85f2f57affe522bdd3b736095a76a859">skip_system_header_decl</a> (const clang::NamedDecl *decl) const</td></tr>
+<tr class="separator:a85f2f57affe522bdd3b736095a76a859"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a204e950467fdc079972911f311d07e3e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e">should_include</a> (const clang::NamedDecl *decl) const</td></tr>
+<tr class="memdesc:a204e950467fdc079972911f311d07e3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the diagram should include a declaration.  <br /></td></tr>
+<tr class="separator:a204e950467fdc079972911f311d07e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fb1b62c0c0ce8ef645c9308e2111369"><td class="memItemLeft" align="right" valign="top">DiagramT &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369">diagram</a> ()</td></tr>
 <tr class="memdesc:a4fb1b62c0c0ce8ef645c9308e2111369"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get diagram model reference.  <br /></td></tr>
 <tr class="separator:a4fb1b62c0c0ce8ef645c9308e2111369"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -427,8 +431,8 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 <p>Get diagram config instance. </p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to config instance </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00339">339</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  339</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a52d642b0fc3ce4b21f95e229b9df9516">config_</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00347">347</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  347</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a52d642b0fc3ce4b21f95e229b9df9516">config_</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -460,8 +464,8 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 <p>Get diagram model reference. </p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to diagram model created by the visitor </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00325">325</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  325</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#acb041f8a9a962e7f2d5e8463aa7a75ef">diagram_</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00333">333</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  333</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#acb041f8a9a962e7f2d5e8463aa7a75ef">diagram_</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -493,8 +497,8 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 <p>Get diagram model reference. </p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to diagram model created by the visitor </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00332">332</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  332</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#acb041f8a9a962e7f2d5e8463aa7a75ef">diagram_</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00340">340</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  340</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#acb041f8a9a962e7f2d5e8463aa7a75ef">diagram_</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -582,11 +586,10 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 <div class="line"><span class="lineno">  253</span> </div>
 <div class="line"><span class="lineno">  254</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#abf3588dfea16007742f92413999e837e">comment_visitor_</a>-&gt;visit(decl, e);</div>
 <div class="line"><span class="lineno">  255</span> </div>
-<div class="line"><span class="lineno">  256</span>        <span class="keyword">const</span> <span class="keyword">auto</span> *comment =</div>
-<div class="line"><span class="lineno">  257</span>            decl.getASTContext().getRawCommentForDeclNoCache(&amp;decl);</div>
-<div class="line"><span class="lineno">  258</span> </div>
-<div class="line"><span class="lineno">  259</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a2b2d5393a3a1b89058376b7f12de983e" title="Process comment directives in comment attached to a declaration.">process_comment</a>(comment, decl.getASTContext().getDiagnostics(), e);</div>
-<div class="line"><span class="lineno">  260</span>    }</div>
+<div class="line"><span class="lineno">  256</span>        <span class="keyword">auto</span> *comment = decl.getASTContext().getRawCommentForDeclNoCache(&amp;decl);</div>
+<div class="line"><span class="lineno">  257</span> </div>
+<div class="line"><span class="lineno">  258</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a2b2d5393a3a1b89058376b7f12de983e" title="Process comment directives in comment attached to a declaration.">process_comment</a>(comment, decl.getASTContext().getDiagnostics(), e);</div>
+<div class="line"><span class="lineno">  259</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -643,26 +646,26 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Comment with uml directives stripped from it </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00270">270</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  273</span>    {</div>
-<div class="line"><span class="lineno">  274</span>        <span class="keywordflow">if</span> (comment == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  275</span>            <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  276</span> </div>
-<div class="line"><span class="lineno">  277</span>        <span class="keyword">auto</span> [it, inserted] = <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7723ac3b7bf2bef217c148b90c2c8978">processed_comments_</a>.emplace(comment);</div>
-<div class="line"><span class="lineno">  278</span> </div>
-<div class="line"><span class="lineno">  279</span>        <span class="keywordflow">if</span> (!inserted)</div>
-<div class="line"><span class="lineno">  280</span>            <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  281</span> </div>
-<div class="line"><span class="lineno">  282</span>        <span class="comment">// Process clang-uml decorators in the comments</span></div>
-<div class="line"><span class="lineno">  283</span>        <span class="comment">// TODO: Refactor to use standard block comments processable by</span></div>
-<div class="line"><span class="lineno">  284</span>        <span class="comment">//       clang comments</span></div>
-<div class="line"><span class="lineno">  285</span>        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;[decorators, stripped_comment] =</div>
-<div class="line"><span class="lineno">  286</span>            <a class="code hl_function" href="namespaceclanguml_1_1decorators.html#ada6807fa66c4ec4680cd8c7634cf5d08" title="Parse a documentation block and extract all clang-uml decorators.">decorators::parse</a>(comment-&gt;getFormattedText(<a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#affc289258412d2d95e9fe31706030267">source_manager_</a>, de));</div>
-<div class="line"><span class="lineno">  287</span> </div>
-<div class="line"><span class="lineno">  288</span>        e.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#aaad5a04bff30c3231764e4eb0ba9c241">add_decorators</a>(decorators);</div>
-<div class="line"><span class="lineno">  289</span> </div>
-<div class="line"><span class="lineno">  290</span>        <span class="keywordflow">return</span> stripped_comment;</div>
-<div class="line"><span class="lineno">  291</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00269">269</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  272</span>    {</div>
+<div class="line"><span class="lineno">  273</span>        <span class="keywordflow">if</span> (comment == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  274</span>            <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  275</span> </div>
+<div class="line"><span class="lineno">  276</span>        <span class="keyword">auto</span> [it, inserted] = <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a0e1cf6945e2c5a56f2167f456750c650">processed_comments</a>().emplace(comment);</div>
+<div class="line"><span class="lineno">  277</span> </div>
+<div class="line"><span class="lineno">  278</span>        <span class="keywordflow">if</span> (!inserted)</div>
+<div class="line"><span class="lineno">  279</span>            <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  280</span> </div>
+<div class="line"><span class="lineno">  281</span>        <span class="comment">// Process clang-uml decorators in the comments</span></div>
+<div class="line"><span class="lineno">  282</span>        <span class="comment">// TODO: Refactor to use standard block comments processable by</span></div>
+<div class="line"><span class="lineno">  283</span>        <span class="comment">//       clang comments</span></div>
+<div class="line"><span class="lineno">  284</span>        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;[decorators, stripped_comment] =</div>
+<div class="line"><span class="lineno">  285</span>            <a class="code hl_function" href="namespaceclanguml_1_1decorators.html#ada6807fa66c4ec4680cd8c7634cf5d08" title="Parse a documentation block and extract all clang-uml decorators.">decorators::parse</a>(comment-&gt;getFormattedText(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>(), de));</div>
+<div class="line"><span class="lineno">  286</span> </div>
+<div class="line"><span class="lineno">  287</span>        e.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1decorated__element.html#aaad5a04bff30c3231764e4eb0ba9c241">add_decorators</a>(decorators);</div>
+<div class="line"><span class="lineno">  288</span> </div>
+<div class="line"><span class="lineno">  289</span>        <span class="keywordflow">return</span> stripped_comment;</div>
+<div class="line"><span class="lineno">  290</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -691,10 +694,10 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00342">342</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  343</span>    {</div>
-<div class="line"><span class="lineno">  344</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7723ac3b7bf2bef217c148b90c2c8978">processed_comments_</a>;</div>
-<div class="line"><span class="lineno">  345</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00350">350</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  351</span>    {</div>
+<div class="line"><span class="lineno">  352</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7723ac3b7bf2bef217c148b90c2c8978">processed_comments_</a>;</div>
+<div class="line"><span class="lineno">  353</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1087,8 +1090,8 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a417397f022290ec9c7635e7116fc0fc9" name="a417397f022290ec9c7635e7116fc0fc9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a417397f022290ec9c7635e7116fc0fc9">&#9670;&#160;</a></span>should_include()</h2>
+<a id="a204e950467fdc079972911f311d07e3e" name="a204e950467fdc079972911f311d07e3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a204e950467fdc079972911f311d07e3e">&#9670;&#160;</a></span>should_include()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1103,7 +1106,7 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
           <td>(</td>
           <td class="paramtype">const clang::NamedDecl *&#160;</td>
           <td class="paramname"><em>decl</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -1122,26 +1125,63 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True, if the entity should be included in the diagram. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00299">299</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  300</span>    {</div>
-<div class="line"><span class="lineno">  301</span>        <span class="keywordflow">if</span> (decl == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  302</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  303</span> </div>
-<div class="line"><span class="lineno">  304</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>().isInSystemHeader(</div>
-<div class="line"><span class="lineno">  305</span>                decl-&gt;getSourceRange().getBegin()))</div>
-<div class="line"><span class="lineno">  306</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  307</span> </div>
-<div class="line"><span class="lineno">  308</span>        <span class="keyword">auto</span> should_include_namespace = <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().should_include(</div>
-<div class="line"><span class="lineno">  309</span>            <a class="code hl_typedef" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">common::model::namespace_</a>{decl-&gt;getQualifiedNameAsString()});</div>
-<div class="line"><span class="lineno">  310</span> </div>
-<div class="line"><span class="lineno">  311</span>        <span class="keyword">const</span> <span class="keyword">auto</span> decl_file =</div>
-<div class="line"><span class="lineno">  312</span>            decl-&gt;getLocation().printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>());</div>
-<div class="line"><span class="lineno">  313</span> </div>
-<div class="line"><span class="lineno">  314</span>        <span class="keyword">const</span> <span class="keyword">auto</span> should_include_decl_file =</div>
-<div class="line"><span class="lineno">  315</span>            <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().should_include(common::model::source_file{decl_file});</div>
-<div class="line"><span class="lineno">  316</span> </div>
-<div class="line"><span class="lineno">  317</span>        <span class="keywordflow">return</span> should_include_namespace &amp;&amp; should_include_decl_file;</div>
-<div class="line"><span class="lineno">  318</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00305">305</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  306</span>    {</div>
+<div class="line"><span class="lineno">  307</span>        <span class="keywordflow">if</span> (decl == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  308</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  309</span> </div>
+<div class="line"><span class="lineno">  310</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a85f2f57affe522bdd3b736095a76a859">skip_system_header_decl</a>(decl))</div>
+<div class="line"><span class="lineno">  311</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  312</span> </div>
+<div class="line"><span class="lineno">  313</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().filter_mode() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a1f0af361c663cf793ff0a28fa477da6da37c3450b6618a349e4890dcafff6b505">config::filter_mode_t::advanced</a>)</div>
+<div class="line"><span class="lineno">  314</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  315</span> </div>
+<div class="line"><span class="lineno">  316</span>        <span class="keyword">auto</span> should_include_namespace = <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().should_include(</div>
+<div class="line"><span class="lineno">  317</span>            <a class="code hl_typedef" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">common::model::namespace_</a>{decl-&gt;getQualifiedNameAsString()});</div>
+<div class="line"><span class="lineno">  318</span> </div>
+<div class="line"><span class="lineno">  319</span>        <span class="keyword">const</span> <span class="keyword">auto</span> decl_file =</div>
+<div class="line"><span class="lineno">  320</span>            decl-&gt;getLocation().printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>());</div>
+<div class="line"><span class="lineno">  321</span> </div>
+<div class="line"><span class="lineno">  322</span>        <span class="keyword">const</span> <span class="keyword">auto</span> should_include_decl_file =</div>
+<div class="line"><span class="lineno">  323</span>            <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().should_include(common::model::source_file{decl_file});</div>
+<div class="line"><span class="lineno">  324</span> </div>
+<div class="line"><span class="lineno">  325</span>        <span class="keywordflow">return</span> should_include_namespace &amp;&amp; should_include_decl_file;</div>
+<div class="line"><span class="lineno">  326</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a85f2f57affe522bdd3b736095a76a859" name="a85f2f57affe522bdd3b736095a76a859"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85f2f57affe522bdd3b736095a76a859">&#9670;&#160;</a></span>skip_system_header_decl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConfigT , typename DiagramT &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html">clanguml::common::visitor::translation_unit_visitor</a>&lt; ConfigT, DiagramT &gt;::skip_system_header_decl </td>
+          <td>(</td>
+          <td class="paramtype">const clang::NamedDecl *&#160;</td>
+          <td class="paramname"><em>decl</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00292">292</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  293</span>    {</div>
+<div class="line"><span class="lineno">  294</span>        <span class="keywordflow">return</span> !<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().include_system_headers() &amp;&amp;</div>
+<div class="line"><span class="lineno">  295</span>            <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>().isInSystemHeader(</div>
+<div class="line"><span class="lineno">  296</span>                decl-&gt;getSourceRange().getBegin());</div>
+<div class="line"><span class="lineno">  297</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1236,7 +1276,7 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00356">356</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00364">364</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
 
 </div>
 </div>
@@ -1262,7 +1302,7 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00352">352</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00360">360</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
 
 </div>
 </div>
@@ -1288,7 +1328,7 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00349">349</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00357">357</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
 
 </div>
 </div>
@@ -1314,7 +1354,7 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00364">364</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00372">372</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
 
 </div>
 </div>
@@ -1340,7 +1380,7 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00362">362</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00370">370</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
 
 </div>
 </div>
@@ -1366,7 +1406,7 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00358">358</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00366">366</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
 
 </div>
 </div>
@@ -1392,7 +1432,7 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00354">354</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00362">362</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
 
 </div>
 </div>
@@ -1418,7 +1458,7 @@ template&lt;typename ConfigT , typename DiagramT &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00360">360</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html#l00368">368</a> of file <a class="el" href="common_2visitor_2translation__unit__visitor_8h_source.html">translation_unit_visitor.h</a>.</p>
 
 </div>
 </div>

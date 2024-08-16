@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -123,6 +125,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structclanguml_1_1config_1_1generate__links__config-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">clanguml::config::generate_links_config Struct Reference</div></div>
@@ -130,47 +133,117 @@ $(function() {
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00447">447</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00457">457</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="config_8h_source.html">config.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a4ab0fad8a92b4560b9a7b39c5a0dfacd"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1generate__links__config.html#a4ab0fad8a92b4560b9a7b39c5a0dfacd">get_link_pattern</a> (const std::string &amp;path) const</td></tr>
+<tr class="separator:a4ab0fad8a92b4560b9a7b39c5a0dfacd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e1a47d8c28690609c103ca3ffac13c1"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1generate__links__config.html#a6e1a47d8c28690609c103ca3ffac13c1">get_tooltip_pattern</a> (const std::string &amp;path) const</td></tr>
+<tr class="separator:a6e1a47d8c28690609c103ca3ffac13c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a6787f347cd8a5cb80e9fa2c18654dd5d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1generate__links__config.html#a6787f347cd8a5cb80e9fa2c18654dd5d">link</a></td></tr>
-<tr class="separator:a6787f347cd8a5cb80e9fa2c18654dd5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03d8cd5510c9896d74da3848893e48da"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1generate__links__config.html#a03d8cd5510c9896d74da3848893e48da">tooltip</a></td></tr>
-<tr class="separator:a03d8cd5510c9896d74da3848893e48da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5ba45e73ec48cf7be926eb9742b45f3"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1generate__links__config.html#ab5ba45e73ec48cf7be926eb9742b45f3">link</a></td></tr>
+<tr class="separator:ab5ba45e73ec48cf7be926eb9742b45f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a375f1c8e57e55b1866bae38d12cb73ed"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1generate__links__config.html#a375f1c8e57e55b1866bae38d12cb73ed">tooltip</a></td></tr>
+<tr class="separator:a375f1c8e57e55b1866bae38d12cb73ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4ab0fad8a92b4560b9a7b39c5a0dfacd" name="a4ab0fad8a92b4560b9a7b39c5a0dfacd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ab0fad8a92b4560b9a7b39c5a0dfacd">&#9670;&#160;</a></span>get_link_pattern()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt; clanguml::config::generate_links_config::get_link_pattern </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00461">461</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  463</span>    {</div>
+<div class="line"><span class="lineno">  464</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceclanguml_1_1util.html#ae79638ec52e13bea5ff7688bee897655">util::find_entry_by_path_prefix</a>(<a class="code hl_variable" href="structclanguml_1_1config_1_1generate__links__config.html#ab5ba45e73ec48cf7be926eb9742b45f3">link</a>, path);</div>
+<div class="line"><span class="lineno">  465</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6e1a47d8c28690609c103ca3ffac13c1" name="a6e1a47d8c28690609c103ca3ffac13c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e1a47d8c28690609c103ca3ffac13c1">&#9670;&#160;</a></span>get_tooltip_pattern()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt; clanguml::config::generate_links_config::get_tooltip_pattern </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00467">467</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  469</span>    {</div>
+<div class="line"><span class="lineno">  470</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceclanguml_1_1util.html#ae79638ec52e13bea5ff7688bee897655">util::find_entry_by_path_prefix</a>(<a class="code hl_variable" href="structclanguml_1_1config_1_1generate__links__config.html#a375f1c8e57e55b1866bae38d12cb73ed">tooltip</a>, path);</div>
+<div class="line"><span class="lineno">  471</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a6787f347cd8a5cb80e9fa2c18654dd5d" name="a6787f347cd8a5cb80e9fa2c18654dd5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6787f347cd8a5cb80e9fa2c18654dd5d">&#9670;&#160;</a></span>link</h2>
+<a id="ab5ba45e73ec48cf7be926eb9742b45f3" name="ab5ba45e73ec48cf7be926eb9742b45f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5ba45e73ec48cf7be926eb9742b45f3">&#9670;&#160;</a></span>link</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string clanguml::config::generate_links_config::link</td>
+          <td class="memname">std::map&lt; std::string, std::string&gt; clanguml::config::generate_links_config::link</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00448">448</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00458">458</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
-<a id="a03d8cd5510c9896d74da3848893e48da" name="a03d8cd5510c9896d74da3848893e48da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03d8cd5510c9896d74da3848893e48da">&#9670;&#160;</a></span>tooltip</h2>
+<a id="a375f1c8e57e55b1866bae38d12cb73ed" name="a375f1c8e57e55b1866bae38d12cb73ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a375f1c8e57e55b1866bae38d12cb73ed">&#9670;&#160;</a></span>tooltip</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string clanguml::config::generate_links_config::tooltip</td>
+          <td class="memname">std::map&lt; std::string, std::string&gt; clanguml::config::generate_links_config::tooltip</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00449">449</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00459">459</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>

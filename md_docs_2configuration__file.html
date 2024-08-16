@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -227,12 +229,14 @@ Example complete config</h1>
 <div class="line">    # Generate packages from the namespaces</div>
 <div class="line">    generate_packages: true</div>
 <div class="line">    package_type: namespace  # or &#39;directory&#39; to generate from projects subdirectories</div>
-<div class="line">    # Limiting the number of files to include can significantly</div>
+<div class="line">    # Limiting the number of files to include can significantly improve</div>
+<div class="line">    # diagram generation times</div>
 <div class="line">    glob:</div>
 <div class="line">      - src/common/model/*.h</div>
 <div class="line">      - src/common/model/*.cc</div>
 <div class="line">      - src/class_diagram/model/*.h</div>
 <div class="line">      - src/class_diagram/model/*.cc</div>
+<div class="line">      - r: &quot;.*test.*\\.cpp$</div>
 <div class="line">    include:</div>
 <div class="line">      # Only include entities from the following namespaces</div>
 <div class="line">      namespaces:</div>

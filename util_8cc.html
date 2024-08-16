@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -225,6 +227,12 @@ Functions</h2></td></tr>
 <tr class="separator:a6246754ef2cfd4a5dd6cd3be8dbfb762"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a5e0743cab8f3cd4d5bd19103e8387f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1util.html#a8a5e0743cab8f3cd4d5bd19103e8387f">clanguml::util::format_message_comment</a> (const std::string &amp;comment, unsigned width)</td></tr>
 <tr class="separator:a8a5e0743cab8f3cd4d5bd19103e8387f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c5431640de3949316f7588d81d590b2"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1util.html#a0c5431640de3949316f7588d81d590b2">clanguml::util::normalize_relative_path</a> (const std::filesystem::path &amp;path)</td></tr>
+<tr class="separator:a0c5431640de3949316f7588d81d590b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a649c404838722943880bf2a6429900c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1util.html#a649c404838722943880bf2a6429900c1">clanguml::util::is_subpath</a> (const std::filesystem::path &amp;path, const std::filesystem::path &amp;base)</td></tr>
+<tr class="separator:a649c404838722943880bf2a6429900c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae79638ec52e13bea5ff7688bee897655"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1util.html#ae79638ec52e13bea5ff7688bee897655">clanguml::util::find_entry_by_path_prefix</a> (const std::map&lt; std::string, std::string &gt; &amp;m, const std::string &amp;path)</td></tr>
+<tr class="separator:ae79638ec52e13bea5ff7688bee897655"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>

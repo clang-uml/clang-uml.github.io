@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -222,6 +224,12 @@ Functions</h2></td></tr>
 <tr class="separator:a6246754ef2cfd4a5dd6cd3be8dbfb762"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a5e0743cab8f3cd4d5bd19103e8387f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1util.html#a8a5e0743cab8f3cd4d5bd19103e8387f">format_message_comment</a> (const std::string &amp;comment, unsigned width)</td></tr>
 <tr class="separator:a8a5e0743cab8f3cd4d5bd19103e8387f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c5431640de3949316f7588d81d590b2"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1util.html#a0c5431640de3949316f7588d81d590b2">normalize_relative_path</a> (const std::filesystem::path &amp;path)</td></tr>
+<tr class="separator:a0c5431640de3949316f7588d81d590b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a649c404838722943880bf2a6429900c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1util.html#a649c404838722943880bf2a6429900c1">is_subpath</a> (const std::filesystem::path &amp;path, const std::filesystem::path &amp;base)</td></tr>
+<tr class="separator:a649c404838722943880bf2a6429900c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae79638ec52e13bea5ff7688bee897655"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1util.html#ae79638ec52e13bea5ff7688bee897655">find_entry_by_path_prefix</a> (const std::map&lt; std::string, std::string &gt; &amp;m, const std::string &amp;path)</td></tr>
+<tr class="separator:ae79638ec52e13bea5ff7688bee897655"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30246e623aaf97aa19285c176d61514f"><td class="memTemplParams" colspan="2">template&lt;typename T , typename S &gt; </td></tr>
 <tr class="memitem:a30246e623aaf97aa19285c176d61514f"><td class="memTemplItemLeft" align="right" valign="top">std::unique_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1util.html#a30246e623aaf97aa19285c176d61514f">unique_pointer_cast</a> (std::unique_ptr&lt; S &gt; &amp;&amp;p) noexcept</td></tr>
 <tr class="separator:a30246e623aaf97aa19285c176d61514f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -321,10 +329,10 @@ template&lt;typename F &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00412">412</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  413</span>{</div>
-<div class="line"><span class="lineno">  414</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#a10f7df9baa7f7d757518ee6a1700ec98">_if</a>(condition, std::forward&lt;F&gt;(func), []() {});</div>
-<div class="line"><span class="lineno">  415</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00414">414</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  415</span>{</div>
+<div class="line"><span class="lineno">  416</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#a10f7df9baa7f7d757518ee6a1700ec98">_if</a>(condition, std::forward&lt;F&gt;(func), []() {});</div>
+<div class="line"><span class="lineno">  417</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -362,15 +370,15 @@ template&lt;typename F , typename FElse &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00402">402</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  403</span>{</div>
-<div class="line"><span class="lineno">  404</span>    <span class="keywordflow">if</span> (condition) {</div>
-<div class="line"><span class="lineno">  405</span>        std::forward&lt;F&gt;(func)();</div>
-<div class="line"><span class="lineno">  406</span>    }</div>
-<div class="line"><span class="lineno">  407</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  408</span>        std::forward&lt;FElse&gt;(func_else)();</div>
-<div class="line"><span class="lineno">  409</span>    }</div>
-<div class="line"><span class="lineno">  410</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00404">404</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  405</span>{</div>
+<div class="line"><span class="lineno">  406</span>    <span class="keywordflow">if</span> (condition) {</div>
+<div class="line"><span class="lineno">  407</span>        std::forward&lt;F&gt;(func)();</div>
+<div class="line"><span class="lineno">  408</span>    }</div>
+<div class="line"><span class="lineno">  409</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  410</span>        std::forward&lt;FElse&gt;(func_else)();</div>
+<div class="line"><span class="lineno">  411</span>    }</div>
+<div class="line"><span class="lineno">  412</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -471,10 +479,10 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00275">275</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  276</span>{</div>
-<div class="line"><span class="lineno">  277</span>    l.insert(l.end(), r.begin(), r.end());</div>
-<div class="line"><span class="lineno">  278</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00277">277</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  278</span>{</div>
+<div class="line"><span class="lineno">  279</span>    l.insert(l.end(), r.begin(), r.end());</div>
+<div class="line"><span class="lineno">  280</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -572,21 +580,21 @@ template&lt;typename T , typename E &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00343">343</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  344</span>{</div>
-<div class="line"><span class="lineno">  345</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_pointer_v&lt;E&gt;) {</div>
-<div class="line"><span class="lineno">  346</span>        <span class="keywordflow">return</span> std::find_if(container.begin(), container.end(),</div>
-<div class="line"><span class="lineno">  347</span>                   [&amp;element](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;e) { return *e == *element; }) !=</div>
-<div class="line"><span class="lineno">  348</span>            container.end();</div>
-<div class="line"><span class="lineno">  349</span>    }</div>
-<div class="line"><span class="lineno">  350</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;std::remove_cv_t&lt;T&gt;, std::string&gt;) {</div>
-<div class="line"><span class="lineno">  351</span>        <span class="keywordflow">return</span> container.find(element) != std::string::npos;</div>
-<div class="line"><span class="lineno">  352</span>    }</div>
-<div class="line"><span class="lineno">  353</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  354</span>        <span class="keywordflow">return</span> std::find(container.begin(), container.end(), element) !=</div>
-<div class="line"><span class="lineno">  355</span>            container.end();</div>
-<div class="line"><span class="lineno">  356</span>    }</div>
-<div class="line"><span class="lineno">  357</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00345">345</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  346</span>{</div>
+<div class="line"><span class="lineno">  347</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_pointer_v&lt;E&gt;) {</div>
+<div class="line"><span class="lineno">  348</span>        <span class="keywordflow">return</span> std::find_if(container.begin(), container.end(),</div>
+<div class="line"><span class="lineno">  349</span>                   [&amp;element](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;e) { return *e == *element; }) !=</div>
+<div class="line"><span class="lineno">  350</span>            container.end();</div>
+<div class="line"><span class="lineno">  351</span>    }</div>
+<div class="line"><span class="lineno">  352</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;std::remove_cv_t&lt;T&gt;, std::string&gt;) {</div>
+<div class="line"><span class="lineno">  353</span>        <span class="keywordflow">return</span> container.find(element) != std::string::npos;</div>
+<div class="line"><span class="lineno">  354</span>    }</div>
+<div class="line"><span class="lineno">  355</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  356</span>        <span class="keywordflow">return</span> std::find(container.begin(), container.end(), element) !=</div>
+<div class="line"><span class="lineno">  357</span>            container.end();</div>
+<div class="line"><span class="lineno">  358</span>    }</div>
+<div class="line"><span class="lineno">  359</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -692,14 +700,14 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00308">308</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  309</span>{</div>
-<div class="line"><span class="lineno">  310</span>    <span class="keywordflow">if</span> (suffix.size() &gt; col.size())</div>
-<div class="line"><span class="lineno">  311</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  312</span> </div>
-<div class="line"><span class="lineno">  313</span>    <span class="keywordflow">return</span> std::vector&lt;std::string&gt;(suffix.rbegin(), suffix.rend()) ==</div>
-<div class="line"><span class="lineno">  314</span>        std::vector&lt;std::string&gt;(col.rbegin(), col.rbegin() + suffix.size());</div>
-<div class="line"><span class="lineno">  315</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00310">310</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  311</span>{</div>
+<div class="line"><span class="lineno">  312</span>    <span class="keywordflow">if</span> (suffix.size() &gt; col.size())</div>
+<div class="line"><span class="lineno">  313</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  314</span> </div>
+<div class="line"><span class="lineno">  315</span>    <span class="keywordflow">return</span> std::vector&lt;std::string&gt;(suffix.rbegin(), suffix.rend()) ==</div>
+<div class="line"><span class="lineno">  316</span>        std::vector&lt;std::string&gt;(col.rbegin(), col.rbegin() + suffix.size());</div>
+<div class="line"><span class="lineno">  317</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -828,10 +836,10 @@ template&lt;typename T , typename F &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00200">200</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  201</span>{</div>
-<div class="line"><span class="lineno">  202</span>    v.erase(std::remove_if(v.begin(), v.end(), std::forward&lt;F&gt;(f)), v.end());</div>
-<div class="line"><span class="lineno">  203</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00202">202</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  203</span>{</div>
+<div class="line"><span class="lineno">  204</span>    v.erase(std::remove_if(v.begin(), v.end(), std::forward&lt;F&gt;(f)), v.end());</div>
+<div class="line"><span class="lineno">  205</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -888,6 +896,70 @@ template&lt;typename T , typename F &gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="ae79638ec52e13bea5ff7688bee897655" name="ae79638ec52e13bea5ff7688bee897655"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae79638ec52e13bea5ff7688bee897655">&#9670;&#160;</a></span>find_entry_by_path_prefix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt; clanguml::util::find_entry_by_path_prefix </td>
+          <td>(</td>
+          <td class="paramtype">const std::map&lt; std::string, std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="util_8cc_source.html#l00534">534</a> of file <a class="el" href="util_8cc_source.html">util.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  536</span>{</div>
+<div class="line"><span class="lineno">  537</span>    <span class="keywordflow">if</span> (m.empty())</div>
+<div class="line"><span class="lineno">  538</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  539</span> </div>
+<div class="line"><span class="lineno">  540</span>    <span class="comment">// Extract keys and sort them by length in descending order</span></div>
+<div class="line"><span class="lineno">  541</span>    std::vector&lt;std::string&gt; keys;</div>
+<div class="line"><span class="lineno">  542</span>    keys.reserve(m.size());</div>
+<div class="line"><span class="lineno">  543</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[key, pattern] : m) {</div>
+<div class="line"><span class="lineno">  544</span>        keys.push_back(key);</div>
+<div class="line"><span class="lineno">  545</span>    }</div>
+<div class="line"><span class="lineno">  546</span> </div>
+<div class="line"><span class="lineno">  547</span>    std::sort(keys.begin(), keys.end(),</div>
+<div class="line"><span class="lineno">  548</span>        [](<span class="keyword">const</span> std::string &amp;a, <span class="keyword">const</span> std::string &amp;b) {</div>
+<div class="line"><span class="lineno">  549</span>            return a.size() &gt; b.size();</div>
+<div class="line"><span class="lineno">  550</span>        });</div>
+<div class="line"><span class="lineno">  551</span> </div>
+<div class="line"><span class="lineno">  552</span>    std::filesystem::path file_path{path};</div>
+<div class="line"><span class="lineno">  553</span> </div>
+<div class="line"><span class="lineno">  554</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;key : keys) {</div>
+<div class="line"><span class="lineno">  555</span>        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;pattern = m.at(key);</div>
+<div class="line"><span class="lineno">  556</span>        std::filesystem::path key_path{key};</div>
+<div class="line"><span class="lineno">  557</span> </div>
+<div class="line"><span class="lineno">  558</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1util.html#a649c404838722943880bf2a6429900c1">is_subpath</a>(file_path, key_path)) {</div>
+<div class="line"><span class="lineno">  559</span>            <span class="keywordflow">return</span> {{key, pattern}};</div>
+<div class="line"><span class="lineno">  560</span>        }</div>
+<div class="line"><span class="lineno">  561</span>    }</div>
+<div class="line"><span class="lineno">  562</span> </div>
+<div class="line"><span class="lineno">  563</span>    <span class="keywordflow">if</span> ((path.empty() || file_path.is_relative() || path == <span class="stringliteral">&quot;.&quot;</span>) &amp;&amp;</div>
+<div class="line"><span class="lineno">  564</span>        m.count(<span class="stringliteral">&quot;.&quot;</span>) &gt; 0) {</div>
+<div class="line"><span class="lineno">  565</span>        <span class="keywordflow">return</span> {{<span class="stringliteral">&quot;.&quot;</span>, m.at(<span class="stringliteral">&quot;.&quot;</span>)}};</div>
+<div class="line"><span class="lineno">  566</span>    }</div>
+<div class="line"><span class="lineno">  567</span> </div>
+<div class="line"><span class="lineno">  568</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  569</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="aafa2dc00b4617002d0b49cc610d828de" name="aafa2dc00b4617002d0b49cc610d828de"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aafa2dc00b4617002d0b49cc610d828de">&#9670;&#160;</a></span>for_each()</h2>
 
@@ -916,11 +988,11 @@ template&lt;typename T , typename F &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00359">359</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  360</span>{</div>
-<div class="line"><span class="lineno">  361</span>    std::for_each(std::begin(collection), std::end(collection),</div>
-<div class="line"><span class="lineno">  362</span>        std::forward&lt;<span class="keyword">decltype</span>(func)&gt;(func));</div>
-<div class="line"><span class="lineno">  363</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00361">361</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  362</span>{</div>
+<div class="line"><span class="lineno">  363</span>    std::for_each(std::begin(collection), std::end(collection),</div>
+<div class="line"><span class="lineno">  364</span>        std::forward&lt;<span class="keyword">decltype</span>(func)&gt;(func));</div>
+<div class="line"><span class="lineno">  365</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -958,15 +1030,15 @@ template&lt;typename T , typename C , typename F &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00366">366</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  367</span>{</div>
-<div class="line"><span class="lineno">  368</span>    std::for_each(std::begin(collection), std::end(collection),</div>
-<div class="line"><span class="lineno">  369</span>        [cond = std::forward&lt;<span class="keyword">decltype</span>(cond)&gt;(cond),</div>
-<div class="line"><span class="lineno">  370</span>            func = std::forward&lt;<span class="keyword">decltype</span>(func)&gt;(func)](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;e) {</div>
-<div class="line"><span class="lineno">  371</span>            <span class="keywordflow">if</span> (cond(e))</div>
-<div class="line"><span class="lineno">  372</span>                func(e);</div>
-<div class="line"><span class="lineno">  373</span>        });</div>
-<div class="line"><span class="lineno">  374</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00368">368</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  369</span>{</div>
+<div class="line"><span class="lineno">  370</span>    std::for_each(std::begin(collection), std::end(collection),</div>
+<div class="line"><span class="lineno">  371</span>        [cond = std::forward&lt;<span class="keyword">decltype</span>(cond)&gt;(cond),</div>
+<div class="line"><span class="lineno">  372</span>            func = std::forward&lt;<span class="keyword">decltype</span>(func)&gt;(func)](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;e) {</div>
+<div class="line"><span class="lineno">  373</span>            <span class="keywordflow">if</span> (cond(e))</div>
+<div class="line"><span class="lineno">  374</span>                func(e);</div>
+<div class="line"><span class="lineno">  375</span>        });</div>
+<div class="line"><span class="lineno">  376</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1349,10 +1421,10 @@ template&lt;typename T , typename F &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00396">396</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  397</span>{</div>
-<div class="line"><span class="lineno">  398</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#aa1ab3ffbaa6a49796fbf3b40baf18fa8">if_not_null</a>(pointer, std::forward&lt;F&gt;(func), []() {});</div>
-<div class="line"><span class="lineno">  399</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00398">398</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  399</span>{</div>
+<div class="line"><span class="lineno">  400</span>    <a class="code hl_function" href="namespaceclanguml_1_1util.html#aa1ab3ffbaa6a49796fbf3b40baf18fa8">if_not_null</a>(pointer, std::forward&lt;F&gt;(func), []() {});</div>
+<div class="line"><span class="lineno">  401</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1390,15 +1462,15 @@ template&lt;typename T , typename F , typename FElse &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00386">386</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  387</span>{</div>
-<div class="line"><span class="lineno">  388</span>    <span class="keywordflow">if</span> (pointer != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  389</span>        std::forward&lt;F&gt;(func)(pointer);</div>
-<div class="line"><span class="lineno">  390</span>    }</div>
-<div class="line"><span class="lineno">  391</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  392</span>        std::forward&lt;FElse&gt;(func_else)();</div>
-<div class="line"><span class="lineno">  393</span>    }</div>
-<div class="line"><span class="lineno">  394</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00388">388</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  389</span>{</div>
+<div class="line"><span class="lineno">  390</span>    <span class="keywordflow">if</span> (pointer != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  391</span>        std::forward&lt;F&gt;(func)(pointer);</div>
+<div class="line"><span class="lineno">  392</span>    }</div>
+<div class="line"><span class="lineno">  393</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  394</span>        std::forward&lt;FElse&gt;(func_else)();</div>
+<div class="line"><span class="lineno">  395</span>    }</div>
+<div class="line"><span class="lineno">  396</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1485,6 +1557,51 @@ template&lt;typename T , typename F , typename FElse &gt; </div>
 <div class="line"><span class="lineno">  459</span> </div>
 <div class="line"><span class="lineno">  460</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceclanguml_1_1util.html#ac843d642a89078b156b7253979c32637">starts_with</a>(weakly_canonical(child), weakly_canonical(parent));</div>
 <div class="line"><span class="lineno">  461</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a649c404838722943880bf2a6429900c1" name="a649c404838722943880bf2a6429900c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a649c404838722943880bf2a6429900c1">&#9670;&#160;</a></span>is_subpath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::util::is_subpath </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
+          <td class="paramname"><em>base</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="util_8cc_source.html#l00516">516</a> of file <a class="el" href="util_8cc_source.html">util.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  518</span>{</div>
+<div class="line"><span class="lineno">  519</span>    <span class="keywordflow">if</span> (path.empty())</div>
+<div class="line"><span class="lineno">  520</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  521</span> </div>
+<div class="line"><span class="lineno">  522</span>    <span class="keyword">auto</span> normalized_path = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a0c5431640de3949316f7588d81d590b2">normalize_relative_path</a>(path);</div>
+<div class="line"><span class="lineno">  523</span>    <span class="keyword">auto</span> normalized_base = <a class="code hl_function" href="namespaceclanguml_1_1util.html#a0c5431640de3949316f7588d81d590b2">normalize_relative_path</a>(base);</div>
+<div class="line"><span class="lineno">  524</span> </div>
+<div class="line"><span class="lineno">  525</span>    <span class="keywordflow">if</span> (normalized_path == normalized_base)</div>
+<div class="line"><span class="lineno">  526</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  527</span> </div>
+<div class="line"><span class="lineno">  528</span>    <span class="keyword">auto</span> rel = std::filesystem::relative(normalized_path, normalized_base);</div>
+<div class="line"><span class="lineno">  529</span> </div>
+<div class="line"><span class="lineno">  530</span>    std::string rel_str = rel.string();</div>
+<div class="line"><span class="lineno">  531</span>    <span class="keywordflow">return</span> !rel_str.empty() &amp;&amp; rel.native()[0] != <span class="charliteral">&#39;.&#39;</span>;</div>
+<div class="line"><span class="lineno">  532</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1575,16 +1692,16 @@ template&lt;typename... Args&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Arguments concatenated into one string </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00224">224</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  225</span>{</div>
-<div class="line"><span class="lineno">  226</span>    std::vector&lt;std::string&gt; coll{args...};</div>
-<div class="line"><span class="lineno">  227</span> </div>
-<div class="line"><span class="lineno">  228</span>    erase_if(coll, [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;s) {</div>
-<div class="line"><span class="lineno">  229</span>        <span class="keywordflow">return</span> s.find_first_not_of(<span class="stringliteral">&quot; \t&quot;</span>) == std::string::npos;</div>
-<div class="line"><span class="lineno">  230</span>    });</div>
-<div class="line"><span class="lineno">  231</span> </div>
-<div class="line"><span class="lineno">  232</span>    <span class="keywordflow">return</span> fmt::format(<span class="stringliteral">&quot;{}&quot;</span>, fmt::join(coll, delimiter));</div>
-<div class="line"><span class="lineno">  233</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00226">226</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  227</span>{</div>
+<div class="line"><span class="lineno">  228</span>    std::vector&lt;std::string&gt; coll{args...};</div>
+<div class="line"><span class="lineno">  229</span> </div>
+<div class="line"><span class="lineno">  230</span>    erase_if(coll, [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;s) {</div>
+<div class="line"><span class="lineno">  231</span>        <span class="keywordflow">return</span> s.find_first_not_of(<span class="stringliteral">&quot; \t&quot;</span>) == std::string::npos;</div>
+<div class="line"><span class="lineno">  232</span>    });</div>
+<div class="line"><span class="lineno">  233</span> </div>
+<div class="line"><span class="lineno">  234</span>    <span class="keywordflow">return</span> fmt::format(<span class="stringliteral">&quot;{}&quot;</span>, fmt::join(coll, delimiter));</div>
+<div class="line"><span class="lineno">  235</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1649,13 +1766,48 @@ template&lt;typename R , typename T , typename F &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00377">377</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  378</span>{</div>
-<div class="line"><span class="lineno">  379</span>    std::vector&lt;R&gt; out;</div>
-<div class="line"><span class="lineno">  380</span>    std::transform(</div>
-<div class="line"><span class="lineno">  381</span>        in.cbegin(), in.cend(), std::back_inserter(out), std::forward&lt;F&gt;(f));</div>
-<div class="line"><span class="lineno">  382</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><span class="lineno">  383</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00379">379</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  380</span>{</div>
+<div class="line"><span class="lineno">  381</span>    std::vector&lt;R&gt; out;</div>
+<div class="line"><span class="lineno">  382</span>    std::transform(</div>
+<div class="line"><span class="lineno">  383</span>        in.cbegin(), in.cend(), std::back_inserter(out), std::forward&lt;F&gt;(f));</div>
+<div class="line"><span class="lineno">  384</span>    <span class="keywordflow">return</span> out;</div>
+<div class="line"><span class="lineno">  385</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0c5431640de3949316f7588d81d590b2" name="a0c5431640de3949316f7588d81d590b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c5431640de3949316f7588d81d590b2">&#9670;&#160;</a></span>normalize_relative_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::filesystem::path clanguml::util::normalize_relative_path </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="util_8cc_source.html#l00499">499</a> of file <a class="el" href="util_8cc_source.html">util.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  500</span>{</div>
+<div class="line"><span class="lineno">  501</span>    <span class="keywordflow">if</span> (path.is_absolute())</div>
+<div class="line"><span class="lineno">  502</span>        <span class="keywordflow">return</span> path;</div>
+<div class="line"><span class="lineno">  503</span> </div>
+<div class="line"><span class="lineno">  504</span>    std::filesystem::path result;</div>
+<div class="line"><span class="lineno">  505</span> </div>
+<div class="line"><span class="lineno">  506</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;part : path) {</div>
+<div class="line"><span class="lineno">  507</span>        <span class="keywordflow">if</span> (part == <span class="stringliteral">&quot;.&quot;</span>) {</div>
+<div class="line"><span class="lineno">  508</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  509</span>        }</div>
+<div class="line"><span class="lineno">  510</span>        result /= part;</div>
+<div class="line"><span class="lineno">  511</span>    }</div>
+<div class="line"><span class="lineno">  512</span> </div>
+<div class="line"><span class="lineno">  513</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  514</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1758,13 +1910,13 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00325">325</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  326</span>{</div>
-<div class="line"><span class="lineno">  327</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceclanguml_1_1util.html#ac843d642a89078b156b7253979c32637">starts_with</a>(col, prefix))</div>
-<div class="line"><span class="lineno">  328</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  329</span> </div>
-<div class="line"><span class="lineno">  330</span>    col = std::vector&lt;T&gt;(col.begin() + prefix.size(), col.end());</div>
-<div class="line"><span class="lineno">  331</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00327">327</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  328</span>{</div>
+<div class="line"><span class="lineno">  329</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceclanguml_1_1util.html#ac843d642a89078b156b7253979c32637">starts_with</a>(col, prefix))</div>
+<div class="line"><span class="lineno">  330</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  331</span> </div>
+<div class="line"><span class="lineno">  332</span>    col = std::vector&lt;T&gt;(col.begin() + prefix.size(), col.end());</div>
+<div class="line"><span class="lineno">  333</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2238,14 +2390,14 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if first prefix.size() elements of col are equal to prefix </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00288">288</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  289</span>{</div>
-<div class="line"><span class="lineno">  290</span>    <span class="keywordflow">if</span> (prefix.size() &gt; col.size())</div>
-<div class="line"><span class="lineno">  291</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  292</span> </div>
-<div class="line"><span class="lineno">  293</span>    <span class="keywordflow">return</span> std::search(col.begin(), col.end(), prefix.begin(), prefix.end()) ==</div>
-<div class="line"><span class="lineno">  294</span>        col.begin();</div>
-<div class="line"><span class="lineno">  295</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00290">290</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  291</span>{</div>
+<div class="line"><span class="lineno">  292</span>    <span class="keywordflow">if</span> (prefix.size() &gt; col.size())</div>
+<div class="line"><span class="lineno">  293</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  294</span> </div>
+<div class="line"><span class="lineno">  295</span>    <span class="keywordflow">return</span> std::search(col.begin(), col.end(), prefix.begin(), prefix.end()) ==</div>
+<div class="line"><span class="lineno">  296</span>        col.begin();</div>
+<div class="line"><span class="lineno">  297</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2341,15 +2493,15 @@ template&lt;typename T , typename S &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00164">164</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  165</span>{</div>
-<div class="line"><span class="lineno">  166</span>    <span class="keywordflow">if</span> (T *<span class="keyword">const</span> converted = <span class="keyword">dynamic_cast&lt;</span>T *<span class="keyword">&gt;</span>(p.get())) {</div>
-<div class="line"><span class="lineno">  167</span>        std::move(p).release(); <span class="comment">// NOLINT</span></div>
-<div class="line"><span class="lineno">  168</span>        <span class="keywordflow">return</span> std::unique_ptr&lt;T&gt;{converted};</div>
-<div class="line"><span class="lineno">  169</span>    }</div>
-<div class="line"><span class="lineno">  170</span> </div>
-<div class="line"><span class="lineno">  171</span>    <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  172</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00166">166</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  167</span>{</div>
+<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">if</span> (T *<span class="keyword">const</span> converted = <span class="keyword">dynamic_cast&lt;</span>T *<span class="keyword">&gt;</span>(p.get())) {</div>
+<div class="line"><span class="lineno">  169</span>        std::move(p).release(); <span class="comment">// NOLINT</span></div>
+<div class="line"><span class="lineno">  170</span>        <span class="keywordflow">return</span> std::unique_ptr&lt;T&gt;{converted};</div>
+<div class="line"><span class="lineno">  171</span>    }</div>
+<div class="line"><span class="lineno">  172</span> </div>
+<div class="line"><span class="lineno">  173</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  174</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2374,7 +2526,7 @@ template&lt;typename T , typename S &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00060">60</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8h_source.html#l00062">62</a> of file <a class="el" href="util_8h_source.html">util.h</a>.</p>
 
 </div>
 </div>

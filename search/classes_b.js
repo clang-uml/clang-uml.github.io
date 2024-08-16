@@ -1,14 +1,11 @@
 var searchData=
 [
-  ['namespace_5ffilter_0',['namespace_filter',['../structclanguml_1_1common_1_1model_1_1namespace__filter.html',1,'clanguml::common::model']]],
-  ['nested_5felement_5fstack_1',['nested_element_stack',['../classclanguml_1_1common_1_1generators_1_1nested__element__stack.html',1,'clanguml::common::generators']]],
-  ['nested_5felement_5fstack_3c_20clanguml_3a_3acommon_3a_3amodel_3a_3aelement_20_3e_2',['nested_element_stack&lt; clanguml::common::model::element &gt;',['../classclanguml_1_1common_1_1generators_1_1nested__element__stack.html',1,'clanguml::common::generators']]],
-  ['nested_5felement_5fstack_3c_20clanguml_3a_3acommon_3a_3amodel_3a_3apackage_20_3e_3',['nested_element_stack&lt; clanguml::common::model::package &gt;',['../classclanguml_1_1common_1_1generators_1_1nested__element__stack.html',1,'clanguml::common::generators']]],
-  ['nested_5ftrait_4',['nested_trait',['../classclanguml_1_1common_1_1model_1_1nested__trait.html',1,'clanguml::common::model']]],
-  ['nested_5ftrait_3c_20clanguml_3a_3acommon_3a_3amodel_3a_3aelement_2c_20clanguml_3a_3acommon_3a_3amodel_3a_3anamespace_5f_20_3e_5',['nested_trait&lt; clanguml::common::model::element, clanguml::common::model::namespace_ &gt;',['../classclanguml_1_1common_1_1model_1_1nested__trait.html',1,'clanguml::common::model']]],
-  ['nested_5ftrait_3c_20common_3a_3amodel_3a_3asource_5ffile_2c_20filesystem_5fpath_20_3e_6',['nested_trait&lt; common::model::source_file, filesystem_path &gt;',['../classclanguml_1_1common_1_1model_1_1nested__trait.html',1,'clanguml::common::model']]],
-  ['nested_5ftrait_3c_20element_2c_20path_20_3e_7',['nested_trait&lt; element, path &gt;',['../classclanguml_1_1common_1_1model_1_1nested__trait.html',1,'clanguml::common::model']]],
-  ['nested_5ftrait_3c_20source_5ffile_2c_20clanguml_3a_3acommon_3a_3amodel_3a_3afilesystem_5fpath_20_3e_8',['nested_trait&lt; source_file, clanguml::common::model::filesystem_path &gt;',['../classclanguml_1_1common_1_1model_1_1nested__trait.html',1,'clanguml::common::model']]],
-  ['note_9',['note',['../structclanguml_1_1decorators_1_1note.html',1,'clanguml::decorators']]],
-  ['ns_5fpath_5fseparator_10',['ns_path_separator',['../structclanguml_1_1common_1_1model_1_1ns__path__separator.html',1,'clanguml::common::model']]]
+  ['mermaid_0',['mermaid',['../structclanguml_1_1config_1_1mermaid.html',1,'clanguml::config']]],
+  ['mermaid_5fgenerator_5ftag_1',['mermaid_generator_tag',['../structclanguml_1_1common_1_1generators_1_1mermaid__generator__tag.html',1,'clanguml::common::generators']]],
+  ['message_2',['message',['../classclanguml_1_1sequence__diagram_1_1model_1_1message.html',1,'clanguml::sequence_diagram::model']]],
+  ['method_3',['method',['../structclanguml_1_1sequence__diagram_1_1model_1_1method.html',1,'clanguml::sequence_diagram::model']]],
+  ['method_5fparameter_4',['method_parameter',['../classclanguml_1_1class__diagram_1_1model_1_1method__parameter.html',1,'clanguml::class_diagram::model']]],
+  ['method_5ftype_5ffilter_5',['method_type_filter',['../structclanguml_1_1common_1_1model_1_1method__type__filter.html',1,'clanguml::common::model']]],
+  ['module_5faccess_5ffilter_6',['module_access_filter',['../structclanguml_1_1common_1_1model_1_1module__access__filter.html',1,'clanguml::common::model']]],
+  ['modules_5ffilter_7',['modules_filter',['../structclanguml_1_1common_1_1model_1_1modules__filter.html',1,'clanguml::common::model']]]
 ];

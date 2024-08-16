@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -122,7 +124,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="t20007---class-template-variadic-argument-list-sequence-diagram"></a></p>
-<h1><a class="anchor" id="config-84"></a>
+<h1><a class="anchor" id="config-88"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  t20007_sequence:</div>
@@ -135,7 +137,7 @@ Config</h1>
 <div class="line">    using_namespace: clanguml::t20007</div>
 <div class="line">    from:</div>
 <div class="line">      - function: &quot;clanguml::t20007::tmain()&quot;</div>
-</div><!-- fragment --> <h1><a class="anchor" id="source-code-84"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-88"></a>
 Source code</h1>
 <p>File <code>tests/t20007/t20007.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;utility&gt;</span></div>
@@ -162,17 +164,17 @@ Source code</h1>
 <div class="line"> </div>
 <div class="line">}</div>
 <div class="line">}</div>
-</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-84"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-88"></a>
 Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t20007_sequence.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-mermaid-diagrams-84"></a>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-88"></a>
 Generated Mermaid diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t20007_sequence_mermaid.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-json-models-84"></a>
+     <h1><a class="anchor" id="generated-json-models-88"></a>
 Generated JSON models</h1>
 <div class="fragment language-json"><div class="line">{</div>
 <div class="line">  &quot;diagram_type&quot;: &quot;sequence&quot;,</div>
@@ -199,7 +201,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20007::Adder&lt;int,int&gt;::add(int &amp;&amp;,int &amp;&amp;)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;3505069753658152525&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;add&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20007&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 11,</div>
 <div class="line">            &quot;file&quot;: &quot;t20007.cc&quot;,</div>
@@ -229,7 +231,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20007::Adder&lt;int,float,double&gt;::add(int &amp;&amp;,float &amp;&amp;,double &amp;&amp;)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;76181798141510966&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;add&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20007&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 11,</div>
 <div class="line">            &quot;file&quot;: &quot;t20007.cc&quot;,</div>
@@ -259,7 +261,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20007::Adder&lt;std::string,std::string,std::string&gt;::add(std::string &amp;&amp;,std::string &amp;&amp;,std::string &amp;&amp;)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;3078933128343531840&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;add&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20007::Adder&lt;std::basic_string&lt;char&gt;, std::basic_string&lt;char&gt;, std&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 11,</div>
 <div class="line">            &quot;file&quot;: &quot;t20007.cc&quot;,</div>

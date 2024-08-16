@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -826,17 +828,17 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00837">837</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  838</span>{</div>
-<div class="line"><span class="lineno">  839</span>    <span class="keywordflow">if</span> (o.has_value) {</div>
-<div class="line"><span class="lineno">  840</span>        out &lt;&lt; YAML::Key &lt;&lt; o.name;</div>
-<div class="line"><span class="lineno">  841</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, std::filesystem::path&gt;)</div>
-<div class="line"><span class="lineno">  842</span>            out &lt;&lt; YAML::Value &lt;&lt; o.value.string();</div>
-<div class="line"><span class="lineno">  843</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  844</span>            out &lt;&lt; YAML::Value &lt;&lt; o.value;</div>
-<div class="line"><span class="lineno">  845</span>    }</div>
-<div class="line"><span class="lineno">  846</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><span class="lineno">  847</span>}</div>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00862">862</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  863</span>{</div>
+<div class="line"><span class="lineno">  864</span>    <span class="keywordflow">if</span> (o.has_value) {</div>
+<div class="line"><span class="lineno">  865</span>        out &lt;&lt; YAML::Key &lt;&lt; o.name;</div>
+<div class="line"><span class="lineno">  866</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, std::filesystem::path&gt;)</div>
+<div class="line"><span class="lineno">  867</span>            out &lt;&lt; YAML::Value &lt;&lt; o.value.string();</div>
+<div class="line"><span class="lineno">  868</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  869</span>            out &lt;&lt; YAML::Value &lt;&lt; o.value;</div>
+<div class="line"><span class="lineno">  870</span>    }</div>
+<div class="line"><span class="lineno">  871</span>    <span class="keywordflow">return</span> out;</div>
+<div class="line"><span class="lineno">  872</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

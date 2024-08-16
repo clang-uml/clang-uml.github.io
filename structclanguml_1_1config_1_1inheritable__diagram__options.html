@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -139,7 +141,7 @@ $(function() {
 <p>This class contains a subset of configuration options, which are inherited from the top level of the configuration to the diagrams.</p>
 <p> <embed src="inheritable_diagram_options_context_class.svg"/>  </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00511">511</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00533">533</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="config_8h_source.html">config.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -160,14 +162,18 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ac54db8cfd5ef06c9963f2158f0494cf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; std::vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ac54db8cfd5ef06c9963f2158f0494cf0">glob</a> {&quot;glob&quot;}</td></tr>
-<tr class="separator:ac54db8cfd5ef06c9963f2158f0494cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abceda689b2a67bc8b4aec42da936e98d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; std::vector&lt; <a class="el" href="namespaceclanguml_1_1common.html#ae721081846956d4e338e399019f9bd6f">common::string_or_regex</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#abceda689b2a67bc8b4aec42da936e98d">glob</a> {&quot;glob&quot;}</td></tr>
+<tr class="separator:abceda689b2a67bc8b4aec42da936e98d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cabfc23ebde9c79d5f413fce219ec54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b">common::model::namespace_</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a6cabfc23ebde9c79d5f413fce219ec54">using_namespace</a> {&quot;using_namespace&quot;}</td></tr>
 <tr class="separator:a6cabfc23ebde9c79d5f413fce219ec54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5657181a074e42fa2828fba049f5e01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ae5657181a074e42fa2828fba049f5e01">using_module</a> {&quot;using_module&quot;}</td></tr>
 <tr class="separator:ae5657181a074e42fa2828fba049f5e01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82a375af97c191998f84350c2bc8f6fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a82a375af97c191998f84350c2bc8f6fa">include_relations_also_as_members</a></td></tr>
 <tr class="separator:a82a375af97c191998f84350c2bc8f6fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8db6ae78f02e4b1b063ec18d410781f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; <a class="el" href="namespaceclanguml_1_1config.html#a1f0af361c663cf793ff0a28fa477da6d">filter_mode_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a8db6ae78f02e4b1b063ec18d410781f9">filter_mode</a> {&quot;filter_mode&quot;, <a class="el" href="namespaceclanguml_1_1config.html#a1f0af361c663cf793ff0a28fa477da6daf17aaabc20bfe045075927934fed52d2">filter_mode_t::basic</a>}</td></tr>
+<tr class="separator:a8db6ae78f02e4b1b063ec18d410781f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62ed3367d1547288ea49fee091dd2d4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a62ed3367d1547288ea49fee091dd2d4c">include_system_headers</a> {&quot;include_system_headers&quot;, false}</td></tr>
+<tr class="separator:a62ed3367d1547288ea49fee091dd2d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdfa6efcb97352a3ded3ad6dfb222cab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; <a class="el" href="structclanguml_1_1config_1_1filter.html">filter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#afdfa6efcb97352a3ded3ad6dfb222cab">include</a> {&quot;include&quot;}</td></tr>
 <tr class="separator:afdfa6efcb97352a3ded3ad6dfb222cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a28253a6d95190f35a9a46aef76ca5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; <a class="el" href="structclanguml_1_1config_1_1filter.html">filter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a2a28253a6d95190f35a9a46aef76ca5e">exclude</a> {&quot;exclude&quot;}</td></tr>
@@ -285,11 +291,11 @@ Friends</h2></td></tr>
 <p>This method determines whether an elements' name should include fully qualified namespace name (however relative to using_namespace), or whether it should just contain it's name. This depends on whether the diagram has packages and if they are based on namespaces or sth else.</p>
 <dl class="section return"><dt>Returns</dt><dd>True, if element should include it's namespace </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00283">283</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  284</span>{</div>
-<div class="line"><span class="lineno">  285</span>    <span class="keywordflow">return</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a11d6859df6aab8f90d42d181b1c63047">package_type</a>() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a14a4eb84ab50b17d18f341eeb99f1343aa28886f1e6b46d18364aa513e58413c7">package_type_t::kNamespace</a>) &amp;&amp;</div>
-<div class="line"><span class="lineno">  286</span>        !<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ae7ed282a85f0789f97dba4e99abda87a">generate_packages</a>();</div>
-<div class="line"><span class="lineno">  287</span>}</div>
+<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00298">298</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  299</span>{</div>
+<div class="line"><span class="lineno">  300</span>    <span class="keywordflow">return</span> (<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a11d6859df6aab8f90d42d181b1c63047">package_type</a>() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a14a4eb84ab50b17d18f341eeb99f1343aa28886f1e6b46d18364aa513e58413c7">package_type_t::kNamespace</a>) &amp;&amp;</div>
+<div class="line"><span class="lineno">  301</span>        !<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ae7ed282a85f0789f97dba4e99abda87a">generate_packages</a>();</div>
+<div class="line"><span class="lineno">  302</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -321,8 +327,8 @@ Friends</h2></td></tr>
 <p>Instead use </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="structclanguml_1_1config_1_1diagram.html#a016e53083be67629dda6ad6c6bf47323" title="Returns absolute path of the relative_to option.">config::diagram::root_directory()</a> <a class="el" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580caea9f6aca279138c58f705c8d4cb4b8ce">method</a>.</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to <code>relative_to</code> config option. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00540">540</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  540</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#aa2bbc9923b17e697e97a4224499a2899">relative_to</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00562">562</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  562</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#aa2bbc9923b17e697e97a4224499a2899">relative_to</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -342,44 +348,46 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00223">223</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  225</span>{</div>
-<div class="line"><span class="lineno">  226</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ac54db8cfd5ef06c9963f2158f0494cf0">glob</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.glob);</div>
-<div class="line"><span class="lineno">  227</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a6cabfc23ebde9c79d5f413fce219ec54">using_namespace</a>.override(parent.using_namespace);</div>
-<div class="line"><span class="lineno">  228</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ae5657181a074e42fa2828fba049f5e01">using_module</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.using_module);</div>
-<div class="line"><span class="lineno">  229</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a82a375af97c191998f84350c2bc8f6fa">include_relations_also_as_members</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(</div>
-<div class="line"><span class="lineno">  230</span>        parent.include_relations_also_as_members);</div>
-<div class="line"><span class="lineno">  231</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#afdfa6efcb97352a3ded3ad6dfb222cab">include</a>.override(parent.include);</div>
-<div class="line"><span class="lineno">  232</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a2a28253a6d95190f35a9a46aef76ca5e">exclude</a>.override(parent.exclude);</div>
-<div class="line"><span class="lineno">  233</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a2e96e8de1b0968cec58a9586012e3d50">puml</a>.override(parent.puml);</div>
-<div class="line"><span class="lineno">  234</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a999dd13e72fad9ecf778b5685f15624b">mermaid</a>.override(parent.mermaid);</div>
-<div class="line"><span class="lineno">  235</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a13ee334c6a86a30f8b169f633ed222d5">generate_method_arguments</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.generate_method_arguments);</div>
-<div class="line"><span class="lineno">  236</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#af3e6b712893b11161d25ae93eca92ff8">generate_concept_requirements</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(</div>
-<div class="line"><span class="lineno">  237</span>        parent.generate_concept_requirements);</div>
-<div class="line"><span class="lineno">  238</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ae7ed282a85f0789f97dba4e99abda87a">generate_packages</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.generate_packages);</div>
-<div class="line"><span class="lineno">  239</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a4e57a523b385199549a973067d6996c3">generate_template_argument_dependencies</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(</div>
-<div class="line"><span class="lineno">  240</span>        parent.generate_template_argument_dependencies);</div>
-<div class="line"><span class="lineno">  241</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a11d6859df6aab8f90d42d181b1c63047">package_type</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.package_type);</div>
-<div class="line"><span class="lineno">  242</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a4e57a523b385199549a973067d6996c3">generate_template_argument_dependencies</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(</div>
-<div class="line"><span class="lineno">  243</span>        parent.generate_template_argument_dependencies);</div>
-<div class="line"><span class="lineno">  244</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a00f0475f039c43858403838ffb30e863">skip_redundant_dependencies</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.skip_redundant_dependencies);</div>
-<div class="line"><span class="lineno">  245</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a7101d5d336c43758a272c6c0ddc71eed">generate_links</a>.override(parent.generate_links);</div>
-<div class="line"><span class="lineno">  246</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#aeeeb1e5095c9b10a2855803bce071705">generate_system_headers</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.generate_system_headers);</div>
-<div class="line"><span class="lineno">  247</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ad1547712128cb611d4ac1850881ea9c8">git</a>.override(parent.git);</div>
-<div class="line"><span class="lineno">  248</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#aa5d898b7149f33468901ebd04ca1e00a">base_directory</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.base_directory);</div>
-<div class="line"><span class="lineno">  249</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#aa2bbc9923b17e697e97a4224499a2899">relative_to</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.relative_to);</div>
-<div class="line"><span class="lineno">  250</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ad75d03a8da88603f5f1941bfa44c7b69">comment_parser</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.comment_parser);</div>
-<div class="line"><span class="lineno">  251</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a3167a25446d14c6c53316b03000d7721">combine_free_functions_into_file_participants</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(</div>
-<div class="line"><span class="lineno">  252</span>        parent.combine_free_functions_into_file_participants);</div>
-<div class="line"><span class="lineno">  253</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ae12d337e11b235c190660b5d9b0db3bf">inline_lambda_messages</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.inline_lambda_messages);</div>
-<div class="line"><span class="lineno">  254</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a89221b422852b721cf14b7493e3251b6">generate_return_types</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.generate_return_types);</div>
-<div class="line"><span class="lineno">  255</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a2f99acf6a307527245ec3dc0520f8046">generate_condition_statements</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(</div>
-<div class="line"><span class="lineno">  256</span>        parent.generate_condition_statements);</div>
-<div class="line"><span class="lineno">  257</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a1f016307af2cb28657eed26b340f245b">debug_mode</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.debug_mode);</div>
-<div class="line"><span class="lineno">  258</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a7d89b95b57780013bf403fbdf48a8d73">generate_metadata</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.generate_metadata);</div>
-<div class="line"><span class="lineno">  259</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a67b8d34bdaa5ee604cfe4f4886cae527">allow_empty_diagrams</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.allow_empty_diagrams);</div>
-<div class="line"><span class="lineno">  260</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.type_aliases);</div>
-<div class="line"><span class="lineno">  261</span>}</div>
+<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00236">236</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  238</span>{</div>
+<div class="line"><span class="lineno">  239</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#abceda689b2a67bc8b4aec42da936e98d">glob</a>.override(parent.glob);</div>
+<div class="line"><span class="lineno">  240</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a6cabfc23ebde9c79d5f413fce219ec54">using_namespace</a>.override(parent.using_namespace);</div>
+<div class="line"><span class="lineno">  241</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ae5657181a074e42fa2828fba049f5e01">using_module</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.using_module);</div>
+<div class="line"><span class="lineno">  242</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a82a375af97c191998f84350c2bc8f6fa">include_relations_also_as_members</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(</div>
+<div class="line"><span class="lineno">  243</span>        parent.include_relations_also_as_members);</div>
+<div class="line"><span class="lineno">  244</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a8db6ae78f02e4b1b063ec18d410781f9">filter_mode</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.filter_mode);</div>
+<div class="line"><span class="lineno">  245</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a62ed3367d1547288ea49fee091dd2d4c">include_system_headers</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.include_system_headers);</div>
+<div class="line"><span class="lineno">  246</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#afdfa6efcb97352a3ded3ad6dfb222cab">include</a>.override(parent.include);</div>
+<div class="line"><span class="lineno">  247</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a2a28253a6d95190f35a9a46aef76ca5e">exclude</a>.override(parent.exclude);</div>
+<div class="line"><span class="lineno">  248</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a2e96e8de1b0968cec58a9586012e3d50">puml</a>.override(parent.puml);</div>
+<div class="line"><span class="lineno">  249</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a999dd13e72fad9ecf778b5685f15624b">mermaid</a>.override(parent.mermaid);</div>
+<div class="line"><span class="lineno">  250</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a13ee334c6a86a30f8b169f633ed222d5">generate_method_arguments</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.generate_method_arguments);</div>
+<div class="line"><span class="lineno">  251</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#af3e6b712893b11161d25ae93eca92ff8">generate_concept_requirements</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(</div>
+<div class="line"><span class="lineno">  252</span>        parent.generate_concept_requirements);</div>
+<div class="line"><span class="lineno">  253</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ae7ed282a85f0789f97dba4e99abda87a">generate_packages</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.generate_packages);</div>
+<div class="line"><span class="lineno">  254</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a4e57a523b385199549a973067d6996c3">generate_template_argument_dependencies</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(</div>
+<div class="line"><span class="lineno">  255</span>        parent.generate_template_argument_dependencies);</div>
+<div class="line"><span class="lineno">  256</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a11d6859df6aab8f90d42d181b1c63047">package_type</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.package_type);</div>
+<div class="line"><span class="lineno">  257</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a4e57a523b385199549a973067d6996c3">generate_template_argument_dependencies</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(</div>
+<div class="line"><span class="lineno">  258</span>        parent.generate_template_argument_dependencies);</div>
+<div class="line"><span class="lineno">  259</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a00f0475f039c43858403838ffb30e863">skip_redundant_dependencies</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.skip_redundant_dependencies);</div>
+<div class="line"><span class="lineno">  260</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a7101d5d336c43758a272c6c0ddc71eed">generate_links</a>.override(parent.generate_links);</div>
+<div class="line"><span class="lineno">  261</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#aeeeb1e5095c9b10a2855803bce071705">generate_system_headers</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.generate_system_headers);</div>
+<div class="line"><span class="lineno">  262</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ad1547712128cb611d4ac1850881ea9c8">git</a>.override(parent.git);</div>
+<div class="line"><span class="lineno">  263</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#aa5d898b7149f33468901ebd04ca1e00a">base_directory</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.base_directory);</div>
+<div class="line"><span class="lineno">  264</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#aa2bbc9923b17e697e97a4224499a2899">relative_to</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.relative_to);</div>
+<div class="line"><span class="lineno">  265</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ad75d03a8da88603f5f1941bfa44c7b69">comment_parser</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.comment_parser);</div>
+<div class="line"><span class="lineno">  266</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a3167a25446d14c6c53316b03000d7721">combine_free_functions_into_file_participants</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(</div>
+<div class="line"><span class="lineno">  267</span>        parent.combine_free_functions_into_file_participants);</div>
+<div class="line"><span class="lineno">  268</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ae12d337e11b235c190660b5d9b0db3bf">inline_lambda_messages</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.inline_lambda_messages);</div>
+<div class="line"><span class="lineno">  269</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a89221b422852b721cf14b7493e3251b6">generate_return_types</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.generate_return_types);</div>
+<div class="line"><span class="lineno">  270</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a2f99acf6a307527245ec3dc0520f8046">generate_condition_statements</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(</div>
+<div class="line"><span class="lineno">  271</span>        parent.generate_condition_statements);</div>
+<div class="line"><span class="lineno">  272</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a1f016307af2cb28657eed26b340f245b">debug_mode</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.debug_mode);</div>
+<div class="line"><span class="lineno">  273</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a7d89b95b57780013bf403fbdf48a8d73">generate_metadata</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.generate_metadata);</div>
+<div class="line"><span class="lineno">  274</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a67b8d34bdaa5ee604cfe4f4886cae527">allow_empty_diagrams</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.allow_empty_diagrams);</div>
+<div class="line"><span class="lineno">  275</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>.<a class="code hl_function" href="structclanguml_1_1config_1_1option.html#a32ab7b887dd0dec9bb6ad14e70d7292b" title="Override option value.">override</a>(parent.type_aliases);</div>
+<div class="line"><span class="lineno">  276</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -399,24 +407,24 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00263">263</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  265</span>{</div>
-<div class="line"><span class="lineno">  266</span>    <a class="code hl_typedef" href="namespaceclanguml_1_1config.html#a8586f9b79088fafa3db6a26cabd96f22">type_aliases_longer_first_t</a> aliases;</div>
-<div class="line"><span class="lineno">  267</span>    aliases.insert(<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().begin(), <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().end());</div>
-<div class="line"><span class="lineno">  268</span> </div>
-<div class="line"><span class="lineno">  269</span>    <span class="keywordtype">bool</span> matched{<span class="keyword">true</span>};</div>
-<div class="line"><span class="lineno">  270</span>    <span class="keywordflow">while</span> (matched) {</div>
-<div class="line"><span class="lineno">  271</span>        <span class="keyword">auto</span> matched_in_iteration{<span class="keyword">false</span>};</div>
-<div class="line"><span class="lineno">  272</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[pattern, replacement] : aliases) {</div>
-<div class="line"><span class="lineno">  273</span>            matched_in_iteration =</div>
-<div class="line"><span class="lineno">  274</span>                <a class="code hl_function" href="namespaceclanguml_1_1util.html#af03f03692e01199e8c12a3c60db21754" title="Find and replace in string.">util::replace_all</a>(full_name, pattern, replacement) ||</div>
-<div class="line"><span class="lineno">  275</span>                matched_in_iteration;</div>
-<div class="line"><span class="lineno">  276</span>        }</div>
-<div class="line"><span class="lineno">  277</span>        matched = matched_in_iteration;</div>
-<div class="line"><span class="lineno">  278</span>    }</div>
-<div class="line"><span class="lineno">  279</span> </div>
-<div class="line"><span class="lineno">  280</span>    <span class="keywordflow">return</span> full_name;</div>
-<div class="line"><span class="lineno">  281</span>}</div>
+<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00278">278</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  280</span>{</div>
+<div class="line"><span class="lineno">  281</span>    <a class="code hl_typedef" href="namespaceclanguml_1_1config.html#a8586f9b79088fafa3db6a26cabd96f22">type_aliases_longer_first_t</a> aliases;</div>
+<div class="line"><span class="lineno">  282</span>    aliases.insert(<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().begin(), <a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a24184e4b87ac507b5047df13b8679f97">type_aliases</a>().end());</div>
+<div class="line"><span class="lineno">  283</span> </div>
+<div class="line"><span class="lineno">  284</span>    <span class="keywordtype">bool</span> matched{<span class="keyword">true</span>};</div>
+<div class="line"><span class="lineno">  285</span>    <span class="keywordflow">while</span> (matched) {</div>
+<div class="line"><span class="lineno">  286</span>        <span class="keyword">auto</span> matched_in_iteration{<span class="keyword">false</span>};</div>
+<div class="line"><span class="lineno">  287</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[pattern, replacement] : aliases) {</div>
+<div class="line"><span class="lineno">  288</span>            matched_in_iteration =</div>
+<div class="line"><span class="lineno">  289</span>                <a class="code hl_function" href="namespaceclanguml_1_1util.html#af03f03692e01199e8c12a3c60db21754" title="Find and replace in string.">util::replace_all</a>(full_name, pattern, replacement) ||</div>
+<div class="line"><span class="lineno">  290</span>                matched_in_iteration;</div>
+<div class="line"><span class="lineno">  291</span>        }</div>
+<div class="line"><span class="lineno">  292</span>        matched = matched_in_iteration;</div>
+<div class="line"><span class="lineno">  293</span>    }</div>
+<div class="line"><span class="lineno">  294</span> </div>
+<div class="line"><span class="lineno">  295</span>    <span class="keywordflow">return</span> full_name;</div>
+<div class="line"><span class="lineno">  296</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -535,7 +543,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00589">589</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00613">613</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -551,7 +559,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00570">570</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00594">594</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -569,7 +577,7 @@ Friends</h2></td></tr>
 <b>Initial value:</b><div class="fragment DoxyCode"><div class="line">{</div>
 <div class="line">        <span class="stringliteral">&quot;combine_free_functions_into_file_participants&quot;</span>, <span class="keyword">false</span>}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00577">577</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00601">601</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -587,7 +595,7 @@ Friends</h2></td></tr>
 <b>Initial value:</b><div class="fragment DoxyCode"><div class="line">{</div>
 <div class="line">        <span class="stringliteral">&quot;comment_parser&quot;</span>, <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a8cfc1e2c5f2ed7b26e5153eb2bce1facaac7938d40cfc2307e2bf325d28e7884e">comment_parser_t::plain</a>}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00575">575</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00599">599</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -603,7 +611,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00587">587</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00611">611</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -619,7 +627,23 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00548">548</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00572">572</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a8db6ae78f02e4b1b063ec18d410781f9" name="a8db6ae78f02e4b1b063ec18d410781f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8db6ae78f02e4b1b063ec18d410781f9">&#9670;&#160;</a></span>filter_mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt;<a class="el" href="namespaceclanguml_1_1config.html#a1f0af361c663cf793ff0a28fa477da6d">filter_mode_t</a>&gt; clanguml::config::inheritable_diagram_options::filter_mode {&quot;filter_mode&quot;, <a class="el" href="namespaceclanguml_1_1config.html#a1f0af361c663cf793ff0a28fa477da6daf17aaabc20bfe045075927934fed52d2">filter_mode_t::basic</a>}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00569">569</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -637,7 +661,7 @@ Friends</h2></td></tr>
 <b>Initial value:</b><div class="fragment DoxyCode"><div class="line">{</div>
 <div class="line">        <span class="stringliteral">&quot;generate_concept_requirements&quot;</span>, <span class="keyword">true</span>}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00553">553</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00577">577</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -655,7 +679,7 @@ Friends</h2></td></tr>
 <b>Initial value:</b><div class="fragment DoxyCode"><div class="line">{</div>
 <div class="line">        <span class="stringliteral">&quot;generate_condition_statements&quot;</span>, <span class="keyword">false</span>}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00581">581</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00605">605</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -671,7 +695,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00565">565</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00589">589</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -687,7 +711,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00584">584</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00608">608</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -703,7 +727,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00588">588</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00612">612</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -721,7 +745,7 @@ Friends</h2></td></tr>
 <b>Initial value:</b><div class="fragment DoxyCode"><div class="line">{</div>
 <div class="line">        <span class="stringliteral">&quot;generate_method_arguments&quot;</span>, <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a47e1ea2110a20783e35007c3927dd958ae9dc924f238fa6cc29465942875fe8f0">method_arguments::full</a>}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00551">551</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00575">575</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -737,7 +761,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00558">558</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00582">582</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -753,7 +777,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00580">580</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00604">604</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -769,7 +793,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00571">571</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00595">595</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -787,7 +811,7 @@ Friends</h2></td></tr>
 <b>Initial value:</b><div class="fragment DoxyCode"><div class="line">{</div>
 <div class="line">        <span class="stringliteral">&quot;generate_template_argument_dependencies&quot;</span>, <span class="keyword">true</span>}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00561">561</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00585">585</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -803,23 +827,23 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00566">566</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00590">590</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
-<a id="ac54db8cfd5ef06c9963f2158f0494cf0" name="ac54db8cfd5ef06c9963f2158f0494cf0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac54db8cfd5ef06c9963f2158f0494cf0">&#9670;&#160;</a></span>glob</h2>
+<a id="abceda689b2a67bc8b4aec42da936e98d" name="abceda689b2a67bc8b4aec42da936e98d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abceda689b2a67bc8b4aec42da936e98d">&#9670;&#160;</a></span>glob</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt;std::vector&lt;std::string&gt; &gt; clanguml::config::inheritable_diagram_options::glob {&quot;glob&quot;}</td>
+          <td class="memname"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt;std::vector&lt;<a class="el" href="namespaceclanguml_1_1common.html#ae721081846956d4e338e399019f9bd6f">common::string_or_regex</a>&gt; &gt; clanguml::config::inheritable_diagram_options::glob {&quot;glob&quot;}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00542">542</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00564">564</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -835,7 +859,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00555">555</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00579">579</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -851,7 +875,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00547">547</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00571">571</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -869,7 +893,23 @@ Friends</h2></td></tr>
 <b>Initial value:</b><div class="fragment DoxyCode"><div class="line">{</div>
 <div class="line">        <span class="stringliteral">&quot;include_relations_also_as_members&quot;</span>, <span class="keyword">true</span>}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00545">545</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00567">567</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+
+</div>
+</div>
+<a id="a62ed3367d1547288ea49fee091dd2d4c" name="a62ed3367d1547288ea49fee091dd2d4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62ed3367d1547288ea49fee091dd2d4c">&#9670;&#160;</a></span>include_system_headers</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt;bool&gt; clanguml::config::inheritable_diagram_options::include_system_headers {&quot;include_system_headers&quot;, false}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00570">570</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -885,7 +925,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00579">579</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00603">603</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -901,7 +941,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00567">567</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00591">591</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -919,7 +959,7 @@ Friends</h2></td></tr>
 <b>Initial value:</b><div class="fragment DoxyCode"><div class="line">{</div>
 <div class="line">        <span class="stringliteral">&quot;member_order&quot;</span>, <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#aa4470d989737e49f463da70d4b195ef0ad472e6e0f43395e2f9397727dddccb58">member_order_t::lexical</a>}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00556">556</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00580">580</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -935,7 +975,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00550">550</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00574">574</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -953,7 +993,7 @@ Friends</h2></td></tr>
 <b>Initial value:</b><div class="fragment DoxyCode"><div class="line">{</div>
 <div class="line">        <span class="stringliteral">&quot;message_comment_width&quot;</span>, <a class="code hl_variable" href="namespaceclanguml_1_1util.html#aa5f3b8e1fc114ac7e3e6483889703bfe">clanguml::util::kDefaultMessageCommentWidth</a>}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00585">585</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00609">609</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -971,7 +1011,7 @@ Friends</h2></td></tr>
 <b>Initial value:</b><div class="fragment DoxyCode"><div class="line">{</div>
 <div class="line">        <span class="stringliteral">&quot;package_type&quot;</span>, <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a14a4eb84ab50b17d18f341eeb99f1343aa28886f1e6b46d18364aa513e58413c7">package_type_t::kNamespace</a>}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00559">559</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00583">583</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -987,7 +1027,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00583">583</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00607">607</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -1003,7 +1043,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00549">549</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00573">573</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -1019,7 +1059,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00572">572</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00596">596</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -1043,7 +1083,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00598">598</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00622">622</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -1061,7 +1101,7 @@ Friends</h2></td></tr>
 <b>Initial value:</b><div class="fragment DoxyCode"><div class="line">{</div>
 <div class="line">        <span class="stringliteral">&quot;skip_redundant_dependencies&quot;</span>, <span class="keyword">true</span>}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00563">563</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00587">587</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -1079,7 +1119,7 @@ Friends</h2></td></tr>
 <b>Initial value:</b><div class="fragment DoxyCode"><div class="line">{</div>
 <div class="line">        <span class="stringliteral">&quot;type_aliases&quot;</span>, <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#ad4a948db6733fee15fd76b76e6bca7a2aed5658e329d7469d2f08b7362619ffef">option_inherit_mode::kAppend</a>}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00573">573</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00597">597</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -1095,7 +1135,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00544">544</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00566">566</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -1111,7 +1151,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00543">543</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00565">565</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>

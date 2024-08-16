@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -124,7 +126,9 @@ $(function() {
 <li>file_&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#aeaf16546cbbbcfd3d20b90d749719afc">clanguml::common::model::source_location</a></li>
 <li>file_relative_&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html#acc9ab0dc6e0d86e4a513e92ee9bba57e">clanguml::common::model::source_location</a></li>
 <li>filter_&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">clanguml::common::model::diagram</a></li>
-<li>filters_&#160;:&#160;<a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html#aed6c9d864f4a3db0c0be81ea82f806c5">clanguml::common::model::anyof_filter</a></li>
+<li>filter_mode&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a8db6ae78f02e4b1b063ec18d410781f9">clanguml::config::inheritable_diagram_options</a></li>
+<li>filtered_&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a71252f976d28e2b1ce24030e3b8bdbb9">clanguml::common::model::diagram</a></li>
+<li>filters_&#160;:&#160;<a class="el" href="structclanguml_1_1common_1_1model_1_1allof__filter.html#ab6ffaf08c64ed11a9401009b55672861">clanguml::common::model::allof_filter</a>, <a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html#aed6c9d864f4a3db0c0be81ea82f806c5">clanguml::common::model::anyof_filter</a></li>
 <li>forward_&#160;:&#160;<a class="el" href="structclanguml_1_1common_1_1model_1_1edge__traversal__filter.html#a5d5e2e878d502e8064a59afa034d2f40">clanguml::common::model::edge_traversal_filter&lt; DiagramT, ElementT, ConfigEntryT, MatchOverrideT &gt;</a></li>
 <li>forward_declarations_&#160;:&#160;<a class="el" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a4dd988cb54a9770c7c18d45bb1955244">clanguml::class_diagram::visitor::translation_unit_visitor</a>, <a class="el" href="classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#a0440f9acd3f8b6441cd2c36b31748dd9">clanguml::sequence_diagram::visitor::translation_unit_visitor</a></li>
 <li>from&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1sequence__diagram.html#a9ed461fd67fe26be6c68a97c783ac866">clanguml::config::sequence_diagram</a></li>

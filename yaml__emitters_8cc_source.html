@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -314,8 +316,8 @@ $(function() {
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="group__yaml__emitters.html#ga220d8ce92a712a23d252844c917a9127">  187</a></span>YAML::Emitter &amp;<a class="code hl_function" href="group__yaml__emitters.html#gaa30754c425d2a1025aac1ecd06803655">operator&lt;&lt;</a>(YAML::Emitter &amp;out, <span class="keyword">const</span> <a class="code hl_struct" href="structclanguml_1_1config_1_1generate__links__config.html">generate_links_config</a> &amp;glc)</div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>{</div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    out &lt;&lt; YAML::BeginMap;</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;link&quot;</span> &lt;&lt; YAML::Value &lt;&lt; glc.<a class="code hl_variable" href="structclanguml_1_1config_1_1generate__links__config.html#a6787f347cd8a5cb80e9fa2c18654dd5d">link</a>;</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;tooltip&quot;</span> &lt;&lt; YAML::Value &lt;&lt; glc.<a class="code hl_variable" href="structclanguml_1_1config_1_1generate__links__config.html#a03d8cd5510c9896d74da3848893e48da">tooltip</a>;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;link&quot;</span> &lt;&lt; YAML::Value &lt;&lt; glc.<a class="code hl_variable" href="structclanguml_1_1config_1_1generate__links__config.html#ab5ba45e73ec48cf7be926eb9742b45f3">link</a>;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    out &lt;&lt; YAML::Key &lt;&lt; <span class="stringliteral">&quot;tooltip&quot;</span> &lt;&lt; YAML::Value &lt;&lt; glc.<a class="code hl_variable" href="structclanguml_1_1config_1_1generate__links__config.html#a375f1c8e57e55b1866bae38d12cb73ed">tooltip</a>;</div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    out &lt;&lt; YAML::EndMap;</div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordflow">return</span> out;</div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>}</div>
@@ -403,7 +405,7 @@ $(function() {
 <div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    out &lt;&lt; c.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#ae34168a865817700f60f07687851fbae">output_directory</a>;</div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    out &lt;&lt; c.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#abde13ead9b9cbdce8159d274a207cc41">query_driver</a>;</div>
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    out &lt;&lt; c.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a4963b2dad5d2aab0bd1ff08579a1c2ad">add_compile_flags</a>;</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    out &lt;&lt; c.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#aef019892269e371cf90fb5fc0697e984">remove_compile_flags</a>;</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    out &lt;&lt; c.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a28e627059935f58c0c1fb8baf49819a4">remove_compile_flags</a>;</div>
 <div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    out &lt;&lt; dynamic_cast&lt;const inheritable_diagram_options &amp;&gt;(c);</div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
@@ -441,7 +443,7 @@ $(function() {
 <div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    out &lt;&lt; c.<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a2a28253a6d95190f35a9a46aef76ca5e">exclude</a>;</div>
 <div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    out &lt;&lt; c.<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a7101d5d336c43758a272c6c0ddc71eed">generate_links</a>;</div>
 <div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    out &lt;&lt; c.<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ad1547712128cb611d4ac1850881ea9c8">git</a>;</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    out &lt;&lt; c.<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ac54db8cfd5ef06c9963f2158f0494cf0">glob</a>;</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    out &lt;&lt; c.<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#abceda689b2a67bc8b4aec42da936e98d">glob</a>;</div>
 <div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    out &lt;&lt; c.<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#afdfa6efcb97352a3ded3ad6dfb222cab">include</a>;</div>
 <div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    out &lt;&lt; c.<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a2e96e8de1b0968cec58a9586012e3d50">puml</a>;</div>
 <div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    out &lt;&lt; c.<a class="code hl_variable" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#aa2bbc9923b17e697e97a4224499a2899">relative_to</a>;</div>

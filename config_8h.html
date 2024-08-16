@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -274,6 +276,10 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespaceclanguml_1_1config.html#a8cfc1e2c5f2ed7b26e5153eb2bce1faca2c5517db7bc397f9b14ae357a7ce54ff">clanguml::config::clang</a>
  }</td></tr>
 <tr class="separator:a8cfc1e2c5f2ed7b26e5153eb2bce1fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f0af361c663cf793ff0a28fa477da6d"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1config.html#a1f0af361c663cf793ff0a28fa477da6d">clanguml::config::filter_mode_t</a> { <a class="el" href="namespaceclanguml_1_1config.html#a1f0af361c663cf793ff0a28fa477da6daf17aaabc20bfe045075927934fed52d2">clanguml::config::basic</a>
+, <a class="el" href="namespaceclanguml_1_1config.html#a1f0af361c663cf793ff0a28fa477da6da37c3450b6618a349e4890dcafff6b505">clanguml::config::advanced</a>
+ }</td></tr>
+<tr class="separator:a1f0af361c663cf793ff0a28fa477da6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2f149212123911eba44b79825a7dfe5"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1config.html#ab2f149212123911eba44b79825a7dfe5">clanguml::config::context_direction_t</a> { <a class="el" href="namespaceclanguml_1_1config.html#ab2f149212123911eba44b79825a7dfe5a38dd0cdb040a8c8bf027f85a6218941f">clanguml::config::inward</a>
 , <a class="el" href="namespaceclanguml_1_1config.html#ab2f149212123911eba44b79825a7dfe5afa81a44128f0ecd72e34491eeaa5fb17">clanguml::config::outward</a>
 , <a class="el" href="namespaceclanguml_1_1config.html#ab2f149212123911eba44b79825a7dfe5a100b8cad7cf2a56f6df78f171f97a1ec">clanguml::config::any</a>
@@ -311,6 +317,8 @@ Functions</h2></td></tr>
 <tr class="separator:ad8a589403c39eac2090a14daf8e69d95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b466f484418923540d7faac5adf6de6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1config.html#a0b466f484418923540d7faac5adf6de6">clanguml::config::to_string</a> (const <a class="el" href="namespaceclanguml_1_1config.html#a8cfc1e2c5f2ed7b26e5153eb2bce1fac">comment_parser_t</a> cp)</td></tr>
 <tr class="separator:a0b466f484418923540d7faac5adf6de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab40803d6ca3161563b51c1e62fd172a9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1config.html#ab40803d6ca3161563b51c1e62fd172a9">clanguml::config::to_string</a> (<a class="el" href="namespaceclanguml_1_1config.html#a1f0af361c663cf793ff0a28fa477da6d">filter_mode_t</a> fm)</td></tr>
+<tr class="separator:ab40803d6ca3161563b51c1e62fd172a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34e7a784200a6d0f130377b7c23780f3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1config.html#a34e7a784200a6d0f130377b7c23780f3">clanguml::config::to_string</a> (<a class="el" href="namespaceclanguml_1_1config.html#ab2f149212123911eba44b79825a7dfe5">context_direction_t</a> cd)</td></tr>
 <tr class="separator:a34e7a784200a6d0f130377b7c23780f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a151481cbc2ad3e232610830346d14d10"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1config.html#a151481cbc2ad3e232610830346d14d10">clanguml::config::to_string</a> (const <a class="el" href="namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892">hint_t</a> t)</td></tr>

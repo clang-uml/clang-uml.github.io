@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -122,7 +124,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="t20044---test-case-for-template-method-call-expressions-with-callables"></a></p>
-<h1><a class="anchor" id="config-121"></a>
+<h1><a class="anchor" id="config-125"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">add_compile_flags:</div>
 <div class="line">  - -fparse-all-comments</div>
@@ -143,7 +145,7 @@ Config</h1>
 <div class="line">    using_namespace: clanguml::t20044</div>
 <div class="line">    from:</div>
 <div class="line">      - function: &quot;clanguml::t20044::tmain()&quot;</div>
-</div><!-- fragment --> <h1><a class="anchor" id="source-code-121"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-125"></a>
 Source code</h1>
 <p>File <code>tests/t20044/t20044.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="comment">// #include &quot;include/expected.hpp&quot;</span></div>
 <div class="line"> </div>
@@ -245,17 +247,17 @@ Source code</h1>
 <div class="line">}</div>
 <div class="line">}</div>
 <div class="line">}</div>
-</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-121"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-125"></a>
 Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t20044_sequence.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-mermaid-diagrams-121"></a>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-125"></a>
 Generated Mermaid diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t20044_sequence_mermaid.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-json-models-121"></a>
+     <h1><a class="anchor" id="generated-json-models-125"></a>
 Generated JSON models</h1>
 <div class="fragment language-json"><div class="line">{</div>
 <div class="line">  &quot;diagram_type&quot;: &quot;sequence&quot;,</div>
@@ -282,7 +284,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20044::R::R((lambda at t20044.cc:74:9) &amp;&amp;)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;16975594751449851498&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;R&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20044&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 27,</div>
 <div class="line">            &quot;file&quot;: &quot;t20044.cc&quot;,</div>
@@ -312,7 +314,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20044::tmain()::(lambda t20044.cc:74:9)::operator()() const&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;6546857217762918655&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;operator()&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20044::tmain()&quot;,</div>
 <div class="line">          &quot;type&quot;: &quot;method&quot;</div>
 <div class="line">        }</div>
 <div class="line">      ],</div>
@@ -336,7 +338,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20044::A::a() const&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;6831600594577796197&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20044&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20044.cc&quot;,</div>
@@ -350,7 +352,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20044::A::a5()&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;13949529316163085262&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a5&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20044&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20044.cc&quot;,</div>
@@ -364,7 +366,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20044::A::a1() const&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;5611193800300214809&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a1&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20044&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20044.cc&quot;,</div>
@@ -378,7 +380,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20044::A::a2(int) const&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;681156560065952195&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a2&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20044&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20044.cc&quot;,</div>
@@ -408,7 +410,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20044::tmain()::(lambda t20044.cc:84:18)::operator()() const&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;3488770978421009441&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;operator()&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20044::tmain()&quot;,</div>
 <div class="line">          &quot;type&quot;: &quot;method&quot;</div>
 <div class="line">        }</div>
 <div class="line">      ],</div>
@@ -432,7 +434,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20044::detail::expected&lt;int,clanguml::t20044::error&gt;::expected(int)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;12315729204979881038&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;expected&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20044::detail::expected&lt;int, clanguml::t20044&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 14,</div>
 <div class="line">            &quot;file&quot;: &quot;t20044.cc&quot;,</div>
@@ -446,7 +448,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20044::detail::expected&lt;int,clanguml::t20044::error&gt;::and_then((lambda at t20044.cc:90:19) &amp;&amp;)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;3016587988242138783&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;and_then&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20044::detail::expected&lt;int, clanguml::t20044&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 29,</div>
 <div class="line">            &quot;file&quot;: &quot;t20044.cc&quot;,</div>
@@ -460,7 +462,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20044::detail::expected&lt;int,clanguml::t20044::error&gt;::and_then(result_t (&amp;)(int))&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;15799134065214219790&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;and_then&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20044::detail::expected&lt;int, clanguml::t20044&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 29,</div>
 <div class="line">            &quot;file&quot;: &quot;t20044.cc&quot;,</div>
@@ -474,7 +476,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20044::detail::expected&lt;int,clanguml::t20044::error&gt;::and_then(std::function&lt;result_t (int)&gt; &amp;)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;9828960440669252853&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;and_then&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20044::detail::expected&lt;int, clanguml::t20044&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 29,</div>
 <div class="line">            &quot;file&quot;: &quot;t20044.cc&quot;,</div>
@@ -488,7 +490,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20044::detail::expected&lt;int,clanguml::t20044::error&gt;::value() const&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;7638437815753644849&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;value&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20044::detail::expected&lt;int, clanguml::t20044&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 17,</div>
 <div class="line">            &quot;file&quot;: &quot;t20044.cc&quot;,</div>
@@ -518,7 +520,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20044::tmain()::(lambda t20044.cc:90:19)::operator()(auto &amp;&amp;) const&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;14144849039208834774&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;operator()&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20044::tmain()&quot;,</div>
 <div class="line">          &quot;type&quot;: &quot;method&quot;</div>
 <div class="line">        }</div>
 <div class="line">      ],</div>

@@ -1,9 +1,16 @@
 var searchData=
 [
-  ['filter_0',['filter',['../structclanguml_1_1config_1_1filter.html',1,'clanguml::config']]],
-  ['filter_5fvisitor_1',['filter_visitor',['../classclanguml_1_1common_1_1model_1_1filter__visitor.html',1,'clanguml::common::model']]],
-  ['formatter_3c_20clanguml_3a_3acommon_3a_3aeid_5ft_20_3e_2',['formatter&lt; clanguml::common::eid_t &gt;',['../classfmt_1_1formatter_3_01clanguml_1_1common_1_1eid__t_01_4.html',1,'fmt']]],
-  ['fs_5fpath_5fsep_3',['fs_path_sep',['../structclanguml_1_1common_1_1model_1_1fs__path__sep.html',1,'clanguml::common::model']]],
-  ['function_4',['function',['../structclanguml_1_1sequence__diagram_1_1model_1_1function.html',1,'clanguml::sequence_diagram::model']]],
-  ['function_5ftemplate_5',['function_template',['../structclanguml_1_1sequence__diagram_1_1model_1_1function__template.html',1,'clanguml::sequence_diagram::model']]]
+  ['edge_5ftraversal_5ffilter_0',['edge_traversal_filter',['../structclanguml_1_1common_1_1model_1_1edge__traversal__filter.html',1,'clanguml::common::model']]],
+  ['eid_5ft_1',['eid_t',['../classclanguml_1_1common_1_1eid__t.html',1,'clanguml::common']]],
+  ['element_2',['element',['../classclanguml_1_1common_1_1model_1_1element.html',1,'clanguml::common::model']]],
+  ['element_5ffilter_3',['element_filter',['../structclanguml_1_1common_1_1model_1_1element__filter.html',1,'clanguml::common::model']]],
+  ['element_5ftype_5ffilter_4',['element_type_filter',['../structclanguml_1_1common_1_1model_1_1element__type__filter.html',1,'clanguml::common::model']]],
+  ['element_5fview_5',['element_view',['../classclanguml_1_1common_1_1model_1_1element__view.html',1,'clanguml::common::model']]],
+  ['element_5fview_3c_20class_5f_20_3e_6',['element_view&lt; class_ &gt;',['../classclanguml_1_1common_1_1model_1_1element__view.html',1,'clanguml::common::model']]],
+  ['element_5fview_3c_20concept_5f_20_3e_7',['element_view&lt; concept_ &gt;',['../classclanguml_1_1common_1_1model_1_1element__view.html',1,'clanguml::common::model']]],
+  ['element_5fview_3c_20enum_5f_20_3e_8',['element_view&lt; enum_ &gt;',['../classclanguml_1_1common_1_1model_1_1element__view.html',1,'clanguml::common::model']]],
+  ['element_5fview_3c_20package_20_3e_9',['element_view&lt; package &gt;',['../classclanguml_1_1common_1_1model_1_1element__view.html',1,'clanguml::common::model']]],
+  ['element_5fview_3c_20source_5ffile_20_3e_10',['element_view&lt; source_file &gt;',['../classclanguml_1_1common_1_1model_1_1element__view.html',1,'clanguml::common::model']]],
+  ['empty_5fdiagram_5ferror_11',['empty_diagram_error',['../classclanguml_1_1error_1_1empty__diagram__error.html',1,'clanguml::error']]],
+  ['enum_5f_12',['enum_',['../classclanguml_1_1class__diagram_1_1model_1_1enum__.html',1,'clanguml::class_diagram::model']]]
 ];

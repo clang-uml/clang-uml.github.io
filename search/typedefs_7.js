@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['reference_5fset_0',['reference_set',['../namespaceclanguml_1_1common.html#a742408c40cde58190d01351dda001ffa',1,'clanguml::common']]],
-  ['reference_5fvector_1',['reference_vector',['../namespaceclanguml_1_1common.html#a890433df3c41bd4c468dbce1711eb02f',1,'clanguml::common']]],
-  ['relationship_5fhints_5ft_2',['relationship_hints_t',['../namespaceclanguml_1_1config.html#ac40cf9c99ff0efa06fdd3673ad06cf31',1,'clanguml::config']]]
+  ['package_5fdependants_5ffilter_5ft_0',['package_dependants_filter_t',['../namespaceclanguml_1_1common_1_1model.html#a388386b372d8ced9db56af66b2851fbe',1,'clanguml::common::model']]],
+  ['package_5fdependencies_5ffilter_5ft_1',['package_dependencies_filter_t',['../namespaceclanguml_1_1common_1_1model.html#aa7b6de9aaa62c90d4af839e8ef0c066d',1,'clanguml::common::model']]]
 ];

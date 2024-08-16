@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -134,7 +136,7 @@ $(function() {
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class representing an include diagram model. </p>
 
-<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8h_source.html#l00039">39</a> of file <a class="el" href="include__diagram_2model_2diagram_8h_source.html">diagram.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8h_source.html#l00042">42</a> of file <a class="el" href="include__diagram_2model_2diagram_8h_source.html">diagram.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="include__diagram_2model_2diagram_8h_source.html">diagram.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -181,6 +183,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae7c5b27b1e9e0b9cda7478988c181d1a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1include__diagram_1_1model_1_1diagram.html#ae7c5b27b1e9e0b9cda7478988c181d1a">is_empty</a> () const override</td></tr>
 <tr class="memdesc:ae7c5b27b1e9e0b9cda7478988c181d1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether the diagram is empty.  <br /></td></tr>
 <tr class="separator:ae7c5b27b1e9e0b9cda7478988c181d1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2317dfdd0dad04448e1a7688d637cc2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1include__diagram_1_1model_1_1diagram.html#a2317dfdd0dad04448e1a7688d637cc2f">apply_filter</a> () override</td></tr>
+<tr class="separator:a2317dfdd0dad04448e1a7688d637cc2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1model_1_1diagram')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html">clanguml::common::model::diagram</a></td></tr>
 <tr class="memitem:a85d100b56f07e5313dd20aefea448880 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a85d100b56f07e5313dd20aefea448880">diagram</a> ()</td></tr>
 <tr class="separator:a85d100b56f07e5313dd20aefea448880 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -243,6 +247,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a58dcff9ce67d47ece03b6e922c0bb406 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a58dcff9ce67d47ece03b6e922c0bb406">is_empty</a> () const =0</td></tr>
 <tr class="memdesc:a58dcff9ce67d47ece03b6e922c0bb406 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether the diagram is empty.  <br /></td></tr>
 <tr class="separator:a58dcff9ce67d47ece03b6e922c0bb406 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5c96e6b1a0b9f0fa4951bedca033196 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#ac5c96e6b1a0b9f0fa4951bedca033196">apply_filter</a> ()</td></tr>
+<tr class="separator:ac5c96e6b1a0b9f0fa4951bedca033196 inherit pub_methods_classclanguml_1_1common_1_1model_1_1diagram"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classclanguml_1_1common_1_1model_1_1element__view"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1model_1_1element__view')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1model_1_1element__view.html">clanguml::common::model::element_view&lt; source_file &gt;</a></td></tr>
 <tr class="memitem:adc136a15ef1ec67dfcf25c0d9444e17e inherit pub_methods_classclanguml_1_1common_1_1model_1_1element__view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element__view.html#adc136a15ef1ec67dfcf25c0d9444e17e">add</a> (std::reference_wrapper&lt; <a class="el" href="classclanguml_1_1common_1_1model_1_1source__file.html">source_file</a> &gt; <a class="el" href="classclanguml_1_1common_1_1model_1_1element.html">element</a>)</td></tr>
 <tr class="memdesc:adc136a15ef1ec67dfcf25c0d9444e17e inherit pub_methods_classclanguml_1_1common_1_1model_1_1element__view"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add reference to diagram element.  <br /></td></tr>
@@ -259,7 +265,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0313c071b64522eea1b8e740c88af69a inherit pub_methods_classclanguml_1_1common_1_1model_1_1element__view"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element__view.html#a0313c071b64522eea1b8e740c88af69a">is_empty</a> () const</td></tr>
 <tr class="memdesc:a0313c071b64522eea1b8e740c88af69a inherit pub_methods_classclanguml_1_1common_1_1model_1_1element__view"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether the element view is empty.  <br /></td></tr>
 <tr class="separator:a0313c071b64522eea1b8e740c88af69a inherit pub_methods_classclanguml_1_1common_1_1model_1_1element__view"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html">clanguml::common::model::nested_trait&lt; source_file, clanguml::common::model::filesystem_path &gt;</a></td></tr>
+<tr class="memitem:a40c57b96e79b704a7c0d4fe92707054f inherit pub_methods_classclanguml_1_1common_1_1model_1_1element__view"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1element__view.html#a40c57b96e79b704a7c0d4fe92707054f">remove</a> (const std::set&lt; <a class="el" href="classclanguml_1_1common_1_1eid__t.html">eid_t</a> &gt; &amp;element_ids)</td></tr>
+<tr class="separator:a40c57b96e79b704a7c0d4fe92707054f inherit pub_methods_classclanguml_1_1common_1_1model_1_1element__view"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html">clanguml::common::model::nested_trait&lt; T, Path &gt;</a></td></tr>
 <tr class="memitem:a172ad4022ddd01c9acd12e2ef2bf44b8 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a172ad4022ddd01c9acd12e2ef2bf44b8">nested_trait</a> ()=default</td></tr>
 <tr class="separator:a172ad4022ddd01c9acd12e2ef2bf44b8 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a600e17191b1d8fb44fa3524f4b0a61da inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a600e17191b1d8fb44fa3524f4b0a61da">nested_trait</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html">nested_trait</a> &amp;)=delete</td></tr>
@@ -272,34 +280,41 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a713ab8c6170807a67d2838dfa0027e6a inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4378bbc0abe5ac723ad605c5fd389e9 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#ad4378bbc0abe5ac723ad605c5fd389e9">~nested_trait</a> ()=default</td></tr>
 <tr class="separator:ad4378bbc0abe5ac723ad605c5fd389e9 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01151bae83ef399559963410b37c0aec inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a01151bae83ef399559963410b37c0aec">add_element</a> (std::unique_ptr&lt; V &gt; p)</td></tr>
+<tr class="memitem:a01151bae83ef399559963410b37c0aec inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memTemplParams" colspan="2">template&lt;typename V  = T&gt; </td></tr>
+<tr class="memitem:a01151bae83ef399559963410b37c0aec inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a01151bae83ef399559963410b37c0aec">add_element</a> (std::unique_ptr&lt; V &gt; p)</td></tr>
 <tr class="separator:a01151bae83ef399559963410b37c0aec inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e9ab97bfb339d44e8a29101556eb386 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a0e9ab97bfb339d44e8a29101556eb386">add_element</a> (const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a41c07153b646ee947722e46d8a461ffa">clanguml::common::model::filesystem_path</a> &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1path.html">path</a>, std::unique_ptr&lt; V &gt; p)</td></tr>
+<tr class="memitem:a0e9ab97bfb339d44e8a29101556eb386 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memTemplParams" colspan="2">template&lt;typename V  = T&gt; </td></tr>
+<tr class="memitem:a0e9ab97bfb339d44e8a29101556eb386 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a0e9ab97bfb339d44e8a29101556eb386">add_element</a> (const Path &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1path.html">path</a>, std::unique_ptr&lt; V &gt; p)</td></tr>
 <tr class="separator:a0e9ab97bfb339d44e8a29101556eb386 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1e744709489336ebad96d6ff512cc86 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#af1e744709489336ebad96d6ff512cc86">get_element</a> (const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a41c07153b646ee947722e46d8a461ffa">clanguml::common::model::filesystem_path</a> &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1path.html">path</a>) const</td></tr>
+<tr class="memitem:af1e744709489336ebad96d6ff512cc86 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memTemplParams" colspan="2">template&lt;typename V  = T&gt; </td></tr>
+<tr class="memitem:af1e744709489336ebad96d6ff512cc86 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#af1e744709489336ebad96d6ff512cc86">get_element</a> (const Path &amp;<a class="el" href="classclanguml_1_1common_1_1model_1_1path.html">path</a>) const</td></tr>
 <tr class="separator:af1e744709489336ebad96d6ff512cc86 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf31993cc5721b4c11e7c8facd6795d0 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#adf31993cc5721b4c11e7c8facd6795d0">get_element</a> (const std::string &amp;name) const</td></tr>
+<tr class="memitem:adf31993cc5721b4c11e7c8facd6795d0 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memTemplParams" colspan="2">template&lt;typename V  = T&gt; </td></tr>
+<tr class="memitem:adf31993cc5721b4c11e7c8facd6795d0 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#adf31993cc5721b4c11e7c8facd6795d0">get_element</a> (const std::string &amp;name) const</td></tr>
 <tr class="separator:adf31993cc5721b4c11e7c8facd6795d0 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c34b331180ee18a8750df9cf604f580 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a5c34b331180ee18a8750df9cf604f580">has_element</a> (const std::string &amp;name) const</td></tr>
 <tr class="separator:a5c34b331180ee18a8750df9cf604f580 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af09afb10989077543138c700767694fb inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#af09afb10989077543138c700767694fb">all_of</a> (F &amp;&amp;f) const</td></tr>
+<tr class="memitem:af09afb10989077543138c700767694fb inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memTemplParams" colspan="2">template&lt;typename F &gt; </td></tr>
+<tr class="memitem:af09afb10989077543138c700767694fb inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#af09afb10989077543138c700767694fb">all_of</a> (F &amp;&amp;f) const</td></tr>
 <tr class="separator:af09afb10989077543138c700767694fb inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c1ac129c7b595ffc342fef6eac25961 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a7c1ac129c7b595ffc342fef6eac25961">is_empty</a> () const</td></tr>
 <tr class="separator:a7c1ac129c7b595ffc342fef6eac25961 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad864e52d36ad32855763e52f25072e27 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#ad864e52d36ad32855763e52f25072e27">begin</a> ()</td></tr>
 <tr class="separator:ad864e52d36ad32855763e52f25072e27 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf0f26c49da783ba4fee677b74bbfeb4 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#acf0f26c49da783ba4fee677b74bbfeb4">begin</a> () const</td></tr>
-<tr class="separator:acf0f26c49da783ba4fee677b74bbfeb4 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17dfb861476aa2a980911aae8abbc236 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a17dfb861476aa2a980911aae8abbc236">end</a> ()</td></tr>
 <tr class="separator:a17dfb861476aa2a980911aae8abbc236 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26a51063c2901f0d0a6bc9c12d4ac5f7 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a26a51063c2901f0d0a6bc9c12d4ac5f7">end</a> () const</td></tr>
-<tr class="separator:a26a51063c2901f0d0a6bc9c12d4ac5f7 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f3a7253d851f01c9993425ce0351bd5 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a4f3a7253d851f01c9993425ce0351bd5">cbegin</a> () const</td></tr>
 <tr class="separator:a4f3a7253d851f01c9993425ce0351bd5 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa18c26911821b084d3888633ddb15529 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#aa18c26911821b084d3888633ddb15529">cend</a> () const</td></tr>
 <tr class="separator:aa18c26911821b084d3888633ddb15529 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf0f26c49da783ba4fee677b74bbfeb4 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#acf0f26c49da783ba4fee677b74bbfeb4">begin</a> () const</td></tr>
+<tr class="separator:acf0f26c49da783ba4fee677b74bbfeb4 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26a51063c2901f0d0a6bc9c12d4ac5f7 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a26a51063c2901f0d0a6bc9c12d4ac5f7">end</a> () const</td></tr>
+<tr class="separator:a26a51063c2901f0d0a6bc9c12d4ac5f7 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59769f9c865e85b8313873b7d189931a inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a59769f9c865e85b8313873b7d189931a">print_tree</a> (const int level)</td></tr>
 <tr class="separator:a59769f9c865e85b8313873b7d189931a inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ee8e2fdbe67073a044d0f1289dad4f3 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a6ee8e2fdbe67073a044d0f1289dad4f3">remove</a> (const std::set&lt; <a class="el" href="classclanguml_1_1common_1_1eid__t.html">eid_t</a> &gt; &amp;element_ids)</td></tr>
+<tr class="separator:a6ee8e2fdbe67073a044d0f1289dad4f3 inherit pub_methods_classclanguml_1_1common_1_1model_1_1nested__trait"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5530e6522c97bf9425326a9a9cb10ba1" name="a5530e6522c97bf9425326a9a9cb10ba1"></a>
@@ -404,54 +419,99 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8cc_source.html#l00043">43</a> of file <a class="el" href="include__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   44</span>{</div>
-<div class="line"><span class="lineno">   45</span>    <span class="comment">// Don&#39;t add the same file more than once</span></div>
-<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">if</span> (find&lt;source_file&gt;(f-&gt;id()))</div>
-<div class="line"><span class="lineno">   47</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   48</span> </div>
-<div class="line"><span class="lineno">   49</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding source file: {}, {}&quot;</span>, f-&gt;name(), f-&gt;fs_path().string());</div>
-<div class="line"><span class="lineno">   50</span> </div>
-<div class="line"><span class="lineno">   51</span>    <span class="keyword">auto</span> &amp;ff = *f;</div>
-<div class="line"><span class="lineno">   52</span> </div>
-<div class="line"><span class="lineno">   53</span>    assert(!ff.name().empty());</div>
-<div class="line"><span class="lineno">   54</span>    assert(ff.id().value() != 0);</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>    element_view&lt;source_file&gt;::add(ff);</div>
-<div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>    <span class="keyword">auto</span> p = ff.path();</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">if</span> (!f-&gt;path().is_empty()) {</div>
-<div class="line"><span class="lineno">   61</span>        <span class="comment">// If the parent path is not empty, ensure relative parent directories</span></div>
-<div class="line"><span class="lineno">   62</span>        <span class="comment">// of this source_file are in the diagram</span></div>
-<div class="line"><span class="lineno">   63</span>        <a class="code hl_typedef" href="namespaceclanguml_1_1common_1_1model.html#a41c07153b646ee947722e46d8a461ffa">common::model::filesystem_path</a> parent_path_so_far{</div>
-<div class="line"><span class="lineno">   64</span>            <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afa6fc48c2beb30c9fc68b676dc8d76e3ab6e2a655b3982da220543062a531248b">common::model::path_type::kFilesystem</a>};</div>
-<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;directory : f-&gt;path()) {</div>
-<div class="line"><span class="lineno">   66</span>            <span class="keyword">auto</span> source_file_path = parent_path_so_far | directory;</div>
-<div class="line"><span class="lineno">   67</span>            <span class="keywordflow">if</span> (parent_path_so_far.is_empty())</div>
-<div class="line"><span class="lineno">   68</span>                source_file_path = {directory};</div>
-<div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>            <span class="keyword">auto</span> dir = std::make_unique&lt;common::model::source_file&gt;(</div>
-<div class="line"><span class="lineno">   71</span>                std::filesystem::path{source_file_path.to_string()});</div>
-<div class="line"><span class="lineno">   72</span>            dir-&gt;set_type(<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a76d424355601791a04e7f55c4276cd87">common::model::source_file_t::kDirectory</a>);</div>
-<div class="line"><span class="lineno">   73</span> </div>
-<div class="line"><span class="lineno">   74</span>            assert(!dir-&gt;name().empty());</div>
-<div class="line"><span class="lineno">   75</span> </div>
-<div class="line"><span class="lineno">   76</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#af1e744709489336ebad96d6ff512cc86">get_element</a>(source_file_path).has_value()) {</div>
-<div class="line"><span class="lineno">   77</span>                <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1model_1_1diagram.html#aec72d8a9aac7def1f20a09e5ef10afe9" title="Add include diagram element, an include file.">add_file</a>(std::move(dir));</div>
-<div class="line"><span class="lineno">   78</span> </div>
-<div class="line"><span class="lineno">   79</span>                <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Added directory &#39;{}&#39; at path &#39;{}&#39;&quot;</span>, directory,</div>
-<div class="line"><span class="lineno">   80</span>                    parent_path_so_far.to_string());</div>
-<div class="line"><span class="lineno">   81</span>            }</div>
-<div class="line"><span class="lineno">   82</span> </div>
-<div class="line"><span class="lineno">   83</span>            parent_path_so_far.append(directory);</div>
-<div class="line"><span class="lineno">   84</span>        }</div>
-<div class="line"><span class="lineno">   85</span>    }</div>
-<div class="line"><span class="lineno">   86</span> </div>
-<div class="line"><span class="lineno">   87</span>    assert(p.type() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afa6fc48c2beb30c9fc68b676dc8d76e3ab6e2a655b3982da220543062a531248b">common::model::path_type::kFilesystem</a>);</div>
-<div class="line"><span class="lineno">   88</span> </div>
-<div class="line"><span class="lineno">   89</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a01151bae83ef399559963410b37c0aec">add_element</a>(p, std::move(f));</div>
+<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8cc_source.html#l00044">44</a> of file <a class="el" href="include__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   45</span>{</div>
+<div class="line"><span class="lineno">   46</span>    <span class="comment">// Don&#39;t add the same file more than once</span></div>
+<div class="line"><span class="lineno">   47</span>    <span class="keywordflow">if</span> (find&lt;source_file&gt;(f-&gt;id()))</div>
+<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   49</span> </div>
+<div class="line"><span class="lineno">   50</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding source file: {}, {}&quot;</span>, f-&gt;name(), f-&gt;fs_path().string());</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>    <span class="keyword">auto</span> &amp;ff = *f;</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>    assert(!ff.name().empty());</div>
+<div class="line"><span class="lineno">   55</span>    assert(ff.id().value() != 0);</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>    <span class="keyword">auto</span> p = ff.path();</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">if</span> (!f-&gt;path().is_empty()) {</div>
+<div class="line"><span class="lineno">   60</span>        <span class="comment">// If the parent path is not empty, ensure relative parent directories</span></div>
+<div class="line"><span class="lineno">   61</span>        <span class="comment">// of this source_file are in the diagram</span></div>
+<div class="line"><span class="lineno">   62</span>        <a class="code hl_typedef" href="namespaceclanguml_1_1common_1_1model.html#a41c07153b646ee947722e46d8a461ffa">common::model::filesystem_path</a> parent_path_so_far{</div>
+<div class="line"><span class="lineno">   63</span>            <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afa6fc48c2beb30c9fc68b676dc8d76e3ab6e2a655b3982da220543062a531248b">common::model::path_type::kFilesystem</a>};</div>
+<div class="line"><span class="lineno">   64</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;directory : f-&gt;path()) {</div>
+<div class="line"><span class="lineno">   65</span>            <span class="keyword">auto</span> source_file_path = parent_path_so_far | directory;</div>
+<div class="line"><span class="lineno">   66</span>            <span class="keywordflow">if</span> (parent_path_so_far.is_empty())</div>
+<div class="line"><span class="lineno">   67</span>                source_file_path = {directory};</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>            <span class="keyword">auto</span> dir = std::make_unique&lt;common::model::source_file&gt;(</div>
+<div class="line"><span class="lineno">   70</span>                std::filesystem::path{source_file_path.to_string()});</div>
+<div class="line"><span class="lineno">   71</span>            dir-&gt;set_type(<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a76d424355601791a04e7f55c4276cd87">common::model::source_file_t::kDirectory</a>);</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>            assert(!dir-&gt;name().empty());</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#af1e744709489336ebad96d6ff512cc86">get_element</a>(source_file_path).has_value()) {</div>
+<div class="line"><span class="lineno">   76</span>                <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1model_1_1diagram.html#aec72d8a9aac7def1f20a09e5ef10afe9" title="Add include diagram element, an include file.">add_file</a>(std::move(dir));</div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>                <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Added directory &#39;{}&#39; at path &#39;{}&#39;&quot;</span>, directory,</div>
+<div class="line"><span class="lineno">   79</span>                    parent_path_so_far.to_string());</div>
+<div class="line"><span class="lineno">   80</span>            }</div>
+<div class="line"><span class="lineno">   81</span> </div>
+<div class="line"><span class="lineno">   82</span>            parent_path_so_far.append(directory);</div>
+<div class="line"><span class="lineno">   83</span>        }</div>
+<div class="line"><span class="lineno">   84</span>    }</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>    assert(p.type() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afa6fc48c2beb30c9fc68b676dc8d76e3ab6e2a655b3982da220543062a531248b">common::model::path_type::kFilesystem</a>);</div>
+<div class="line"><span class="lineno">   87</span> </div>
+<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a01151bae83ef399559963410b37c0aec">add_element</a>(p, std::move(f)))</div>
+<div class="line"><span class="lineno">   89</span>        element_view&lt;source_file&gt;::add(ff);</div>
 <div class="line"><span class="lineno">   90</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2317dfdd0dad04448e1a7688d637cc2f" name="a2317dfdd0dad04448e1a7688d637cc2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2317dfdd0dad04448e1a7688d637cc2f">&#9670;&#160;</a></span>apply_filter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::include_diagram::model::diagram::apply_filter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#ac5c96e6b1a0b9f0fa4951bedca033196">clanguml::common::model::diagram</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8cc_source.html#l00136">136</a> of file <a class="el" href="include__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  137</span>{</div>
+<div class="line"><span class="lineno">  138</span>    <span class="comment">// First find all element ids which should be removed</span></div>
+<div class="line"><span class="lineno">  139</span>    std::set&lt;eid_t&gt; to_remove;</div>
+<div class="line"><span class="lineno">  140</span> </div>
+<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;f : element_view&lt;source_file&gt;::<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a4ebcaf3cc89e0b529561328958b044e5" title="Get collection of reference to diagram elements.">view</a>())</div>
+<div class="line"><span class="lineno">  142</span>        if (f.<a class="code hl_function" href="classclanguml_1_1include__diagram_1_1model_1_1diagram.html#a873b40059afd3974fd81e5e520de32ae" title="Search for element in the diagram by fully qualified name.">get</a>().<a class="code hl_function" href="classclanguml_1_1include__diagram_1_1model_1_1diagram.html#a4efcbd1490276af4ea9b20e0f9e793d7" title="Get the diagram model type - in this case include.">type</a>() != common::model::<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9">source_file_t</a>::<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a76d424355601791a04e7f55c4276cd87">kDirectory</a> &amp;&amp;</div>
+<div class="line"><span class="lineno">  143</span>            !<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#aa481d90d5c8046c6de6795bd0891d66b">filter</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#a54269f0d60c924889da64cef8812126b">should_include</a>(f.<a class="code hl_function" href="classclanguml_1_1include__diagram_1_1model_1_1diagram.html#a873b40059afd3974fd81e5e520de32ae" title="Search for element in the diagram by fully qualified name.">get</a>())) {</div>
+<div class="line"><span class="lineno">  144</span>            to_remove.emplace(f.get().id());</div>
+<div class="line"><span class="lineno">  145</span>        }</div>
+<div class="line"><span class="lineno">  146</span> </div>
+<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;sf : element_view&lt;source_file&gt;::<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a4ebcaf3cc89e0b529561328958b044e5" title="Get collection of reference to diagram elements.">view</a>())</div>
+<div class="line"><span class="lineno">  148</span>        sf.<a class="code hl_function" href="classclanguml_1_1include__diagram_1_1model_1_1diagram.html#a873b40059afd3974fd81e5e520de32ae" title="Search for element in the diagram by fully qualified name.">get</a>().<a class="code hl_function" href="classclanguml_1_1include__diagram_1_1model_1_1diagram.html#a2317dfdd0dad04448e1a7688d637cc2f">apply_filter</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#aa481d90d5c8046c6de6795bd0891d66b">filter</a>(), to_remove);</div>
+<div class="line"><span class="lineno">  149</span> </div>
+<div class="line"><span class="lineno">  150</span>    element_view&lt;source_file&gt;::remove(to_remove);</div>
+<div class="line"><span class="lineno">  151</span> </div>
+<div class="line"><span class="lineno">  152</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a6ee8e2fdbe67073a044d0f1289dad4f3">nested_trait_fspath::remove</a>(to_remove);</div>
+<div class="line"><span class="lineno">  153</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -561,22 +621,22 @@ template&lt;typename ElementT &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Optional reference to a diagram element </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8h_source.html#l00134">134</a> of file <a class="el" href="include__diagram_2model_2diagram_8h_source.html">diagram.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  135</span>{</div>
-<div class="line"><span class="lineno">  136</span>    <span class="comment">// Convert the name to the OS preferred path</span></div>
-<div class="line"><span class="lineno">  137</span>    std::filesystem::path namePath{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#a007510b23fb0810f7720b032d0efa42e">name</a>};</div>
-<div class="line"><span class="lineno">  138</span>    namePath.make_preferred();</div>
-<div class="line"><span class="lineno">  139</span> </div>
-<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;element : element_view&lt;ElementT&gt;::<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a4ebcaf3cc89e0b529561328958b044e5" title="Get collection of reference to diagram elements.">view</a>()) {</div>
-<div class="line"><span class="lineno">  141</span>        <span class="keyword">const</span> <span class="keyword">auto</span> full_name = element.get().full_name(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  142</span> </div>
-<div class="line"><span class="lineno">  143</span>        <span class="keywordflow">if</span> (full_name == namePath.string()) {</div>
-<div class="line"><span class="lineno">  144</span>            <span class="keywordflow">return</span> {element};</div>
-<div class="line"><span class="lineno">  145</span>        }</div>
-<div class="line"><span class="lineno">  146</span>    }</div>
-<div class="line"><span class="lineno">  147</span> </div>
-<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  149</span>}</div>
+<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8h_source.html#l00138">138</a> of file <a class="el" href="include__diagram_2model_2diagram_8h_source.html">diagram.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  139</span>{</div>
+<div class="line"><span class="lineno">  140</span>    <span class="comment">// Convert the name to the OS preferred path</span></div>
+<div class="line"><span class="lineno">  141</span>    std::filesystem::path namePath{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#a007510b23fb0810f7720b032d0efa42e">name</a>};</div>
+<div class="line"><span class="lineno">  142</span>    namePath.make_preferred();</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;element : element_view&lt;ElementT&gt;::<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a4ebcaf3cc89e0b529561328958b044e5" title="Get collection of reference to diagram elements.">view</a>()) {</div>
+<div class="line"><span class="lineno">  145</span>        <span class="keyword">const</span> <span class="keyword">auto</span> full_name = element.get().full_name(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  146</span> </div>
+<div class="line"><span class="lineno">  147</span>        <span class="keywordflow">if</span> (full_name == namePath.string()) {</div>
+<div class="line"><span class="lineno">  148</span>            <span class="keywordflow">return</span> {element};</div>
+<div class="line"><span class="lineno">  149</span>        }</div>
+<div class="line"><span class="lineno">  150</span>    }</div>
+<div class="line"><span class="lineno">  151</span> </div>
+<div class="line"><span class="lineno">  152</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  153</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -614,16 +674,16 @@ template&lt;typename ElementT &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Optional reference to a diagram element </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8h_source.html#l00151">151</a> of file <a class="el" href="include__diagram_2model_2diagram_8h_source.html">diagram.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  152</span>{</div>
-<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;element : element_view&lt;ElementT&gt;::<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a4ebcaf3cc89e0b529561328958b044e5" title="Get collection of reference to diagram elements.">view</a>()) {</div>
-<div class="line"><span class="lineno">  154</span>        <span class="keywordflow">if</span> (element.get().id() == <span class="keywordtype">id</span>) {</div>
-<div class="line"><span class="lineno">  155</span>            <span class="keywordflow">return</span> {element};</div>
-<div class="line"><span class="lineno">  156</span>        }</div>
-<div class="line"><span class="lineno">  157</span>    }</div>
-<div class="line"><span class="lineno">  158</span> </div>
-<div class="line"><span class="lineno">  159</span>    <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  160</span>}</div>
+<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8h_source.html#l00155">155</a> of file <a class="el" href="include__diagram_2model_2diagram_8h_source.html">diagram.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  156</span>{</div>
+<div class="line"><span class="lineno">  157</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;element : element_view&lt;ElementT&gt;::<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1element__view.html#a4ebcaf3cc89e0b529561328958b044e5" title="Get collection of reference to diagram elements.">view</a>()) {</div>
+<div class="line"><span class="lineno">  158</span>        <span class="keywordflow">if</span> (element.get().id() == <span class="keywordtype">id</span>) {</div>
+<div class="line"><span class="lineno">  159</span>            <span class="keywordflow">return</span> {element};</div>
+<div class="line"><span class="lineno">  160</span>        }</div>
+<div class="line"><span class="lineno">  161</span>    }</div>
+<div class="line"><span class="lineno">  162</span> </div>
+<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  164</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -662,10 +722,10 @@ template&lt;typename ElementT &gt; </div>
 
 <p>Implements <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a223c549fa6e2d54287136bbbb0834528">clanguml::common::model::diagram</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8cc_source.html#l00031">31</a> of file <a class="el" href="include__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   33</span>{</div>
-<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">return</span> find&lt;source_file&gt;(full_name);</div>
-<div class="line"><span class="lineno">   35</span>}</div>
+<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8cc_source.html#l00032">32</a> of file <a class="el" href="include__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   34</span>{</div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">return</span> find&lt;source_file&gt;(full_name);</div>
+<div class="line"><span class="lineno">   36</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -704,10 +764,10 @@ template&lt;typename ElementT &gt; </div>
 
 <p>Implements <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#aac4a39a4989ae679ef4ba9ee782a437f">clanguml::common::model::diagram</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8cc_source.html#l00037">37</a> of file <a class="el" href="include__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   39</span>{</div>
-<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">return</span> find&lt;source_file&gt;(<span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">   41</span>}</div>
+<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8cc_source.html#l00038">38</a> of file <a class="el" href="include__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   40</span>{</div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">return</span> find&lt;source_file&gt;(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">   42</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -805,8 +865,8 @@ template&lt;typename ElementT &gt; </div>
 
 <p>Implements <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a58dcff9ce67d47ece03b6e922c0bb406">clanguml::common::model::diagram</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8cc_source.html#l00136">136</a> of file <a class="el" href="include__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  136</span>{ <span class="keywordflow">return</span> element_view&lt;source_file&gt;::is_empty(); }</div>
+<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8cc_source.html#l00155">155</a> of file <a class="el" href="include__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  155</span>{ <span class="keywordflow">return</span> element_view&lt;source_file&gt;::is_empty(); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -890,10 +950,10 @@ template&lt;typename ElementT &gt; </div>
 
 <p>Implements <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a7ed8e730b29e0a0038fb615f4fdd0508">clanguml::common::model::diagram</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8cc_source.html#l00026">26</a> of file <a class="el" href="include__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   27</span>{</div>
-<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffa279a35d9e230b4c8a0796fdf6f0d5360">common::model::diagram_t::kInclude</a>;</div>
-<div class="line"><span class="lineno">   29</span>}</div>
+<p class="definition">Definition at line <a class="el" href="include__diagram_2model_2diagram_8cc_source.html#l00027">27</a> of file <a class="el" href="include__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   28</span>{</div>
+<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffa279a35d9e230b4c8a0796fdf6f0d5360">common::model::diagram_t::kInclude</a>;</div>
+<div class="line"><span class="lineno">   30</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

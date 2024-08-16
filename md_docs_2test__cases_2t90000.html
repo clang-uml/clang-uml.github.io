@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -122,12 +124,14 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="t90000---basic-config-test"></a></p>
-<h1><a class="anchor" id="config-150"></a>
+<h1><a class="anchor" id="config-155"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">allow_empty_diagrams: true</div>
 <div class="line">diagrams:</div>
 <div class="line">  t90000_class:</div>
 <div class="line">    type: class</div>
+<div class="line">    glob:</div>
+<div class="line">      - NONE</div>
 <div class="line">    plantuml:</div>
 <div class="line">      before:</div>
 <div class="line">        - &#39;class &quot;Foo&quot; as C_001&#39;</div>
@@ -155,19 +159,19 @@ Config</h1>
 <div class="line">        - &#39;class C_002[&quot;Boo&quot;]&#39;</div>
 <div class="line">        - &#39;class C_002 {&#39;</div>
 <div class="line">        - &#39;}&#39;</div>
-</div><!-- fragment --> <h1><a class="anchor" id="source-code-150"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-155"></a>
 Source code</h1>
-<p>File <code>tests/t90000/t90000.cc</code> </p><div class="fragment language-cpp"></div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-150"></a>
+<p>File <code>tests/t90000/t90000.cc</code> </p><div class="fragment language-cpp"></div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-155"></a>
 Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t90000_class.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-mermaid-diagrams-150"></a>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-155"></a>
 Generated Mermaid diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t90000_class_mermaid.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-json-models-150"></a>
+     <h1><a class="anchor" id="generated-json-models-155"></a>
 Generated JSON models</h1>
 <div class="fragment language-json"><div class="line">{</div>
 <div class="line">  &quot;diagram_type&quot;: &quot;class&quot;,</div>

@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -146,6 +148,8 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a1986bca6747e950f512e89eab8f60b07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators.html#a1986bca6747e950f512e89eab8f60b07">clanguml::common::generators::make_context_source_relative</a> (inja::json &amp;context, const std::string &amp;prefix)</td></tr>
+<tr class="separator:a1986bca6747e950f512e89eab8f60b07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae97379674aebf36ef8719d83703539bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1generators.html#ae97379674aebf36ef8719d83703539bb">clanguml::common::generators::find_translation_units_for_diagrams</a> (const std::vector&lt; std::string &gt; &amp;diagram_names, <a class="el" href="structclanguml_1_1config_1_1config.html">clanguml::config::config</a> &amp;config, const std::vector&lt; std::string &gt; &amp;compilation_database_files, std::map&lt; std::string, std::vector&lt; std::string &gt; &gt; &amp;translation_units_map)</td></tr>
 <tr class="memdesc:ae97379674aebf36ef8719d83703539bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assign translation units to diagrams.  <br /></td></tr>
 <tr class="separator:ae97379674aebf36ef8719d83703539bb"><td class="memSeparator" colspan="2">&#160;</td></tr>

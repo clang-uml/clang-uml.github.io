@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -285,13 +287,14 @@ $(function() {
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a5b8013f8ee3f106a8f9cf0eaa3e88f5e" title="Convert config to model message render mode.">select_method_arguments_render_mode</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a64de3cbabc7a0dac5a9dbe3154f9a954">  160</a></span>    <span class="keyword">mutable</span> std::set&lt;eid_t&gt; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a64de3cbabc7a0dac5a9dbe3154f9a954">generated_participants_</a>;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a484ae8c33841ab0a19cd427ff9bed2f9">  161</a></span>    <span class="keyword">mutable</span> std::vector&lt;model::message&gt; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a484ae8c33841ab0a19cd427ff9bed2f9">already_generated_in_static_context_</a>;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>};</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>} <span class="comment">// namespace plantuml</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>} <span class="comment">// namespace generators</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>} <span class="comment">// namespace sequence_diagram</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>} <span class="comment">// namespace clanguml</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a14ec42bac679ebef95addd5afb687641">  161</a></span>    <span class="keyword">mutable</span> std::set&lt;unsigned int&gt; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a14ec42bac679ebef95addd5afb687641">generated_comment_ids_</a>;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a484ae8c33841ab0a19cd427ff9bed2f9">  162</a></span>    <span class="keyword">mutable</span> std::vector&lt;model::message&gt; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a484ae8c33841ab0a19cd427ff9bed2f9">already_generated_in_static_context_</a>;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>};</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>} <span class="comment">// namespace plantuml</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>} <span class="comment">// namespace generators</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>} <span class="comment">// namespace sequence_diagram</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>} <span class="comment">// namespace clanguml</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

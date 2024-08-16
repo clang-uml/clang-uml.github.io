@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -203,6 +205,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a58dcff9ce67d47ece03b6e922c0bb406"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a58dcff9ce67d47ece03b6e922c0bb406">is_empty</a> () const =0</td></tr>
 <tr class="memdesc:a58dcff9ce67d47ece03b6e922c0bb406"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether the diagram is empty.  <br /></td></tr>
 <tr class="separator:a58dcff9ce67d47ece03b6e922c0bb406"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5c96e6b1a0b9f0fa4951bedca033196"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#ac5c96e6b1a0b9f0fa4951bedca033196">apply_filter</a> ()</td></tr>
+<tr class="separator:ac5c96e6b1a0b9f0fa4951bedca033196"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -212,6 +216,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a61110bc82687b4532041507f28fea67e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46adc1ba962d3d12d83cf6b37257a3e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a46adc1ba962d3d12d83cf6b37257a3e0">complete_</a> {false}</td></tr>
 <tr class="separator:a46adc1ba962d3d12d83cf6b37257a3e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71252f976d28e2b1ce24030e3b8bdbb9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram.html#a71252f976d28e2b1ce24030e3b8bdbb9">filtered_</a> {false}</td></tr>
+<tr class="separator:a71252f976d28e2b1ce24030e3b8bdbb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a85d100b56f07e5313dd20aefea448880" name="a85d100b56f07e5313dd20aefea448880"></a>
@@ -317,6 +323,36 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac5c96e6b1a0b9f0fa4951bedca033196" name="ac5c96e6b1a0b9f0fa4951bedca033196"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5c96e6b1a0b9f0fa4951bedca033196">&#9670;&#160;</a></span>apply_filter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void clanguml::common::model::diagram::apply_filter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classclanguml_1_1class__diagram_1_1model_1_1diagram.html#a6102158a37ed07c70e85a3bb3540e54a">clanguml::class_diagram::model::diagram</a>, <a class="el" href="classclanguml_1_1include__diagram_1_1model_1_1diagram.html#a2317dfdd0dad04448e1a7688d637cc2f">clanguml::include_diagram::model::diagram</a>, and <a class="el" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a87b4d29ad0d05670555df1bd09261d64">clanguml::package_diagram::model::diagram</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8h_source.html#l00174">174</a> of file <a class="el" href="common_2model_2diagram_8h_source.html">diagram.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  174</span>{ }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a5ac51e036e33af127e9aed39dae97609" name="a5ac51e036e33af127e9aed39dae97609"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5ac51e036e33af127e9aed39dae97609">&#9670;&#160;</a></span>complete()</h2>
 
@@ -429,7 +465,11 @@ Private Attributes</h2></td></tr>
 <p>Reimplemented in <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#ac6bc66bec76fe360eac38f507d53da13">clanguml::sequence_diagram::model::diagram</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8cc_source.html#l00062">62</a> of file <a class="el" href="common_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   62</span>{ }</div>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   63</span>{</div>
+<div class="line"><span class="lineno">   64</span>    <span class="comment">// Remove elements that do not match the filter</span></div>
+<div class="line"><span class="lineno">   65</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#ac5c96e6b1a0b9f0fa4951bedca033196">apply_filter</a>();</div>
+<div class="line"><span class="lineno">   66</span>    <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a71252f976d28e2b1ce24030e3b8bdbb9">filtered_</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   67</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -806,13 +846,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8cc_source.html#l00094">94</a> of file <a class="el" href="common_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   95</span>{</div>
-<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>.get() == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">   97</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   98</span> </div>
-<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>-&gt;should_include(s);</div>
-<div class="line"><span class="lineno">  100</span>}</div>
+<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8cc_source.html#l00110">110</a> of file <a class="el" href="common_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  111</span>{</div>
+<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>.get() == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  113</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  114</span> </div>
+<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>-&gt;should_include(s);</div>
+<div class="line"><span class="lineno">  116</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -832,14 +872,22 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8cc_source.html#l00064">64</a> of file <a class="el" href="common_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   65</span>{</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>.get() == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   68</span> </div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>-&gt;should_include(e) &amp;&amp;</div>
-<div class="line"><span class="lineno">   70</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>-&gt;should_include(<span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>source_location &amp;<span class="keyword">&gt;</span>(e));</div>
-<div class="line"><span class="lineno">   71</span>}</div>
+<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8cc_source.html#l00069">69</a> of file <a class="el" href="common_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   70</span>{</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a71252f976d28e2b1ce24030e3b8bdbb9">filtered_</a>)</div>
+<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>.get() == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#a5ac51e036e33af127e9aed39dae97609" title="Whether the diagram is complete.">complete</a>()) {</div>
+<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>-&gt;should_include(</div>
+<div class="line"><span class="lineno">   79</span>            <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>source_location &amp;<span class="keyword">&gt;</span>(e));</div>
+<div class="line"><span class="lineno">   80</span>    }</div>
+<div class="line"><span class="lineno">   81</span> </div>
+<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>-&gt;should_include(e) &amp;&amp;</div>
+<div class="line"><span class="lineno">   83</span>        <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>-&gt;should_include(<span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>source_location &amp;<span class="keyword">&gt;</span>(e));</div>
+<div class="line"><span class="lineno">   84</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -859,13 +907,16 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8cc_source.html#l00073">73</a> of file <a class="el" href="common_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   74</span>{</div>
-<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>.get() == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">   76</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   77</span> </div>
-<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>-&gt;should_include(ns);</div>
-<div class="line"><span class="lineno">   79</span>}</div>
+<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8cc_source.html#l00086">86</a> of file <a class="el" href="common_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   87</span>{</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a71252f976d28e2b1ce24030e3b8bdbb9">filtered_</a>)</div>
+<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>.get() == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   92</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>-&gt;should_include(ns);</div>
+<div class="line"><span class="lineno">   95</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -903,13 +954,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8cc_source.html#l00102">102</a> of file <a class="el" href="common_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  104</span>{</div>
-<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>.get() == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  106</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  107</span> </div>
-<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>-&gt;should_include(ns, <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#a007510b23fb0810f7720b032d0efa42e">name</a>);</div>
-<div class="line"><span class="lineno">  109</span>}</div>
+<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8cc_source.html#l00118">118</a> of file <a class="el" href="common_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  120</span>{</div>
+<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>.get() == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  122</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  123</span> </div>
+<div class="line"><span class="lineno">  124</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>-&gt;should_include(ns, <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#a007510b23fb0810f7720b032d0efa42e">name</a>);</div>
+<div class="line"><span class="lineno">  125</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -929,13 +980,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8cc_source.html#l00111">111</a> of file <a class="el" href="common_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  112</span>{</div>
-<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>.get() == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  114</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  115</span> </div>
-<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>-&gt;should_include(f);</div>
-<div class="line"><span class="lineno">  117</span>}</div>
+<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8cc_source.html#l00127">127</a> of file <a class="el" href="common_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  128</span>{</div>
+<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>.get() == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  130</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  131</span> </div>
+<div class="line"><span class="lineno">  132</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>-&gt;should_include(f);</div>
+<div class="line"><span class="lineno">  133</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -981,10 +1032,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8cc_source.html#l00081">81</a> of file <a class="el" href="common_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   82</span>{</div>
-<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#a54269f0d60c924889da64cef8812126b">should_include</a>(r.type());</div>
-<div class="line"><span class="lineno">   84</span>}</div>
+<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8cc_source.html#l00097">97</a> of file <a class="el" href="common_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   98</span>{</div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#a54269f0d60c924889da64cef8812126b">should_include</a>(r.type());</div>
+<div class="line"><span class="lineno">  100</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1004,13 +1055,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8cc_source.html#l00086">86</a> of file <a class="el" href="common_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   87</span>{</div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>.get() == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   90</span> </div>
-<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>-&gt;should_include(r);</div>
-<div class="line"><span class="lineno">   92</span>}</div>
+<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8cc_source.html#l00102">102</a> of file <a class="el" href="common_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  103</span>{</div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>.get() == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  106</span> </div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1diagram.html#a61110bc82687b4532041507f28fea67e">filter_</a>-&gt;should_include(r);</div>
+<div class="line"><span class="lineno">  108</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1065,7 +1116,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8h_source.html#l00177">177</a> of file <a class="el" href="common_2model_2diagram_8h_source.html">diagram.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8h_source.html#l00179">179</a> of file <a class="el" href="common_2model_2diagram_8h_source.html">diagram.h</a>.</p>
 
 </div>
 </div>
@@ -1089,7 +1140,31 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8h_source.html#l00176">176</a> of file <a class="el" href="common_2model_2diagram_8h_source.html">diagram.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8h_source.html#l00178">178</a> of file <a class="el" href="common_2model_2diagram_8h_source.html">diagram.h</a>.</p>
+
+</div>
+</div>
+<a id="a71252f976d28e2b1ce24030e3b8bdbb9" name="a71252f976d28e2b1ce24030e3b8bdbb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71252f976d28e2b1ce24030e3b8bdbb9">&#9670;&#160;</a></span>filtered_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::common::model::diagram::filtered_ {false}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8h_source.html#l00180">180</a> of file <a class="el" href="common_2model_2diagram_8h_source.html">diagram.h</a>.</p>
 
 </div>
 </div>
@@ -1113,7 +1188,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8h_source.html#l00175">175</a> of file <a class="el" href="common_2model_2diagram_8h_source.html">diagram.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="common_2model_2diagram_8h_source.html#l00177">177</a> of file <a class="el" href="common_2model_2diagram_8h_source.html">diagram.h</a>.</p>
 
 </div>
 </div>

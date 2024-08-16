@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -128,6 +130,7 @@ $(function() {
 <li>in_static_declaration_context_&#160;:&#160;<a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a44405631a3fdf547307c4fcc4fbbefee">clanguml::sequence_diagram::model::message</a></li>
 <li>include&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#afdfa6efcb97352a3ded3ad6dfb222cab">clanguml::config::inheritable_diagram_options</a></li>
 <li>include_relations_also_as_members&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a82a375af97c191998f84350c2bc8f6fa">clanguml::config::inheritable_diagram_options</a></li>
+<li>include_system_headers&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a62ed3367d1547288ea49fee091dd2d4c">clanguml::config::inheritable_diagram_options</a></li>
 <li>inclusive_&#160;:&#160;<a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a252830b453314731f2e5c3bdffba8e28">clanguml::common::model::diagram_filter</a></li>
 <li>index&#160;:&#160;<a class="el" href="structclanguml_1_1common_1_1generators_1_1progress__indicator_1_1progress__state.html#a6c005f463a1418dfd643fb1c94c65ff5">clanguml::common::generators::progress_indicator::progress_state</a></li>
 <li>inheritance_mode&#160;:&#160;<a class="el" href="structclanguml_1_1config_1_1option.html#a6dff0154193958944d08d72383ab00a1">clanguml::config::option&lt; T &gt;</a></li>

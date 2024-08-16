@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -122,7 +124,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="t20020---if-statement-sequence-diagram-test-case"></a></p>
-<h1><a class="anchor" id="config-97"></a>
+<h1><a class="anchor" id="config-101"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  t20020_sequence:</div>
@@ -135,7 +137,7 @@ Config</h1>
 <div class="line">    using_namespace: clanguml::t20020</div>
 <div class="line">    from:</div>
 <div class="line">      - function: &quot;clanguml::t20020::tmain()&quot;</div>
-</div><!-- fragment --> <h1><a class="anchor" id="source-code-97"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-101"></a>
 Source code</h1>
 <p>File <code>tests/t20020/t20020.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
@@ -227,17 +229,17 @@ Source code</h1>
 <div class="line">}</div>
 <div class="line">}</div>
 <div class="line">}</div>
-</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-97"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-101"></a>
 Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t20020_sequence.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-mermaid-diagrams-97"></a>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-101"></a>
 Generated Mermaid diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t20020_sequence_mermaid.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-json-models-97"></a>
+     <h1><a class="anchor" id="generated-json-models-101"></a>
 Generated JSON models</h1>
 <div class="fragment language-json"><div class="line">{</div>
 <div class="line">  &quot;diagram_type&quot;: &quot;sequence&quot;,</div>
@@ -264,7 +266,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20020::A::a1()&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;351429406124277608&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a1&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20020&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20020.cc&quot;,</div>
@@ -278,7 +280,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20020::A::a5()&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;12907657969785462610&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a5&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20020&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20020.cc&quot;,</div>
@@ -292,7 +294,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20020::A::a2()&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;10317962018325505121&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a2&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20020&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20020.cc&quot;,</div>
@@ -306,7 +308,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20020::A::a3()&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;15869285436437359185&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a3&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20020&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20020.cc&quot;,</div>
@@ -320,7 +322,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20020::A::a4()&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;164585591999830934&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;a4&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20020&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20020.cc&quot;,</div>
@@ -350,7 +352,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20020::C::c3(int)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;10427510278737569612&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;c3&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20020&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20020.cc&quot;,</div>
@@ -364,7 +366,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20020::C::c1() const&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;11788172907238269228&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;c1&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20020&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20020.cc&quot;,</div>
@@ -378,7 +380,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20020::C::c2() const&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;14312931061803887318&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;c2&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20020&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20020.cc&quot;,</div>
@@ -392,7 +394,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20020::C::log() const&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;5086244200172581365&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;log&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20020&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20020.cc&quot;,</div>
@@ -422,7 +424,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20020::B::b1()&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;4337572658684858744&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;b1&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20020&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20020.cc&quot;,</div>
@@ -436,7 +438,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20020::B::b2()&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;4046081895713433497&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;b2&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20020&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20020.cc&quot;,</div>
@@ -450,7 +452,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20020::B::log()&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;11490006309633640210&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;log&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20020&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 10,</div>
 <div class="line">            &quot;file&quot;: &quot;t20020.cc&quot;,</div>
@@ -480,7 +482,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;full_name&quot;: &quot;clanguml::t20020::D&lt;int&gt;::d1(int,int)&quot;,</div>
 <div class="line">          &quot;id&quot;: &quot;14240016080422742133&quot;,</div>
 <div class="line">          &quot;name&quot;: &quot;d1&quot;,</div>
-<div class="line">          &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">          &quot;namespace&quot;: &quot;clanguml::t20020&quot;,</div>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 7,</div>
 <div class="line">            &quot;file&quot;: &quot;t20020.cc&quot;,</div>

@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -130,7 +132,7 @@ $(function() {
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00478">478</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00493">493</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -172,26 +174,26 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00479">479</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  480</span>    {</div>
-<div class="line"><span class="lineno">  481</span>        <span class="keyword">using namespace </span>std::string_literals;</div>
-<div class="line"><span class="lineno">  482</span>        <span class="keywordflow">if</span> (node.IsMap() &amp;&amp; <a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(node, <span class="stringliteral">&quot;match&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  483</span>            <span class="keyword">const</span> <span class="keyword">auto</span> &amp;match = node[<span class="stringliteral">&quot;match&quot;</span>];</div>
-<div class="line"><span class="lineno">  484</span>            rhs.radius = match[<span class="stringliteral">&quot;radius&quot;</span>].as&lt;<span class="keywordtype">unsigned</span>&gt;();</div>
-<div class="line"><span class="lineno">  485</span>            rhs.pattern = match[<span class="stringliteral">&quot;pattern&quot;</span>].as&lt;<a class="code hl_typedef" href="namespaceclanguml_1_1common.html#ae721081846956d4e338e399019f9bd6f">string_or_regex</a>&gt;();</div>
-<div class="line"><span class="lineno">  486</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(match, <span class="stringliteral">&quot;direction&quot;</span>))</div>
-<div class="line"><span class="lineno">  487</span>                rhs.direction = match[<span class="stringliteral">&quot;direction&quot;</span>].as&lt;context_direction_t&gt;();</div>
-<div class="line"><span class="lineno">  488</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(match, <span class="stringliteral">&quot;relationships&quot;</span>))</div>
-<div class="line"><span class="lineno">  489</span>                rhs.relationships =</div>
-<div class="line"><span class="lineno">  490</span>                    match[<span class="stringliteral">&quot;relationships&quot;</span>].as&lt;std::vector&lt;relationship_t&gt;&gt;();</div>
-<div class="line"><span class="lineno">  491</span>        }</div>
-<div class="line"><span class="lineno">  492</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  493</span>            rhs.radius = 1;</div>
-<div class="line"><span class="lineno">  494</span>            rhs.pattern = node.as&lt;<a class="code hl_typedef" href="namespaceclanguml_1_1common.html#ae721081846956d4e338e399019f9bd6f">string_or_regex</a>&gt;();</div>
-<div class="line"><span class="lineno">  495</span>        }</div>
-<div class="line"><span class="lineno">  496</span> </div>
-<div class="line"><span class="lineno">  497</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  498</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00494">494</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  495</span>    {</div>
+<div class="line"><span class="lineno">  496</span>        <span class="keyword">using namespace </span>std::string_literals;</div>
+<div class="line"><span class="lineno">  497</span>        <span class="keywordflow">if</span> (node.IsMap() &amp;&amp; <a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(node, <span class="stringliteral">&quot;match&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  498</span>            <span class="keyword">const</span> <span class="keyword">auto</span> &amp;match = node[<span class="stringliteral">&quot;match&quot;</span>];</div>
+<div class="line"><span class="lineno">  499</span>            rhs.radius = match[<span class="stringliteral">&quot;radius&quot;</span>].as&lt;<span class="keywordtype">unsigned</span>&gt;();</div>
+<div class="line"><span class="lineno">  500</span>            rhs.pattern = match[<span class="stringliteral">&quot;pattern&quot;</span>].as&lt;<a class="code hl_typedef" href="namespaceclanguml_1_1common.html#ae721081846956d4e338e399019f9bd6f">string_or_regex</a>&gt;();</div>
+<div class="line"><span class="lineno">  501</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(match, <span class="stringliteral">&quot;direction&quot;</span>))</div>
+<div class="line"><span class="lineno">  502</span>                rhs.direction = match[<span class="stringliteral">&quot;direction&quot;</span>].as&lt;context_direction_t&gt;();</div>
+<div class="line"><span class="lineno">  503</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(match, <span class="stringliteral">&quot;relationships&quot;</span>))</div>
+<div class="line"><span class="lineno">  504</span>                rhs.relationships =</div>
+<div class="line"><span class="lineno">  505</span>                    match[<span class="stringliteral">&quot;relationships&quot;</span>].as&lt;std::vector&lt;relationship_t&gt;&gt;();</div>
+<div class="line"><span class="lineno">  506</span>        }</div>
+<div class="line"><span class="lineno">  507</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  508</span>            rhs.radius = 1;</div>
+<div class="line"><span class="lineno">  509</span>            rhs.pattern = node.as&lt;<a class="code hl_typedef" href="namespaceclanguml_1_1common.html#ae721081846956d4e338e399019f9bd6f">string_or_regex</a>&gt;();</div>
+<div class="line"><span class="lineno">  510</span>        }</div>
+<div class="line"><span class="lineno">  511</span> </div>
+<div class="line"><span class="lineno">  512</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  513</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>

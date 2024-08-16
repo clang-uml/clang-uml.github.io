@@ -11,7 +11,7 @@
 <meta property="og:description" content="C++ to UML diagram generator based on Clang." />
 <meta property="og:url" content="https://clang-uml.github.io/" />
 <!-- END opengraph metadata -->
-<title>clang-uml: src/common/model/diagram_filter.h File Reference</title>
+<title>clang-uml: src/common/model/filters/diagram_filter.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -40,8 +40,10 @@
         hljs.configure({useBR: false});
         $(".fragment").each(function(i,node) {
             var $node = $(node);
-            // Only apply highlight.js to non-cpp code blocks
-            if (!$node.hasClass("language-cpp")) {
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
                 $node.html("<pre><code class='" +
                     $node.attr("class") + "'>" +
                     $node.text() + "</code></pre>");
@@ -69,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.3</span>
+       <span id="projectnumber">0.5.4</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -118,7 +120,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_142fcac775f9d25968db348f9fe4b374.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_142fcac775f9d25968db348f9fe4b374.html">model</a></li><li class="navelem"><a class="el" href="dir_12421a618d96f17c60bb3829ccb1ae6f.html">filters</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -138,11 +140,11 @@ $(function() {
 <code>#include &quot;<a class="el" href="element_8h_source.html">common/model/element.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="enums_8h_source.html">common/model/enums.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="namespace_8h_source.html">common/model/namespace.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="source__file_8h_source.html">common/model/source_file.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tvl_8h_source.html">common/model/tvl.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="config_8h_source.html">config/config.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="include__diagram_2model_2diagram_8h_source.html">include_diagram/model/diagram.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="participant_8h_source.html">sequence_diagram/model/participant.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="source__file_8h_source.html">source_file.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="tvl_8h_source.html">tvl.h</a>&quot;</code><br />
 <code>#include &lt;filesystem&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 </div>
@@ -154,6 +156,8 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for any diagram filter.  <a href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1common_1_1model_1_1anyof__filter.html">clanguml::common::model::anyof_filter</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1common_1_1model_1_1allof__filter.html">clanguml::common::model::allof_filter</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1common_1_1model_1_1namespace__filter.html">clanguml::common::model::namespace_filter</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -191,6 +195,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">clanguml::common::model::diagram_filter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Composite of all diagrams filters.  <a href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1common_1_1model_1_1diagram__filter_1_1private__constructor__tag__t.html">clanguml::common::model::diagram_filter::private_constructor_tag_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -224,6 +230,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ac0207056e77f2de862b0157dc644f9fb"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
 <tr class="memitem:ac0207056e77f2de862b0157dc644f9fb"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1eid__t.html">eid_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1model_1_1detail.html#ac0207056e77f2de862b0157dc644f9fb">clanguml::common::model::detail::destination_comparator</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1source__file.html">common::model::source_file</a> &amp;f)</td></tr>
 <tr class="separator:ac0207056e77f2de862b0157dc644f9fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac808fd515ae45c38bf30e34106a89682"><td class="memTemplParams" colspan="2">template&lt;typename Collection &gt; </td></tr>
+<tr class="memitem:ac808fd515ae45c38bf30e34106a89682"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#ac808fd515ae45c38bf30e34106a89682">clanguml::common::model::apply_filter</a> (Collection &amp;col, const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">diagram_filter</a> &amp;filter)</td></tr>
+<tr class="separator:ac808fd515ae45c38bf30e34106a89682"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa1a906596f38c32b9576c6d260f475c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:afa1a906596f38c32b9576c6d260f475c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#afa1a906596f38c32b9576c6d260f475c">clanguml::common::model::apply_filter</a> (std::vector&lt; std::reference_wrapper&lt; T &gt; &gt; &amp;col, const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html">diagram_filter</a> &amp;filter)</td></tr>
+<tr class="separator:afa1a906596f38c32b9576c6d260f475c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1186614f19b6b0c10e4361d0f68b8dba"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
 <tr class="memitem:a1186614f19b6b0c10e4361d0f68b8dba"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1model.html#a1186614f19b6b0c10e4361d0f68b8dba">clanguml::common::model::diagram_filter::should_include&lt; std::string &gt;</a> (const std::string &amp;name) const</td></tr>
 <tr class="separator:a1186614f19b6b0c10e4361d0f68b8dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
