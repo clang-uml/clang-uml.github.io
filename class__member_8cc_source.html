@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.4</span>
+       <span id="projectnumber">0.5.5</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -128,7 +128,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="class__member_8cc.html">Go to the documentation of this file.</a><div class="fragment language-cpp"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file src/class_diagram/model/class_member.cc</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file src/class_diagram/model/class_member_base.cc</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (c) 2021-2024 Bartek Kryza &lt;bkryza@gmail.com&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *</span></div>
@@ -145,31 +145,7 @@ $(function() {
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * limitations under the License.</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="class__member_8h.html">class_member.h</a>&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1class__diagram_1_1model.html">clanguml::class_diagram::model</a> {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html#a997be824ff66d931d639beb404df6701">   23</a></span><a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html#a997be824ff66d931d639beb404df6701" title="Constructor.">class_member::class_member</a>(<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6">common::model::access_t</a> access,</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">const</span> std::string &amp;name, <span class="keyword">const</span> std::string &amp;type)</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    : <a class="code hl_class" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html" title="Base class for class elements (e.g. member or method).">class_element</a>{access, name, type}</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html#ae962ae06d8df604dd1daa8600d4ba907">   29</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html#ae962ae06d8df604dd1daa8600d4ba907" title="Whether the member is static.">class_member::is_static</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html#ac54f0962ffabdd29d6d828954a0a72e2">is_static_</a>; }</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html#a1d602e78ddcce617e9d6b1516e10b777">   31</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html#ae962ae06d8df604dd1daa8600d4ba907" title="Whether the member is static.">class_member::is_static</a>(<span class="keywordtype">bool</span> is_static) { <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html#ac54f0962ffabdd29d6d828954a0a72e2">is_static_</a> = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html#ae962ae06d8df604dd1daa8600d4ba907" title="Whether the member is static.">is_static</a>; }</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html#aa05f2388c519a539589bddbb9239d713">   33</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html#aa05f2388c519a539589bddbb9239d713" title="Set members destination multiplicity.">class_member::set_destination_multiplicity</a>(std::optional&lt;size_t&gt; m)</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>{</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html#a1927794e60ae17e01c1cd7cb2a4bbb3a">destination_multiplicity_</a> = m;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html#a15e83924da8f3336c873883afa861f8e">   38</a></span>std::optional&lt;size_t&gt; <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html#a15e83924da8f3336c873883afa861f8e" title="Get members destination multiplicity.">class_member::destination_multiplicity</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__member.html#a1927794e60ae17e01c1cd7cb2a4bbb3a">destination_multiplicity_</a>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>} <span class="comment">// namespace clanguml::class_diagram::model</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="class__member__base_8h.html">class_member_base.h</a>&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

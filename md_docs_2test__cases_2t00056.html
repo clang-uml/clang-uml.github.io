@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.4</span>
+       <span id="projectnumber">0.5.5</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -157,25 +157,20 @@ Source code</h1>
 <div class="line"><span class="comment">// Simple requirement</span></div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><span class="keyword">concept </span>iterable = <span class="keyword">requires</span>(T container) {</div>
-<div class="line">                       container.begin();</div>
-<div class="line">                       container.end();</div>
-<div class="line">                   };</div>
+<div class="line">    container.begin();</div>
+<div class="line">    container.end();</div>
+<div class="line">};</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Type requirement</span></div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><span class="keyword">concept </span>has_value_type = <span class="keyword">requires</span> { <span class="keyword">typename</span> T::value_type; };</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="keyword">concept </span>convertible_to_string =</div>
-<div class="line">    max_four_bytes&lt;T&gt; &amp;&amp; <span class="keyword">requires</span>(T s) {</div>
-<div class="line">                             std::string{s};</div>
-<div class="line">                             {</div>
-<div class="line">                                 std::to_string(s)</div>
-<div class="line">                             } <span class="keyword">noexcept</span>;</div>
-<div class="line">                             {</div>
-<div class="line">                                 std::to_string(s)</div>
-<div class="line">                                 } -&gt; std::same_as&lt;std::string&gt;;</div>
-<div class="line">                         };</div>
+<div class="line"><span class="keyword">concept </span>convertible_to_string = max_four_bytes&lt;T&gt; &amp;&amp; <span class="keyword">requires</span>(T s) {</div>
+<div class="line">    std::string{s};</div>
+<div class="line">    { std::to_string(s) } <span class="keyword">noexcept</span>;</div>
+<div class="line">    { std::to_string(s) } -&gt; std::same_as&lt;std::string&gt;;</div>
+<div class="line">};</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Compound requirement</span></div>
 <div class="line"><span class="comment">// ...</span></div>
@@ -203,9 +198,9 @@ Source code</h1>
 <div class="line"><span class="comment">// Anonymous concept requirement (TODO)</span></div>
 <div class="line"><span class="keyword">template</span> &lt;convertible_to_<span class="keywordtype">string</span> T&gt;</div>
 <div class="line">    <span class="keyword">requires</span> <span class="keyword">requires</span>(T t) {</div>
-<div class="line">                 --t;</div>
-<div class="line">                 t--;</div>
-<div class="line">             }</div>
+<div class="line">        --t;</div>
+<div class="line">        t--;</div>
+<div class="line">    }</div>
 <div class="line"><span class="keyword">struct </span>C {</div>
 <div class="line">    T c;</div>
 <div class="line">};</div>
@@ -375,7 +370,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 9,</div>
 <div class="line">        &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">        &quot;line&quot;: 46,</div>
+<div class="line">        &quot;line&quot;: 41,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;statements&quot;: [],</div>
@@ -390,7 +385,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 9,</div>
 <div class="line">        &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">        &quot;line&quot;: 49,</div>
+<div class="line">        &quot;line&quot;: 44,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;statements&quot;: [],</div>
@@ -413,7 +408,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 7,</div>
 <div class="line">            &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 54,</div>
+<div class="line">            &quot;line&quot;: 49,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;T&quot;</div>
@@ -425,7 +420,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 36,</div>
 <div class="line">        &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">        &quot;line&quot;: 53,</div>
+<div class="line">        &quot;line&quot;: 48,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;template_parameters&quot;: [</div>
@@ -455,7 +450,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 7,</div>
 <div class="line">            &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 61,</div>
+<div class="line">            &quot;line&quot;: 56,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;T&quot;</div>
@@ -467,7 +462,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 8,</div>
 <div class="line">        &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">        &quot;line&quot;: 60,</div>
+<div class="line">        &quot;line&quot;: 55,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;template_parameters&quot;: [</div>
@@ -497,7 +492,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 7,</div>
 <div class="line">            &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 71,</div>
+<div class="line">            &quot;line&quot;: 66,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;T&quot;</div>
@@ -509,7 +504,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 8,</div>
 <div class="line">        &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">        &quot;line&quot;: 70,</div>
+<div class="line">        &quot;line&quot;: 65,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;template_parameters&quot;: [</div>
@@ -538,7 +533,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 8,</div>
 <div class="line">        &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">        &quot;line&quot;: 76,</div>
+<div class="line">        &quot;line&quot;: 71,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;template_parameters&quot;: [</div>
@@ -592,7 +587,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 8,</div>
 <div class="line">            &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 81,</div>
+<div class="line">            &quot;line&quot;: 76,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;T1&quot;</div>
@@ -604,7 +599,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 8,</div>
 <div class="line">            &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 82,</div>
+<div class="line">            &quot;line&quot;: 77,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;T2&quot;</div>
@@ -616,7 +611,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 8,</div>
 <div class="line">            &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 83,</div>
+<div class="line">            &quot;line&quot;: 78,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;T3&quot;</div>
@@ -628,7 +623,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 8,</div>
 <div class="line">        &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">        &quot;line&quot;: 80,</div>
+<div class="line">        &quot;line&quot;: 75,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;template_parameters&quot;: [</div>
@@ -670,7 +665,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 8,</div>
 <div class="line">            &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 89,</div>
+<div class="line">            &quot;line&quot;: 84,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;T1&quot;</div>
@@ -682,7 +677,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 8,</div>
 <div class="line">            &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 90,</div>
+<div class="line">            &quot;line&quot;: 85,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;T2&quot;</div>
@@ -694,7 +689,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 8,</div>
 <div class="line">            &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 91,</div>
+<div class="line">            &quot;line&quot;: 86,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;T3&quot;</div>
@@ -706,7 +701,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 8,</div>
 <div class="line">        &quot;file&quot;: &quot;t00056.cc&quot;,</div>
-<div class="line">        &quot;line&quot;: 88,</div>
+<div class="line">        &quot;line&quot;: 83,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t00056.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;template_parameters&quot;: [</div>

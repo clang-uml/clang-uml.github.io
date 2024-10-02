@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.4</span>
+       <span id="projectnumber">0.5.5</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -132,6 +132,7 @@ $(function() {
 <li><a class="el" href="md_docs_2sequence__diagrams.html#customizing-participants-order">Customizing participants order</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#generating-return-types">Generating return types</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#generating-condition-statements">Generating condition statements</a></li>
+<li><a class="el" href="md_docs_2sequence__diagrams.html#folding-repeated-activities">Folding repeated activities</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#injecting-call-expressions-manually-through-comments">Injecting call expressions manually through comments</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#including-comments-in-sequence-diagrams">Including comments in sequence diagrams</a></li>
 </ul>
@@ -350,7 +351,16 @@ Generating condition statements</h1>
 </div><!-- fragment --><p>An example of a diagram with this feature enabled is presented below: </p><div class="image">
 <embed type="image/svg+xml" src="t20033_sequence.svg"></embed>
 </div>
-    <h1><a class="anchor" id="injecting-call-expressions-manually-through-comments"></a>
+    <h1><a class="anchor" id="folding-repeated-activities"></a>
+Folding repeated activities</h1>
+<p>If in a given sequence diagram functions or methods are called multiple times from different branches, each of these activities will be rendered fully which can mean that the diagram be very large.</p>
+<p>In order to minimize the diagram size in such situations, an option can be set:</p>
+<div class="fragment language-yaml"><div class="line">fold_repeated_activities: true</div>
+</div><!-- fragment --><p>which will render any activity only once, and any further calls to that activity will only render a call to the activity and an indicator - a single <code>*</code> character</p><ul>
+<li>in a note over the activity.</li>
+</ul>
+<p>For an example of this see the test case <a class="el" href="md_docs_2test__cases_2t20056.html">t20056</a>.</p>
+<h1><a class="anchor" id="injecting-call-expressions-manually-through-comments"></a>
 Injecting call expressions manually through comments</h1>
 <p>In some cases, <code>clang-uml</code> is not yet able to discover a call expression target in some line of code. This can include passing function or method address to some executor (e.g. thread), async calls etc.</p>
 <p>However, a call expression can be injected manually through a comment directive </p><div class="fragment language-cpp"><div class="line"><span class="comment">// \uml{note CALLEE}</span></div>

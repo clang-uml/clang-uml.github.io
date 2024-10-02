@@ -1,0 +1,1073 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: t00085 - Objective-C test case for various class members and methods</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.5.5</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">t00085 - Objective-C test case for various class members and methods</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="t00085---objective-c-test-case-for-various-class-members-and-methods"></a></p>
+<h1><a class="anchor" id="config-83"></a>
+Config</h1>
+<div class="fragment language-yaml"><div class="line">diagrams:</div>
+<div class="line">  t00085_class:</div>
+<div class="line">    type: class</div>
+<div class="line">    glob:</div>
+<div class="line">      - t00085.m</div>
+<div class="line">    filter_mode: advanced</div>
+<div class="line">    include_system_headers: true</div>
+<div class="line">    include:</div>
+<div class="line">      anyof:</div>
+<div class="line">        paths:</div>
+<div class="line">          - .</div>
+<div class="line">        elements:</div>
+<div class="line">          - NSObject</div>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-83"></a>
+Source code</h1>
+<p>File <code>tests/t00085/t00085.m</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#import &quot;t00085.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">@implementation </span>It00085</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Synthesize class property</span></div>
+<div class="line"><span class="keyword">static</span> NSInteger _sharedCounter = 0;</div>
+<div class="line"> </div>
+<div class="line">+ (NSInteger)sharedCounter {</div>
+<div class="line">    <span class="keywordflow">return</span> _sharedCounter;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">+ (void)setSharedCounter:(NSInteger)newValue {</div>
+<div class="line">    _sharedCounter = newValue;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Class method implementations</span></div>
+<div class="line">+ (void)incrementSharedCounter {</div>
+<div class="line">    _sharedCounter++;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">+ (NSInteger)currentSharedCounter {</div>
+<div class="line">    <span class="keywordflow">return</span> _sharedCounter;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">+ (instancetype)sharedInstance {</div>
+<div class="line">    <span class="keyword">static</span> It00085 *sharedInstance = nil;</div>
+<div class="line">    <span class="keywordflow">return</span> sharedInstance;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Instance method implementations</span></div>
+<div class="line">- (instancetype)initWithName:(NSString *)name value:(NSInteger)value {</div>
+<div class="line">    self = [<span class="keyword">super</span> init];</div>
+<div class="line">    <span class="keywordflow">if</span> (self) {</div>
+<div class="line">        _name = name;</div>
+<div class="line">        _value = value;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Initialize members with different access scopes</span></div>
+<div class="line">        _publicMember = <span class="stringliteral">@&quot;Public Member&quot;</span>;</div>
+<div class="line">        _protectedMember = <span class="stringliteral">@&quot;Protected Member&quot;</span>;</div>
+<div class="line">        _privateMember = <span class="stringliteral">@&quot;Private Member&quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> self;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">- (void)displayDetails {</div>
+<div class="line">    NSLog(<span class="stringliteral">@&quot;Name: %@, Value: %ld&quot;</span>, self.name, (<span class="keywordtype">long</span>)self.value);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Accessing members with different access scopes</span></div>
+<div class="line">    NSLog(<span class="stringliteral">@&quot;Public Member: %@&quot;</span>, _publicMember);</div>
+<div class="line">    NSLog(<span class="stringliteral">@&quot;Protected Member: %@&quot;</span>, _protectedMember);</div>
+<div class="line">    NSLog(<span class="stringliteral">@&quot;Private Member: %@&quot;</span>, _privateMember);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">- (NSInteger)addValue:(NSInteger)otherValue {</div>
+<div class="line">    <span class="keywordflow">return</span> self.value + otherValue;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">- (NSInteger)multiplyValueBy:(NSInteger)multiplier andAdd:(NSInteger)addition {</div>
+<div class="line">    <span class="keywordflow">return</span> (self.value * multiplier) + addition;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">- (void)resetValue {</div>
+<div class="line">    self.value = 0;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Method with a block parameter</span></div>
+<div class="line">- (void)performOperationWithBlock:(<span class="keywordtype">void</span> (^)(NSInteger result))block {</div>
+<div class="line">    NSInteger result = self.value * 2;</div>
+<div class="line">    block(result);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">@end</span></div>
+</div><!-- fragment --><p> File <code>tests/t00085/t00085.h</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">@interface </span>It00085 : NSObject {</div>
+<div class="line">    <span class="keywordtype">int</span> _defaultMember;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">@public</span></div>
+<div class="line">    NSString *_publicMember;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">@protected</span></div>
+<div class="line">    NSString *_protectedMember;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">@private</span></div>
+<div class="line">    NSString *_privateMember;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">@property</span> (<span class="keyword">class</span>, nonatomic, assign) NSInteger sharedCounter;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">@property</span> (nonatomic, strong) NSString *name;</div>
+<div class="line"><span class="keyword">@property</span> (nonatomic, assign) NSInteger value;</div>
+<div class="line"> </div>
+<div class="line">+ (void)incrementSharedCounter;</div>
+<div class="line">+ (NSInteger)currentSharedCounter;</div>
+<div class="line">+ (instancetype)sharedInstance;</div>
+<div class="line"> </div>
+<div class="line">- (instancetype)initWithName:(NSString *)name value:(NSInteger)value;</div>
+<div class="line">- (void)displayDetails;</div>
+<div class="line">- (NSInteger)addValue:(NSInteger)otherValue;</div>
+<div class="line">- (NSInteger)multiplyValueBy:(NSInteger)multiplier andAdd:(NSInteger)addition;</div>
+<div class="line">- (void)resetValue;</div>
+<div class="line"> </div>
+<div class="line">- (void)performOperationWithBlock:(<span class="keywordtype">void</span> (^)(NSInteger result))block;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">@end</span></div>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-83"></a>
+Generated PlantUML diagrams</h1>
+<div class="image">
+<embed type="image/svg+xml" src="t00085_class.svg"></embed>
+</div>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-83"></a>
+Generated Mermaid diagrams</h1>
+<div class="image">
+<embed type="image/svg+xml" src="t00085_class_mermaid.svg"></embed>
+</div>
+     <h1><a class="anchor" id="generated-json-models-83"></a>
+Generated JSON models</h1>
+<div class="fragment language-json"><div class="line">{</div>
+<div class="line">  &quot;diagram_type&quot;: &quot;class&quot;,</div>
+<div class="line">  &quot;elements&quot;: [</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [],</div>
+<div class="line">      &quot;display_name&quot;: &quot;NSObject&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;13825978819641664869&quot;,</div>
+<div class="line">      &quot;is_category&quot;: false,</div>
+<div class="line">      &quot;is_protocol&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;protected&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Points to instance&#39;s class.  Used by runtime to access method\n implementations, etc..  Set in +alloc, Unlike other instance variables,\n which are cleared there.\n  &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n  * Points to instance&#39;s class.  Used by runtime to access method\n  * implementations, etc..  Set in +alloc, Unlike other instance variables,\n  * which are cleared there.\n  */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;name&quot;: &quot;isa&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 9,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 294,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;Class&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;methods&quot;: [],</div>
+<div class="line">      &quot;name&quot;: &quot;NSObject&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">      &quot;protocols&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;id&quot;: &quot;16988093069955139133&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 8,</div>
+<div class="line">        &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">        &quot;line&quot;: 94,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;objc_interface&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [],</div>
+<div class="line">      &quot;comment&quot;: {</div>
+<div class="line">        &quot;formatted&quot;: &quot;\n The NSObject protocol describes a minimal set of methods that all\n objects are expected to support.  You should be able to send any\n of the messages listed in this protocol to an object, and be safe\n in assuming that the receiver can handle it.\n &quot;,</div>
+<div class="line">        &quot;raw&quot;: &quot;/**\n * The NSObject protocol describes a minimal set of methods that all\n * objects are expected to support.  You should be able to send any\n * of the messages listed in this protocol to an object, and be safe\n * in assuming that the receiver can handle it.\n */&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;display_name&quot;: &quot;NSObject&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;16988093069955139133&quot;,</div>
+<div class="line">      &quot;is_category&quot;: false,</div>
+<div class="line">      &quot;is_protocol&quot;: true,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Returns the class of the receiver.  If the receiver is a proxy, then this\n may return the class of the proxy target.  Use -isProxy to determine whether\n the receiver is a proxy.  If you wish to find the real class of the\n receiver, ignoring proxies, then use object_getClass().  \n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Returns the class of the receiver.  If the receiver is a proxy, then this\n * may return the class of the proxy target.  Use -isProxy to determine whether\n * the receiver is a proxy.  If you wish to find the real class of the\n * receiver, ignoring proxies, then use object_getClass().  \n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;class&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;class&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 65,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;Class&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Returns the superclass of receiver&#39;s class.  If the receiver is a proxy,\n then this may return the class of the proxy target.  Use -isProxy to\n determine whether the receiver is a proxy.  If you wish to find the real\n superclass of the receiver&#39;s class, ignoring proxies, then use\n class_getSuperclass(object_getClass()).\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Returns the superclass of receiver&#39;s class.  If the receiver is a proxy,\n * then this may return the class of the proxy target.  Use -isProxy to\n * determine whether the receiver is a proxy.  If you wish to find the real\n * superclass of the receiver&#39;s class, ignoring proxies, then use\n * class_getSuperclass(object_getClass()).\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;superclass&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;superclass&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 73,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;Class&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Returns whether the receiver is equal to the argument.  Defining equality is\n complex, so be careful when implementing this method.  Collections such as\n NSSet depend on the behaviour of this method.  In particular, this method\n must be commutative, so for any objects a and b:\n\n [a isEqual: b] == [b isEqual: a]\n\n This means that you must be very careful when returning YES if the argument\n is of another class.  For example, if you define a number class that returns\n YES if the argument is a string representation of the number, then this will\n break because the string will not recognise your object as being equal to\n itself.\n\n If two objects are equal, then they must have the same hash value, however\n equal hash values do not imply equality.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Returns whether the receiver is equal to the argument.  Defining equality is\n * complex, so be careful when implementing this method.  Collections such as\n * NSSet depend on the behaviour of this method.  In particular, this method\n * must be commutative, so for any objects a and b:\n *\n * [a isEqual: b] == [b isEqual: a]\n *\n * This means that you must be very careful when returning YES if the argument\n * is of another class.  For example, if you define a number class that returns\n * YES if the argument is a string representation of the number, then this will\n * break because the string will not recognise your object as being equal to\n * itself.\n *\n * If two objects are equal, then they must have the same hash value, however\n * equal hash values do not imply equality.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;isEqual:&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;isEqual:&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;anObject&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;id&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 91,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;BOOL&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Returns YES if the receiver is an instance of the class, an instance of the\n subclass, or (in the case of proxies), an instance of something that can be\n treated as an instance of the class.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Returns YES if the receiver is an instance of the class, an instance of the\n * subclass, or (in the case of proxies), an instance of something that can be\n * treated as an instance of the class.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;isKindOfClass:&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;isKindOfClass:&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;aClass&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;Class&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 97,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;BOOL&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Returns YES if the receiver is an instance of the class or (in the case of\n proxies), an instance of something that can be treated as an instance of the\n class.\n\n Calling this method is rarely the correct thing to do.  In most cases, a\n subclass can be substituted for a superclass, so you should never need to\n check that an object is really an instance of a specific class and not a\n subclass.  \n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Returns YES if the receiver is an instance of the class or (in the case of\n * proxies), an instance of something that can be treated as an instance of the\n * class.\n *\n * Calling this method is rarely the correct thing to do.  In most cases, a\n * subclass can be substituted for a superclass, so you should never need to\n * check that an object is really an instance of a specific class and not a\n * subclass.  \n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;isMemberOfClass:&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;isMemberOfClass:&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;aClass&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;Class&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 108,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;BOOL&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Returns YES if the receiver is a proxy, NO otherwise.  The default\n implementation of this method in NSObject returns NO, while the\n implementation in NSProxy returns YES.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Returns YES if the receiver is a proxy, NO otherwise.  The default\n * implementation of this method in NSObject returns NO, while the\n * implementation in NSProxy returns YES.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;isProxy&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;isProxy&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 114,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;BOOL&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Returns a hash value for the object.  All objects that are equal *MUST*\n return the same hash value.  For efficient storage in sets, or as keys in\n dictionaries, different objects should return hashes spread evenly over the\n range of an integer.\n\n An object may not return different values from this method after being\n stored in a collection.  This typically means that ether the hash value must\n be constant after the object&#39;s creation, or that the object may not be\n modified while stored in an unordered collection.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Returns a hash value for the object.  All objects that are equal *MUST*\n * return the same hash value.  For efficient storage in sets, or as keys in\n * dictionaries, different objects should return hashes spread evenly over the\n * range of an integer.\n *\n * An object may not return different values from this method after being\n * stored in a collection.  This typically means that ether the hash value must\n * be constant after the object&#39;s creation, or that the object may not be\n * modified while stored in an unordered collection.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;hash&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;hash&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 126,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;NSUInteger&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Returns the receiver.  In a proxy, this may (but is not required to) return\n the proxied object.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Returns the receiver.  In a proxy, this may (but is not required to) return\n * the proxied object.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;self&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;self&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 131,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;id&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Performs the specified selector.  The selector must correspond to a method\n that takes no arguments.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Performs the specified selector.  The selector must correspond to a method\n * that takes no arguments.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;performSelector:&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;performSelector:&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;aSelector&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;SEL&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 136,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;id&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Performs the specified selector, with the object as the argument.  This\n method does not perform any automatic unboxing, so the selector must\n correspond to a method that takes one object argument.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Performs the specified selector, with the object as the argument.  This\n * method does not perform any automatic unboxing, so the selector must\n * correspond to a method that takes one object argument.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;performSelector:withObject:&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;performSelector:withObject:&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;aSelector&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;SEL&quot;</div>
+<div class="line">            },</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;anObject&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;id&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 142,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;id&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Performs the specified selector, with the objects as the arguments.  This\n method does not perform any automatic unboxing, so the selector must\n correspond to a method that takes two object arguments.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Performs the specified selector, with the objects as the arguments.  This\n * method does not perform any automatic unboxing, so the selector must\n * correspond to a method that takes two object arguments.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;performSelector:withObject:withObject:&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;performSelector:withObject:withObject:&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;aSelector&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;SEL&quot;</div>
+<div class="line">            },</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;object1&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;id&quot;</div>
+<div class="line">            },</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;object2&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;id&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 149,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;id&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Returns YES if the object can respond to messages with the specified\n selector.  The default implementation in NSObject returns YES if the\n receiver has a method corresponding to the method, but other classes may\n return YES if they can respond to a selector using one of the various\n forwarding mechanisms.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Returns YES if the object can respond to messages with the specified\n * selector.  The default implementation in NSObject returns YES if the\n * receiver has a method corresponding to the method, but other classes may\n * return YES if they can respond to a selector using one of the various\n * forwarding mechanisms.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;respondsToSelector:&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;respondsToSelector:&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;aSelector&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;SEL&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 159,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;BOOL&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Returns YES if the receiver conforms to the specified protocol.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Returns YES if the receiver conforms to the specified protocol.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;conformsToProtocol:&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;conformsToProtocol:&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;aProtocol&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;Protocol *&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 163,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;BOOL&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Increments the reference count of the object and returns the receiver.  In\n garbage collected mode, this method does nothing.  In automated reference\n counting mode, you may neither implement this method nor call it directly.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Increments the reference count of the object and returns the receiver.  In\n * garbage collected mode, this method does nothing.  In automated reference\n * counting mode, you may neither implement this method nor call it directly.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;retain&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;retain&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 169,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;id&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Decrements the reference count of the object and destroys if it there are no\n remaining references.  In garbage collected mode, this method does nothing.\n In automated reference counting mode, you may neither implement this method\n nor call it directly.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Decrements the reference count of the object and destroys if it there are no\n * remaining references.  In garbage collected mode, this method does nothing.\n * In automated reference counting mode, you may neither implement this method\n * nor call it directly.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;release&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;release&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 176,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Performs a deferred -release operation.  The object&#39;s reference count is\n decremented at the end of the scope of the current autorelease pool,\n identified either by a -drain message sent to the current NSAutoreleasePool\n instance, or in more recent versions of Objective-C by the end of an\n @autorelease_pool scope.\n\n In garbage collected mode, this method does nothing.  In automated reference\n counting mode, you may neither implement this method nor call it directly.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Performs a deferred -release operation.  The object&#39;s reference count is\n * decremented at the end of the scope of the current autorelease pool,\n * identified either by a -drain message sent to the current NSAutoreleasePool\n * instance, or in more recent versions of Objective-C by the end of an\n * @autorelease_pool scope.\n *\n * In garbage collected mode, this method does nothing.  In automated reference\n * counting mode, you may neither implement this method nor call it directly.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;autorelease&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;autorelease&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 187,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;id&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Returns the current retain count of an object.  This does not include the\n result of any pending autorelease operations.\n\n Code that relies on this method returning a sane value is broken.  For\n singletons, it may return NSUIntegerMax.  Even when it is tracking a retain\n count, it will not include on-stack pointers in manual retain/release mode,\n pointers marked as __unsafe_unretain or __weak in ARC mode, or pending\n autorelease operations.  Its value is therefore largely meaningless.  It can\n occasionally be useful for debugging.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Returns the current retain count of an object.  This does not include the\n * result of any pending autorelease operations.\n *\n * Code that relies on this method returning a sane value is broken.  For\n * singletons, it may return NSUIntegerMax.  Even when it is tracking a retain\n * count, it will not include on-stack pointers in manual retain/release mode,\n * pointers marked as __unsafe_unretain or __weak in ARC mode, or pending\n * autorelease operations.  Its value is therefore largely meaningless.  It can\n * occasionally be useful for debugging.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;retainCount&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;retainCount&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 199,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;NSUInteger&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Returns the description of the object.  This is used by the %@ format\n specifier in strings.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Returns the description of the object.  This is used by the %@ format\n * specifier in strings.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;description&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;description&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 204,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;NSString *&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Returns the zone of the object.\n &quot;,</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n * Returns the zone of the object.\n */&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;zone&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;zone&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">            &quot;line&quot;: 208,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;NSZone *&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;name&quot;: &quot;NSObject&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">      &quot;protocols&quot;: [],</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 11,</div>
+<div class="line">        &quot;file&quot;: &quot;&quot;,</div>
+<div class="line">        &quot;line&quot;: 58,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;objc_protocol&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;id&quot;: &quot;13825978819641664869&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;display_name&quot;: &quot;It00085&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;12380559137179420140&quot;,</div>
+<div class="line">      &quot;is_category&quot;: false,</div>
+<div class="line">      &quot;is_protocol&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;protected&quot;,</div>
+<div class="line">          &quot;name&quot;: &quot;_defaultMember&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 9,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 4,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;int&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;name&quot;: &quot;_publicMember&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 15,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 7,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;NSString *&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;protected&quot;,</div>
+<div class="line">          &quot;name&quot;: &quot;_protectedMember&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 15,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 10,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;NSString *&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;private&quot;,</div>
+<div class="line">          &quot;name&quot;: &quot;_privateMember&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 15,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 13,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;NSString *&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;methods&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;incrementSharedCounter&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;incrementSharedCounter&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 21,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;currentSharedCounter&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;currentSharedCounter&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 22,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;NSInteger&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;sharedInstance&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;sharedInstance&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 23,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;instancetype&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;initWithName:value:&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;initWithName:value:&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;name&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;NSString *&quot;</div>
+<div class="line">            },</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;value&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;NSInteger&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 25,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;instancetype&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;displayDetails&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;displayDetails&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 26,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;addValue:&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;addValue:&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;otherValue&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;NSInteger&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 27,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;NSInteger&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;multiplyValueBy:andAdd:&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;multiplyValueBy:andAdd:&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;multiplier&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;NSInteger&quot;</div>
+<div class="line">            },</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;addition&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;NSInteger&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 28,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;NSInteger&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;resetValue&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;resetValue&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 29,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;performOperationWithBlock:&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;performOperationWithBlock:&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;block&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;void (^)(NSInteger)&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 1,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 31,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;sharedCounter&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;sharedCounter&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 48,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 16,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;NSInteger&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;setSharedCounter:&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;setSharedCounter:&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;sharedCounter&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;NSInteger&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 48,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 16,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;name&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;name&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 41,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 18,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;NSString *&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;setName:&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;setName:&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;name&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;NSString *&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 41,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 18,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;value&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;value&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 41,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 19,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;NSInteger&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;setValue:&quot;,</div>
+<div class="line">          &quot;is_optional&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;setValue:&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [</div>
+<div class="line">            {</div>
+<div class="line">              &quot;name&quot;: &quot;value&quot;,</div>
+<div class="line">              &quot;type&quot;: &quot;NSInteger&quot;</div>
+<div class="line">            }</div>
+<div class="line">          ],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 41,</div>
+<div class="line">            &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">            &quot;line&quot;: 19,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;name&quot;: &quot;It00085&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;&quot;,</div>
+<div class="line">      &quot;protocols&quot;: [],</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 12,</div>
+<div class="line">        &quot;file&quot;: &quot;t00085.h&quot;,</div>
+<div class="line">        &quot;line&quot;: 3,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t00085.m&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;type&quot;: &quot;objc_interface&quot;</div>
+<div class="line">    }</div>
+<div class="line">  ],</div>
+<div class="line">  &quot;name&quot;: &quot;t00085_class&quot;,</div>
+<div class="line">  &quot;package_type&quot;: &quot;namespace&quot;,</div>
+<div class="line">  &quot;relationships&quot;: [</div>
+<div class="line">    {</div>
+<div class="line">      &quot;destination&quot;: &quot;16988093069955139133&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;13825978819641664869&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;instantiation&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;destination&quot;: &quot;13825978819641664869&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;12380559137179420140&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;extension&quot;</div>
+<div class="line">    }</div>
+<div class="line">  ]</div>
+<div class="line">}</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer">
+    <small>
+        <span class="copyright">&#160;&#160;Copyright &copy; 2022-present <a href="https://github.com/bkryza">Bartek Kryza</a>
+        </span>
+    Generated by&#160;
+    <a href="https://www.doxygen.org/index.html">
+        <img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/>
+    </a> 1.9.7
+</small></address>
+</body>
+</html>

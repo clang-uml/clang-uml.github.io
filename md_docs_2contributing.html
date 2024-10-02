@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.4</span>
+       <span id="projectnumber">0.5.5</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -176,6 +176,12 @@ If you would like to fix a bug</h1>
 </div><!-- fragment --></li>
 <li>Make sure the code doesn't introduce any <code>clang-tidy</code> warnings: <div class="fragment language-bash"><div class="line">make tidy</div>
 </div><!-- fragment --></li>
+<li><p class="startli">Compare generated diagrams in your branch against master using <code>util/test_case_browser.py</code> script, for instance: </p><div class="fragment language-cpp"><div class="line">CC=/usr/bin/clang-18 CXX=/usr/bin/clang++-18 LLVM_VERSION=18 NUMPROC=16 CMAKE_GENERATOR=Ninja ENABLE_CXX_MODULES_TEST_CASES=ON ENABLE_CUDA_TEST_CASES=ON CLANG_UML_ENABLE_BACKTRACE=ON make test_diagrams</div>
+<div class="line">util/test_case_browser.py ../clang-uml-master/debug/tests/diagrams/plantuml debug/tests/diagrams/plantuml/</div>
+</div><!-- fragment --><p class="startli">This will open your default web browser to a simple <a href="https://nicegui.io/">NiceGUI</a> interface, where diagrams generated from each test case can be compared side by side. </p><blockquote class="doxtable">
+<p>&zwj;The script only compares diagrams existing in both directories, so any new diagrams will not be included in this interface. </p>
+</blockquote>
+</li>
 <li>Create a pull request from your branch to <code>master</code> branch</li>
 </ul>
 <h1><a class="anchor" id="if-you-would-like-to-add-a-feature"></a>

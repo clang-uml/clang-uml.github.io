@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.4</span>
+       <span id="projectnumber">0.5.5</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -181,17 +181,19 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  110</span>        <span class="keyword">auto</span> filter = std::make_unique&lt;diagram_filter&gt;(</div>
 <div class="line"><span class="lineno">  111</span>            d, c, diagram_filter::private_constructor_tag_t{});</div>
 <div class="line"><span class="lineno">  112</span> </div>
-<div class="line"><span class="lineno">  113</span>        <span class="keywordflow">if</span> (c.filter_mode() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a1f0af361c663cf793ff0a28fa477da6daf17aaabc20bfe045075927934fed52d2">config::filter_mode_t::basic</a>) {</div>
-<div class="line"><span class="lineno">  114</span>            basic_diagram_filter_initializer init{c, *filter};</div>
-<div class="line"><span class="lineno">  115</span>            init.initialize();</div>
-<div class="line"><span class="lineno">  116</span>        }</div>
-<div class="line"><span class="lineno">  117</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  118</span>            advanced_diagram_filter_initializer init{c, *filter};</div>
-<div class="line"><span class="lineno">  119</span>            init.initialize();</div>
-<div class="line"><span class="lineno">  120</span>        }</div>
-<div class="line"><span class="lineno">  121</span> </div>
-<div class="line"><span class="lineno">  122</span>        <span class="keywordflow">return</span> filter;</div>
-<div class="line"><span class="lineno">  123</span>    }</div>
+<div class="line"><span class="lineno">  113</span>        filter-&gt;set_mode(c.filter_mode());</div>
+<div class="line"><span class="lineno">  114</span> </div>
+<div class="line"><span class="lineno">  115</span>        <span class="keywordflow">if</span> (filter-&gt;mode() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1config.html#a1f0af361c663cf793ff0a28fa477da6daf17aaabc20bfe045075927934fed52d2">config::filter_mode_t::basic</a>) {</div>
+<div class="line"><span class="lineno">  116</span>            basic_diagram_filter_initializer init{c, *filter};</div>
+<div class="line"><span class="lineno">  117</span>            init.initialize();</div>
+<div class="line"><span class="lineno">  118</span>        }</div>
+<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  120</span>            advanced_diagram_filter_initializer init{c, *filter};</div>
+<div class="line"><span class="lineno">  121</span>            init.initialize();</div>
+<div class="line"><span class="lineno">  122</span>        }</div>
+<div class="line"><span class="lineno">  123</span> </div>
+<div class="line"><span class="lineno">  124</span>        <span class="keywordflow">return</span> filter;</div>
+<div class="line"><span class="lineno">  125</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>

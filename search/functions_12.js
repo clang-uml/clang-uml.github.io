@@ -1,7 +1,7 @@
 var searchData=
 [
   ['regex_0',['regex',['../structclanguml_1_1common_1_1regex.html#a9d086cbc9ebb4393663e06a28eb341a1',1,'clanguml::common::regex']]],
-  ['relationship_1',['relationship',['../classclanguml_1_1common_1_1model_1_1relationship.html#adb67eaff73e10255d144da48949463c9',1,'clanguml::common::model::relationship']]],
+  ['relationship_1',['relationship',['../classclanguml_1_1common_1_1model_1_1relationship.html#adb67eaff73e10255d144da48949463c9',1,'clanguml::common::model::relationship::relationship(relationship_t type, eid_t destination, access_t access=access_t::kPublic, std::string label=&quot;&quot;, std::string multiplicity_source=&quot;&quot;, std::string multiplicity_destination=&quot;&quot;)'],['../classclanguml_1_1common_1_1model_1_1relationship.html#a238226a11ada7990abef9d0634a150cb',1,'clanguml::common::model::relationship::relationship(eid_t destination, access_t access=access_t::kPublic, bool is_virtual=false)']]],
   ['relationship_5ffilter_2',['relationship_filter',['../structclanguml_1_1common_1_1model_1_1relationship__filter.html#a91f88fa33c8fd150ca34aeaed923e28d',1,'clanguml::common::model::relationship_filter']]],
   ['relationship_5fhint_5ft_3',['relationship_hint_t',['../structclanguml_1_1config_1_1relationship__hint__t.html#a7af6b5aa24cdd603e04667a88da7822e',1,'clanguml::config::relationship_hint_t']]],
   ['relationships_4',['relationships',['../classclanguml_1_1common_1_1model_1_1diagram__element.html#a4b61e36d75bbf2016f97f654f8937588',1,'clanguml::common::model::diagram_element::relationships()'],['../classclanguml_1_1common_1_1model_1_1diagram__element.html#a43bab2fb85b6ea7ea716a8b200e47231',1,'clanguml::common::model::diagram_element::relationships() const']]],

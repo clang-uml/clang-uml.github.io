@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.4</span>
+       <span id="projectnumber">0.5.5</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -220,7 +220,40 @@ $(function() {
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">   91</a></span>    <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#a890433df3c41bd4c468dbce1711eb02f">reference_vector&lt;T&gt;</a> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1element__view.html#a875f6abdd41c15042262fd878cb6d3b1">elements_</a>;</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>};</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>} <span class="comment">// namespace clanguml::common::model</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="structclanguml_1_1common_1_1model_1_1element__views.html">   94</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Ts&gt; <span class="keyword">struct </span><a class="code hl_struct" href="structclanguml_1_1common_1_1model_1_1element__views.html">element_views</a> : <span class="keyword">public</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1element__view.html">element_view</a>&lt;Ts&gt;... {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="structclanguml_1_1common_1_1model_1_1element__views.html#a0cd3342ca7f1a9dd0837fd91cc26e0be">   95</a></span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> F&gt; <span class="keywordtype">void</span> <a class="code hl_function" href="structclanguml_1_1common_1_1model_1_1element__views.html#a0cd3342ca7f1a9dd0837fd91cc26e0be">for_all_elements</a>(F &amp;&amp;f)</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    {</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        (f(<a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1element__view.html">element_view&lt;Ts&gt;::view</a>()), ...);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    }</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="structclanguml_1_1common_1_1model_1_1element__views.html#a428701eb93ad914a8826b23c55619673">  100</a></span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> F&gt; <span class="keywordtype">void</span> <a class="code hl_function" href="structclanguml_1_1common_1_1model_1_1element__views.html#a428701eb93ad914a8826b23c55619673">for_all_elements</a>(F &amp;&amp;f)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        (f(<a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1element__view.html">element_view&lt;Ts&gt;::view</a>()), ...);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment"></span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">     * @brief Calls `f` function on `e` if it can be dynamically casted to</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">     *        any type in the element_views</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">     * @tparam T Element type</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment">     * @tparam F Function to call on e</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">     * @param e Pointer to element</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">     * @param f Function to call with `e` dynamically casted to one of types</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="structclanguml_1_1common_1_1model_1_1element__views.html#aa09314963145819769b320000ad2a6d6">  113</a></span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> F&gt; <span class="keywordtype">void</span> <a class="code hl_function" href="structclanguml_1_1common_1_1model_1_1element__views.html#aa09314963145819769b320000ad2a6d6" title="Calls f function on e if it can be dynamically casted to any type in the element_views.">dynamic_apply</a>(T *e, F &amp;&amp;f)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keywordflow">if</span> (e == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        (</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            [&amp;] {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                <span class="keywordflow">if</span> (<span class="keyword">auto</span> *ptr = <span class="keyword">dynamic_cast&lt;</span>Ts *<span class="keyword">&gt;</span>(e); ptr) {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                    f(ptr);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                }</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            }(),</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            ...);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    }</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>};</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>} <span class="comment">// namespace clanguml::common::model</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->
