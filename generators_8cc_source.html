@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.5</span>
+       <span id="projectnumber">0.5.6</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -187,7 +187,7 @@ $(function() {
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        translation_units_map[name] =</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            diagram-&gt;glob_translation_units(compilation_database_files);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Found {} translation units for diagram {}&quot;</span>,</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Found {} translation units for diagram &#39;{}&#39;&quot;</span>,</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            translation_units_map.at(name).size(), name);</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
@@ -342,7 +342,7 @@ $(function() {
 <div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    }</div>
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>}</div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common_1_1generators.html#a537119c579720a9aca4cc9e185612f48">  216</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#a537119c579720a9aca4cc9e185612f48" title="Generate diagrams.">generate_diagrams</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;diagram_names,</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common_1_1generators.html#aa659ed548b2b5a0177837a5eeed4e6f9">  216</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#aa659ed548b2b5a0177837a5eeed4e6f9" title="Generate diagrams.">generate_diagrams</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;diagram_names,</div>
 <div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <a class="code hl_struct" href="structclanguml_1_1config_1_1config.html" title="Represents entire configuration file.">config::config</a> &amp;config, <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#ab2fd0ae19e35871dab2dd583f7683587">common::compilation_database_ptr</a> &amp;db,</div>
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structclanguml_1_1cli_1_1runtime__config.html" title="This class holds command line parameters not directly related to specific diagram configurations.">cli::runtime_config</a> &amp;runtime_config,</div>
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    <span class="keyword">const</span> std::map&lt;std::string, std::vector&lt;std::string&gt;&gt;</div>
@@ -359,97 +359,155 @@ $(function() {
 <div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        indicator = std::make_unique&lt;progress_indicator&gt;();</div>
 <div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    }</div>
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[name, diagram] : config.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a3c37774312f92c932c70a712b8e611ad">diagrams</a>) {</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        <span class="comment">// If there are any specific diagram names provided on the command</span></div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        <span class="comment">// line, and this diagram is not in that list - skip it</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="keywordflow">if</span> (!diagram_names.empty() &amp;&amp; !<a class="code hl_function" href="namespaceclanguml_1_1util.html#a3846efe63ca7c81994f57ae243eb496a">util::contains</a>(diagram_names, name))</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;valid_translation_units = translation_units_map.at(name);</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    std::vector&lt;std::exception_ptr&gt; errors;</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[name, diagram] : config.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a3c37774312f92c932c70a712b8e611ad">diagrams</a>) {</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="comment">// If there are any specific diagram names provided on the command</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <span class="comment">// line, and this diagram is not in that list - skip it</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        <span class="keywordflow">if</span> (!diagram_names.empty() &amp;&amp; !<a class="code hl_function" href="namespaceclanguml_1_1util.html#a3846efe63ca7c81994f57ae243eb496a">util::contains</a>(diagram_names, name))</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>            <span class="keywordflow">continue</span>;</div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Found {} valid translation units for diagram {}&quot;</span>,</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            valid_translation_units.size(), name);</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        <span class="keyword">const</span> <span class="keyword">auto</span> matching_commands_count =</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>            db-&gt;count_matching_commands(valid_translation_units);</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="keywordflow">if</span> (matching_commands_count == 0) {</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>            <span class="keywordflow">if</span> (indicator) {</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>                indicator-&gt;add_progress_bar(</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>                    name, 0, <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#a412767d9cc5221be5fec61a8041b93a5" title="Return indicators progress bar color for diagram type.">diagram_type_to_color</a>(diagram-&gt;type()));</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>                indicator-&gt;fail(name);</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>            }</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>            <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>                <a class="code hl_define" href="util_8h.html#a9c6217ffa4d9c4bf446f272b471e91ce">LOG_ERROR</a>(</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>                    <span class="stringliteral">&quot;Diagram {} generation failed: no translation units &quot;</span></div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>                    <span class="stringliteral">&quot;found. Please make sure that your &#39;glob&#39; patterns match &quot;</span></div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>                    <span class="stringliteral">&quot;at least 1 file in &#39;compile_commands.json&#39;.&quot;</span>,</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>                    name);</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>            }</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        }</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Found {} matching translation unit commands for diagram {}&quot;</span>,</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>            matching_commands_count, name);</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        <span class="keyword">auto</span> <a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1generator.html" title="Common diagram generator interface.">generator</a> = [&amp;name = name, &amp;diagram = diagram, &amp;indicator,</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>                             db = std::ref(*db), matching_commands_count,</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>                             translation_units = valid_translation_units,</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>                             runtime_config]() <span class="keyword">mutable</span> {</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>            <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>                <span class="keywordflow">if</span> (indicator)</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>                    indicator-&gt;add_progress_bar(name, matching_commands_count,</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>                        <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#a412767d9cc5221be5fec61a8041b93a5" title="Return indicators progress bar color for diagram type.">diagram_type_to_color</a>(diagram-&gt;type()));</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span> </div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>                <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#a13b638f210bbf970518abae15e50a463" title="Generate a single diagram.">generate_diagram</a>(name, diagram, db, translation_units,</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>                    runtime_config, [&amp;indicator, &amp;name]() {</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>                        <span class="keywordflow">if</span> (indicator)</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>                            indicator-&gt;increment(name);</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>                    });</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>                <span class="keywordflow">if</span> (indicator)</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>                    indicator-&gt;complete(name);</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>            }</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>            <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>                <span class="keywordflow">if</span> (indicator)</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>                    indicator-&gt;fail(name);</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span> </div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>                <a class="code hl_define" href="util_8h.html#a9c6217ffa4d9c4bf446f272b471e91ce">LOG_ERROR</a>(</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>                    <span class="stringliteral">&quot;ERROR: Failed to generate diagram {}: {}&quot;</span>, name, e.what());</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>            }</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        };</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        futs.emplace_back(generator_executor.add(std::move(<a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1generator.html" title="Common diagram generator interface.">generator</a>)));</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    }</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;fut : futs) {</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        fut.get();</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    }</div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span> </div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    <span class="keywordflow">if</span> (runtime_config.<a class="code hl_variable" href="structclanguml_1_1cli_1_1runtime__config.html#aae4d1a5a248bd3e274b64b49e98a9eaa">progress</a>) {</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>        indicator-&gt;stop();</div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        std::cout &lt;&lt; termcolor::white &lt;&lt; <span class="stringliteral">&quot;Done\n&quot;</span>;</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        std::cout &lt;&lt; termcolor::reset;</div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    }</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>}</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span> </div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common_1_1generators.html#a412767d9cc5221be5fec61a8041b93a5">  307</a></span>indicators::Color <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#a412767d9cc5221be5fec61a8041b93a5" title="Return indicators progress bar color for diagram type.">diagram_type_to_color</a>(<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">model::diagram_t</a> diagram_type)</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>{</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    <span class="keywordflow">switch</span> (diagram_type) {</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffaca5f49c58b1ea579a3ed3e0bc6a0d176">model::diagram_t::kClass</a>:</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>        <span class="keywordflow">return</span> indicators::Color::yellow;</div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffaa7f5349f8e4e02001465430400a7542f">model::diagram_t::kSequence</a>:</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>        <span class="keywordflow">return</span> indicators::Color::blue;</div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffabb0cb7a283263408d77d35d2e034bb77">model::diagram_t::kPackage</a>:</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>        <span class="keywordflow">return</span> indicators::Color::cyan;</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffa279a35d9e230b4c8a0796fdf6f0d5360">model::diagram_t::kInclude</a>:</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>        <span class="keywordflow">return</span> indicators::Color::magenta;</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    <span class="keywordflow">default</span>:</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>        <span class="keywordflow">return</span> indicators::Color::unspecified;</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    }</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>}</div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span> </div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>} <span class="comment">// namespace clanguml::common::generators</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;valid_translation_units = translation_units_map.at(name);</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Found {} possible translation units for diagram &#39;{}&#39;&quot;</span>,</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            valid_translation_units.size(), name);</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <span class="keyword">const</span> <span class="keyword">auto</span> matching_commands_count =</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>            db-&gt;count_matching_commands(valid_translation_units);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="keywordflow">if</span> (matching_commands_count == 0) {</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>            <span class="keyword">const</span> <span class="keyword">auto</span> error_msg = fmt::format(</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>                <span class="stringliteral">&quot;Diagram &#39;{}&#39; generation failed: no translation units &quot;</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>                <span class="stringliteral">&quot;found. Please make sure that your &#39;glob&#39; patterns match &quot;</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>                <span class="stringliteral">&quot;at least 1 file in &#39;compile_commands.json&#39;.&quot;</span>,</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>                name);</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>            <span class="keywordflow">if</span> (indicator) {</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>                indicator-&gt;add_progress_bar(</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>                    name, 0, <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#a412767d9cc5221be5fec61a8041b93a5" title="Return indicators progress bar color for diagram type.">diagram_type_to_color</a>(diagram-&gt;type()));</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>                indicator-&gt;fail(name);</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>                <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>                    <span class="keywordflow">throw</span> std::runtime_error(error_msg);</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>                }</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>                <span class="keywordflow">catch</span> (std::runtime_error &amp;e) {</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>                    errors.emplace_back(std::current_exception());</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>                }</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>            }</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>            <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>                <a class="code hl_define" href="util_8h.html#a9c6217ffa4d9c4bf446f272b471e91ce">LOG_ERROR</a>(error_msg);</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>            }</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        }</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span> </div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Found {} matching translation unit commands for diagram {}&quot;</span>,</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            matching_commands_count, name);</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        <span class="keyword">auto</span> <a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1generator.html" title="Common diagram generator interface.">generator</a> = [&amp;name = name, &amp;diagram = diagram, &amp;indicator,</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>                             db = std::ref(*db), matching_commands_count,</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>                             translation_units = valid_translation_units,</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>                             runtime_config]() <span class="keyword">mutable</span> -&gt; <span class="keywordtype">void</span> {</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>            <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>                <span class="keywordflow">if</span> (indicator) {</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>                    indicator-&gt;add_progress_bar(name, matching_commands_count,</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>                        <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#a412767d9cc5221be5fec61a8041b93a5" title="Return indicators progress bar color for diagram type.">diagram_type_to_color</a>(diagram-&gt;type()));</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>                    <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#a13b638f210bbf970518abae15e50a463" title="Generate a single diagram.">generate_diagram</a>(name, diagram, db, translation_units,</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>                        runtime_config, [&amp;indicator, &amp;name]() {</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>                            <span class="keywordflow">if</span> (indicator)</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>                                indicator-&gt;increment(name);</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>                        });</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>                    <span class="keywordflow">if</span> (indicator)</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>                        indicator-&gt;complete(name);</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>                }</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>                <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>                    <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#a13b638f210bbf970518abae15e50a463" title="Generate a single diagram.">generate_diagram</a>(name, diagram, db, translation_units,</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>                        runtime_config, {});</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>                }</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>            }</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>            <span class="keywordflow">catch</span> (<a class="code hl_struct" href="structclanguml_1_1generators_1_1clang__tool__exception.html">clanguml::generators::clang_tool_exception</a> &amp;e) {</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>                <span class="keywordflow">if</span> (indicator)</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>                    indicator-&gt;fail(name);</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>                <span class="keywordflow">throw</span> std::move(e);</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>            }</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>            <span class="keywordflow">catch</span> (std::exception &amp;e) {</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>                <span class="keywordflow">if</span> (indicator)</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>                    indicator-&gt;fail(name);</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>                <a class="code hl_define" href="util_8h.html#a9c6217ffa4d9c4bf446f272b471e91ce">LOG_ERROR</a>(</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>                    <span class="stringliteral">&quot;Failed to generate diagram &#39;{}&#39;: {}&quot;</span>, name, e.<a class="code hl_function" href="classclanguml_1_1error_1_1diagram__generation__error.html#ae4cbc06c194250f24c8b9df907ff4bab">what</a>());</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>                <span class="keywordflow">throw</span> std::runtime_error(fmt::format(</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>                    <span class="stringliteral">&quot;Failed to generate diagram &#39;{}&#39;: {}&quot;</span>, name, e.<a class="code hl_function" href="classclanguml_1_1error_1_1diagram__generation__error.html#ae4cbc06c194250f24c8b9df907ff4bab">what</a>()));</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>            }</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>        };</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>        futs.emplace_back(generator_executor.add(std::move(<a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1generator.html" title="Common diagram generator interface.">generator</a>)));</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    }</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span> </div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;fut : futs) {</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>        <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>            fut.get();</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>        }</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>        <span class="keywordflow">catch</span> (std::exception &amp;e) {</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>            errors.emplace_back(std::current_exception());</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        }</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    }</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span> </div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>    <span class="keywordflow">if</span> (runtime_config.<a class="code hl_variable" href="structclanguml_1_1cli_1_1runtime__config.html#aae4d1a5a248bd3e274b64b49e98a9eaa">progress</a>) {</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        indicator-&gt;stop();</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>        <span class="keywordflow">if</span> (errors.empty()) {</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>            std::cout &lt;&lt; termcolor::white &lt;&lt; <span class="stringliteral">&quot;Done\n&quot;</span>;</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>        }</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>            std::cout &lt;&lt; termcolor::white &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>        }</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        std::cout &lt;&lt; termcolor::reset;</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    }</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span> </div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    <span class="keywordflow">if</span> (errors.empty())</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span> </div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;e : errors) {</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>        <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>            std::rethrow_exception(e);</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        }</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>        <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_struct" href="structclanguml_1_1generators_1_1clang__tool__exception.html">clanguml::generators::clang_tool_exception</a> &amp;e) {</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>            fmt::println(<span class="stringliteral">&quot;ERROR: Failed to generate {} diagram &#39;{}&#39; due to &quot;</span></div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>                         <span class="stringliteral">&quot;following issues:&quot;</span>,</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>                e.<a class="code hl_function" href="classclanguml_1_1error_1_1diagram__generation__error.html#a21f957d39abdb1ad91a9e3c888f91541">diagram_type</a>(), e.<a class="code hl_function" href="classclanguml_1_1error_1_1diagram__generation__error.html#a6bd61dd0b6a5525d5feced52fcf81e34">diagram_name</a>());</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;d : e.<a class="code hl_variable" href="structclanguml_1_1generators_1_1clang__tool__exception.html#a5a3b8bd018770306f0df6afaa2f6a4cf">diagnostics</a>) {</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>                fmt::println(<span class="stringliteral">&quot; - {}&quot;</span>, d);</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>            }</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>            fmt::println(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>        }</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>            fmt::println(<span class="stringliteral">&quot;ERROR: {}&quot;</span>, e.<a class="code hl_function" href="classclanguml_1_1error_1_1diagram__generation__error.html#ae4cbc06c194250f24c8b9df907ff4bab">what</a>());</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        }</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>    }</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>}</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span> </div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common_1_1generators.html#a412767d9cc5221be5fec61a8041b93a5">  365</a></span>indicators::Color <a class="code hl_function" href="namespaceclanguml_1_1common_1_1generators.html#a412767d9cc5221be5fec61a8041b93a5" title="Return indicators progress bar color for diagram type.">diagram_type_to_color</a>(<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">model::diagram_t</a> diagram_type)</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>{</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    <span class="keywordflow">switch</span> (diagram_type) {</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffaca5f49c58b1ea579a3ed3e0bc6a0d176">model::diagram_t::kClass</a>:</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>        <span class="keywordflow">return</span> indicators::Color::yellow;</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffaa7f5349f8e4e02001465430400a7542f">model::diagram_t::kSequence</a>:</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>        <span class="keywordflow">return</span> indicators::Color::blue;</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffabb0cb7a283263408d77d35d2e034bb77">model::diagram_t::kPackage</a>:</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>        <span class="keywordflow">return</span> indicators::Color::cyan;</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacffa279a35d9e230b4c8a0796fdf6f0d5360">model::diagram_t::kInclude</a>:</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>        <span class="keywordflow">return</span> indicators::Color::magenta;</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>        <span class="keywordflow">return</span> indicators::Color::unspecified;</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    }</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>}</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span> </div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>} <span class="comment">// namespace clanguml::common::generators</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

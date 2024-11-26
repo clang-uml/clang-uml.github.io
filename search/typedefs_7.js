@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['package_5fdependants_5ffilter_5ft_0',['package_dependants_filter_t',['../namespaceclanguml_1_1common_1_1model.html#a388386b372d8ced9db56af66b2851fbe',1,'clanguml::common::model']]],
-  ['package_5fdependencies_5ffilter_5ft_1',['package_dependencies_filter_t',['../namespaceclanguml_1_1common_1_1model.html#aa7b6de9aaa62c90d4af839e8ef0c066d',1,'clanguml::common::model']]]
+  ['opt_5fref_0',['opt_ref',['../namespaceclanguml_1_1common.html#a1580b9ca61896bdf6b4c96db61f167a4',1,'clanguml::common']]],
+  ['optional_5ftype_1',['optional_type',['../classclanguml_1_1common_1_1optional__ref.html#afc342b1ef3ad2d0d5041a408fd084a91',1,'clanguml::common::optional_ref']]]
 ];

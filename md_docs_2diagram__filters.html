@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.5</span>
+       <span id="projectnumber">0.5.6</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -224,14 +224,34 @@ modules</h1>
 <div class="line">    - r: &quot;.*impl.*&quot;</div>
 </div><!-- fragment --><h1><a class="anchor" id="elements"></a>
 elements</h1>
-<p>Allows to directly include or exclude specific entities from the diagrams, for instance to exclude a specific class from an included namespace:</p>
+<p>Allows to directly include or exclude specific entities from the diagrams, for instance to exclude a specific class from an included namespace simply add the following exclude block:</p>
 <div class="fragment language-yaml"><div class="line">include:</div>
 <div class="line">  namespaces:</div>
 <div class="line">    - ns1::ns2</div>
 <div class="line">exclude:</div>
 <div class="line">  elements:</div>
 <div class="line">    - ns1::ns2::MyClass</div>
-</div><!-- fragment --><h1><a class="anchor" id="element_types"></a>
+</div><!-- fragment --><p><code>elements</code> filter allows also for more fine-grained control over the diagram contents. Instead of a literal value in the filter like above, the filter can also specify to what type of element the filter applies. For instance the following filter:</p>
+<div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  namespaces:</div>
+<div class="line">    - ns1::ns2</div>
+<div class="line">exclude:</div>
+<div class="line">  elements:</div>
+<div class="line">    - ns1::ns2::MyClass</div>
+<div class="line">    - type: method</div>
+<div class="line">      name: ns1::ns2::OtherClass::log</div>
+</div><!-- fragment --><p>will, in addition to excluding <code>ns1::ns2::MyClass</code>, also exclude <code>ns1::ns2::OtherClass::log</code> method.</p>
+<p>Another useful example, for instance to ignore all setters and getters in the code base, the method elements filter can be specified with a regex e.g.:</p>
+<div class="fragment language-yaml"><div class="line">include:</div>
+<div class="line">  namespaces:</div>
+<div class="line">    - ns1::ns2</div>
+<div class="line">exclude:</div>
+<div class="line">  elements:</div>
+<div class="line">    - type: method</div>
+<div class="line">      name:</div>
+<div class="line">        r: &#39;.*::(get|set).*&#39;</div>
+</div><!-- fragment --><p>The <code>type</code> in this filter can be one of the following: <code>any</code>, <code>function</code>, <code>function_template</code>, <code>class</code>, <code>enum</code>, <code>method</code>, <code>member</code>, <code>concept</code>, <code>package</code>, <code>objc_method</code>, <code>objc_member</code>, <code>objc_protocol</code>, <code>objc_category</code>, <code>objc_interface</code>.</p>
+<h1><a class="anchor" id="element_types"></a>
 element_types</h1>
 <p>Allows to include or exclude elements of specific type from the diagram, for instance to remove all enums from a diagram add the following:</p>
 <div class="fragment language-yaml"><div class="line">exclude:</div>

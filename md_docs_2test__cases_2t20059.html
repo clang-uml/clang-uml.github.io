@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.5</span>
+       <span id="projectnumber">0.5.6</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -124,7 +124,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="t20059---objective-c-sequence-diagram-with-polymorphism-test-case"></a></p>
-<h1><a class="anchor" id="config-143"></a>
+<h1><a class="anchor" id="config-145"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  t20059_sequence:</div>
@@ -134,9 +134,13 @@ Config</h1>
 <div class="line">    include:</div>
 <div class="line">      paths:</div>
 <div class="line">        - .</div>
+<div class="line">    exclude:</div>
+<div class="line">      elements:</div>
+<div class="line">        - type: objc_method</div>
+<div class="line">          name: t20059_A::logA</div>
 <div class="line">    from:</div>
 <div class="line">      - function: &quot;t20059_tmain()&quot;</div>
-</div><!-- fragment --> <h1><a class="anchor" id="source-code-143"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-145"></a>
 Source code</h1>
 <p>File <code>tests/t20059/t20059.m</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
 <div class="line"> </div>
@@ -154,8 +158,12 @@ Source code</h1>
 <div class="line">    NSLog(<span class="stringliteral">@&quot;t20059_A: Called print_impl method&quot;</span>);</div>
 <div class="line">}</div>
 <div class="line"> </div>
+<div class="line">- (void)logA {</div>
+<div class="line">}</div>
+<div class="line"> </div>
 <div class="line">- (void)print</div>
 <div class="line">{</div>
+<div class="line">    [<span class="keyword">self</span> logA];</div>
 <div class="line">    [<span class="keyword">self</span> printImpl];</div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -224,17 +232,17 @@ Source code</h1>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-143"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-145"></a>
 Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t20059_sequence.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-mermaid-diagrams-143"></a>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-145"></a>
 Generated Mermaid diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t20059_sequence_mermaid.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-json-models-143"></a>
+     <h1><a class="anchor" id="generated-json-models-145"></a>
 Generated JSON models</h1>
 <div class="fragment language-json"><div class="line">{</div>
 <div class="line">  &quot;diagram_type&quot;: &quot;sequence&quot;,</div>
@@ -249,7 +257,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 5,</div>
 <div class="line">        &quot;file&quot;: &quot;t20059.m&quot;,</div>
-<div class="line">        &quot;line&quot;: 71,</div>
+<div class="line">        &quot;line&quot;: 75,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t20059.m&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;type&quot;: &quot;function&quot;</div>
@@ -265,7 +273,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 1,</div>
 <div class="line">            &quot;file&quot;: &quot;t20059.m&quot;,</div>
-<div class="line">            &quot;line&quot;: 17,</div>
+<div class="line">            &quot;line&quot;: 20,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t20059.m&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;objc_method&quot;</div>
@@ -309,7 +317,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 1,</div>
 <div class="line">            &quot;file&quot;: &quot;t20059.m&quot;,</div>
-<div class="line">            &quot;line&quot;: 34,</div>
+<div class="line">            &quot;line&quot;: 38,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t20059.m&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;objc_method&quot;</div>
@@ -323,7 +331,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 1,</div>
 <div class="line">            &quot;file&quot;: &quot;t20059.m&quot;,</div>
-<div class="line">            &quot;line&quot;: 29,</div>
+<div class="line">            &quot;line&quot;: 33,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t20059.m&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;objc_method&quot;</div>
@@ -337,7 +345,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 12,</div>
 <div class="line">        &quot;file&quot;: &quot;t20059.m&quot;,</div>
-<div class="line">        &quot;line&quot;: 24,</div>
+<div class="line">        &quot;line&quot;: 28,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t20059.m&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;type&quot;: &quot;objc_interface&quot;</div>
@@ -353,7 +361,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 1,</div>
 <div class="line">            &quot;file&quot;: &quot;t20059.m&quot;,</div>
-<div class="line">            &quot;line&quot;: 52,</div>
+<div class="line">            &quot;line&quot;: 56,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t20059.m&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;objc_method&quot;</div>
@@ -367,7 +375,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 12,</div>
 <div class="line">        &quot;file&quot;: &quot;t20059.m&quot;,</div>
-<div class="line">        &quot;line&quot;: 51,</div>
+<div class="line">        &quot;line&quot;: 55,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t20059.m&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;type&quot;: &quot;objc_interface&quot;</div>
@@ -383,7 +391,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 1,</div>
 <div class="line">            &quot;file&quot;: &quot;t20059.m&quot;,</div>
-<div class="line">            &quot;line&quot;: 62,</div>
+<div class="line">            &quot;line&quot;: 66,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t20059.m&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;objc_method&quot;</div>
@@ -397,7 +405,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 12,</div>
 <div class="line">        &quot;file&quot;: &quot;t20059.m&quot;,</div>
-<div class="line">        &quot;line&quot;: 61,</div>
+<div class="line">        &quot;line&quot;: 65,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t20059.m&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;type&quot;: &quot;objc_interface&quot;</div>
@@ -417,7 +425,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20059.m&quot;,</div>
-<div class="line">            &quot;line&quot;: 80,</div>
+<div class="line">            &quot;line&quot;: 84,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t20059.m&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;to&quot;: {</div>
@@ -437,7 +445,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 5,</div>
 <div class="line">            &quot;file&quot;: &quot;t20059.m&quot;,</div>
-<div class="line">            &quot;line&quot;: 19,</div>
+<div class="line">            &quot;line&quot;: 23,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t20059.m&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;to&quot;: {</div>
@@ -457,7 +465,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20059.m&quot;,</div>
-<div class="line">            &quot;line&quot;: 81,</div>
+<div class="line">            &quot;line&quot;: 85,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t20059.m&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;to&quot;: {</div>
@@ -477,7 +485,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 5,</div>
 <div class="line">            &quot;file&quot;: &quot;t20059.m&quot;,</div>
-<div class="line">            &quot;line&quot;: 36,</div>
+<div class="line">            &quot;line&quot;: 40,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t20059.m&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;to&quot;: {</div>
@@ -497,7 +505,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20059.m&quot;,</div>
-<div class="line">            &quot;line&quot;: 82,</div>
+<div class="line">            &quot;line&quot;: 86,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t20059.m&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;to&quot;: {</div>
@@ -517,7 +525,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20059.m&quot;,</div>
-<div class="line">            &quot;line&quot;: 83,</div>
+<div class="line">            &quot;line&quot;: 87,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t20059.m&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;to&quot;: {</div>

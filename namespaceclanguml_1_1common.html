@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.5</span>
+       <span id="projectnumber">0.5.6</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -340,6 +340,8 @@ Functions</h2></td></tr>
 <tr class="separator:a8a2574185aa30977a6efe503f30d1daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff72d64aef5e8bd1901660ffdcd96cef"><td class="memItemLeft" align="right" valign="top">std::optional&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#aff72d64aef5e8bd1901660ffdcd96cef">get_array_size</a> (const clang::ArrayType &amp;type)</td></tr>
 <tr class="separator:aff72d64aef5e8bd1901660ffdcd96cef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaa446c6d4fa681312e1af4a5878f77d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#aeaa446c6d4fa681312e1af4a5878f77d">set_source_location</a> (clang::SourceManager &amp;source_manager, const clang::SourceLocation &amp;location, <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">clanguml::common::model::source_location</a> &amp;element, std::filesystem::path tu_path, std::filesystem::path relative_to_path_)</td></tr>
+<tr class="separator:aeaa446c6d4fa681312e1af4a5878f77d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f6b3f1cb4c3c8572404cb8e205c034e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a1f6b3f1cb4c3c8572404cb8e205c034e"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#a1f6b3f1cb4c3c8572404cb8e205c034e">get_qualified_name</a> (const T &amp;declaration)</td></tr>
 <tr class="memdesc:a1f6b3f1cb4c3c8572404cb8e205c034e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get qualified name of some Clang declaration.  <br /></td></tr>
@@ -418,7 +420,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00126">126</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00146">146</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
 
 </div>
 </div>
@@ -1308,23 +1310,23 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Fully qualified name </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="clang__utils_8h_source.html#l00070">70</a> of file <a class="el" href="clang__utils_8h_source.html">clang_utils.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   71</span>{</div>
-<div class="line"><span class="lineno">   72</span>    <span class="keyword">auto</span> qualified_name = declaration.getQualifiedNameAsString();</div>
-<div class="line"><span class="lineno">   73</span>    util::replace_all(qualified_name, <span class="stringliteral">&quot;(anonymous namespace)&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">   74</span>    util::replace_all(qualified_name, <span class="stringliteral">&quot;::::&quot;</span>, <span class="stringliteral">&quot;::&quot;</span>);</div>
-<div class="line"><span class="lineno">   75</span> </div>
-<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_base_of_v&lt;clang::TagDecl, T&gt;) {</div>
-<div class="line"><span class="lineno">   77</span>        <span class="keyword">auto</span> base_name = <a class="code hl_function" href="namespaceclanguml_1_1common.html#a0039b4de6dbd7e89c762d1bd5ad150d0" title="Generate full qualified name for clang::TagDecl instance.">get_tag_name</a>(declaration);</div>
-<div class="line"><span class="lineno">   78</span>        <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">model::namespace_</a> ns{qualified_name};</div>
-<div class="line"><span class="lineno">   79</span>        ns.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#a40b675086efb5c4e289a98d3a1228b79">pop_back</a>();</div>
-<div class="line"><span class="lineno">   80</span>        ns = ns | base_name;</div>
-<div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span>        <span class="keywordflow">return</span> ns.to_string();</div>
-<div class="line"><span class="lineno">   83</span>    }</div>
-<div class="line"><span class="lineno">   84</span> </div>
-<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">return</span> qualified_name;</div>
-<div class="line"><span class="lineno">   86</span>}</div>
+<p class="definition">Definition at line <a class="el" href="clang__utils_8h_source.html#l00071">71</a> of file <a class="el" href="clang__utils_8h_source.html">clang_utils.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   72</span>{</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keyword">auto</span> qualified_name = declaration.getQualifiedNameAsString();</div>
+<div class="line"><span class="lineno">   74</span>    util::replace_all(qualified_name, <span class="stringliteral">&quot;(anonymous namespace)&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">   75</span>    util::replace_all(qualified_name, <span class="stringliteral">&quot;::::&quot;</span>, <span class="stringliteral">&quot;::&quot;</span>);</div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_base_of_v&lt;clang::TagDecl, T&gt;) {</div>
+<div class="line"><span class="lineno">   78</span>        <span class="keyword">auto</span> base_name = <a class="code hl_function" href="namespaceclanguml_1_1common.html#a0039b4de6dbd7e89c762d1bd5ad150d0" title="Generate full qualified name for clang::TagDecl instance.">get_tag_name</a>(declaration);</div>
+<div class="line"><span class="lineno">   79</span>        <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">model::namespace_</a> ns{qualified_name};</div>
+<div class="line"><span class="lineno">   80</span>        ns.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#a40b675086efb5c4e289a98d3a1228b79">pop_back</a>();</div>
+<div class="line"><span class="lineno">   81</span>        ns = ns | base_name;</div>
+<div class="line"><span class="lineno">   82</span> </div>
+<div class="line"><span class="lineno">   83</span>        <span class="keywordflow">return</span> ns.to_string();</div>
+<div class="line"><span class="lineno">   84</span>    }</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">return</span> qualified_name;</div>
+<div class="line"><span class="lineno">   87</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1702,16 +1704,16 @@ template&lt;typename T , typename P , typename F &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="clang__utils_8h_source.html#l00240">240</a> of file <a class="el" href="clang__utils_8h_source.html">clang_utils.h</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  241</span>{</div>
-<div class="line"><span class="lineno">  242</span>    <span class="keywordflow">if</span> (pointer == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  243</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  244</span> </div>
-<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *dyn_cast_value = clang::dyn_cast&lt;T&gt;(pointer);</div>
-<div class="line"><span class="lineno">  246</span>        dyn_cast_value) {</div>
-<div class="line"><span class="lineno">  247</span>        std::forward&lt;F&gt;(func)(dyn_cast_value);</div>
-<div class="line"><span class="lineno">  248</span>    }</div>
-<div class="line"><span class="lineno">  249</span>}</div>
+<p class="definition">Definition at line <a class="el" href="clang__utils_8h_source.html#l00241">241</a> of file <a class="el" href="clang__utils_8h_source.html">clang_utils.h</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  242</span>{</div>
+<div class="line"><span class="lineno">  243</span>    <span class="keywordflow">if</span> (pointer == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  244</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  245</span> </div>
+<div class="line"><span class="lineno">  246</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *dyn_cast_value = clang::dyn_cast&lt;T&gt;(pointer);</div>
+<div class="line"><span class="lineno">  247</span>        dyn_cast_value) {</div>
+<div class="line"><span class="lineno">  248</span>        std::forward&lt;F&gt;(func)(dyn_cast_value);</div>
+<div class="line"><span class="lineno">  249</span>    }</div>
+<div class="line"><span class="lineno">  250</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2461,6 +2463,109 @@ template&lt;typename T , typename P , typename F &gt; </div>
 <div class="line"><span class="lineno">  639</span> </div>
 <div class="line"><span class="lineno">  640</span>    <span class="keywordflow">return</span> res;</div>
 <div class="line"><span class="lineno">  641</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aeaa446c6d4fa681312e1af4a5878f77d" name="aeaa446c6d4fa681312e1af4a5878f77d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaa446c6d4fa681312e1af4a5878f77d">&#9670;&#160;</a></span>set_source_location()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::common::set_source_location </td>
+          <td>(</td>
+          <td class="paramtype">clang::SourceManager &amp;&#160;</td>
+          <td class="paramname"><em>source_manager</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const clang::SourceLocation &amp;&#160;</td>
+          <td class="paramname"><em>location</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">clanguml::common::model::source_location</a> &amp;&#160;</td>
+          <td class="paramname"><em>element</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::filesystem::path&#160;</td>
+          <td class="paramname"><em>tu_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::filesystem::path&#160;</td>
+          <td class="paramname"><em>relative_to_path_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="clang__utils_8cc_source.html#l01077">1077</a> of file <a class="el" href="clang__utils_8cc_source.html">clang_utils.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno"> 1081</span>{</div>
+<div class="line"><span class="lineno"> 1082</span>    <span class="keyword">namespace </span>fs = std::filesystem;</div>
+<div class="line"><span class="lineno"> 1083</span> </div>
+<div class="line"><span class="lineno"> 1084</span>    std::string file;</div>
+<div class="line"><span class="lineno"> 1085</span>    <span class="keywordtype">unsigned</span> line{};</div>
+<div class="line"><span class="lineno"> 1086</span>    <span class="keywordtype">unsigned</span> column{};</div>
+<div class="line"><span class="lineno"> 1087</span> </div>
+<div class="line"><span class="lineno"> 1088</span>    <span class="keywordflow">if</span> (location.isValid()) {</div>
+<div class="line"><span class="lineno"> 1089</span>        file =</div>
+<div class="line"><span class="lineno"> 1090</span>            source_manager.getFilename(source_manager.getSpellingLoc(location))</div>
+<div class="line"><span class="lineno"> 1091</span>                .str();</div>
+<div class="line"><span class="lineno"> 1092</span>        line = source_manager.getSpellingLineNumber(location);</div>
+<div class="line"><span class="lineno"> 1093</span>        column = source_manager.getSpellingColumnNumber(location);</div>
+<div class="line"><span class="lineno"> 1094</span> </div>
+<div class="line"><span class="lineno"> 1095</span>        <span class="keywordflow">if</span> (file.empty()) {</div>
+<div class="line"><span class="lineno"> 1096</span>            <span class="comment">// Why do I have to do this?</span></div>
+<div class="line"><span class="lineno"> 1097</span>            parse_source_location(</div>
+<div class="line"><span class="lineno"> 1098</span>                location.printToString(source_manager), file, line, column);</div>
+<div class="line"><span class="lineno"> 1099</span>        }</div>
+<div class="line"><span class="lineno"> 1100</span>    }</div>
+<div class="line"><span class="lineno"> 1101</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno"> 1102</span>        <span class="keyword">auto</span> success = <a class="code hl_function" href="namespaceclanguml_1_1common.html#a8d7db842880bf1063b0c8b9041b6a899">parse_source_location</a>(</div>
+<div class="line"><span class="lineno"> 1103</span>            location.printToString(source_manager), file, line, column);</div>
+<div class="line"><span class="lineno"> 1104</span>        <span class="keywordflow">if</span> (!success) {</div>
+<div class="line"><span class="lineno"> 1105</span>            <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Failed to extract source location for element from {}&quot;</span>,</div>
+<div class="line"><span class="lineno"> 1106</span>                location.printToString(source_manager));</div>
+<div class="line"><span class="lineno"> 1107</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno"> 1108</span>        }</div>
+<div class="line"><span class="lineno"> 1109</span>    }</div>
+<div class="line"><span class="lineno"> 1110</span> </div>
+<div class="line"><span class="lineno"> 1111</span>    <span class="comment">// ensure the path is absolute</span></div>
+<div class="line"><span class="lineno"> 1112</span>    fs::path file_path{file};</div>
+<div class="line"><span class="lineno"> 1113</span>    <span class="keywordflow">if</span> (!file_path.is_absolute()) {</div>
+<div class="line"><span class="lineno"> 1114</span>        file_path = fs::absolute(file_path);</div>
+<div class="line"><span class="lineno"> 1115</span>    }</div>
+<div class="line"><span class="lineno"> 1116</span> </div>
+<div class="line"><span class="lineno"> 1117</span>    file_path = file_path.lexically_normal();</div>
+<div class="line"><span class="lineno"> 1118</span> </div>
+<div class="line"><span class="lineno"> 1119</span>    file = file_path.string();</div>
+<div class="line"><span class="lineno"> 1120</span> </div>
+<div class="line"><span class="lineno"> 1121</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#aec3793735a334061998533cf24ed5e93">set_file</a>(file);</div>
+<div class="line"><span class="lineno"> 1122</span> </div>
+<div class="line"><span class="lineno"> 1123</span>    <span class="keywordflow">if</span> (util::is_relative_to(file_path, relative_to_path_)) {</div>
+<div class="line"><span class="lineno"> 1124</span>        element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a41e5371c246850fa75c507069da22512">set_file_relative</a>(util::path_to_url(</div>
+<div class="line"><span class="lineno"> 1125</span>            fs::path{element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#afef560523e23f8911498ba519da86be7">file</a>()}.lexically_relative(relative_to_path_)));</div>
+<div class="line"><span class="lineno"> 1126</span>    }</div>
+<div class="line"><span class="lineno"> 1127</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno"> 1128</span>        element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a41e5371c246850fa75c507069da22512">set_file_relative</a>(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno"> 1129</span>    }</div>
+<div class="line"><span class="lineno"> 1130</span> </div>
+<div class="line"><span class="lineno"> 1131</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#aac84bd3ae927ce51254c1e5f57b5c650">set_translation_unit</a>(tu_path.string());</div>
+<div class="line"><span class="lineno"> 1132</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a9179112cf251651f04fddcacb0fb3ea1">set_line</a>(line);</div>
+<div class="line"><span class="lineno"> 1133</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a2de2361ac5c5e0c1e2d81612dd043df6">set_column</a>(column);</div>
+<div class="line"><span class="lineno"> 1134</span>    element.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__location.html#a82cf4e440646111ebfebcc88c89ae3f4">set_location_id</a>(location.getHashValue());</div>
+<div class="line"><span class="lineno"> 1135</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

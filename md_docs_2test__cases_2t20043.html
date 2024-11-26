@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.5</span>
+       <span id="projectnumber">0.5.6</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -124,7 +124,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="t20043---test-case-for-elements-diagram-filter-in-sequence-diagrams"></a></p>
-<h1><a class="anchor" id="config-127"></a>
+<h1><a class="anchor" id="config-129"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  t20043_sequence:</div>
@@ -138,17 +138,21 @@ Config</h1>
 <div class="line">      elements:</div>
 <div class="line">        - clanguml::t20043::B</div>
 <div class="line">        - clanguml::t20043::F</div>
+<div class="line">        - type: method</div>
+<div class="line">          name: clanguml::t20043::C::log_c</div>
 <div class="line">      namespaces:</div>
 <div class="line">        - clanguml::t20043::detail</div>
 <div class="line">    using_namespace: clanguml::t20043</div>
 <div class="line">    from:</div>
 <div class="line">      - function: &quot;clanguml::t20043::tmain()&quot;</div>
-</div><!-- fragment --> <h1><a class="anchor" id="source-code-127"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-129"></a>
 Source code</h1>
 <p>File <code>tests/t20043/t20043.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml.html">clanguml</a> {</div>
 <div class="line"><span class="keyword">namespace </span>t20043 {</div>
 <div class="line"><span class="keyword">struct </span>A {</div>
-<div class="line">    <span class="keywordtype">int</span> a() { <span class="keywordflow">return</span> 1; }</div>
+<div class="line">    <span class="keywordtype">int</span> a() { <span class="keywordflow">return</span> a_impl(); }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">int</span> a_impl() { <span class="keywordflow">return</span> 1; }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">struct </span>B {</div>
@@ -158,7 +162,13 @@ Source code</h1>
 <div class="line"> </div>
 <div class="line"><span class="keyword">struct </span>C {</div>
 <div class="line">    B b;</div>
-<div class="line">    <span class="keywordtype">int</span> c() { <span class="keywordflow">return</span> b.b(); }</div>
+<div class="line">    <span class="keywordtype">int</span> c()</div>
+<div class="line">    {</div>
+<div class="line">        log_c();</div>
+<div class="line">        <span class="keywordflow">return</span> b.b();</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> log_c() { }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span>detail {</div>
@@ -192,17 +202,17 @@ Source code</h1>
 <div class="line">}</div>
 <div class="line">}</div>
 <div class="line">}</div>
-</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-127"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-129"></a>
 Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t20043_sequence.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-mermaid-diagrams-127"></a>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-129"></a>
 Generated Mermaid diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t20043_sequence_mermaid.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-json-models-127"></a>
+     <h1><a class="anchor" id="generated-json-models-129"></a>
 Generated JSON models</h1>
 <div class="fragment language-json"><div class="line">{</div>
 <div class="line">  &quot;diagram_type&quot;: &quot;sequence&quot;,</div>
@@ -217,7 +227,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 5,</div>
 <div class="line">        &quot;file&quot;: &quot;t20043.cc&quot;,</div>
-<div class="line">        &quot;line&quot;: 37,</div>
+<div class="line">        &quot;line&quot;: 45,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t20043.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;type&quot;: &quot;function&quot;</div>
@@ -233,7 +243,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20043.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 26,</div>
+<div class="line">            &quot;line&quot;: 34,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t20043.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;method&quot;</div>
@@ -247,7 +257,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 8,</div>
 <div class="line">        &quot;file&quot;: &quot;t20043.cc&quot;,</div>
-<div class="line">        &quot;line&quot;: 23,</div>
+<div class="line">        &quot;line&quot;: 31,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t20043.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;type&quot;: &quot;class&quot;</div>
@@ -263,7 +273,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 9,</div>
 <div class="line">            &quot;file&quot;: &quot;t20043.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 14,</div>
+<div class="line">            &quot;line&quot;: 16,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t20043.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;type&quot;: &quot;method&quot;</div>
@@ -277,7 +287,7 @@ Generated JSON models</h1>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 8,</div>
 <div class="line">        &quot;file&quot;: &quot;t20043.cc&quot;,</div>
-<div class="line">        &quot;line&quot;: 12,</div>
+<div class="line">        &quot;line&quot;: 14,</div>
 <div class="line">        &quot;translation_unit&quot;: &quot;t20043.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;type&quot;: &quot;class&quot;</div>
@@ -297,7 +307,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 12,</div>
 <div class="line">            &quot;file&quot;: &quot;t20043.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 44,</div>
+<div class="line">            &quot;line&quot;: 52,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t20043.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;to&quot;: {</div>
@@ -317,7 +327,7 @@ Generated JSON models</h1>
 <div class="line">          &quot;source_location&quot;: {</div>
 <div class="line">            &quot;column&quot;: 16,</div>
 <div class="line">            &quot;file&quot;: &quot;t20043.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 29,</div>
+<div class="line">            &quot;line&quot;: 37,</div>
 <div class="line">            &quot;translation_unit&quot;: &quot;t20043.cc&quot;</div>
 <div class="line">          },</div>
 <div class="line">          &quot;to&quot;: {</div>

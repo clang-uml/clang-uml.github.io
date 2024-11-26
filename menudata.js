@@ -66,7 +66,6 @@ var menudata={children:[
 {text:"j",url:"namespacemembers_func_j.html#index_j"},
 {text:"l",url:"namespacemembers_func_l.html#index_l"},
 {text:"m",url:"namespacemembers_func_m.html#index_m"},
-{text:"n",url:"namespacemembers_func_n.html#index_n"},
 {text:"o",url:"namespacemembers_func_o.html#index_o"},
 {text:"p",url:"namespacemembers_func_p.html#index_p"},
 {text:"r",url:"namespacemembers_func_r.html#index_r"},
@@ -170,9 +169,11 @@ var menudata={children:[
 {text:"Typedefs",url:"functions_type.html",children:[
 {text:"c",url:"functions_type.html#index_c"},
 {text:"d",url:"functions_type.html#index_d"},
+{text:"k",url:"functions_type.html#index_k"},
 {text:"m",url:"functions_type.html#index_m"},
 {text:"o",url:"functions_type.html#index_o"},
-{text:"t",url:"functions_type.html#index_t"}]},
+{text:"t",url:"functions_type.html#index_t"},
+{text:"v",url:"functions_type.html#index_v"}]},
 {text:"Enumerations",url:"functions_enum.html"},
 {text:"Related Symbols",url:"functions_rela.html"}]}]},
 {text:"File List",url:"files.html",children:[

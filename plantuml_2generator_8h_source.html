@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.5</span>
+       <span id="projectnumber">0.5.6</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -151,7 +151,7 @@ $(function() {
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="relationship_8h.html">common/model/relationship.h</a>&quot;</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="config_8h.html">config/config.h</a>&quot;</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="util_8h.html">util/util.h</a>&quot;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;version.h&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="version_8h.html">version/version.h</a>&quot;</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;clang/Basic/Version.h&gt;</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;clang/Frontend/CompilerInstance.h&gt;</span></div>
@@ -325,7 +325,7 @@ $(function() {
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="keywordflow">if</span> (!config.allow_empty_diagrams() &amp;&amp; model.is_empty() &amp;&amp;</div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        config.puml().before.empty() &amp;&amp; config.puml().after.empty()) {</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <span class="keywordflow">throw</span> <a class="code hl_class" href="classclanguml_1_1error_1_1empty__diagram__error.html">clanguml::error::empty_diagram_error</a>{</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <span class="keywordflow">throw</span> <a class="code hl_class" href="classclanguml_1_1error_1_1empty__diagram__error.html">clanguml::error::empty_diagram_error</a>{model.type(), model.name(),</div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>            <span class="stringliteral">&quot;Diagram configuration resulted in empty diagram.&quot;</span>};</div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    }</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
@@ -555,7 +555,7 @@ $(function() {
 <div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>    <span class="keywordflow">if</span> (config.generate_metadata()) {</div>
 <div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>        ostr &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
 <div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>             &lt;&lt; <span class="stringliteral">&quot;&#39;Generated with clang-uml, version &quot;</span></div>
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>             &lt;&lt; clanguml::version::CLANG_UML_VERSION &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>             &lt;&lt; <a class="code hl_function" href="namespaceclanguml_1_1version.html#a1dd12946e995da3f1a760816b6670e00">clanguml::version::version</a>() &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
 <div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>             &lt;&lt; <span class="stringliteral">&quot;&#39;LLVM version &quot;</span> &lt;&lt; clang::getClangFullVersion() &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>    }</div>
 <div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>}</div>

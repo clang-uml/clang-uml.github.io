@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.5</span>
+       <span id="projectnumber">0.5.6</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -141,7 +141,7 @@ $(function() {
 <p> <embed src="config_context_class.svg"/> </p>
 <p>The configuration file is loaded by invoking </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="namespaceclanguml_1_1config.html#aea6c36b13e5b87d842b29fed15f2bd4c" title="Load and parse .clang-uml configuration file.">clanguml::config::load()</a> <a class="el" href="namespaceclanguml_1_1config.html#a49a76b299445e6399ddb6a4049bc580cac1c425268e68385d1ab5074c17a94f14">function</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00750">750</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00774">774</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="config_8h_source.html">config.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -161,6 +161,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af99ec4efabfedfdac145d39634079b83 inherit pub_methods_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#af99ec4efabfedfdac145d39634079b83">generate_fully_qualified_name</a> () const</td></tr>
 <tr class="memdesc:af99ec4efabfedfdac145d39634079b83 inherit pub_methods_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the diagram element should be fully qualified in diagram.  <br /></td></tr>
 <tr class="separator:af99ec4efabfedfdac145d39634079b83 inherit pub_methods_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a185ecdfe8170d1b852a9002f650a7136 inherit pub_methods_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a185ecdfe8170d1b852a9002f650a7136">root_directory</a> () const</td></tr>
+<tr class="memdesc:a185ecdfe8170d1b852a9002f650a7136 inherit pub_methods_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns absolute path of the <code>relative_to</code> option.  <br /></td></tr>
+<tr class="separator:a185ecdfe8170d1b852a9002f650a7136 inherit pub_methods_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0eb1854776cfbda4e1d5e94d8027f06 inherit pub_methods_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; std::filesystem::path &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#ad0eb1854776cfbda4e1d5e94d8027f06">get_relative_to</a> ()</td></tr>
 <tr class="memdesc:ad0eb1854776cfbda4e1d5e94d8027f06 inherit pub_methods_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get reference to <code>relative_to</code> diagram config option.  <br /></td></tr>
 <tr class="separator:ad0eb1854776cfbda4e1d5e94d8027f06 inherit pub_methods_structclanguml_1_1config_1_1inheritable__diagram__options"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -279,14 +282,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00961">961</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  962</span>{</div>
-<div class="line"><span class="lineno">  963</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;[name, diagram] : <a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a3c37774312f92c932c70a712b8e611ad">diagrams</a>) {</div>
-<div class="line"><span class="lineno">  964</span>        diagram-&gt;inherit(*<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">  965</span> </div>
-<div class="line"><span class="lineno">  966</span>        assert(diagram-&gt;get_relative_to().has_value);</div>
-<div class="line"><span class="lineno">  967</span>    }</div>
-<div class="line"><span class="lineno">  968</span>}</div>
+<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l01022">1022</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno"> 1023</span>{</div>
+<div class="line"><span class="lineno"> 1024</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;[name, diagram] : <a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a3c37774312f92c932c70a712b8e611ad">diagrams</a>) {</div>
+<div class="line"><span class="lineno"> 1025</span>        diagram-&gt;inherit(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno"> 1026</span> </div>
+<div class="line"><span class="lineno"> 1027</span>        assert(diagram-&gt;get_relative_to().has_value);</div>
+<div class="line"><span class="lineno"> 1028</span>    }</div>
+<div class="line"><span class="lineno"> 1029</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -306,19 +309,19 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Initialize predefined diagram templates. </p>
 
-<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00947">947</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  948</span>{</div>
-<div class="line"><span class="lineno">  949</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;predefined_templates_str = <a class="code hl_function" href="namespaceclanguml_1_1config.html#a5918bafd14666c59998d0c83dbea5483" title="Return YAML with predefined diagram templates.">get_predefined_diagram_templates</a>();</div>
-<div class="line"><span class="lineno">  950</span> </div>
-<div class="line"><span class="lineno">  951</span>    YAML::Node predefined_templates = YAML::Load(predefined_templates_str);</div>
-<div class="line"><span class="lineno">  952</span> </div>
-<div class="line"><span class="lineno">  953</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a862534e1ce2a40ecac3aba700e53349f">diagram_templates</a>) {</div>
-<div class="line"><span class="lineno">  954</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a862534e1ce2a40ecac3aba700e53349f">diagram_templates</a>.set({});</div>
-<div class="line"><span class="lineno">  955</span>    }</div>
-<div class="line"><span class="lineno">  956</span> </div>
-<div class="line"><span class="lineno">  957</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a862534e1ce2a40ecac3aba700e53349f">diagram_templates</a>().merge(</div>
-<div class="line"><span class="lineno">  958</span>        predefined_templates.as&lt;std::map&lt;std::string, diagram_template&gt;&gt;());</div>
-<div class="line"><span class="lineno">  959</span>}</div>
+<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l01008">1008</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno"> 1009</span>{</div>
+<div class="line"><span class="lineno"> 1010</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;predefined_templates_str = <a class="code hl_function" href="namespaceclanguml_1_1config.html#a5918bafd14666c59998d0c83dbea5483" title="Return YAML with predefined diagram templates.">get_predefined_diagram_templates</a>();</div>
+<div class="line"><span class="lineno"> 1011</span> </div>
+<div class="line"><span class="lineno"> 1012</span>    YAML::Node predefined_templates = YAML::Load(predefined_templates_str);</div>
+<div class="line"><span class="lineno"> 1013</span> </div>
+<div class="line"><span class="lineno"> 1014</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a862534e1ce2a40ecac3aba700e53349f">diagram_templates</a>) {</div>
+<div class="line"><span class="lineno"> 1015</span>        <a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a862534e1ce2a40ecac3aba700e53349f">diagram_templates</a>.set({});</div>
+<div class="line"><span class="lineno"> 1016</span>    }</div>
+<div class="line"><span class="lineno"> 1017</span> </div>
+<div class="line"><span class="lineno"> 1018</span>    <a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a862534e1ce2a40ecac3aba700e53349f">diagram_templates</a>().merge(</div>
+<div class="line"><span class="lineno"> 1019</span>        predefined_templates.as&lt;std::map&lt;std::string, diagram_template&gt;&gt;());</div>
+<div class="line"><span class="lineno"> 1020</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -336,7 +339,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>List of compilation flags to be injected into the compilation commands from database </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00758">758</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00782">782</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -355,7 +358,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">        <span class="stringliteral">&quot;compilation_database_dir&quot;</span>, <span class="stringliteral">&quot;.&quot;</span>}</div>
 </div><!-- fragment --><p>Path to the directory containing compile_commands.json </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00752">752</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00776">776</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -374,7 +377,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">        <span class="stringliteral">&quot;diagram_templates&quot;</span>}</div>
 </div><!-- fragment --><p>Dictionary of user defined diagram templates, if any </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00777">777</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00801">801</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -391,7 +394,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Dictionary of diagrams, keys represent diagram names </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00781">781</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00805">805</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -408,7 +411,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Diagrams output directory </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00774">774</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00798">798</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -425,7 +428,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Extract include paths by executing specified compiler driver. When the value is &lsquo;&rsquo;`, the command specified in compile_commands.json will be used. Otherwise the provided value will be treated as compiler executable (e.g. clang++-15) and executed. </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00771">771</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00795">795</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -444,7 +447,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">        <span class="stringliteral">&quot;remove_compile_flags&quot;</span>}</div>
 </div><!-- fragment --><p>List of compilation flags to be removed from the compilation commands from database </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00763">763</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00787">787</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>

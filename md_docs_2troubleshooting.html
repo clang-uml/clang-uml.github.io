@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.5</span>
+       <span id="projectnumber">0.5.6</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -136,6 +136,7 @@ $(function() {
 <li><a class="el" href="md_docs_2troubleshooting.html#schema-validation-error-is-thrown-but-the-configuration-file-is-correct">Schema validation error is thrown, but the configuration file is correct</a></li>
 <li><a class="el" href="md_docs_2troubleshooting.html#fatal-error-stddefh-file-not-found">&quot;fatal error: 'stddef.h' file not found&quot;</a></li>
 <li><a class="el" href="md_docs_2troubleshooting.html#error-unknown-pragma-ignored">&quot;error: unknown pragma ignored&quot;</a></li>
+<li><a class="el" href="md_docs_2troubleshooting.html#bus-error-on-apple-silicon-macos">&quot;bus error&quot; on Apple Silicon macos</a></li>
 </ul>
 </li>
 <li><a class="el" href="md_docs_2test__cases.html#class-diagrams">Class diagrams</a><ul>
@@ -271,6 +272,10 @@ Schema validation error is thrown, but the configuration file is correct</h2>
 <p>If your code bases uses some non-standard pragmas declarations or you are using older LLVM version, which does not yet support a specific pragma, the warning can be ignore by adding the following compilation flag in the <code>.clang-uml</code> config:</p>
 <div class="fragment language-yaml"><div class="line">add_compile_flags:</div>
 <div class="line">  - -Wno-unknown-pragmas</div>
+</div><!-- fragment --><h2><a class="anchor" id="bus-error-on-apple-silicon-macos"></a>
+"bus error" on Apple Silicon macos</h2>
+<p>On Apple Silicon macos, <code>clang-uml</code> must be linked with LLVM libunwind libraries for proper exception handling, otherwise whenever an exception is thrown somewhere within <code>clang-uml</code> the application is terminated with <code>bus error</code>.</p>
+<p>In order to mitigate this error when building <code>clang-uml</code> from sources, the following CMake option should be enabled during build: </p><div class="fragment language-bash"><div class="line">-DCMAKE_EXE_LINKER_FLAGS=&quot;-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++&quot;</div>
 </div><!-- fragment --><h1><a class="anchor" id="class-diagrams-1"></a>
 Class diagrams</h1>
 <h2><a class="anchor" id="how-can-i-generate-class-diagram-of-my-entire-project"></a>

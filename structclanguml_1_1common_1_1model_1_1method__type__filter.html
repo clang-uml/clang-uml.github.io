@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.5</span>
+       <span id="projectnumber">0.5.6</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -134,7 +134,7 @@ $(function() {
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Match class methods based on their category (e.g. operator). </p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00298">298</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00311">311</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -218,11 +218,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00516">516</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  518</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#aace2767e1c46b12082faba1e38dd7bc3">filter_visitor</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>}</div>
-<div class="line"><span class="lineno">  519</span>    , <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1method__type__filter.html#abe515f0bca117a45a594b9fe4b8f676b">method_types_</a>{std::move(method_types)}</div>
-<div class="line"><span class="lineno">  520</span>{</div>
-<div class="line"><span class="lineno">  521</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00683">683</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  685</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#aace2767e1c46b12082faba1e38dd7bc3">filter_visitor</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>}</div>
+<div class="line"><span class="lineno">  686</span>    , <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1method__type__filter.html#abe515f0bca117a45a594b9fe4b8f676b">method_types_</a>{std::move(method_types)}</div>
+<div class="line"><span class="lineno">  687</span>{</div>
+<div class="line"><span class="lineno">  688</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -288,30 +288,38 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a808869584cac26b310d157a2ece75971">clanguml::common::model::filter_visitor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00523">523</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  525</span>{</div>
-<div class="line"><span class="lineno">  526</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#aa07645c27199ad641a77953e1fc86f64">tvl::any_of</a>(</div>
-<div class="line"><span class="lineno">  527</span>        <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1method__type__filter.html#abe515f0bca117a45a594b9fe4b8f676b">method_types_</a>.begin(), <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1method__type__filter.html#abe515f0bca117a45a594b9fe4b8f676b">method_types_</a>.end(), [&amp;m](<span class="keyword">auto</span> mt) {</div>
-<div class="line"><span class="lineno">  528</span>            switch (mt) {</div>
-<div class="line"><span class="lineno">  529</span>            case config::method_type::constructor:</div>
-<div class="line"><span class="lineno">  530</span>                return m.is_constructor();</div>
-<div class="line"><span class="lineno">  531</span>            case config::method_type::destructor:</div>
-<div class="line"><span class="lineno">  532</span>                return m.is_destructor();</div>
-<div class="line"><span class="lineno">  533</span>            case config::method_type::assignment:</div>
-<div class="line"><span class="lineno">  534</span>                return m.is_copy_assignment() || m.is_move_assignment();</div>
-<div class="line"><span class="lineno">  535</span>            case config::method_type::operator_:</div>
-<div class="line"><span class="lineno">  536</span>                return m.is_operator();</div>
-<div class="line"><span class="lineno">  537</span>            case config::method_type::defaulted:</div>
-<div class="line"><span class="lineno">  538</span>                return m.is_defaulted();</div>
-<div class="line"><span class="lineno">  539</span>            case config::method_type::deleted:</div>
-<div class="line"><span class="lineno">  540</span>                return m.is_deleted();</div>
-<div class="line"><span class="lineno">  541</span>            case config::method_type::static_:</div>
-<div class="line"><span class="lineno">  542</span>                return m.is_static();</div>
-<div class="line"><span class="lineno">  543</span>            }</div>
-<div class="line"><span class="lineno">  544</span> </div>
-<div class="line"><span class="lineno">  545</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  546</span>        });</div>
-<div class="line"><span class="lineno">  547</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00690">690</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  692</span>{</div>
+<div class="line"><span class="lineno">  693</span>    <span class="keyword">auto</span> res =</div>
+<div class="line"><span class="lineno">  694</span>        <a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#aa07645c27199ad641a77953e1fc86f64">tvl::any_of</a>(<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1method__type__filter.html#abe515f0bca117a45a594b9fe4b8f676b">method_types_</a>.begin(), <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1method__type__filter.html#abe515f0bca117a45a594b9fe4b8f676b">method_types_</a>.end(), [&amp;m](<span class="keyword">auto</span> mt) {</div>
+<div class="line"><span class="lineno">  695</span>            switch (mt) {</div>
+<div class="line"><span class="lineno">  696</span>            case config::method_type::constructor:</div>
+<div class="line"><span class="lineno">  697</span>                return m.is_constructor();</div>
+<div class="line"><span class="lineno">  698</span>            case config::method_type::destructor:</div>
+<div class="line"><span class="lineno">  699</span>                return m.is_destructor();</div>
+<div class="line"><span class="lineno">  700</span>            case config::method_type::assignment:</div>
+<div class="line"><span class="lineno">  701</span>                return m.is_copy_assignment() || m.is_move_assignment();</div>
+<div class="line"><span class="lineno">  702</span>            case config::method_type::operator_:</div>
+<div class="line"><span class="lineno">  703</span>                return m.is_operator();</div>
+<div class="line"><span class="lineno">  704</span>            case config::method_type::defaulted:</div>
+<div class="line"><span class="lineno">  705</span>                return m.is_defaulted();</div>
+<div class="line"><span class="lineno">  706</span>            case config::method_type::deleted:</div>
+<div class="line"><span class="lineno">  707</span>                return m.is_deleted();</div>
+<div class="line"><span class="lineno">  708</span>            case config::method_type::static_:</div>
+<div class="line"><span class="lineno">  709</span>                return m.is_static();</div>
+<div class="line"><span class="lineno">  710</span>            }</div>
+<div class="line"><span class="lineno">  711</span> </div>
+<div class="line"><span class="lineno">  712</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  713</span>        });</div>
+<div class="line"><span class="lineno">  714</span> </div>
+<div class="line"><span class="lineno">  715</span>    <span class="keywordflow">if</span> ((<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afe243616df93135040843770261a81dba54c3eebad0b2c60f078dfee1d0659c89">filter_t::kInclusive</a> &amp;&amp; <a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a75d71d5924ebfa54b592b27b31c5d034">tvl::is_false</a>(res)) ||</div>
+<div class="line"><span class="lineno">  716</span>        (<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>() == <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afe243616df93135040843770261a81dba9d38b79e17ebc3239ca19ba517174b5b">filter_t::kExclusive</a> &amp;&amp; <a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#a76dc07127347610f3c1aa9921f205fab">tvl::is_true</a>(res))) {</div>
+<div class="line"><span class="lineno">  717</span>        <a class="code hl_define" href="util_8h.html#ade9905ed13f48ef2c9c596fa7a86d7a9">LOG_TRACE</a>(<span class="stringliteral">&quot;Class method {} rejected by method_type_filter&quot;</span>,</div>
+<div class="line"><span class="lineno">  718</span>            m.qualified_name());</div>
+<div class="line"><span class="lineno">  719</span>    }</div>
+<div class="line"><span class="lineno">  720</span> </div>
+<div class="line"><span class="lineno">  721</span>    <span class="keywordflow">return</span> res;</div>
+<div class="line"><span class="lineno">  722</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -336,7 +344,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00308">308</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00321">321</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
 
 </div>
 </div>

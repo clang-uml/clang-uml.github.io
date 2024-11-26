@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.5</span>
+       <span id="projectnumber">0.5.6</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -134,7 +134,7 @@ $(function() {
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Match diagram elements based on module access (public or private). </p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00561">561</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00574">574</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
 </div>
 <p><code>#include &lt;<a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -218,11 +218,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00744">744</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  746</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#aace2767e1c46b12082faba1e38dd7bc3">filter_visitor</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>}</div>
-<div class="line"><span class="lineno">  747</span>    , <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1module__access__filter.html#a768ae433916ebc9993dd36ff542c7a1a">access_</a>{std::move(access)}</div>
-<div class="line"><span class="lineno">  748</span>{</div>
-<div class="line"><span class="lineno">  749</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00934">934</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  936</span>    : <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#aace2767e1c46b12082faba1e38dd7bc3">filter_visitor</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a9aed0d7260c6f28f9c54be7d3439bd24">type</a>}</div>
+<div class="line"><span class="lineno">  937</span>    , <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1module__access__filter.html#a768ae433916ebc9993dd36ff542c7a1a">access_</a>{std::move(access)}</div>
+<div class="line"><span class="lineno">  938</span>{</div>
+<div class="line"><span class="lineno">  939</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -288,22 +288,22 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classclanguml_1_1common_1_1model_1_1filter__visitor.html#a359c04491fd76fed5a5a2c657529160b">clanguml::common::model::filter_visitor</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00751">751</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  753</span>{</div>
-<div class="line"><span class="lineno">  754</span>    <span class="keywordflow">if</span> (!e.module().has_value())</div>
-<div class="line"><span class="lineno">  755</span>        <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  756</span> </div>
-<div class="line"><span class="lineno">  757</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1module__access__filter.html#a768ae433916ebc9993dd36ff542c7a1a">access_</a>.empty())</div>
-<div class="line"><span class="lineno">  758</span>        <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  759</span> </div>
-<div class="line"><span class="lineno">  760</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#aa07645c27199ad641a77953e1fc86f64">tvl::any_of</a>(</div>
-<div class="line"><span class="lineno">  761</span>        <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1module__access__filter.html#a768ae433916ebc9993dd36ff542c7a1a">access_</a>.begin(), <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1module__access__filter.html#a768ae433916ebc9993dd36ff542c7a1a">access_</a>.end(), [&amp;e](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;access) {</div>
-<div class="line"><span class="lineno">  762</span>            if (access == module_access_t::kPublic)</div>
-<div class="line"><span class="lineno">  763</span>                return !e.module_private();</div>
-<div class="line"><span class="lineno">  764</span> </div>
-<div class="line"><span class="lineno">  765</span>            return e.module_private();</div>
-<div class="line"><span class="lineno">  766</span>        });</div>
-<div class="line"><span class="lineno">  767</span>}</div>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8cc_source.html#l00941">941</a> of file <a class="el" href="diagram__filter_8cc_source.html">diagram_filter.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  943</span>{</div>
+<div class="line"><span class="lineno">  944</span>    <span class="keywordflow">if</span> (!e.module().has_value())</div>
+<div class="line"><span class="lineno">  945</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  946</span> </div>
+<div class="line"><span class="lineno">  947</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1module__access__filter.html#a768ae433916ebc9993dd36ff542c7a1a">access_</a>.empty())</div>
+<div class="line"><span class="lineno">  948</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  949</span> </div>
+<div class="line"><span class="lineno">  950</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1tvl.html#aa07645c27199ad641a77953e1fc86f64">tvl::any_of</a>(</div>
+<div class="line"><span class="lineno">  951</span>        <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1module__access__filter.html#a768ae433916ebc9993dd36ff542c7a1a">access_</a>.begin(), <a class="code hl_variable" href="structclanguml_1_1common_1_1model_1_1module__access__filter.html#a768ae433916ebc9993dd36ff542c7a1a">access_</a>.end(), [&amp;e](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;access) {</div>
+<div class="line"><span class="lineno">  952</span>            if (access == module_access_t::kPublic)</div>
+<div class="line"><span class="lineno">  953</span>                return !e.module_private();</div>
+<div class="line"><span class="lineno">  954</span> </div>
+<div class="line"><span class="lineno">  955</span>            return e.module_private();</div>
+<div class="line"><span class="lineno">  956</span>        });</div>
+<div class="line"><span class="lineno">  957</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -328,7 +328,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00569">569</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="diagram__filter_8h_source.html#l00582">582</a> of file <a class="el" href="diagram__filter_8h_source.html">diagram_filter.h</a>.</p>
 
 </div>
 </div>

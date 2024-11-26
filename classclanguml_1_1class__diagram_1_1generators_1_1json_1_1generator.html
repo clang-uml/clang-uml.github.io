@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.5</span>
+       <span id="projectnumber">0.5.6</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -737,15 +737,16 @@ template&lt;typename T &gt; </div>
 <div class="line"><span class="lineno">  156</span>        <span class="keywordflow">if</span> (!target_element.has_value()) {</div>
 <div class="line"><span class="lineno">  157</span>            <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Skipping {} relation from &#39;{}&#39; to &#39;{}&#39; due &quot;</span></div>
 <div class="line"><span class="lineno">  158</span>                    <span class="stringliteral">&quot;to unresolved destination id&quot;</span>,</div>
-<div class="line"><span class="lineno">  159</span>                <a class="code hl_function" href="namespaceclanguml_1_1common.html#ad11805ecb3506d346f09498024687f9e">to_string</a>(r.type()), c.full_name(), r.destination().value());</div>
-<div class="line"><span class="lineno">  160</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  161</span>        }</div>
-<div class="line"><span class="lineno">  162</span> </div>
-<div class="line"><span class="lineno">  163</span>        nlohmann::json rel = r;</div>
-<div class="line"><span class="lineno">  164</span>        rel[<span class="stringliteral">&quot;source&quot;</span>] = std::to_string(c.id().value());</div>
-<div class="line"><span class="lineno">  165</span>        parent[<span class="stringliteral">&quot;relationships&quot;</span>].push_back(rel);</div>
-<div class="line"><span class="lineno">  166</span>    }</div>
-<div class="line"><span class="lineno">  167</span>}</div>
+<div class="line"><span class="lineno">  159</span>                <a class="code hl_function" href="namespaceclanguml_1_1common.html#ad11805ecb3506d346f09498024687f9e">to_string</a>(r.type()), c.full_name(<span class="keyword">true</span>),</div>
+<div class="line"><span class="lineno">  160</span>                r.destination().value());</div>
+<div class="line"><span class="lineno">  161</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  162</span>        }</div>
+<div class="line"><span class="lineno">  163</span> </div>
+<div class="line"><span class="lineno">  164</span>        nlohmann::json rel = r;</div>
+<div class="line"><span class="lineno">  165</span>        rel[<span class="stringliteral">&quot;source&quot;</span>] = std::to_string(c.id().value());</div>
+<div class="line"><span class="lineno">  166</span>        parent[<span class="stringliteral">&quot;relationships&quot;</span>].push_back(rel);</div>
+<div class="line"><span class="lineno">  167</span>    }</div>
+<div class="line"><span class="lineno">  168</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

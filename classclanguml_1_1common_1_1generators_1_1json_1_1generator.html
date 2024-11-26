@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.5</span>
+       <span id="projectnumber">0.5.6</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -280,7 +280,7 @@ template&lt;typename C , typename D &gt; </div>
 <div class="line"><span class="lineno">  113</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a> = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">generators::generator&lt;C, D&gt;::model</a>();</div>
 <div class="line"><span class="lineno">  114</span> </div>
 <div class="line"><span class="lineno">  115</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>.allow_empty_diagrams() &amp;&amp; <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>.is_empty()) {</div>
-<div class="line"><span class="lineno">  116</span>        <span class="keywordflow">throw</span> <a class="code hl_class" href="classclanguml_1_1error_1_1empty__diagram__error.html">clanguml::error::empty_diagram_error</a>{</div>
+<div class="line"><span class="lineno">  116</span>        <span class="keywordflow">throw</span> <a class="code hl_class" href="classclanguml_1_1error_1_1empty__diagram__error.html">clanguml::error::empty_diagram_error</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>.type(), <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>.name(),</div>
 <div class="line"><span class="lineno">  117</span>            <span class="stringliteral">&quot;Diagram configuration resulted in empty diagram.&quot;</span>};</div>
 <div class="line"><span class="lineno">  118</span>    }</div>
 <div class="line"><span class="lineno">  119</span> </div>
@@ -368,13 +368,12 @@ template&lt;typename C , typename D &gt; </div>
 <p class="definition">Definition at line <a class="el" href="json_2generator_8h_source.html#l00135">135</a> of file <a class="el" href="json_2generator_8h_source.html">generator.h</a>.</p>
 <div class="fragment DoxyCode"><div class="line"><span class="lineno">  136</span>{</div>
 <div class="line"><span class="lineno">  137</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">generators::generator&lt;C, D&gt;::config</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1json_1_1generator.html#a008908f14285024b0ea08ea0c2186388" title="Generate metadata element with diagram metadata.">generate_metadata</a>()) {</div>
-<div class="line"><span class="lineno">  138</span>        parent[<span class="stringliteral">&quot;metadata&quot;</span>][<span class="stringliteral">&quot;clang_uml_version&quot;</span>] =</div>
-<div class="line"><span class="lineno">  139</span>            clanguml::version::CLANG_UML_VERSION;</div>
-<div class="line"><span class="lineno">  140</span>        parent[<span class="stringliteral">&quot;metadata&quot;</span>][<span class="stringliteral">&quot;schema_version&quot;</span>] =</div>
-<div class="line"><span class="lineno">  141</span>            clanguml::version::CLANG_UML_JSON_GENERATOR_SCHEMA_VERSION;</div>
-<div class="line"><span class="lineno">  142</span>        parent[<span class="stringliteral">&quot;metadata&quot;</span>][<span class="stringliteral">&quot;llvm_version&quot;</span>] = clang::getClangFullVersion();</div>
-<div class="line"><span class="lineno">  143</span>    }</div>
-<div class="line"><span class="lineno">  144</span>}</div>
+<div class="line"><span class="lineno">  138</span>        parent[<span class="stringliteral">&quot;metadata&quot;</span>][<span class="stringliteral">&quot;clang_uml_version&quot;</span>] = <a class="code hl_function" href="namespaceclanguml_1_1version.html#a1dd12946e995da3f1a760816b6670e00">clanguml::version::version</a>();</div>
+<div class="line"><span class="lineno">  139</span>        parent[<span class="stringliteral">&quot;metadata&quot;</span>][<span class="stringliteral">&quot;schema_version&quot;</span>] =</div>
+<div class="line"><span class="lineno">  140</span>            <a class="code hl_function" href="namespaceclanguml_1_1version.html#a05e4f1c5baf7fd4d2883d17aa96ffadc">clanguml::version::json_generator_schema_version</a>();</div>
+<div class="line"><span class="lineno">  141</span>        parent[<span class="stringliteral">&quot;metadata&quot;</span>][<span class="stringliteral">&quot;llvm_version&quot;</span>] = clang::getClangFullVersion();</div>
+<div class="line"><span class="lineno">  142</span>    }</div>
+<div class="line"><span class="lineno">  143</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

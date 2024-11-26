@@ -23,7 +23,8 @@ var searchData=
   ['resolve_5flocal_5fto_5fglobal_5fids_20',['resolve_local_to_global_ids',['../classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a6e5ebeb2d0e2f11dbec41c593ea54322',1,'clanguml::class_diagram::visitor::translation_unit_visitor']]],
   ['resolve_5for_21',['resolve_or',['../classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a2a4da0517d6befafc5dd35e579de8bd4',1,'clanguml::common::visitor::ast_id_mapper']]],
   ['return_5ftype_22',['return_type',['../structclanguml_1_1sequence__diagram_1_1model_1_1function.html#ad818d376014ad5f5e837b454de6ddf59',1,'clanguml::sequence_diagram::model::function::return_type() const'],['../structclanguml_1_1sequence__diagram_1_1model_1_1function.html#a3cfb6b0a31934531c974671076c6c09b',1,'clanguml::sequence_diagram::model::function::return_type(const std::string &amp;rt)'],['../classclanguml_1_1sequence__diagram_1_1model_1_1message.html#a5ad7ff649bdd4bb82361bfe5884f9ab0',1,'clanguml::sequence_diagram::model::message::return_type()']]],
-  ['root_5fdirectory_23',['root_directory',['../structclanguml_1_1config_1_1diagram.html#a016e53083be67629dda6ad6c6bf47323',1,'clanguml::config::diagram']]],
+  ['root_5fdirectory_23',['root_directory',['../structclanguml_1_1config_1_1inheritable__diagram__options.html#a185ecdfe8170d1b852a9002f650a7136',1,'clanguml::config::inheritable_diagram_options']]],
   ['rtrim_24',['rtrim',['../namespaceclanguml_1_1util.html#abbf8d7e28042cb0c1a43ea8e8bbbef06',1,'clanguml::util']]],
-  ['run_5fgit_5fcommand_25',['run_git_command',['../namespaceclanguml_1_1util.html#aa218b8b24bb061d0808d16c15fc212dd',1,'clanguml::util']]]
+  ['run_25',['run',['../classclanguml_1_1generators_1_1clang__tool.html#a5803ca9116ee37a4c344da98f8596174',1,'clanguml::generators::clang_tool']]],
+  ['run_5fgit_5fcommand_26',['run_git_command',['../namespaceclanguml_1_1util.html#aa218b8b24bb061d0808d16c15fc212dd',1,'clanguml::util']]]
 ];

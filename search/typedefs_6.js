@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['opt_5fref_0',['opt_ref',['../namespaceclanguml_1_1common.html#a1580b9ca61896bdf6b4c96db61f167a4',1,'clanguml::common']]],
-  ['optional_5ftype_1',['optional_type',['../classclanguml_1_1common_1_1optional__ref.html#afc342b1ef3ad2d0d5041a408fd084a91',1,'clanguml::common::optional_ref']]]
+  ['namespace_5f_0',['namespace_',['../namespaceclanguml_1_1common_1_1model.html#a87b535f517198e9533e5b1814178011b',1,'clanguml::common::model']]],
+  ['namespace_5for_5fregex_1',['namespace_or_regex',['../namespaceclanguml_1_1common.html#a7f2ff23bf13dd6c367c6a18d8ba9d52b',1,'clanguml::common']]],
+  ['nested_5ftrait_5ffspath_2',['nested_trait_fspath',['../namespaceclanguml_1_1include__diagram_1_1model.html#ae5f01e479f77592bbf796ae7d9c56068',1,'clanguml::include_diagram::model']]],
+  ['nested_5ftrait_5fns_3',['nested_trait_ns',['../namespaceclanguml_1_1class__diagram_1_1model.html#a7e2c32f2b01e36ce336be6fff13bb2b6',1,'clanguml::class_diagram::model::nested_trait_ns'],['../namespaceclanguml_1_1package__diagram_1_1model.html#a47d2841a047b9731e4ba632bf6acddb2',1,'clanguml::package_diagram::model::nested_trait_ns']]]
 ];
