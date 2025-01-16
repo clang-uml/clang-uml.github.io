@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['right_0',['right',['../namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892a7c4f29407893c334a6cb7a87bf045c0d',1,'clanguml::config']]],
-  ['row_1',['row',['../namespaceclanguml_1_1config.html#a54a5e9bc4cb501f4be772c7afa0ca892af1965a857bc285d26fe22023aa5ab50d',1,'clanguml::config']]]
+  ['queue_0',['queue',['../structclanguml_1_1sequence__diagram_1_1model_1_1participant.html#abb6ebde8d57450afcc41fed1edc9f1e8aa9d1cbf71942327e98b40cf5ef38a960',1,'clanguml::sequence_diagram::model::participant']]]
 ];

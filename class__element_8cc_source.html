@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -130,7 +130,7 @@ $(function() {
 <a href="class__element_8cc.html">Go to the documentation of this file.</a><div class="fragment language-cpp"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file src/class_diagram/model/class_element.cc</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (c) 2021-2024 Bartek Kryza &lt;bkryza@gmail.com&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (c) 2021-2025 Bartek Kryza &lt;bkryza@gmail.com&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -169,23 +169,14 @@ $(function() {
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#ab79ab451f54f5f524fd26ce5fe77f697">   41</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#ab79ab451f54f5f524fd26ce5fe77f697" title="Set elements type as string.">class_element::set_type</a>(<span class="keyword">const</span> std::string &amp;type) { <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#aa131a0ec78999ffb758d2dddd96e7054">type_</a> = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#a0c412cb423b2678a815866b897f81ac7" title="Get elements type as string.">type</a>; }</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#a866376b0c42c5e848101e2855bdc8f63">   43</a></span>inja::json <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#a866376b0c42c5e848101e2855bdc8f63" title="Get elements inja context in JSON.">class_element::context</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    inja::json ctx;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    ctx[<span class="stringliteral">&quot;name&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#a3250fda3a54e6484700b9417ed35173e" title="Get elements name.">name</a>();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    ctx[<span class="stringliteral">&quot;type&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#a0c412cb423b2678a815866b897f81ac7" title="Get elements type as string.">type</a>();</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    ctx[<span class="stringliteral">&quot;access&quot;</span>] = to_string(<a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#af16b8c18869f4cd1a642cf32ebaf2c31" title="Get elements access scope.">access</a>());</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">return</span> ctx;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#af49aec2645ea3c192abf1e7e0859fc4e">   52</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#af49aec2645ea3c192abf1e7e0859fc4e" title="Set class elements qualified name.">class_element::set_qualified_name</a>(<span class="keyword">const</span> std::string &amp;qn)</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>{</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#aa64f48d172346b84475331014a18edf8">qualified_name_</a> = qn;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#a24d02de6934361c2d02007cc4b140015">   57</a></span>std::string <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#a24d02de6934361c2d02007cc4b140015" title="get fully qualified name of the class element.">class_element::qualified_name</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#aa64f48d172346b84475331014a18edf8">qualified_name_</a>; }</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>} <span class="comment">// namespace clanguml::class_diagram::model</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#af49aec2645ea3c192abf1e7e0859fc4e">   43</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#af49aec2645ea3c192abf1e7e0859fc4e" title="Set class elements qualified name.">class_element::set_qualified_name</a>(<span class="keyword">const</span> std::string &amp;qn)</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>{</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#aa64f48d172346b84475331014a18edf8">qualified_name_</a> = qn;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#a24d02de6934361c2d02007cc4b140015">   48</a></span>std::string <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#a24d02de6934361c2d02007cc4b140015" title="get fully qualified name of the class element.">class_element::qualified_name</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1class__diagram_1_1model_1_1class__element.html#aa64f48d172346b84475331014a18edf8">qualified_name_</a>; }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>} <span class="comment">// namespace clanguml::class_diagram::model</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

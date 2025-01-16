@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -223,12 +223,12 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00051">51</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   54</span>    : <a class="code hl_variable" href="classclanguml_1_1common_1_1compilation__database.html#a79c03ade4025e70c7955d05653c02642">base_</a>{std::move(<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ad8ef48a4fd84b555723e09ae67fbd98e">base</a>)}</div>
-<div class="line"><span class="lineno">   55</span>    , <a class="code hl_variable" href="classclanguml_1_1common_1_1compilation__database.html#a173bde8386fbc46d77c85bd831dc256b">config_</a>{cfg}</div>
-<div class="line"><span class="lineno">   56</span>    , <a class="code hl_variable" href="classclanguml_1_1common_1_1compilation__database.html#a6e757f420a21c29dae730e737d55f0bb">is_fixed_</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a05de6117a99f3375037f92396ba46c63" title="Determines whether this is a fixed or regular compilation database.">is_fixed</a>}</div>
-<div class="line"><span class="lineno">   57</span>{</div>
-<div class="line"><span class="lineno">   58</span>}</div>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00050">50</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   53</span>    : <a class="code hl_variable" href="classclanguml_1_1common_1_1compilation__database.html#a79c03ade4025e70c7955d05653c02642">base_</a>{std::move(<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ad8ef48a4fd84b555723e09ae67fbd98e">base</a>)}</div>
+<div class="line"><span class="lineno">   54</span>    , <a class="code hl_variable" href="classclanguml_1_1common_1_1compilation__database.html#a173bde8386fbc46d77c85bd831dc256b">config_</a>{cfg}</div>
+<div class="line"><span class="lineno">   55</span>    , <a class="code hl_variable" href="classclanguml_1_1common_1_1compilation__database.html#a6e757f420a21c29dae730e737d55f0bb">is_fixed_</a>{<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a05de6117a99f3375037f92396ba46c63" title="Determines whether this is a fixed or regular compilation database.">is_fixed</a>}</div>
+<div class="line"><span class="lineno">   56</span>{</div>
+<div class="line"><span class="lineno">   57</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -282,59 +282,59 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00126">126</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  128</span>{</div>
-<div class="line"><span class="lineno">  129</span><span class="preprocessor">#if !defined(_WIN32)</span></div>
-<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().query_driver &amp;&amp; !<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().query_driver().empty()) {</div>
-<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;compile_command : commands) {</div>
-<div class="line"><span class="lineno">  132</span>            <span class="keyword">auto</span> argv0 = <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#abde13ead9b9cbdce8159d274a207cc41">query_driver</a>() == <span class="stringliteral">&quot;.&quot;</span></div>
-<div class="line"><span class="lineno">  133</span>                ? compile_command.CommandLine.at(0)</div>
-<div class="line"><span class="lineno">  134</span>                : <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#abde13ead9b9cbdce8159d274a207cc41">query_driver</a>();</div>
-<div class="line"><span class="lineno">  135</span> </div>
-<div class="line"><span class="lineno">  136</span>            util::query_driver_output_extractor extractor{</div>
-<div class="line"><span class="lineno">  137</span>                argv0, <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a477d4b4f0abe3774450a6f4706d2bf6d">guess_language_from_filename</a>(compile_command.Filename)};</div>
-<div class="line"><span class="lineno">  138</span> </div>
-<div class="line"><span class="lineno">  139</span>            extractor.execute();</div>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00120">120</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  122</span>{</div>
+<div class="line"><span class="lineno">  123</span><span class="preprocessor">#if !defined(_WIN32)</span></div>
+<div class="line"><span class="lineno">  124</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().query_driver &amp;&amp; !<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().query_driver().<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a38999f2f4d6eb872b7628a86d749c914aa2e4822a98337283e39f7b60acf85ec9">empty</a>()) {</div>
+<div class="line"><span class="lineno">  125</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;compile_command : commands) {</div>
+<div class="line"><span class="lineno">  126</span>            <span class="keyword">auto</span> argv0 = <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#abde13ead9b9cbdce8159d274a207cc41">query_driver</a>() == <span class="stringliteral">&quot;.&quot;</span></div>
+<div class="line"><span class="lineno">  127</span>                ? compile_command.CommandLine.at(0)</div>
+<div class="line"><span class="lineno">  128</span>                : <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#abde13ead9b9cbdce8159d274a207cc41">query_driver</a>();</div>
+<div class="line"><span class="lineno">  129</span> </div>
+<div class="line"><span class="lineno">  130</span>            util::query_driver_output_extractor extractor{</div>
+<div class="line"><span class="lineno">  131</span>                argv0, <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a477d4b4f0abe3774450a6f4706d2bf6d">guess_language_from_filename</a>(compile_command.Filename)};</div>
+<div class="line"><span class="lineno">  132</span> </div>
+<div class="line"><span class="lineno">  133</span>            extractor.execute();</div>
+<div class="line"><span class="lineno">  134</span> </div>
+<div class="line"><span class="lineno">  135</span>            std::vector&lt;std::string&gt; system_header_args;</div>
+<div class="line"><span class="lineno">  136</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;path : extractor.system_include_paths()) {</div>
+<div class="line"><span class="lineno">  137</span>                system_header_args.emplace_back(<span class="stringliteral">&quot;-isystem&quot;</span>);</div>
+<div class="line"><span class="lineno">  138</span>                system_header_args.emplace_back(path);</div>
+<div class="line"><span class="lineno">  139</span>            }</div>
 <div class="line"><span class="lineno">  140</span> </div>
-<div class="line"><span class="lineno">  141</span>            std::vector&lt;std::string&gt; system_header_args;</div>
-<div class="line"><span class="lineno">  142</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;path : extractor.system_include_paths()) {</div>
-<div class="line"><span class="lineno">  143</span>                system_header_args.emplace_back(<span class="stringliteral">&quot;-isystem&quot;</span>);</div>
-<div class="line"><span class="lineno">  144</span>                system_header_args.emplace_back(path);</div>
-<div class="line"><span class="lineno">  145</span>            }</div>
-<div class="line"><span class="lineno">  146</span> </div>
-<div class="line"><span class="lineno">  147</span>            compile_command.CommandLine.insert(</div>
-<div class="line"><span class="lineno">  148</span>                compile_command.CommandLine.begin() + 1,</div>
-<div class="line"><span class="lineno">  149</span>                system_header_args.begin(), system_header_args.end());</div>
-<div class="line"><span class="lineno">  150</span> </div>
-<div class="line"><span class="lineno">  151</span>            <span class="keywordflow">if</span> (!extractor.target().empty()) {</div>
-<div class="line"><span class="lineno">  152</span>                compile_command.CommandLine.insert(</div>
-<div class="line"><span class="lineno">  153</span>                    compile_command.CommandLine.begin() + 1,</div>
-<div class="line"><span class="lineno">  154</span>                    fmt::format(<span class="stringliteral">&quot;--target={}&quot;</span>, extractor.target()));</div>
-<div class="line"><span class="lineno">  155</span>            }</div>
-<div class="line"><span class="lineno">  156</span>        }</div>
-<div class="line"><span class="lineno">  157</span>    }</div>
-<div class="line"><span class="lineno">  158</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  159</span> </div>
-<div class="line"><span class="lineno">  160</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().add_compile_flags &amp;&amp; !<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().add_compile_flags().empty()) {</div>
-<div class="line"><span class="lineno">  161</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;compile_command : commands) {</div>
-<div class="line"><span class="lineno">  162</span>            compile_command.CommandLine.insert(</div>
-<div class="line"><span class="lineno">  163</span>                <span class="comment">// Add flags after argv[0]</span></div>
-<div class="line"><span class="lineno">  164</span>                compile_command.CommandLine.begin() + 1,</div>
-<div class="line"><span class="lineno">  165</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().add_compile_flags().begin(),</div>
-<div class="line"><span class="lineno">  166</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().add_compile_flags().end());</div>
-<div class="line"><span class="lineno">  167</span>        }</div>
-<div class="line"><span class="lineno">  168</span>    }</div>
-<div class="line"><span class="lineno">  169</span> </div>
-<div class="line"><span class="lineno">  170</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().remove_compile_flags &amp;&amp;</div>
-<div class="line"><span class="lineno">  171</span>        !<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().remove_compile_flags().empty()) {</div>
-<div class="line"><span class="lineno">  172</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;compile_command : commands) {</div>
-<div class="line"><span class="lineno">  173</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;flag : <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().remove_compile_flags()) {</div>
-<div class="line"><span class="lineno">  174</span>                <a class="code hl_function" href="namespaceclanguml_1_1util.html#ad0188dcbd54a723d6fbe5a06fc30d10b" title="Remove and erase elements from a vector.">util::erase_if</a>(compile_command.CommandLine,</div>
-<div class="line"><span class="lineno">  175</span>                    [&amp;flag](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;arg) { return flag == arg; });</div>
-<div class="line"><span class="lineno">  176</span>            }</div>
-<div class="line"><span class="lineno">  177</span>        }</div>
-<div class="line"><span class="lineno">  178</span>    }</div>
-<div class="line"><span class="lineno">  179</span>}</div>
+<div class="line"><span class="lineno">  141</span>            compile_command.CommandLine.insert(</div>
+<div class="line"><span class="lineno">  142</span>                compile_command.CommandLine.begin() + 1,</div>
+<div class="line"><span class="lineno">  143</span>                system_header_args.begin(), system_header_args.end());</div>
+<div class="line"><span class="lineno">  144</span> </div>
+<div class="line"><span class="lineno">  145</span>            <span class="keywordflow">if</span> (!extractor.target().empty()) {</div>
+<div class="line"><span class="lineno">  146</span>                compile_command.CommandLine.insert(</div>
+<div class="line"><span class="lineno">  147</span>                    compile_command.CommandLine.begin() + 1,</div>
+<div class="line"><span class="lineno">  148</span>                    fmt::format(<span class="stringliteral">&quot;--target={}&quot;</span>, extractor.target()));</div>
+<div class="line"><span class="lineno">  149</span>            }</div>
+<div class="line"><span class="lineno">  150</span>        }</div>
+<div class="line"><span class="lineno">  151</span>    }</div>
+<div class="line"><span class="lineno">  152</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().add_compile_flags &amp;&amp; !<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().add_compile_flags().<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a38999f2f4d6eb872b7628a86d749c914aa2e4822a98337283e39f7b60acf85ec9">empty</a>()) {</div>
+<div class="line"><span class="lineno">  155</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;compile_command : commands) {</div>
+<div class="line"><span class="lineno">  156</span>            compile_command.CommandLine.insert(</div>
+<div class="line"><span class="lineno">  157</span>                <span class="comment">// Add flags after argv[0]</span></div>
+<div class="line"><span class="lineno">  158</span>                compile_command.CommandLine.begin() + 1,</div>
+<div class="line"><span class="lineno">  159</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().add_compile_flags().begin(),</div>
+<div class="line"><span class="lineno">  160</span>                <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().add_compile_flags().end());</div>
+<div class="line"><span class="lineno">  161</span>        }</div>
+<div class="line"><span class="lineno">  162</span>    }</div>
+<div class="line"><span class="lineno">  163</span> </div>
+<div class="line"><span class="lineno">  164</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().remove_compile_flags &amp;&amp;</div>
+<div class="line"><span class="lineno">  165</span>        !<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().remove_compile_flags().<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a38999f2f4d6eb872b7628a86d749c914aa2e4822a98337283e39f7b60acf85ec9">empty</a>()) {</div>
+<div class="line"><span class="lineno">  166</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;compile_command : commands) {</div>
+<div class="line"><span class="lineno">  167</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;flag : <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().remove_compile_flags()) {</div>
+<div class="line"><span class="lineno">  168</span>                <a class="code hl_function" href="namespaceclanguml_1_1util.html#ad0188dcbd54a723d6fbe5a06fc30d10b" title="Remove and erase elements from a vector.">util::erase_if</a>(compile_command.CommandLine,</div>
+<div class="line"><span class="lineno">  169</span>                    [&amp;flag](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;arg) { return flag == arg; });</div>
+<div class="line"><span class="lineno">  170</span>            }</div>
+<div class="line"><span class="lineno">  171</span>        }</div>
+<div class="line"><span class="lineno">  172</span>    }</div>
+<div class="line"><span class="lineno">  173</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -387,12 +387,11 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   41</span>    <span class="comment">// This is a workaround to determine whether Clang loaded a fixed</span></div>
 <div class="line"><span class="lineno">   42</span>    <span class="comment">// compilation database or a proper one. This cannot be done with</span></div>
 <div class="line"><span class="lineno">   43</span>    <span class="comment">// dynamic_cast if RTTI was not enabled in the LLVM build</span></div>
-<div class="line"><span class="lineno">   44</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a05de6117a99f3375037f92396ba46c63" title="Determines whether this is a fixed or regular compilation database.">is_fixed</a>{</div>
-<div class="line"><span class="lineno">   45</span>        !res-&gt;getCompileCommands(<span class="stringliteral">&quot;no_such_file.no_such_extension&quot;</span>).empty()};</div>
-<div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>    <span class="keywordflow">return</span> std::make_unique&lt;compilation_database&gt;(</div>
-<div class="line"><span class="lineno">   48</span>        std::move(res), cfg, <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a05de6117a99f3375037f92396ba46c63" title="Determines whether this is a fixed or regular compilation database.">is_fixed</a>);</div>
-<div class="line"><span class="lineno">   49</span>}</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a05de6117a99f3375037f92396ba46c63" title="Determines whether this is a fixed or regular compilation database.">is_fixed</a>{res-&gt;getAllFiles().empty()};</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">return</span> std::make_unique&lt;compilation_database&gt;(</div>
+<div class="line"><span class="lineno">   47</span>        std::move(res), cfg, <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a05de6117a99f3375037f92396ba46c63" title="Determines whether this is a fixed or regular compilation database.">is_fixed</a>);</div>
+<div class="line"><span class="lineno">   48</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -413,10 +412,10 @@ Private Attributes</h2></td></tr>
 <p>Returns reference to CompilationDatabase as was loaded from file.</p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to CompilationDatabase. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00067">67</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   68</span>{</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">return</span> *<a class="code hl_variable" href="classclanguml_1_1common_1_1compilation__database.html#a79c03ade4025e70c7955d05653c02642">base_</a>;</div>
-<div class="line"><span class="lineno">   70</span>}</div>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00066">66</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   67</span>{</div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">return</span> *<a class="code hl_variable" href="classclanguml_1_1common_1_1compilation__database.html#a79c03ade4025e70c7955d05653c02642">base_</a>;</div>
+<div class="line"><span class="lineno">   69</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -437,10 +436,10 @@ Private Attributes</h2></td></tr>
 <p>Returns reference to clanguml's config instance.</p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to config instance. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00062">62</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   63</span>{</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1compilation__database.html#a173bde8386fbc46d77c85bd831dc256b">config_</a>;</div>
-<div class="line"><span class="lineno">   65</span>}</div>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00061">61</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   62</span>{</div>
+<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1compilation__database.html#a173bde8386fbc46d77c85bd831dc256b">config_</a>;</div>
+<div class="line"><span class="lineno">   64</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -460,24 +459,19 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00106">106</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  108</span>{</div>
-<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a05de6117a99f3375037f92396ba46c63" title="Determines whether this is a fixed or regular compilation database.">is_fixed</a>())</div>
-<div class="line"><span class="lineno">  110</span>        <span class="keywordflow">return</span> files.size();</div>
-<div class="line"><span class="lineno">  111</span> </div>
-<div class="line"><span class="lineno">  112</span>    <span class="keyword">auto</span> result{0UL};</div>
-<div class="line"><span class="lineno">  113</span> </div>
-<div class="line"><span class="lineno">  114</span>    <span class="keyword">auto</span> commands = <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ad8ef48a4fd84b555723e09ae67fbd98e">base</a>().getAllCompileCommands();</div>
-<div class="line"><span class="lineno">  115</span> </div>
-<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;command : commands) {</div>
-<div class="line"><span class="lineno">  117</span>        result += std::count_if(</div>
-<div class="line"><span class="lineno">  118</span>            files.begin(), files.end(), [<span class="keyword">this</span>, &amp;command](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;file) {</div>
-<div class="line"><span class="lineno">  119</span>                return match_filename(command, file);</div>
-<div class="line"><span class="lineno">  120</span>            });</div>
-<div class="line"><span class="lineno">  121</span>    }</div>
-<div class="line"><span class="lineno">  122</span> </div>
-<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  124</span>}</div>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00105">105</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  107</span>{</div>
+<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a05de6117a99f3375037f92396ba46c63" title="Determines whether this is a fixed or regular compilation database.">is_fixed</a>())</div>
+<div class="line"><span class="lineno">  109</span>        <span class="keywordflow">return</span> files.size();</div>
+<div class="line"><span class="lineno">  110</span> </div>
+<div class="line"><span class="lineno">  111</span>    <span class="keyword">auto</span> result{0UL};</div>
+<div class="line"><span class="lineno">  112</span> </div>
+<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;f : files) {</div>
+<div class="line"><span class="lineno">  114</span>        result += <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ac61a8d376f02d84964ea80aa68d94892">getCompileCommands</a>(f).size();</div>
+<div class="line"><span class="lineno">  115</span>    }</div>
+<div class="line"><span class="lineno">  116</span> </div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  118</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -506,14 +500,14 @@ Private Attributes</h2></td></tr>
 <p>Retrieves and adjusts all compilation commands from the database.</p>
 <dl class="section return"><dt>Returns</dt><dd>List of adjusted compile commands. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00088">88</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   89</span>{</div>
-<div class="line"><span class="lineno">   90</span>    <span class="keyword">auto</span> commands = <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ad8ef48a4fd84b555723e09ae67fbd98e">base</a>().getAllCompileCommands();</div>
-<div class="line"><span class="lineno">   91</span> </div>
-<div class="line"><span class="lineno">   92</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a2f3eb003ce1dad6e666c3e260edbbb09">adjust_compilation_database</a>(commands);</div>
-<div class="line"><span class="lineno">   93</span> </div>
-<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">return</span> commands;</div>
-<div class="line"><span class="lineno">   95</span>}</div>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00087">87</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   88</span>{</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keyword">auto</span> commands = <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ad8ef48a4fd84b555723e09ae67fbd98e">base</a>().getAllCompileCommands();</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a2f3eb003ce1dad6e666c3e260edbbb09">adjust_compilation_database</a>(commands);</div>
+<div class="line"><span class="lineno">   92</span> </div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">return</span> commands;</div>
+<div class="line"><span class="lineno">   94</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -542,10 +536,10 @@ Private Attributes</h2></td></tr>
 <p>Returns all files in the database.</p>
 <dl class="section return"><dt>Returns</dt><dd>List of all files in compilation database. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00072">72</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   73</span>{</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ad8ef48a4fd84b555723e09ae67fbd98e">base</a>().getAllFiles();</div>
-<div class="line"><span class="lineno">   75</span>}</div>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00071">71</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   72</span>{</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ad8ef48a4fd84b555723e09ae67fbd98e">base</a>().getAllFiles();</div>
+<div class="line"><span class="lineno">   74</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -575,14 +569,14 @@ Private Attributes</h2></td></tr>
 <p>Retrieves and adjusts compilation commands from the database, for a given translation unit.</p>
 <dl class="section return"><dt>Returns</dt><dd>List of adjusted compile commands. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00078">78</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   79</span>{</div>
-<div class="line"><span class="lineno">   80</span>    <span class="keyword">auto</span> commands = <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ad8ef48a4fd84b555723e09ae67fbd98e">base</a>().getCompileCommands(FilePath);</div>
-<div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a2f3eb003ce1dad6e666c3e260edbbb09">adjust_compilation_database</a>(commands);</div>
-<div class="line"><span class="lineno">   83</span> </div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">return</span> commands;</div>
-<div class="line"><span class="lineno">   85</span>}</div>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00077">77</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   78</span>{</div>
+<div class="line"><span class="lineno">   79</span>    <span class="keyword">auto</span> commands = <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ad8ef48a4fd84b555723e09ae67fbd98e">base</a>().getCompileCommands(FilePath);</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#a2f3eb003ce1dad6e666c3e260edbbb09">adjust_compilation_database</a>(commands);</div>
+<div class="line"><span class="lineno">   82</span> </div>
+<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">return</span> commands;</div>
+<div class="line"><span class="lineno">   84</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -602,13 +596,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00097">97</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   99</span>{</div>
-<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1util.html#a217449d847f89da8e9eadc9c16fec6c8">util::ends_with</a>(filename, std::string{<span class="stringliteral">&quot;.c&quot;</span>}))</div>
-<div class="line"><span class="lineno">  101</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;c&quot;</span>;</div>
-<div class="line"><span class="lineno">  102</span> </div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">return</span> <span class="stringliteral">&quot;c++&quot;</span>;</div>
-<div class="line"><span class="lineno">  104</span>}</div>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00096">96</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   98</span>{</div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1util.html#a217449d847f89da8e9eadc9c16fec6c8">util::ends_with</a>(filename, std::string{<span class="stringliteral">&quot;.c&quot;</span>}))</div>
+<div class="line"><span class="lineno">  100</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;c&quot;</span>;</div>
+<div class="line"><span class="lineno">  101</span> </div>
+<div class="line"><span class="lineno">  102</span>    <span class="keywordflow">return</span> <span class="stringliteral">&quot;c++&quot;</span>;</div>
+<div class="line"><span class="lineno">  103</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -631,8 +625,8 @@ Private Attributes</h2></td></tr>
 <p>Fixed compilation database doesn't have any compilation commands attached to specific source files, just arguments that should be applied to any file.</p>
 <dl class="section return"><dt>Returns</dt><dd>True, if this is a fixed compilation database </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00060">60</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   60</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1compilation__database.html#a6e757f420a21c29dae730e737d55f0bb">is_fixed_</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00059">59</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   59</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1compilation__database.html#a6e757f420a21c29dae730e737d55f0bb">is_fixed_</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -670,17 +664,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00181">181</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  184</span>{</div>
-<div class="line"><span class="lineno">  185</span>    <span class="keyword">auto</span> command_filename = std::filesystem::path{command.Filename};</div>
-<div class="line"><span class="lineno">  186</span> </div>
-<div class="line"><span class="lineno">  187</span>    <span class="keywordflow">if</span> (!command_filename.is_absolute()) {</div>
-<div class="line"><span class="lineno">  188</span>        command_filename = <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_function" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a185ecdfe8170d1b852a9002f650a7136" title="Returns absolute path of the relative_to option.">root_directory</a>() / command_filename;</div>
-<div class="line"><span class="lineno">  189</span>    }</div>
-<div class="line"><span class="lineno">  190</span> </div>
-<div class="line"><span class="lineno">  191</span>    <span class="keywordflow">return</span> (command_filename == file) ||</div>
-<div class="line"><span class="lineno">  192</span>        (command_filename.lexically_normal().string() == file);</div>
-<div class="line"><span class="lineno">  193</span>}</div>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00175">175</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  178</span>{</div>
+<div class="line"><span class="lineno">  179</span>    <span class="keyword">auto</span> command_filename = std::filesystem::path{command.Filename};</div>
+<div class="line"><span class="lineno">  180</span> </div>
+<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">if</span> (!command_filename.is_absolute()) {</div>
+<div class="line"><span class="lineno">  182</span>        command_filename = <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_function" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a185ecdfe8170d1b852a9002f650a7136" title="Returns absolute path of the relative_to option.">root_directory</a>() / command_filename;</div>
+<div class="line"><span class="lineno">  183</span>    }</div>
+<div class="line"><span class="lineno">  184</span> </div>
+<div class="line"><span class="lineno">  185</span>    <span class="keywordflow">return</span> (command_filename == file) ||</div>
+<div class="line"><span class="lineno">  186</span>        (command_filename.lexically_normal().string() == file);</div>
+<div class="line"><span class="lineno">  187</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -143,6 +143,7 @@ Top level options</h1>
 <li><code>add_compile_flags</code> - add compile flags to all compilation database entries</li>
 <li><code>remove_compile_flags</code> - remove compile flags from all compilation database entries</li>
 <li><code>query_driver</code> - name or path to compiler driver, which should be queried for system include paths (e.g. arm-none-eabi-g++)</li>
+<li><code>user_data</code> - arbitrary data that can be used in Jinja templates</li>
 </ul>
 <h2><a class="anchor" id="diagram-options"></a>
 Diagram options</h2>
@@ -190,7 +191,10 @@ Diagram options</h2>
 <li><code>mermaid</code> - verbatim MermaidJS directives which should be added to a diagram<ul>
 <li><code>before</code> - list of directives which will be added before the generated diagram</li>
 <li><code>after</code> - list of directives which will be added after the generated diagram</li>
-<li></li>
+</ul>
+</li>
+<li><code>graphml</code> - custom properties for GraphML output<ul>
+<li><code>notes</code> - object whose keys represent fully qualified diagram elements and values are lists of notes to be attached as nodes in the GraphML model</li>
 </ul>
 </li>
 </ul>
@@ -217,6 +221,12 @@ Example complete config</h1>
 <div class="line">  link: &quot;https://github.com/bkryza/clang-uml/blob/{{ git.commit }}/{{ element.source.path }}#L{{ element.source.line }}&quot;</div>
 <div class="line">  # Tooltip pattern</div>
 <div class="line">  tooltip: &quot;{{ element.name }}&quot;</div>
+<div class="line"># Custom user data that can be used in Jinja templates</div>
+<div class="line">user_data:</div>
+<div class="line">  copyright:</div>
+<div class="line">    name: Bartek Kryza</div>
+<div class="line">    license:</div>
+<div class="line">      type: CC-0</div>
 <div class="line"># The map of diagrams - keys are also diagram file names</div>
 <div class="line">diagrams:</div>
 <div class="line">  main_package:</div>
@@ -282,6 +292,10 @@ Example complete config</h1>
 <div class="line">      # Add this line at the end of a Mermaid diagram</div>
 <div class="line">      end:</div>
 <div class="line">        - &#39;direction LR&#39;</div>
+<div class="line">    graphml:</div>
+<div class="line">      notes:</div>
+<div class="line">        &#39;clanguml::class_diagram::model::ClassA&#39;:</div>
+<div class="line">          - &#39;This is class ClassA&#39;</div>
 </div><!-- fragment --><h1><a class="anchor" id="determining-config-file-location"></a>
 Determining config file location</h1>
 <p>If <code>-c,--config</code> option is not provided, <code>clang-uml</code> will try to open file <code>.clang-uml</code> in the current directory and fail if it doesn't exist.</p>

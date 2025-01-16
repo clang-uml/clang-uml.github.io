@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -130,7 +130,7 @@ $(function() {
 <a href="activity_8cc.html">Go to the documentation of this file.</a><div class="fragment language-cpp"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file src/sequence_diagram/model/activity.cc</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (c) 2021-2024 Bartek Kryza &lt;bkryza@gmail.com&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (c) 2021-2025 Bartek Kryza &lt;bkryza@gmail.com&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -162,7 +162,16 @@ $(function() {
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#ab9850ddfba8a7939f0a9380db3164ac6">   34</a></span><a class="code hl_class" href="classclanguml_1_1common_1_1eid__t.html" title="Universal class for representing all kinds of Id&#39;s in the diagram model.">eid_t</a> <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#ab9850ddfba8a7939f0a9380db3164ac6" title="Get the id of activity parent participant.">activity::from</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#acff7f1c146edcd1da418c6e75352eaaf">from_</a>; }</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>} <span class="comment">// namespace clanguml::sequence_diagram::model</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#a7b7ff2b70f17b1c475d264760604549d">   36</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#a7b7ff2b70f17b1c475d264760604549d">activity::add_caller</a>(<a class="code hl_class" href="classclanguml_1_1common_1_1eid__t.html" title="Universal class for representing all kinds of Id&#39;s in the diagram model.">eid_t</a> caller) { <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#a2c251f83d15c5531abe96aef0dedd344">callers_</a>.emplace(caller); }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#a9531c4967d70c61522d09b53d7772efa">   38</a></span><span class="keyword">const</span> std::set&lt;eid_t&gt; &amp;<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#a9531c4967d70c61522d09b53d7772efa">activity::callers</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#a2c251f83d15c5531abe96aef0dedd344">callers_</a>; }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#a4c08a2876be051cfec154bbc7fd3cb53">   40</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#a4c08a2876be051cfec154bbc7fd3cb53">activity::set_callers</a>(std::set&lt;eid_t&gt; callers)</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>{</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#a2c251f83d15c5531abe96aef0dedd344">callers_</a> = std::move(<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#a9531c4967d70c61522d09b53d7772efa">callers</a>);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>} <span class="comment">// namespace clanguml::sequence_diagram::model</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

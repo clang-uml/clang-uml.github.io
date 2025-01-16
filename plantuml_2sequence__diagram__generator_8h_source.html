@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -130,7 +130,7 @@ $(function() {
 <a href="plantuml_2sequence__diagram__generator_8h.html">Go to the documentation of this file.</a><div class="fragment language-cpp"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file src/sequence_diagram/generators/plantuml/sequence_diagram_generator.h</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (c) 2021-2024 Bartek Kryza &lt;bkryza@gmail.com&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (c) 2021-2025 Bartek Kryza &lt;bkryza@gmail.com&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -262,40 +262,42 @@ $(function() {
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    std::string <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a0665431efdc292d2b4fecf700a89d9b3" title="Generate PlantUML alias for participant.">generate_alias</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html" title="Base class for various types of sequence diagram participants.">model::participant</a> &amp;participant) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment"></span> </div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment">     * @brief Escape the symbols in the name for PlantUML</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment">     * @brief Generate message call note</span></div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="comment">     * @param name Full participant name</span></div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="comment">     * @return Escaped name</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="comment">     * @param ostr Output stream</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="comment">     * @param m Message</span></div>
 <div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    std::string <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#ab204deaf89e75998d81dc72ad4364fd6" title="Escape the symbols in the name for PlantUML.">render_name</a>(std::string name) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment"></span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="comment">     * @brief Generate message call note</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">     * @param ostr Output stream</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">     * @param m Message</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a25e9f43f5bc579fa8552f63f6f0e4070" title="Generate message call note.">generate_message_comment</a>(</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        std::ostream &amp;ostr, <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html" title="Model of a sequence diagram message.">model::message</a> &amp;m) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="comment"></span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment">     * @brief Convert config to model message render mode.</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">     * @return Method render mode.</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <a class="code hl_enumeration" href="structclanguml_1_1sequence__diagram_1_1model_1_1function.html#a57b16a050a25f697af8c5ae70e62ed9b">model::function::message_render_mode</a></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a5b8013f8ee3f106a8f9cf0eaa3e88f5e" title="Convert config to model message render mode.">select_method_arguments_render_mode</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a64de3cbabc7a0dac5a9dbe3154f9a954">  160</a></span>    <span class="keyword">mutable</span> std::set&lt;eid_t&gt; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a64de3cbabc7a0dac5a9dbe3154f9a954">generated_participants_</a>;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a14ec42bac679ebef95addd5afb687641">  161</a></span>    <span class="keyword">mutable</span> std::set&lt;unsigned int&gt; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a14ec42bac679ebef95addd5afb687641">generated_comment_ids_</a>;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a484ae8c33841ab0a19cd427ff9bed2f9">  162</a></span>    <span class="keyword">mutable</span> std::vector&lt;model::message&gt; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a484ae8c33841ab0a19cd427ff9bed2f9">already_generated_in_static_context_</a>;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a89bf52c7bf75c503383f1a917c6d55cb">  163</a></span>    <span class="keyword">mutable</span> std::set&lt;eid_t&gt; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a89bf52c7bf75c503383f1a917c6d55cb">generated_activities_</a>;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>};</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>} <span class="comment">// namespace plantuml</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>} <span class="comment">// namespace generators</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>} <span class="comment">// namespace sequence_diagram</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>} <span class="comment">// namespace clanguml</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a25e9f43f5bc579fa8552f63f6f0e4070" title="Generate message call note.">generate_message_comment</a>(</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        std::ostream &amp;ostr, <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1sequence__diagram_1_1model_1_1message.html" title="Model of a sequence diagram message.">model::message</a> &amp;m) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a0695c8975fff9da3b11e85ca04743a9b">generate_from_to_sequences</a>(std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#abbcb7d96f16ecc6392cbf0be797298cf">generate_to_sequences</a>(std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#aa88e8998a9c8a5b939f18b332661ff51">generate_from_sequences</a>(std::ostream &amp;ostr) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    std::vector&lt;eid_t&gt; <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a1cdf0fbaa50a6ecd9d645603f02deb68">find_from_activities</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    std::vector&lt;model::message_chain_t&gt; <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a61c52f146d9ec3d6942fa9ab5f0ba57f">find_to_message_chains</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment"></span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">     * @brief Convert config to model message render mode.</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment">     * @return Method render mode.</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <a class="code hl_enumeration" href="structclanguml_1_1sequence__diagram_1_1model_1_1function.html#a57b16a050a25f697af8c5ae70e62ed9b">model::function::message_render_mode</a></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a5b8013f8ee3f106a8f9cf0eaa3e88f5e" title="Convert config to model message render mode.">select_method_arguments_render_mode</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a64de3cbabc7a0dac5a9dbe3154f9a954">  162</a></span>    <span class="keyword">mutable</span> std::set&lt;eid_t&gt; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a64de3cbabc7a0dac5a9dbe3154f9a954">generated_participants_</a>;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a14ec42bac679ebef95addd5afb687641">  163</a></span>    <span class="keyword">mutable</span> std::set&lt;unsigned int&gt; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a14ec42bac679ebef95addd5afb687641">generated_comment_ids_</a>;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a484ae8c33841ab0a19cd427ff9bed2f9">  164</a></span>    <span class="keyword">mutable</span> std::vector&lt;model::message&gt; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a484ae8c33841ab0a19cd427ff9bed2f9">already_generated_in_static_context_</a>;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a89bf52c7bf75c503383f1a917c6d55cb">  165</a></span>    <span class="keyword">mutable</span> std::set&lt;eid_t&gt; <a class="code hl_variable" href="classclanguml_1_1sequence__diagram_1_1generators_1_1plantuml_1_1generator.html#a89bf52c7bf75c503383f1a917c6d55cb">generated_activities_</a>;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>};</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>} <span class="comment">// namespace plantuml</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>} <span class="comment">// namespace generators</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>} <span class="comment">// namespace sequence_diagram</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>} <span class="comment">// namespace clanguml</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

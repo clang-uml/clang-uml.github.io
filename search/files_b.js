@@ -6,5 +6,6 @@ var searchData=
   ['objc_5fmember_2eh_3',['objc_member.h',['../objc__member_8h.html',1,'']]],
   ['objc_5fmethod_2ecc_4',['objc_method.cc',['../objc__method_8cc.html',1,'']]],
   ['objc_5fmethod_2eh_5',['objc_method.h',['../objc__method_8h.html',1,'']]],
-  ['option_2eh_6',['option.h',['../option_8h.html',1,'']]]
+  ['option_2ecc_6',['option.cc',['../option_8cc.html',1,'']]],
+  ['option_2eh_7',['option.h',['../option_8h.html',1,'']]]
 ];

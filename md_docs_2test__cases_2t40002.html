@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -124,11 +124,14 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="t40002---cyclic-include-graph-diagram-test-case"></a></p>
-<h1><a class="anchor" id="config-166"></a>
+<h1><a class="anchor" id="config-176"></a>
 Config</h1>
 <div class="fragment language-yaml"><div class="line">diagrams:</div>
 <div class="line">  t40002_include:</div>
 <div class="line">    type: include</div>
+<div class="line">    generate_links:</div>
+<div class="line">      link: &#39;https://github.com/bkryza/clang-uml/blob/{{ git.commit }}/{{ element.source.path }}#L{{ element.source.line }}&#39;</div>
+<div class="line">      tooltip: &#39;{% if existsIn(element, &quot;comment&quot;) and existsIn(element.comment, &quot;brief&quot;)  %}{{ abbrv(trim(replace(element.comment.brief.0, &quot;\n+&quot;, &quot; &quot;)), 256) }}{% else %}{{ element.name }}{% endif %}&#39;</div>
 <div class="line">    # Provide the files to parse in order to look</div>
 <div class="line">    # for #include directives</div>
 <div class="line">    glob:</div>
@@ -146,7 +149,23 @@ Config</h1>
 <div class="line">    plantuml:</div>
 <div class="line">      before:</div>
 <div class="line">        - &quot;&#39; t40002 test include diagram&quot;</div>
-</div><!-- fragment --> <h1><a class="anchor" id="source-code-166"></a>
+<div class="line">  t40002_include_no_packages:</div>
+<div class="line">    type: include</div>
+<div class="line">    generate_packages: false</div>
+<div class="line">    glob:</div>
+<div class="line">      - src/t40002.cc</div>
+<div class="line">      - src/lib1/lib1.cc</div>
+<div class="line">      - src/lib2/lib2.cc</div>
+<div class="line">    include:</div>
+<div class="line">      paths:</div>
+<div class="line">        - .</div>
+<div class="line">    exclude:</div>
+<div class="line">      paths:</div>
+<div class="line">        - include/lib2/lib2_detail.h</div>
+<div class="line">    plantuml:</div>
+<div class="line">      before:</div>
+<div class="line">        - &quot;&#39; t40002 test include diagram&quot;</div>
+</div><!-- fragment --> <h1><a class="anchor" id="source-code-176"></a>
 Source code</h1>
 <p>File <code>tests/t40002/src/t40002.cc</code> </p><div class="fragment language-cpp"><div class="line"><span class="preprocessor">#include &quot;../include/lib1/lib1.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;../include/lib2/lib2.h&quot;</span></div>
@@ -218,17 +237,23 @@ Source code</h1>
 <div class="line"><span class="keywordtype">int</span> foo();</div>
 <div class="line"> </div>
 <div class="line">}</div>
-</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-166"></a>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-plantuml-diagrams-176"></a>
 Generated PlantUML diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t40002_include.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-mermaid-diagrams-166"></a>
+     <div class="image">
+<embed type="image/svg+xml" src="t40002_include_no_packages.svg"></embed>
+</div>
+     <h1><a class="anchor" id="generated-mermaid-diagrams-176"></a>
 Generated Mermaid diagrams</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t40002_include_mermaid.svg"></embed>
 </div>
-     <h1><a class="anchor" id="generated-json-models-166"></a>
+     <div class="image">
+<embed type="image/svg+xml" src="t40002_include_no_packages_mermaid.svg"></embed>
+</div>
+     <h1><a class="anchor" id="generated-json-models-176"></a>
 Generated JSON models</h1>
 <div class="fragment language-json"><div class="line">{</div>
 <div class="line">  &quot;diagram_type&quot;: &quot;include&quot;,</div>
@@ -348,6 +373,244 @@ Generated JSON models</h1>
 <div class="line">    }</div>
 <div class="line">  ]</div>
 <div class="line">}</div>
+</div><!-- fragment --> <div class="fragment language-json"><div class="line">{</div>
+<div class="line">  &quot;diagram_type&quot;: &quot;include&quot;,</div>
+<div class="line">  &quot;elements&quot;: [</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;src/t40002.cc&quot;,</div>
+<div class="line">      &quot;file_kind&quot;: &quot;implementation&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;11915602319277933652&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;src/t40002.cc&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;file&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;src/lib1/lib1.cc&quot;,</div>
+<div class="line">      &quot;file_kind&quot;: &quot;implementation&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;11951305658985723216&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;src/lib1/lib1.cc&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;file&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;src/lib2/lib2.cc&quot;,</div>
+<div class="line">      &quot;file_kind&quot;: &quot;implementation&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;14095000166128931568&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;src/lib2/lib2.cc&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;file&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;include/lib1/lib1.h&quot;,</div>
+<div class="line">      &quot;file_kind&quot;: &quot;header&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;17548393712337957522&quot;,</div>
+<div class="line">      &quot;is_system&quot;: false,</div>
+<div class="line">      &quot;name&quot;: &quot;include/lib1/lib1.h&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;file&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;display_name&quot;: &quot;include/lib2/lib2.h&quot;,</div>
+<div class="line">      &quot;file_kind&quot;: &quot;header&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;15757398685574731504&quot;,</div>
+<div class="line">      &quot;is_system&quot;: false,</div>
+<div class="line">      &quot;name&quot;: &quot;include/lib2/lib2.h&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;file&quot;</div>
+<div class="line">    }</div>
+<div class="line">  ],</div>
+<div class="line">  &quot;name&quot;: &quot;t40002_include_no_packages&quot;,</div>
+<div class="line">  &quot;relationships&quot;: [</div>
+<div class="line">    {</div>
+<div class="line">      &quot;destination&quot;: &quot;17548393712337957522&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;11915602319277933652&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;association&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;destination&quot;: &quot;15757398685574731504&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;11915602319277933652&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;association&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;destination&quot;: &quot;17548393712337957522&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;11951305658985723216&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;association&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;destination&quot;: &quot;15757398685574731504&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;14095000166128931568&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;association&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;destination&quot;: &quot;15757398685574731504&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;17548393712337957522&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;association&quot;</div>
+<div class="line">    }</div>
+<div class="line">  ]</div>
+<div class="line">}</div>
+</div><!-- fragment --> <h1><a class="anchor" id="generated-graphml-models-176"></a>
+Generated GraphML models</h1>
+<div class="fragment language-cpp"><div class="line">&lt;?<span class="keyword">xml</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div>
+<div class="line">&lt;<span class="keywordtype">graphml</span> <span class="keyword">xmlns</span>=<span class="stringliteral">&quot;http://graphml.graphdrawing.org/xmlns&quot;</span> <span class="keyword">xmlns:xsi</span>=<span class="stringliteral">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="keyword">xsi:schemaLocation</span>=<span class="stringliteral">&quot;http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd&quot;</span>&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;id&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;graph&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;gd0&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;diagram_type&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;graph&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;gd1&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;name&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;graph&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;gd2&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;using_namespace&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;graph&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;gd3&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;id&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd0&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;type&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd1&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;name&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd2&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;stereotype&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd3&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;url&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd4&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;tooltip&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd5&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;is_system&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;boolean&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd6&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;type&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;edge&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;ed0&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;access&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;edge&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;ed1&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;label&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;edge&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;ed2&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;url&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;edge&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;ed3&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">graph</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;g0&quot;</span> <span class="keyword">edgedefault</span>=<span class="stringliteral">&quot;directed&quot;</span> <span class="keyword">parse.nodeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.edgeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.order</span>=<span class="stringliteral">&quot;nodesfirst&quot;</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n0&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="keyword">src</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">folder</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">graph</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;g1&quot;</span> <span class="keyword">edgedefault</span>=<span class="stringliteral">&quot;directed&quot;</span> <span class="keyword">parse.nodeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.edgeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.order</span>=<span class="stringliteral">&quot;nodesfirst&quot;</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n1&quot;</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">file</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[t40002.cc]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd3&quot;</span>&gt;<span class="keyword">source</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd4&quot;</span>&gt;<span class="keyword">https:</span>//<span class="keyword">github.com</span>/<span class="keyword">bkryza</span>/<span class="keyword">clang-uml</span>/<span class="keyword">blob</span>/889200<span class="keyword">dcd0bcfeb92aba58a2caaab350ec74cdff</span>/<span class="keyword">tests</span>/<span class="keyword">t40002</span>/<span class="keyword">src</span>/<span class="keyword">t40002.cc</span>#<span class="keyword">L0</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd5&quot;</span>&gt;<span class="keyword">t40002.cc</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">    &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n2&quot;</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="keyword">lib1</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">folder</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">graph</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;g2&quot;</span> <span class="keyword">edgedefault</span>=<span class="stringliteral">&quot;directed&quot;</span> <span class="keyword">parse.nodeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.edgeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.order</span>=<span class="stringliteral">&quot;nodesfirst&quot;</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n3&quot;</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">file</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[lib1.cc]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd3&quot;</span>&gt;<span class="keyword">source</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd4&quot;</span>&gt;<span class="keyword">https:</span>//<span class="keyword">github.com</span>/<span class="keyword">bkryza</span>/<span class="keyword">clang-uml</span>/<span class="keyword">blob</span>/889200<span class="keyword">dcd0bcfeb92aba58a2caaab350ec74cdff</span>/<span class="keyword">tests</span>/<span class="keyword">t40002</span>/<span class="keyword">src</span>/<span class="keyword">lib1</span>/<span class="keyword">lib1.cc</span>#<span class="keyword">L0</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd5&quot;</span>&gt;<span class="keyword">lib1.cc</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">      &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">     &lt;/<span class="keywordtype">graph</span>&gt;</div>
+<div class="line">    &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n4&quot;</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="keyword">lib2</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">folder</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">graph</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;g3&quot;</span> <span class="keyword">edgedefault</span>=<span class="stringliteral">&quot;directed&quot;</span> <span class="keyword">parse.nodeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.edgeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.order</span>=<span class="stringliteral">&quot;nodesfirst&quot;</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n5&quot;</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">file</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[lib2.cc]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd3&quot;</span>&gt;<span class="keyword">source</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd4&quot;</span>&gt;<span class="keyword">https:</span>//<span class="keyword">github.com</span>/<span class="keyword">bkryza</span>/<span class="keyword">clang-uml</span>/<span class="keyword">blob</span>/889200<span class="keyword">dcd0bcfeb92aba58a2caaab350ec74cdff</span>/<span class="keyword">tests</span>/<span class="keyword">t40002</span>/<span class="keyword">src</span>/<span class="keyword">lib2</span>/<span class="keyword">lib2.cc</span>#<span class="keyword">L0</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd5&quot;</span>&gt;<span class="keyword">lib2.cc</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">      &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">     &lt;/<span class="keywordtype">graph</span>&gt;</div>
+<div class="line">    &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">   &lt;/<span class="keywordtype">graph</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n6&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="keyword">include</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">folder</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">graph</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;g4&quot;</span> <span class="keyword">edgedefault</span>=<span class="stringliteral">&quot;directed&quot;</span> <span class="keyword">parse.nodeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.edgeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.order</span>=<span class="stringliteral">&quot;nodesfirst&quot;</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n7&quot;</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="keyword">lib1</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">folder</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">graph</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;g5&quot;</span> <span class="keyword">edgedefault</span>=<span class="stringliteral">&quot;directed&quot;</span> <span class="keyword">parse.nodeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.edgeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.order</span>=<span class="stringliteral">&quot;nodesfirst&quot;</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n8&quot;</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">file</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[lib1.h]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd3&quot;</span>&gt;<span class="keyword">header</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd4&quot;</span>&gt;<span class="keyword">https:</span>//<span class="keyword">github.com</span>/<span class="keyword">bkryza</span>/<span class="keyword">clang-uml</span>/<span class="keyword">blob</span>/889200<span class="keyword">dcd0bcfeb92aba58a2caaab350ec74cdff</span>/<span class="keyword">tests</span>/<span class="keyword">t40002</span>/<span class="keyword">include</span>/<span class="keyword">lib1</span>/<span class="keyword">lib1.h</span>#<span class="keyword">L0</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd5&quot;</span>&gt;<span class="keyword">lib1.h</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">      &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">     &lt;/<span class="keywordtype">graph</span>&gt;</div>
+<div class="line">    &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n9&quot;</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="keyword">lib2</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">folder</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">     &lt;<span class="keywordtype">graph</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;g6&quot;</span> <span class="keyword">edgedefault</span>=<span class="stringliteral">&quot;directed&quot;</span> <span class="keyword">parse.nodeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.edgeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.order</span>=<span class="stringliteral">&quot;nodesfirst&quot;</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n10&quot;</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">file</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[lib2.h]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd3&quot;</span>&gt;<span class="keyword">header</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd4&quot;</span>&gt;<span class="keyword">https:</span>//<span class="keyword">github.com</span>/<span class="keyword">bkryza</span>/<span class="keyword">clang-uml</span>/<span class="keyword">blob</span>/889200<span class="keyword">dcd0bcfeb92aba58a2caaab350ec74cdff</span>/<span class="keyword">tests</span>/<span class="keyword">t40002</span>/<span class="keyword">include</span>/<span class="keyword">lib2</span>/<span class="keyword">lib2.h</span>#<span class="keyword">L0</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd5&quot;</span>&gt;<span class="keyword">lib2.h</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">      &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">     &lt;/<span class="keywordtype">graph</span>&gt;</div>
+<div class="line">    &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">   &lt;/<span class="keywordtype">graph</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e0&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n1&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n8&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">association</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e1&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n1&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n10&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">association</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e2&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n8&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n10&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">association</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e3&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n3&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n8&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">association</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e4&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n5&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n10&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">association</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line"> &lt;/<span class="keywordtype">graph</span>&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">graphml</span>&gt;</div>
+</div><!-- fragment --> <div class="fragment language-cpp"><div class="line">&lt;?<span class="keyword">xml</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div>
+<div class="line">&lt;<span class="keywordtype">graphml</span> <span class="keyword">xmlns</span>=<span class="stringliteral">&quot;http://graphml.graphdrawing.org/xmlns&quot;</span> <span class="keyword">xmlns:xsi</span>=<span class="stringliteral">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="keyword">xsi:schemaLocation</span>=<span class="stringliteral">&quot;http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd&quot;</span>&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;id&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;graph&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;gd0&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;diagram_type&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;graph&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;gd1&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;name&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;graph&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;gd2&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;using_namespace&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;graph&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;gd3&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;id&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd0&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;type&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd1&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;name&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd2&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;stereotype&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd3&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;url&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd4&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;tooltip&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd5&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;is_system&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;boolean&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd6&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;type&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;edge&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;ed0&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;access&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;edge&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;ed1&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;label&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;edge&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;ed2&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;url&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;edge&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;ed3&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">graph</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;g0&quot;</span> <span class="keyword">edgedefault</span>=<span class="stringliteral">&quot;directed&quot;</span> <span class="keyword">parse.nodeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.edgeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.order</span>=<span class="stringliteral">&quot;nodesfirst&quot;</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n0&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">file</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[src/t40002.cc]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd3&quot;</span>&gt;<span class="keyword">source</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n1&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">file</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[src/lib1/lib1.cc]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd3&quot;</span>&gt;<span class="keyword">source</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n2&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">file</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[src/lib2/lib2.cc]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd3&quot;</span>&gt;<span class="keyword">source</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n3&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">file</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[include/lib1/lib1.h]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd3&quot;</span>&gt;<span class="keyword">header</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n4&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">file</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[include/lib2/lib2.h]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd3&quot;</span>&gt;<span class="keyword">header</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e0&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n0&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n3&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">association</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e1&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n0&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n4&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">association</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e2&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n3&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n4&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">association</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e3&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n1&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n3&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">association</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e4&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n2&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n4&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">association</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line"> &lt;/<span class="keywordtype">graph</span>&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">graphml</span>&gt;</div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- HTML footer for doxygen 1.9.1-->

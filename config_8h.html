@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -135,8 +135,10 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="enums_8h_source.html">common/model/enums.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="types_8h_source.html">common/types.h</a>&quot;</code><br />
+<code>#include &quot;inja/inja.hpp&quot;</code><br />
 <code>#include &quot;<a class="el" href="option_8h_source.html">option.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="util_8h_source.html">util/util.h</a>&quot;</code><br />
+<code>#include &lt;miroir/miroir.hpp&gt;</code><br />
 <code>#include &lt;spdlog/spdlog.h&gt;</code><br />
 <code>#include &lt;yaml-cpp/yaml.h&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
@@ -151,15 +153,23 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1error_1_1config__schema__error.html">clanguml::error::config_schema_error</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1element__filter__t.html">clanguml::config::element_filter_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1plantuml__keyword__mapping__t.html">clanguml::config::plantuml_keyword_mapping_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1glob__t.html">clanguml::config::glob_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Glob config section for including and excluding TUs.  <a href="structclanguml_1_1config_1_1glob__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1plantuml.html">clanguml::config::plantuml</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">PlantUML diagram config section.  <a href="structclanguml_1_1config_1_1plantuml.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1mermaid.html">clanguml::config::mermaid</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">MermaidJS diagram config section.  <a href="structclanguml_1_1config_1_1mermaid.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1graphml.html">clanguml::config::graphml</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">GraphML diagram config section.  <a href="structclanguml_1_1config_1_1graphml.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1config_1_1context__config.html">clanguml::config::context_config</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -208,12 +218,16 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceclanguml_1_1cli"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1cli.html">clanguml::cli</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespaceclanguml_1_1error"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1error.html">clanguml::error</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceclanguml_1_1config"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1config.html">clanguml::config</a></td></tr>
 <tr class="memdesc:namespaceclanguml_1_1config"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration file related classes. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceclanguml_1_1common"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html">clanguml::common</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceclanguml_1_1common_1_1model"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common_1_1model.html">clanguml::common::model</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespaceYAML"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceYAML.html">YAML</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -307,6 +321,8 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a340f2761efc576ad09e07f4cbf3a6c76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1error.html#a340f2761efc576ad09e07f4cbf3a6c76">clanguml::error::print</a> (std::ostream &amp;ostr, const <a class="el" href="classclanguml_1_1error_1_1config__schema__error.html">config_schema_error</a> &amp;e, logging::logger_type_t logger_type)</td></tr>
+<tr class="separator:a340f2761efc576ad09e07f4cbf3a6c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5e29dd0a054b1a019b47fdae141c536"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1config.html#ac5e29dd0a054b1a019b47fdae141c536">clanguml::config::to_string</a> (<a class="el" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aab">element_filter_t::filtered_type</a> ft)</td></tr>
 <tr class="separator:ac5e29dd0a054b1a019b47fdae141c536"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4ba7932066519592cdcb6dd12a79fa9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1config.html#ae4ba7932066519592cdcb6dd12a79fa9">clanguml::config::to_string</a> (const <a class="el" href="namespaceclanguml_1_1config.html#a47e1ea2110a20783e35007c3927dd958">method_arguments</a> ma)</td></tr>
@@ -340,6 +356,10 @@ Functions</h2></td></tr>
 <tr class="separator:ga4c8bc075684b08daa379aef609bb6297"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae7214916aa0e805e0cbc11d6895aff8e"><td class="memItemLeft" align="right" valign="top">YAML::Emitter &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#gae7214916aa0e805e0cbc11d6895aff8e">clanguml::config::operator&lt;&lt;</a> (YAML::Emitter &amp;out, const <a class="el" href="structclanguml_1_1config_1_1plantuml.html">plantuml</a> &amp;p)</td></tr>
 <tr class="separator:gae7214916aa0e805e0cbc11d6895aff8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae59e061b2885f17062407d281e4eb5f0"><td class="memItemLeft" align="right" valign="top">YAML::Emitter &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#gae59e061b2885f17062407d281e4eb5f0">clanguml::config::operator&lt;&lt;</a> (YAML::Emitter &amp;out, const <a class="el" href="structclanguml_1_1config_1_1mermaid.html">mermaid</a> &amp;p)</td></tr>
+<tr class="separator:gae59e061b2885f17062407d281e4eb5f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7355f0031dd394124942640faebe1bee"><td class="memItemLeft" align="right" valign="top">YAML::Emitter &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#ga7355f0031dd394124942640faebe1bee">clanguml::config::operator&lt;&lt;</a> (YAML::Emitter &amp;out, const <a class="el" href="structclanguml_1_1config_1_1graphml.html">graphml</a> &amp;p)</td></tr>
+<tr class="separator:ga7355f0031dd394124942640faebe1bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0a8df2f42b1d712cec31a541b8bb729e"><td class="memItemLeft" align="right" valign="top">YAML::Emitter &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#ga0a8df2f42b1d712cec31a541b8bb729e">clanguml::config::operator&lt;&lt;</a> (YAML::Emitter &amp;out, const <a class="el" href="namespaceclanguml_1_1config.html#a47e1ea2110a20783e35007c3927dd958">method_arguments</a> &amp;ma)</td></tr>
 <tr class="separator:ga0a8df2f42b1d712cec31a541b8bb729e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga220d8ce92a712a23d252844c917a9127"><td class="memItemLeft" align="right" valign="top">YAML::Emitter &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#ga220d8ce92a712a23d252844c917a9127">clanguml::config::operator&lt;&lt;</a> (YAML::Emitter &amp;out, const <a class="el" href="structclanguml_1_1config_1_1generate__links__config.html">generate_links_config</a> &amp;glc)</td></tr>
@@ -364,8 +384,33 @@ Functions</h2></td></tr>
 <tr class="separator:ga853a7104bec4d544b43f3ffb15e7dd59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gade2cf8a9cabf4c35019d2c17c69a0f8c"><td class="memItemLeft" align="right" valign="top">YAML::Emitter &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#gade2cf8a9cabf4c35019d2c17c69a0f8c">clanguml::config::operator&lt;&lt;</a> (YAML::Emitter &amp;out, const <a class="el" href="structclanguml_1_1config_1_1element__filter__t.html">element_filter_t</a> &amp;ef)</td></tr>
 <tr class="separator:gade2cf8a9cabf4c35019d2c17c69a0f8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab2289daec4bfb98868b1a3a79e2f05c9"><td class="memItemLeft" align="right" valign="top">YAML::Emitter &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#gab2289daec4bfb98868b1a3a79e2f05c9">clanguml::config::operator&lt;&lt;</a> (YAML::Emitter &amp;out, const <a class="el" href="structclanguml_1_1config_1_1diagram__template.html">diagram_template</a> &amp;dt)</td></tr>
+<tr class="separator:gab2289daec4bfb98868b1a3a79e2f05c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0c224a3fe5e0792cabbe3e01f98bb7fc"><td class="memItemLeft" align="right" valign="top">YAML::Emitter &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#ga0c224a3fe5e0792cabbe3e01f98bb7fc">clanguml::config::operator&lt;&lt;</a> (YAML::Emitter &amp;out, const inja::json &amp;ef)</td></tr>
+<tr class="separator:ga0c224a3fe5e0792cabbe3e01f98bb7fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3f37631267e555f2a35c7a2501f4793e"><td class="memItemLeft" align="right" valign="top">YAML::Emitter &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#ga3f37631267e555f2a35c7a2501f4793e">clanguml::config::operator&lt;&lt;</a> (YAML::Emitter &amp;out, const <a class="el" href="structclanguml_1_1config_1_1source__location.html">source_location</a> &amp;sc)</td></tr>
 <tr class="separator:ga3f37631267e555f2a35c7a2501f4793e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga20cc82efc8e7a08a6337d6aa05e040d3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga20cc82efc8e7a08a6337d6aa05e040d3"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#ga20cc82efc8e7a08a6337d6aa05e040d3">clanguml::config::is_null</a> (const T &amp;)</td></tr>
+<tr class="separator:ga20cc82efc8e7a08a6337d6aa05e040d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0f860dde0a424f857a3f9aa1941d735b"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:ga0f860dde0a424f857a3f9aa1941d735b"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#ga0f860dde0a424f857a3f9aa1941d735b">clanguml::config::is_null</a> (const std::string &amp;v)</td></tr>
+<tr class="separator:ga0f860dde0a424f857a3f9aa1941d735b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga41653cbb85df11a1bd95e1c1f1e83c5a"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:ga41653cbb85df11a1bd95e1c1f1e83c5a"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#ga41653cbb85df11a1bd95e1c1f1e83c5a">clanguml::config::is_null</a> (const <a class="el" href="structclanguml_1_1config_1_1glob__t.html">glob_t</a> &amp;v)</td></tr>
+<tr class="separator:ga41653cbb85df11a1bd95e1c1f1e83c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2614c0f1ea3cc39a1297b99c712a721b"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:ga2614c0f1ea3cc39a1297b99c712a721b"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#ga2614c0f1ea3cc39a1297b99c712a721b">clanguml::config::is_null</a> (const <a class="el" href="structclanguml_1_1config_1_1plantuml.html">plantuml</a> &amp;v)</td></tr>
+<tr class="separator:ga2614c0f1ea3cc39a1297b99c712a721b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4ccf0a79ec331b6f3016b104c1130260"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:ga4ccf0a79ec331b6f3016b104c1130260"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#ga4ccf0a79ec331b6f3016b104c1130260">clanguml::config::is_null</a> (const <a class="el" href="structclanguml_1_1config_1_1mermaid.html">mermaid</a> &amp;v)</td></tr>
+<tr class="separator:ga4ccf0a79ec331b6f3016b104c1130260"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaaa05dc0a9c46c6abf0062e22e66ed31"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:gaaaa05dc0a9c46c6abf0062e22e66ed31"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#gaaaa05dc0a9c46c6abf0062e22e66ed31">clanguml::config::is_null</a> (const <a class="el" href="structclanguml_1_1config_1_1graphml.html">graphml</a> &amp;v)</td></tr>
+<tr class="separator:gaaaa05dc0a9c46c6abf0062e22e66ed31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga18e8441fd59cf91290be075a21425021"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:ga18e8441fd59cf91290be075a21425021"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#ga18e8441fd59cf91290be075a21425021">clanguml::config::is_null</a> (const inja::json &amp;v)</td></tr>
+<tr class="separator:ga18e8441fd59cf91290be075a21425021"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga81884f7316abb0c748929dc477eac304"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ga81884f7316abb0c748929dc477eac304"><td class="memTemplItemLeft" align="right" valign="top">YAML::Emitter &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#ga81884f7316abb0c748929dc477eac304">clanguml::config::operator&lt;&lt;</a> (YAML::Emitter &amp;out, const <a class="el" href="structclanguml_1_1config_1_1option.html">option</a>&lt; T &gt; &amp;o)</td></tr>
 <tr class="separator:ga81884f7316abb0c748929dc477eac304"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -377,6 +422,8 @@ Functions</h2></td></tr>
 <tr class="separator:ga2d6e63ee770b7652cdb77e4e875328d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga17167451692f3e94add0cfa0b6f700d6"><td class="memItemLeft" align="right" valign="top">YAML::Emitter &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__yaml__emitters.html#ga17167451692f3e94add0cfa0b6f700d6">clanguml::common::model::operator&lt;&lt;</a> (YAML::Emitter &amp;out, const <a class="el" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">diagram_t</a> &amp;d)</td></tr>
 <tr class="separator:ga17167451692f3e94add0cfa0b6f700d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71b6f306df6dc1a8c17f5ee3d58f0849"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="structclanguml_1_1config_1_1diagram.html">clanguml::config::diagram</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceYAML.html#a71b6f306df6dc1a8c17f5ee3d58f0849">YAML::parse_diagram_config</a> (const YAML::Node &amp;d)</td></tr>
+<tr class="separator:a71b6f306df6dc1a8c17f5ee3d58f0849"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->

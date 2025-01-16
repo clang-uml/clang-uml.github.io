@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['layout_5fhints_0',['layout_hints',['../namespaceclanguml_1_1config.html#a1b90bfa21c6c1dac01277c47d484af23',1,'clanguml::config']]]
+  ['graphml_5fnode_5ft_0',['graphml_node_t',['../namespaceclanguml_1_1common_1_1generators_1_1graphml.html#a3027b3b80107e301d497113e5a7d6bec',1,'clanguml::common::generators::graphml']]],
+  ['graphml_5ft_1',['graphml_t',['../namespaceclanguml_1_1common_1_1generators_1_1graphml.html#a46561f08b642b93445988cdc52c1cb90',1,'clanguml::common::generators::graphml']]]
 ];

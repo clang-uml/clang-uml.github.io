@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -126,6 +126,7 @@ $(function() {
 <div class="textblock"><p><a class="anchor" id="generating-include-diagrams"></a></p>
 <ul>
 <li><a class="el" href="md_docs_2include__diagrams.html#tracking-system-headers-directly-included-by-project-sources">Tracking system headers directly included by project sources</a></li>
+<li><a class="el" href="md_docs_2include__diagrams.html#generating-include-diagrams-without-directory-packages">Generating include diagrams without directory packages</a></li>
 </ul>
 <p>Include diagrams allow to document the include dependencies among different parts of the project. This can be very useful for instance to detect that a file was included from a module directory, on which specific part of the project should never depend.</p>
 <p>The minimal config required to generate an include diagram is presented below: </p><div class="fragment language-yaml"><div class="line">diagrams:</div>
@@ -161,8 +162,13 @@ Tracking system headers directly included by project sources</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t40001_include.svg"></embed>
 </div>
-    <p>Please note that generating include diagram, which contains third party and system library headers will result in a huge diagram that is unlikely to be useful. </p>
-</div></div><!-- contents -->
+    <p>Please note that generating include diagram, which contains third party and system library headers will result in a huge diagram that is unlikely to be useful.</p>
+<h1><a class="anchor" id="generating-include-diagrams-without-directory-packages"></a>
+Generating include diagrams without directory packages</h1>
+<p>By default, <code>clang-uml</code> will generate include diagram with packages representing respective subdirectories in the project, and the source and header nodes are represented with only filenames without any path.</p>
+<p>It is however possible to generate the include diagram without the packages, where each node contains the entire path relative to the project root. To enable this simply set:</p>
+<div class="fragment language-yaml"><div class="line">generate_packages: false</div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -130,7 +130,7 @@ $(function() {
 <a href="package__diagram_2model_2diagram_8h.html">Go to the documentation of this file.</a><div class="fragment language-cpp"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file src/package_diagram/model/diagram.h</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (c) 2021-2024 Bartek Kryza &lt;bkryza@gmail.com&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (c) 2021-2025 Bartek Kryza &lt;bkryza@gmail.com&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -169,7 +169,7 @@ $(function() {
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"> * @brief Package diagram model.</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html">   42</a></span><span class="keyword">class </span><a class="code hl_class" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html" title="Package diagram model.">diagram</a> : <span class="keyword">public</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1diagram.html" title="Base class for all diagram models.">clanguml::common::model::diagram</a>,</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                <span class="keyword">public</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1element__view.html">clanguml::common::model::element_view</a>&lt;package&gt;,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                <span class="keyword">public</span> <a class="code hl_struct" href="structclanguml_1_1common_1_1model_1_1element__views.html">clanguml::common::model::element_views</a>&lt;package&gt;,</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                <span class="keyword">public</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1nested__trait.html" title="Base class for elements nested in the diagram.">nested_trait_ns</a> {</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#ad2d72cd7832180c70f042462ff445169">   46</a></span>    <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#ad2d72cd7832180c70f042462ff445169">diagram</a>() = <span class="keywordflow">default</span>;</div>
@@ -283,190 +283,199 @@ $(function() {
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    std::string <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a8624439706d75eaa5c6fdb668e728b6d" title="Get alias of existing diagram element.">to_alias</a>(<a class="code hl_class" href="classclanguml_1_1common_1_1eid__t.html" title="Universal class for representing all kinds of Id&#39;s in the diagram model.">eid_t</a> <span class="keywordtype">id</span>) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment"></span> </div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment">     * @brief Return the elements JSON context for inja templates.</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment">     * @brief Check whether the diagram is empty</span></div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment">     * @return JSON node with elements context.</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment">     * @return True, if diagram is empty</span></div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    inja::json <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a78305413e2b044ce29ff23edcd7912bf" title="Return the elements JSON context for inja templates.">context</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment"></span> </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="comment">     * @brief Check whether the diagram is empty</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">     * @return True, if diagram is empty</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#abc57a0126c898750df3693ccb796a195" title="Check whether the diagram is empty.">is_empty</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a87b4d29ad0d05670555df1bd09261d64">apply_filter</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="keyword">private</span>:<span class="comment"></span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="comment">     * @brief Add element using module as diagram path</span></div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="comment">     * @tparam ElementT Element type</span></div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="comment">     * @param e Element to add</span></div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="comment">     * @return True, if the element was added</span></div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a28e455990cbeff19a5b57148c6d1cf26" title="Add element using module as diagram path.">add_with_module_path</a>(</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">common::model::path</a> &amp;parent_path, std::unique_ptr&lt;ElementT&gt; &amp;&amp;e);</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="comment"></span> </div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="comment">     * @brief Add element using namespace as diagram path</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment">     * @tparam ElementT Element type</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment">     * @param e Element to add</span></div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment">     * @return True, if the element was added</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a79f3459030ef8cab38df0f51d1aba0b7" title="Add element using namespace as diagram path.">add_with_namespace_path</a>(std::unique_ptr&lt;ElementT&gt; &amp;&amp;e);</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment"></span> </div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment">     * @brief Add element using relative filesystem path as diagram path</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment">     * @tparam ElementT Element type</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment">     * @param parent_path Path to diagram elements parent package</span></div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment">     * @param e Element to add</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment">     * @return True, if the element was added</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#ad2157eb1629e31c061814df289d09d10" title="Add element using relative filesystem path as diagram path.">add_with_filesystem_path</a>(</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">common::model::path</a> &amp;parent_path, std::unique_ptr&lt;ElementT&gt; &amp;&amp;e);</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>};</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a68d804e626027208f03cf7b642bd8caf">  208</a></span>opt_ref&lt;ElementT&gt; <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a68d804e626027208f03cf7b642bd8caf" title="Find an element in the diagram by name.">diagram::find</a>(<span class="keyword">const</span> std::string &amp;name)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;element : element_view&lt;ElementT&gt;::view()) {</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        <span class="keyword">const</span> <span class="keyword">auto</span> full_name = element.get().full_name(<span class="keyword">false</span>);</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        <span class="keywordflow">if</span> (full_name == <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#a007510b23fb0810f7720b032d0efa42e">name</a>) {</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>            <span class="keywordflow">return</span> {element};</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        }</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    }</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordflow">return</span> {};</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>}</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a52c7efa04bc77645e19cf5e8bac3b733">  221</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt; opt_ref&lt;ElementT&gt; <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a68d804e626027208f03cf7b642bd8caf" title="Find an element in the diagram by name.">diagram::find</a>(<a class="code hl_class" href="classclanguml_1_1common_1_1eid__t.html" title="Universal class for representing all kinds of Id&#39;s in the diagram model.">eid_t</a> <span class="keywordtype">id</span>)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;element : element_view&lt;ElementT&gt;::view()) {</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="keywordflow">if</span> (element.get().id() == id) {</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>            <span class="keywordflow">return</span> {element};</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        }</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    }</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    <span class="keywordflow">return</span> {};</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>}</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a022bcad04fe5468d5c9ffdeaa575b0b3">  233</a></span>std::vector&lt;opt_ref&lt;ElementT&gt;&gt; <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a68d804e626027208f03cf7b642bd8caf" title="Find an element in the diagram by name.">diagram::find</a>(</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structclanguml_1_1common_1_1or__regex.html" title="Convenience class for configuration options with regex support.">common::string_or_regex</a> &amp;pattern)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    std::vector&lt;opt_ref&lt;ElementT&gt;&gt; result;</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;element : element_view&lt;ElementT&gt;::view()) {</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <span class="keyword">const</span> <span class="keyword">auto</span> full_name = element.get().full_name(<span class="keyword">false</span>);</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <span class="keywordflow">if</span> (pattern == full_name) {</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            result.emplace_back(element);</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        }</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    }</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>}</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a79f3459030ef8cab38df0f51d1aba0b7">  250</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a79f3459030ef8cab38df0f51d1aba0b7" title="Add element using namespace as diagram path.">diagram::add_with_namespace_path</a>(std::unique_ptr&lt;ElementT&gt; &amp;&amp;p)</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>{</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        <span class="stringliteral">&quot;Adding package: {}, {}, [{}]&quot;</span>, p-&gt;name(), p-&gt;full_name(<span class="keyword">true</span>), p-&gt;id());</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span> </div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <span class="keyword">auto</span> ns = p-&gt;get_relative_namespace();</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    <span class="keyword">auto</span> p_ref = std::ref(*p);</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    <span class="keyword">auto</span> res = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a01151bae83ef399559963410b37c0aec">add_element</a>(ns, std::move(p));</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    <span class="keywordflow">if</span> (res)</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        element_view&lt;ElementT&gt;::add(p_ref);</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    <span class="keywordflow">return</span> res;</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>}</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span> </div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a28e455990cbeff19a5b57148c6d1cf26">  266</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a28e455990cbeff19a5b57148c6d1cf26" title="Add element using module as diagram path.">diagram::add_with_module_path</a>(</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">common::model::path</a> &amp;parent_path, std::unique_ptr&lt;ElementT&gt; &amp;&amp;p)</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>{</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding package: {}, {}, {}, [{}]&quot;</span>, p-&gt;name(), p-&gt;full_name(<span class="keyword">false</span>),</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        parent_path.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#af243ca1e1f0c87673efc2e5e7d11115e">to_string</a>(), p-&gt;id());</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    <span class="comment">// Make sure all parent modules are already packages in the</span></div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    <span class="comment">// model</span></div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    <span class="keyword">auto</span> module_relative_to = <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">path</a>{p-&gt;using_namespace()};</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = parent_path.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#ab26979ae1d6a7e0dae5b03194d99648a">begin</a>(); it != parent_path.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#af3cb9c09e65f92b2ce9c8b36213f1bc6">end</a>(); it++) {</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        <span class="keyword">auto</span> pkg = std::make_unique&lt;common::model::package&gt;(</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>            p-&gt;using_namespace(), <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afa6fc48c2beb30c9fc68b676dc8d76e3a3d3648ae94129252d325fda4deeb2724">common::model::path_type::kModule</a>);</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        pkg-&gt;set_name(*it);</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        <span class="keyword">auto</span> module_relative_part = <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">common::model::path</a>(</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>            parent_path.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#ab26979ae1d6a7e0dae5b03194d99648a">begin</a>(), it, <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afa6fc48c2beb30c9fc68b676dc8d76e3a3d3648ae94129252d325fda4deeb2724">common::model::path_type::kModule</a>);</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        <span class="keyword">auto</span> module_absolute_path = module_relative_to | module_relative_part;</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        pkg-&gt;set_module(module_absolute_path.to_string());</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        pkg-&gt;set_namespace(module_absolute_path);</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span> </div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        <span class="keyword">auto</span> package_absolute_path = module_absolute_path | pkg-&gt;name();</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#abc57a0126c898750df3693ccb796a195" title="Check whether the diagram is empty.">is_empty</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a87b4d29ad0d05670555df1bd09261d64">apply_filter</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="comment"></span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">     * @brief Get reference to vector of elements of specific type</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">     * @tparam ElementT Type of elements view</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">     * @return Reference to elements vector</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#a890433df3c41bd4c468dbce1711eb02f">common::reference_vector&lt;ElementT&gt;</a> &amp;<a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a1c7d2b20c826569468bd6e8f6fa372b5" title="Get reference to vector of elements of specific type.">elements</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="keyword">private</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="comment">     * @brief Add element using module as diagram path</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="comment">     * @tparam ElementT Element type</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment">     * @param e Element to add</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="comment">     * @return True, if the element was added</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a28e455990cbeff19a5b57148c6d1cf26" title="Add element using module as diagram path.">add_with_module_path</a>(</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">common::model::path</a> &amp;parent_path, std::unique_ptr&lt;ElementT&gt; &amp;&amp;e);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="comment"></span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment">     * @brief Add element using namespace as diagram path</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment">     * @tparam ElementT Element type</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment">     * @param e Element to add</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment">     * @return True, if the element was added</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a79f3459030ef8cab38df0f51d1aba0b7" title="Add element using namespace as diagram path.">add_with_namespace_path</a>(std::unique_ptr&lt;ElementT&gt; &amp;&amp;e);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment"></span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment">     * @brief Add element using relative filesystem path as diagram path</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment">     * @tparam ElementT Element type</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment">     * @param parent_path Path to diagram elements parent package</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment">     * @param e Element to add</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="comment">     * @return True, if the element was added</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#ad2157eb1629e31c061814df289d09d10" title="Add element using relative filesystem path as diagram path.">add_with_filesystem_path</a>(</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">common::model::path</a> &amp;parent_path, std::unique_ptr&lt;ElementT&gt; &amp;&amp;e);</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>};</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a68d804e626027208f03cf7b642bd8caf">  210</a></span>opt_ref&lt;ElementT&gt; <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a68d804e626027208f03cf7b642bd8caf" title="Find an element in the diagram by name.">diagram::find</a>(<span class="keyword">const</span> std::string &amp;name)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;element : element_view&lt;ElementT&gt;::view()) {</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        <span class="keyword">const</span> <span class="keyword">auto</span> full_name = element.get().full_name(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        <span class="keywordflow">if</span> (full_name == <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#a007510b23fb0810f7720b032d0efa42e">name</a>) {</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>            <span class="keywordflow">return</span> {element};</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        }</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    }</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>}</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a52c7efa04bc77645e19cf5e8bac3b733">  223</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt; opt_ref&lt;ElementT&gt; <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a68d804e626027208f03cf7b642bd8caf" title="Find an element in the diagram by name.">diagram::find</a>(<a class="code hl_class" href="classclanguml_1_1common_1_1eid__t.html" title="Universal class for representing all kinds of Id&#39;s in the diagram model.">eid_t</a> <span class="keywordtype">id</span>)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;element : element_view&lt;ElementT&gt;::view()) {</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        <span class="keywordflow">if</span> (element.get().id() == id) {</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            <span class="keywordflow">return</span> {element};</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        }</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    }</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>}</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a022bcad04fe5468d5c9ffdeaa575b0b3">  235</a></span>std::vector&lt;opt_ref&lt;ElementT&gt;&gt; <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a68d804e626027208f03cf7b642bd8caf" title="Find an element in the diagram by name.">diagram::find</a>(</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structclanguml_1_1common_1_1or__regex.html" title="Convenience class for configuration options with regex support.">common::string_or_regex</a> &amp;pattern)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    std::vector&lt;opt_ref&lt;ElementT&gt;&gt; result;</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;element : element_view&lt;ElementT&gt;::view()) {</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <span class="keyword">const</span> <span class="keyword">auto</span> full_name = element.get().full_name(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        <span class="keywordflow">if</span> (pattern == full_name) {</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            result.emplace_back(element);</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        }</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    }</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span> </div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>}</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span> </div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a79f3459030ef8cab38df0f51d1aba0b7">  252</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a79f3459030ef8cab38df0f51d1aba0b7" title="Add element using namespace as diagram path.">diagram::add_with_namespace_path</a>(std::unique_ptr&lt;ElementT&gt; &amp;&amp;p)</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>{</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <span class="stringliteral">&quot;Adding package: {}, {}, [{}]&quot;</span>, p-&gt;name(), p-&gt;full_name(<span class="keyword">true</span>), p-&gt;id());</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span> </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    <span class="keyword">auto</span> ns = p-&gt;get_relative_namespace();</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    <span class="keyword">auto</span> p_ref = std::ref(*p);</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <span class="keyword">auto</span> res = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a01151bae83ef399559963410b37c0aec">add_element</a>(ns, std::move(p));</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordflow">if</span> (res)</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        element_view&lt;ElementT&gt;::add(p_ref);</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    <span class="keywordflow">return</span> res;</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>}</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a28e455990cbeff19a5b57148c6d1cf26">  268</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a28e455990cbeff19a5b57148c6d1cf26" title="Add element using module as diagram path.">diagram::add_with_module_path</a>(</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">common::model::path</a> &amp;parent_path, std::unique_ptr&lt;ElementT&gt; &amp;&amp;p)</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>{</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding package: {}, {}, {}, [{}]&quot;</span>, p-&gt;name(), p-&gt;full_name(<span class="keyword">false</span>),</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        parent_path.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#af243ca1e1f0c87673efc2e5e7d11115e">to_string</a>(), p-&gt;id());</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span> </div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    <span class="comment">// Make sure all parent modules are already packages in the</span></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    <span class="comment">// model</span></div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    <span class="keyword">auto</span> module_relative_to = <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">path</a>{p-&gt;using_namespace()};</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = parent_path.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#ab26979ae1d6a7e0dae5b03194d99648a">begin</a>(); it != parent_path.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#af3cb9c09e65f92b2ce9c8b36213f1bc6">end</a>(); it++) {</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        <span class="keyword">auto</span> pkg = std::make_unique&lt;common::model::package&gt;(</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>            p-&gt;using_namespace(), <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afa6fc48c2beb30c9fc68b676dc8d76e3a3d3648ae94129252d325fda4deeb2724">common::model::path_type::kModule</a>);</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        pkg-&gt;set_name(*it);</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        <span class="keyword">auto</span> module_relative_part = <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">common::model::path</a>(</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>            parent_path.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#ab26979ae1d6a7e0dae5b03194d99648a">begin</a>(), it, <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afa6fc48c2beb30c9fc68b676dc8d76e3a3d3648ae94129252d325fda4deeb2724">common::model::path_type::kModule</a>);</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        <span class="keyword">auto</span> module_absolute_path = module_relative_to | module_relative_part;</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        pkg-&gt;set_module(module_absolute_path.to_string());</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        pkg-&gt;set_namespace(module_absolute_path);</div>
 <div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        pkg-&gt;set_id(<a class="code hl_function" href="group__to__id.html#ga6f16d1269192407e0123293d60fba476">common::to_id</a>(package_absolute_path.to_string()));</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        <span class="keyword">auto</span> package_absolute_path = module_absolute_path | pkg-&gt;name();</div>
 <div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>        <span class="keyword">auto</span> p_ref = std::ref(*pkg);</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>        pkg-&gt;set_id(<a class="code hl_function" href="group__to__id.html#ga6f16d1269192407e0123293d60fba476">common::to_id</a>(package_absolute_path.to_string()));</div>
 <div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        <span class="keyword">auto</span> res = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a01151bae83ef399559963410b37c0aec">add_element</a>(module_relative_part, std::move(pkg));</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        <span class="keywordflow">if</span> (res)</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>            element_view&lt;ElementT&gt;::add(p_ref);</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    }</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    <span class="keyword">auto</span> p_ref = std::ref(*p);</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        <span class="keyword">auto</span> p_ref = std::ref(*pkg);</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        <span class="keyword">auto</span> res = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a01151bae83ef399559963410b37c0aec">add_element</a>(module_relative_part, std::move(pkg));</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        <span class="keywordflow">if</span> (res)</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>            element_view&lt;ElementT&gt;::add(p_ref);</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    }</div>
 <div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <span class="keyword">auto</span> res = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a01151bae83ef399559963410b37c0aec">add_element</a>(parent_path, std::move(p));</div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    <span class="keywordflow">if</span> (res)</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        element_view&lt;ElementT&gt;::add(p_ref);</div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    <span class="keywordflow">return</span> res;</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>}</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#ad2157eb1629e31c061814df289d09d10">  309</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#ad2157eb1629e31c061814df289d09d10" title="Add element using relative filesystem path as diagram path.">diagram::add_with_filesystem_path</a>(</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">common::model::path</a> &amp;parent_path, std::unique_ptr&lt;ElementT&gt; &amp;&amp;p)</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>{</div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding package: {}, {}&quot;</span>, p-&gt;name(), p-&gt;full_name(<span class="keyword">true</span>));</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span> </div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    <span class="comment">// Make sure all parent directories are already packages in the</span></div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    <span class="comment">// model</span></div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = parent_path.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#ab26979ae1d6a7e0dae5b03194d99648a">begin</a>(); it != parent_path.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#af3cb9c09e65f92b2ce9c8b36213f1bc6">end</a>(); it++) {</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>        <span class="keyword">auto</span> pkg =</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>            std::make_unique&lt;common::model::package&gt;(p-&gt;using_namespace());</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>        pkg-&gt;set_name(*it);</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        <span class="keyword">auto</span> ns = <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">common::model::path</a>(parent_path.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#ab26979ae1d6a7e0dae5b03194d99648a">begin</a>(), it);</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>        pkg-&gt;set_namespace(ns);</div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>        pkg-&gt;set_id(<a class="code hl_function" href="group__to__id.html#ga6f16d1269192407e0123293d60fba476">common::to_id</a>(pkg-&gt;full_name(<span class="keyword">false</span>)));</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>        <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#ad2157eb1629e31c061814df289d09d10" title="Add element using relative filesystem path as diagram path.">add_with_filesystem_path</a>(ns, std::move(pkg));</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>    }</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <span class="keyword">auto</span> p_ref = std::ref(*p);</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    <span class="keyword">auto</span> res = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a01151bae83ef399559963410b37c0aec">add_element</a>(parent_path, std::move(p));</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    <span class="keywordflow">if</span> (res)</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        element_view&lt;ElementT&gt;::add(p_ref);</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span> </div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    <span class="keywordflow">return</span> res;</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>}</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#ad2157eb1629e31c061814df289d09d10">  311</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#ad2157eb1629e31c061814df289d09d10" title="Add element using relative filesystem path as diagram path.">diagram::add_with_filesystem_path</a>(</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    <span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">common::model::path</a> &amp;parent_path, std::unique_ptr&lt;ElementT&gt; &amp;&amp;p)</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>{</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    <a class="code hl_define" href="logging_8h.html#ade9905ed13f48ef2c9c596fa7a86d7a9">LOG_TRACE</a>(<span class="stringliteral">&quot;Adding package: {}, {}&quot;</span>, p-&gt;name(), p-&gt;full_name(<span class="keyword">true</span>));</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span> </div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    <span class="comment">// Make sure all parent directories are already packages in the</span></div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    <span class="comment">// model</span></div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = parent_path.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#ab26979ae1d6a7e0dae5b03194d99648a">begin</a>(); it != parent_path.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#af3cb9c09e65f92b2ce9c8b36213f1bc6">end</a>(); it++) {</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>        <span class="keyword">auto</span> pkg = std::make_unique&lt;common::model::package&gt;(</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>            p-&gt;using_namespace(), <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afa6fc48c2beb30c9fc68b676dc8d76e3ab6e2a655b3982da220543062a531248b">common::model::path_type::kFilesystem</a>);</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>        pkg-&gt;set_name(*it);</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>        <span class="keyword">auto</span> ns = <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">common::model::path</a>(</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>            parent_path.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1path.html#ab26979ae1d6a7e0dae5b03194d99648a">begin</a>(), it, <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afa6fc48c2beb30c9fc68b676dc8d76e3ab6e2a655b3982da220543062a531248b">common::model::path_type::kFilesystem</a>);</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>        pkg-&gt;set_namespace(ns);</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>        pkg-&gt;set_id(<a class="code hl_function" href="group__to__id.html#ga6f16d1269192407e0123293d60fba476">common::to_id</a>(pkg-&gt;full_name(<span class="keyword">false</span>)));</div>
 <div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    <span class="keyword">auto</span> pp = std::ref(*p);</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    <span class="keyword">auto</span> res = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a01151bae83ef399559963410b37c0aec">add_element</a>(parent_path, std::move(p));</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    <span class="keywordflow">if</span> (res)</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>        element_view&lt;ElementT&gt;::add(pp);</div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    <span class="keywordflow">return</span> res;</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>}</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#ad2157eb1629e31c061814df289d09d10" title="Add element using relative filesystem path as diagram path.">add_with_filesystem_path</a>(ns, std::move(pkg));</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    }</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span> </div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>    <span class="keyword">auto</span> pp = std::ref(*p);</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>    <span class="keyword">auto</span> res = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a01151bae83ef399559963410b37c0aec">add_element</a>(parent_path, std::move(p));</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    <span class="keywordflow">if</span> (res)</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        element_view&lt;ElementT&gt;::add(pp);</div>
 <div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>} <span class="comment">// namespace clanguml::package_diagram::model</span></div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span> </div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1common_1_1model.html">clanguml::common::model</a> {</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span><span class="keywordtype">bool</span> check_diagram_type&lt;clanguml::package_diagram::model::diagram&gt;(diagram_t t);</div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>}</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    <span class="keywordflow">return</span> res;</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>}</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span> </div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementT&gt;</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a1c7d2b20c826569468bd6e8f6fa372b5">  339</a></span><span class="keyword">const</span> <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#a890433df3c41bd4c468dbce1711eb02f">common::reference_vector&lt;ElementT&gt;</a> &amp;<a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a1c7d2b20c826569468bd6e8f6fa372b5" title="Get reference to vector of elements of specific type.">diagram::elements</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    <span class="keywordflow">return</span> element_view&lt;ElementT&gt;::view();</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>}</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span> </div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>} <span class="comment">// namespace clanguml::package_diagram::model</span></div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1common_1_1model.html">clanguml::common::model</a> {</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span><span class="keywordtype">bool</span> check_diagram_type&lt;clanguml::package_diagram::model::diagram&gt;(diagram_t t);</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

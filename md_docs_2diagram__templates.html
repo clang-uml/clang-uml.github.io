@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -127,6 +127,7 @@ $(function() {
 <ul>
 <li><a class="el" href="md_docs_2diagram__templates.html#diagram-template-syntax">Diagram template syntax</a></li>
 <li><a class="el" href="md_docs_2diagram__templates.html#adding-templates-to-the-configuration-file">Adding templates to the configuration file</a></li>
+<li><a class="el" href="md_docs_2diagram__templates.html#generating-diagram-from-a-diagram-template">Generating diagram from a diagram template</a></li>
 <li><a class="el" href="md_docs_2diagram__templates.html#adding-diagram-to-configuration-from-a-template">Adding diagram to configuration from a template</a></li>
 <li><a class="el" href="md_docs_2diagram__templates.html#builtin-templates">Builtin templates</a></li>
 </ul>
@@ -167,7 +168,12 @@ Adding templates to the configuration file</h1>
 <p>Diagram templates can be added directly to the <code>.clang-uml</code> configuration file, under a <code>diagram_templates:</code> key. However, for practical reasons it is better to keep diagram template definitions in a separate Yaml file, and reference it in the configuration file using <code>include!</code> directive, e.g.:</p>
 <div class="fragment language-yaml"><div class="line">diagram_templates:</div>
 <div class="line">  include!: .clang-uml-templates</div>
-</div><!-- fragment --><h1><a class="anchor" id="adding-diagram-to-configuration-from-a-template"></a>
+</div><!-- fragment --><h1><a class="anchor" id="generating-diagram-from-a-diagram-template"></a>
+Generating diagram from a diagram template</h1>
+<p>To generate a diagram from a template use the following command:</p>
+<div class="fragment language-bash"><div class="line">clang-uml --generate-from-template parents_hierarchy_tmpl --template-var ...</div>
+</div><!-- fragment --><p>This command does not modify the <code>.clang-uml</code> configuration file.</p>
+<h1><a class="anchor" id="adding-diagram-to-configuration-from-a-template"></a>
 Adding diagram to configuration from a template</h1>
 <p>To add a new diagram definition to the configuration file based on the template, simply call the <code>clang-uml</code> using the following options:</p>
 <div class="fragment language-bash"><div class="line">clang-uml --add-diagram-from-template parents_hierarchy_tmpl \</div>

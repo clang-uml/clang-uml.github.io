@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -127,11 +127,15 @@ $(function() {
 <ul>
 <li><a class="el" href="md_docs_2generator__types.html#plantuml">PlantUML</a></li>
 <li><a class="el" href="md_docs_2generator__types.html#mermaidjs">MermaidJS</a></li>
+<li><a class="el" href="md_docs_2generator__types.html#graphml">GraphML</a></li>
 <li><a class="el" href="md_docs_2generator__types.html#json">JSON</a></li>
 </ul>
-<p>Currently, there are 3 types of diagram generators: <code>plantuml</code>, <code>mermaid</code> and <code>json</code>.</p>
+<p>Currently, there are 3 types of diagram generators: <code>plantuml</code>, <code>mermaid</code>, <code>graphml</code> and <code>json</code>.</p>
+<blockquote class="doxtable">
+<p>&zwj;<code>graphml</code> generator does not support sequence diagrams </p>
+</blockquote>
 <p>To specify, which generators should be used on the command line use option <code>-g</code>. For instance to generate all types of diagrams run <code>clang-uml</code> as follows:</p>
-<div class="fragment language-bash"><div class="line">clang-uml -g plantuml -g mermaid -g json</div>
+<div class="fragment language-bash"><div class="line">clang-uml -g plantuml -g mermaid -g json -g graphml</div>
 </div><!-- fragment --><p>By default, only <code>plantuml</code> diagrams are generated.</p>
 <h1><a class="anchor" id="plantuml"></a>
 PlantUML</h1>
@@ -158,47 +162,61 @@ PlantUML</h1>
 <div class="line">    instantiation: &quot;up[#green,dotted]&quot;</div>
 </div><!-- fragment --><p>An example PlantUML diagram is presented below:</p>
 <div class="fragment language-cpp"><div class="line">@startuml</div>
-<div class="line">class &quot;A&quot; as C_0001371951663534295727</div>
-<div class="line">class C_0001371951663534295727 [[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L7{A}]] {</div>
-<div class="line">+A() = default : void [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L9{A}]]]</div>
-<div class="line">+A(int i) : void [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L10{A}]]]</div>
-<div class="line">+A(A &amp;&amp;) = default : void [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L21{A}]]]</div>
-<div class="line">+A(const A &amp;) = deleted : void [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L22{A}]]]</div>
-<div class="line">+A&lt;T&gt;(T t) : void</div>
-<div class="line">+~A() = default : void [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L23{~A}]]]</div>
-<div class="line">..</div>
-<div class="line">+operator=(A &amp;&amp; other) noexcept : A &amp; [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L36{operator=}]]]</div>
-<div class="line">+operator=(A &amp; other) noexcept : A &amp; [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L37{operator=}]]]</div>
-<div class="line">..</div>
-<div class="line">+operator++() : A &amp; [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L30{operator++}]]]</div>
-<div class="line">..</div>
-<div class="line">+auto_method() : int [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L28{auto_method}]]]</div>
-<div class="line">+basic_method() : void [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L25{basic_method}]]]</div>
-<div class="line">+const_method() const : void [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L27{const_method}]]]</div>
-<div class="line">{static} +create_from_int(int i) : A [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L50{create_from_int}]]]</div>
-<div class="line">+default_int(int i = 12) : int [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L44{default_int}]]]</div>
-<div class="line">+default_string(int i, std::string s = &quot;abc&quot;) : std::string [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L45{default_string}]]]</div>
-<div class="line">+double_int(const int i) : int [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L41{double_int}]]]</div>
-<div class="line">-private_method() : void [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L67{private_method}]]]</div>
-<div class="line">#protected_method() : void [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L58{protected_method}]]]</div>
-<div class="line">+size() constexpr const : std::size_t [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L39{size}]]]</div>
-<div class="line">{static} +static_method() : int [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L26{static_method}]]]</div>
-<div class="line">+sum(const double a, const double b) : int [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L42{sum}]]]</div>
+<div class="line">title Basic class diagram example</div>
+<div class="line">abstract &quot;A&quot; as C_0007901073918843258388</div>
+<div class="line">abstract C_0007901073918843258388 [[https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L7{This is class A}]] {</div>
+<div class="line">{abstract} +foo_a() = 0 : void [[[https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L10{foo_a}]]]</div>
+<div class="line">{abstract} +foo_c() = 0 : void [[[https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L12{foo_c}]]]</div>
 <div class="line">__</div>
-<div class="line">-a_ : int [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L70{a_}]]]</div>
-<div class="line">{static} +auto_member : const unsigned long [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L55{auto_member}]]]</div>
-<div class="line">-b_ : int [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L70{b_}]]]</div>
-<div class="line">-c_ : int [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L70{c_}]]]</div>
-<div class="line">#compare : std::function&lt;bool (const int)&gt; [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L62{compare}]]]</div>
-<div class="line">-private_member : int [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L69{private_member}]]]</div>
-<div class="line">#protected_member : int [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L60{protected_member}]]]</div>
-<div class="line">+public_member : int [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L52{public_member}]]]</div>
-<div class="line">{static} +static_const_int : const int [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L54{static_const_int}]]]</div>
-<div class="line">{static} +static_int : int [[[https://github.com/bkryza/clang-uml/blob/59d6fd5c7f14e028d1817274d80da29c338c2b53/tests/t00003/t00003.cc#L53{static_int}]]]</div>
 <div class="line">}</div>
+<div class="line">class &quot;B&quot; as C_0004753875669499007606</div>
+<div class="line">class C_0004753875669499007606 [[https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L16{This is class B}]] {</div>
+<div class="line">+foo_a() : void [[[https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L18{foo_a}]]]</div>
+<div class="line">__</div>
+<div class="line">}</div>
+<div class="line">class &quot;C&quot; as C_0009139995436788700062</div>
+<div class="line">class C_0009139995436788700062 [[https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L27{This is class C - class C has a long comment}]] {</div>
+<div class="line">+foo_c() : void [[[https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L30{foo_c}]]]</div>
+<div class="line">__</div>
+<div class="line">}</div>
+<div class="line">class &quot;D&quot; as C_0000487603959843317797</div>
+<div class="line">class C_0000487603959843317797 [[https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L36{D}]] {</div>
+<div class="line">+foo_a() : void [[[https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L41{foo_a}]]]</div>
+<div class="line">+foo_c() : void [[[https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L50{foo_c}]]]</div>
+<div class="line">__</div>
+<div class="line">-as : std::vector&lt;A *&gt; [[[https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L58{as}]]]</div>
+<div class="line">}</div>
+<div class="line">class &quot;E&quot; as C_0017903093362471729766</div>
+<div class="line">class C_0017903093362471729766 [[https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L61{E}]] {</div>
+<div class="line">+foo_a() : void [[[https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L66{foo_a}]]]</div>
+<div class="line">+foo_c() : void [[[https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L75{foo_c}]]]</div>
+<div class="line">__</div>
+<div class="line">-as : std::vector&lt;A *&gt; [[[https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L83{as}]]]</div>
+<div class="line">}</div>
+<div class="line">C_0007901073918843258388 &lt;|-- C_0004753875669499007606</div>
 <div class="line"> </div>
-<div class="line">&#39;Generated with clang-uml, version 0.3.8</div>
-<div class="line">&#39;LLVM version Ubuntu clang version 15.0.6</div>
+<div class="line">C_0007901073918843258388 &lt;|-- C_0009139995436788700062</div>
+<div class="line"> </div>
+<div class="line">C_0000487603959843317797 --&gt; C_0007901073918843258388 : -as</div>
+<div class="line">C_0004753875669499007606 &lt;|-- C_0000487603959843317797</div>
+<div class="line"> </div>
+<div class="line">C_0009139995436788700062 &lt;|-- C_0000487603959843317797</div>
+<div class="line"> </div>
+<div class="line">C_0017903093362471729766 --&gt; C_0007901073918843258388 : -as</div>
+<div class="line">C_0004753875669499007606 &lt;|-- C_0017903093362471729766</div>
+<div class="line"> </div>
+<div class="line">C_0009139995436788700062 &lt;|-- C_0017903093362471729766</div>
+<div class="line"> </div>
+<div class="line"> note left of C_0007901073918843258388 : This is class A</div>
+<div class="line"> note top of C_0004753875669499007606 : This is class B</div>
+<div class="line">note right of C_0000487603959843317797</div>
+<div class="line">    </div>
+<div class="line"> This is class D</div>
+<div class="line"> which is a little like B</div>
+<div class="line"> and a little like C</div>
+<div class="line"> </div>
+<div class="line">end note</div>
+<div class="line"> </div>
 <div class="line">@enduml</div>
 </div><!-- fragment --><p>The footer at the end is added by default, but can be disabled with <code>--no-metadata</code> command line option.</p>
 <h1><a class="anchor" id="mermaidjs"></a>
@@ -215,43 +233,203 @@ MermaidJS</h1>
 <p>This generator also accepts a <code>cmd</code> parameter to specify a command to execute on the generated MermaidJS source file to generate actual diagram image, for instance: </p><div class="fragment language-yaml"><div class="line">mermaid:</div>
 <div class="line">  cmd: &quot;mmdc -i \&quot;diagrams/{}.mmd\&quot; -o \&quot;diagrams/{}_mermaid.svg\&quot;&quot;</div>
 </div><!-- fragment --><p>An example MermaidJS diagram is presented below:</p>
-<div class="fragment language-cpp"><div class="line">classDiagram</div>
-<div class="line">    class C_0001371951663534295727[&quot;A&quot;]</div>
-<div class="line">    class C_0001371951663534295727 {</div>
-<div class="line">        +A() : [default] void</div>
-<div class="line">        +A(int i) : void</div>
-<div class="line">        +A(A &amp;&amp;) : [default] void</div>
-<div class="line">        +A(const A &amp;) : void</div>
-<div class="line">        +A&lt;T&gt;(T t) : void</div>
-<div class="line">        +~A() : [default] void</div>
-<div class="line">        +operator=(A &amp;&amp; other) : A &amp;</div>
-<div class="line">        +operator=(A &amp; other) : A &amp;</div>
-<div class="line">        +operator++() : A &amp;</div>
-<div class="line">        +auto_method() : int</div>
-<div class="line">        +basic_method() : void</div>
-<div class="line">        +const_method() : [const] void</div>
-<div class="line">        +create_from_int(int i) : A$</div>
-<div class="line">        +default_int(int i = 12) : int</div>
-<div class="line">        +default_string(int i, std::string s = &quot;abc&quot;) : std::string</div>
-<div class="line">        +double_int(const int i) : int</div>
-<div class="line">        -private_method() : void</div>
-<div class="line">        #protected_method() : void</div>
-<div class="line">        +size() : [const,constexpr] std::size_t</div>
-<div class="line">        +static_method() : int$</div>
-<div class="line">        +sum(const double a, const double b) : int</div>
-<div class="line">        -a_ : int</div>
-<div class="line">        +auto_member : const unsigned long</div>
-<div class="line">        -b_ : int</div>
-<div class="line">        -c_ : int</div>
-<div class="line">        #compare : std::function&amp;lt;bool &amp;lpar;const int&amp;rpar;&amp;gt;</div>
-<div class="line">        -private_member : int</div>
-<div class="line">        #protected_member : int</div>
-<div class="line">        +public_member : int</div>
-<div class="line">        +static_const_int : const int</div>
-<div class="line">        +static_int : int</div>
+<div class="fragment language-cpp"><div class="line">---</div>
+<div class="line">title: Basic class diagram example</div>
+<div class="line">---</div>
+<div class="line">classDiagram</div>
+<div class="line">    class C_0007901073918843258388[&quot;A&quot;]</div>
+<div class="line">    class C_0007901073918843258388 {</div>
+<div class="line">        &lt;&lt;abstract&gt;&gt;</div>
+<div class="line">        +foo_a() : void*</div>
+<div class="line">        +foo_c() : void*</div>
 <div class="line">    }</div>
-<div class="line">    click C_0001371951663534295727 href &quot;https://github.com/bkryza/clang-uml/blob/70e70888231938ba5310a8e0e28b9351beba21ef/tests/t00003/t00003.cc#L7&quot; &quot;A&quot;</div>
-</div><!-- fragment --><h1><a class="anchor" id="json"></a>
+<div class="line">    click C_0007901073918843258388 href &quot;https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L7&quot; &quot;This is class A&quot;</div>
+<div class="line">    class C_0004753875669499007606[&quot;B&quot;]</div>
+<div class="line">    class C_0004753875669499007606 {</div>
+<div class="line">        +foo_a() : void</div>
+<div class="line">    }</div>
+<div class="line">    click C_0004753875669499007606 href &quot;https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L16&quot; &quot;This is class B&quot;</div>
+<div class="line">    class C_0009139995436788700062[&quot;C&quot;]</div>
+<div class="line">    class C_0009139995436788700062 {</div>
+<div class="line">        +foo_c() : void</div>
+<div class="line">    }</div>
+<div class="line">    click C_0009139995436788700062 href &quot;https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L27&quot; &quot;This is class C - class C has a long comment&quot;</div>
+<div class="line">    class C_0000487603959843317797[&quot;D&quot;]</div>
+<div class="line">    class C_0000487603959843317797 {</div>
+<div class="line">        +foo_a() : void</div>
+<div class="line">        +foo_c() : void</div>
+<div class="line">        -as : std::vector&amp;lt;A *&amp;gt;</div>
+<div class="line">    }</div>
+<div class="line">    click C_0000487603959843317797 href &quot;https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L36&quot; &quot;D&quot;</div>
+<div class="line">    class C_0017903093362471729766[&quot;E&quot;]</div>
+<div class="line">    class C_0017903093362471729766 {</div>
+<div class="line">        +foo_a() : void</div>
+<div class="line">        +foo_c() : void</div>
+<div class="line">        -as : std::vector&amp;lt;A *&amp;gt;</div>
+<div class="line">    }</div>
+<div class="line">    click C_0017903093362471729766 href &quot;https://github.com/bkryza/clang-uml/blob/64b763d4624802c70ee9bb87af5f5444340d46ef/tests/t00002/t00002.cc#L61&quot; &quot;E&quot;</div>
+<div class="line">    C_0007901073918843258388 &lt;|-- C_0004753875669499007606 : </div>
+<div class="line">    C_0007901073918843258388 &lt;|-- C_0009139995436788700062 : </div>
+<div class="line">    C_0000487603959843317797 --&gt; C_0007901073918843258388 : -as</div>
+<div class="line">    C_0004753875669499007606 &lt;|-- C_0000487603959843317797 : </div>
+<div class="line">    C_0009139995436788700062 &lt;|-- C_0000487603959843317797 : </div>
+<div class="line">    C_0017903093362471729766 --&gt; C_0007901073918843258388 : -as</div>
+<div class="line">    C_0004753875669499007606 &lt;|-- C_0017903093362471729766 : </div>
+<div class="line">    C_0009139995436788700062 &lt;|-- C_0017903093362471729766 : </div>
+<div class="line">     note for C_0007901073918843258388 &quot;This is class A&quot;</div>
+<div class="line">     note for C_0004753875669499007606 &quot;This is class B&quot;</div>
+<div class="line">    note for C_0000487603959843317797 &quot;</div>
+<div class="line"> This is class D</div>
+<div class="line"> which is a little like B</div>
+<div class="line"> and a little like C</div>
+<div class="line">&quot;</div>
+</div><!-- fragment --><h1><a class="anchor" id="graphml"></a>
+GraphML</h1>
+<p>This generator outputs a <a href="http://graphml.graphdrawing.org/">GraphML</a> graph representation of the diagram. Currently, this generator does not include any fields or methods of classes, but only nodes representing their names (qualified or not), templates, etc. It is also limited to <code>class</code>, <code>package</code> and <code>include</code> diagrams only.</p>
+<p>The config file can contain a special section in diagram config to attach custom notes to specified nodes in the diagram, e.g.:</p>
+<div class="fragment language-yaml"><div class="line">graphml:</div>
+<div class="line">  notes:</div>
+<div class="line">    &#39;clanguml::t00002::A&#39;:</div>
+<div class="line">      - &#39;{% set e=element(&quot;A&quot;) %}{{ trim(e.comment.brief.0) }}&#39;</div>
+<div class="line">    &#39;clanguml::t00002::B&#39;:</div>
+<div class="line">      - &#39;{% set e=element(&quot;clanguml::t00002::B&quot;) %}{{ trim(e.comment.brief.0) }}&#39;</div>
+<div class="line">    &#39;clanguml::t00002::D&#39;:</div>
+<div class="line">      - &#39;{% set e=element(&quot;D&quot;) %}{{ comment(&quot;D&quot;).text }}&#39;</div>
+</div><!-- fragment --><p>An example GraphML diagram is presented below:</p>
+<div class="fragment language-cpp"><div class="line">&lt;?<span class="keyword">xml</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0&quot;</span>?&gt;</div>
+<div class="line">&lt;<span class="keywordtype">graphml</span> <span class="keyword">xmlns</span>=<span class="stringliteral">&quot;http://graphml.graphdrawing.org/xmlns&quot;</span> <span class="keyword">xmlns:xsi</span>=<span class="stringliteral">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="keyword">xsi:schemaLocation</span>=<span class="stringliteral">&quot;http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd&quot;</span>&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">desc</span>&gt;<span class="xmlcdata">&lt;![CDATA[Basic class diagram example]]&gt;</span>&lt;/<span class="keywordtype">desc</span>&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;id&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;graph&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;gd0&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;diagram_type&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;graph&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;gd1&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;name&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;graph&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;gd2&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;using_namespace&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;graph&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;gd3&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;id&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd0&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;type&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd1&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;name&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd2&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;stereotype&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd3&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;url&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd4&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;tooltip&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd5&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;is_template&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;boolean&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;node&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;nd6&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;type&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;edge&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;ed0&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;access&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;edge&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;ed1&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;label&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;edge&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;ed2&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">key</span> <span class="keyword">attr.name</span>=<span class="stringliteral">&quot;url&quot;</span> <span class="keyword">attr.type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">for</span>=<span class="stringliteral">&quot;edge&quot;</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;ed3&quot;</span> /&gt;</div>
+<div class="line"> &lt;<span class="keywordtype">graph</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;g0&quot;</span> <span class="keyword">edgedefault</span>=<span class="stringliteral">&quot;directed&quot;</span> <span class="keyword">parse.nodeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.edgeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.order</span>=<span class="stringliteral">&quot;nodesfirst&quot;</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;gd3&quot;</span>&gt;<span class="keyword">clanguml::t00002</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n0&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">class</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[A]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd3&quot;</span>&gt;<span class="keyword">abstract</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd6&quot;</span>&gt;<span class="keyword">false</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd4&quot;</span>&gt;<span class="keyword">https:</span>//<span class="keyword">github.com</span>/<span class="keyword">bkryza</span>/<span class="keyword">clang-uml</span>/<span class="keyword">blob</span>/<span class="keyword">f78dc1a0826578be2504188c7efe7d7b3878da63</span>/<span class="keyword">tests</span>/<span class="keyword">t00002</span>/<span class="keyword">t00002.cc</span>#<span class="keyword">L7</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd5&quot;</span>&gt;<span class="keyword">This</span> <span class="keyword">is</span> <span class="keyword">class</span> <span class="keyword">A</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n1&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">class</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[B]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd6&quot;</span>&gt;<span class="keyword">false</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd4&quot;</span>&gt;<span class="keyword">https:</span>//<span class="keyword">github.com</span>/<span class="keyword">bkryza</span>/<span class="keyword">clang-uml</span>/<span class="keyword">blob</span>/<span class="keyword">f78dc1a0826578be2504188c7efe7d7b3878da63</span>/<span class="keyword">tests</span>/<span class="keyword">t00002</span>/<span class="keyword">t00002.cc</span>#<span class="keyword">L16</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd5&quot;</span>&gt;<span class="keyword">This</span> <span class="keyword">is</span> <span class="keyword">class</span> <span class="keyword">B</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n2&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">class</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[C]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd6&quot;</span>&gt;<span class="keyword">false</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd4&quot;</span>&gt;<span class="keyword">https:</span>//<span class="keyword">github.com</span>/<span class="keyword">bkryza</span>/<span class="keyword">clang-uml</span>/<span class="keyword">blob</span>/<span class="keyword">f78dc1a0826578be2504188c7efe7d7b3878da63</span>/<span class="keyword">tests</span>/<span class="keyword">t00002</span>/<span class="keyword">t00002.cc</span>#<span class="keyword">L27</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd5&quot;</span>&gt;<span class="keyword">This</span> <span class="keyword">is</span> <span class="keyword">class</span> <span class="keyword">C</span> - <span class="keyword">class</span> <span class="keyword">C</span> <span class="keyword">has</span> <span class="keyword">a</span> <span class="keyword">long</span> <span class="keyword">comment</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n3&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">class</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[D]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd6&quot;</span>&gt;<span class="keyword">false</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd4&quot;</span>&gt;<span class="keyword">https:</span>//<span class="keyword">github.com</span>/<span class="keyword">bkryza</span>/<span class="keyword">clang-uml</span>/<span class="keyword">blob</span>/<span class="keyword">f78dc1a0826578be2504188c7efe7d7b3878da63</span>/<span class="keyword">tests</span>/<span class="keyword">t00002</span>/<span class="keyword">t00002.cc</span>#<span class="keyword">L36</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd5&quot;</span>&gt;<span class="keyword">D</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n4&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">class</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[E]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd6&quot;</span>&gt;<span class="keyword">false</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd4&quot;</span>&gt;<span class="keyword">https:</span>//<span class="keyword">github.com</span>/<span class="keyword">bkryza</span>/<span class="keyword">clang-uml</span>/<span class="keyword">blob</span>/<span class="keyword">f78dc1a0826578be2504188c7efe7d7b3878da63</span>/<span class="keyword">tests</span>/<span class="keyword">t00002</span>/<span class="keyword">t00002.cc</span>#<span class="keyword">L61</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd5&quot;</span>&gt;<span class="keyword">E</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n5&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">note</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[This is class A]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n6&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">note</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[This is class B]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n7&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">note</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[</span></div>
+<div class="line"><span class="xmlcdata"> This is class D</span></div>
+<div class="line"><span class="xmlcdata"> which is a little like B</span></div>
+<div class="line"><span class="xmlcdata"> and a little like C</span></div>
+<div class="line"><span class="xmlcdata">]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e0&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n5&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n0&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">none</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e1&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n6&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n1&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">none</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e2&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n7&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n3&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">none</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e3&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n1&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n0&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">extension</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed1&quot;</span>&gt;<span class="keyword">public</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e4&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n2&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n0&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">extension</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed1&quot;</span>&gt;<span class="keyword">public</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e5&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n3&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n0&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed3&quot;</span>&gt;<span class="keyword">https:</span>//<span class="keyword">github.com</span>/<span class="keyword">bkryza</span>/<span class="keyword">clang-uml</span>/<span class="keyword">blob</span>/<span class="keyword">f78dc1a0826578be2504188c7efe7d7b3878da63</span>/<span class="keyword">tests</span>/<span class="keyword">t00002</span>/<span class="keyword">t00002.cc</span>#<span class="keyword">L58</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">association</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed2&quot;</span>&gt;<span class="keyword">as</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed1&quot;</span>&gt;<span class="keyword">private</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e6&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n3&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n1&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">extension</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed1&quot;</span>&gt;<span class="keyword">public</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e7&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n3&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n2&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">extension</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed1&quot;</span>&gt;<span class="keyword">public</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e8&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n4&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n0&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed3&quot;</span>&gt;<span class="keyword">https:</span>//<span class="keyword">github.com</span>/<span class="keyword">bkryza</span>/<span class="keyword">clang-uml</span>/<span class="keyword">blob</span>/<span class="keyword">f78dc1a0826578be2504188c7efe7d7b3878da63</span>/<span class="keyword">tests</span>/<span class="keyword">t00002</span>/<span class="keyword">t00002.cc</span>#<span class="keyword">L83</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">association</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed2&quot;</span>&gt;<span class="keyword">as</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed1&quot;</span>&gt;<span class="keyword">private</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e9&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n4&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n1&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">extension</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed1&quot;</span>&gt;<span class="keyword">public</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e10&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n4&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n2&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">extension</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed1&quot;</span>&gt;<span class="keyword">public</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line"> &lt;/<span class="keywordtype">graph</span>&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">graphml</span>&gt;</div>
+</div><!-- fragment --><p>To visualize GraphML, we can use of existing graph tools for instance:</p><ul>
+<li><a href="https://www.yworks.com/products/yed">yED</a> - not open-source but free, supports subgraphs (i.e. packages) and various styles for nodes</li>
+<li><a href="https://gephi.org/">Gephi</a> - free and open source, however does not support subgraphs, only <code>clang-uml</code> graphs without packages can be visualized</li>
+</ul>
+<p>For example, to visualize the above graph in <code>yED</code> we need to simply open it and tell <code>yED</code> how to map <code>clang-uml</code>'s property names (e.g. <code>"url"</code>) to it's internal properties. We can do this using Properties Mapper dialog accessible through <code>Edit-&gt;Properties Mapper...</code>. The easiest way is to use this property mapping file: <a href="https://raw.githubusercontent.com/bkryza/clang-uml/refs/heads/master/docs/assets/clang-uml.cnfx">clang-uml.cnfx</a> as a starting point, it can be loaded using the following icon:</p>
+<div class="image">
+<img src="yed_properties_mapper.png" alt=""/>
+<div class="caption">
+yed_properties_mapper</div></div>
+    <p>For each mapping type (i.e. <code>clang-uml (Edge)</code> and <code>clang-uml (Node)</code> we have to separately click <code>Apply</code> button. Finally, we can click on layout button and the diagram is visualized in the <code>yED</code> like this:</p>
+<div class="image">
+<img src="yed_layout_t00002.png" alt=""/>
+<div class="caption">
+yed_layout_t00002</div></div>
+    <h1><a class="anchor" id="json"></a>
 JSON</h1>
 <p>Generates a JSON representation of the intermediate <code>clang-uml</code> model, which can be used for scripting, integrations as well as analysing the code base or even generating diagrams in other formats.</p>
 <p>An equivalent of the above PlantUML diagram in JSON is presented below:</p>
@@ -260,259 +438,148 @@ JSON</h1>
 <div class="line">  &quot;elements&quot;: [</div>
 <div class="line">    {</div>
 <div class="line">      &quot;bases&quot;: [],</div>
-<div class="line">      &quot;display_name&quot;: &quot;clanguml::t00003::A&quot;,</div>
-<div class="line">      &quot;id&quot;: &quot;1371951663534295727&quot;,</div>
-<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;comment&quot;: {</div>
+<div class="line">        &quot;brief&quot;: [</div>
+<div class="line">          &quot; This is class A\n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;formatted&quot;: &quot;\\brief This is class A&quot;,</div>
+<div class="line">        &quot;paragraph&quot;: [</div>
+<div class="line">          &quot; \n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;raw&quot;: &quot;/// \\brief This is class A&quot;,</div>
+<div class="line">        &quot;text&quot;: &quot;\n \n&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;display_name&quot;: &quot;A&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;7901073918843258388&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: true,</div>
 <div class="line">      &quot;is_nested&quot;: false,</div>
 <div class="line">      &quot;is_struct&quot;: false,</div>
 <div class="line">      &quot;is_template&quot;: false,</div>
 <div class="line">      &quot;is_union&quot;: false,</div>
-<div class="line">      &quot;members&quot;: [</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;public_member&quot;,</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 9,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 52,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;protected&quot;,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;protected_member&quot;,</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 9,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 60,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;protected&quot;,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;compare&quot;,</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 36,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 62,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;std::function&lt;bool (const int)&gt;&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;private&quot;,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;private_member&quot;,</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 9,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 69,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;private&quot;,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;a_&quot;,</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 9,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 70,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;private&quot;,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;b_&quot;,</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 13,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 70,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;private&quot;,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;c_&quot;,</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 17,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 70,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_static&quot;: true,</div>
-<div class="line">          &quot;name&quot;: &quot;static_int&quot;,</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 16,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 53,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_static&quot;: true,</div>
-<div class="line">          &quot;name&quot;: &quot;static_const_int&quot;,</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 22,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 54,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;const int&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_static&quot;: true,</div>
-<div class="line">          &quot;name&quot;: &quot;auto_member&quot;,</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 23,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 55,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;const unsigned long&quot;</div>
-<div class="line">        }</div>
-<div class="line">      ],</div>
+<div class="line">      &quot;members&quot;: [],</div>
 <div class="line">      &quot;methods&quot;: [</div>
 <div class="line">        {</div>
 <div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: true,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: true,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;A&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 5,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 9,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;Abstract foo_a&quot;,</div>
+<div class="line">            &quot;paragraph&quot;: [</div>
+<div class="line">              &quot; Abstract foo_a\n&quot;</div>
+<div class="line">            ],</div>
+<div class="line">            &quot;raw&quot;: &quot;/// Abstract foo_a&quot;,</div>
+<div class="line">            &quot;text&quot;: &quot;\n Abstract foo_a\n&quot;</div>
 <div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: true,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;A&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [</div>
-<div class="line">            {</div>
-<div class="line">              &quot;name&quot;: &quot;i&quot;,</div>
-<div class="line">              &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">            }</div>
-<div class="line">          ],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 5,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 10,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: true,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: true,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;A&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [</div>
-<div class="line">            {</div>
-<div class="line">              &quot;name&quot;: &quot;&quot;,</div>
-<div class="line">              &quot;type&quot;: &quot;clanguml::t00003::A &amp;&amp;&quot;</div>
-<div class="line">            }</div>
-<div class="line">          ],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 5,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 21,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: true,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: true,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;A&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [</div>
-<div class="line">            {</div>
-<div class="line">              &quot;name&quot;: &quot;&quot;,</div>
-<div class="line">              &quot;type&quot;: &quot;const clanguml::t00003::A &amp;&quot;</div>
-<div class="line">            }</div>
-<div class="line">          ],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 5,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 22,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;foo_a&quot;,</div>
 <div class="line">          &quot;is_const&quot;: false,</div>
 <div class="line">          &quot;is_consteval&quot;: false,</div>
 <div class="line">          &quot;is_constexpr&quot;: false,</div>
 <div class="line">          &quot;is_constructor&quot;: false,</div>
 <div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: true,</div>
+<div class="line">          &quot;is_coroutine&quot;: false,</div>
+<div class="line">          &quot;is_defaulted&quot;: false,</div>
+<div class="line">          &quot;is_deleted&quot;: false,</div>
+<div class="line">          &quot;is_move_assignment&quot;: false,</div>
+<div class="line">          &quot;is_noexcept&quot;: false,</div>
+<div class="line">          &quot;is_operator&quot;: false,</div>
+<div class="line">          &quot;is_pure_virtual&quot;: true,</div>
+<div class="line">          &quot;is_static&quot;: false,</div>
+<div class="line">          &quot;is_virtual&quot;: true,</div>
+<div class="line">          &quot;name&quot;: &quot;foo_a&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 18,</div>
+<div class="line">            &quot;file&quot;: &quot;t00002.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 10,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00002.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;template_parameters&quot;: [],</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;Abstract foo_c&quot;,</div>
+<div class="line">            &quot;paragraph&quot;: [</div>
+<div class="line">              &quot; Abstract foo_c\n&quot;</div>
+<div class="line">            ],</div>
+<div class="line">            &quot;raw&quot;: &quot;/// Abstract foo_c&quot;,</div>
+<div class="line">            &quot;text&quot;: &quot;\n Abstract foo_c\n&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;foo_c&quot;,</div>
+<div class="line">          &quot;is_const&quot;: false,</div>
+<div class="line">          &quot;is_consteval&quot;: false,</div>
+<div class="line">          &quot;is_constexpr&quot;: false,</div>
+<div class="line">          &quot;is_constructor&quot;: false,</div>
+<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
+<div class="line">          &quot;is_coroutine&quot;: false,</div>
+<div class="line">          &quot;is_defaulted&quot;: false,</div>
+<div class="line">          &quot;is_deleted&quot;: false,</div>
+<div class="line">          &quot;is_move_assignment&quot;: false,</div>
+<div class="line">          &quot;is_noexcept&quot;: false,</div>
+<div class="line">          &quot;is_operator&quot;: false,</div>
+<div class="line">          &quot;is_pure_virtual&quot;: true,</div>
+<div class="line">          &quot;is_static&quot;: false,</div>
+<div class="line">          &quot;is_virtual&quot;: true,</div>
+<div class="line">          &quot;name&quot;: &quot;foo_c&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 18,</div>
+<div class="line">            &quot;file&quot;: &quot;t00002.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 12,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00002.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;template_parameters&quot;: [],</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;name&quot;: &quot;A&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00002&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 7,</div>
+<div class="line">        &quot;file&quot;: &quot;t00002.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 7,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t00002.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;7901073918843258388&quot;,</div>
+<div class="line">          &quot;is_virtual&quot;: false</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;comment&quot;: {</div>
+<div class="line">        &quot;brief&quot;: [</div>
+<div class="line">          &quot; This is class B\n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;formatted&quot;: &quot;\\brief This is class B&quot;,</div>
+<div class="line">        &quot;paragraph&quot;: [</div>
+<div class="line">          &quot; \n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;raw&quot;: &quot;/// \\brief This is class B&quot;,</div>
+<div class="line">        &quot;text&quot;: &quot;\n \n&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;display_name&quot;: &quot;B&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;4753875669499007606&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: false,</div>
+<div class="line">      &quot;is_template&quot;: false,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;display_name&quot;: &quot;foo_a&quot;,</div>
+<div class="line">          &quot;is_const&quot;: false,</div>
+<div class="line">          &quot;is_consteval&quot;: false,</div>
+<div class="line">          &quot;is_constexpr&quot;: false,</div>
+<div class="line">          &quot;is_constructor&quot;: false,</div>
+<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
+<div class="line">          &quot;is_coroutine&quot;: false,</div>
+<div class="line">          &quot;is_defaulted&quot;: false,</div>
 <div class="line">          &quot;is_deleted&quot;: false,</div>
 <div class="line">          &quot;is_move_assignment&quot;: false,</div>
 <div class="line">          &quot;is_noexcept&quot;: false,</div>
@@ -520,481 +587,425 @@ JSON</h1>
 <div class="line">          &quot;is_pure_virtual&quot;: false,</div>
 <div class="line">          &quot;is_static&quot;: false,</div>
 <div class="line">          &quot;is_virtual&quot;: true,</div>
-<div class="line">          &quot;name&quot;: &quot;~A&quot;,</div>
+<div class="line">          &quot;name&quot;: &quot;foo_a&quot;,</div>
 <div class="line">          &quot;parameters&quot;: [],</div>
 <div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 13,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 23,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
+<div class="line">            &quot;column&quot;: 18,</div>
+<div class="line">            &quot;file&quot;: &quot;t00002.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 18,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00002.cc&quot;</div>
 <div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: false,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;basic_method&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 10,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 25,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: false,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: true,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;static_method&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 16,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 26,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: true,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: false,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;const_method&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 10,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 27,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: false,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;auto_method&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 10,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 28,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: false,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: true,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;operator++&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 8,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 30,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;clanguml::t00003::A &amp;&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: false,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: true,</div>
-<div class="line">          &quot;is_noexcept&quot;: true,</div>
-<div class="line">          &quot;is_operator&quot;: true,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;operator=&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [</div>
-<div class="line">            {</div>
-<div class="line">              &quot;name&quot;: &quot;other&quot;,</div>
-<div class="line">              &quot;type&quot;: &quot;clanguml::t00003::A &amp;&amp;&quot;</div>
-<div class="line">            }</div>
-<div class="line">          ],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 8,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 36,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;clanguml::t00003::A &amp;&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: false,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: true,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: true,</div>
-<div class="line">          &quot;is_operator&quot;: true,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;operator=&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [</div>
-<div class="line">            {</div>
-<div class="line">              &quot;name&quot;: &quot;other&quot;,</div>
-<div class="line">              &quot;type&quot;: &quot;clanguml::t00003::A &amp;&quot;</div>
-<div class="line">            }</div>
-<div class="line">          ],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 8,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 37,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;clanguml::t00003::A &amp;&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: true,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: true,</div>
-<div class="line">          &quot;is_constructor&quot;: false,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;size&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 27,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 39,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;std::size_t&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: false,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;double_int&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [</div>
-<div class="line">            {</div>
-<div class="line">              &quot;name&quot;: &quot;i&quot;,</div>
-<div class="line">              &quot;type&quot;: &quot;const int&quot;</div>
-<div class="line">            }</div>
-<div class="line">          ],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 10,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 41,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: false,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;sum&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [</div>
-<div class="line">            {</div>
-<div class="line">              &quot;name&quot;: &quot;a&quot;,</div>
-<div class="line">              &quot;type&quot;: &quot;const double&quot;</div>
-<div class="line">            },</div>
-<div class="line">            {</div>
-<div class="line">              &quot;name&quot;: &quot;b&quot;,</div>
-<div class="line">              &quot;type&quot;: &quot;const double&quot;</div>
-<div class="line">            }</div>
-<div class="line">          ],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 10,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 42,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: false,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;default_int&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [</div>
-<div class="line">            {</div>
-<div class="line">              &quot;default_value&quot;: &quot;12&quot;,</div>
-<div class="line">              &quot;name&quot;: &quot;i&quot;,</div>
-<div class="line">              &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">            }</div>
-<div class="line">          ],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 10,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 44,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: false,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;default_string&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [</div>
-<div class="line">            {</div>
-<div class="line">              &quot;name&quot;: &quot;i&quot;,</div>
-<div class="line">              &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">            },</div>
-<div class="line">            {</div>
-<div class="line">              &quot;default_value&quot;: &quot;\&quot;abc\&quot;&quot;,</div>
-<div class="line">              &quot;name&quot;: &quot;s&quot;,</div>
-<div class="line">              &quot;type&quot;: &quot;std::string&quot;</div>
-<div class="line">            }</div>
-<div class="line">          ],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 17,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 45,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;std::string&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: false,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: true,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;create_from_int&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [</div>
-<div class="line">            {</div>
-<div class="line">              &quot;name&quot;: &quot;i&quot;,</div>
-<div class="line">              &quot;type&quot;: &quot;int&quot;</div>
-<div class="line">            }</div>
-<div class="line">          ],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 14,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 50,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;clanguml::t00003::A&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;protected&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: false,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;protected_method&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 10,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 58,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;private&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: false,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;private_method&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [],</div>
-<div class="line">          &quot;source_location&quot;: {</div>
-<div class="line">            &quot;column&quot;: 10,</div>
-<div class="line">            &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">            &quot;line&quot;: 67,</div>
-<div class="line">            &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
-<div class="line">          },</div>
-<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
-<div class="line">        },</div>
-<div class="line">        {</div>
-<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
-<div class="line">          &quot;is_const&quot;: false,</div>
-<div class="line">          &quot;is_consteval&quot;: false,</div>
-<div class="line">          &quot;is_constexpr&quot;: false,</div>
-<div class="line">          &quot;is_constructor&quot;: true,</div>
-<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
-<div class="line">          &quot;is_defaulted&quot;: false,</div>
-<div class="line">          &quot;is_deleted&quot;: false,</div>
-<div class="line">          &quot;is_move_assignment&quot;: false,</div>
-<div class="line">          &quot;is_noexcept&quot;: false,</div>
-<div class="line">          &quot;is_operator&quot;: false,</div>
-<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
-<div class="line">          &quot;is_static&quot;: false,</div>
-<div class="line">          &quot;is_virtual&quot;: false,</div>
-<div class="line">          &quot;name&quot;: &quot;A&quot;,</div>
-<div class="line">          &quot;parameters&quot;: [</div>
-<div class="line">            {</div>
-<div class="line">              &quot;name&quot;: &quot;t&quot;,</div>
-<div class="line">              &quot;type&quot;: &quot;T&quot;</div>
-<div class="line">            }</div>
-<div class="line">          ],</div>
+<div class="line">          &quot;template_parameters&quot;: [],</div>
 <div class="line">          &quot;type&quot;: &quot;void&quot;</div>
 <div class="line">        }</div>
 <div class="line">      ],</div>
-<div class="line">      &quot;name&quot;: &quot;A&quot;,</div>
-<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00003&quot;,</div>
+<div class="line">      &quot;name&quot;: &quot;B&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00002&quot;,</div>
 <div class="line">      &quot;source_location&quot;: {</div>
 <div class="line">        &quot;column&quot;: 7,</div>
-<div class="line">        &quot;file&quot;: &quot;../../tests/t00003/t00003.cc&quot;,</div>
-<div class="line">        &quot;line&quot;: 7,</div>
-<div class="line">        &quot;translation_unit&quot;: &quot;../../tests/t00003/t00003.cc&quot;</div>
+<div class="line">        &quot;file&quot;: &quot;t00002.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 16,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t00002.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;7901073918843258388&quot;,</div>
+<div class="line">          &quot;is_virtual&quot;: false</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;comment&quot;: {</div>
+<div class="line">        &quot;brief&quot;: [</div>
+<div class="line">          &quot; This is class C - class C has a long comment\n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;formatted&quot;: &quot;@brief This is class C - class C has a long comment\n\nVivamus integer non suscipit taciti mus etiam at primis tempor sagittis sit,\neuismod libero facilisi aptent elementum felis blandit cursus gravida sociis\nerat ante, eleifend lectus nullam dapibus netus feugiat curae curabitur est\nad.&quot;,</div>
+<div class="line">        &quot;paragraph&quot;: [</div>
+<div class="line">          &quot; \n&quot;,</div>
+<div class="line">          &quot; Vivamus integer non suscipit taciti mus etiam at primis tempor sagittis sit,\n euismod libero facilisi aptent elementum felis blandit cursus gravida sociis\n erat ante, eleifend lectus nullam dapibus netus feugiat curae curabitur est\n ad.\n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;raw&quot;: &quot;/// @brief This is class C - class C has a long comment\n///\n/// Vivamus integer non suscipit taciti mus etiam at primis tempor sagittis sit,\n/// euismod libero facilisi aptent elementum felis blandit cursus gravida sociis\n/// erat ante, eleifend lectus nullam dapibus netus feugiat curae curabitur est\n/// ad.&quot;,</div>
+<div class="line">        &quot;text&quot;: &quot;\n \n\n Vivamus integer non suscipit taciti mus etiam at primis tempor sagittis sit,\n euismod libero facilisi aptent elementum felis blandit cursus gravida sociis\n erat ante, eleifend lectus nullam dapibus netus feugiat curae curabitur est\n ad.\n&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;display_name&quot;: &quot;C&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;9139995436788700062&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: false,</div>
+<div class="line">      &quot;is_template&quot;: false,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [],</div>
+<div class="line">      &quot;methods&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;Do nothing unless override is provided&quot;,</div>
+<div class="line">            &quot;paragraph&quot;: [</div>
+<div class="line">              &quot; Do nothing unless override is provided\n&quot;</div>
+<div class="line">            ],</div>
+<div class="line">            &quot;raw&quot;: &quot;/// Do nothing unless override is provided&quot;,</div>
+<div class="line">            &quot;text&quot;: &quot;\n Do nothing unless override is provided\n&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;foo_c&quot;,</div>
+<div class="line">          &quot;is_const&quot;: false,</div>
+<div class="line">          &quot;is_consteval&quot;: false,</div>
+<div class="line">          &quot;is_constexpr&quot;: false,</div>
+<div class="line">          &quot;is_constructor&quot;: false,</div>
+<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
+<div class="line">          &quot;is_coroutine&quot;: false,</div>
+<div class="line">          &quot;is_defaulted&quot;: false,</div>
+<div class="line">          &quot;is_deleted&quot;: false,</div>
+<div class="line">          &quot;is_move_assignment&quot;: false,</div>
+<div class="line">          &quot;is_noexcept&quot;: false,</div>
+<div class="line">          &quot;is_operator&quot;: false,</div>
+<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
+<div class="line">          &quot;is_static&quot;: false,</div>
+<div class="line">          &quot;is_virtual&quot;: true,</div>
+<div class="line">          &quot;name&quot;: &quot;foo_c&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 18,</div>
+<div class="line">            &quot;file&quot;: &quot;t00002.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 30,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00002.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;template_parameters&quot;: [],</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;name&quot;: &quot;C&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00002&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 7,</div>
+<div class="line">        &quot;file&quot;: &quot;t00002.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 27,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t00002.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;4753875669499007606&quot;,</div>
+<div class="line">          &quot;is_virtual&quot;: false</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;9139995436788700062&quot;,</div>
+<div class="line">          &quot;is_virtual&quot;: false</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;comment&quot;: {</div>
+<div class="line">        &quot;formatted&quot;: &quot;This is class D\nwhich is a little like B\nand a little like C&quot;,</div>
+<div class="line">        &quot;paragraph&quot;: [</div>
+<div class="line">          &quot; This is class D\n which is a little like B\n and a little like C\n&quot;</div>
+<div class="line">        ],</div>
+<div class="line">        &quot;raw&quot;: &quot;/// This is class D\n/// which is a little like B\n/// and a little like C&quot;,</div>
+<div class="line">        &quot;text&quot;: &quot;\n This is class D\n which is a little like B\n and a little like C\n&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;display_name&quot;: &quot;D&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;487603959843317797&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: false,</div>
+<div class="line">      &quot;is_template&quot;: false,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;private&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;All the A pointers&quot;,</div>
+<div class="line">            &quot;paragraph&quot;: [</div>
+<div class="line">              &quot; All the A pointers\n&quot;</div>
+<div class="line">            ],</div>
+<div class="line">            &quot;raw&quot;: &quot;/// All the A pointers&quot;,</div>
+<div class="line">            &quot;text&quot;: &quot;\n All the A pointers\n&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;is_static&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;as&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 22,</div>
+<div class="line">            &quot;file&quot;: &quot;t00002.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 58,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00002.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;std::vector&lt;A *&gt;&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;methods&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Forward foo_a\n     &quot;,</div>
+<div class="line">            &quot;paragraph&quot;: [</div>
+<div class="line">              &quot; Forward foo_a\n&quot;</div>
+<div class="line">            ],</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n     * Forward foo_a\n     */&quot;,</div>
+<div class="line">            &quot;text&quot;: &quot;\n Forward foo_a\n&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;foo_a&quot;,</div>
+<div class="line">          &quot;is_const&quot;: false,</div>
+<div class="line">          &quot;is_consteval&quot;: false,</div>
+<div class="line">          &quot;is_constexpr&quot;: false,</div>
+<div class="line">          &quot;is_constructor&quot;: false,</div>
+<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
+<div class="line">          &quot;is_coroutine&quot;: false,</div>
+<div class="line">          &quot;is_defaulted&quot;: false,</div>
+<div class="line">          &quot;is_deleted&quot;: false,</div>
+<div class="line">          &quot;is_move_assignment&quot;: false,</div>
+<div class="line">          &quot;is_noexcept&quot;: false,</div>
+<div class="line">          &quot;is_operator&quot;: false,</div>
+<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
+<div class="line">          &quot;is_static&quot;: false,</div>
+<div class="line">          &quot;is_virtual&quot;: true,</div>
+<div class="line">          &quot;name&quot;: &quot;foo_a&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 10,</div>
+<div class="line">            &quot;file&quot;: &quot;t00002.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 41,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00002.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;template_parameters&quot;: [],</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Forward foo_c\n     &quot;,</div>
+<div class="line">            &quot;paragraph&quot;: [</div>
+<div class="line">              &quot; Forward foo_c\n&quot;</div>
+<div class="line">            ],</div>
+<div class="line">            &quot;raw&quot;: &quot;/**\n     * Forward foo_c\n     */&quot;,</div>
+<div class="line">            &quot;text&quot;: &quot;\n Forward foo_c\n&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;foo_c&quot;,</div>
+<div class="line">          &quot;is_const&quot;: false,</div>
+<div class="line">          &quot;is_consteval&quot;: false,</div>
+<div class="line">          &quot;is_constexpr&quot;: false,</div>
+<div class="line">          &quot;is_constructor&quot;: false,</div>
+<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
+<div class="line">          &quot;is_coroutine&quot;: false,</div>
+<div class="line">          &quot;is_defaulted&quot;: false,</div>
+<div class="line">          &quot;is_deleted&quot;: false,</div>
+<div class="line">          &quot;is_move_assignment&quot;: false,</div>
+<div class="line">          &quot;is_noexcept&quot;: false,</div>
+<div class="line">          &quot;is_operator&quot;: false,</div>
+<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
+<div class="line">          &quot;is_static&quot;: false,</div>
+<div class="line">          &quot;is_virtual&quot;: true,</div>
+<div class="line">          &quot;name&quot;: &quot;foo_c&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 10,</div>
+<div class="line">            &quot;file&quot;: &quot;t00002.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 50,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00002.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;template_parameters&quot;: [],</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;name&quot;: &quot;D&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00002&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 7,</div>
+<div class="line">        &quot;file&quot;: &quot;t00002.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 36,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t00002.cc&quot;</div>
+<div class="line">      },</div>
+<div class="line">      &quot;template_parameters&quot;: [],</div>
+<div class="line">      &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;bases&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;4753875669499007606&quot;,</div>
+<div class="line">          &quot;is_virtual&quot;: true</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;id&quot;: &quot;9139995436788700062&quot;,</div>
+<div class="line">          &quot;is_virtual&quot;: true</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;display_name&quot;: &quot;E&quot;,</div>
+<div class="line">      &quot;id&quot;: &quot;17903093362471729766&quot;,</div>
+<div class="line">      &quot;is_abstract&quot;: false,</div>
+<div class="line">      &quot;is_nested&quot;: false,</div>
+<div class="line">      &quot;is_struct&quot;: false,</div>
+<div class="line">      &quot;is_template&quot;: false,</div>
+<div class="line">      &quot;is_union&quot;: false,</div>
+<div class="line">      &quot;members&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;private&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;All the A pointers&quot;,</div>
+<div class="line">            &quot;paragraph&quot;: [</div>
+<div class="line">              &quot; All the A pointers\n&quot;</div>
+<div class="line">            ],</div>
+<div class="line">            &quot;raw&quot;: &quot;/// All the A pointers&quot;,</div>
+<div class="line">            &quot;text&quot;: &quot;\n All the A pointers\n&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;is_static&quot;: false,</div>
+<div class="line">          &quot;name&quot;: &quot;as&quot;,</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 22,</div>
+<div class="line">            &quot;file&quot;: &quot;t00002.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 83,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00002.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;type&quot;: &quot;std::vector&lt;A *&gt;&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;methods&quot;: [</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Forward foo_a&quot;,</div>
+<div class="line">            &quot;paragraph&quot;: [</div>
+<div class="line">              &quot; Forward foo_a\n&quot;</div>
+<div class="line">            ],</div>
+<div class="line">            &quot;raw&quot;: &quot;///\n    /// Forward foo_a\n    ///&quot;,</div>
+<div class="line">            &quot;text&quot;: &quot;\n Forward foo_a\n&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;foo_a&quot;,</div>
+<div class="line">          &quot;is_const&quot;: false,</div>
+<div class="line">          &quot;is_consteval&quot;: false,</div>
+<div class="line">          &quot;is_constexpr&quot;: false,</div>
+<div class="line">          &quot;is_constructor&quot;: false,</div>
+<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
+<div class="line">          &quot;is_coroutine&quot;: false,</div>
+<div class="line">          &quot;is_defaulted&quot;: false,</div>
+<div class="line">          &quot;is_deleted&quot;: false,</div>
+<div class="line">          &quot;is_move_assignment&quot;: false,</div>
+<div class="line">          &quot;is_noexcept&quot;: false,</div>
+<div class="line">          &quot;is_operator&quot;: false,</div>
+<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
+<div class="line">          &quot;is_static&quot;: false,</div>
+<div class="line">          &quot;is_virtual&quot;: true,</div>
+<div class="line">          &quot;name&quot;: &quot;foo_a&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 10,</div>
+<div class="line">            &quot;file&quot;: &quot;t00002.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 66,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00002.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;template_parameters&quot;: [],</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">          &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">          &quot;comment&quot;: {</div>
+<div class="line">            &quot;formatted&quot;: &quot;\n Forward foo_c&quot;,</div>
+<div class="line">            &quot;paragraph&quot;: [</div>
+<div class="line">              &quot; Forward foo_c\n&quot;</div>
+<div class="line">            ],</div>
+<div class="line">            &quot;raw&quot;: &quot;///\n    /// Forward foo_c\n    ///&quot;,</div>
+<div class="line">            &quot;text&quot;: &quot;\n Forward foo_c\n&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;display_name&quot;: &quot;foo_c&quot;,</div>
+<div class="line">          &quot;is_const&quot;: false,</div>
+<div class="line">          &quot;is_consteval&quot;: false,</div>
+<div class="line">          &quot;is_constexpr&quot;: false,</div>
+<div class="line">          &quot;is_constructor&quot;: false,</div>
+<div class="line">          &quot;is_copy_assignment&quot;: false,</div>
+<div class="line">          &quot;is_coroutine&quot;: false,</div>
+<div class="line">          &quot;is_defaulted&quot;: false,</div>
+<div class="line">          &quot;is_deleted&quot;: false,</div>
+<div class="line">          &quot;is_move_assignment&quot;: false,</div>
+<div class="line">          &quot;is_noexcept&quot;: false,</div>
+<div class="line">          &quot;is_operator&quot;: false,</div>
+<div class="line">          &quot;is_pure_virtual&quot;: false,</div>
+<div class="line">          &quot;is_static&quot;: false,</div>
+<div class="line">          &quot;is_virtual&quot;: true,</div>
+<div class="line">          &quot;name&quot;: &quot;foo_c&quot;,</div>
+<div class="line">          &quot;parameters&quot;: [],</div>
+<div class="line">          &quot;source_location&quot;: {</div>
+<div class="line">            &quot;column&quot;: 10,</div>
+<div class="line">            &quot;file&quot;: &quot;t00002.cc&quot;,</div>
+<div class="line">            &quot;line&quot;: 75,</div>
+<div class="line">            &quot;translation_unit&quot;: &quot;t00002.cc&quot;</div>
+<div class="line">          },</div>
+<div class="line">          &quot;template_parameters&quot;: [],</div>
+<div class="line">          &quot;type&quot;: &quot;void&quot;</div>
+<div class="line">        }</div>
+<div class="line">      ],</div>
+<div class="line">      &quot;name&quot;: &quot;E&quot;,</div>
+<div class="line">      &quot;namespace&quot;: &quot;clanguml::t00002&quot;,</div>
+<div class="line">      &quot;source_location&quot;: {</div>
+<div class="line">        &quot;column&quot;: 7,</div>
+<div class="line">        &quot;file&quot;: &quot;t00002.cc&quot;,</div>
+<div class="line">        &quot;line&quot;: 61,</div>
+<div class="line">        &quot;translation_unit&quot;: &quot;t00002.cc&quot;</div>
 <div class="line">      },</div>
 <div class="line">      &quot;template_parameters&quot;: [],</div>
 <div class="line">      &quot;type&quot;: &quot;class&quot;</div>
 <div class="line">    }</div>
 <div class="line">  ],</div>
-<div class="line">  &quot;metadata&quot;: {</div>
-<div class="line">    &quot;clang_uml_version&quot;: &quot;0.3.8&quot;,</div>
-<div class="line">    &quot;llvm_version&quot;: &quot;Ubuntu clang version 15.0.6&quot;,</div>
-<div class="line">    &quot;schema_version&quot;: 1</div>
-<div class="line">  },</div>
-<div class="line">  &quot;name&quot;: &quot;t00003_class&quot;,</div>
-<div class="line">  &quot;relationships&quot;: [],</div>
-<div class="line">  &quot;using_namespace&quot;: &quot;clanguml::t00003&quot;</div>
+<div class="line">  &quot;name&quot;: &quot;t00002_class&quot;,</div>
+<div class="line">  &quot;package_type&quot;: &quot;namespace&quot;,</div>
+<div class="line">  &quot;relationships&quot;: [</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;7901073918843258388&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;4753875669499007606&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;extension&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;7901073918843258388&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;9139995436788700062&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;extension&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;private&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;7901073918843258388&quot;,</div>
+<div class="line">      &quot;label&quot;: &quot;as&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;487603959843317797&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;association&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;4753875669499007606&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;487603959843317797&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;extension&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;9139995436788700062&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;487603959843317797&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;extension&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;private&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;7901073918843258388&quot;,</div>
+<div class="line">      &quot;label&quot;: &quot;as&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;17903093362471729766&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;association&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;4753875669499007606&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;17903093362471729766&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;extension&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;9139995436788700062&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;17903093362471729766&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;extension&quot;</div>
+<div class="line">    }</div>
+<div class="line">  ],</div>
+<div class="line">  &quot;title&quot;: &quot;Basic class diagram example&quot;,</div>
+<div class="line">  &quot;using_namespace&quot;: &quot;clanguml::t00002&quot;</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->

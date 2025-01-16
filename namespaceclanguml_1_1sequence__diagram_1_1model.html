@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -160,6 +160,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html">participant</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for various types of sequence diagram participants.  <a href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1reverse__call__graph__activity__node.html">reverse_call_graph_activity_node</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -172,6 +174,9 @@ Functions</h2></td></tr>
 <tr class="separator:afd0f714884fc08acf998d2861d1e3024"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa993b5215d05a051e1a13f3985c3fb6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1sequence__diagram_1_1model.html#aa993b5215d05a051e1a13f3985c3fb6a">to_json</a> (nlohmann::json &amp;j, const <a class="el" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html">activity</a> &amp;c)</td></tr>
 <tr class="separator:aa993b5215d05a051e1a13f3985c3fb6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a01cfec8261a18127180baa1db9fc16"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; <a class="el" href="classclanguml_1_1common_1_1eid__t.html">eid_t</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1sequence__diagram_1_1model.html#a1a01cfec8261a18127180baa1db9fc16">find_reverse_message_chains</a> (const <a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1reverse__call__graph__activity__node.html">reverse_call_graph_activity_node</a> &amp;root)</td></tr>
+<tr class="memdesc:a1a01cfec8261a18127180baa1db9fc16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert reverse call graph into a list of activity id chains.  <br /></td></tr>
+<tr class="separator:a1a01cfec8261a18127180baa1db9fc16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5324cd7662c88823a98166d01be086aa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1sequence__diagram_1_1model.html#a5324cd7662c88823a98166d01be086aa">operator==</a> (const <a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1class__.html">class_</a> &amp;l, const <a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1class__.html">class_</a> &amp;r)</td></tr>
 <tr class="separator:a5324cd7662c88823a98166d01be086aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -193,6 +198,65 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a1a01cfec8261a18127180baa1db9fc16" name="a1a01cfec8261a18127180baa1db9fc16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a01cfec8261a18127180baa1db9fc16">&#9670;&#160;</a></span>find_reverse_message_chains()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector&lt; <a class="el" href="classclanguml_1_1common_1_1eid__t.html">eid_t</a> &gt; &gt; clanguml::sequence_diagram::model::find_reverse_message_chains </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structclanguml_1_1sequence__diagram_1_1model_1_1reverse__call__graph__activity__node.html">reverse_call_graph_activity_node</a> &amp;&#160;</td>
+          <td class="paramname"><em>root</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert reverse call graph into a list of activity id chains. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">root</td><td>Root of the reverse call graph tree </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00028">28</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   30</span>{</div>
+<div class="line"><span class="lineno">   31</span>    std::vector&lt;std::vector&lt;eid_t&gt;&gt; all_message_chains;</div>
+<div class="line"><span class="lineno">   32</span>    std::vector&lt;eid_t&gt; current_chain;</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>    <span class="comment">// Depth first search lambda function to traverse reverse call graph</span></div>
+<div class="line"><span class="lineno">   35</span>    std::function&lt;void(<span class="keyword">const</span> <a class="code hl_struct" href="structclanguml_1_1sequence__diagram_1_1model_1_1reverse__call__graph__activity__node.html">reverse_call_graph_activity_node</a> &amp;)&gt; dfs =</div>
+<div class="line"><span class="lineno">   36</span>        [&amp;](<span class="keyword">const</span> <a class="code hl_struct" href="structclanguml_1_1sequence__diagram_1_1model_1_1reverse__call__graph__activity__node.html">reverse_call_graph_activity_node</a> &amp;node) {</div>
+<div class="line"><span class="lineno">   37</span>            <span class="comment">// Add the current node’s activity ID to the path</span></div>
+<div class="line"><span class="lineno">   38</span>            current_chain.push_back(node.activity_id);</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>            <span class="keywordflow">if</span> (node.callers.empty()) {</div>
+<div class="line"><span class="lineno">   41</span>                <span class="keyword">auto</span> reversed = current_chain;</div>
+<div class="line"><span class="lineno">   42</span>                std::reverse(reversed.begin(), reversed.end());</div>
+<div class="line"><span class="lineno">   43</span>                all_message_chains.emplace_back(std::move(reversed));</div>
+<div class="line"><span class="lineno">   44</span>            }</div>
+<div class="line"><span class="lineno">   45</span>            <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   46</span>                <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;child : node.callers) {</div>
+<div class="line"><span class="lineno">   47</span>                    dfs(child);</div>
+<div class="line"><span class="lineno">   48</span>                }</div>
+<div class="line"><span class="lineno">   49</span>            }</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>            <span class="comment">// Backtrack</span></div>
+<div class="line"><span class="lineno">   52</span>            current_chain.pop_back();</div>
+<div class="line"><span class="lineno">   53</span>        };</div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>    <span class="comment">// Start depth first search</span></div>
+<div class="line"><span class="lineno">   56</span>    dfs(root);</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">return</span> all_message_chains;</div>
+<div class="line"><span class="lineno">   59</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a5324cd7662c88823a98166d01be086aa" name="a5324cd7662c88823a98166d01be086aa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5324cd7662c88823a98166d01be086aa">&#9670;&#160;</a></span>operator==()</h2>
 
@@ -250,10 +314,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="json_2sequence__diagram__generator_8cc_source.html#l00057">57</a> of file <a class="el" href="json_2sequence__diagram__generator_8cc_source.html">sequence_diagram_generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   58</span>{</div>
-<div class="line"><span class="lineno">   59</span>    j[<span class="stringliteral">&quot;participant_id&quot;</span>] = std::to_string(c.<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#ab9850ddfba8a7939f0a9380db3164ac6" title="Get the id of activity parent participant.">from</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1eid__t.html#ae59b71c0bf7ba62e49657c395b640e7e">value</a>());</div>
-<div class="line"><span class="lineno">   60</span>}</div>
+<p class="definition">Definition at line <a class="el" href="json_2sequence__diagram__generator_8cc_source.html#l00048">48</a> of file <a class="el" href="json_2sequence__diagram__generator_8cc_source.html">sequence_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   49</span>{</div>
+<div class="line"><span class="lineno">   50</span>    j[<span class="stringliteral">&quot;participant_id&quot;</span>] = std::to_string(c.<a class="code hl_function" href="classclanguml_1_1sequence__diagram_1_1model_1_1activity.html#ab9850ddfba8a7939f0a9380db3164ac6" title="Get the id of activity parent participant.">from</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1eid__t.html#ae59b71c0bf7ba62e49657c395b640e7e">value</a>());</div>
+<div class="line"><span class="lineno">   51</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -283,28 +347,28 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="json_2sequence__diagram__generator_8cc_source.html#l00034">34</a> of file <a class="el" href="json_2sequence__diagram__generator_8cc_source.html">sequence_diagram_generator.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   35</span>{</div>
-<div class="line"><span class="lineno">   36</span>    to_json(j, <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>participant::element &amp;<span class="keyword">&gt;</span>(c));</div>
-<div class="line"><span class="lineno">   37</span>    j[<span class="stringliteral">&quot;type&quot;</span>] = c.<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html#a2cfada1eb6e5e1436bc8ef9354465689">type_name</a>();</div>
+<p class="definition">Definition at line <a class="el" href="json_2sequence__diagram__generator_8cc_source.html#l00025">25</a> of file <a class="el" href="json_2sequence__diagram__generator_8cc_source.html">sequence_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   26</span>{</div>
+<div class="line"><span class="lineno">   27</span>    to_json(j, <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>participant::element &amp;<span class="keyword">&gt;</span>(c));</div>
+<div class="line"><span class="lineno">   28</span>    j[<span class="stringliteral">&quot;type&quot;</span>] = c.<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html#a2cfada1eb6e5e1436bc8ef9354465689">type_name</a>();</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">if</span> (c.<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html#a2cfada1eb6e5e1436bc8ef9354465689">type_name</a>() == <span class="stringliteral">&quot;method&quot;</span>) {</div>
+<div class="line"><span class="lineno">   31</span>        j[<span class="stringliteral">&quot;name&quot;</span>] = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span><a class="code hl_struct" href="structclanguml_1_1sequence__diagram_1_1model_1_1method.html" title="Participant model representing a method.">method</a> &amp;<span class="keyword">&gt;</span>(c).method_name();</div>
+<div class="line"><span class="lineno">   32</span>    }</div>
+<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c.<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html#a2cfada1eb6e5e1436bc8ef9354465689">type_name</a>() == <span class="stringliteral">&quot;objc_method&quot;</span>) {</div>
+<div class="line"><span class="lineno">   34</span>        j[<span class="stringliteral">&quot;name&quot;</span>] = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>objc_method &amp;<span class="keyword">&gt;</span>(c).method_name();</div>
+<div class="line"><span class="lineno">   35</span>    }</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span>    j[<span class="stringliteral">&quot;full_name&quot;</span>] = display_name_adapter(c).<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a5791e4107a4900bab96ae0fa020ba36a" title="Return the elements fully qualified name.">full_name</a>(<span class="keyword">false</span>);</div>
 <div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">if</span> (c.<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html#a2cfada1eb6e5e1436bc8ef9354465689">type_name</a>() == <span class="stringliteral">&quot;method&quot;</span>) {</div>
-<div class="line"><span class="lineno">   40</span>        j[<span class="stringliteral">&quot;name&quot;</span>] = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span><a class="code hl_struct" href="structclanguml_1_1sequence__diagram_1_1model_1_1method.html" title="Participant model representing a method.">method</a> &amp;<span class="keyword">&gt;</span>(c).method_name();</div>
-<div class="line"><span class="lineno">   41</span>    }</div>
-<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c.<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html#a2cfada1eb6e5e1436bc8ef9354465689">type_name</a>() == <span class="stringliteral">&quot;objc_method&quot;</span>) {</div>
-<div class="line"><span class="lineno">   43</span>        j[<span class="stringliteral">&quot;name&quot;</span>] = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>objc_method &amp;<span class="keyword">&gt;</span>(c).method_name();</div>
-<div class="line"><span class="lineno">   44</span>    }</div>
-<div class="line"><span class="lineno">   45</span> </div>
-<div class="line"><span class="lineno">   46</span>    j[<span class="stringliteral">&quot;full_name&quot;</span>] = generators::json::render_name(c.<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a5791e4107a4900bab96ae0fa020ba36a" title="Return the elements fully qualified name.">full_name</a>(<span class="keyword">false</span>));</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">if</span> (c.<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html#a2cfada1eb6e5e1436bc8ef9354465689">type_name</a>() == <span class="stringliteral">&quot;function&quot;</span> || c.<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html#a2cfada1eb6e5e1436bc8ef9354465689">type_name</a>() == <span class="stringliteral">&quot;function_template&quot;</span>) {</div>
-<div class="line"><span class="lineno">   49</span>        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;f = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>function &amp;<span class="keyword">&gt;</span>(c);</div>
-<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">if</span> (f.is_cuda_kernel())</div>
-<div class="line"><span class="lineno">   51</span>            j[<span class="stringliteral">&quot;is_cuda_kernel&quot;</span>] = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   52</span>        <span class="keywordflow">if</span> (f.is_cuda_device())</div>
-<div class="line"><span class="lineno">   53</span>            j[<span class="stringliteral">&quot;is_cuda_device&quot;</span>] = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   54</span>    }</div>
-<div class="line"><span class="lineno">   55</span>}</div>
+<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">if</span> (c.<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html#a2cfada1eb6e5e1436bc8ef9354465689">type_name</a>() == <span class="stringliteral">&quot;function&quot;</span> || c.<a class="code hl_function" href="structclanguml_1_1sequence__diagram_1_1model_1_1participant.html#a2cfada1eb6e5e1436bc8ef9354465689">type_name</a>() == <span class="stringliteral">&quot;function_template&quot;</span>) {</div>
+<div class="line"><span class="lineno">   40</span>        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;f = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>function &amp;<span class="keyword">&gt;</span>(c);</div>
+<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">if</span> (f.is_cuda_kernel())</div>
+<div class="line"><span class="lineno">   42</span>            j[<span class="stringliteral">&quot;is_cuda_kernel&quot;</span>] = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   43</span>        <span class="keywordflow">if</span> (f.is_cuda_device())</div>
+<div class="line"><span class="lineno">   44</span>            j[<span class="stringliteral">&quot;is_cuda_device&quot;</span>] = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   45</span>    }</div>
+<div class="line"><span class="lineno">   46</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

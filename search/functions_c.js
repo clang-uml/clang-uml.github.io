@@ -18,5 +18,6 @@ var searchData=
   ['load_15',['load',['../namespaceclanguml_1_1config.html#aea6c36b13e5b87d842b29fed15f2bd4c',1,'clanguml::config']]],
   ['load_5fconfig_16',['load_config',['../classclanguml_1_1cli_1_1cli__handler.html#a77847ce5924154ea37ad869896bbdda3',1,'clanguml::cli::cli_handler']]],
   ['location_5fid_17',['location_id',['../classclanguml_1_1common_1_1model_1_1source__location.html#a844aed647a54e521838efad0ee9f4983',1,'clanguml::common::model::source_location']]],
-  ['ltrim_18',['ltrim',['../namespaceclanguml_1_1util.html#aef706b51794c83f0052435fae6e381ea',1,'clanguml::util']]]
+  ['logger_5ftype_18',['logger_type',['../namespaceclanguml_1_1logging.html#a125aa41c31850f89df7aedfd2d7f8e74',1,'clanguml::logging']]],
+  ['ltrim_19',['ltrim',['../namespaceclanguml_1_1util.html#aef706b51794c83f0052435fae6e381ea',1,'clanguml::util']]]
 ];

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['source_5ffile_5fdependency_5ffilter_5ft_0',['source_file_dependency_filter_t',['../namespaceclanguml_1_1common_1_1model.html#a620b88a30a688ba5f491b8fedc4e9f91',1,'clanguml::common::model']]],
-  ['specializations_5ffilter_5ft_1',['specializations_filter_t',['../namespaceclanguml_1_1common_1_1model.html#a9233ebd0a5dcde7a5c1132b4546835ea',1,'clanguml::common::model']]],
-  ['string_5for_5fregex_2',['string_or_regex',['../namespaceclanguml_1_1common.html#ae721081846956d4e338e399019f9bd6f',1,'clanguml::common']]]
+  ['package_5fdependants_5ffilter_5ft_0',['package_dependants_filter_t',['../namespaceclanguml_1_1common_1_1model.html#a388386b372d8ced9db56af66b2851fbe',1,'clanguml::common::model']]],
+  ['package_5fdependencies_5ffilter_5ft_1',['package_dependencies_filter_t',['../namespaceclanguml_1_1common_1_1model.html#aa7b6de9aaa62c90d4af839e8ef0c066d',1,'clanguml::common::model']]]
 ];

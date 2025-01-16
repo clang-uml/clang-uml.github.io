@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -130,7 +130,7 @@ $(function() {
 <a href="package__diagram_2model_2diagram_8cc.html">Go to the documentation of this file.</a><div class="fragment language-cpp"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file src/package_diagram/model/diagram.cc</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (c) 2021-2024 Bartek Kryza &lt;bkryza@gmail.com&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (c) 2021-2025 Bartek Kryza &lt;bkryza@gmail.com&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -178,7 +178,7 @@ $(function() {
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a8624439706d75eaa5c6fdb668e728b6d">   50</a></span>std::string <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a8624439706d75eaa5c6fdb668e728b6d" title="Get alias of existing diagram element.">diagram::to_alias</a>(<span class="keyword">const</span> <a class="code hl_class" href="classclanguml_1_1common_1_1eid__t.html" title="Universal class for representing all kinds of Id&#39;s in the diagram model.">eid_t</a> <span class="keywordtype">id</span>)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Looking for alias for {}&quot;</span>, <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Looking for alias for {}&quot;</span>, <span class="keywordtype">id</span>);</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">auto</span> p = find&lt;package&gt;(<span class="keywordtype">id</span>);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">if</span> (p.has_value() &amp;&amp; p.value().id() == <span class="keywordtype">id</span>)</div>
@@ -187,50 +187,46 @@ $(function() {
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">return</span> {};</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a78305413e2b044ce29ff23edcd7912bf">   61</a></span>inja::json <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a78305413e2b044ce29ff23edcd7912bf" title="Return the elements JSON context for inja templates.">diagram::context</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    inja::json ctx;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    ctx[<span class="stringliteral">&quot;name&quot;</span>] = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#a007510b23fb0810f7720b032d0efa42e">name</a>();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    ctx[<span class="stringliteral">&quot;type&quot;</span>] = <span class="stringliteral">&quot;package&quot;</span>;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    inja::json::array_t elements{};</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#af64770867ae12289c1f4de8ca6155959" title="Get list of references to packages in the diagram model.">packages</a>()) {</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        elements.emplace_back(p.get().context());</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    ctx[<span class="stringliteral">&quot;elements&quot;</span>] = elements;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordflow">return</span> ctx;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>}</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a87b4d29ad0d05670555df1bd09261d64">   78</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a87b4d29ad0d05670555df1bd09261d64">diagram::apply_filter</a>()</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>{</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// First find all element ids which should be removed</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    std::set&lt;eid_t&gt; to_remove;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;c : <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#af64770867ae12289c1f4de8ca6155959" title="Get list of references to packages in the diagram model.">packages</a>())</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#aa481d90d5c8046c6de6795bd0891d66b">filter</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a580ec916b00e3bbd4ded10364a9c8698">should_include</a>(c.get()))</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            to_remove.emplace(c.get().id());</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    element_view&lt;package&gt;::remove(to_remove);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a6ee8e2fdbe67073a044d0f1289dad4f3">nested_trait_ns::remove</a>(to_remove);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a87b4d29ad0d05670555df1bd09261d64">   61</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#a87b4d29ad0d05670555df1bd09261d64">diagram::apply_filter</a>()</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>{</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// Remove elements by traversing down into packages until no elements</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">// were removed. This is necessary to remove all empty packages.</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keyword">auto</span> previous_to_remove_size = <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#af64770867ae12289c1f4de8ca6155959" title="Get list of references to packages in the diagram model.">packages</a>().size();</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="comment">// First find all element ids which should be removed</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        std::set&lt;eid_t&gt; to_remove;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;c : <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#af64770867ae12289c1f4de8ca6155959" title="Get list of references to packages in the diagram model.">packages</a>()) {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#aa481d90d5c8046c6de6795bd0891d66b">filter</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__filter.html#a580ec916b00e3bbd4ded10364a9c8698">should_include</a>(c.get())) {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                to_remove.emplace(c.get().id());</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        element_view&lt;package&gt;::remove(to_remove);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1nested__trait.html#a6ee8e2fdbe67073a044d0f1289dad4f3">nested_trait_ns::remove</a>(to_remove);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;c : <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#af64770867ae12289c1f4de8ca6155959" title="Get list of references to packages in the diagram model.">packages</a>()) {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            c.get().apply_filter(<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#aa481d90d5c8046c6de6795bd0891d66b">filter</a>(), to_remove);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="comment">// If this loop didn&#39;t remove anything - stop it</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">if</span> (previous_to_remove_size == <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#af64770867ae12289c1f4de8ca6155959" title="Get list of references to packages in the diagram model.">packages</a>().size())</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;c : element_view&lt;package&gt;::view())</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        c.get().apply_filter(<a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram.html#aa481d90d5c8046c6de6795bd0891d66b">filter</a>(), to_remove);</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#abc57a0126c898750df3693ccb796a195">   95</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#abc57a0126c898750df3693ccb796a195" title="Check whether the diagram is empty.">diagram::is_empty</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> element_view&lt;package&gt;::is_empty(); }</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>} <span class="comment">// namespace clanguml::package_diagram::model</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1common_1_1model.html">clanguml::common::model</a> {</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common_1_1model.html#ace5b2fa60564cf6861c0ff914d8e5609">  100</a></span><span class="keywordtype">bool</span> check_diagram_type&lt;clanguml::package_diagram::model::diagram&gt;(<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">diagram_t</a> t)</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>{</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordflow">return</span> t == diagram_t::kPackage;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>}</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#abc57a0126c898750df3693ccb796a195">   91</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1model_1_1diagram.html#abc57a0126c898750df3693ccb796a195" title="Check whether the diagram is empty.">diagram::is_empty</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> element_view&lt;package&gt;::is_empty(); }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>} <span class="comment">// namespace clanguml::package_diagram::model</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclanguml_1_1common_1_1model.html">clanguml::common::model</a> {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="namespaceclanguml_1_1common_1_1model.html#ace5b2fa60564cf6861c0ff914d8e5609">   96</a></span><span class="keywordtype">bool</span> check_diagram_type&lt;clanguml::package_diagram::model::diagram&gt;(<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#a785b36ca3681254f52e4c0aec9ceacff">diagram_t</a> t)</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>{</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordflow">return</span> t == diagram_t::kPackage;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>}</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

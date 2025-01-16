@@ -10,8 +10,9 @@ var searchData=
   ['link_7',['link',['../structclanguml_1_1config_1_1generate__links__config.html#ab5ba45e73ec48cf7be926eb9742b45f3',1,'clanguml::config::generate_links_config']]],
   ['list_5fdiagrams_8',['list_diagrams',['../classclanguml_1_1cli_1_1cli__handler.html#a2e78f70264024d6019d5931998476010',1,'clanguml::cli::cli_handler']]],
   ['list_5ftemplates_9',['list_templates',['../classclanguml_1_1cli_1_1cli__handler.html#a90b5f6262f30b1d18b7db88fd05868fa',1,'clanguml::cli::cli_handler']]],
-  ['location_10',['location',['../structclanguml_1_1generators_1_1diagnostic.html#a026ba8681ea6155a354afb67f75ec9bd',1,'clanguml::generators::diagnostic::location'],['../structclanguml_1_1config_1_1source__location.html#a00628e01fe5b1a7203dc429332459fb2',1,'clanguml::config::source_location::location']]],
+  ['location_10',['location',['../structclanguml_1_1generators_1_1diagnostic.html#a026ba8681ea6155a354afb67f75ec9bd',1,'clanguml::generators::diagnostic::location'],['../structclanguml_1_1config_1_1source__location.html#a27b4330b05a15c7c6f39e841a651a172',1,'clanguml::config::source_location::location']]],
   ['location_5ftype_11',['location_type',['../structclanguml_1_1config_1_1source__location.html#a0448ab644de393c204670ebce4425d9f',1,'clanguml::config::source_location']]],
   ['logger_5f_12',['logger_',['../classclanguml_1_1cli_1_1cli__handler.html#af44ad3daac0f3d57cdaed4764c52b240',1,'clanguml::cli::cli_handler']]],
-  ['loop_5fstmt_5fstack_5f_13',['loop_stmt_stack_',['../structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aef593d369d48e4a9433046bd8277dc3b',1,'clanguml::sequence_diagram::visitor::call_expression_context']]]
+  ['logger_5ftype_13',['logger_type',['../classclanguml_1_1cli_1_1cli__handler.html#a4abac2e7e7e917694dcbbf1871c0e9f2',1,'clanguml::cli::cli_handler']]],
+  ['loop_5fstmt_5fstack_5f_14',['loop_stmt_stack_',['../structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aef593d369d48e4a9433046bd8277dc3b',1,'clanguml::sequence_diagram::visitor::call_expression_context']]]
 ];

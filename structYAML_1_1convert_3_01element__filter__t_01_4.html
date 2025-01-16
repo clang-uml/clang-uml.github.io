@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -132,7 +132,7 @@ $(function() {
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00534">534</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00601">601</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -174,63 +174,63 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00535">535</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  536</span>    {</div>
-<div class="line"><span class="lineno">  537</span>        <span class="keyword">using namespace </span>std::string_literals;</div>
-<div class="line"><span class="lineno">  538</span>        <span class="keywordflow">if</span> (node.IsMap()) {</div>
-<div class="line"><span class="lineno">  539</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(node, <span class="stringliteral">&quot;r&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  540</span>                rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba100b8cad7cf2a56f6df78f171f97a1ec">element_filter_t::filtered_type::any</a>;</div>
-<div class="line"><span class="lineno">  541</span>                <span class="keyword">auto</span> pattern = node[<span class="stringliteral">&quot;r&quot;</span>].as&lt;std::string&gt;();</div>
-<div class="line"><span class="lineno">  542</span>                <span class="keyword">auto</span> rx = std::regex(pattern);</div>
-<div class="line"><span class="lineno">  543</span>                rhs.name = <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#ae721081846956d4e338e399019f9bd6f">string_or_regex</a>(std::move(rx), std::move(pattern));</div>
-<div class="line"><span class="lineno">  544</span>            }</div>
-<div class="line"><span class="lineno">  545</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(node, <span class="stringliteral">&quot;type&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  546</span>                rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba100b8cad7cf2a56f6df78f171f97a1ec">element_filter_t::filtered_type::any</a>;</div>
-<div class="line"><span class="lineno">  547</span>                <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;class&quot;</span>)</div>
-<div class="line"><span class="lineno">  548</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba66369307eb2e912cd029a3c6472607ed">element_filter_t::filtered_type::class_</a>;</div>
-<div class="line"><span class="lineno">  549</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;enum&quot;</span>)</div>
-<div class="line"><span class="lineno">  550</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aabaf18cd75185ae2187982ea78eaac7acaa">element_filter_t::filtered_type::enum_</a>;</div>
-<div class="line"><span class="lineno">  551</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;function&quot;</span>)</div>
-<div class="line"><span class="lineno">  552</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aabac1c425268e68385d1ab5074c17a94f14">element_filter_t::filtered_type::function</a>;</div>
-<div class="line"><span class="lineno">  553</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;method&quot;</span>)</div>
-<div class="line"><span class="lineno">  554</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aabaea9f6aca279138c58f705c8d4cb4b8ce">element_filter_t::filtered_type::method</a>;</div>
-<div class="line"><span class="lineno">  555</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;member&quot;</span>)</div>
-<div class="line"><span class="lineno">  556</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aabaaa08769cdcb26674c6706093503ff0a3">element_filter_t::filtered_type::member</a>;</div>
-<div class="line"><span class="lineno">  557</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;concept&quot;</span>)</div>
-<div class="line"><span class="lineno">  558</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba78059721c7e9893c6bf4b5e8e197a9dc">element_filter_t::filtered_type::concept_</a>;</div>
-<div class="line"><span class="lineno">  559</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;package&quot;</span>)</div>
-<div class="line"><span class="lineno">  560</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aabaefe90a8e604a7c840e88d03a67f6b7d8">element_filter_t::filtered_type::package</a>;</div>
-<div class="line"><span class="lineno">  561</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;function_template&quot;</span>)</div>
-<div class="line"><span class="lineno">  562</span>                    rhs.type =</div>
-<div class="line"><span class="lineno">  563</span>                        <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aabab9a142c3d28005309dc864c41e53a39d">element_filter_t::filtered_type::function_template</a>;</div>
-<div class="line"><span class="lineno">  564</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;objc_method&quot;</span>)</div>
-<div class="line"><span class="lineno">  565</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba4df3bc40fe65cfbaea79db06550c40e1">element_filter_t::filtered_type::objc_method</a>;</div>
-<div class="line"><span class="lineno">  566</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;objc_member&quot;</span>)</div>
-<div class="line"><span class="lineno">  567</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba89bf07875ac830bbdebe6b81d9c3dd3f">element_filter_t::filtered_type::objc_member</a>;</div>
-<div class="line"><span class="lineno">  568</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;objc_protocol&quot;</span>)</div>
-<div class="line"><span class="lineno">  569</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba8c1053be3f42b27b26e0d7c18283c45a">element_filter_t::filtered_type::objc_protocol</a>;</div>
-<div class="line"><span class="lineno">  570</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;objc_category&quot;</span>)</div>
-<div class="line"><span class="lineno">  571</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aabaf3453163b63d8f49d838cbdfd76d35cb">element_filter_t::filtered_type::objc_category</a>;</div>
-<div class="line"><span class="lineno">  572</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;objc_interface&quot;</span>)</div>
-<div class="line"><span class="lineno">  573</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba5739cb90bc50ace993400db9f5050343">element_filter_t::filtered_type::objc_interface</a>;</div>
-<div class="line"><span class="lineno">  574</span>                <span class="keyword">auto</span> name = node[<span class="stringliteral">&quot;name&quot;</span>];</div>
-<div class="line"><span class="lineno">  575</span>                <span class="keywordflow">if</span> (name.IsMap() &amp;&amp; <a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(name, <span class="stringliteral">&quot;r&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  576</span>                    <span class="keyword">auto</span> pattern = name[<span class="stringliteral">&quot;r&quot;</span>].as&lt;std::string&gt;();</div>
-<div class="line"><span class="lineno">  577</span>                    <span class="keyword">auto</span> rx = std::regex(pattern);</div>
-<div class="line"><span class="lineno">  578</span>                    rhs.name =</div>
-<div class="line"><span class="lineno">  579</span>                        <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#ae721081846956d4e338e399019f9bd6f">string_or_regex</a>(std::move(rx), std::move(pattern));</div>
-<div class="line"><span class="lineno">  580</span>                }</div>
-<div class="line"><span class="lineno">  581</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  582</span>                    rhs.name = name.as&lt;std::string&gt;();</div>
-<div class="line"><span class="lineno">  583</span>            }</div>
-<div class="line"><span class="lineno">  584</span>        }</div>
-<div class="line"><span class="lineno">  585</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  586</span>            rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba100b8cad7cf2a56f6df78f171f97a1ec">element_filter_t::filtered_type::any</a>;</div>
-<div class="line"><span class="lineno">  587</span>            rhs.name = <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#ae721081846956d4e338e399019f9bd6f">string_or_regex</a>{node.as&lt;std::string&gt;()};</div>
-<div class="line"><span class="lineno">  588</span>        }</div>
-<div class="line"><span class="lineno">  589</span> </div>
-<div class="line"><span class="lineno">  590</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  591</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l00602">602</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  603</span>    {</div>
+<div class="line"><span class="lineno">  604</span>        <span class="keyword">using namespace </span>std::string_literals;</div>
+<div class="line"><span class="lineno">  605</span>        <span class="keywordflow">if</span> (node.IsMap()) {</div>
+<div class="line"><span class="lineno">  606</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(node, <span class="stringliteral">&quot;r&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  607</span>                rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba100b8cad7cf2a56f6df78f171f97a1ec">element_filter_t::filtered_type::any</a>;</div>
+<div class="line"><span class="lineno">  608</span>                <span class="keyword">auto</span> pattern = node[<span class="stringliteral">&quot;r&quot;</span>].as&lt;std::string&gt;();</div>
+<div class="line"><span class="lineno">  609</span>                <span class="keyword">auto</span> rx = std::regex(pattern);</div>
+<div class="line"><span class="lineno">  610</span>                rhs.name = <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#ae721081846956d4e338e399019f9bd6f">string_or_regex</a>(std::move(rx), std::move(pattern));</div>
+<div class="line"><span class="lineno">  611</span>            }</div>
+<div class="line"><span class="lineno">  612</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(node, <span class="stringliteral">&quot;type&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  613</span>                rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba100b8cad7cf2a56f6df78f171f97a1ec">element_filter_t::filtered_type::any</a>;</div>
+<div class="line"><span class="lineno">  614</span>                <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;class&quot;</span>)</div>
+<div class="line"><span class="lineno">  615</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba66369307eb2e912cd029a3c6472607ed">element_filter_t::filtered_type::class_</a>;</div>
+<div class="line"><span class="lineno">  616</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;enum&quot;</span>)</div>
+<div class="line"><span class="lineno">  617</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aabaf18cd75185ae2187982ea78eaac7acaa">element_filter_t::filtered_type::enum_</a>;</div>
+<div class="line"><span class="lineno">  618</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;function&quot;</span>)</div>
+<div class="line"><span class="lineno">  619</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aabac1c425268e68385d1ab5074c17a94f14">element_filter_t::filtered_type::function</a>;</div>
+<div class="line"><span class="lineno">  620</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;method&quot;</span>)</div>
+<div class="line"><span class="lineno">  621</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aabaea9f6aca279138c58f705c8d4cb4b8ce">element_filter_t::filtered_type::method</a>;</div>
+<div class="line"><span class="lineno">  622</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;member&quot;</span>)</div>
+<div class="line"><span class="lineno">  623</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aabaaa08769cdcb26674c6706093503ff0a3">element_filter_t::filtered_type::member</a>;</div>
+<div class="line"><span class="lineno">  624</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;concept&quot;</span>)</div>
+<div class="line"><span class="lineno">  625</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba78059721c7e9893c6bf4b5e8e197a9dc">element_filter_t::filtered_type::concept_</a>;</div>
+<div class="line"><span class="lineno">  626</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;package&quot;</span>)</div>
+<div class="line"><span class="lineno">  627</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aabaefe90a8e604a7c840e88d03a67f6b7d8">element_filter_t::filtered_type::package</a>;</div>
+<div class="line"><span class="lineno">  628</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;function_template&quot;</span>)</div>
+<div class="line"><span class="lineno">  629</span>                    rhs.type =</div>
+<div class="line"><span class="lineno">  630</span>                        <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aabab9a142c3d28005309dc864c41e53a39d">element_filter_t::filtered_type::function_template</a>;</div>
+<div class="line"><span class="lineno">  631</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;objc_method&quot;</span>)</div>
+<div class="line"><span class="lineno">  632</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba4df3bc40fe65cfbaea79db06550c40e1">element_filter_t::filtered_type::objc_method</a>;</div>
+<div class="line"><span class="lineno">  633</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;objc_member&quot;</span>)</div>
+<div class="line"><span class="lineno">  634</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba89bf07875ac830bbdebe6b81d9c3dd3f">element_filter_t::filtered_type::objc_member</a>;</div>
+<div class="line"><span class="lineno">  635</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;objc_protocol&quot;</span>)</div>
+<div class="line"><span class="lineno">  636</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba8c1053be3f42b27b26e0d7c18283c45a">element_filter_t::filtered_type::objc_protocol</a>;</div>
+<div class="line"><span class="lineno">  637</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;objc_category&quot;</span>)</div>
+<div class="line"><span class="lineno">  638</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aabaf3453163b63d8f49d838cbdfd76d35cb">element_filter_t::filtered_type::objc_category</a>;</div>
+<div class="line"><span class="lineno">  639</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (node[<span class="stringliteral">&quot;type&quot;</span>].as&lt;std::string&gt;() == <span class="stringliteral">&quot;objc_interface&quot;</span>)</div>
+<div class="line"><span class="lineno">  640</span>                    rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba5739cb90bc50ace993400db9f5050343">element_filter_t::filtered_type::objc_interface</a>;</div>
+<div class="line"><span class="lineno">  641</span>                <span class="keyword">auto</span> name = node[<span class="stringliteral">&quot;name&quot;</span>];</div>
+<div class="line"><span class="lineno">  642</span>                <span class="keywordflow">if</span> (name.IsMap() &amp;&amp; <a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(name, <span class="stringliteral">&quot;r&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  643</span>                    <span class="keyword">auto</span> pattern = name[<span class="stringliteral">&quot;r&quot;</span>].as&lt;std::string&gt;();</div>
+<div class="line"><span class="lineno">  644</span>                    <span class="keyword">auto</span> rx = std::regex(pattern);</div>
+<div class="line"><span class="lineno">  645</span>                    rhs.name =</div>
+<div class="line"><span class="lineno">  646</span>                        <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#ae721081846956d4e338e399019f9bd6f">string_or_regex</a>(std::move(rx), std::move(pattern));</div>
+<div class="line"><span class="lineno">  647</span>                }</div>
+<div class="line"><span class="lineno">  648</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  649</span>                    rhs.name = name.as&lt;std::string&gt;();</div>
+<div class="line"><span class="lineno">  650</span>            }</div>
+<div class="line"><span class="lineno">  651</span>        }</div>
+<div class="line"><span class="lineno">  652</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  653</span>            rhs.type = <a class="code hl_enumvalue" href="structclanguml_1_1config_1_1element__filter__t.html#aed5a35e07190406b2b51462abb2e0aaba100b8cad7cf2a56f6df78f171f97a1ec">element_filter_t::filtered_type::any</a>;</div>
+<div class="line"><span class="lineno">  654</span>            rhs.name = <a class="code hl_typedef" href="namespaceclanguml_1_1common.html#ae721081846956d4e338e399019f9bd6f">string_or_regex</a>{node.as&lt;std::string&gt;()};</div>
+<div class="line"><span class="lineno">  655</span>        }</div>
+<div class="line"><span class="lineno">  656</span> </div>
+<div class="line"><span class="lineno">  657</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  658</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>

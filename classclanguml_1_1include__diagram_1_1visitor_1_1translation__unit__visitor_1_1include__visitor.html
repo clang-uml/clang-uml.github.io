@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -387,48 +387,76 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   79</span>    <span class="keyword">using </span>common::model::source_file;</div>
 <div class="line"><span class="lineno">   80</span>    <span class="keyword">using </span><a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9">common::model::source_file_t</a>;</div>
 <div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span>    <span class="keyword">auto</span> current_file =</div>
-<div class="line"><span class="lineno">   83</span>        std::filesystem::path{<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>().getFilename(hash_loc).str()};</div>
-<div class="line"><span class="lineno">   84</span>    current_file = std::filesystem::absolute(current_file);</div>
-<div class="line"><span class="lineno">   85</span>    current_file = current_file.lexically_normal();</div>
-<div class="line"><span class="lineno">   86</span> </div>
-<div class="line"><span class="lineno">   87</span>    <span class="keyword">auto</span> current_file_id = <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1visitor_1_1translation__unit__visitor_1_1include__visitor.html#adaa15f9552e013c4ed3301f214f0814b" title="Handle a source file.">process_source_file</a>(current_file);</div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">if</span> (!current_file_id)</div>
-<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   82</span>    <span class="comment">// First process the file which contains the include directive</span></div>
+<div class="line"><span class="lineno">   83</span>    <span class="keyword">auto</span> current_file =</div>
+<div class="line"><span class="lineno">   84</span>        std::filesystem::path{<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>().getFilename(hash_loc).str()};</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>    std::string file_name_str = file_name.str();</div>
+<div class="line"><span class="lineno">   87</span>    current_file = std::filesystem::absolute(current_file);</div>
+<div class="line"><span class="lineno">   88</span>    current_file = current_file.lexically_normal();</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keyword">const</span> <span class="keyword">auto</span> current_dir = current_file.parent_path();</div>
 <div class="line"><span class="lineno">   90</span> </div>
-<div class="line"><span class="lineno">   91</span>    assert(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1detail.html#ab85530bb0d21b93200e8f36a322b8b73">get</a>(current_file_id.value()));</div>
-<div class="line"><span class="lineno">   92</span> </div>
-<div class="line"><span class="lineno">   93</span><span class="preprocessor">#if LLVM_VERSION_MAJOR &gt; 14</span></div>
-<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">if</span> (!file.has_value())</div>
-<div class="line"><span class="lineno">   95</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   96</span>    <span class="keyword">auto</span> include_path = std::filesystem::path(file-&gt;getDir().getName().str());</div>
-<div class="line"><span class="lineno">   97</span><span class="preprocessor">#else</span></div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">if</span> (file == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  100</span>    <span class="keyword">auto</span> include_path = std::filesystem::path(file-&gt;getDir()-&gt;getName().str());</div>
-<div class="line"><span class="lineno">  101</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  102</span>    include_path = include_path / file-&gt;getName().str();</div>
-<div class="line"><span class="lineno">  103</span>    include_path = include_path.lexically_normal();</div>
-<div class="line"><span class="lineno">  104</span> </div>
-<div class="line"><span class="lineno">  105</span>    <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Processing include directive {} in file {}&quot;</span>, include_path.string(),</div>
-<div class="line"><span class="lineno">  106</span>        current_file.string());</div>
-<div class="line"><span class="lineno">  107</span> </div>
-<div class="line"><span class="lineno">  108</span>    <span class="keyword">auto</span> relative_include_path =</div>
-<div class="line"><span class="lineno">  109</span>        std::filesystem::relative(include_path, <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().root_directory());</div>
-<div class="line"><span class="lineno">  110</span> </div>
-<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(source_file{include_path})) {</div>
-<div class="line"><span class="lineno">  112</span>        <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1visitor_1_1translation__unit__visitor_1_1include__visitor.html#a76738682e4d49471252ed3c63688e2e0" title="Handle internal header include directive.">process_internal_header</a>(include_path,</div>
-<div class="line"><span class="lineno">  113</span>            file_type != clang::SrcMgr::CharacteristicKind::C_User,</div>
-<div class="line"><span class="lineno">  114</span>            current_file_id.value());</div>
-<div class="line"><span class="lineno">  115</span>    }</div>
-<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().generate_system_headers() &amp;&amp; is_angled) {</div>
-<div class="line"><span class="lineno">  117</span>        <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1visitor_1_1translation__unit__visitor_1_1include__visitor.html#aa7b2f0b083334825dd31d63a385372c4" title="Handle system header include directive.">process_external_system_header</a>(</div>
-<div class="line"><span class="lineno">  118</span>            relative_path.str(), current_file_id.value());</div>
-<div class="line"><span class="lineno">  119</span>    }</div>
-<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  121</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Skipping include directive to file {}&quot;</span>, include_path.string());</div>
-<div class="line"><span class="lineno">  122</span>    }</div>
-<div class="line"><span class="lineno">  123</span>}</div>
+<div class="line"><span class="lineno">   91</span>    <span class="keyword">auto</span> current_file_id = <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1visitor_1_1translation__unit__visitor_1_1include__visitor.html#adaa15f9552e013c4ed3301f214f0814b" title="Handle a source file.">process_source_file</a>(current_file);</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">if</span> (!current_file_id)</div>
+<div class="line"><span class="lineno">   93</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>    assert(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1detail.html#ab85530bb0d21b93200e8f36a322b8b73">get</a>(current_file_id.value()));</div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>    <span class="comment">// Now try to figure out the full path to the included header</span></div>
+<div class="line"><span class="lineno">   98</span>    std::filesystem::path real_include_path{</div>
+<div class="line"><span class="lineno">   99</span><span class="preprocessor">#if LLVM_VERSION_MAJOR &gt; 14</span></div>
+<div class="line"><span class="lineno">  100</span>        file-&gt;getFileEntry().tryGetRealPathName().str()</div>
+<div class="line"><span class="lineno">  101</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">  102</span>        file-&gt;tryGetRealPathName().str()</div>
+<div class="line"><span class="lineno">  103</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  104</span>    };</div>
+<div class="line"><span class="lineno">  105</span> </div>
+<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">if</span> (real_include_path.empty()) {</div>
+<div class="line"><span class="lineno">  107</span>        <span class="comment">// Try to figure out the actual path to the include file somehow</span></div>
+<div class="line"><span class="lineno">  108</span><span class="preprocessor">#if LLVM_VERSION_MAJOR &gt; 14</span></div>
+<div class="line"><span class="lineno">  109</span>        <span class="keywordflow">if</span> (!file.has_value())</div>
+<div class="line"><span class="lineno">  110</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  111</span>        <span class="keyword">auto</span> include_path_parent =</div>
+<div class="line"><span class="lineno">  112</span>            std::filesystem::path(file-&gt;getDir().getName().str());</div>
+<div class="line"><span class="lineno">  113</span>        <span class="keyword">const</span> std::string include_file_dir{file-&gt;getDir().getName()};</div>
+<div class="line"><span class="lineno">  114</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">  115</span>        <span class="keywordflow">if</span> (file == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  116</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  117</span>        <span class="keyword">auto</span> include_path_parent =</div>
+<div class="line"><span class="lineno">  118</span>            std::filesystem::path(file-&gt;getDir()-&gt;getName().str());</div>
+<div class="line"><span class="lineno">  119</span>        <span class="keyword">const</span> std::string include_file_dir{file-&gt;getDir()-&gt;getName()};</div>
+<div class="line"><span class="lineno">  120</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  121</span> </div>
+<div class="line"><span class="lineno">  122</span>        <span class="keyword">const</span> std::string include_name{file-&gt;getName().str()};</div>
+<div class="line"><span class="lineno">  123</span>        <span class="keyword">const</span> <span class="keyword">auto</span> include_path_pre_normalization =</div>
+<div class="line"><span class="lineno">  124</span>            std::filesystem::path{include_file_dir} / include_name;</div>
+<div class="line"><span class="lineno">  125</span> </div>
+<div class="line"><span class="lineno">  126</span>        real_include_path = include_path_pre_normalization.lexically_normal();</div>
+<div class="line"><span class="lineno">  127</span>    }</div>
+<div class="line"><span class="lineno">  128</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  129</span>        real_include_path = real_include_path.lexically_normal();</div>
+<div class="line"><span class="lineno">  130</span>    }</div>
+<div class="line"><span class="lineno">  131</span> </div>
+<div class="line"><span class="lineno">  132</span>    <span class="keyword">const</span> <span class="keyword">auto</span> root_directory = <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().root_directory();</div>
+<div class="line"><span class="lineno">  133</span> </div>
+<div class="line"><span class="lineno">  134</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Processing include directive {} [{}] in file {}&quot;</span>, file_name_str,</div>
+<div class="line"><span class="lineno">  135</span>        real_include_path.string(), current_file.string());</div>
+<div class="line"><span class="lineno">  136</span> </div>
+<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(source_file{real_include_path})) {</div>
+<div class="line"><span class="lineno">  138</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Processing internal header: {}&quot;</span>, real_include_path.string());</div>
+<div class="line"><span class="lineno">  139</span>        <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1visitor_1_1translation__unit__visitor_1_1include__visitor.html#a76738682e4d49471252ed3c63688e2e0" title="Handle internal header include directive.">process_internal_header</a>(real_include_path,</div>
+<div class="line"><span class="lineno">  140</span>            file_type != clang::SrcMgr::CharacteristicKind::C_User,</div>
+<div class="line"><span class="lineno">  141</span>            current_file_id.value());</div>
+<div class="line"><span class="lineno">  142</span>    }</div>
+<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().generate_system_headers() &amp;&amp; is_angled) {</div>
+<div class="line"><span class="lineno">  144</span>        <a class="code hl_function" href="classclanguml_1_1include__diagram_1_1visitor_1_1translation__unit__visitor_1_1include__visitor.html#aa7b2f0b083334825dd31d63a385372c4" title="Handle system header include directive.">process_external_system_header</a>(</div>
+<div class="line"><span class="lineno">  145</span>            relative_path.str(), current_file_id.value());</div>
+<div class="line"><span class="lineno">  146</span>    }</div>
+<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  148</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Skipping include directive to file {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  149</span>            real_include_path.string());</div>
+<div class="line"><span class="lineno">  150</span>    }</div>
+<div class="line"><span class="lineno">  151</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -467,30 +495,30 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="include__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00165">165</a> of file <a class="el" href="include__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  167</span>{</div>
-<div class="line"><span class="lineno">  168</span>    <span class="keyword">const</span> <span class="keyword">auto</span> file_name = include_path.filename();</div>
-<div class="line"><span class="lineno">  169</span>    <span class="keyword">const</span> <span class="keyword">auto</span> file_name_str = file_name.string();</div>
-<div class="line"><span class="lineno">  170</span> </div>
-<div class="line"><span class="lineno">  171</span>    <span class="keyword">auto</span> f = std::make_unique&lt;common::model::source_file&gt;();</div>
-<div class="line"><span class="lineno">  172</span>    f-&gt;set_name(include_path.string());</div>
-<div class="line"><span class="lineno">  173</span>    f-&gt;set_type(<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a9cef6e67dbb09df835c263f0610058b2">common::model::source_file_t::kHeader</a>);</div>
-<div class="line"><span class="lineno">  174</span>    f-&gt;set_id(<a class="code hl_function" href="group__to__id.html#ga6f16d1269192407e0123293d60fba476">common::to_id</a>(include_path));</div>
-<div class="line"><span class="lineno">  175</span>    f-&gt;set_system_header(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  176</span> </div>
-<div class="line"><span class="lineno">  177</span>    <span class="keyword">const</span> <span class="keyword">auto</span> f_id = f-&gt;id();</div>
-<div class="line"><span class="lineno">  178</span> </div>
-<div class="line"><span class="lineno">  179</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().add_file(std::move(f));</div>
-<div class="line"><span class="lineno">  180</span> </div>
-<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1detail.html#ab85530bb0d21b93200e8f36a322b8b73">get</a>(current_file_id)) {</div>
-<div class="line"><span class="lineno">  182</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>()</div>
-<div class="line"><span class="lineno">  183</span>            .get(current_file_id)</div>
-<div class="line"><span class="lineno">  184</span>            .value()</div>
-<div class="line"><span class="lineno">  185</span>            .add_relationship(common::model::relationship{</div>
-<div class="line"><span class="lineno">  186</span>                <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086a07f95931cab7b233ed9c5c3427903a33">common::model::relationship_t::kDependency</a>, f_id,</div>
-<div class="line"><span class="lineno">  187</span>                <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6a35c3ace1970663a16e5c65baa5941b13">common::model::access_t::kNone</a>});</div>
-<div class="line"><span class="lineno">  188</span>    }</div>
-<div class="line"><span class="lineno">  189</span>}</div>
+<p class="definition">Definition at line <a class="el" href="include__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00193">193</a> of file <a class="el" href="include__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  195</span>{</div>
+<div class="line"><span class="lineno">  196</span>    <span class="keyword">const</span> <span class="keyword">auto</span> file_name = include_path.filename();</div>
+<div class="line"><span class="lineno">  197</span>    <span class="keyword">const</span> <span class="keyword">auto</span> file_name_str = file_name.string();</div>
+<div class="line"><span class="lineno">  198</span> </div>
+<div class="line"><span class="lineno">  199</span>    <span class="keyword">auto</span> f = std::make_unique&lt;common::model::source_file&gt;();</div>
+<div class="line"><span class="lineno">  200</span>    f-&gt;set_name(include_path.string());</div>
+<div class="line"><span class="lineno">  201</span>    f-&gt;set_type(<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a9cef6e67dbb09df835c263f0610058b2">common::model::source_file_t::kHeader</a>);</div>
+<div class="line"><span class="lineno">  202</span>    f-&gt;set_id(<a class="code hl_function" href="group__to__id.html#ga6f16d1269192407e0123293d60fba476">common::to_id</a>(include_path));</div>
+<div class="line"><span class="lineno">  203</span>    f-&gt;set_system_header(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>    <span class="keyword">const</span> <span class="keyword">auto</span> f_id = f-&gt;id();</div>
+<div class="line"><span class="lineno">  206</span> </div>
+<div class="line"><span class="lineno">  207</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().add_file(std::move(f));</div>
+<div class="line"><span class="lineno">  208</span> </div>
+<div class="line"><span class="lineno">  209</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1detail.html#ab85530bb0d21b93200e8f36a322b8b73">get</a>(current_file_id)) {</div>
+<div class="line"><span class="lineno">  210</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>()</div>
+<div class="line"><span class="lineno">  211</span>            .get(current_file_id)</div>
+<div class="line"><span class="lineno">  212</span>            .value()</div>
+<div class="line"><span class="lineno">  213</span>            .add_relationship(common::model::relationship{</div>
+<div class="line"><span class="lineno">  214</span>                <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086a07f95931cab7b233ed9c5c3427903a33">common::model::relationship_t::kDependency</a>, f_id,</div>
+<div class="line"><span class="lineno">  215</span>                <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6a35c3ace1970663a16e5c65baa5941b13">common::model::access_t::kNone</a>});</div>
+<div class="line"><span class="lineno">  216</span>    }</div>
+<div class="line"><span class="lineno">  217</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -536,43 +564,43 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="include__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00125">125</a> of file <a class="el" href="include__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  128</span>{</div>
-<div class="line"><span class="lineno">  129</span>    <span class="comment">// Make the path relative with respect to relative_to config option</span></div>
-<div class="line"><span class="lineno">  130</span>    <span class="keyword">auto</span> relative_include_path =</div>
-<div class="line"><span class="lineno">  131</span>        std::filesystem::relative(include_path, <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().root_directory());</div>
-<div class="line"><span class="lineno">  132</span> </div>
-<div class="line"><span class="lineno">  133</span>    <span class="comment">// Check if this source file is already registered in the diagram,</span></div>
-<div class="line"><span class="lineno">  134</span>    <span class="comment">// if not add it</span></div>
-<div class="line"><span class="lineno">  135</span>    <span class="keyword">auto</span> diagram_path =</div>
-<div class="line"><span class="lineno">  136</span>        common::model::source_file{relative_include_path}.full_path();</div>
-<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().get_element(diagram_path.to_string()).has_value()) {</div>
-<div class="line"><span class="lineno">  138</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().add_file(std::make_unique&lt;common::model::source_file&gt;(</div>
-<div class="line"><span class="lineno">  139</span>            diagram_path.to_string()));</div>
-<div class="line"><span class="lineno">  140</span>    }</div>
-<div class="line"><span class="lineno">  141</span> </div>
-<div class="line"><span class="lineno">  142</span>    <span class="keyword">auto</span> &amp;include_file = <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().get_element(diagram_path).value();</div>
-<div class="line"><span class="lineno">  143</span> </div>
-<div class="line"><span class="lineno">  144</span>    include_file.set_type(<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a9cef6e67dbb09df835c263f0610058b2">common::model::source_file_t::kHeader</a>);</div>
-<div class="line"><span class="lineno">  145</span>    include_file.set_file(</div>
-<div class="line"><span class="lineno">  146</span>        std::filesystem::absolute(include_path).lexically_normal().<span class="keywordtype">string</span>());</div>
-<div class="line"><span class="lineno">  147</span>    include_file.set_line(0);</div>
-<div class="line"><span class="lineno">  148</span>    include_file.set_system_header(is_system);</div>
-<div class="line"><span class="lineno">  149</span> </div>
-<div class="line"><span class="lineno">  150</span>    <span class="comment">// Add relationship from the currently parsed source file to this</span></div>
-<div class="line"><span class="lineno">  151</span>    <span class="comment">// include file</span></div>
-<div class="line"><span class="lineno">  152</span>    <span class="keyword">const</span> <span class="keyword">auto</span> relationship_type = is_system</div>
-<div class="line"><span class="lineno">  153</span>        ? <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086a07f95931cab7b233ed9c5c3427903a33">common::model::relationship_t::kDependency</a></div>
-<div class="line"><span class="lineno">  154</span>        : <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086a5c3a295fa6e82b767a1d3bf5dd274d45">common::model::relationship_t::kAssociation</a>;</div>
-<div class="line"><span class="lineno">  155</span> </div>
-<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1detail.html#ab85530bb0d21b93200e8f36a322b8b73">get</a>(current_file_id)) {</div>
-<div class="line"><span class="lineno">  157</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>()</div>
-<div class="line"><span class="lineno">  158</span>            .get(current_file_id)</div>
-<div class="line"><span class="lineno">  159</span>            .value()</div>
-<div class="line"><span class="lineno">  160</span>            .add_relationship(common::model::relationship{relationship_type,</div>
-<div class="line"><span class="lineno">  161</span>                include_file.id(), <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6a35c3ace1970663a16e5c65baa5941b13">common::model::access_t::kNone</a>});</div>
-<div class="line"><span class="lineno">  162</span>    }</div>
-<div class="line"><span class="lineno">  163</span>}</div>
+<p class="definition">Definition at line <a class="el" href="include__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00153">153</a> of file <a class="el" href="include__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  156</span>{</div>
+<div class="line"><span class="lineno">  157</span>    <span class="comment">// Make the path relative with respect to relative_to config option</span></div>
+<div class="line"><span class="lineno">  158</span>    <span class="keyword">auto</span> relative_include_path =</div>
+<div class="line"><span class="lineno">  159</span>        std::filesystem::relative(include_path, <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().root_directory());</div>
+<div class="line"><span class="lineno">  160</span> </div>
+<div class="line"><span class="lineno">  161</span>    <span class="comment">// Check if this source file is already registered in the diagram,</span></div>
+<div class="line"><span class="lineno">  162</span>    <span class="comment">// if not add it</span></div>
+<div class="line"><span class="lineno">  163</span>    <span class="keyword">auto</span> diagram_path =</div>
+<div class="line"><span class="lineno">  164</span>        common::model::source_file{relative_include_path}.full_path();</div>
+<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().get_element(diagram_path.to_string()).has_value()) {</div>
+<div class="line"><span class="lineno">  166</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().add_file(std::make_unique&lt;common::model::source_file&gt;(</div>
+<div class="line"><span class="lineno">  167</span>            diagram_path.to_string()));</div>
+<div class="line"><span class="lineno">  168</span>    }</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>    <span class="keyword">auto</span> &amp;include_file = <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().get_element(diagram_path).value();</div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>    include_file.set_type(<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a9cef6e67dbb09df835c263f0610058b2">common::model::source_file_t::kHeader</a>);</div>
+<div class="line"><span class="lineno">  173</span>    include_file.set_file(</div>
+<div class="line"><span class="lineno">  174</span>        std::filesystem::absolute(include_path).lexically_normal().<span class="keywordtype">string</span>());</div>
+<div class="line"><span class="lineno">  175</span>    include_file.set_line(0);</div>
+<div class="line"><span class="lineno">  176</span>    include_file.set_system_header(is_system);</div>
+<div class="line"><span class="lineno">  177</span> </div>
+<div class="line"><span class="lineno">  178</span>    <span class="comment">// Add relationship from the currently parsed source file to this</span></div>
+<div class="line"><span class="lineno">  179</span>    <span class="comment">// include file</span></div>
+<div class="line"><span class="lineno">  180</span>    <span class="keyword">const</span> <span class="keyword">auto</span> relationship_type = is_system</div>
+<div class="line"><span class="lineno">  181</span>        ? <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086a07f95931cab7b233ed9c5c3427903a33">common::model::relationship_t::kDependency</a></div>
+<div class="line"><span class="lineno">  182</span>        : <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#aa494489afc05805843403e7213eef086a5c3a295fa6e82b767a1d3bf5dd274d45">common::model::relationship_t::kAssociation</a>;</div>
+<div class="line"><span class="lineno">  183</span> </div>
+<div class="line"><span class="lineno">  184</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1detail.html#ab85530bb0d21b93200e8f36a322b8b73">get</a>(current_file_id)) {</div>
+<div class="line"><span class="lineno">  185</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>()</div>
+<div class="line"><span class="lineno">  186</span>            .get(current_file_id)</div>
+<div class="line"><span class="lineno">  187</span>            .value()</div>
+<div class="line"><span class="lineno">  188</span>            .add_relationship(common::model::relationship{relationship_type,</div>
+<div class="line"><span class="lineno">  189</span>                include_file.id(), <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#a7aaa860c519329f5f391725e4863acb6a35c3ace1970663a16e5c65baa5941b13">common::model::access_t::kNone</a>});</div>
+<div class="line"><span class="lineno">  190</span>    }</div>
+<div class="line"><span class="lineno">  191</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -602,72 +630,72 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Diagram element id, in case the file was added to the diagram </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="include__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00192">192</a> of file <a class="el" href="include__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  194</span>{</div>
-<div class="line"><span class="lineno">  195</span>    <span class="keyword">using </span>common::model::relationship;</div>
-<div class="line"><span class="lineno">  196</span>    <span class="keyword">using </span>common::model::source_file;</div>
-<div class="line"><span class="lineno">  197</span>    <span class="keyword">using </span><a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9">common::model::source_file_t</a>;</div>
-<div class="line"><span class="lineno">  198</span> </div>
-<div class="line"><span class="lineno">  199</span>    <span class="keyword">auto</span> file_path = std::filesystem::path{file};</div>
-<div class="line"><span class="lineno">  200</span> </div>
-<div class="line"><span class="lineno">  201</span>    <span class="comment">// Make sure the file_path is absolute with respect to the</span></div>
-<div class="line"><span class="lineno">  202</span>    <span class="comment">// filesystem, and in normal form</span></div>
-<div class="line"><span class="lineno">  203</span>    <span class="keywordflow">if</span> (file_path.is_relative()) {</div>
-<div class="line"><span class="lineno">  204</span>        file_path = <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().base_directory() / file_path;</div>
-<div class="line"><span class="lineno">  205</span>    }</div>
-<div class="line"><span class="lineno">  206</span> </div>
-<div class="line"><span class="lineno">  207</span>    file_path = file_path.lexically_normal();</div>
-<div class="line"><span class="lineno">  208</span> </div>
-<div class="line"><span class="lineno">  209</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(source_file{file_path})) {</div>
-<div class="line"><span class="lineno">  210</span>        <a class="code hl_define" href="util_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Processing source file {}&quot;</span>, file.string());</div>
-<div class="line"><span class="lineno">  211</span> </div>
-<div class="line"><span class="lineno">  212</span>        <span class="comment">// Relativize the path with respect to effective root directory</span></div>
-<div class="line"><span class="lineno">  213</span>        <span class="keyword">auto</span> relative_file_path =</div>
-<div class="line"><span class="lineno">  214</span>            std::filesystem::relative(file_path, <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().root_directory());</div>
-<div class="line"><span class="lineno">  215</span> </div>
-<div class="line"><span class="lineno">  216</span>        [[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> relative_file_path_str =</div>
-<div class="line"><span class="lineno">  217</span>            relative_file_path.string();</div>
-<div class="line"><span class="lineno">  218</span> </div>
-<div class="line"><span class="lineno">  219</span>        <span class="comment">// Check if this source file is already registered in the diagram,</span></div>
-<div class="line"><span class="lineno">  220</span>        <span class="comment">// if not add it</span></div>
-<div class="line"><span class="lineno">  221</span>        <span class="keyword">auto</span> diagram_path = source_file{relative_file_path}.full_path();</div>
-<div class="line"><span class="lineno">  222</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().get_element(diagram_path).has_value()) {</div>
-<div class="line"><span class="lineno">  223</span>            <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().add_file(</div>
-<div class="line"><span class="lineno">  224</span>                std::make_unique&lt;source_file&gt;(relative_file_path));</div>
-<div class="line"><span class="lineno">  225</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="include__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00220">220</a> of file <a class="el" href="include__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  222</span>{</div>
+<div class="line"><span class="lineno">  223</span>    <span class="keyword">using </span>common::model::relationship;</div>
+<div class="line"><span class="lineno">  224</span>    <span class="keyword">using </span>common::model::source_file;</div>
+<div class="line"><span class="lineno">  225</span>    <span class="keyword">using </span><a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9">common::model::source_file_t</a>;</div>
 <div class="line"><span class="lineno">  226</span> </div>
-<div class="line"><span class="lineno">  227</span>        <span class="keyword">auto</span> &amp;source_file = <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().get_element(diagram_path).value();</div>
+<div class="line"><span class="lineno">  227</span>    <span class="keyword">auto</span> file_path = std::filesystem::path{file};</div>
 <div class="line"><span class="lineno">  228</span> </div>
-<div class="line"><span class="lineno">  229</span>        <span class="keyword">const</span> std::string implementation_suffix_prefix{<span class="stringliteral">&quot;.c&quot;</span>};</div>
-<div class="line"><span class="lineno">  230</span>        <span class="keywordflow">if</span> (file_path.has_extension() &amp;&amp;</div>
-<div class="line"><span class="lineno">  231</span>            (<a class="code hl_function" href="namespaceclanguml_1_1util.html#ad6b13653a70fb00f05be876d92503e20">util::starts_with</a>(file_path.extension().string(),</div>
-<div class="line"><span class="lineno">  232</span>                 implementation_suffix_prefix) ||</div>
-<div class="line"><span class="lineno">  233</span>                file_path.extension() == <span class="stringliteral">&quot;.m&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  234</span>            source_file.set_type(source_file_t::kImplementation);</div>
-<div class="line"><span class="lineno">  235</span>        }</div>
-<div class="line"><span class="lineno">  236</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  237</span>            source_file.set_type(source_file_t::kHeader);</div>
-<div class="line"><span class="lineno">  238</span> </div>
-<div class="line"><span class="lineno">  239</span>        source_file.set_file(std::filesystem::absolute(file.string())</div>
-<div class="line"><span class="lineno">  240</span>                                 .lexically_normal()</div>
-<div class="line"><span class="lineno">  241</span>                                 .string());</div>
-<div class="line"><span class="lineno">  242</span> </div>
-<div class="line"><span class="lineno">  243</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1util.html#a6246754ef2cfd4a5dd6cd3be8dbfb762" title="Check if a given path is relative to another path.">util::is_relative_to</a>(file_path, <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().root_directory())) {</div>
-<div class="line"><span class="lineno">  244</span>            source_file.set_file_relative(<a class="code hl_function" href="namespaceclanguml_1_1util.html#ac14a702d02537113e5610149ed91d0e0" title="Convert filesystem path to url path.">util::path_to_url</a>(</div>
-<div class="line"><span class="lineno">  245</span>                relative(source_file.file(), <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().root_directory())</div>
-<div class="line"><span class="lineno">  246</span>                    .<span class="keywordtype">string</span>()));</div>
-<div class="line"><span class="lineno">  247</span>        }</div>
-<div class="line"><span class="lineno">  248</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  249</span>            source_file.set_file_relative(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">  250</span>        }</div>
-<div class="line"><span class="lineno">  251</span> </div>
-<div class="line"><span class="lineno">  252</span>        source_file.set_line(0);</div>
-<div class="line"><span class="lineno">  253</span> </div>
-<div class="line"><span class="lineno">  254</span>        <span class="keywordflow">return</span> source_file.id();</div>
-<div class="line"><span class="lineno">  255</span>    }</div>
+<div class="line"><span class="lineno">  229</span>    <span class="comment">// Make sure the file_path is absolute with respect to the</span></div>
+<div class="line"><span class="lineno">  230</span>    <span class="comment">// filesystem, and in normal form</span></div>
+<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">if</span> (file_path.is_relative()) {</div>
+<div class="line"><span class="lineno">  232</span>        file_path = <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().base_directory() / file_path;</div>
+<div class="line"><span class="lineno">  233</span>    }</div>
+<div class="line"><span class="lineno">  234</span> </div>
+<div class="line"><span class="lineno">  235</span>    file_path = file_path.lexically_normal();</div>
+<div class="line"><span class="lineno">  236</span> </div>
+<div class="line"><span class="lineno">  237</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(source_file{file_path})) {</div>
+<div class="line"><span class="lineno">  238</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Processing source file {}&quot;</span>, file.string());</div>
+<div class="line"><span class="lineno">  239</span> </div>
+<div class="line"><span class="lineno">  240</span>        <span class="comment">// Relativize the path with respect to effective root directory</span></div>
+<div class="line"><span class="lineno">  241</span>        <span class="keyword">auto</span> relative_file_path =</div>
+<div class="line"><span class="lineno">  242</span>            std::filesystem::relative(file_path, <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().root_directory());</div>
+<div class="line"><span class="lineno">  243</span> </div>
+<div class="line"><span class="lineno">  244</span>        [[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> relative_file_path_str =</div>
+<div class="line"><span class="lineno">  245</span>            relative_file_path.string();</div>
+<div class="line"><span class="lineno">  246</span> </div>
+<div class="line"><span class="lineno">  247</span>        <span class="comment">// Check if this source file is already registered in the diagram,</span></div>
+<div class="line"><span class="lineno">  248</span>        <span class="comment">// if not add it</span></div>
+<div class="line"><span class="lineno">  249</span>        <span class="keyword">auto</span> diagram_path = source_file{relative_file_path}.full_path();</div>
+<div class="line"><span class="lineno">  250</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().get_element(diagram_path).has_value()) {</div>
+<div class="line"><span class="lineno">  251</span>            <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().add_file(</div>
+<div class="line"><span class="lineno">  252</span>                std::make_unique&lt;source_file&gt;(relative_file_path));</div>
+<div class="line"><span class="lineno">  253</span>        }</div>
+<div class="line"><span class="lineno">  254</span> </div>
+<div class="line"><span class="lineno">  255</span>        <span class="keyword">auto</span> &amp;source_file = <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().get_element(diagram_path).value();</div>
 <div class="line"><span class="lineno">  256</span> </div>
-<div class="line"><span class="lineno">  257</span>    <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">  258</span>}</div>
+<div class="line"><span class="lineno">  257</span>        <span class="keyword">const</span> std::string implementation_suffix_prefix{<span class="stringliteral">&quot;.c&quot;</span>};</div>
+<div class="line"><span class="lineno">  258</span>        <span class="keywordflow">if</span> (file_path.has_extension() &amp;&amp;</div>
+<div class="line"><span class="lineno">  259</span>            (<a class="code hl_function" href="namespaceclanguml_1_1util.html#ad6b13653a70fb00f05be876d92503e20">util::starts_with</a>(file_path.extension().string(),</div>
+<div class="line"><span class="lineno">  260</span>                 implementation_suffix_prefix) ||</div>
+<div class="line"><span class="lineno">  261</span>                file_path.extension() == <span class="stringliteral">&quot;.m&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  262</span>            source_file.set_type(source_file_t::kImplementation);</div>
+<div class="line"><span class="lineno">  263</span>        }</div>
+<div class="line"><span class="lineno">  264</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  265</span>            source_file.set_type(source_file_t::kHeader);</div>
+<div class="line"><span class="lineno">  266</span> </div>
+<div class="line"><span class="lineno">  267</span>        source_file.set_file(std::filesystem::absolute(file.string())</div>
+<div class="line"><span class="lineno">  268</span>                                 .lexically_normal()</div>
+<div class="line"><span class="lineno">  269</span>                                 .string());</div>
+<div class="line"><span class="lineno">  270</span> </div>
+<div class="line"><span class="lineno">  271</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1util.html#a6246754ef2cfd4a5dd6cd3be8dbfb762" title="Check if a given path is relative to another path.">util::is_relative_to</a>(file_path, <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().root_directory())) {</div>
+<div class="line"><span class="lineno">  272</span>            source_file.set_file_relative(<a class="code hl_function" href="namespaceclanguml_1_1util.html#ac14a702d02537113e5610149ed91d0e0" title="Convert filesystem path to url path.">util::path_to_url</a>(</div>
+<div class="line"><span class="lineno">  273</span>                relative(source_file.file(), <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().root_directory())</div>
+<div class="line"><span class="lineno">  274</span>                    .<span class="keywordtype">string</span>()));</div>
+<div class="line"><span class="lineno">  275</span>        }</div>
+<div class="line"><span class="lineno">  276</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  277</span>            source_file.set_file_relative(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  278</span>        }</div>
+<div class="line"><span class="lineno">  279</span> </div>
+<div class="line"><span class="lineno">  280</span>        source_file.set_line(0);</div>
+<div class="line"><span class="lineno">  281</span> </div>
+<div class="line"><span class="lineno">  282</span>        <span class="keywordflow">return</span> source_file.id();</div>
+<div class="line"><span class="lineno">  283</span>    }</div>
+<div class="line"><span class="lineno">  284</span> </div>
+<div class="line"><span class="lineno">  285</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  286</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

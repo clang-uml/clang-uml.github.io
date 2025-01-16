@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -157,7 +157,7 @@ $(function() {
 <div class="line">    exclude:</div>
 <div class="line">      namespaces:</div>
 <div class="line">        - std</div>
-<div class="line">    start_from:</div>
+<div class="line">    from:</div>
 <div class="line">      - function: &quot;main(int,const char**)&quot;</div>
 </div><!-- fragment --><h1><a class="anchor" id="sequence-diagram-overview"></a>
 Sequence diagram overview</h1>
@@ -177,13 +177,22 @@ Specifying diagram location constraints</h1>
 <li><code>to</code> - will include all message call chains, which end at the specified locations</li>
 <li><code>from_to</code> - will include all call chains, which start and end at the specified locations</li>
 </ul>
-<p>Currently, the constraints can be a method or a free function, both specified using the full signature of the function, e.g.:</p>
+<p>Currently, the constraints can be a method or a free function, both specified using either the full signature of the function or a regular expression, e.g.:</p>
 <div class="fragment language-yaml"><div class="line">from:</div>
 <div class="line">  - function: &quot;main(int,const char**)&quot;</div>
-</div><!-- fragment --><p> or </p><div class="fragment language-yaml"><div class="line">to:</div>
+</div><!-- fragment --><p>or</p>
+<div class="fragment language-yaml"><div class="line">from:</div>
+<div class="line">  - function:</div>
+<div class="line">      r: &quot;main.*&quot;</div>
+</div><!-- fragment --><p> However note that the latter will match all functions starting with 'main', so make sure the regular expression only matches the intended functions.</p>
+<p>In case of methods the signature must include fully qualified name, e.g.:</p>
+<div class="fragment language-yaml"><div class="line">to:</div>
 <div class="line">  - function: &quot;clanguml::sequence_diagram::visitor::translation_unit_visitor::VisitCXXRecordDecl(clang::CXXRecordDecl *)&quot;</div>
-</div><!-- fragment --><p>The locations must be fully qualified, and they must match exactly the string representation of a given function or method in the <code>clang-uml</code> model.</p>
-<p>In case of the <code>from_to</code> constraint, it is necessary to provide both <code>from</code> and <code>to</code> locations as follows: </p><div class="fragment language-yaml"><div class="line">from_to:</div>
+</div><!-- fragment --><p>or regular expression matching against the fully qualified name, e.g.:</p>
+<div class="fragment language-yaml"><div class="line">to:</div>
+<div class="line">  - function:</div>
+<div class="line">      r: &quot;.*sequence_diagram.*VisitCXXRecordDecl.*&quot;</div>
+</div><!-- fragment --><p>In case of the <code>from_to</code> constraint, it is necessary to provide both <code>from</code> and <code>to</code> locations as follows: </p><div class="fragment language-yaml"><div class="line">from_to:</div>
 <div class="line">  - [function: &quot;clanguml::t20034::D::d2()&quot;,</div>
 <div class="line">     function: &quot;clanguml::t20034::A::a2()&quot;]</div>
 </div><!-- fragment --><p>To find the exact function signature, which can be used as a <code>from</code> location, run <code>clang-uml</code> as follows (assuming the function of interest is called <code>main</code>):</p>

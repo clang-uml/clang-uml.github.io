@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -130,7 +130,7 @@ $(function() {
 <a href="source__file_8h.html">Go to the documentation of this file.</a><div class="fragment language-cpp"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file src/common/model/source_file.h</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (c) 2021-2024 Bartek Kryza &lt;bkryza@gmail.com&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (c) 2021-2025 Bartek Kryza &lt;bkryza@gmail.com&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * you may not use this file except in compliance with the License.</span></div>
@@ -172,7 +172,7 @@ $(function() {
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a4301e7d5846cd1f6eb418da665f1c00e">kImplementation</a> <span class="comment">/*!&lt; Diagram element is a source file (e.g. cpp) */</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>};</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>std::string <a class="code hl_function" href="namespaceclanguml_1_1common_1_1model.html#a3d2d31fc6efe9c227001ba3b53719f84">to_string</a>(<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9">source_file_t</a> sf);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>std::string <a class="code hl_function" href="namespaceclanguml_1_1common.html#ad11805ecb3506d346f09498024687f9e">to_string</a>(<a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9">source_file_t</a> sf);</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structclanguml_1_1common_1_1model_1_1fs__path__sep.html">   48</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structclanguml_1_1common_1_1model_1_1fs__path__sep.html">fs_path_sep</a> {</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#ifdef _WIN32</span></div>
@@ -297,53 +297,37 @@ $(function() {
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <span class="keywordflow">return</span> res.lexically_normal();</div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    }</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="comment"></span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment">     * Return inja context for this element.</span></div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="comment">     * @return Inja context.</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1source__file.html#ae45d3da6fca8e8881ad726e1d35ed4c8">  177</a></span>    inja::json <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__file.html#ae45d3da6fca8e8881ad726e1d35ed4c8">context</a>()<span class="keyword"> const override</span></div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        inja::json ctx = <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#adfbf1d8eb9dd6d510da03f2b1ff1f794">diagram_element::context</a>();</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        std::filesystem::path fullNamePath{ctx[<span class="stringliteral">&quot;full_name&quot;</span>].get&lt;std::string&gt;()};</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        fullNamePath.make_preferred();</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        ctx[<span class="stringliteral">&quot;full_name&quot;</span>] = fullNamePath.string();</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <span class="keywordflow">return</span> ctx;</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    }</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="keyword">protected</span>:<span class="comment"></span></div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment">     * Return the full path string, i.e. parent path and elements name.</span></div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="comment">     * @return Full source file path as string.</span></div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1source__file.html#a3ae78890a0f8ad8617931f1497645982">  194</a></span>    std::string <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__file.html#a3ae78890a0f8ad8617931f1497645982">full_name_impl</a>(<span class="keywordtype">bool</span> <span class="comment">/*relative*/</span>)<span class="keyword"> const override</span></div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="keywordflow">return</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1source__file.html#ae5c2adf31ab55fa7b1fa2db9ccac3f71">path_</a> | <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a738ce54aa464c34ebbe6a5bb6ddecaec">name</a>()).to_string();</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    }</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1source__file.html#ae5c2adf31ab55fa7b1fa2db9ccac3f71">  200</a></span>    <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">filesystem_path</a> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1source__file.html#ae5c2adf31ab55fa7b1fa2db9ccac3f71">path_</a>{<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afa6fc48c2beb30c9fc68b676dc8d76e3ab6e2a655b3982da220543062a531248b">path_type::kFilesystem</a>};</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1source__file.html#a5c0d9579e28138a2c92936b8b18059de">  201</a></span>    <a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9">source_file_t</a> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1source__file.html#a5c0d9579e28138a2c92936b8b18059de">type_</a>{<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a76d424355601791a04e7f55c4276cd87">source_file_t::kDirectory</a>};</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1source__file.html#a812359d4c6a3d0b020dd9ac869fba461">  202</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1source__file.html#a812359d4c6a3d0b020dd9ac869fba461">is_absolute_</a>{<span class="keyword">false</span>};</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1source__file.html#ad4c6e04a3ecb1b45ba373900d96bec60">  203</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1source__file.html#ad4c6e04a3ecb1b45ba373900d96bec60">is_system_header_</a>{<span class="keyword">false</span>};</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>};</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>} <span class="comment">// namespace clanguml::common::model</span></div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacestd.html" title="STL namespace.">std</a> {</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01std_1_1reference__wrapper_3_01clanguml_1_1common_1_1model_1_1source__file_01_4_01_4.html">  209</a></span><span class="keyword">struct </span>hash&lt;<a class="code hl_namespace" href="namespacestd.html" title="STL namespace.">std</a>::reference_wrapper&lt;clanguml::common::model::source_file&gt;&gt; {</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01std_1_1reference__wrapper_3_01clanguml_1_1common_1_1model_1_1source__file_01_4_01_4.html#a384574d425c0fc104d1761a339ed0c24">  210</a></span>    std::size_t <a class="code hl_function" href="structstd_1_1hash_3_01std_1_1reference__wrapper_3_01clanguml_1_1common_1_1model_1_1source__file_01_4_01_4.html#a384574d425c0fc104d1761a339ed0c24">operator()</a>(</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        <span class="keyword">const</span> std::reference_wrapper&lt;clanguml::common::model::source_file&gt; &amp;key)<span class="keyword"></span></div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="keyword">        const</span></div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        <span class="keywordflow">return</span> key.get().id().value();</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    }</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>};</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>} <span class="comment">// namespace std</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="keyword">protected</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="comment">     * Return the full path string, i.e. parent path and elements name.</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="comment">     * @return Full source file path as string.</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1source__file.html#a3ae78890a0f8ad8617931f1497645982">  178</a></span>    std::string <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1source__file.html#a3ae78890a0f8ad8617931f1497645982">full_name_impl</a>(<span class="keywordtype">bool</span> <span class="comment">/*relative*/</span>)<span class="keyword"> const override</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <span class="keywordflow">return</span> (<a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1source__file.html#ae5c2adf31ab55fa7b1fa2db9ccac3f71">path_</a> | <a class="code hl_function" href="classclanguml_1_1common_1_1model_1_1diagram__element.html#a738ce54aa464c34ebbe6a5bb6ddecaec">name</a>()).to_string();</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    }</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1source__file.html#ae5c2adf31ab55fa7b1fa2db9ccac3f71">  184</a></span>    <a class="code hl_class" href="classclanguml_1_1common_1_1model_1_1path.html" title="Diagram path.">filesystem_path</a> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1source__file.html#ae5c2adf31ab55fa7b1fa2db9ccac3f71">path_</a>{<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#afa6fc48c2beb30c9fc68b676dc8d76e3ab6e2a655b3982da220543062a531248b">path_type::kFilesystem</a>};</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1source__file.html#a5c0d9579e28138a2c92936b8b18059de">  185</a></span>    <a class="code hl_enumeration" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9">source_file_t</a> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1source__file.html#a5c0d9579e28138a2c92936b8b18059de">type_</a>{<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a76d424355601791a04e7f55c4276cd87">source_file_t::kDirectory</a>};</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1source__file.html#a812359d4c6a3d0b020dd9ac869fba461">  186</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1source__file.html#a812359d4c6a3d0b020dd9ac869fba461">is_absolute_</a>{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="classclanguml_1_1common_1_1model_1_1source__file.html#ad4c6e04a3ecb1b45ba373900d96bec60">  187</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="classclanguml_1_1common_1_1model_1_1source__file.html#ad4c6e04a3ecb1b45ba373900d96bec60">is_system_header_</a>{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>};</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>} <span class="comment">// namespace clanguml::common::model</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacestd.html" title="STL namespace.">std</a> {</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01std_1_1reference__wrapper_3_01clanguml_1_1common_1_1model_1_1source__file_01_4_01_4.html">  193</a></span><span class="keyword">struct </span>hash&lt;<a class="code hl_namespace" href="namespacestd.html" title="STL namespace.">std</a>::reference_wrapper&lt;clanguml::common::model::source_file&gt;&gt; {</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01std_1_1reference__wrapper_3_01clanguml_1_1common_1_1model_1_1source__file_01_4_01_4.html#a384574d425c0fc104d1761a339ed0c24">  194</a></span>    std::size_t <a class="code hl_function" href="structstd_1_1hash_3_01std_1_1reference__wrapper_3_01clanguml_1_1common_1_1model_1_1source__file_01_4_01_4.html#a384574d425c0fc104d1761a339ed0c24">operator()</a>(</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="keyword">const</span> std::reference_wrapper&lt;clanguml::common::model::source_file&gt; &amp;key)<span class="keyword"></span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="keyword">        const</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <span class="keywordflow">return</span> key.get().id().value();</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    }</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>};</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>} <span class="comment">// namespace std</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

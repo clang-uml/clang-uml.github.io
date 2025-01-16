@@ -9,5 +9,6 @@ var searchData=
   ['build_5ffrom_5ftemplate_5fspecialization_5ftype_6',['build_from_template_specialization_type',['../classclanguml_1_1common_1_1visitor_1_1template__builder.html#ad41c8f40c635ca7fd3297c1da1f736dc',1,'clanguml::common::visitor::template_builder']]],
   ['build_5ffunction_5fmodel_7',['build_function_model',['../classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#aeacf568772691a82d42d5979b0e277b1',1,'clanguml::sequence_diagram::visitor::translation_unit_visitor']]],
   ['build_5ffunction_5ftemplate_8',['build_function_template',['../classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#af68dc9c0d01da13b80eaaae22845979a',1,'clanguml::sequence_diagram::visitor::translation_unit_visitor']]],
-  ['build_5ffunction_5ftemplate_5finstantiation_9',['build_function_template_instantiation',['../classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#a613bdb636af7ec251a955f3381e9aafa',1,'clanguml::sequence_diagram::visitor::translation_unit_visitor']]]
+  ['build_5ffunction_5ftemplate_5finstantiation_9',['build_function_template_instantiation',['../classclanguml_1_1sequence__diagram_1_1visitor_1_1translation__unit__visitor.html#a613bdb636af7ec251a955f3381e9aafa',1,'clanguml::sequence_diagram::visitor::translation_unit_visitor']]],
+  ['build_5freverse_5fcall_5fgraph_10',['build_reverse_call_graph',['../classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#ad858eda86259e22d823fe2d78149ebbc',1,'clanguml::sequence_diagram::model::diagram']]]
 ];

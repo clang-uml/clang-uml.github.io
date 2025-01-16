@@ -1,0 +1,430 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="clang-uml" />
+<meta property="og:image" content="clang-uml-logo.svg" />
+<meta property="og:description" content="C++ to UML diagram generator based on Clang." />
+<meta property="og:url" content="https://clang-uml.github.io/" />
+<!-- END opengraph metadata -->
+<title>clang-uml: clanguml::package_diagram::generators::graphml::generator Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>-->
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<!--<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>-->
+<!--<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>-->
+<!--<script type="text/javascript" src="toggle-alternative-theme.js"></script>-->
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    // DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    // DoxygenAwesomeInteractiveToc.init()
+    // DoxygenAwesomeTabs.init()
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="github.min.css">
+<script src="highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.configure({useBR: false});
+        $(".fragment").each(function(i,node) {
+            var $node = $(node);
+            // Only apply highlight.js to non-cpp and non-yaml code blocks
+            if (!$node.hasClass("language-cpp")
+                && !$node.hasClass("language-yaml")
+                && !$node.hasClass("language-json")) {
+                $node.html("<pre><code class='" +
+                    $node.attr("class") + "'>" +
+                    $node.text() + "</code></pre>");
+                hljs.highlightElement(node);
+            }
+        });
+    });
+</script>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<!--<a href="https://github.com/bkryza/clang-uml" class="github-corner" title="View source on GitHub" target="_blank">-->
+<!--    <svg viewBox="0 0 250 250" width="70" height="70" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">-->
+<!--    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+<div id="top" style="background-color: gainsboro"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo">
+      <a href="index.html">
+          <img alt="Main page" src="clang-uml-logo.svg"/>
+      </a>
+  </td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+    <div id="projectname">
+       <span id="projectnumber">0.6.0</span>
+    </div>
+    <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceclanguml.html">clanguml</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1package__diagram.html">package_diagram</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1package__diagram_1_1generators.html">generators</a></li><li class="navelem"><a class="el" href="namespaceclanguml_1_1package__diagram_1_1generators_1_1graphml.html">graphml</a></li><li class="navelem"><a class="el" href="classclanguml_1_1package__diagram_1_1generators_1_1graphml_1_1generator.html">generator</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classclanguml_1_1package__diagram_1_1generators_1_1graphml_1_1generator-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">clanguml::package_diagram::generators::graphml::generator Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Package diagram GraphML generator.  
+ <a href="classclanguml_1_1package__diagram_1_1generators_1_1graphml_1_1generator.html#details">More...</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Package diagram GraphML generator. </p>
+
+<p class="definition">Definition at line <a class="el" href="graphml_2package__diagram__generator_8h_source.html#l00052">52</a> of file <a class="el" href="graphml_2package__diagram__generator_8h_source.html">package_diagram_generator.h</a>.</p>
+</div>
+<p><code>#include &lt;<a class="el" href="graphml_2package__diagram__generator_8h_source.html">package_diagram_generator.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ab8cba415136df5979739c527e5650953"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1package__diagram_1_1generators_1_1graphml_1_1generator.html#ab8cba415136df5979739c527e5650953">generator</a> (<a class="el" href="namespaceclanguml_1_1package__diagram_1_1generators_1_1graphml.html#aefcf88e1207078b1bfcefa3981546543">diagram_config</a> &amp;<a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a">config</a>, <a class="el" href="namespaceclanguml_1_1package__diagram_1_1generators_1_1graphml.html#a3c4e02eb61af56ce32de48f334cfcc23">diagram_model</a> &amp;<a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63">model</a>)</td></tr>
+<tr class="separator:ab8cba415136df5979739c527e5650953"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3a83b2c5129f21a5fe5d1e357430cc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1package__diagram_1_1generators_1_1graphml_1_1generator.html#af3a83b2c5129f21a5fe5d1e357430cc5">generate</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1package.html">package</a> &amp;p, graphml_node_t &amp;parent) const override</td></tr>
+<tr class="separator:af3a83b2c5129f21a5fe5d1e357430cc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a540bf610c49b525eab044605ac42e227"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1package__diagram_1_1generators_1_1graphml_1_1generator.html#a540bf610c49b525eab044605ac42e227">generate_top_level_elements</a> (graphml_node_t &amp;parent) const override</td></tr>
+<tr class="separator:a540bf610c49b525eab044605ac42e227"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html">clanguml::common::generators::graphml::generator&lt; ConfigType, DiagramType &gt;</a></td></tr>
+<tr class="memitem:aae9a2d5d641aace0c2ca0dad5cbe5453 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#aae9a2d5d641aace0c2ca0dad5cbe5453">~generator</a> () override=default</td></tr>
+<tr class="separator:aae9a2d5d641aace0c2ca0dad5cbe5453 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae50688c2f0a9852072b30cc3b068e82a inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; std::pair&lt; std::string, <a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1graphml.html#acfcb0688c070c822f4b3f20d581aa819">property_type</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#ae50688c2f0a9852072b30cc3b068e82a">graph_property_names</a> () const</td></tr>
+<tr class="separator:ae50688c2f0a9852072b30cc3b068e82a inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addf25a33cf8cb6d56b14c29191a65bf3 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; std::pair&lt; std::string, <a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1graphml.html#acfcb0688c070c822f4b3f20d581aa819">property_type</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#addf25a33cf8cb6d56b14c29191a65bf3">node_property_names</a> () const</td></tr>
+<tr class="separator:addf25a33cf8cb6d56b14c29191a65bf3 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e8c506666198410a8f61a3ed36bf685 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; std::pair&lt; std::string, <a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1graphml.html#acfcb0688c070c822f4b3f20d581aa819">property_type</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a8e8c506666198410a8f61a3ed36bf685">edge_property_names</a> () const</td></tr>
+<tr class="separator:a8e8c506666198410a8f61a3ed36bf685 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab55b0e3e6e333b53283de33176a733f9 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#ab55b0e3e6e333b53283de33176a733f9">generate</a> (std::ostream &amp;ostr) const override</td></tr>
+<tr class="memdesc:ab55b0e3e6e333b53283de33176a733f9 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate diagram.  <br /></td></tr>
+<tr class="separator:ab55b0e3e6e333b53283de33176a733f9 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a508cb33a42b3fe1f5250eb381e1d7e86 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a508cb33a42b3fe1f5250eb381e1d7e86">generate_diagram</a> (<a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1graphml.html#a3027b3b80107e301d497113e5a7d6bec">graphml_node_t</a> &amp;parent) const</td></tr>
+<tr class="memdesc:a508cb33a42b3fe1f5250eb381e1d7e86 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate diagram model.  <br /></td></tr>
+<tr class="separator:a508cb33a42b3fe1f5250eb381e1d7e86 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a323a20a063a18599555d3b48a43c3a1d inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a323a20a063a18599555d3b48a43c3a1d">generate_top_level_elements</a> (<a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1graphml.html#a3027b3b80107e301d497113e5a7d6bec">graphml_node_t</a> &amp;parent) const =0</td></tr>
+<tr class="memdesc:a323a20a063a18599555d3b48a43c3a1d inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">In a nested diagram, generate the top level elements.  <br /></td></tr>
+<tr class="separator:a323a20a063a18599555d3b48a43c3a1d inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91f340b50c8f68f13df7d803672eeb8e inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a91f340b50c8f68f13df7d803672eeb8e inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a91f340b50c8f68f13df7d803672eeb8e">generate_notes</a> (const T &amp;e, <a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1graphml.html#a3027b3b80107e301d497113e5a7d6bec">graphml_node_t</a> &amp;parent) const</td></tr>
+<tr class="memdesc:a91f340b50c8f68f13df7d803672eeb8e inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate any notes to be attached to diagram elements.  <br /></td></tr>
+<tr class="separator:a91f340b50c8f68f13df7d803672eeb8e inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd2e737a4ebcfb8b4531b52adb0d58d2 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#afd2e737a4ebcfb8b4531b52adb0d58d2">generate_metadata</a> (<a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1graphml.html#a46561f08b642b93445988cdc52c1cb90">graphml_t</a> &amp;parent) const</td></tr>
+<tr class="memdesc:afd2e737a4ebcfb8b4531b52adb0d58d2 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate metadata element with diagram metadata.  <br /></td></tr>
+<tr class="separator:afd2e737a4ebcfb8b4531b52adb0d58d2 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac0d9caa0c12402163d20dbe3b95bacf inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#aac0d9caa0c12402163d20dbe3b95bacf">generate</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1package.html">model::package</a> &amp;p, <a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1graphml.html#a3027b3b80107e301d497113e5a7d6bec">graphml_node_t</a> &amp;parent) const</td></tr>
+<tr class="memdesc:aac0d9caa0c12402163d20dbe3b95bacf inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate diagram package.  <br /></td></tr>
+<tr class="separator:aac0d9caa0c12402163d20dbe3b95bacf inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24bc21dc616758f31f2b3179b2eebe75 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a24bc21dc616758f31f2b3179b2eebe75">generate_relationships</a> (<a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1graphml.html#a3027b3b80107e301d497113e5a7d6bec">graphml_node_t</a> &amp;parent) const</td></tr>
+<tr class="memdesc:a24bc21dc616758f31f2b3179b2eebe75 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate all relationships in the diagram.  <br /></td></tr>
+<tr class="separator:a24bc21dc616758f31f2b3179b2eebe75 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2349ab1b485968576baf9b353ac3620c inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a2349ab1b485968576baf9b353ac3620c">generate_relationships</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html">model::diagram_element</a> &amp;c, <a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1graphml.html#a3027b3b80107e301d497113e5a7d6bec">graphml_node_t</a> &amp;parent) const</td></tr>
+<tr class="memdesc:a2349ab1b485968576baf9b353ac3620c inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate all relationships originating at a diagram element.  <br /></td></tr>
+<tr class="separator:a2349ab1b485968576baf9b353ac3620c inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae78bf141092bacbbdcc777c122344c2e inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ae78bf141092bacbbdcc777c122344c2e inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#ae78bf141092bacbbdcc777c122344c2e">generate_link</a> (pugi::xml_node &amp;node, const T &amp;c) const</td></tr>
+<tr class="separator:ae78bf141092bacbbdcc777c122344c2e inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab408659a8881af10b76e4efdf12b47cb inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1property__keymap__t.html">property_keymap_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#ab408659a8881af10b76e4efdf12b47cb">graph_properties</a> () const</td></tr>
+<tr class="separator:ab408659a8881af10b76e4efdf12b47cb inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8222df5b85472320d8be1002c5380a9d inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1property__keymap__t.html">property_keymap_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a8222df5b85472320d8be1002c5380a9d">node_properties</a> () const</td></tr>
+<tr class="separator:a8222df5b85472320d8be1002c5380a9d inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27349cac1b0ade56ee5d5a7a48c0479d inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1property__keymap__t.html">property_keymap_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a27349cac1b0ade56ee5d5a7a48c0479d">edge_properties</a> () const</td></tr>
+<tr class="separator:a27349cac1b0ade56ee5d5a7a48c0479d inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade6937a0a7e3184d3874b4a6ab0de7af inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">pugi::xml_node&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#ade6937a0a7e3184d3874b4a6ab0de7af">make_node</a> (<a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1graphml.html#a3027b3b80107e301d497113e5a7d6bec">graphml_node_t</a> &amp;parent, const std::string &amp;id) const</td></tr>
+<tr class="separator:ade6937a0a7e3184d3874b4a6ab0de7af inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5c8bb93a1a178fd27eca8889ae724f3 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">pugi::xml_node&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#ab5c8bb93a1a178fd27eca8889ae724f3">make_graph</a> (<a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1graphml.html#a3027b3b80107e301d497113e5a7d6bec">graphml_node_t</a> &amp;parent, const std::string &amp;id) const</td></tr>
+<tr class="separator:ab5c8bb93a1a178fd27eca8889ae724f3 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56be1ebb814840577131ac2f9c5dec26 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">pugi::xml_node&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a56be1ebb814840577131ac2f9c5dec26">make_subgraph</a> (<a class="el" href="namespaceclanguml_1_1common_1_1generators_1_1graphml.html#a3027b3b80107e301d497113e5a7d6bec">graphml_node_t</a> &amp;parent, const std::string &amp;id, const std::string &amp;name=&quot;&quot;, const std::string &amp;type=&quot;&quot;) const</td></tr>
+<tr class="separator:a56be1ebb814840577131ac2f9c5dec26 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45e956b4a683c9ca56fc33d402f3f3b6 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a45e956b4a683c9ca56fc33d402f3f3b6">add_data</a> (pugi::xml_node &amp;node, const std::string &amp;key, const std::string &amp;value, bool cdata=false) const</td></tr>
+<tr class="separator:a45e956b4a683c9ca56fc33d402f3f3b6 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91255e8ec9223549932305781aeb7cee inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a91255e8ec9223549932305781aeb7cee">add_cdata</a> (pugi::xml_node &amp;node, const std::string &amp;key, const std::string &amp;value) const</td></tr>
+<tr class="separator:a91255e8ec9223549932305781aeb7cee inherit pub_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classclanguml_1_1common_1_1generators_1_1generator')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html">clanguml::common::generators::generator&lt; ConfigType, DiagramType &gt;</a></td></tr>
+<tr class="memitem:a52c02a5ce1fc9d387987e1187d39d541 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a52c02a5ce1fc9d387987e1187d39d541">generator</a> (ConfigType &amp;<a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a">config</a>, DiagramType &amp;<a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63">model</a>)</td></tr>
+<tr class="memdesc:a52c02a5ce1fc9d387987e1187d39d541 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <br /></td></tr>
+<tr class="separator:a52c02a5ce1fc9d387987e1187d39d541 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43f3542bda18e615c7dc33724b2bfb1d inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a43f3542bda18e615c7dc33724b2bfb1d">~generator</a> ()=default</td></tr>
+<tr class="separator:a43f3542bda18e615c7dc33724b2bfb1d inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47d542b3826767d13882fa61352de03f inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a47d542b3826767d13882fa61352de03f">generate</a> (std::ostream &amp;ostr) const =0</td></tr>
+<tr class="memdesc:a47d542b3826767d13882fa61352de03f inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate diagram.  <br /></td></tr>
+<tr class="separator:a47d542b3826767d13882fa61352de03f inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4e5589dc82d850c8ea2be711de48b6a inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">const ConfigType &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a">config</a> () const</td></tr>
+<tr class="memdesc:ad4e5589dc82d850c8ea2be711de48b6a inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get reference to diagram config.  <br /></td></tr>
+<tr class="separator:ad4e5589dc82d850c8ea2be711de48b6a inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af86cc2bb63f292fd7076909b9b7eba63 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">const DiagramType &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63">model</a> () const</td></tr>
+<tr class="memdesc:af86cc2bb63f292fd7076909b9b7eba63 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get reference to diagram model.  <br /></td></tr>
+<tr class="separator:af86cc2bb63f292fd7076909b9b7eba63 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d89e22a950645c55dd12eea43585fde inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a4d89e22a950645c55dd12eea43585fde">get_link_pattern</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">common::model::source_location</a> &amp;sl) const</td></tr>
+<tr class="separator:a4d89e22a950645c55dd12eea43585fde inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedc6c7ed91c9c08ddcedcfb22b79999e inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::pair&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#aedc6c7ed91c9c08ddcedcfb22b79999e">get_tooltip_pattern</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1source__location.html">common::model::source_location</a> &amp;sl) const</td></tr>
+<tr class="separator:aedc6c7ed91c9c08ddcedcfb22b79999e inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a263e988d105e1dfaae6151bf81aea792 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a263e988d105e1dfaae6151bf81aea792">render_link</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html">common::model::diagram_element</a> &amp;e) const</td></tr>
+<tr class="separator:a263e988d105e1dfaae6151bf81aea792 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d4b65e4d30f8ca4590d9b01b9ca02f0 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a7d4b65e4d30f8ca4590d9b01b9ca02f0">render_link</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">common::model::relationship</a> &amp;e) const</td></tr>
+<tr class="separator:a7d4b65e4d30f8ca4590d9b01b9ca02f0 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6818fb47e5b921789648d64d9be3a946 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a6818fb47e5b921789648d64d9be3a946">render_tooltip</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1diagram__element.html">common::model::diagram_element</a> &amp;e) const</td></tr>
+<tr class="separator:a6818fb47e5b921789648d64d9be3a946 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88a12b40113018a9f5ae18de82fd6ece inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a88a12b40113018a9f5ae18de82fd6ece">render_tooltip</a> (const <a class="el" href="classclanguml_1_1common_1_1model_1_1relationship.html">common::model::relationship</a> &amp;e) const</td></tr>
+<tr class="separator:a88a12b40113018a9f5ae18de82fd6ece inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf7e8ebbb99cd5d9ffcd776f570a1cc5 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#adf7e8ebbb99cd5d9ffcd776f570a1cc5">init_context</a> ()</td></tr>
+<tr class="memdesc:adf7e8ebbb99cd5d9ffcd776f570a1cc5 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize diagram Jinja context.  <br /></td></tr>
+<tr class="separator:adf7e8ebbb99cd5d9ffcd776f570a1cc5 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac64689f9c3d0a4975f91023bdbe04531 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#ac64689f9c3d0a4975f91023bdbe04531">update_context</a> () const</td></tr>
+<tr class="memdesc:ac64689f9c3d0a4975f91023bdbe04531 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update diagram Jinja context.  <br /></td></tr>
+<tr class="separator:ac64689f9c3d0a4975f91023bdbe04531 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adca9d79ebb6878689f747ff31f980e77 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#adca9d79ebb6878689f747ff31f980e77">init_env</a> ()</td></tr>
+<tr class="separator:adca9d79ebb6878689f747ff31f980e77 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65cda034a41e2f0206b42df72bbcfe32 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">const inja::json &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a65cda034a41e2f0206b42df72bbcfe32">context</a> () const</td></tr>
+<tr class="separator:a65cda034a41e2f0206b42df72bbcfe32 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f1edb989505ccc4439365050c084430 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">inja::Environment &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a5f1edb989505ccc4439365050c084430">env</a> () const</td></tr>
+<tr class="separator:a5f1edb989505ccc4439365050c084430 inherit pub_methods_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html">clanguml::common::generators::graphml::generator&lt; ConfigType, DiagramType &gt;</a></td></tr>
+<tr class="memitem:afb746df9682732cd2ac9aee4fc471176 inherit pro_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#afb746df9682732cd2ac9aee4fc471176">generate_key</a> (pugi::xml_node &amp;parent, const std::string &amp;attr_name, const std::string &amp;for_value, const std::string &amp;id_value, const std::string &amp;attr_type=&quot;string&quot;) const</td></tr>
+<tr class="separator:afb746df9682732cd2ac9aee4fc471176 inherit pro_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac187907dd3661f8a697ac926f7da9a0a inherit pro_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1property__keymap__t.html">property_keymap_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#ac187907dd3661f8a697ac926f7da9a0a">graph_properties</a> ()</td></tr>
+<tr class="separator:ac187907dd3661f8a697ac926f7da9a0a inherit pro_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af794cbcd2ec09cc70f438f31cebc9897 inherit pro_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1property__keymap__t.html">property_keymap_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#af794cbcd2ec09cc70f438f31cebc9897">node_properties</a> ()</td></tr>
+<tr class="separator:af794cbcd2ec09cc70f438f31cebc9897 inherit pro_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab25289d58a3d9a7666c6940430852707 inherit pro_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1property__keymap__t.html">property_keymap_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#ab25289d58a3d9a7666c6940430852707">edge_properties</a> ()</td></tr>
+<tr class="separator:ab25289d58a3d9a7666c6940430852707 inherit pro_methods_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html">clanguml::common::generators::graphml::generator&lt; ConfigType, DiagramType &gt;</a></td></tr>
+<tr class="memitem:aca8512b3966014967def1fd1a394cd17 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1graphml__node__map__t.html">graphml_node_map_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#aca8512b3966014967def1fd1a394cd17">graph_ids_</a> {&quot;g&quot;}</td></tr>
+<tr class="separator:aca8512b3966014967def1fd1a394cd17 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f8f55a776467f9e32edec9492b49a18 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1graphml__node__map__t.html">graphml_node_map_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a0f8f55a776467f9e32edec9492b49a18">node_ids_</a> {&quot;n&quot;}</td></tr>
+<tr class="separator:a0f8f55a776467f9e32edec9492b49a18 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a53c84a809622a6a1e0beaba605d4a3 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1graphml__node__map__t.html">graphml_node_map_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a3a53c84a809622a6a1e0beaba605d4a3">edge_ids_</a> {&quot;e&quot;}</td></tr>
+<tr class="separator:a3a53c84a809622a6a1e0beaba605d4a3 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1graphml_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classclanguml_1_1common_1_1generators_1_1generator"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classclanguml_1_1common_1_1generators_1_1generator')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html">clanguml::common::generators::generator&lt; ConfigType, DiagramType &gt;</a></td></tr>
+<tr class="memitem:a56438896c0f92c83bf893575cb9cd7d4 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">inja::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#a56438896c0f92c83bf893575cb9cd7d4">m_context</a></td></tr>
+<tr class="separator:a56438896c0f92c83bf893575cb9cd7d4 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff8ab3e989bf84dbb2dd080881771809 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1generator"><td class="memItemLeft" align="right" valign="top">inja::Environment&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1generators_1_1generator.html#aff8ab3e989bf84dbb2dd080881771809">m_env</a></td></tr>
+<tr class="separator:aff8ab3e989bf84dbb2dd080881771809 inherit pro_attribs_classclanguml_1_1common_1_1generators_1_1generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ab8cba415136df5979739c527e5650953" name="ab8cba415136df5979739c527e5650953"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8cba415136df5979739c527e5650953">&#9670;&#160;</a></span>generator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">clanguml::package_diagram::generators::graphml::generator::generator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceclanguml_1_1package__diagram_1_1generators_1_1graphml.html#aefcf88e1207078b1bfcefa3981546543">diagram_config</a> &amp;&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceclanguml_1_1package__diagram_1_1generators_1_1graphml.html#a3c4e02eb61af56ce32de48f334cfcc23">diagram_model</a> &amp;&#160;</td>
+          <td class="paramname"><em>model</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="graphml_2package__diagram__generator_8cc_source.html#l00025">25</a> of file <a class="el" href="graphml_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   26</span>    : common_generator&lt;diagram_config, diagram_model&gt;{<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>, <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>}</div>
+<div class="line"><span class="lineno">   27</span>{</div>
+<div class="line"><span class="lineno">   28</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="af3a83b2c5129f21a5fe5d1e357430cc5" name="af3a83b2c5129f21a5fe5d1e357430cc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3a83b2c5129f21a5fe5d1e357430cc5">&#9670;&#160;</a></span>generate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::package_diagram::generators::graphml::generator::generate </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classclanguml_1_1common_1_1model_1_1package.html">package</a> &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">graphml_node_t &amp;&#160;</td>
+          <td class="paramname"><em>parent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="graphml_2package__diagram__generator_8cc_source.html#l00041">41</a> of file <a class="el" href="graphml_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   42</span>{</div>
+<div class="line"><span class="lineno">   43</span>    <span class="keyword">using </span><a class="code hl_class" href="classclanguml_1_1common_1_1generators_1_1display__name__adapter.html">clanguml::common::generators::display_name_adapter</a>;</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Generating package {}&quot;</span>, p.full_name(<span class="keyword">false</span>));</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;uns = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().using_namespace();</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">if</span> (!uns.starts_with({p.full_name(false)})) {</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keyword">auto</span> package_node = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a56be1ebb814840577131ac2f9c5dec26">make_subgraph</a>(parent, p.alias(),</div>
+<div class="line"><span class="lineno">   51</span>            display_name_adapter(p).with_packages().name(),</div>
+<div class="line"><span class="lineno">   52</span>            <a class="code hl_function" href="namespaceclanguml_1_1common.html#ad11805ecb3506d346f09498024687f9e">to_string</a>(<a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#ad4e5589dc82d850c8ea2be711de48b6a" title="Get reference to diagram config.">config</a>().package_type()));</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#ae78bf141092bacbbdcc777c122344c2e">generate_link</a>(package_node, p);</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>        <span class="keywordflow">if</span> (p.is_deprecated())</div>
+<div class="line"><span class="lineno">   57</span>            <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a45e956b4a683c9ca56fc33d402f3f3b6">add_data</a>(package_node, <span class="stringliteral">&quot;stereotype&quot;</span>, <span class="stringliteral">&quot;deprecated&quot;</span>);</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>        <span class="keyword">auto</span> graph_node = <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#ab5c8bb93a1a178fd27eca8889ae724f3">make_graph</a>(package_node, p.alias());</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;subpackage : p) {</div>
+<div class="line"><span class="lineno">   62</span>            <span class="keyword">auto</span> &amp;pkg = <span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*subpackage);</div>
+<div class="line"><span class="lineno">   63</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1graphml_1_1generator.html#af3a83b2c5129f21a5fe5d1e357430cc5">generate</a>(pkg, graph_node);</div>
+<div class="line"><span class="lineno">   64</span>        }</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a91f340b50c8f68f13df7d803672eeb8e" title="Generate any notes to be attached to diagram elements.">generate_notes</a>(p, graph_node);</div>
+<div class="line"><span class="lineno">   67</span>    }</div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;subpackage : p) {</div>
+<div class="line"><span class="lineno">   70</span>            <span class="keyword">auto</span> &amp;pkg = <span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*subpackage);</div>
+<div class="line"><span class="lineno">   71</span>            <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1graphml_1_1generator.html#af3a83b2c5129f21a5fe5d1e357430cc5">generate</a>(pkg, parent);</div>
+<div class="line"><span class="lineno">   72</span>        }</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a91f340b50c8f68f13df7d803672eeb8e" title="Generate any notes to be attached to diagram elements.">generate_notes</a>(p, parent);</div>
+<div class="line"><span class="lineno">   75</span>    }</div>
+<div class="line"><span class="lineno">   76</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a540bf610c49b525eab044605ac42e227" name="a540bf610c49b525eab044605ac42e227"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a540bf610c49b525eab044605ac42e227">&#9670;&#160;</a></span>generate_top_level_elements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clanguml::package_diagram::generators::graphml::generator::generate_top_level_elements </td>
+          <td>(</td>
+          <td class="paramtype">graphml_node_t &amp;&#160;</td>
+          <td class="paramname"><em>parent</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="graphml_2package__diagram__generator_8cc_source.html#l00030">30</a> of file <a class="el" href="graphml_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   31</span>{</div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p : <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">model</a>()) {</div>
+<div class="line"><span class="lineno">   33</span>        <span class="keyword">auto</span> &amp;pkg = <span class="keyword">dynamic_cast&lt;</span>package &amp;<span class="keyword">&gt;</span>(*p);</div>
+<div class="line"><span class="lineno">   34</span>        <a class="code hl_function" href="classclanguml_1_1package__diagram_1_1generators_1_1graphml_1_1generator.html#af3a83b2c5129f21a5fe5d1e357430cc5">generate</a>(pkg, parent);</div>
+<div class="line"><span class="lineno">   35</span>    }</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1graphml_1_1generator.html#a91f340b50c8f68f13df7d803672eeb8e" title="Generate any notes to be attached to diagram elements.">generate_notes</a>(</div>
+<div class="line"><span class="lineno">   38</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1generators_1_1generator.html#af86cc2bb63f292fd7076909b9b7eba63" title="Get reference to diagram model.">common_generator&lt;diagram_config, diagram_model&gt;::model</a>(), parent);</div>
+<div class="line"><span class="lineno">   39</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/package_diagram/generators/graphml/<a class="el" href="graphml_2package__diagram__generator_8h_source.html">package_diagram_generator.h</a></li>
+<li>src/package_diagram/generators/graphml/<a class="el" href="graphml_2package__diagram__generator_8cc_source.html">package_diagram_generator.cc</a></li>
+</ul>
+</div><!-- contents -->
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer">
+    <small>
+        <span class="copyright">&#160;&#160;Copyright &copy; 2022-present <a href="https://github.com/bkryza">Bartek Kryza</a>
+        </span>
+    Generated by&#160;
+    <a href="https://www.doxygen.org/index.html">
+        <img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/>
+    </a> 1.9.7
+</small></address>
+</body>
+</html>

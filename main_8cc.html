@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.5.6</span>
+       <span id="projectnumber">0.6.0</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -220,30 +220,52 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   89</span>            cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">config</a>, db, cli.<a class="code hl_function" href="classclanguml_1_1cli_1_1cli__handler.html#a5f776e036fb1741ec5fdb9798f9bd1e8" title="Combines runtime configuration parameters into a single structure.">get_runtime_config</a>(), translation_units_map);</div>
 <div class="line"><span class="lineno">   90</span>    }</div>
 <div class="line"><span class="lineno">   91</span>    <span class="keywordflow">catch</span> (<a class="code hl_class" href="classclanguml_1_1error_1_1compilation__database__error.html">error::compilation_database_error</a> &amp;e) {</div>
-<div class="line"><span class="lineno">   92</span>        fmt::println(</div>
-<div class="line"><span class="lineno">   93</span>            <span class="stringliteral">&quot;ERROR: Failed to load compilation database from {} due to: {}&quot;</span>,</div>
-<div class="line"><span class="lineno">   94</span>            cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">config</a>.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a9d79bf1d8ede01e54ceea94923125f6a">compilation_database_dir</a>(), e.what());</div>
-<div class="line"><span class="lineno">   95</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">   96</span>    }</div>
-<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">catch</span> (<a class="code hl_class" href="classclanguml_1_1error_1_1query__driver__no__paths.html">error::query_driver_no_paths</a> &amp;e) {</div>
-<div class="line"><span class="lineno">   98</span>        fmt::println(</div>
-<div class="line"><span class="lineno">   99</span>            <span class="stringliteral">&quot;ERROR: Querying provided compiler driver {} did not provide any &quot;</span></div>
-<div class="line"><span class="lineno">  100</span>            <span class="stringliteral">&quot;paths, please make sure the path is correct and that your &quot;</span></div>
-<div class="line"><span class="lineno">  101</span>            <span class="stringliteral">&quot;compiler is GCC-compatible: {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  102</span>            cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">config</a>.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#abde13ead9b9cbdce8159d274a207cc41">query_driver</a>(), e.what());</div>
-<div class="line"><span class="lineno">  103</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  104</span>    }</div>
-<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">catch</span> (<a class="code hl_class" href="classclanguml_1_1error_1_1diagram__generation__error.html">error::diagram_generation_error</a> &amp;e) {</div>
-<div class="line"><span class="lineno">  106</span>        fmt::println(<span class="stringliteral">&quot;ERROR: {}&quot;</span>, e.<a class="code hl_function" href="classclanguml_1_1error_1_1diagram__generation__error.html#ae4cbc06c194250f24c8b9df907ff4bab">what</a>());</div>
-<div class="line"><span class="lineno">  107</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  108</span>    }</div>
-<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">catch</span> (std::exception &amp;e) {</div>
-<div class="line"><span class="lineno">  110</span>        fmt::println(<span class="stringliteral">&quot;ERROR: {}&quot;</span>, e.what());</div>
-<div class="line"><span class="lineno">  111</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  112</span>    }</div>
-<div class="line"><span class="lineno">  113</span> </div>
-<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  115</span>}</div>
+<div class="line"><span class="lineno">   92</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1logging.html#a125aa41c31850f89df7aedfd2d7f8e74">clanguml::logging::logger_type</a>() == logging::logger_type_t::text) {</div>
+<div class="line"><span class="lineno">   93</span>            fmt::println(</div>
+<div class="line"><span class="lineno">   94</span>                <span class="stringliteral">&quot;ERROR: Failed to load compilation database from {} due to: {}&quot;</span>,</div>
+<div class="line"><span class="lineno">   95</span>                cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">config</a>.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a9d79bf1d8ede01e54ceea94923125f6a">compilation_database_dir</a>(), e.what());</div>
+<div class="line"><span class="lineno">   96</span>        }</div>
+<div class="line"><span class="lineno">   97</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   98</span>            <a class="code hl_define" href="logging_8h.html#a9c6217ffa4d9c4bf446f272b471e91ce">LOG_ERROR</a>(<span class="stringliteral">&quot;Failed to load compilation database from {} due to: {}&quot;</span>,</div>
+<div class="line"><span class="lineno">   99</span>                cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">config</a>.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#a9d79bf1d8ede01e54ceea94923125f6a">compilation_database_dir</a>(), e.what());</div>
+<div class="line"><span class="lineno">  100</span>        }</div>
+<div class="line"><span class="lineno">  101</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  102</span>    }</div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">catch</span> (<a class="code hl_class" href="classclanguml_1_1error_1_1query__driver__no__paths.html">error::query_driver_no_paths</a> &amp;e) {</div>
+<div class="line"><span class="lineno">  104</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1logging.html#a125aa41c31850f89df7aedfd2d7f8e74">clanguml::logging::logger_type</a>() == logging::logger_type_t::text) {</div>
+<div class="line"><span class="lineno">  105</span>            fmt::println(</div>
+<div class="line"><span class="lineno">  106</span>                <span class="stringliteral">&quot;ERROR: Querying provided compiler driver {} did not provide &quot;</span></div>
+<div class="line"><span class="lineno">  107</span>                <span class="stringliteral">&quot;any &quot;</span></div>
+<div class="line"><span class="lineno">  108</span>                <span class="stringliteral">&quot;paths, please make sure the path is correct and that your &quot;</span></div>
+<div class="line"><span class="lineno">  109</span>                <span class="stringliteral">&quot;compiler is GCC-compatible: {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  110</span>                cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">config</a>.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#abde13ead9b9cbdce8159d274a207cc41">query_driver</a>(), e.what());</div>
+<div class="line"><span class="lineno">  111</span>        }</div>
+<div class="line"><span class="lineno">  112</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  113</span>            <a class="code hl_define" href="logging_8h.html#a9c6217ffa4d9c4bf446f272b471e91ce">LOG_ERROR</a>(</div>
+<div class="line"><span class="lineno">  114</span>                <span class="stringliteral">&quot;Querying provided compiler driver {} did not provide any &quot;</span></div>
+<div class="line"><span class="lineno">  115</span>                <span class="stringliteral">&quot;paths, please make sure the path is correct and that your &quot;</span></div>
+<div class="line"><span class="lineno">  116</span>                <span class="stringliteral">&quot;compiler is GCC-compatible: {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  117</span>                cli.<a class="code hl_variable" href="classclanguml_1_1cli_1_1cli__handler.html#a1f987bfbb5a74185e393365a85d4d5fe">config</a>.<a class="code hl_variable" href="structclanguml_1_1config_1_1config.html#abde13ead9b9cbdce8159d274a207cc41">query_driver</a>(), e.what());</div>
+<div class="line"><span class="lineno">  118</span>        }</div>
+<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  120</span>    }</div>
+<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">catch</span> (<a class="code hl_class" href="classclanguml_1_1error_1_1diagram__generation__error.html">error::diagram_generation_error</a> &amp;e) {</div>
+<div class="line"><span class="lineno">  122</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1logging.html#a125aa41c31850f89df7aedfd2d7f8e74">clanguml::logging::logger_type</a>() == logging::logger_type_t::text)</div>
+<div class="line"><span class="lineno">  123</span>            fmt::println(<span class="stringliteral">&quot;ERROR: {}&quot;</span>, e.<a class="code hl_function" href="classclanguml_1_1error_1_1diagram__generation__error.html#ae4cbc06c194250f24c8b9df907ff4bab">what</a>());</div>
+<div class="line"><span class="lineno">  124</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  125</span>            <a class="code hl_define" href="logging_8h.html#a9c6217ffa4d9c4bf446f272b471e91ce">LOG_ERROR</a>(<span class="stringliteral">&quot;{}&quot;</span>, e.<a class="code hl_function" href="classclanguml_1_1error_1_1diagram__generation__error.html#ae4cbc06c194250f24c8b9df907ff4bab">what</a>());</div>
+<div class="line"><span class="lineno">  126</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  127</span>    }</div>
+<div class="line"><span class="lineno">  128</span>    <span class="keywordflow">catch</span> (std::exception &amp;e) {</div>
+<div class="line"><span class="lineno">  129</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceclanguml_1_1logging.html#a125aa41c31850f89df7aedfd2d7f8e74">clanguml::logging::logger_type</a>() == logging::logger_type_t::text)</div>
+<div class="line"><span class="lineno">  130</span>            fmt::println(<span class="stringliteral">&quot;ERROR: {}&quot;</span>, e.what());</div>
+<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  132</span>            <a class="code hl_define" href="logging_8h.html#a9c6217ffa4d9c4bf446f272b471e91ce">LOG_ERROR</a>(<span class="stringliteral">&quot;{}&quot;</span>, e.what());</div>
+<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  134</span>    }</div>
+<div class="line"><span class="lineno">  135</span> </div>
+<div class="line"><span class="lineno">  136</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  137</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
