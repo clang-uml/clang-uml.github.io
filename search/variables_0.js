@@ -14,7 +14,7 @@ var searchData=
   ['add_5finclude_5fdiagram_11',['add_include_diagram',['../classclanguml_1_1cli_1_1cli__handler.html#a49fe88dcc4b7866178e1eb98204d711e',1,'clanguml::cli::cli_handler']]],
   ['add_5fpackage_5fdiagram_12',['add_package_diagram',['../classclanguml_1_1cli_1_1cli__handler.html#add0bc0bddd725a34dcb4f6875c15e750',1,'clanguml::cli::cli_handler']]],
   ['add_5fsequence_5fdiagram_13',['add_sequence_diagram',['../classclanguml_1_1cli_1_1cli__handler.html#a47efe66598ab2901d7af98dea020b8a3',1,'clanguml::cli::cli_handler']]],
-  ['added_5felements_5f_14',['added_elements_',['../classclanguml_1_1common_1_1model_1_1nested__trait.html#a590a20b9f8a87ade69b6a08a81a042a2',1,'clanguml::common::model::nested_trait']]],
+  ['added_5felements_5f_14',['added_elements_',['../classclanguml_1_1class__diagram_1_1model_1_1diagram.html#ad6da8a228d45769ac250cf5546f6c2b3',1,'clanguml::class_diagram::model::diagram']]],
   ['after_15',['after',['../structclanguml_1_1config_1_1plantuml.html#ad611c91f95819377cbd7d70eb2420b6b',1,'clanguml::config::plantuml::after'],['../structclanguml_1_1config_1_1mermaid.html#a5374980b0ae61b478231e35b53fe526c',1,'clanguml::config::mermaid::after']]],
   ['allof_16',['allof',['../structclanguml_1_1config_1_1filter.html#a8ef82d42292ffed3638e9b89a8207360',1,'clanguml::config::filter']]],
   ['allow_5fempty_5fdiagrams_17',['allow_empty_diagrams',['../classclanguml_1_1cli_1_1cli__handler.html#a4155910280c2027352c06961ccb25d1a',1,'clanguml::cli::cli_handler::allow_empty_diagrams'],['../structclanguml_1_1config_1_1inheritable__diagram__options.html#a67b8d34bdaa5ee604cfe4f4886cae527',1,'clanguml::config::inheritable_diagram_options::allow_empty_diagrams']]],

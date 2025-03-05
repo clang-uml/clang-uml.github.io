@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.6.0</span>
+       <span id="projectnumber">0.6.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -144,7 +144,7 @@ Config</h1>
 <div class="line">    exclude:</div>
 <div class="line">      allof:</div>
 <div class="line">        elements:</div>
-<div class="line">          - clanguml::t00082::ns1::nsA::A1</div>
+<div class="line">          - clanguml::t00082::ns1::nsA::D1</div>
 <div class="line">    using_namespace: clanguml::t00082</div>
 </div><!-- fragment --> <h1><a class="anchor" id="source-code-80"></a>
 Source code</h1>
@@ -154,7 +154,7 @@ Source code</h1>
 <div class="line"><span class="keyword">struct </span>A1 { };</div>
 <div class="line"><span class="keyword">struct </span>B1 : <span class="keyword">public</span> A1 { };</div>
 <div class="line"><span class="keyword">struct </span>C1 : <span class="keyword">public</span> B1 { };</div>
-<div class="line"><span class="keyword">struct </span>D1 { };</div>
+<div class="line"><span class="keyword">struct </span>D1 : <span class="keyword">public</span> C1 { };</div>
 <div class="line">}</div>
 <div class="line">}</div>
 <div class="line"><span class="keyword">namespace </span>ns2 {</div>
@@ -201,6 +201,34 @@ Generated JSON models</h1>
 <div class="line">          &quot;elements&quot;: [</div>
 <div class="line">            {</div>
 <div class="line">              &quot;bases&quot;: [],</div>
+<div class="line">              &quot;display_name&quot;: &quot;A1&quot;,</div>
+<div class="line">              &quot;id&quot;: &quot;12142696412443839931&quot;,</div>
+<div class="line">              &quot;is_abstract&quot;: false,</div>
+<div class="line">              &quot;is_nested&quot;: false,</div>
+<div class="line">              &quot;is_struct&quot;: true,</div>
+<div class="line">              &quot;is_template&quot;: false,</div>
+<div class="line">              &quot;is_union&quot;: false,</div>
+<div class="line">              &quot;members&quot;: [],</div>
+<div class="line">              &quot;methods&quot;: [],</div>
+<div class="line">              &quot;name&quot;: &quot;A1&quot;,</div>
+<div class="line">              &quot;namespace&quot;: &quot;clanguml::t00082::ns1::nsA&quot;,</div>
+<div class="line">              &quot;source_location&quot;: {</div>
+<div class="line">                &quot;column&quot;: 8,</div>
+<div class="line">                &quot;file&quot;: &quot;t00082.cc&quot;,</div>
+<div class="line">                &quot;line&quot;: 4,</div>
+<div class="line">                &quot;translation_unit&quot;: &quot;t00082.cc&quot;</div>
+<div class="line">              },</div>
+<div class="line">              &quot;template_parameters&quot;: [],</div>
+<div class="line">              &quot;type&quot;: &quot;class&quot;</div>
+<div class="line">            },</div>
+<div class="line">            {</div>
+<div class="line">              &quot;bases&quot;: [</div>
+<div class="line">                {</div>
+<div class="line">                  &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">                  &quot;id&quot;: &quot;12142696412443839931&quot;,</div>
+<div class="line">                  &quot;is_virtual&quot;: false</div>
+<div class="line">                }</div>
+<div class="line">              ],</div>
 <div class="line">              &quot;display_name&quot;: &quot;B1&quot;,</div>
 <div class="line">              &quot;id&quot;: &quot;15596320250571206658&quot;,</div>
 <div class="line">              &quot;is_abstract&quot;: false,</div>
@@ -447,6 +475,12 @@ Generated JSON models</h1>
 <div class="line">  &quot;relationships&quot;: [</div>
 <div class="line">    {</div>
 <div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
+<div class="line">      &quot;destination&quot;: &quot;12142696412443839931&quot;,</div>
+<div class="line">      &quot;source&quot;: &quot;15596320250571206658&quot;,</div>
+<div class="line">      &quot;type&quot;: &quot;extension&quot;</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">      &quot;access&quot;: &quot;public&quot;,</div>
 <div class="line">      &quot;destination&quot;: &quot;15596320250571206658&quot;,</div>
 <div class="line">      &quot;source&quot;: &quot;1635220505473283595&quot;,</div>
 <div class="line">      &quot;type&quot;: &quot;extension&quot;</div>
@@ -509,10 +543,15 @@ Generated GraphML models</h1>
 <div class="line">     &lt;<span class="keywordtype">graph</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;g2&quot;</span> <span class="keyword">edgedefault</span>=<span class="stringliteral">&quot;directed&quot;</span> <span class="keyword">parse.nodeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.edgeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.order</span>=<span class="stringliteral">&quot;nodesfirst&quot;</span>&gt;</div>
 <div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n2&quot;</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">class</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
-<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[B1]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[A1]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd6&quot;</span>&gt;<span class="keyword">false</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">      &lt;/<span class="keywordtype">node</span>&gt;</div>
 <div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n3&quot;</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">class</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[B1]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd6&quot;</span>&gt;<span class="keyword">false</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">      &lt;/<span class="keywordtype">node</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n4&quot;</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">class</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[C1]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd6&quot;</span>&gt;<span class="keyword">false</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
@@ -521,25 +560,25 @@ Generated GraphML models</h1>
 <div class="line">    &lt;/<span class="keywordtype">node</span>&gt;</div>
 <div class="line">   &lt;/<span class="keywordtype">graph</span>&gt;</div>
 <div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
-<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n4&quot;</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n5&quot;</span>&gt;</div>
 <div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="keyword">ns2</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">namespace</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">   &lt;<span class="keywordtype">graph</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;g3&quot;</span> <span class="keyword">edgedefault</span>=<span class="stringliteral">&quot;directed&quot;</span> <span class="keyword">parse.nodeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.edgeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.order</span>=<span class="stringliteral">&quot;nodesfirst&quot;</span>&gt;</div>
-<div class="line">    &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n5&quot;</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n6&quot;</span>&gt;</div>
 <div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="keyword">nsB</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">namespace</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">     &lt;<span class="keywordtype">graph</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;g4&quot;</span> <span class="keyword">edgedefault</span>=<span class="stringliteral">&quot;directed&quot;</span> <span class="keyword">parse.nodeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.edgeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.order</span>=<span class="stringliteral">&quot;nodesfirst&quot;</span>&gt;</div>
-<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n6&quot;</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n7&quot;</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">class</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[A2]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd6&quot;</span>&gt;<span class="keyword">false</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">      &lt;/<span class="keywordtype">node</span>&gt;</div>
-<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n7&quot;</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n8&quot;</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">class</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[B2]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd6&quot;</span>&gt;<span class="keyword">false</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">      &lt;/<span class="keywordtype">node</span>&gt;</div>
-<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n8&quot;</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n9&quot;</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">class</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[C2]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd6&quot;</span>&gt;<span class="keyword">false</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
@@ -548,25 +587,25 @@ Generated GraphML models</h1>
 <div class="line">    &lt;/<span class="keywordtype">node</span>&gt;</div>
 <div class="line">   &lt;/<span class="keywordtype">graph</span>&gt;</div>
 <div class="line">  &lt;/<span class="keywordtype">node</span>&gt;</div>
-<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n9&quot;</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n10&quot;</span>&gt;</div>
 <div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="keyword">ns3</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">namespace</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">   &lt;<span class="keywordtype">graph</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;g5&quot;</span> <span class="keyword">edgedefault</span>=<span class="stringliteral">&quot;directed&quot;</span> <span class="keyword">parse.nodeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.edgeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.order</span>=<span class="stringliteral">&quot;nodesfirst&quot;</span>&gt;</div>
-<div class="line">    &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n10&quot;</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n11&quot;</span>&gt;</div>
 <div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="keyword">nsC</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">     &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">namespace</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">     &lt;<span class="keywordtype">graph</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;g6&quot;</span> <span class="keyword">edgedefault</span>=<span class="stringliteral">&quot;directed&quot;</span> <span class="keyword">parse.nodeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.edgeids</span>=<span class="stringliteral">&quot;canonical&quot;</span> <span class="keyword">parse.order</span>=<span class="stringliteral">&quot;nodesfirst&quot;</span>&gt;</div>
-<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n11&quot;</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n12&quot;</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">class</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[A3]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd6&quot;</span>&gt;<span class="keyword">false</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">      &lt;/<span class="keywordtype">node</span>&gt;</div>
-<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n12&quot;</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n13&quot;</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">class</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[B3]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd6&quot;</span>&gt;<span class="keyword">false</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">      &lt;/<span class="keywordtype">node</span>&gt;</div>
-<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n13&quot;</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">node</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;n14&quot;</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd1&quot;</span>&gt;<span class="keyword">class</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd2&quot;</span>&gt;<span class="xmlcdata">&lt;![CDATA[C3]]&gt;</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">       &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;nd6&quot;</span>&gt;<span class="keyword">false</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
@@ -579,7 +618,7 @@ Generated GraphML models</h1>
 <div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">extension</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed1&quot;</span>&gt;<span class="keyword">public</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
-<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e1&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n7&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n6&quot;</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e1&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n4&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n3&quot;</span>&gt;</div>
 <div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">extension</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed1&quot;</span>&gt;<span class="keyword">public</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
@@ -587,11 +626,15 @@ Generated GraphML models</h1>
 <div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">extension</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed1&quot;</span>&gt;<span class="keyword">public</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
-<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e3&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n12&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n11&quot;</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e3&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n9&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n8&quot;</span>&gt;</div>
 <div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">extension</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed1&quot;</span>&gt;<span class="keyword">public</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
 <div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e4&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n13&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n12&quot;</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">extension</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed1&quot;</span>&gt;<span class="keyword">public</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">edge</span> <span class="keyword">id</span>=<span class="stringliteral">&quot;e5&quot;</span> <span class="keyword">source</span>=<span class="stringliteral">&quot;n14&quot;</span> <span class="keyword">target</span>=<span class="stringliteral">&quot;n13&quot;</span>&gt;</div>
 <div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed0&quot;</span>&gt;<span class="keyword">extension</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">   &lt;<span class="keywordtype">data</span> <span class="keyword">key</span>=<span class="stringliteral">&quot;ed1&quot;</span>&gt;<span class="keyword">public</span>&lt;/<span class="keywordtype">data</span>&gt;</div>
 <div class="line">  &lt;/<span class="keywordtype">edge</span>&gt;</div>

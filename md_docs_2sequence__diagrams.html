@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.6.0</span>
+       <span id="projectnumber">0.6.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -130,13 +130,14 @@ $(function() {
 <li><a class="el" href="md_docs_2sequence__diagrams.html#grouping-free-functions-by-file">Grouping free functions by file</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#lambda-expressions-in-sequence-diagrams">Lambda expressions in sequence diagrams</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#customizing-participants-order">Customizing participants order</a></li>
-<li><a class="el" href="md_docs_2sequence__diagrams.html#generating-return-types">Generating return types</a></li>
+<li><a class="el" href="md_docs_2sequence__diagrams.html#generating-return-types-or-values">Generating return types or values</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#generating-condition-statements">Generating condition statements</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#folding-repeated-activities">Folding repeated activities</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#injecting-call-expressions-manually-through-comments">Injecting call expressions manually through comments</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#including-comments-in-sequence-diagrams">Including comments in sequence diagrams</a></li>
 </ul>
-<p>The minimal config required to generate a sequence diagram is presented below: </p><div class="fragment language-yaml"><div class="line"># Path to the directory where `compile_commands.json` can be found</div>
+<p>The minimal config required to generate a sequence diagram is presented below:</p>
+<div class="fragment language-yaml"><div class="line"># Path to the directory where `compile_commands.json` can be found</div>
 <div class="line">compilation_database_dir: _build</div>
 <div class="line"># Output directory for the diagrams</div>
 <div class="line">output_directory: diagrams</div>
@@ -165,14 +166,16 @@ Sequence diagram overview</h1>
 <div class="image">
 <embed type="image/svg+xml" src="t20029_sequence.svg"></embed>
 </div>
-    <p><code>clang-uml</code> generated sequence diagrams are not strictly speaking conforming to the UML specification. In order to make them more useful for documenting modern C++ code, the following assumptions were made:</p><ul>
+    <p><code>clang-uml</code> generated sequence diagrams are not strictly speaking conforming to the UML specification. In order to make them more useful for documenting modern C++ code, the following assumptions were made:</p>
+<ul>
 <li>Free functions are included in the sequence diagrams as standalone participants (in fact <code>clang-uml</code> can be used to generate sequence diagrams from plain old C code). Functions can also be aggregated into file participants, based on their place of declaration</li>
 <li>Call expressions in conditional expressions in block statements (e.g. <code>if</code> or <code>while</code>) are rendered inside the PlantUML or MermaidJS <code>alt</code> or <code>loop</code> blocks but wrapped in <code>[</code>, <code>]</code> brackets</li>
 <li>Lambda expressions are generated as standalone participants, whose name comprises the parent context where they are defined and the exact source code location</li>
 </ul>
 <h1><a class="anchor" id="specifying-diagram-location-constraints"></a>
 Specifying diagram location constraints</h1>
-<p>Sequence diagrams require specification of location constraints in order to determine, which call chains should be included in the diagram. Currently, there are 3 types of constraints:</p><ul>
+<p>Sequence diagrams require specification of location constraints in order to determine, which call chains should be included in the diagram. Currently, there are 3 types of constraints:</p>
+<ul>
 <li><code>from</code> - will include all message call chains, which start at the locations specified in this constraint (this was previously named <code>start_from</code>)</li>
 <li><code>to</code> - will include all message call chains, which end at the specified locations</li>
 <li><code>from_to</code> - will include all call chains, which start and end at the specified locations</li>
@@ -184,7 +187,7 @@ Specifying diagram location constraints</h1>
 <div class="fragment language-yaml"><div class="line">from:</div>
 <div class="line">  - function:</div>
 <div class="line">      r: &quot;main.*&quot;</div>
-</div><!-- fragment --><p> However note that the latter will match all functions starting with 'main', so make sure the regular expression only matches the intended functions.</p>
+</div><!-- fragment --><p>However note that the latter will match all functions starting with 'main', so make sure the regular expression only matches the intended functions.</p>
 <p>In case of methods the signature must include fully qualified name, e.g.:</p>
 <div class="fragment language-yaml"><div class="line">to:</div>
 <div class="line">  - function: &quot;clanguml::sequence_diagram::visitor::translation_unit_visitor::VisitCXXRecordDecl(clang::CXXRecordDecl *)&quot;</div>
@@ -192,9 +195,10 @@ Specifying diagram location constraints</h1>
 <div class="fragment language-yaml"><div class="line">to:</div>
 <div class="line">  - function:</div>
 <div class="line">      r: &quot;.*sequence_diagram.*VisitCXXRecordDecl.*&quot;</div>
-</div><!-- fragment --><p>In case of the <code>from_to</code> constraint, it is necessary to provide both <code>from</code> and <code>to</code> locations as follows: </p><div class="fragment language-yaml"><div class="line">from_to:</div>
-<div class="line">  - [function: &quot;clanguml::t20034::D::d2()&quot;,</div>
-<div class="line">     function: &quot;clanguml::t20034::A::a2()&quot;]</div>
+</div><!-- fragment --><p>In case of the <code>from_to</code> constraint, it is necessary to provide both <code>from</code> and <code>to</code> locations as follows:</p>
+<div class="fragment language-yaml"><div class="line">from_to:</div>
+<div class="line">  - [ function: &quot;clanguml::t20034::D::d2()&quot;,</div>
+<div class="line">      function: &quot;clanguml::t20034::A::a2()&quot; ]</div>
 </div><!-- fragment --><p>To find the exact function signature, which can be used as a <code>from</code> location, run <code>clang-uml</code> as follows (assuming the function of interest is called <code>main</code>):</p>
 <div class="fragment language-bash"><div class="line">clang-uml --print-from -n main_sequence | grep main</div>
 </div><!-- fragment --><p>or to get all possible <code>to</code> locations, run:</p>
@@ -211,7 +215,8 @@ Grouping free functions by file</h1>
 </div>
     <h1><a class="anchor" id="lambda-expressions-in-sequence-diagrams"></a>
 Lambda expressions in sequence diagrams</h1>
-<p>Lambda expressions in sequence diagrams are... tricky. There is currently tentative support, which follows the following rules:</p><ul>
+<p>Lambda expressions in sequence diagrams are... tricky. There is currently tentative support, which follows the following rules:</p>
+<ul>
 <li>If lambda expression is called within the scope of the diagram, the calls from the lambda will be placed at the lambda invocation and not declaration</li>
 <li>If lambda expression is passed to some function or method, which is outside the scope of the diagram (e.g. used in <code>std::transform</code> call) the call will not be generated</li>
 <li>If the lambda is passed as template argument in instantiation it will not be generated</li>
@@ -343,8 +348,8 @@ Customizing participants order</h1>
 <div class="line">      - &quot;clanguml::t20029::Retrier&lt;clanguml::t20029::ConnectionPool&gt;&quot;</div>
 <div class="line">      - &quot;clanguml::t20029::ConnectionPool&quot;</div>
 <div class="line">      - &quot;clanguml::t20029::encode_b64(std::string &amp;&amp;)&quot;</div>
-</div><!-- fragment --><h1><a class="anchor" id="generating-return-types"></a>
-Generating return types</h1>
+</div><!-- fragment --><h1><a class="anchor" id="generating-return-types-or-values"></a>
+Generating return types or values</h1>
 <p>By default, return messages do not contain the return type information from the function or method. Instead, if the result is void there is no return arrow from the activity representing the function body.</p>
 <p>It is however possible to enable rendering of return types, by adding the following configuration option:</p>
 <div class="fragment language-yaml"><div class="line">generate_return_types: true</div>
@@ -352,7 +357,14 @@ Generating return types</h1>
 <p>The diagram below presents what it looks like in a PlantUML generated diagram: </p><div class="image">
 <embed type="image/svg+xml" src="t20032_sequence.svg"></embed>
 </div>
-    <h1><a class="anchor" id="generating-condition-statements"></a>
+    <p>Sometimes it would be more useful to see actual expressions used in return statements, instead of return types. This can be easily enabled using:</p>
+<div class="fragment language-yaml"><div class="line">generate_return_values: true</div>
+</div><!-- fragment --><p>The diagram below presents what it looks like in a PlantUML generated diagram: </p><div class="image">
+<embed type="image/svg+xml" src="t20053_sequence.svg"></embed>
+</div>
+    <p>By default, these messages will be truncated at <code>100</code> characters to make diagrams more eligble. This setting can be overridden using for instance:</p>
+<div class="fragment language-yaml"><div class="line">message_name_width: 200</div>
+</div><!-- fragment --><h1><a class="anchor" id="generating-condition-statements"></a>
 Generating condition statements</h1>
 <p>Sometimes, it is useful to include actual condition statements (for instance contents of the <code>if()</code> condition in the <code>alt</code> or <code>loop</code> blocks in the sequence diagrams, to make them more readable.</p>
 <p>This can be enabled using the following option:</p>
@@ -365,14 +377,16 @@ Folding repeated activities</h1>
 <p>If in a given sequence diagram functions or methods are called multiple times from different branches, each of these activities will be rendered fully which can mean that the diagram be very large.</p>
 <p>In order to minimize the diagram size in such situations, an option can be set:</p>
 <div class="fragment language-yaml"><div class="line">fold_repeated_activities: true</div>
-</div><!-- fragment --><p>which will render any activity only once, and any further calls to that activity will only render a call to the activity and an indicator - a single <code>*</code> character</p><ul>
+</div><!-- fragment --><p>which will render any activity only once, and any further calls to that activity will only render a call to the activity and an indicator - a single <code>*</code> character</p>
+<ul>
 <li>in a note over the activity.</li>
 </ul>
 <p>For an example of this see the test case <a class="el" href="md_docs_2test__cases_2t20056.html">t20056</a>.</p>
 <h1><a class="anchor" id="injecting-call-expressions-manually-through-comments"></a>
 Injecting call expressions manually through comments</h1>
 <p>In some cases, <code>clang-uml</code> is not yet able to discover a call expression target in some line of code. This can include passing function or method address to some executor (e.g. thread), async calls etc.</p>
-<p>However, a call expression can be injected manually through a comment directive </p><div class="fragment language-cpp"><div class="line"><span class="comment">// \uml{note CALLEE}</span></div>
+<p>However, a call expression can be injected manually through a comment directive</p>
+<div class="fragment language-cpp"><div class="line"><span class="comment">// \uml{note CALLEE}</span></div>
 </div><!-- fragment --><p>It should be placed in the comment just before such line of code, for example:</p>
 <div class="fragment language-cpp"><div class="line"><span class="comment">// \uml{call clanguml::t20038::B::bbb()}</span></div>
 <div class="line"><span class="keyword">auto</span> bbb_future = std::async(std::launch::deferred, &amp;B::bbb, b);</div>

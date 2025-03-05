@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.6.0</span>
+       <span id="projectnumber">0.6.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -274,12 +274,13 @@ template&lt;&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="class__diagram_2model_2diagram_8cc_source.html#l00135">135</a> of file <a class="el" href="class__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
 <div class="fragment DoxyCode"><div class="line"><span class="lineno">  138</span>{</div>
-<div class="line"><span class="lineno">  139</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding filesystem package: {}, {}&quot;</span>, p-&gt;name(), p-&gt;full_name(<span class="keyword">true</span>));</div>
+<div class="line"><span class="lineno">  139</span>    <span class="keyword">auto</span> ns = p-&gt;get_relative_namespace();</div>
 <div class="line"><span class="lineno">  140</span> </div>
-<div class="line"><span class="lineno">  141</span>    <span class="keyword">auto</span> ns = p-&gt;get_relative_namespace();</div>
-<div class="line"><span class="lineno">  142</span> </div>
-<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">return</span> add_element(ns, std::move(p));</div>
-<div class="line"><span class="lineno">  144</span>}</div>
+<div class="line"><span class="lineno">  141</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding filesystem package: {}, {}, {}&quot;</span>, p-&gt;name(),</div>
+<div class="line"><span class="lineno">  142</span>        p-&gt;full_name(<span class="keyword">true</span>), ns.to_string());</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>    <span class="keywordflow">return</span> add_element(ns, std::move(p));</div>
+<div class="line"><span class="lineno">  145</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -313,12 +314,13 @@ template&lt;&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="class__diagram_2model_2diagram_8cc_source.html#l00135">135</a> of file <a class="el" href="class__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
 <div class="fragment DoxyCode"><div class="line"><span class="lineno">  138</span>{</div>
-<div class="line"><span class="lineno">  139</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding filesystem package: {}, {}&quot;</span>, p-&gt;name(), p-&gt;full_name(<span class="keyword">true</span>));</div>
+<div class="line"><span class="lineno">  139</span>    <span class="keyword">auto</span> ns = p-&gt;get_relative_namespace();</div>
 <div class="line"><span class="lineno">  140</span> </div>
-<div class="line"><span class="lineno">  141</span>    <span class="keyword">auto</span> ns = p-&gt;get_relative_namespace();</div>
-<div class="line"><span class="lineno">  142</span> </div>
-<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">return</span> add_element(ns, std::move(p));</div>
-<div class="line"><span class="lineno">  144</span>}</div>
+<div class="line"><span class="lineno">  141</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding filesystem package: {}, {}, {}&quot;</span>, p-&gt;name(),</div>
+<div class="line"><span class="lineno">  142</span>        p-&gt;full_name(<span class="keyword">true</span>), ns.to_string());</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>    <span class="keywordflow">return</span> add_element(ns, std::move(p));</div>
+<div class="line"><span class="lineno">  145</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -350,14 +352,14 @@ template&lt;&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="class__diagram_2model_2diagram_8cc_source.html#l00147">147</a> of file <a class="el" href="class__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  150</span>{</div>
-<div class="line"><span class="lineno">  151</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding module package: {}, {}&quot;</span>, p-&gt;name(), p-&gt;full_name(<span class="keyword">true</span>));</div>
-<div class="line"><span class="lineno">  152</span> </div>
-<div class="line"><span class="lineno">  153</span>    <span class="keyword">auto</span> ns = p-&gt;get_relative_namespace();</div>
-<div class="line"><span class="lineno">  154</span> </div>
-<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">return</span> add_element(ns, std::move(p));</div>
-<div class="line"><span class="lineno">  156</span>}</div>
+<p class="definition">Definition at line <a class="el" href="class__diagram_2model_2diagram_8cc_source.html#l00148">148</a> of file <a class="el" href="class__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  151</span>{</div>
+<div class="line"><span class="lineno">  152</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding module package: {}, {}&quot;</span>, p-&gt;name(), p-&gt;full_name(<span class="keyword">true</span>));</div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span>    <span class="keyword">auto</span> ns = p-&gt;get_relative_namespace();</div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">return</span> add_element(ns, std::move(p));</div>
+<div class="line"><span class="lineno">  157</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -389,14 +391,14 @@ template&lt;&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="class__diagram_2model_2diagram_8cc_source.html#l00147">147</a> of file <a class="el" href="class__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  150</span>{</div>
-<div class="line"><span class="lineno">  151</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding module package: {}, {}&quot;</span>, p-&gt;name(), p-&gt;full_name(<span class="keyword">true</span>));</div>
-<div class="line"><span class="lineno">  152</span> </div>
-<div class="line"><span class="lineno">  153</span>    <span class="keyword">auto</span> ns = p-&gt;get_relative_namespace();</div>
-<div class="line"><span class="lineno">  154</span> </div>
-<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">return</span> add_element(ns, std::move(p));</div>
-<div class="line"><span class="lineno">  156</span>}</div>
+<p class="definition">Definition at line <a class="el" href="class__diagram_2model_2diagram_8cc_source.html#l00148">148</a> of file <a class="el" href="class__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  151</span>{</div>
+<div class="line"><span class="lineno">  152</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding module package: {}, {}&quot;</span>, p-&gt;name(), p-&gt;full_name(<span class="keyword">true</span>));</div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span>    <span class="keyword">auto</span> ns = p-&gt;get_relative_namespace();</div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">return</span> add_element(ns, std::move(p));</div>
+<div class="line"><span class="lineno">  157</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

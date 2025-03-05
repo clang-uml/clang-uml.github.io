@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.6.0</span>
+       <span id="projectnumber">0.6.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -176,8 +176,6 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:ac2e293c4d046a718d3fe1fdd0f0d0af7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1compilation__database.html#ac2e293c4d046a718d3fe1fdd0f0d0af7">match_filename</a> (const clang::tooling::CompileCommand &amp;command, const std::string &amp;file) const</td></tr>
-<tr class="separator:ac2e293c4d046a718d3fe1fdd0f0d0af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f3eb003ce1dad6e666c3e260edbbb09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclanguml_1_1common_1_1compilation__database.html#a2f3eb003ce1dad6e666c3e260edbbb09">adjust_compilation_database</a> (std::vector&lt; clang::tooling::CompileCommand &gt; &amp;commands) const</td></tr>
 <tr class="separator:a2f3eb003ce1dad6e666c3e260edbbb09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -630,54 +628,6 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ac2e293c4d046a718d3fe1fdd0f0d0af7" name="ac2e293c4d046a718d3fe1fdd0f0d0af7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2e293c4d046a718d3fe1fdd0f0d0af7">&#9670;&#160;</a></span>match_filename()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool clanguml::common::compilation_database::match_filename </td>
-          <td>(</td>
-          <td class="paramtype">const clang::tooling::CompileCommand &amp;&#160;</td>
-          <td class="paramname"><em>command</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>file</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="compilation__database_8cc_source.html#l00175">175</a> of file <a class="el" href="compilation__database_8cc_source.html">compilation_database.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  178</span>{</div>
-<div class="line"><span class="lineno">  179</span>    <span class="keyword">auto</span> command_filename = std::filesystem::path{command.Filename};</div>
-<div class="line"><span class="lineno">  180</span> </div>
-<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">if</span> (!command_filename.is_absolute()) {</div>
-<div class="line"><span class="lineno">  182</span>        command_filename = <a class="code hl_function" href="classclanguml_1_1common_1_1compilation__database.html#ae691558048b06d14016b4a909005023b">config</a>().<a class="code hl_function" href="structclanguml_1_1config_1_1inheritable__diagram__options.html#a185ecdfe8170d1b852a9002f650a7136" title="Returns absolute path of the relative_to option.">root_directory</a>() / command_filename;</div>
-<div class="line"><span class="lineno">  183</span>    }</div>
-<div class="line"><span class="lineno">  184</span> </div>
-<div class="line"><span class="lineno">  185</span>    <span class="keywordflow">return</span> (command_filename == file) ||</div>
-<div class="line"><span class="lineno">  186</span>        (command_filename.lexically_normal().string() == file);</div>
-<div class="line"><span class="lineno">  187</span>}</div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a79c03ade4025e70c7955d05653c02642" name="a79c03ade4025e70c7955d05653c02642"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a79c03ade4025e70c7955d05653c02642">&#9670;&#160;</a></span>base_</h2>
@@ -701,7 +651,7 @@ Private Attributes</h2></td></tr>
 <p>Pointer to the Clang's original compilation database.</p>
 <p>Actual instance of the compilation database is stored in here. The inheritance is just to keep the interface. </p>
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00132">132</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00129">129</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
 
 </div>
 </div>
@@ -726,7 +676,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Reference to the instance of clanguml config. </p>
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00137">137</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00134">134</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
 
 </div>
 </div>
@@ -751,7 +701,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>True, if this is a fixed compilation database, e.g. loaded from compile_flags.txt </p>
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00143">143</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00140">140</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
 
 </div>
 </div>

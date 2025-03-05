@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.6.0</span>
+       <span id="projectnumber">0.6.1</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -349,6 +349,10 @@ Functions</h2></td></tr>
 <tr class="separator:ab007bb6ed2c70b12ad9c5560138d03ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5da82636dd4978ef1520b9a5a5c8b3f1"><td class="memItemLeft" align="right" valign="top">const clang::EnumDecl *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#a5da82636dd4978ef1520b9a5a5c8b3f1">get_typedef_enum_decl</a> (const clang::TypedefDecl *decl)</td></tr>
 <tr class="separator:a5da82636dd4978ef1520b9a5a5c8b3f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bc13f7f21e38c8d090c44108592fed6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#a3bc13f7f21e38c8d090c44108592fed6">is_lambda_call</a> (const clang::Expr *expr)</td></tr>
+<tr class="separator:a3bc13f7f21e38c8d090c44108592fed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a6e9177d5efe047e25158ecce8e0ed0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#a1a6e9177d5efe047e25158ecce8e0ed0">is_lambda_method</a> (const clang::FunctionDecl *decl)</td></tr>
+<tr class="separator:a1a6e9177d5efe047e25158ecce8e0ed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f6b3f1cb4c3c8572404cb8e205c034e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a1f6b3f1cb4c3c8572404cb8e205c034e"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1common.html#a1f6b3f1cb4c3c8572404cb8e205c034e">get_qualified_name</a> (const T &amp;declaration)</td></tr>
 <tr class="memdesc:a1f6b3f1cb4c3c8572404cb8e205c034e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get qualified name of some Clang declaration.  <br /></td></tr>
@@ -431,7 +435,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00146">146</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compilation__database_8h_source.html#l00143">143</a> of file <a class="el" href="compilation__database_8h_source.html">compilation_database.h</a>.</p>
 
 </div>
 </div>
@@ -1953,6 +1957,93 @@ template&lt;typename T , typename P , typename F &gt; </div>
 <div class="line"><span class="lineno">  684</span> </div>
 <div class="line"><span class="lineno">  685</span>    <span class="keywordflow">return</span> util::contains(keywords, t);</div>
 <div class="line"><span class="lineno">  686</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3bc13f7f21e38c8d090c44108592fed6" name="a3bc13f7f21e38c8d090c44108592fed6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bc13f7f21e38c8d090c44108592fed6">&#9670;&#160;</a></span>is_lambda_call()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::common::is_lambda_call </td>
+          <td>(</td>
+          <td class="paramtype">const clang::Expr *&#160;</td>
+          <td class="paramname"><em>callExpr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Check if clang::Expr is a call on lambda operator()</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callExpr</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True, if the expression points to lambda invocation </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="clang__utils_8cc_source.html#l01171">1171</a> of file <a class="el" href="clang__utils_8cc_source.html">clang_utils.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno"> 1172</span>{</div>
+<div class="line"><span class="lineno"> 1173</span>    <span class="keyword">const</span> <span class="keyword">auto</span> *call_expr = clang::dyn_cast&lt;clang::CallExpr&gt;(expr);</div>
+<div class="line"><span class="lineno"> 1174</span> </div>
+<div class="line"><span class="lineno"> 1175</span>    <span class="keywordflow">if</span> (call_expr == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno"> 1176</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno"> 1177</span> </div>
+<div class="line"><span class="lineno"> 1178</span>    <span class="keywordflow">if</span> (clang::dyn_cast_or_null&lt;clang::LambdaExpr&gt;(call_expr-&gt;getCallee()) !=</div>
+<div class="line"><span class="lineno"> 1179</span>        <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno"> 1180</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno"> 1181</span>    }</div>
+<div class="line"><span class="lineno"> 1182</span> </div>
+<div class="line"><span class="lineno"> 1183</span>    <span class="keyword">const</span> <span class="keyword">auto</span> *function_callee = call_expr-&gt;getDirectCallee();</div>
+<div class="line"><span class="lineno"> 1184</span>    <span class="keywordflow">if</span> (function_callee != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno"> 1185</span> </div>
+<div class="line"><span class="lineno"> 1186</span>        <span class="keyword">const</span> <span class="keyword">auto</span> *method_decl =</div>
+<div class="line"><span class="lineno"> 1187</span>            clang::dyn_cast&lt;clang::CXXMethodDecl&gt;(function_callee);</div>
+<div class="line"><span class="lineno"> 1188</span>        <span class="keywordflow">if</span> (method_decl == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno"> 1189</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno"> 1190</span> </div>
+<div class="line"><span class="lineno"> 1191</span>        <span class="keywordflow">if</span> (method_decl-&gt;getParent()-&gt;isLambda() &amp;&amp;</div>
+<div class="line"><span class="lineno"> 1192</span>            method_decl-&gt;getOverloadedOperator() == clang::OO_Call) {</div>
+<div class="line"><span class="lineno"> 1193</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno"> 1194</span>        }</div>
+<div class="line"><span class="lineno"> 1195</span>    }</div>
+<div class="line"><span class="lineno"> 1196</span> </div>
+<div class="line"><span class="lineno"> 1197</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno"> 1198</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1a6e9177d5efe047e25158ecce8e0ed0" name="a1a6e9177d5efe047e25158ecce8e0ed0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a6e9177d5efe047e25158ecce8e0ed0">&#9670;&#160;</a></span>is_lambda_method()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clanguml::common::is_lambda_method </td>
+          <td>(</td>
+          <td class="paramtype">const clang::FunctionDecl *&#160;</td>
+          <td class="paramname"><em>decl</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="clang__utils_8cc_source.html#l01200">1200</a> of file <a class="el" href="clang__utils_8cc_source.html">clang_utils.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno"> 1201</span>{</div>
+<div class="line"><span class="lineno"> 1202</span>    <span class="keywordflow">if</span> (decl == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno"> 1203</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno"> 1204</span> </div>
+<div class="line"><span class="lineno"> 1205</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *method = clang::dyn_cast&lt;clang::CXXMethodDecl&gt;(decl);</div>
+<div class="line"><span class="lineno"> 1206</span>        method != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno"> 1207</span>        <span class="keywordflow">if</span> (method-&gt;getParent() != <span class="keyword">nullptr</span> &amp;&amp; method-&gt;getParent()-&gt;isLambda())</div>
+<div class="line"><span class="lineno"> 1208</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno"> 1209</span>    }</div>
+<div class="line"><span class="lineno"> 1210</span> </div>
+<div class="line"><span class="lineno"> 1211</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno"> 1212</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
