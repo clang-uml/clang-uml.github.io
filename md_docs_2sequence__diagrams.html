@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.6.1</span>
+       <span id="projectnumber">0.6.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -135,6 +135,7 @@ $(function() {
 <li><a class="el" href="md_docs_2sequence__diagrams.html#folding-repeated-activities">Folding repeated activities</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#injecting-call-expressions-manually-through-comments">Injecting call expressions manually through comments</a></li>
 <li><a class="el" href="md_docs_2sequence__diagrams.html#including-comments-in-sequence-diagrams">Including comments in sequence diagrams</a></li>
+<li><a class="el" href="md_docs_2sequence__diagrams.html#controlling-message-rendering">Controlling message rendering</a></li>
 </ul>
 <p>The minimal config required to generate a sequence diagram is presented below:</p>
 <div class="fragment language-yaml"><div class="line"># Path to the directory where `compile_commands.json` can be found</div>
@@ -406,7 +407,19 @@ Including comments in sequence diagrams</h1>
 <p>Another option needed to generate these comments in the diagram is to set</p>
 <div class="fragment language-yaml"><div class="line">generate_message_comments: true</div>
 </div><!-- fragment --><p>for each sequence diagram, which should include these comments.</p>
-<p>In case only selected messages should have some specific comments, instead of enabling the <code>generate_message_comments</code> option, it is possible to use <code>\\uml{note TEXT}</code> directive in the comment above the expression, see <a href="test_cases/t20001_sequence.svg">t20001</a>. </p>
+<p>In case only selected messages should have some specific comments, instead of enabling the <code>generate_message_comments</code> option, it is possible to use <code>\\uml{note TEXT}</code> directive in the comment above the expression, see <a href="test_cases/t20001_sequence.svg">t20001</a>.</p>
+<h1><a class="anchor" id="controlling-message-rendering"></a>
+Controlling message rendering</h1>
+<p>Rendering of messages, which are either function or method signatures or return types, can be controlled by several configuration options:</p>
+<ul>
+<li><code>generate_method_arguments</code> - this enum controls how the message arguments are render, possible values are <code>none</code>, <code>abbrev</code> or <code>full</code></li>
+<li><code>generate_method_argument_names</code> - in addition to argument type, also render the argument name</li>
+<li><code>generate_return_types</code> - in return messages, render return type as message name</li>
+<li><code>generate_return_values</code> - in return messages, render return expression as written in the code</li>
+</ul>
+<blockquote class="doxtable">
+<p>&zwj;When <code>generate_method_argument_names</code>, the <code>from</code> and <code>to</code> conditions in the sequence diagram definition must also have the same names as in the code. </p>
+</blockquote>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- HTML footer for doxygen 1.9.1-->

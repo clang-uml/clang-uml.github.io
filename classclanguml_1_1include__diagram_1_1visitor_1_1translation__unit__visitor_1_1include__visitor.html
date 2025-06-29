@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.6.1</span>
+       <span id="projectnumber">0.6.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -583,7 +583,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  171</span> </div>
 <div class="line"><span class="lineno">  172</span>    include_file.set_type(<a class="code hl_enumvalue" href="namespaceclanguml_1_1common_1_1model.html#add389bf93bbd70333652992c1c6ff7b9a9cef6e67dbb09df835c263f0610058b2">common::model::source_file_t::kHeader</a>);</div>
 <div class="line"><span class="lineno">  173</span>    include_file.set_file(</div>
-<div class="line"><span class="lineno">  174</span>        std::filesystem::absolute(include_path).lexically_normal().<span class="keywordtype">string</span>());</div>
+<div class="line"><span class="lineno">  174</span>        weakly_canonical(std::filesystem::absolute(include_path)).<span class="keywordtype">string</span>());</div>
 <div class="line"><span class="lineno">  175</span>    include_file.set_line(0);</div>
 <div class="line"><span class="lineno">  176</span>    include_file.set_system_header(is_system);</div>
 <div class="line"><span class="lineno">  177</span> </div>
@@ -644,7 +644,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  232</span>        file_path = <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a7bfd3ad3897f131fb0a1a8129d246a0b" title="Get diagram config instance.">config</a>().base_directory() / file_path;</div>
 <div class="line"><span class="lineno">  233</span>    }</div>
 <div class="line"><span class="lineno">  234</span> </div>
-<div class="line"><span class="lineno">  235</span>    file_path = file_path.lexically_normal();</div>
+<div class="line"><span class="lineno">  235</span>    file_path = weakly_canonical(file_path);</div>
 <div class="line"><span class="lineno">  236</span> </div>
 <div class="line"><span class="lineno">  237</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(source_file{file_path})) {</div>
 <div class="line"><span class="lineno">  238</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Processing source file {}&quot;</span>, file.string());</div>

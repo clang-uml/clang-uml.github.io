@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.6.1</span>
+       <span id="projectnumber">0.6.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -223,37 +223,37 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00028">28</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">   30</span>{</div>
-<div class="line"><span class="lineno">   31</span>    std::vector&lt;std::vector&lt;eid_t&gt;&gt; all_message_chains;</div>
-<div class="line"><span class="lineno">   32</span>    std::vector&lt;eid_t&gt; current_chain;</div>
-<div class="line"><span class="lineno">   33</span> </div>
-<div class="line"><span class="lineno">   34</span>    <span class="comment">// Depth first search lambda function to traverse reverse call graph</span></div>
-<div class="line"><span class="lineno">   35</span>    std::function&lt;void(<span class="keyword">const</span> <a class="code hl_struct" href="structclanguml_1_1sequence__diagram_1_1model_1_1reverse__call__graph__activity__node.html">reverse_call_graph_activity_node</a> &amp;)&gt; dfs =</div>
-<div class="line"><span class="lineno">   36</span>        [&amp;](<span class="keyword">const</span> <a class="code hl_struct" href="structclanguml_1_1sequence__diagram_1_1model_1_1reverse__call__graph__activity__node.html">reverse_call_graph_activity_node</a> &amp;node) {</div>
-<div class="line"><span class="lineno">   37</span>            <span class="comment">// Add the current node’s activity ID to the path</span></div>
-<div class="line"><span class="lineno">   38</span>            current_chain.push_back(node.activity_id);</div>
-<div class="line"><span class="lineno">   39</span> </div>
-<div class="line"><span class="lineno">   40</span>            <span class="keywordflow">if</span> (node.callers.empty()) {</div>
-<div class="line"><span class="lineno">   41</span>                <span class="keyword">auto</span> reversed = current_chain;</div>
-<div class="line"><span class="lineno">   42</span>                std::reverse(reversed.begin(), reversed.end());</div>
-<div class="line"><span class="lineno">   43</span>                all_message_chains.emplace_back(std::move(reversed));</div>
-<div class="line"><span class="lineno">   44</span>            }</div>
-<div class="line"><span class="lineno">   45</span>            <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   46</span>                <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;child : node.callers) {</div>
-<div class="line"><span class="lineno">   47</span>                    dfs(child);</div>
-<div class="line"><span class="lineno">   48</span>                }</div>
-<div class="line"><span class="lineno">   49</span>            }</div>
-<div class="line"><span class="lineno">   50</span> </div>
-<div class="line"><span class="lineno">   51</span>            <span class="comment">// Backtrack</span></div>
-<div class="line"><span class="lineno">   52</span>            current_chain.pop_back();</div>
-<div class="line"><span class="lineno">   53</span>        };</div>
-<div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>    <span class="comment">// Start depth first search</span></div>
-<div class="line"><span class="lineno">   56</span>    dfs(root);</div>
-<div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">return</span> all_message_chains;</div>
-<div class="line"><span class="lineno">   59</span>}</div>
+<p class="definition">Definition at line <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html#l00030">30</a> of file <a class="el" href="sequence__diagram_2model_2diagram_8cc_source.html">diagram.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   32</span>{</div>
+<div class="line"><span class="lineno">   33</span>    std::vector&lt;std::vector&lt;eid_t&gt;&gt; all_message_chains;</div>
+<div class="line"><span class="lineno">   34</span>    std::vector&lt;eid_t&gt; current_chain;</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>    <span class="comment">// Depth first search lambda function to traverse reverse call graph</span></div>
+<div class="line"><span class="lineno">   37</span>    std::function&lt;void(<span class="keyword">const</span> <a class="code hl_struct" href="structclanguml_1_1sequence__diagram_1_1model_1_1reverse__call__graph__activity__node.html">reverse_call_graph_activity_node</a> &amp;)&gt; dfs =</div>
+<div class="line"><span class="lineno">   38</span>        [&amp;](<span class="keyword">const</span> <a class="code hl_struct" href="structclanguml_1_1sequence__diagram_1_1model_1_1reverse__call__graph__activity__node.html">reverse_call_graph_activity_node</a> &amp;node) {</div>
+<div class="line"><span class="lineno">   39</span>            <span class="comment">// Add the current node’s activity ID to the path</span></div>
+<div class="line"><span class="lineno">   40</span>            current_chain.push_back(node.activity_id);</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>            <span class="keywordflow">if</span> (node.callers.empty()) {</div>
+<div class="line"><span class="lineno">   43</span>                <span class="keyword">auto</span> reversed = current_chain;</div>
+<div class="line"><span class="lineno">   44</span>                std::reverse(reversed.begin(), reversed.end());</div>
+<div class="line"><span class="lineno">   45</span>                all_message_chains.emplace_back(std::move(reversed));</div>
+<div class="line"><span class="lineno">   46</span>            }</div>
+<div class="line"><span class="lineno">   47</span>            <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   48</span>                <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;child : node.callers) {</div>
+<div class="line"><span class="lineno">   49</span>                    dfs(child);</div>
+<div class="line"><span class="lineno">   50</span>                }</div>
+<div class="line"><span class="lineno">   51</span>            }</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>            <span class="comment">// Backtrack</span></div>
+<div class="line"><span class="lineno">   54</span>            current_chain.pop_back();</div>
+<div class="line"><span class="lineno">   55</span>        };</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>    <span class="comment">// Start depth first search</span></div>
+<div class="line"><span class="lineno">   58</span>    dfs(root);</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">return</span> all_message_chains;</div>
+<div class="line"><span class="lineno">   61</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

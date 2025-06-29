@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.6.1</span>
+       <span id="projectnumber">0.6.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -155,6 +155,12 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ac60533d8d8a28b77263b382d43e40cbe"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1util.html#ac60533d8d8a28b77263b382d43e40cbe">levenshtein_distance</a> (const std::string &amp;left, const std::string &amp;right)</td></tr>
+<tr class="memdesc:ac60533d8d8a28b77263b382d43e40cbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the Levenshtein distance between two strings.  <br /></td></tr>
+<tr class="separator:ac60533d8d8a28b77263b382d43e40cbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4492f8342a4fd2be605ae4ff2f8b3a99"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1util.html#a4492f8342a4fd2be605ae4ff2f8b3a99">get_approximate_matches</a> (const std::vector&lt; std::string &gt; &amp;collection, const std::string &amp;pattern, int max_results=3)</td></tr>
+<tr class="memdesc:a4492f8342a4fd2be605ae4ff2f8b3a99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find most similar strings in collection.  <br /></td></tr>
+<tr class="separator:a4492f8342a4fd2be605ae4ff2f8b3a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6a4536956b8df20164c9ef36c6e769c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclanguml_1_1util.html#ac6a4536956b8df20164c9ef36c6e769c">get_process_output</a> (const std::string &amp;command)</td></tr>
 <tr class="memdesc:ac6a4536956b8df20164c9ef36c6e769c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a shell <code>command</code> and return console output as string.  <br /></td></tr>
 <tr class="separator:ac6a4536956b8df20164c9ef36c6e769c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1117,6 +1123,72 @@ template&lt;typename T , typename F &gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a4492f8342a4fd2be605ae4ff2f8b3a99" name="a4492f8342a4fd2be605ae4ff2f8b3a99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4492f8342a4fd2be605ae4ff2f8b3a99">&#9670;&#160;</a></span>get_approximate_matches()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; clanguml::util::get_approximate_matches </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>collection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>pattern</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_results</em> = <code>3</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Find most similar strings in collection. </p>
+<p>Returns at most three strings from <code>items</code> that are closest to <code>pattern</code> based on Levenshtein distance.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">collection</td><td>Input collection </td></tr>
+    <tr><td class="paramname">pattern</td><td>Pattern to match against items in collection </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>List of most similar items from collection </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="levenshtein_8cc_source.html#l00046">46</a> of file <a class="el" href="levenshtein_8cc_source.html">levenshtein.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   49</span>{</div>
+<div class="line"><span class="lineno">   50</span>    std::vector&lt;std::pair&lt;size_t, std::string&gt;&gt; distance_pairs;</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;item : collection) {</div>
+<div class="line"><span class="lineno">   53</span>        <span class="keyword">auto</span> distance = <a class="code hl_function" href="namespaceclanguml_1_1util.html#ac60533d8d8a28b77263b382d43e40cbe" title="Compute the Levenshtein distance between two strings.">levenshtein_distance</a>(item, pattern);</div>
+<div class="line"><span class="lineno">   54</span>        distance_pairs.emplace_back(distance, item);</div>
+<div class="line"><span class="lineno">   55</span>    }</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>    std::sort(distance_pairs.begin(), distance_pairs.end(),</div>
+<div class="line"><span class="lineno">   58</span>        [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;a, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;b) { return a.first &lt; b.first; });</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>    std::vector&lt;std::string&gt; result;</div>
+<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; std::min&lt;size_t&gt;(distance_pairs.size(), max_results);</div>
+<div class="line"><span class="lineno">   62</span>         ++i) {</div>
+<div class="line"><span class="lineno">   63</span>        result.push_back(distance_pairs[i].second);</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">   67</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a951a82c3665540480144f42b4b77e23f" name="a951a82c3665540480144f42b4b77e23f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a951a82c3665540480144f42b4b77e23f">&#9670;&#160;</a></span>get_env()</h2>
 
@@ -1675,6 +1747,67 @@ template&lt;typename... Args&gt; </div>
 <div class="line"><span class="lineno">  214</span> </div>
 <div class="line"><span class="lineno">  215</span>    <span class="keywordflow">return</span> fmt::format(<span class="stringliteral">&quot;{}&quot;</span>, fmt::join(coll, delimiter));</div>
 <div class="line"><span class="lineno">  216</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac60533d8d8a28b77263b382d43e40cbe" name="ac60533d8d8a28b77263b382d43e40cbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac60533d8d8a28b77263b382d43e40cbe">&#9670;&#160;</a></span>levenshtein_distance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t clanguml::util::levenshtein_distance </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>left</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>right</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compute the Levenshtein distance between two strings. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">left</td><td>First string </td></tr>
+    <tr><td class="paramname">right</td><td>Second string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Calculated Levenshtein distance </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="levenshtein_8cc_source.html#l00023">23</a> of file <a class="el" href="levenshtein_8cc_source.html">levenshtein.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">   24</span>{</div>
+<div class="line"><span class="lineno">   25</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> m = left.size();</div>
+<div class="line"><span class="lineno">   26</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> n = right.size();</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>    std::vector&lt;std::vector&lt;size_t&gt;&gt; dp(m + 1, std::vector&lt;size_t&gt;(n + 1, 0));</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt;= m; ++i)</div>
+<div class="line"><span class="lineno">   31</span>        dp[i][0] = i;</div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt;= n; ++j)</div>
+<div class="line"><span class="lineno">   33</span>        dp[0][j] = j;</div>
+<div class="line"><span class="lineno">   34</span> </div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt;= m; ++i) {</div>
+<div class="line"><span class="lineno">   36</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 1; j &lt;= n; ++j) {</div>
+<div class="line"><span class="lineno">   37</span>            <span class="keywordtype">int</span> substitution_cost = (left[i - 1] == right[j - 1]) ? 0 : 1;</div>
+<div class="line"><span class="lineno">   38</span>            dp[i][j] = std::min({dp[i - 1][j] + 1, dp[i][j - 1] + 1,</div>
+<div class="line"><span class="lineno">   39</span>                dp[i - 1][j - 1] + substitution_cost});</div>
+<div class="line"><span class="lineno">   40</span>        }</div>
+<div class="line"><span class="lineno">   41</span>    }</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">return</span> dp[m][n];</div>
+<div class="line"><span class="lineno">   44</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.6.1</span>
+       <span id="projectnumber">0.6.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -462,7 +462,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00860">860</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00862">862</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -1155,10 +1155,10 @@ template&lt;&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00622">622</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  623</span>{</div>
-<div class="line"><span class="lineno">  624</span>    l.<a class="code hl_function" href="structclanguml_1_1config_1_1plantuml.html#a5e174a08cfeb3eb0eb85a171e8c88319">append</a>(r);</div>
-<div class="line"><span class="lineno">  625</span>}</div>
+<p class="definition">Definition at line <a class="el" href="config_8cc_source.html#l00634">634</a> of file <a class="el" href="config_8cc_source.html">config.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  635</span>{</div>
+<div class="line"><span class="lineno">  636</span>    l.<a class="code hl_function" href="structclanguml_1_1config_1_1plantuml.html#a5e174a08cfeb3eb0eb85a171e8c88319">append</a>(r);</div>
+<div class="line"><span class="lineno">  637</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1249,145 +1249,145 @@ template&lt;&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Configuration instance </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l01204">1204</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno"> 1207</span>{</div>
-<div class="line"><span class="lineno"> 1208</span>    <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno"> 1209</span>        <span class="keyword">auto</span> schema = YAML::Load(<a class="code hl_variable" href="namespaceclanguml_1_1config.html#ada620f84fe4d8d0c0c862f1cc24021a6">clanguml::config::schema_str</a>);</div>
-<div class="line"><span class="lineno"> 1210</span>        <span class="keyword">auto</span> schema_validator = miroir::Validator&lt;YAML::Node&gt;(schema);</div>
-<div class="line"><span class="lineno"> 1211</span> </div>
-<div class="line"><span class="lineno"> 1212</span>        YAML::Node doc;</div>
-<div class="line"><span class="lineno"> 1213</span>        std::filesystem::path config_file_path{};</div>
-<div class="line"><span class="lineno"> 1214</span> </div>
-<div class="line"><span class="lineno"> 1215</span>        <span class="keywordflow">if</span> (config_file == <span class="stringliteral">&quot;-&quot;</span>) {</div>
-<div class="line"><span class="lineno"> 1216</span>            std::istreambuf_iterator&lt;char&gt; stdin_stream_begin{std::cin};</div>
-<div class="line"><span class="lineno"> 1217</span>            std::istreambuf_iterator&lt;char&gt; stdin_stream_end{};</div>
-<div class="line"><span class="lineno"> 1218</span>            std::string stdin_stream_str{stdin_stream_begin, stdin_stream_end};</div>
-<div class="line"><span class="lineno"> 1219</span> </div>
-<div class="line"><span class="lineno"> 1220</span>            doc = YAML::Load(stdin_stream_str);</div>
-<div class="line"><span class="lineno"> 1221</span>        }</div>
-<div class="line"><span class="lineno"> 1222</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno"> 1223</span>            doc = YAML::LoadFile(config_file);</div>
-<div class="line"><span class="lineno"> 1224</span>        }</div>
-<div class="line"><span class="lineno"> 1225</span> </div>
-<div class="line"><span class="lineno"> 1226</span>        <span class="comment">// Store the parent path of the config_file to properly resolve</span></div>
-<div class="line"><span class="lineno"> 1227</span>        <span class="comment">// relative paths in config file</span></div>
-<div class="line"><span class="lineno"> 1228</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(doc, <span class="stringliteral">&quot;__parent_path&quot;</span>))</div>
-<div class="line"><span class="lineno"> 1229</span>            doc.remove(<span class="stringliteral">&quot;__parent_path&quot;</span>);</div>
-<div class="line"><span class="lineno"> 1230</span>        <span class="keywordflow">if</span> (config_file == <span class="stringliteral">&quot;-&quot;</span>) {</div>
-<div class="line"><span class="lineno"> 1231</span>            config_file_path = std::filesystem::current_path();</div>
-<div class="line"><span class="lineno"> 1232</span>            doc.force_insert(<span class="stringliteral">&quot;__parent_path&quot;</span>, config_file_path.string());</div>
-<div class="line"><span class="lineno"> 1233</span>        }</div>
-<div class="line"><span class="lineno"> 1234</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno"> 1235</span>            config_file_path =</div>
-<div class="line"><span class="lineno"> 1236</span>                canonical(absolute(std::filesystem::path{config_file}));</div>
-<div class="line"><span class="lineno"> 1237</span>            doc.force_insert(</div>
-<div class="line"><span class="lineno"> 1238</span>                <span class="stringliteral">&quot;__parent_path&quot;</span>, config_file_path.parent_path().string());</div>
-<div class="line"><span class="lineno"> 1239</span>        }</div>
-<div class="line"><span class="lineno"> 1240</span> </div>
-<div class="line"><span class="lineno"> 1241</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Effective config file path is {}&quot;</span>, config_file_path.string());</div>
+<p class="definition">Definition at line <a class="el" href="yaml__decoders_8cc_source.html#l01206">1206</a> of file <a class="el" href="yaml__decoders_8cc_source.html">yaml_decoders.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno"> 1209</span>{</div>
+<div class="line"><span class="lineno"> 1210</span>    <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno"> 1211</span>        <span class="keyword">auto</span> schema = YAML::Load(<a class="code hl_variable" href="namespaceclanguml_1_1config.html#ada620f84fe4d8d0c0c862f1cc24021a6">clanguml::config::schema_str</a>);</div>
+<div class="line"><span class="lineno"> 1212</span>        <span class="keyword">auto</span> schema_validator = miroir::Validator&lt;YAML::Node&gt;(schema);</div>
+<div class="line"><span class="lineno"> 1213</span> </div>
+<div class="line"><span class="lineno"> 1214</span>        YAML::Node doc;</div>
+<div class="line"><span class="lineno"> 1215</span>        std::filesystem::path config_file_path{};</div>
+<div class="line"><span class="lineno"> 1216</span> </div>
+<div class="line"><span class="lineno"> 1217</span>        <span class="keywordflow">if</span> (config_file == <span class="stringliteral">&quot;-&quot;</span>) {</div>
+<div class="line"><span class="lineno"> 1218</span>            std::istreambuf_iterator&lt;char&gt; stdin_stream_begin{std::cin};</div>
+<div class="line"><span class="lineno"> 1219</span>            std::istreambuf_iterator&lt;char&gt; stdin_stream_end{};</div>
+<div class="line"><span class="lineno"> 1220</span>            std::string stdin_stream_str{stdin_stream_begin, stdin_stream_end};</div>
+<div class="line"><span class="lineno"> 1221</span> </div>
+<div class="line"><span class="lineno"> 1222</span>            doc = YAML::Load(stdin_stream_str);</div>
+<div class="line"><span class="lineno"> 1223</span>        }</div>
+<div class="line"><span class="lineno"> 1224</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno"> 1225</span>            doc = YAML::LoadFile(config_file);</div>
+<div class="line"><span class="lineno"> 1226</span>        }</div>
+<div class="line"><span class="lineno"> 1227</span> </div>
+<div class="line"><span class="lineno"> 1228</span>        <span class="comment">// Store the parent path of the config_file to properly resolve</span></div>
+<div class="line"><span class="lineno"> 1229</span>        <span class="comment">// relative paths in config file</span></div>
+<div class="line"><span class="lineno"> 1230</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(doc, <span class="stringliteral">&quot;__parent_path&quot;</span>))</div>
+<div class="line"><span class="lineno"> 1231</span>            doc.remove(<span class="stringliteral">&quot;__parent_path&quot;</span>);</div>
+<div class="line"><span class="lineno"> 1232</span>        <span class="keywordflow">if</span> (config_file == <span class="stringliteral">&quot;-&quot;</span>) {</div>
+<div class="line"><span class="lineno"> 1233</span>            config_file_path = std::filesystem::current_path();</div>
+<div class="line"><span class="lineno"> 1234</span>            doc.force_insert(<span class="stringliteral">&quot;__parent_path&quot;</span>, config_file_path.string());</div>
+<div class="line"><span class="lineno"> 1235</span>        }</div>
+<div class="line"><span class="lineno"> 1236</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno"> 1237</span>            config_file_path =</div>
+<div class="line"><span class="lineno"> 1238</span>                canonical(absolute(std::filesystem::path{config_file}));</div>
+<div class="line"><span class="lineno"> 1239</span>            doc.force_insert(</div>
+<div class="line"><span class="lineno"> 1240</span>                <span class="stringliteral">&quot;__parent_path&quot;</span>, config_file_path.parent_path().string());</div>
+<div class="line"><span class="lineno"> 1241</span>        }</div>
 <div class="line"><span class="lineno"> 1242</span> </div>
-<div class="line"><span class="lineno"> 1243</span>        <span class="comment">//</span></div>
-<div class="line"><span class="lineno"> 1244</span>        <span class="comment">// If no relative_to path is specified in the config, make all paths</span></div>
-<div class="line"><span class="lineno"> 1245</span>        <span class="comment">// resolvable against the parent directory of the .clang-uml config</span></div>
-<div class="line"><span class="lineno"> 1246</span>        <span class="comment">// file, or against the $PWD if it was specified so in the command</span></div>
-<div class="line"><span class="lineno"> 1247</span>        <span class="comment">// line</span></div>
-<div class="line"><span class="lineno"> 1248</span>        <span class="comment">//</span></div>
-<div class="line"><span class="lineno"> 1249</span>        <span class="keywordflow">if</span> (!doc[<span class="stringliteral">&quot;relative_to&quot;</span>]) {</div>
-<div class="line"><span class="lineno"> 1250</span>            <span class="keywordtype">bool</span> paths_relative_to_config_file = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno"> 1251</span> </div>
-<div class="line"><span class="lineno"> 1252</span>            <span class="keywordflow">if</span> (doc[<span class="stringliteral">&quot;paths_relative_to_config_file&quot;</span>] &amp;&amp;</div>
-<div class="line"><span class="lineno"> 1253</span>                !doc[<span class="stringliteral">&quot;paths_relative_to_config_file&quot;</span>].as&lt;bool&gt;())</div>
-<div class="line"><span class="lineno"> 1254</span>                paths_relative_to_config_file = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno"> 1255</span> </div>
-<div class="line"><span class="lineno"> 1256</span>            <span class="keywordflow">if</span> (paths_relative_to_pwd &amp;&amp; *paths_relative_to_pwd)</div>
-<div class="line"><span class="lineno"> 1257</span>                paths_relative_to_config_file = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno"> 1258</span> </div>
-<div class="line"><span class="lineno"> 1259</span>            <span class="keywordflow">if</span> (paths_relative_to_config_file)</div>
-<div class="line"><span class="lineno"> 1260</span>                doc[<span class="stringliteral">&quot;relative_to&quot;</span>] = config_file_path.parent_path().string();</div>
-<div class="line"><span class="lineno"> 1261</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno"> 1262</span>                doc[<span class="stringliteral">&quot;relative_to&quot;</span>] = std::filesystem::current_path().string();</div>
-<div class="line"><span class="lineno"> 1263</span>        }</div>
-<div class="line"><span class="lineno"> 1264</span> </div>
-<div class="line"><span class="lineno"> 1265</span>        <span class="keywordflow">if</span> (no_metadata.has_value()) {</div>
-<div class="line"><span class="lineno"> 1266</span>            doc[<span class="stringliteral">&quot;generate_metadata&quot;</span>] = !no_metadata.value();</div>
-<div class="line"><span class="lineno"> 1267</span>        }</div>
-<div class="line"><span class="lineno"> 1268</span> </div>
-<div class="line"><span class="lineno"> 1269</span>        <span class="comment">//</span></div>
-<div class="line"><span class="lineno"> 1270</span>        <span class="comment">// Resolve common path-like config options relative to `relative_to`</span></div>
+<div class="line"><span class="lineno"> 1243</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Effective config file path is {}&quot;</span>, config_file_path.string());</div>
+<div class="line"><span class="lineno"> 1244</span> </div>
+<div class="line"><span class="lineno"> 1245</span>        <span class="comment">//</span></div>
+<div class="line"><span class="lineno"> 1246</span>        <span class="comment">// If no relative_to path is specified in the config, make all paths</span></div>
+<div class="line"><span class="lineno"> 1247</span>        <span class="comment">// resolvable against the parent directory of the .clang-uml config</span></div>
+<div class="line"><span class="lineno"> 1248</span>        <span class="comment">// file, or against the $PWD if it was specified so in the command</span></div>
+<div class="line"><span class="lineno"> 1249</span>        <span class="comment">// line</span></div>
+<div class="line"><span class="lineno"> 1250</span>        <span class="comment">//</span></div>
+<div class="line"><span class="lineno"> 1251</span>        <span class="keywordflow">if</span> (!doc[<span class="stringliteral">&quot;relative_to&quot;</span>]) {</div>
+<div class="line"><span class="lineno"> 1252</span>            <span class="keywordtype">bool</span> paths_relative_to_config_file = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno"> 1253</span> </div>
+<div class="line"><span class="lineno"> 1254</span>            <span class="keywordflow">if</span> (doc[<span class="stringliteral">&quot;paths_relative_to_config_file&quot;</span>] &amp;&amp;</div>
+<div class="line"><span class="lineno"> 1255</span>                !doc[<span class="stringliteral">&quot;paths_relative_to_config_file&quot;</span>].as&lt;bool&gt;())</div>
+<div class="line"><span class="lineno"> 1256</span>                paths_relative_to_config_file = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno"> 1257</span> </div>
+<div class="line"><span class="lineno"> 1258</span>            <span class="keywordflow">if</span> (paths_relative_to_pwd &amp;&amp; *paths_relative_to_pwd)</div>
+<div class="line"><span class="lineno"> 1259</span>                paths_relative_to_config_file = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno"> 1260</span> </div>
+<div class="line"><span class="lineno"> 1261</span>            <span class="keywordflow">if</span> (paths_relative_to_config_file)</div>
+<div class="line"><span class="lineno"> 1262</span>                doc[<span class="stringliteral">&quot;relative_to&quot;</span>] = config_file_path.parent_path().string();</div>
+<div class="line"><span class="lineno"> 1263</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno"> 1264</span>                doc[<span class="stringliteral">&quot;relative_to&quot;</span>] = std::filesystem::current_path().string();</div>
+<div class="line"><span class="lineno"> 1265</span>        }</div>
+<div class="line"><span class="lineno"> 1266</span> </div>
+<div class="line"><span class="lineno"> 1267</span>        <span class="keywordflow">if</span> (no_metadata.has_value()) {</div>
+<div class="line"><span class="lineno"> 1268</span>            doc[<span class="stringliteral">&quot;generate_metadata&quot;</span>] = !no_metadata.value();</div>
+<div class="line"><span class="lineno"> 1269</span>        }</div>
+<div class="line"><span class="lineno"> 1270</span> </div>
 <div class="line"><span class="lineno"> 1271</span>        <span class="comment">//</span></div>
-<div class="line"><span class="lineno"> 1272</span>        <span class="keywordflow">if</span> (!doc[<span class="stringliteral">&quot;output_directory&quot;</span>]) {</div>
-<div class="line"><span class="lineno"> 1273</span>            doc[<span class="stringliteral">&quot;output_directory&quot;</span>] = <span class="stringliteral">&quot;.&quot;</span>;</div>
-<div class="line"><span class="lineno"> 1274</span>        }</div>
-<div class="line"><span class="lineno"> 1275</span>        resolve_option_path(doc, <span class="stringliteral">&quot;output_directory&quot;</span>);</div>
-<div class="line"><span class="lineno"> 1276</span> </div>
-<div class="line"><span class="lineno"> 1277</span>        <span class="keywordflow">if</span> (!doc[<span class="stringliteral">&quot;compilation_database_dir&quot;</span>]) {</div>
-<div class="line"><span class="lineno"> 1278</span>            doc[<span class="stringliteral">&quot;compilation_database_dir&quot;</span>] = <span class="stringliteral">&quot;.&quot;</span>;</div>
-<div class="line"><span class="lineno"> 1279</span>        }</div>
-<div class="line"><span class="lineno"> 1280</span>        resolve_option_path(doc, <span class="stringliteral">&quot;compilation_database_dir&quot;</span>);</div>
-<div class="line"><span class="lineno"> 1281</span> </div>
-<div class="line"><span class="lineno"> 1282</span>        <span class="comment">// If the current directory is also a git repository,</span></div>
-<div class="line"><span class="lineno"> 1283</span>        <span class="comment">// load some config values, which can be included in the</span></div>
-<div class="line"><span class="lineno"> 1284</span>        <span class="comment">// generated diagrams</span></div>
-<div class="line"><span class="lineno"> 1285</span>        <span class="keywordflow">if</span> (util::is_git_repository() &amp;&amp; !doc[<span class="stringliteral">&quot;git&quot;</span>]) {</div>
-<div class="line"><span class="lineno"> 1286</span>            YAML::Node git_config{YAML::NodeType::Map};</div>
-<div class="line"><span class="lineno"> 1287</span>            git_config[<span class="stringliteral">&quot;branch&quot;</span>] = util::get_git_branch();</div>
-<div class="line"><span class="lineno"> 1288</span>            git_config[<span class="stringliteral">&quot;revision&quot;</span>] = util::get_git_revision();</div>
-<div class="line"><span class="lineno"> 1289</span>            git_config[<span class="stringliteral">&quot;commit&quot;</span>] = util::get_git_commit();</div>
-<div class="line"><span class="lineno"> 1290</span>            git_config[<span class="stringliteral">&quot;toplevel&quot;</span>] = util::get_git_toplevel_dir();</div>
-<div class="line"><span class="lineno"> 1291</span> </div>
-<div class="line"><span class="lineno"> 1292</span>            doc[<span class="stringliteral">&quot;git&quot;</span>] = git_config;</div>
-<div class="line"><span class="lineno"> 1293</span>        }</div>
-<div class="line"><span class="lineno"> 1294</span> </div>
-<div class="line"><span class="lineno"> 1295</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(doc, <span class="stringliteral">&quot;diagrams&quot;</span>)) {</div>
-<div class="line"><span class="lineno"> 1296</span>            <span class="keyword">auto</span> diagrams = doc[<span class="stringliteral">&quot;diagrams&quot;</span>];</div>
-<div class="line"><span class="lineno"> 1297</span> </div>
-<div class="line"><span class="lineno"> 1298</span>            assert(diagrams.Type() == YAML::NodeType::Map);</div>
+<div class="line"><span class="lineno"> 1272</span>        <span class="comment">// Resolve common path-like config options relative to `relative_to`</span></div>
+<div class="line"><span class="lineno"> 1273</span>        <span class="comment">//</span></div>
+<div class="line"><span class="lineno"> 1274</span>        <span class="keywordflow">if</span> (!doc[<span class="stringliteral">&quot;output_directory&quot;</span>]) {</div>
+<div class="line"><span class="lineno"> 1275</span>            doc[<span class="stringliteral">&quot;output_directory&quot;</span>] = <span class="stringliteral">&quot;.&quot;</span>;</div>
+<div class="line"><span class="lineno"> 1276</span>        }</div>
+<div class="line"><span class="lineno"> 1277</span>        resolve_option_path(doc, <span class="stringliteral">&quot;output_directory&quot;</span>);</div>
+<div class="line"><span class="lineno"> 1278</span> </div>
+<div class="line"><span class="lineno"> 1279</span>        <span class="keywordflow">if</span> (!doc[<span class="stringliteral">&quot;compilation_database_dir&quot;</span>]) {</div>
+<div class="line"><span class="lineno"> 1280</span>            doc[<span class="stringliteral">&quot;compilation_database_dir&quot;</span>] = <span class="stringliteral">&quot;.&quot;</span>;</div>
+<div class="line"><span class="lineno"> 1281</span>        }</div>
+<div class="line"><span class="lineno"> 1282</span>        resolve_option_path(doc, <span class="stringliteral">&quot;compilation_database_dir&quot;</span>);</div>
+<div class="line"><span class="lineno"> 1283</span> </div>
+<div class="line"><span class="lineno"> 1284</span>        <span class="comment">// If the current directory is also a git repository,</span></div>
+<div class="line"><span class="lineno"> 1285</span>        <span class="comment">// load some config values, which can be included in the</span></div>
+<div class="line"><span class="lineno"> 1286</span>        <span class="comment">// generated diagrams</span></div>
+<div class="line"><span class="lineno"> 1287</span>        <span class="keywordflow">if</span> (util::is_git_repository() &amp;&amp; !doc[<span class="stringliteral">&quot;git&quot;</span>]) {</div>
+<div class="line"><span class="lineno"> 1288</span>            YAML::Node git_config{YAML::NodeType::Map};</div>
+<div class="line"><span class="lineno"> 1289</span>            git_config[<span class="stringliteral">&quot;branch&quot;</span>] = util::get_git_branch();</div>
+<div class="line"><span class="lineno"> 1290</span>            git_config[<span class="stringliteral">&quot;revision&quot;</span>] = util::get_git_revision();</div>
+<div class="line"><span class="lineno"> 1291</span>            git_config[<span class="stringliteral">&quot;commit&quot;</span>] = util::get_git_commit();</div>
+<div class="line"><span class="lineno"> 1292</span>            git_config[<span class="stringliteral">&quot;toplevel&quot;</span>] = util::get_git_toplevel_dir();</div>
+<div class="line"><span class="lineno"> 1293</span> </div>
+<div class="line"><span class="lineno"> 1294</span>            doc[<span class="stringliteral">&quot;git&quot;</span>] = git_config;</div>
+<div class="line"><span class="lineno"> 1295</span>        }</div>
+<div class="line"><span class="lineno"> 1296</span> </div>
+<div class="line"><span class="lineno"> 1297</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(doc, <span class="stringliteral">&quot;diagrams&quot;</span>)) {</div>
+<div class="line"><span class="lineno"> 1298</span>            <span class="keyword">auto</span> diagrams = doc[<span class="stringliteral">&quot;diagrams&quot;</span>];</div>
 <div class="line"><span class="lineno"> 1299</span> </div>
-<div class="line"><span class="lineno"> 1300</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span> d : diagrams) {</div>
-<div class="line"><span class="lineno"> 1301</span>                <span class="keyword">auto</span> name = d.first.as&lt;std::string&gt;();</div>
-<div class="line"><span class="lineno"> 1302</span>                std::shared_ptr&lt;clanguml::config::diagram&gt; <a class="code hl_typedef" href="namespaceclanguml_1_1class__diagram_1_1generators_1_1graphml.html#aceaa144d571bcce6fbbca7665e4a5aba">diagram_config</a>{};</div>
-<div class="line"><span class="lineno"> 1303</span>                <span class="keyword">auto</span> parent_path = doc[<span class="stringliteral">&quot;__parent_path&quot;</span>].as&lt;std::string&gt;();</div>
-<div class="line"><span class="lineno"> 1304</span> </div>
-<div class="line"><span class="lineno"> 1305</span>                <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(d.second, <span class="stringliteral">&quot;include!&quot;</span>)) {</div>
-<div class="line"><span class="lineno"> 1306</span>                    <span class="keyword">auto</span> include_path = std::filesystem::path{parent_path};</div>
-<div class="line"><span class="lineno"> 1307</span>                    include_path /= d.second[<span class="stringliteral">&quot;include!&quot;</span>].as&lt;std::string&gt;();</div>
-<div class="line"><span class="lineno"> 1308</span> </div>
-<div class="line"><span class="lineno"> 1309</span>                    YAML::Node included_node =</div>
-<div class="line"><span class="lineno"> 1310</span>                        YAML::LoadFile(include_path.string());</div>
-<div class="line"><span class="lineno"> 1311</span> </div>
-<div class="line"><span class="lineno"> 1312</span>                    diagrams[name] = included_node;</div>
-<div class="line"><span class="lineno"> 1313</span>                }</div>
-<div class="line"><span class="lineno"> 1314</span>            }</div>
-<div class="line"><span class="lineno"> 1315</span>        }</div>
-<div class="line"><span class="lineno"> 1316</span> </div>
-<div class="line"><span class="lineno"> 1317</span>        <span class="keywordflow">if</span> (validate) {</div>
-<div class="line"><span class="lineno"> 1318</span>            <span class="keyword">auto</span> schema_errors = schema_validator.validate(doc);</div>
-<div class="line"><span class="lineno"> 1319</span> </div>
-<div class="line"><span class="lineno"> 1320</span>            <span class="keywordflow">if</span> (!schema_errors.empty()) {</div>
-<div class="line"><span class="lineno"> 1321</span>                <span class="keywordflow">throw</span> <a class="code hl_class" href="classclanguml_1_1error_1_1config__schema__error.html">clanguml::error::config_schema_error</a>(</div>
-<div class="line"><span class="lineno"> 1322</span>                    std::move(schema_errors));</div>
-<div class="line"><span class="lineno"> 1323</span>            }</div>
-<div class="line"><span class="lineno"> 1324</span>        }</div>
-<div class="line"><span class="lineno"> 1325</span> </div>
-<div class="line"><span class="lineno"> 1326</span>        <span class="keyword">auto</span> d = doc.as&lt;config&gt;();</div>
+<div class="line"><span class="lineno"> 1300</span>            assert(diagrams.Type() == YAML::NodeType::Map);</div>
+<div class="line"><span class="lineno"> 1301</span> </div>
+<div class="line"><span class="lineno"> 1302</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span> d : diagrams) {</div>
+<div class="line"><span class="lineno"> 1303</span>                <span class="keyword">auto</span> name = d.first.as&lt;std::string&gt;();</div>
+<div class="line"><span class="lineno"> 1304</span>                std::shared_ptr&lt;clanguml::config::diagram&gt; <a class="code hl_typedef" href="namespaceclanguml_1_1class__diagram_1_1generators_1_1graphml.html#aceaa144d571bcce6fbbca7665e4a5aba">diagram_config</a>{};</div>
+<div class="line"><span class="lineno"> 1305</span>                <span class="keyword">auto</span> parent_path = doc[<span class="stringliteral">&quot;__parent_path&quot;</span>].as&lt;std::string&gt;();</div>
+<div class="line"><span class="lineno"> 1306</span> </div>
+<div class="line"><span class="lineno"> 1307</span>                <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceYAML.html#ac6bcb4787f4110771788d56c711aeee0">has_key</a>(d.second, <span class="stringliteral">&quot;include!&quot;</span>)) {</div>
+<div class="line"><span class="lineno"> 1308</span>                    <span class="keyword">auto</span> include_path = std::filesystem::path{parent_path};</div>
+<div class="line"><span class="lineno"> 1309</span>                    include_path /= d.second[<span class="stringliteral">&quot;include!&quot;</span>].as&lt;std::string&gt;();</div>
+<div class="line"><span class="lineno"> 1310</span> </div>
+<div class="line"><span class="lineno"> 1311</span>                    YAML::Node included_node =</div>
+<div class="line"><span class="lineno"> 1312</span>                        YAML::LoadFile(include_path.string());</div>
+<div class="line"><span class="lineno"> 1313</span> </div>
+<div class="line"><span class="lineno"> 1314</span>                    diagrams[name] = included_node;</div>
+<div class="line"><span class="lineno"> 1315</span>                }</div>
+<div class="line"><span class="lineno"> 1316</span>            }</div>
+<div class="line"><span class="lineno"> 1317</span>        }</div>
+<div class="line"><span class="lineno"> 1318</span> </div>
+<div class="line"><span class="lineno"> 1319</span>        <span class="keywordflow">if</span> (validate) {</div>
+<div class="line"><span class="lineno"> 1320</span>            <span class="keyword">auto</span> schema_errors = schema_validator.validate(doc);</div>
+<div class="line"><span class="lineno"> 1321</span> </div>
+<div class="line"><span class="lineno"> 1322</span>            <span class="keywordflow">if</span> (!schema_errors.empty()) {</div>
+<div class="line"><span class="lineno"> 1323</span>                <span class="keywordflow">throw</span> <a class="code hl_class" href="classclanguml_1_1error_1_1config__schema__error.html">clanguml::error::config_schema_error</a>(</div>
+<div class="line"><span class="lineno"> 1324</span>                    std::move(schema_errors));</div>
+<div class="line"><span class="lineno"> 1325</span>            }</div>
+<div class="line"><span class="lineno"> 1326</span>        }</div>
 <div class="line"><span class="lineno"> 1327</span> </div>
-<div class="line"><span class="lineno"> 1328</span>        <span class="keywordflow">if</span> (inherit)</div>
-<div class="line"><span class="lineno"> 1329</span>            d.inherit();</div>
-<div class="line"><span class="lineno"> 1330</span> </div>
-<div class="line"><span class="lineno"> 1331</span>        d.initialize_diagram_templates();</div>
+<div class="line"><span class="lineno"> 1328</span>        <span class="keyword">auto</span> d = doc.as&lt;config&gt;();</div>
+<div class="line"><span class="lineno"> 1329</span> </div>
+<div class="line"><span class="lineno"> 1330</span>        <span class="keywordflow">if</span> (inherit)</div>
+<div class="line"><span class="lineno"> 1331</span>            d.inherit();</div>
 <div class="line"><span class="lineno"> 1332</span> </div>
-<div class="line"><span class="lineno"> 1333</span>        <span class="keywordflow">return</span> d;</div>
-<div class="line"><span class="lineno"> 1334</span>    }</div>
-<div class="line"><span class="lineno"> 1335</span>    <span class="keywordflow">catch</span> (YAML::BadFile &amp;e) {</div>
-<div class="line"><span class="lineno"> 1336</span>        <span class="keywordflow">throw</span> std::runtime_error(fmt::format(</div>
-<div class="line"><span class="lineno"> 1337</span>            <span class="stringliteral">&quot;Could not open config file {}: {}&quot;</span>, config_file, e.what()));</div>
-<div class="line"><span class="lineno"> 1338</span>    }</div>
-<div class="line"><span class="lineno"> 1339</span>    <span class="keywordflow">catch</span> (YAML::Exception &amp;e) {</div>
-<div class="line"><span class="lineno"> 1340</span>        <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><span class="lineno"> 1341</span>            fmt::format(<span class="stringliteral">&quot;Cannot parse YAML file {} at line {}: {}&quot;</span>, config_file,</div>
-<div class="line"><span class="lineno"> 1342</span>                e.mark.line, e.msg));</div>
-<div class="line"><span class="lineno"> 1343</span>    }</div>
-<div class="line"><span class="lineno"> 1344</span>}</div>
+<div class="line"><span class="lineno"> 1333</span>        d.initialize_diagram_templates();</div>
+<div class="line"><span class="lineno"> 1334</span> </div>
+<div class="line"><span class="lineno"> 1335</span>        <span class="keywordflow">return</span> d;</div>
+<div class="line"><span class="lineno"> 1336</span>    }</div>
+<div class="line"><span class="lineno"> 1337</span>    <span class="keywordflow">catch</span> (YAML::BadFile &amp;e) {</div>
+<div class="line"><span class="lineno"> 1338</span>        <span class="keywordflow">throw</span> std::runtime_error(fmt::format(</div>
+<div class="line"><span class="lineno"> 1339</span>            <span class="stringliteral">&quot;Could not open config file {}: {}&quot;</span>, config_file, e.what()));</div>
+<div class="line"><span class="lineno"> 1340</span>    }</div>
+<div class="line"><span class="lineno"> 1341</span>    <span class="keywordflow">catch</span> (YAML::Exception &amp;e) {</div>
+<div class="line"><span class="lineno"> 1342</span>        <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><span class="lineno"> 1343</span>            fmt::format(<span class="stringliteral">&quot;Cannot parse YAML file {} at line {}: {}&quot;</span>, config_file,</div>
+<div class="line"><span class="lineno"> 1344</span>                e.mark.line, e.msg));</div>
+<div class="line"><span class="lineno"> 1345</span>    }</div>
+<div class="line"><span class="lineno"> 1346</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

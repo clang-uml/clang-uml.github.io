@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.6.1</span>
+       <span id="projectnumber">0.6.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -232,16 +232,20 @@ $(function() {
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="classclanguml_1_1generators_1_1clang__tool.html#afdc429295187dde09d8f02dc9983d1ff">  103</a></span>    ArgumentsAdjuster <a class="code hl_variable" href="classclanguml_1_1generators_1_1clang__tool.html#afdc429295187dde09d8f02dc9983d1ff">args_adjuster_</a>;</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classclanguml_1_1generators_1_1clang__tool.html#a2e743068f97d994cb1fb6e5b84a06075">  105</a></span>    std::unique_ptr&lt;diagnostic_consumer&gt; <a class="code hl_variable" href="classclanguml_1_1generators_1_1clang__tool.html#a2e743068f97d994cb1fb6e5b84a06075">diag_consumer_</a>;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classclanguml_1_1generators_1_1clang__tool.html#a052df6a580854a63de758344e0218704">  106</a></span>    llvm::IntrusiveRefCntPtr&lt;clang::DiagnosticOptions&gt; <a class="code hl_variable" href="classclanguml_1_1generators_1_1clang__tool.html#a052df6a580854a63de758344e0218704">diag_opts_</a>;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>};</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>} <span class="comment">// namespace clanguml::generators</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclang.html">clang</a> {</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>std::string to_string(clang::DiagnosticsEngine::Level level);</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>} <span class="comment">// namespace clang</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="preprocessor">#if LLVM_VERSION_MAJOR &lt; 21</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="classclanguml_1_1generators_1_1clang__tool.html#a052df6a580854a63de758344e0218704">  107</a></span>    llvm::IntrusiveRefCntPtr&lt;clang::DiagnosticOptions&gt; <a class="code hl_variable" href="classclanguml_1_1generators_1_1clang__tool.html#a052df6a580854a63de758344e0218704">diag_opts_</a>;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    std::unique_ptr&lt;clang::DiagnosticOptions&gt; <a class="code hl_variable" href="classclanguml_1_1generators_1_1clang__tool.html#a052df6a580854a63de758344e0218704">diag_opts_</a>;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>};</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>} <span class="comment">// namespace clanguml::generators</span></div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><a class="code hl_define" href="fmt__formatters_8h.html#a0eb02a36e1ae368cbbec124cc5716561">MAKE_TO_STRING_FORMATTER</a>(clang::DiagnosticsEngine::Level)</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><a class="code hl_define" href="fmt__formatters_8h.html#a0eb02a36e1ae368cbbec124cc5716561">MAKE_TO_STRING_FORMATTER</a>(<a class="code hl_struct" href="structclanguml_1_1generators_1_1diagnostic.html">clanguml::generators::diagnostic</a>)</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceclang.html">clang</a> {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>std::string to_string(clang::DiagnosticsEngine::Level level);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>} <span class="comment">// namespace clang</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><a class="code hl_define" href="fmt__formatters_8h.html#a0eb02a36e1ae368cbbec124cc5716561">MAKE_TO_STRING_FORMATTER</a>(clang::DiagnosticsEngine::Level)</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><a class="code hl_define" href="fmt__formatters_8h.html#a0eb02a36e1ae368cbbec124cc5716561">MAKE_TO_STRING_FORMATTER</a>(<a class="code hl_struct" href="structclanguml_1_1generators_1_1diagnostic.html">clanguml::generators::diagnostic</a>)</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.1-->
 <!-- start footer part -->

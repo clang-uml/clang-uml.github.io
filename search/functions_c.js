@@ -12,12 +12,13 @@ var searchData=
   ['leave_5floopstmt_9',['leave_loopstmt',['../structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#a30fa9f0d889adb03e21b415d9e1467c6',1,'clanguml::sequence_diagram::visitor::call_expression_context']]],
   ['leave_5fswitchstmt_10',['leave_switchstmt',['../structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#af886b8f81e416beda022d52d87b8a0e1',1,'clanguml::sequence_diagram::visitor::call_expression_context']]],
   ['leave_5ftrystmt_11',['leave_trystmt',['../structclanguml_1_1sequence__diagram_1_1visitor_1_1call__expression__context.html#aa4892e4f52e3bdbd4928530632c38117',1,'clanguml::sequence_diagram::visitor::call_expression_context']]],
-  ['line_12',['line',['../classclanguml_1_1common_1_1model_1_1source__location.html#a1f2ab3af1b5c2129876b018b9fb3ba0c',1,'clanguml::common::model::source_location']]],
-  ['list_5ffrom_5fvalues_13',['list_from_values',['../classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#ac13b00c3cd338ec3290c03ae2b239ffb',1,'clanguml::sequence_diagram::model::diagram']]],
-  ['list_5fto_5fvalues_14',['list_to_values',['../classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a5900951cdd0ec2241f4b4e2bc493cc92',1,'clanguml::sequence_diagram::model::diagram']]],
-  ['load_15',['load',['../namespaceclanguml_1_1config.html#aea6c36b13e5b87d842b29fed15f2bd4c',1,'clanguml::config']]],
-  ['load_5fconfig_16',['load_config',['../classclanguml_1_1cli_1_1cli__handler.html#a77847ce5924154ea37ad869896bbdda3',1,'clanguml::cli::cli_handler']]],
-  ['location_5fid_17',['location_id',['../classclanguml_1_1common_1_1model_1_1source__location.html#a844aed647a54e521838efad0ee9f4983',1,'clanguml::common::model::source_location']]],
-  ['logger_5ftype_18',['logger_type',['../namespaceclanguml_1_1logging.html#a125aa41c31850f89df7aedfd2d7f8e74',1,'clanguml::logging']]],
-  ['ltrim_19',['ltrim',['../namespaceclanguml_1_1util.html#aef706b51794c83f0052435fae6e381ea',1,'clanguml::util']]]
+  ['levenshtein_5fdistance_12',['levenshtein_distance',['../namespaceclanguml_1_1util.html#ac60533d8d8a28b77263b382d43e40cbe',1,'clanguml::util']]],
+  ['line_13',['line',['../classclanguml_1_1common_1_1model_1_1source__location.html#a1f2ab3af1b5c2129876b018b9fb3ba0c',1,'clanguml::common::model::source_location']]],
+  ['list_5ffrom_5fvalues_14',['list_from_values',['../classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#ac13b00c3cd338ec3290c03ae2b239ffb',1,'clanguml::sequence_diagram::model::diagram']]],
+  ['list_5fto_5fvalues_15',['list_to_values',['../classclanguml_1_1sequence__diagram_1_1model_1_1diagram.html#a5900951cdd0ec2241f4b4e2bc493cc92',1,'clanguml::sequence_diagram::model::diagram']]],
+  ['load_16',['load',['../namespaceclanguml_1_1config.html#aea6c36b13e5b87d842b29fed15f2bd4c',1,'clanguml::config']]],
+  ['load_5fconfig_17',['load_config',['../classclanguml_1_1cli_1_1cli__handler.html#a77847ce5924154ea37ad869896bbdda3',1,'clanguml::cli::cli_handler']]],
+  ['location_5fid_18',['location_id',['../classclanguml_1_1common_1_1model_1_1source__location.html#a844aed647a54e521838efad0ee9f4983',1,'clanguml::common::model::source_location']]],
+  ['logger_5ftype_19',['logger_type',['../namespaceclanguml_1_1logging.html#a125aa41c31850f89df7aedfd2d7f8e74',1,'clanguml::logging']]],
+  ['ltrim_20',['ltrim',['../namespaceclanguml_1_1util.html#aef706b51794c83f0052435fae6e381ea',1,'clanguml::util']]]
 ];

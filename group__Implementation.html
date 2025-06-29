@@ -71,7 +71,7 @@
   </td>
   <td id="projectalign" style="padding-left: 0.5em;">
     <div id="projectname">
-       <span id="projectnumber">0.6.1</span>
+       <span id="projectnumber">0.6.2</span>
     </div>
     <div id="projectbrief">C++ to UML diagram generator based on Clang</div>
   </td>
@@ -558,57 +558,70 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00482">482</a> of file <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  483</span>{</div>
-<div class="line"><span class="lineno">  484</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(cpt))</div>
-<div class="line"><span class="lineno">  485</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  486</span> </div>
-<div class="line"><span class="lineno">  487</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;= Visiting concept (isType: {}) declaration {} at {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  488</span>        cpt-&gt;isTypeConcept(), cpt-&gt;getQualifiedNameAsString(),</div>
-<div class="line"><span class="lineno">  489</span>        cpt-&gt;getLocation().printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>()));</div>
-<div class="line"><span class="lineno">  490</span> </div>
-<div class="line"><span class="lineno">  491</span>    <span class="keyword">auto</span> concept_model = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#afbe291c26cd9802dd455282a3608f21c" title="Create concept element model from concept declaration.">create_concept_declaration</a>(cpt);</div>
-<div class="line"><span class="lineno">  492</span> </div>
-<div class="line"><span class="lineno">  493</span>    <span class="keywordflow">if</span> (!concept_model)</div>
-<div class="line"><span class="lineno">  494</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  495</span> </div>
-<div class="line"><span class="lineno">  496</span>    <span class="keyword">const</span> <span class="keyword">auto</span> concept_id = concept_model-&gt;id();</div>
-<div class="line"><span class="lineno">  497</span> </div>
-<div class="line"><span class="lineno">  498</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4a2b4abd0efb0c0ede5d973eaf42e28a" title="Get reference to Clang AST to clang-uml id mapper.">id_mapper</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8f58bd6012e3a3d0bedd309213f55d9c">add</a>(cpt-&gt;getID(), concept_id);</div>
-<div class="line"><span class="lineno">  499</span> </div>
-<div class="line"><span class="lineno">  500</span>    <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a8b63286ebb9beb7598f31ea9a68b00e4" title="Get template builder reference.">tbuilder</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1template__builder.html#a565fccb9b9d1ff69517cb8666b58cbfa">build_from_template_declaration</a>(*concept_model, *cpt);</div>
-<div class="line"><span class="lineno">  501</span> </div>
-<div class="line"><span class="lineno">  502</span>    <span class="keyword">constexpr</span> <span class="keyword">auto</span> kMaxConstraintCount = 24U;</div>
-<div class="line"><span class="lineno">  503</span>    llvm::SmallVector&lt;const clang::Expr *, kMaxConstraintCount&gt; constraints{};</div>
-<div class="line"><span class="lineno">  504</span>    <span class="keywordflow">if</span> (cpt-&gt;hasAssociatedConstraints()) {</div>
-<div class="line"><span class="lineno">  505</span>        cpt-&gt;getAssociatedConstraints(constraints);</div>
-<div class="line"><span class="lineno">  506</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00494">494</a> of file <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  495</span>{</div>
+<div class="line"><span class="lineno">  496</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(cpt))</div>
+<div class="line"><span class="lineno">  497</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  498</span> </div>
+<div class="line"><span class="lineno">  499</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;= Visiting concept (isType: {}) declaration {} at {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  500</span>        cpt-&gt;isTypeConcept(), cpt-&gt;getQualifiedNameAsString(),</div>
+<div class="line"><span class="lineno">  501</span>        cpt-&gt;getLocation().printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>()));</div>
+<div class="line"><span class="lineno">  502</span> </div>
+<div class="line"><span class="lineno">  503</span>    <span class="keyword">auto</span> concept_model = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#afbe291c26cd9802dd455282a3608f21c" title="Create concept element model from concept declaration.">create_concept_declaration</a>(cpt);</div>
+<div class="line"><span class="lineno">  504</span> </div>
+<div class="line"><span class="lineno">  505</span>    <span class="keywordflow">if</span> (!concept_model)</div>
+<div class="line"><span class="lineno">  506</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  507</span> </div>
-<div class="line"><span class="lineno">  508</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *expr : constraints) {</div>
-<div class="line"><span class="lineno">  509</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a71d4a90ba8a79a3b59efd39842727b78" title="Find relationships in concept constraint expression.">find_relationships_in_constraint_expression</a>(*concept_model, expr);</div>
-<div class="line"><span class="lineno">  510</span>    }</div>
+<div class="line"><span class="lineno">  508</span>    <span class="keyword">const</span> <span class="keyword">auto</span> concept_id = concept_model-&gt;id();</div>
+<div class="line"><span class="lineno">  509</span> </div>
+<div class="line"><span class="lineno">  510</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4a2b4abd0efb0c0ede5d973eaf42e28a" title="Get reference to Clang AST to clang-uml id mapper.">id_mapper</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8f58bd6012e3a3d0bedd309213f55d9c">add</a>(cpt-&gt;getID(), concept_id);</div>
 <div class="line"><span class="lineno">  511</span> </div>
-<div class="line"><span class="lineno">  512</span>    <span class="keywordflow">if</span> (cpt-&gt;getConstraintExpr() != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  513</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a227be41a34d72566834dbcb70610fa1b" title="Process concept constraint requirements.">process_constraint_requirements</a>(</div>
-<div class="line"><span class="lineno">  514</span>            cpt, cpt-&gt;getConstraintExpr(), *concept_model);</div>
+<div class="line"><span class="lineno">  512</span>    <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a8b63286ebb9beb7598f31ea9a68b00e4" title="Get template builder reference.">tbuilder</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1template__builder.html#a565fccb9b9d1ff69517cb8666b58cbfa">build_from_template_declaration</a>(*concept_model, *cpt);</div>
+<div class="line"><span class="lineno">  513</span> </div>
+<div class="line"><span class="lineno">  514</span>    <span class="keyword">constexpr</span> <span class="keyword">auto</span> kMaxConstraintCount = 24U;</div>
 <div class="line"><span class="lineno">  515</span> </div>
-<div class="line"><span class="lineno">  516</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a71d4a90ba8a79a3b59efd39842727b78" title="Find relationships in concept constraint expression.">find_relationships_in_constraint_expression</a>(</div>
-<div class="line"><span class="lineno">  517</span>            *concept_model, cpt-&gt;getConstraintExpr());</div>
-<div class="line"><span class="lineno">  518</span>    }</div>
-<div class="line"><span class="lineno">  519</span> </div>
-<div class="line"><span class="lineno">  520</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(*concept_model)) {</div>
-<div class="line"><span class="lineno">  521</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding concept {} with id {}&quot;</span>, concept_model-&gt;full_name(<span class="keyword">false</span>),</div>
-<div class="line"><span class="lineno">  522</span>            concept_model-&gt;id());</div>
-<div class="line"><span class="lineno">  523</span> </div>
-<div class="line"><span class="lineno">  524</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#add5d818ec8f11cd00f69869c0247aa67" title="Add concept to the diagram.">add_concept</a>(std::move(concept_model));</div>
-<div class="line"><span class="lineno">  525</span>    }</div>
-<div class="line"><span class="lineno">  526</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  527</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Skipping concept {} with id {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  528</span>            concept_model-&gt;full_name(<span class="keyword">true</span>), concept_model-&gt;id());</div>
-<div class="line"><span class="lineno">  529</span>    }</div>
-<div class="line"><span class="lineno">  530</span> </div>
-<div class="line"><span class="lineno">  531</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  532</span>}</div>
+<div class="line"><span class="lineno">  516</span><span class="preprocessor">#if LLVM_VERSION_MAJOR &lt; 21</span></div>
+<div class="line"><span class="lineno">  517</span>    llvm::SmallVector&lt;const clang::Expr *, kMaxConstraintCount&gt; constraints{};</div>
+<div class="line"><span class="lineno">  518</span>    <span class="keywordflow">if</span> (cpt-&gt;hasAssociatedConstraints()) {</div>
+<div class="line"><span class="lineno">  519</span>        cpt-&gt;getAssociatedConstraints(constraints);</div>
+<div class="line"><span class="lineno">  520</span>    }</div>
+<div class="line"><span class="lineno">  521</span> </div>
+<div class="line"><span class="lineno">  522</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *expr : constraints) {</div>
+<div class="line"><span class="lineno">  523</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a71d4a90ba8a79a3b59efd39842727b78" title="Find relationships in concept constraint expression.">find_relationships_in_constraint_expression</a>(*concept_model, expr);</div>
+<div class="line"><span class="lineno">  524</span>    }</div>
+<div class="line"><span class="lineno">  525</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">  526</span>    llvm::SmallVector&lt;clang::AssociatedConstraint, kMaxConstraintCount&gt;</div>
+<div class="line"><span class="lineno">  527</span>        constraints{};</div>
+<div class="line"><span class="lineno">  528</span>    <span class="keywordflow">if</span> (cpt-&gt;hasAssociatedConstraints()) {</div>
+<div class="line"><span class="lineno">  529</span>        cpt-&gt;getAssociatedConstraints(constraints);</div>
+<div class="line"><span class="lineno">  530</span>    }</div>
+<div class="line"><span class="lineno">  531</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;constraint : constraints) {</div>
+<div class="line"><span class="lineno">  532</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a71d4a90ba8a79a3b59efd39842727b78" title="Find relationships in concept constraint expression.">find_relationships_in_constraint_expression</a>(</div>
+<div class="line"><span class="lineno">  533</span>            *concept_model, constraint.ConstraintExpr);</div>
+<div class="line"><span class="lineno">  534</span>    }</div>
+<div class="line"><span class="lineno">  535</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  536</span> </div>
+<div class="line"><span class="lineno">  537</span>    <span class="keywordflow">if</span> (cpt-&gt;getConstraintExpr() != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  538</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a227be41a34d72566834dbcb70610fa1b" title="Process concept constraint requirements.">process_constraint_requirements</a>(</div>
+<div class="line"><span class="lineno">  539</span>            cpt, cpt-&gt;getConstraintExpr(), *concept_model);</div>
+<div class="line"><span class="lineno">  540</span> </div>
+<div class="line"><span class="lineno">  541</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a71d4a90ba8a79a3b59efd39842727b78" title="Find relationships in concept constraint expression.">find_relationships_in_constraint_expression</a>(</div>
+<div class="line"><span class="lineno">  542</span>            *concept_model, cpt-&gt;getConstraintExpr());</div>
+<div class="line"><span class="lineno">  543</span>    }</div>
+<div class="line"><span class="lineno">  544</span> </div>
+<div class="line"><span class="lineno">  545</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(*concept_model)) {</div>
+<div class="line"><span class="lineno">  546</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding concept {} with id {}&quot;</span>, concept_model-&gt;full_name(<span class="keyword">false</span>),</div>
+<div class="line"><span class="lineno">  547</span>            concept_model-&gt;id());</div>
+<div class="line"><span class="lineno">  548</span> </div>
+<div class="line"><span class="lineno">  549</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#add5d818ec8f11cd00f69869c0247aa67" title="Add concept to the diagram.">add_concept</a>(std::move(concept_model));</div>
+<div class="line"><span class="lineno">  550</span>    }</div>
+<div class="line"><span class="lineno">  551</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  552</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Skipping concept {} with id {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  553</span>            concept_model-&gt;full_name(<span class="keyword">true</span>), concept_model-&gt;id());</div>
+<div class="line"><span class="lineno">  554</span>    }</div>
+<div class="line"><span class="lineno">  555</span> </div>
+<div class="line"><span class="lineno">  556</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  557</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1860,17 +1873,29 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">  321</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4a2b4abd0efb0c0ede5d973eaf42e28a" title="Get reference to Clang AST to clang-uml id mapper.">id_mapper</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8f58bd6012e3a3d0bedd309213f55d9c">add</a>(cls-&gt;getID(), <span class="keywordtype">id</span>);</div>
 <div class="line"><span class="lineno">  322</span> </div>
 <div class="line"><span class="lineno">  323</span>    <span class="keyword">constexpr</span> <span class="keyword">auto</span> kMaxConstraintCount = 24U;</div>
-<div class="line"><span class="lineno">  324</span>    llvm::SmallVector&lt;const clang::Expr *, kMaxConstraintCount&gt; constraints{};</div>
-<div class="line"><span class="lineno">  325</span>    <span class="keywordflow">if</span> (cls-&gt;hasAssociatedConstraints()) {</div>
-<div class="line"><span class="lineno">  326</span>        cls-&gt;getAssociatedConstraints(constraints);</div>
-<div class="line"><span class="lineno">  327</span>    }</div>
-<div class="line"><span class="lineno">  328</span> </div>
-<div class="line"><span class="lineno">  329</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *expr : constraints) {</div>
-<div class="line"><span class="lineno">  330</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a71d4a90ba8a79a3b59efd39842727b78" title="Find relationships in concept constraint expression.">find_relationships_in_constraint_expression</a>(*c_ptr, expr);</div>
-<div class="line"><span class="lineno">  331</span>    }</div>
-<div class="line"><span class="lineno">  332</span> </div>
-<div class="line"><span class="lineno">  333</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#ab725ace88162fa77718a948bd1383df5" title="Add the element model or update update if the model already exists.">add_or_update</a>(cls-&gt;getTemplatedDecl(), std::move(c_ptr));</div>
-<div class="line"><span class="lineno">  334</span>}</div>
+<div class="line"><span class="lineno">  324</span> </div>
+<div class="line"><span class="lineno">  325</span><span class="preprocessor">#if LLVM_VERSION_MAJOR &lt; 21</span></div>
+<div class="line"><span class="lineno">  326</span>    llvm::SmallVector&lt;const clang::Expr *, kMaxConstraintCount&gt; constraints{};</div>
+<div class="line"><span class="lineno">  327</span>    <span class="keywordflow">if</span> (cls-&gt;hasAssociatedConstraints()) {</div>
+<div class="line"><span class="lineno">  328</span>        cls-&gt;getAssociatedConstraints(constraints);</div>
+<div class="line"><span class="lineno">  329</span>    }</div>
+<div class="line"><span class="lineno">  330</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *expr : constraints) {</div>
+<div class="line"><span class="lineno">  331</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a71d4a90ba8a79a3b59efd39842727b78" title="Find relationships in concept constraint expression.">find_relationships_in_constraint_expression</a>(*c_ptr, expr);</div>
+<div class="line"><span class="lineno">  332</span>    }</div>
+<div class="line"><span class="lineno">  333</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">  334</span>    llvm::SmallVector&lt;clang::AssociatedConstraint, kMaxConstraintCount&gt;</div>
+<div class="line"><span class="lineno">  335</span>        constraints{};</div>
+<div class="line"><span class="lineno">  336</span>    <span class="keywordflow">if</span> (cls-&gt;hasAssociatedConstraints()) {</div>
+<div class="line"><span class="lineno">  337</span>        cls-&gt;getAssociatedConstraints(constraints);</div>
+<div class="line"><span class="lineno">  338</span>    }</div>
+<div class="line"><span class="lineno">  339</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;constraint : constraints) {</div>
+<div class="line"><span class="lineno">  340</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a71d4a90ba8a79a3b59efd39842727b78" title="Find relationships in concept constraint expression.">find_relationships_in_constraint_expression</a>(</div>
+<div class="line"><span class="lineno">  341</span>            *c_ptr, constraint.ConstraintExpr);</div>
+<div class="line"><span class="lineno">  342</span>    }</div>
+<div class="line"><span class="lineno">  343</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  344</span> </div>
+<div class="line"><span class="lineno">  345</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#ab725ace88162fa77718a948bd1383df5" title="Add the element model or update update if the model already exists.">add_or_update</a>(cls-&gt;getTemplatedDecl(), std::move(c_ptr));</div>
+<div class="line"><span class="lineno">  346</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2585,57 +2610,57 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00770">770</a> of file <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  771</span>{</div>
-<div class="line"><span class="lineno">  772</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(cls))</div>
-<div class="line"><span class="lineno">  773</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  774</span> </div>
-<div class="line"><span class="lineno">  775</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;= Visiting class declaration {} at {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  776</span>        cls-&gt;getQualifiedNameAsString(),</div>
-<div class="line"><span class="lineno">  777</span>        cls-&gt;getLocation().printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>()));</div>
-<div class="line"><span class="lineno">  778</span> </div>
-<div class="line"><span class="lineno">  779</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(</div>
-<div class="line"><span class="lineno">  780</span>        <span class="stringliteral">&quot;== getQualifiedNameAsString() = {}&quot;</span>, cls-&gt;getQualifiedNameAsString());</div>
-<div class="line"><span class="lineno">  781</span>    <span class="keywordflow">if</span> (cls-&gt;getOwningModule() != <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  782</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(</div>
-<div class="line"><span class="lineno">  783</span>            <span class="stringliteral">&quot;== getOwningModule()-&gt;Name = {}&quot;</span>, cls-&gt;getOwningModule()-&gt;Name);</div>
-<div class="line"><span class="lineno">  784</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;== getID() = {}&quot;</span>, cls-&gt;getID());</div>
-<div class="line"><span class="lineno">  785</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;== isTemplateDecl() = {}&quot;</span>, cls-&gt;isTemplateDecl());</div>
-<div class="line"><span class="lineno">  786</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;== isTemplated() = {}&quot;</span>, cls-&gt;isTemplated());</div>
-<div class="line"><span class="lineno">  787</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;== getParent()-&gt;isRecord()() = {}&quot;</span>, cls-&gt;getParent()-&gt;isRecord());</div>
-<div class="line"><span class="lineno">  788</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;== isCompleteDefinition() = {}&quot;</span>, cls-&gt;isCompleteDefinition());</div>
-<div class="line"><span class="lineno">  789</span> </div>
-<div class="line"><span class="lineno">  790</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *parent_record =</div>
-<div class="line"><span class="lineno">  791</span>            clang::dyn_cast&lt;clang::RecordDecl&gt;(cls-&gt;getParent());</div>
-<div class="line"><span class="lineno">  792</span>        parent_record != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  793</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;== getParent()-&gt;getQualifiedNameAsString() = {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  794</span>            parent_record-&gt;getQualifiedNameAsString());</div>
-<div class="line"><span class="lineno">  795</span>    }</div>
-<div class="line"><span class="lineno">  796</span> </div>
-<div class="line"><span class="lineno">  797</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#ab7d43d19745315211bd9a6bbca077b50" title="Check if template class has already been processed.">has_processed_template_class</a>(cls-&gt;getQualifiedNameAsString()))</div>
-<div class="line"><span class="lineno">  798</span>        <span class="comment">// If we have already processed the template of this class</span></div>
-<div class="line"><span class="lineno">  799</span>        <span class="comment">// skip it</span></div>
-<div class="line"><span class="lineno">  800</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  801</span> </div>
-<div class="line"><span class="lineno">  802</span>    <span class="keywordflow">if</span> (cls-&gt;isTemplated() &amp;&amp; (cls-&gt;getDescribedTemplate() != <span class="keyword">nullptr</span>)) {</div>
-<div class="line"><span class="lineno">  803</span>        <span class="comment">// If the described templated of this class is already in the model</span></div>
-<div class="line"><span class="lineno">  804</span>        <span class="comment">// skip it:</span></div>
-<div class="line"><span class="lineno">  805</span>        <span class="keyword">const</span> eid_t ast_id{cls-&gt;getDescribedTemplate()-&gt;getID()};</div>
-<div class="line"><span class="lineno">  806</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4a2b4abd0efb0c0ede5d973eaf42e28a" title="Get reference to Clang AST to clang-uml id mapper.">id_mapper</a>().get_global_id(ast_id))</div>
-<div class="line"><span class="lineno">  807</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  808</span>    }</div>
-<div class="line"><span class="lineno">  809</span> </div>
-<div class="line"><span class="lineno">  810</span>    <span class="comment">// TODO: Add support for classes defined in function/method bodies</span></div>
-<div class="line"><span class="lineno">  811</span>    <span class="keywordflow">if</span> (cls-&gt;isLocalClass() != <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  812</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  813</span> </div>
-<div class="line"><span class="lineno">  814</span>    <span class="keyword">auto</span> c_ptr = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a5680cba681b69e046ad5b2bcb520b17b" title="Create class element model from class declaration.">create_declaration</a>(cls);</div>
-<div class="line"><span class="lineno">  815</span> </div>
-<div class="line"><span class="lineno">  816</span>    <span class="keywordflow">if</span> (!c_ptr)</div>
-<div class="line"><span class="lineno">  817</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  818</span> </div>
-<div class="line"><span class="lineno">  819</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#ab725ace88162fa77718a948bd1383df5" title="Add the element model or update update if the model already exists.">add_or_update</a>(cls, std::move(c_ptr));</div>
-<div class="line"><span class="lineno">  820</span>}</div>
+<p class="definition">Definition at line <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00795">795</a> of file <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  796</span>{</div>
+<div class="line"><span class="lineno">  797</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(cls))</div>
+<div class="line"><span class="lineno">  798</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  799</span> </div>
+<div class="line"><span class="lineno">  800</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;= Visiting class declaration {} at {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  801</span>        cls-&gt;getQualifiedNameAsString(),</div>
+<div class="line"><span class="lineno">  802</span>        cls-&gt;getLocation().printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>()));</div>
+<div class="line"><span class="lineno">  803</span> </div>
+<div class="line"><span class="lineno">  804</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(</div>
+<div class="line"><span class="lineno">  805</span>        <span class="stringliteral">&quot;== getQualifiedNameAsString() = {}&quot;</span>, cls-&gt;getQualifiedNameAsString());</div>
+<div class="line"><span class="lineno">  806</span>    <span class="keywordflow">if</span> (cls-&gt;getOwningModule() != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  807</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(</div>
+<div class="line"><span class="lineno">  808</span>            <span class="stringliteral">&quot;== getOwningModule()-&gt;Name = {}&quot;</span>, cls-&gt;getOwningModule()-&gt;Name);</div>
+<div class="line"><span class="lineno">  809</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;== getID() = {}&quot;</span>, cls-&gt;getID());</div>
+<div class="line"><span class="lineno">  810</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;== isTemplateDecl() = {}&quot;</span>, cls-&gt;isTemplateDecl());</div>
+<div class="line"><span class="lineno">  811</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;== isTemplated() = {}&quot;</span>, cls-&gt;isTemplated());</div>
+<div class="line"><span class="lineno">  812</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;== getParent()-&gt;isRecord()() = {}&quot;</span>, cls-&gt;getParent()-&gt;isRecord());</div>
+<div class="line"><span class="lineno">  813</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;== isCompleteDefinition() = {}&quot;</span>, cls-&gt;isCompleteDefinition());</div>
+<div class="line"><span class="lineno">  814</span> </div>
+<div class="line"><span class="lineno">  815</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *parent_record =</div>
+<div class="line"><span class="lineno">  816</span>            clang::dyn_cast&lt;clang::RecordDecl&gt;(cls-&gt;getParent());</div>
+<div class="line"><span class="lineno">  817</span>        parent_record != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  818</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;== getParent()-&gt;getQualifiedNameAsString() = {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  819</span>            parent_record-&gt;getQualifiedNameAsString());</div>
+<div class="line"><span class="lineno">  820</span>    }</div>
+<div class="line"><span class="lineno">  821</span> </div>
+<div class="line"><span class="lineno">  822</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#ab7d43d19745315211bd9a6bbca077b50" title="Check if template class has already been processed.">has_processed_template_class</a>(cls-&gt;getQualifiedNameAsString()))</div>
+<div class="line"><span class="lineno">  823</span>        <span class="comment">// If we have already processed the template of this class</span></div>
+<div class="line"><span class="lineno">  824</span>        <span class="comment">// skip it</span></div>
+<div class="line"><span class="lineno">  825</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  826</span> </div>
+<div class="line"><span class="lineno">  827</span>    <span class="keywordflow">if</span> (cls-&gt;isTemplated() &amp;&amp; (cls-&gt;getDescribedTemplate() != <span class="keyword">nullptr</span>)) {</div>
+<div class="line"><span class="lineno">  828</span>        <span class="comment">// If the described templated of this class is already in the model</span></div>
+<div class="line"><span class="lineno">  829</span>        <span class="comment">// skip it:</span></div>
+<div class="line"><span class="lineno">  830</span>        <span class="keyword">const</span> eid_t ast_id{cls-&gt;getDescribedTemplate()-&gt;getID()};</div>
+<div class="line"><span class="lineno">  831</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4a2b4abd0efb0c0ede5d973eaf42e28a" title="Get reference to Clang AST to clang-uml id mapper.">id_mapper</a>().get_global_id(ast_id))</div>
+<div class="line"><span class="lineno">  832</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  833</span>    }</div>
+<div class="line"><span class="lineno">  834</span> </div>
+<div class="line"><span class="lineno">  835</span>    <span class="comment">// TODO: Add support for classes defined in function/method bodies</span></div>
+<div class="line"><span class="lineno">  836</span>    <span class="keywordflow">if</span> (cls-&gt;isLocalClass() != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  837</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  838</span> </div>
+<div class="line"><span class="lineno">  839</span>    <span class="keyword">auto</span> c_ptr = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a5680cba681b69e046ad5b2bcb520b17b" title="Create class element model from class declaration.">create_declaration</a>(cls);</div>
+<div class="line"><span class="lineno">  840</span> </div>
+<div class="line"><span class="lineno">  841</span>    <span class="keywordflow">if</span> (!c_ptr)</div>
+<div class="line"><span class="lineno">  842</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  843</span> </div>
+<div class="line"><span class="lineno">  844</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#ab725ace88162fa77718a948bd1383df5" title="Add the element model or update update if the model already exists.">add_or_update</a>(cls, std::move(c_ptr));</div>
+<div class="line"><span class="lineno">  845</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3321,44 +3346,44 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00361">361</a> of file <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  363</span>{</div>
-<div class="line"><span class="lineno">  364</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(decl))</div>
-<div class="line"><span class="lineno">  365</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  366</span> </div>
-<div class="line"><span class="lineno">  367</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;= Visiting ObjC category declaration {} at {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  368</span>        decl-&gt;getQualifiedNameAsString(),</div>
-<div class="line"><span class="lineno">  369</span>        decl-&gt;getLocation().printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>()));</div>
-<div class="line"><span class="lineno">  370</span> </div>
-<div class="line"><span class="lineno">  371</span>    <span class="keyword">auto</span> category_ptr = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a33846d69c7082f7ab6f235ee1afbfe67" title="Create class element model from Objective-C category.">create_objc_category_declaration</a>(decl);</div>
-<div class="line"><span class="lineno">  372</span> </div>
-<div class="line"><span class="lineno">  373</span>    <span class="keywordflow">if</span> (!category_ptr)</div>
-<div class="line"><span class="lineno">  374</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  375</span> </div>
-<div class="line"><span class="lineno">  376</span>    <span class="keyword">const</span> <span class="keyword">auto</span> category_id = category_ptr-&gt;id();</div>
-<div class="line"><span class="lineno">  377</span> </div>
-<div class="line"><span class="lineno">  378</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4a2b4abd0efb0c0ede5d973eaf42e28a" title="Get reference to Clang AST to clang-uml id mapper.">id_mapper</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8f58bd6012e3a3d0bedd309213f55d9c">add</a>(decl-&gt;getID(), category_id);</div>
-<div class="line"><span class="lineno">  379</span> </div>
-<div class="line"><span class="lineno">  380</span>    <span class="keyword">auto</span> &amp;category_model =</div>
-<div class="line"><span class="lineno">  381</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().find&lt;objc_interface&gt;(category_id).has_value()</div>
-<div class="line"><span class="lineno">  382</span>        ? *<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().find&lt;objc_interface&gt;(category_id).<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1detail.html#ab85530bb0d21b93200e8f36a322b8b73">get</a>()</div>
-<div class="line"><span class="lineno">  383</span>        : *category_ptr;</div>
+<p class="definition">Definition at line <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00373">373</a> of file <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  375</span>{</div>
+<div class="line"><span class="lineno">  376</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(decl))</div>
+<div class="line"><span class="lineno">  377</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  378</span> </div>
+<div class="line"><span class="lineno">  379</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;= Visiting ObjC category declaration {} at {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  380</span>        decl-&gt;getQualifiedNameAsString(),</div>
+<div class="line"><span class="lineno">  381</span>        decl-&gt;getLocation().printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>()));</div>
+<div class="line"><span class="lineno">  382</span> </div>
+<div class="line"><span class="lineno">  383</span>    <span class="keyword">auto</span> category_ptr = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a33846d69c7082f7ab6f235ee1afbfe67" title="Create class element model from Objective-C category.">create_objc_category_declaration</a>(decl);</div>
 <div class="line"><span class="lineno">  384</span> </div>
-<div class="line"><span class="lineno">  385</span>    <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a2936a7334b11a82f29414b853e96a7c0" title="Process Objective-C category declaration.">process_objc_category_declaration</a>(*decl, category_model);</div>
-<div class="line"><span class="lineno">  386</span> </div>
-<div class="line"><span class="lineno">  387</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(category_model)) {</div>
-<div class="line"><span class="lineno">  388</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding ObjC category {} with id {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  389</span>            category_model.full_name(<span class="keyword">false</span>), category_model.id());</div>
-<div class="line"><span class="lineno">  390</span> </div>
-<div class="line"><span class="lineno">  391</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a12e6785fdde5aaa31e2b1353f30fe71c">add_objc_interface</a>(std::move(category_ptr));</div>
-<div class="line"><span class="lineno">  392</span>    }</div>
-<div class="line"><span class="lineno">  393</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  394</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Skipping ObjC category {} with id {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  395</span>            category_model.full_name(<span class="keyword">true</span>), category_model.id());</div>
-<div class="line"><span class="lineno">  396</span>    }</div>
-<div class="line"><span class="lineno">  397</span> </div>
-<div class="line"><span class="lineno">  398</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  399</span>}</div>
+<div class="line"><span class="lineno">  385</span>    <span class="keywordflow">if</span> (!category_ptr)</div>
+<div class="line"><span class="lineno">  386</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  387</span> </div>
+<div class="line"><span class="lineno">  388</span>    <span class="keyword">const</span> <span class="keyword">auto</span> category_id = category_ptr-&gt;id();</div>
+<div class="line"><span class="lineno">  389</span> </div>
+<div class="line"><span class="lineno">  390</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4a2b4abd0efb0c0ede5d973eaf42e28a" title="Get reference to Clang AST to clang-uml id mapper.">id_mapper</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8f58bd6012e3a3d0bedd309213f55d9c">add</a>(decl-&gt;getID(), category_id);</div>
+<div class="line"><span class="lineno">  391</span> </div>
+<div class="line"><span class="lineno">  392</span>    <span class="keyword">auto</span> &amp;category_model =</div>
+<div class="line"><span class="lineno">  393</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().find&lt;objc_interface&gt;(category_id).has_value()</div>
+<div class="line"><span class="lineno">  394</span>        ? *<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().find&lt;objc_interface&gt;(category_id).<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1detail.html#ab85530bb0d21b93200e8f36a322b8b73">get</a>()</div>
+<div class="line"><span class="lineno">  395</span>        : *category_ptr;</div>
+<div class="line"><span class="lineno">  396</span> </div>
+<div class="line"><span class="lineno">  397</span>    <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a2936a7334b11a82f29414b853e96a7c0" title="Process Objective-C category declaration.">process_objc_category_declaration</a>(*decl, category_model);</div>
+<div class="line"><span class="lineno">  398</span> </div>
+<div class="line"><span class="lineno">  399</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(category_model)) {</div>
+<div class="line"><span class="lineno">  400</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding ObjC category {} with id {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  401</span>            category_model.full_name(<span class="keyword">false</span>), category_model.id());</div>
+<div class="line"><span class="lineno">  402</span> </div>
+<div class="line"><span class="lineno">  403</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a12e6785fdde5aaa31e2b1353f30fe71c">add_objc_interface</a>(std::move(category_ptr));</div>
+<div class="line"><span class="lineno">  404</span>    }</div>
+<div class="line"><span class="lineno">  405</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  406</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Skipping ObjC category {} with id {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  407</span>            category_model.full_name(<span class="keyword">true</span>), category_model.id());</div>
+<div class="line"><span class="lineno">  408</span>    }</div>
+<div class="line"><span class="lineno">  409</span> </div>
+<div class="line"><span class="lineno">  410</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  411</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3431,45 +3456,45 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00441">441</a> of file <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  443</span>{</div>
-<div class="line"><span class="lineno">  444</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(decl))</div>
-<div class="line"><span class="lineno">  445</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  446</span> </div>
-<div class="line"><span class="lineno">  447</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;= Visiting ObjC interface declaration {} at {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  448</span>        decl-&gt;getQualifiedNameAsString(),</div>
-<div class="line"><span class="lineno">  449</span>        decl-&gt;getLocation().printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>()));</div>
-<div class="line"><span class="lineno">  450</span> </div>
-<div class="line"><span class="lineno">  451</span>    <span class="keyword">auto</span> interface_ptr = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a5a6e85caa998aa1a526b788070a6c65d" title="Create class element model from Objective-C interface.">create_objc_interface_declaration</a>(decl);</div>
-<div class="line"><span class="lineno">  452</span> </div>
-<div class="line"><span class="lineno">  453</span>    <span class="keywordflow">if</span> (!interface_ptr)</div>
-<div class="line"><span class="lineno">  454</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  455</span> </div>
-<div class="line"><span class="lineno">  456</span>    <span class="keyword">const</span> <span class="keyword">auto</span> protocol_id = interface_ptr-&gt;id();</div>
-<div class="line"><span class="lineno">  457</span> </div>
-<div class="line"><span class="lineno">  458</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4a2b4abd0efb0c0ede5d973eaf42e28a" title="Get reference to Clang AST to clang-uml id mapper.">id_mapper</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8f58bd6012e3a3d0bedd309213f55d9c">add</a>(decl-&gt;getID(), protocol_id);</div>
-<div class="line"><span class="lineno">  459</span> </div>
-<div class="line"><span class="lineno">  460</span>    <span class="keyword">auto</span> &amp;interface_model =</div>
-<div class="line"><span class="lineno">  461</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().find&lt;objc_interface&gt;(protocol_id).has_value()</div>
-<div class="line"><span class="lineno">  462</span>        ? *<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().find&lt;objc_interface&gt;(protocol_id).<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1detail.html#ab85530bb0d21b93200e8f36a322b8b73">get</a>()</div>
-<div class="line"><span class="lineno">  463</span>        : *interface_ptr;</div>
+<p class="definition">Definition at line <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00453">453</a> of file <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  455</span>{</div>
+<div class="line"><span class="lineno">  456</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(decl))</div>
+<div class="line"><span class="lineno">  457</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  458</span> </div>
+<div class="line"><span class="lineno">  459</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;= Visiting ObjC interface declaration {} at {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  460</span>        decl-&gt;getQualifiedNameAsString(),</div>
+<div class="line"><span class="lineno">  461</span>        decl-&gt;getLocation().printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>()));</div>
+<div class="line"><span class="lineno">  462</span> </div>
+<div class="line"><span class="lineno">  463</span>    <span class="keyword">auto</span> interface_ptr = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a5a6e85caa998aa1a526b788070a6c65d" title="Create class element model from Objective-C interface.">create_objc_interface_declaration</a>(decl);</div>
 <div class="line"><span class="lineno">  464</span> </div>
-<div class="line"><span class="lineno">  465</span>    <span class="keywordflow">if</span> (!interface_model.complete())</div>
-<div class="line"><span class="lineno">  466</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a33dfcc2c663db0f4f5fd8289f6c90593" title="Process Objective-C interface declaration.">process_objc_interface_declaration</a>(*decl, interface_model);</div>
+<div class="line"><span class="lineno">  465</span>    <span class="keywordflow">if</span> (!interface_ptr)</div>
+<div class="line"><span class="lineno">  466</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  467</span> </div>
-<div class="line"><span class="lineno">  468</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(interface_model)) {</div>
-<div class="line"><span class="lineno">  469</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding ObjC interface {} with id {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  470</span>            interface_model.full_name(<span class="keyword">false</span>), interface_model.id());</div>
+<div class="line"><span class="lineno">  468</span>    <span class="keyword">const</span> <span class="keyword">auto</span> protocol_id = interface_ptr-&gt;id();</div>
+<div class="line"><span class="lineno">  469</span> </div>
+<div class="line"><span class="lineno">  470</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4a2b4abd0efb0c0ede5d973eaf42e28a" title="Get reference to Clang AST to clang-uml id mapper.">id_mapper</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8f58bd6012e3a3d0bedd309213f55d9c">add</a>(decl-&gt;getID(), protocol_id);</div>
 <div class="line"><span class="lineno">  471</span> </div>
-<div class="line"><span class="lineno">  472</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a12e6785fdde5aaa31e2b1353f30fe71c">add_objc_interface</a>(std::move(interface_ptr));</div>
-<div class="line"><span class="lineno">  473</span>    }</div>
-<div class="line"><span class="lineno">  474</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  475</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Skipping ObjC interface {} with id {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  476</span>            interface_model.full_name(<span class="keyword">true</span>), interface_model.id());</div>
-<div class="line"><span class="lineno">  477</span>    }</div>
-<div class="line"><span class="lineno">  478</span> </div>
-<div class="line"><span class="lineno">  479</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  480</span>}</div>
+<div class="line"><span class="lineno">  472</span>    <span class="keyword">auto</span> &amp;interface_model =</div>
+<div class="line"><span class="lineno">  473</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().find&lt;objc_interface&gt;(protocol_id).has_value()</div>
+<div class="line"><span class="lineno">  474</span>        ? *<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().find&lt;objc_interface&gt;(protocol_id).<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1detail.html#ab85530bb0d21b93200e8f36a322b8b73">get</a>()</div>
+<div class="line"><span class="lineno">  475</span>        : *interface_ptr;</div>
+<div class="line"><span class="lineno">  476</span> </div>
+<div class="line"><span class="lineno">  477</span>    <span class="keywordflow">if</span> (!interface_model.complete())</div>
+<div class="line"><span class="lineno">  478</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a33dfcc2c663db0f4f5fd8289f6c90593" title="Process Objective-C interface declaration.">process_objc_interface_declaration</a>(*decl, interface_model);</div>
+<div class="line"><span class="lineno">  479</span> </div>
+<div class="line"><span class="lineno">  480</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(interface_model)) {</div>
+<div class="line"><span class="lineno">  481</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding ObjC interface {} with id {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  482</span>            interface_model.full_name(<span class="keyword">false</span>), interface_model.id());</div>
+<div class="line"><span class="lineno">  483</span> </div>
+<div class="line"><span class="lineno">  484</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a12e6785fdde5aaa31e2b1353f30fe71c">add_objc_interface</a>(std::move(interface_ptr));</div>
+<div class="line"><span class="lineno">  485</span>    }</div>
+<div class="line"><span class="lineno">  486</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  487</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Skipping ObjC interface {} with id {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  488</span>            interface_model.full_name(<span class="keyword">true</span>), interface_model.id());</div>
+<div class="line"><span class="lineno">  489</span>    }</div>
+<div class="line"><span class="lineno">  490</span> </div>
+<div class="line"><span class="lineno">  491</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  492</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3796,44 +3821,44 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00401">401</a> of file <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  403</span>{</div>
-<div class="line"><span class="lineno">  404</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(decl))</div>
-<div class="line"><span class="lineno">  405</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  406</span> </div>
-<div class="line"><span class="lineno">  407</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;= Visiting ObjC protocol declaration {} at {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  408</span>        decl-&gt;getQualifiedNameAsString(),</div>
-<div class="line"><span class="lineno">  409</span>        decl-&gt;getLocation().printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>()));</div>
-<div class="line"><span class="lineno">  410</span> </div>
-<div class="line"><span class="lineno">  411</span>    <span class="keyword">auto</span> protocol_ptr = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a3fb1ec648d5b5433764ab4cb4ad25957" title="Create class element model from Objective-C protocol.">create_objc_protocol_declaration</a>(decl);</div>
-<div class="line"><span class="lineno">  412</span> </div>
-<div class="line"><span class="lineno">  413</span>    <span class="keywordflow">if</span> (!protocol_ptr)</div>
-<div class="line"><span class="lineno">  414</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  415</span> </div>
-<div class="line"><span class="lineno">  416</span>    <span class="keyword">const</span> <span class="keyword">auto</span> protocol_id = protocol_ptr-&gt;id();</div>
-<div class="line"><span class="lineno">  417</span> </div>
-<div class="line"><span class="lineno">  418</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4a2b4abd0efb0c0ede5d973eaf42e28a" title="Get reference to Clang AST to clang-uml id mapper.">id_mapper</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8f58bd6012e3a3d0bedd309213f55d9c">add</a>(decl-&gt;getID(), protocol_id);</div>
-<div class="line"><span class="lineno">  419</span> </div>
-<div class="line"><span class="lineno">  420</span>    <span class="keyword">auto</span> &amp;protocol_model =</div>
-<div class="line"><span class="lineno">  421</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().find&lt;objc_interface&gt;(protocol_id).has_value()</div>
-<div class="line"><span class="lineno">  422</span>        ? *<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().find&lt;objc_interface&gt;(protocol_id).<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1detail.html#ab85530bb0d21b93200e8f36a322b8b73">get</a>()</div>
-<div class="line"><span class="lineno">  423</span>        : *protocol_ptr;</div>
+<p class="definition">Definition at line <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00413">413</a> of file <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  415</span>{</div>
+<div class="line"><span class="lineno">  416</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(decl))</div>
+<div class="line"><span class="lineno">  417</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  418</span> </div>
+<div class="line"><span class="lineno">  419</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;= Visiting ObjC protocol declaration {} at {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  420</span>        decl-&gt;getQualifiedNameAsString(),</div>
+<div class="line"><span class="lineno">  421</span>        decl-&gt;getLocation().printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>()));</div>
+<div class="line"><span class="lineno">  422</span> </div>
+<div class="line"><span class="lineno">  423</span>    <span class="keyword">auto</span> protocol_ptr = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a3fb1ec648d5b5433764ab4cb4ad25957" title="Create class element model from Objective-C protocol.">create_objc_protocol_declaration</a>(decl);</div>
 <div class="line"><span class="lineno">  424</span> </div>
-<div class="line"><span class="lineno">  425</span>    <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#ac5af0c04ad70857e83d17800d59878e8" title="Process Objective-C protocol declaration.">process_objc_protocol_declaration</a>(*decl, protocol_model);</div>
-<div class="line"><span class="lineno">  426</span> </div>
-<div class="line"><span class="lineno">  427</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(protocol_model)) {</div>
-<div class="line"><span class="lineno">  428</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding ObjC protocol {} with id {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  429</span>            protocol_model.full_name(<span class="keyword">false</span>), protocol_model.id());</div>
-<div class="line"><span class="lineno">  430</span> </div>
-<div class="line"><span class="lineno">  431</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a12e6785fdde5aaa31e2b1353f30fe71c">add_objc_interface</a>(std::move(protocol_ptr));</div>
-<div class="line"><span class="lineno">  432</span>    }</div>
-<div class="line"><span class="lineno">  433</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  434</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Skipping ObjC protocol {} with id {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  435</span>            protocol_model.full_name(<span class="keyword">true</span>), protocol_model.id());</div>
-<div class="line"><span class="lineno">  436</span>    }</div>
-<div class="line"><span class="lineno">  437</span> </div>
-<div class="line"><span class="lineno">  438</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  439</span>}</div>
+<div class="line"><span class="lineno">  425</span>    <span class="keywordflow">if</span> (!protocol_ptr)</div>
+<div class="line"><span class="lineno">  426</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  427</span> </div>
+<div class="line"><span class="lineno">  428</span>    <span class="keyword">const</span> <span class="keyword">auto</span> protocol_id = protocol_ptr-&gt;id();</div>
+<div class="line"><span class="lineno">  429</span> </div>
+<div class="line"><span class="lineno">  430</span>    <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4a2b4abd0efb0c0ede5d973eaf42e28a" title="Get reference to Clang AST to clang-uml id mapper.">id_mapper</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1ast__id__mapper.html#a8f58bd6012e3a3d0bedd309213f55d9c">add</a>(decl-&gt;getID(), protocol_id);</div>
+<div class="line"><span class="lineno">  431</span> </div>
+<div class="line"><span class="lineno">  432</span>    <span class="keyword">auto</span> &amp;protocol_model =</div>
+<div class="line"><span class="lineno">  433</span>        <a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().find&lt;objc_interface&gt;(protocol_id).has_value()</div>
+<div class="line"><span class="lineno">  434</span>        ? *<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().find&lt;objc_interface&gt;(protocol_id).<a class="code hl_function" href="namespaceclanguml_1_1common_1_1model_1_1detail.html#ab85530bb0d21b93200e8f36a322b8b73">get</a>()</div>
+<div class="line"><span class="lineno">  435</span>        : *protocol_ptr;</div>
+<div class="line"><span class="lineno">  436</span> </div>
+<div class="line"><span class="lineno">  437</span>    <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#ac5af0c04ad70857e83d17800d59878e8" title="Process Objective-C protocol declaration.">process_objc_protocol_declaration</a>(*decl, protocol_model);</div>
+<div class="line"><span class="lineno">  438</span> </div>
+<div class="line"><span class="lineno">  439</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a4fb1b62c0c0ce8ef645c9308e2111369" title="Get diagram model reference.">diagram</a>().<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(protocol_model)) {</div>
+<div class="line"><span class="lineno">  440</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Adding ObjC protocol {} with id {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  441</span>            protocol_model.full_name(<span class="keyword">false</span>), protocol_model.id());</div>
+<div class="line"><span class="lineno">  442</span> </div>
+<div class="line"><span class="lineno">  443</span>        <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a12e6785fdde5aaa31e2b1353f30fe71c">add_objc_interface</a>(std::move(protocol_ptr));</div>
+<div class="line"><span class="lineno">  444</span>    }</div>
+<div class="line"><span class="lineno">  445</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  446</span>        <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;Skipping ObjC protocol {} with id {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  447</span>            protocol_model.full_name(<span class="keyword">true</span>), protocol_model.id());</div>
+<div class="line"><span class="lineno">  448</span>    }</div>
+<div class="line"><span class="lineno">  449</span> </div>
+<div class="line"><span class="lineno">  450</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  451</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4016,30 +4041,30 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00336">336</a> of file <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
-<div class="fragment DoxyCode"><div class="line"><span class="lineno">  337</span>{</div>
-<div class="line"><span class="lineno">  338</span>    <span class="keywordflow">if</span> (rec == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  339</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  340</span> </div>
-<div class="line"><span class="lineno">  341</span>    <span class="keywordflow">if</span> (clang::dyn_cast_or_null&lt;clang::CXXRecordDecl&gt;(rec) != <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  342</span>        <span class="comment">// This is handled by VisitCXXRecordDecl()</span></div>
-<div class="line"><span class="lineno">  343</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  344</span> </div>
-<div class="line"><span class="lineno">  345</span>    <span class="comment">// It seems we are in a C (not C++) translation unit</span></div>
-<div class="line"><span class="lineno">  346</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(rec))</div>
-<div class="line"><span class="lineno">  347</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  348</span> </div>
-<div class="line"><span class="lineno">  349</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;= Visiting record declaration {} at {}&quot;</span>,</div>
-<div class="line"><span class="lineno">  350</span>        rec-&gt;getQualifiedNameAsString(),</div>
-<div class="line"><span class="lineno">  351</span>        rec-&gt;getLocation().printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>()));</div>
+<p class="definition">Definition at line <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html#l00348">348</a> of file <a class="el" href="class__diagram_2visitor_2translation__unit__visitor_8cc_source.html">translation_unit_visitor.cc</a>.</p>
+<div class="fragment DoxyCode"><div class="line"><span class="lineno">  349</span>{</div>
+<div class="line"><span class="lineno">  350</span>    <span class="keywordflow">if</span> (rec == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  351</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  352</span> </div>
-<div class="line"><span class="lineno">  353</span>    <span class="keyword">auto</span> record_ptr = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a5680cba681b69e046ad5b2bcb520b17b" title="Create class element model from class declaration.">create_declaration</a>(rec);</div>
-<div class="line"><span class="lineno">  354</span> </div>
-<div class="line"><span class="lineno">  355</span>    <span class="keywordflow">if</span> (!record_ptr)</div>
-<div class="line"><span class="lineno">  356</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  357</span> </div>
-<div class="line"><span class="lineno">  358</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#ab725ace88162fa77718a948bd1383df5" title="Add the element model or update update if the model already exists.">add_or_update</a>(rec, std::move(record_ptr));</div>
-<div class="line"><span class="lineno">  359</span>}</div>
+<div class="line"><span class="lineno">  353</span>    <span class="keywordflow">if</span> (clang::dyn_cast_or_null&lt;clang::CXXRecordDecl&gt;(rec) != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  354</span>        <span class="comment">// This is handled by VisitCXXRecordDecl()</span></div>
+<div class="line"><span class="lineno">  355</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  356</span> </div>
+<div class="line"><span class="lineno">  357</span>    <span class="comment">// It seems we are in a C (not C++) translation unit</span></div>
+<div class="line"><span class="lineno">  358</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a204e950467fdc079972911f311d07e3e" title="Check if the diagram should include a declaration.">should_include</a>(rec))</div>
+<div class="line"><span class="lineno">  359</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  360</span> </div>
+<div class="line"><span class="lineno">  361</span>    <a class="code hl_define" href="logging_8h.html#a25d9e896b8ad021064c80a37cab57c82">LOG_DBG</a>(<span class="stringliteral">&quot;= Visiting record declaration {} at {}&quot;</span>,</div>
+<div class="line"><span class="lineno">  362</span>        rec-&gt;getQualifiedNameAsString(),</div>
+<div class="line"><span class="lineno">  363</span>        rec-&gt;getLocation().printToString(<a class="code hl_function" href="classclanguml_1_1common_1_1visitor_1_1translation__unit__visitor.html#a6c401537d60a2f7a87971cae1f224f31" title="Get clang::SourceManager.">source_manager</a>()));</div>
+<div class="line"><span class="lineno">  364</span> </div>
+<div class="line"><span class="lineno">  365</span>    <span class="keyword">auto</span> record_ptr = <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#a5680cba681b69e046ad5b2bcb520b17b" title="Create class element model from class declaration.">create_declaration</a>(rec);</div>
+<div class="line"><span class="lineno">  366</span> </div>
+<div class="line"><span class="lineno">  367</span>    <span class="keywordflow">if</span> (!record_ptr)</div>
+<div class="line"><span class="lineno">  368</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  369</span> </div>
+<div class="line"><span class="lineno">  370</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classclanguml_1_1class__diagram_1_1visitor_1_1translation__unit__visitor.html#ab725ace88162fa77718a948bd1383df5" title="Add the element model or update update if the model already exists.">add_or_update</a>(rec, std::move(record_ptr));</div>
+<div class="line"><span class="lineno">  371</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
